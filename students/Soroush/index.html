@@ -291,6 +291,7 @@
 <script>
 const CATEGORIES = [
   { id: "grammaire",      label: "Grammaire",       icon: "§",  color: "#1565c0" },
+  { id: "vocabulaire",    label: "Vocabulaire",      icon: "📚", color: "#6a1b9a" },
   { id: "mes-erreurs",    label: "Mes erreurs",      icon: "🔴", color: "#b71c1c" },
   { id: "reformulation",  label: "Reformulation",    icon: "🔄", color: "#00695c" },
 ];
@@ -300,7 +301,7 @@ const LESSONS = [
   {
     file: "Grammaire/c-est-vs-il-est/index.html",
     title: "C'est vs Il est",
-    titleFr: "Différence et emplois",
+    titleFr: "Distinction essentielle TCF · A2→B2",
     category: "grammaire",
     level: "B1",
     icon: "⚖️",
@@ -308,9 +309,39 @@ const LESSONS = [
     disabled: false,
   },
   {
+    file: "Grammaire/demonstratifs/index.html",
+    title: "Adjectifs & Pronoms démonstratifs",
+    titleFr: "ce / cet / cette · celui / celle / ceux",
+    category: "grammaire",
+    level: "B1/B2",
+    icon: "👆",
+    group: "Structures essentielles",
+    disabled: false,
+  },
+  {
+    file: "Grammaire/famille-de-mots/index.html",
+    title: "Famille de mots",
+    titleFr: "Adjectif → Verbe · simplifier · élargir · adoucir",
+    category: "grammaire",
+    level: "B1/B2",
+    icon: "🌿",
+    group: "Lexique & Formation",
+    disabled: false,
+  },
+  {
+    file: "Grammaire/liaison/index.html",
+    title: "La Liaison",
+    titleFr: "Obligatoire · Interdite · Phonétique",
+    category: "grammaire",
+    level: "B1/B2",
+    icon: "🔗",
+    group: "Lexique & Formation",
+    disabled: false,
+  },
+  {
     file: "Grammaire/conditionnel/conditionnel-present/index.html",
     title: "Conditionnel présent",
-    titleFr: "Formation, emplois, exercices",
+    titleFr: "Formation, 5 emplois, règle du si",
     category: "grammaire",
     level: "B1",
     icon: "💭",
@@ -325,6 +356,18 @@ const LESSONS = [
     level: "B1/B2",
     icon: "⏳",
     group: "Conditionnel",
+    disabled: false,
+  },
+
+  // ── Vocabulaire ──
+  {
+    file: "vocabulaire/index.html",
+    title: "Vocabulaire TCF",
+    titleFr: "Mots et expressions des sessions",
+    category: "vocabulaire",
+    level: "B1/B2",
+    icon: "📚",
+    group: "",
     disabled: false,
   },
 
