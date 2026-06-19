@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours TCF — Mehr Afarin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --pink: #c2185b; --pink-deep: #880e4f; --pink-soft: #e91e8c;
+      --pink-pale: #fce4ec; --pink-mist: #fdf0f5;
+      --paper: #fdf5f8; --ink: #2c2a26; --gray: #8a8275;
+      --line: #f0d9e5; --white: #fffafe; --navy: #3d1a2e;
+      --green: #2e7d32; --green-pale: #e8f5e9;
+      --amber: #e65100; --amber-pale: #fff3e0;
+    }
+    body { font-family: "Estedad", "Tahoma", sans-serif; background: var(--paper); color: var(--ink); line-height: 1.9; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; background-image: repeating-linear-gradient(transparent,transparent 31px,rgba(194,24,91,0.07) 31px,rgba(194,24,91,0.07) 32px); pointer-events:none; }
+    body::after { content:""; position:fixed; top:0; bottom:0; right:58px; width:2px; background:rgba(194,24,91,0.15); z-index:-1; pointer-events:none; }
+
+    /* TOPBAR */
+    .topbar { display:flex; align-items:center; gap:14px; padding:14px 28px; background:var(--white); border-bottom:2px solid var(--pink-pale); position:sticky; top:0; z-index:100; }
+    .topbar .logo { width:42px; height:42px; border-radius:8px; background:var(--pink-deep); display:flex; align-items:center; justify-content:center; font-size:20px; color:white; }
+    .topbar h1 { font-family:"Roboto",sans-serif; font-size:22px; font-weight:700; color:var(--pink-deep); }
+    .topbar .sub { font-size:12px; color:var(--gray); }
+    .topbar a.back { margin-right:auto; font-size:13px; font-weight:600; color:var(--pink); text-decoration:none; background:var(--pink-pale); padding:6px 14px; border-radius:8px; }
+
+    /* HERO */
+    .hero { background:linear-gradient(135deg,var(--pink-deep),var(--pink)); color:white; padding:48px 32px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:""; position:absolute; top:-60px; right:-60px; width:200px; height:200px; background:rgba(255,255,255,0.08); border-radius:50%; }
+    .hero .tag { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:12px; }
+    .hero h2 { font-family:"Roboto",sans-serif; font-size:40px; font-weight:700; margin-bottom:8px; }
+    .hero .sub { font-size:16px; opacity:0.85; }
+    .hero .badge { display:inline-block; background:rgba(255,255,255,0.2); padding:6px 18px; border-radius:20px; font-size:13px; margin-top:12px; }
+
+    /* CONTENT */
+    .content { max-width:900px; margin:0 auto; padding:36px 24px 80px; }
+
+    /* ALGO CARD */
+    .algo { border:2px solid var(--line); border-radius:16px; overflow:hidden; margin-bottom:28px; background:var(--white); box-shadow:0 4px 16px rgba(194,24,91,0.07); }
+    .algo-header { background:linear-gradient(135deg,var(--pink-deep),var(--pink)); padding:18px 24px; display:flex; align-items:center; gap:14px; }
+    .algo-header .num { width:40px; height:40px; background:rgba(255,255,255,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:"Roboto",sans-serif; font-size:18px; font-weight:700; color:white; flex-shrink:0; }
+    .algo-header h3 { font-size:19px; font-weight:700; color:white; }
+    .algo-header .sub { font-size:12px; color:rgba(255,255,255,0.75); margin-top:2px; }
+    .algo-body { padding:24px; }
+
+    /* STEPS */
+    .steps { display:flex; flex-direction:column; gap:12px; margin:16px 0; }
+    .step { display:flex; gap:14px; align-items:flex-start; padding:14px 16px; background:var(--pink-mist); border-radius:10px; border-left:4px solid var(--pink); }
+    .step .snum { width:28px; height:28px; background:var(--pink); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+    .step .sbody .slabel { font-size:13px; font-weight:700; color:var(--pink-deep); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+    .step .sbody .sdesc { font-size:14px; color:var(--ink); }
+    .step .sbody .sfa { font-size:13px; color:var(--gray); direction:rtl; text-align:right; margin-top:4px; font-style:italic; }
+
+    /* CONNECTOR PILLS */
+    .connectors { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+    .conn { background:var(--pink-pale); color:var(--pink-deep); font-size:13px; font-weight:700; padding:5px 14px; border-radius:20px; border:1.5px solid var(--pink-soft); }
+
+    /* EXEMPLE TEXTE */
+    .exemple { background:var(--green-pale); border-left:4px solid var(--green); border-radius:10px; padding:16px 20px; margin:14px 0; }
+    .exemple .label { font-size:11px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+    .exemple p { font-size:15px; line-height:1.8; color:#1a3320; font-family:"Roboto",sans-serif; }
+    .exemple .fa { font-size:13px; color:#2d6e3f; direction:rtl; text-align:right; margin-top:8px; font-style:italic; }
+
+    /* EXERCICE */
+    .exercice { background:var(--pink-mist); border:2px solid var(--pink-pale); border-radius:14px; padding:24px; margin:20px 0; }
+    .exercice h4 { font-size:16px; font-weight:700; color:var(--pink-deep); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+    .sujet-badge { background:var(--pink-deep); color:white; padding:4px 14px; border-radius:12px; font-size:12px; font-weight:700; }
+    .fill-line { display:flex; gap:10px; align-items:flex-start; margin:10px 0; }
+    .fill-label { font-size:12px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:0.5px; width:120px; flex-shrink:0; padding-top:3px; }
+    .fill-input { flex:1; border:none; border-bottom:2px solid var(--pink); background:transparent; font-size:15px; color:var(--pink-deep); font-family:inherit; padding:4px 8px; outline:none; min-height:30px; }
+    .fill-input:focus { background:var(--pink-pale); border-radius:6px 6px 0 0; }
+
+    /* RÈGLE */
+    .regle { background:var(--amber-pale); border-left:4px solid var(--amber); border-radius:10px; padding:16px 20px; margin:14px 0; }
+    .regle .rtitle { font-size:13px; font-weight:700; color:var(--amber); margin-bottom:8px; }
+    .regle p { font-size:14px; line-height:1.8; direction:rtl; text-align:right; }
+
+    /* DEVLOP CARD */
+    .develop { border:2px solid var(--line); border-radius:12px; overflow:hidden; margin:14px 0; }
+    .develop-row { display:grid; grid-template-columns:auto 1fr; gap:0; border-bottom:1px solid var(--line); }
+    .develop-row:last-child { border:none; }
+    .develop-arrow { background:var(--pink-deep); color:white; display:flex; align-items:center; justify-content:center; padding:14px 18px; font-size:18px; }
+    .develop-text { padding:14px 18px; font-size:15px; line-height:1.7; }
+    .develop-text .lv { font-size:11px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+
+    /* PROGRESS */
+    .progress-bar { background:var(--pink-pale); border-radius:20px; height:10px; margin:8px 0; overflow:hidden; }
+    .progress-fill { height:100%; background:linear-gradient(90deg,var(--pink-deep),var(--pink)); border-radius:20px; transition:width 1s; }
+
+    /* NAV BOTTOM */
+    .nav-bottom { display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+    .nav-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; border:none; font-family:inherit; text-decoration:none; transition:all .2s; }
+    .nav-btn.primary { background:linear-gradient(135deg,var(--pink-deep),var(--pink)); color:white; box-shadow:0 4px 14px rgba(194,24,91,0.3); }
+    .nav-btn.primary:hover { transform:translateY(-2px); }
+    .nav-btn.secondary { background:var(--pink-pale); color:var(--pink-deep); }
+
+    .footer { text-align:center; padding:24px; color:var(--gray); font-size:13px; border-top:2px solid var(--pink-pale); }
+
+    #scrollBtn { display:none; position:fixed; bottom:22px; right:22px; background:var(--pink); color:white; border:none; padding:12px 15px; border-radius:50%; cursor:pointer; font-size:18px; box-shadow:0 4px 14px rgba(194,24,91,0.35); z-index:1000; transition:all .3s; }
+    #scrollBtn:hover { transform:translateY(-3px); }
+    #scrollBtn.show { display:block; }
+
+    @media (max-width:640px) { .hero h2 { font-size:28px; } .content { padding:20px 16px 60px; } }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">💗</div>
+  <div>
+    <h1>Mehr Afarin</h1>
+    <div class="sub">Parcours TCF — Expression orale structurée</div>
+  </div>
+  <a class="back" href="../index.html">← Bibliothèque</a>
+</div>
+
+<div class="hero">
+  <div class="tag">✦ Méthode exclusive · Hoda Khedmati ✦</div>
+  <h2>Parcours TCF Canada</h2>
+  <div class="sub">Apprends à penser clairement pour parler clairement</div>
+  <div class="badge">🎯 Niveau cible : B2 · A2 → progression</div>
+</div>
+
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="algo" style="margin-bottom:28px;">
+    <div class="algo-header">
+      <div class="num">🧠</div>
+      <div>
+        <h3>Avant de bien parler, il faut bien penser</h3>
+        <div class="sub">قبل از اینکه خوب حرف بزنی باید خوب فکر کنی</div>
+      </div>
+    </div>
+    <div class="algo-body">
+      <div class="regle">
+        <div class="rtitle">🎯 Objectif de ce parcours :</div>
+        <p>یاد گرفتن که چطور ایده‌هایت را سازماندهی کنی، آن‌ها را توسعه دهی، استدلال کنی و به‌طور طبیعی صحبت کنی — بدون حفظ کردن متن.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px;">
+        <div style="background:var(--pink-mist);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🏗️</div>
+          <div style="font-size:13px;font-weight:700;color:var(--pink-deep);">Structurer</div>
+          <div style="font-size:12px;color:var(--gray);">سازماندهی ایده</div>
+        </div>
+        <div style="background:var(--pink-mist);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">💡</div>
+          <div style="font-size:13px;font-weight:700;color:var(--pink-deep);">Développer</div>
+          <div style="font-size:12px;color:var(--gray);">توسعه ایده</div>
+        </div>
+        <div style="background:var(--pink-mist);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🎤</div>
+          <div style="font-size:13px;font-weight:700;color:var(--pink-deep);">Argumenter</div>
+          <div style="font-size:12px;color:var(--gray);">استدلال کردن</div>
+        </div>
+        <div style="background:var(--pink-mist);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">⏱️</div>
+          <div style="font-size:13px;font-weight:700;color:var(--pink-deep);">Parler longtemps</div>
+          <div style="font-size:12px;color:var(--gray);">طولانی صحبت کردن</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALGORITHME 1 -->
+  <div class="algo">
+    <div class="algo-header">
+      <div class="num">1</div>
+      <div>
+        <h3>Algorithme 1 — Structurer une idée</h3>
+        <div class="sub">الگوریتم ۱ — ساختار دادن به یک ایده · ۵ مرحله</div>
+      </div>
+    </div>
+    <div class="algo-body">
+      <div class="steps">
+        <div class="step">
+          <div class="snum">1</div>
+          <div class="sbody">
+            <div class="slabel">Définition</div>
+            <div class="sdesc">C'est quoi ? / Comment peut-on le définir ?</div>
+            <div class="sfa">تعریف — این چیست؟ چطور می‌توان آن را تعریف کرد؟</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="snum">2</div>
+          <div class="sbody">
+            <div class="slabel">Importance</div>
+            <div class="sdesc">Pourquoi c'est important ?</div>
+            <div class="sfa">اهمیت — چرا مهم است؟</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="snum">3</div>
+          <div class="sbody">
+            <div class="slabel">Conséquence</div>
+            <div class="sdesc">Qu'est-ce que ça change / apporte ?</div>
+            <div class="sfa">پیامد — چه تغییری ایجاد می‌کند؟</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="snum">4</div>
+          <div class="sbody">
+            <div class="slabel">Exemple</div>
+            <div class="sdesc">Par exemple... / Concrètement...</div>
+            <div class="sfa">مثال — به طور مشخص...</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="snum">5</div>
+          <div class="sbody">
+            <div class="slabel">Conclusion</div>
+            <div class="sdesc">Donc... / C'est pourquoi... / En résumé...</div>
+            <div class="sfa">نتیجه‌گیری — بنابراین...</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;">
+        <div style="font-size:13px;font-weight:700;color:var(--pink-deep);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">🔗 Connecteurs à utiliser :</div>
+        <div class="connectors">
+          <span class="conn">En général</span><span class="conn">De plus</span><span class="conn">Par exemple</span>
+          <span class="conn">C'est pourquoi</span><span class="conn">Aussi</span><span class="conn">Enfin</span>
+          <span class="conn">Grâce à</span><span class="conn">D'abord</span><span class="conn">Ensuite</span>
+        </div>
+      </div>
+
+      <div class="exemple">
+        <div class="label">✨ Exemple complet — Sujet : La lecture</div>
+        <p>"Un livre est un ensemble de connaissances, d'expériences et d'idées humaines. <strong>En général,</strong> il est important parce qu'il nous aide à apprendre de nouvelles choses. <strong>De plus,</strong> la lecture permet d'élargir notre vision du monde. <strong>Par exemple,</strong> beaucoup de personnes qui réussissent lisent régulièrement. <strong>C'est pourquoi</strong> la lecture est une activité très utile."</p>
+        <div class="fa">یک کتاب مجموعه‌ای از دانش، تجربیات و ایده‌های انسانی است. به طور کلی مهم است چون به ما کمک می‌کند چیزهای جدیدی یاد بگیریم. علاوه بر این، مطالعه دیدگاه ما نسبت به جهان را گسترش می‌دهد. برای مثال، خیلی از افراد موفق به طور منظم مطالعه می‌کنند. به همین دلیل مطالعه یک فعالیت بسیار مفید است.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALGORITHME 2 -->
+  <div class="algo">
+    <div class="algo-header">
+      <div class="num">2</div>
+      <div>
+        <h3>Algorithme 2 — Développer une idée</h3>
+        <div class="sub">الگوریتم ۲ — یک جمله را به یک پاراگراف تبدیل کن</div>
+      </div>
+    </div>
+    <div class="algo-body">
+      <div style="font-size:14px;color:var(--gray);margin-bottom:16px;direction:rtl;text-align:right;">از یک جمله به یک پاراگراف کامل — هدف: صحبت کردن بیشتر بدون حفظ متن</div>
+      <div class="develop">
+        <div class="develop-row">
+          <div class="develop-arrow" style="background:#e8d5e0;">💬</div>
+          <div class="develop-text">
+            <div class="lv">جمله اولیه</div>
+            <strong>"J'aime lire."</strong>
+            <div style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:4px;">کتاب دوست دارم.</div>
+          </div>
+        </div>
+        <div class="develop-row">
+          <div class="develop-arrow">→</div>
+          <div class="develop-text">
+            <div class="lv">+ raison (pourquoi ?)</div>
+            "J'aime lire parce que cela me permet d'apprendre de nouvelles choses."
+            <div style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:4px;">کتاب دوست دارم چون به من اجازه می‌دهد چیزهای جدیدی یاد بگیرم.</div>
+          </div>
+        </div>
+        <div class="develop-row">
+          <div class="develop-arrow">→→</div>
+          <div class="develop-text">
+            <div class="lv">+ conséquence (De plus...)</div>
+            "… <span style="color:var(--pink-deep);font-weight:700;">De plus,</span> les livres développent mon imagination."
+            <div style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:4px;">علاوه بر این، کتاب‌ها تخیل مرا توسعه می‌دهند.</div>
+          </div>
+        </div>
+        <div class="develop-row">
+          <div class="develop-arrow" style="background:var(--pink-deep);">✓</div>
+          <div class="develop-text">
+            <div class="lv" style="color:var(--green);">+ exemple (Par exemple...)</div>
+            "… <span style="color:var(--pink-deep);font-weight:700;">Par exemple,</span> quand je lis un roman, je découvre de nouvelles idées et de nouvelles cultures."
+            <div style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:4px;">مثلاً وقتی رمان می‌خوانم، ایده‌ها و فرهنگ‌های جدیدی کشف می‌کنم.</div>
+          </div>
+        </div>
+      </div>
+      <div class="regle">
+        <div class="rtitle">🎯 Formule magique à retenir :</div>
+        <p><strong>Phrase + parce que + De plus + Par exemple → 30 secondes de réponse !</strong></p>
+        <p style="margin-top:8px;">جمله + چون + علاوه بر این + برای مثال = ۳۰ ثانیه پاسخ!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE PRATIQUE -->
+  <div class="algo">
+    <div class="algo-header">
+      <div class="num">✏️</div>
+      <div>
+        <h3>Exercice pratique — À toi de jouer !</h3>
+        <div class="sub">تمرین عملی — نوبت توست</div>
+      </div>
+    </div>
+    <div class="algo-body">
+      <div class="exercice">
+        <h4>📋 Sujet : <span class="sujet-badge">Les voyages</span></h4>
+        <p style="font-size:13px;color:var(--gray);margin-bottom:16px;direction:rtl;text-align:right;">هر مرحله را کامل کن. اول فکر کن، بعد بنویس — از جملات کتابی استفاده نکن!</p>
+        <div class="fill-line">
+          <div class="fill-label">① Définition</div>
+          <input class="fill-input" type="text" placeholder="Les voyages, c'est...">
+        </div>
+        <div class="fill-line">
+          <div class="fill-label">② Importance</div>
+          <input class="fill-input" type="text" placeholder="Ils sont importants parce que...">
+        </div>
+        <div class="fill-line">
+          <div class="fill-label">③ Conséquence</div>
+          <input class="fill-input" type="text" placeholder="De plus, les voyages permettent de...">
+        </div>
+        <div class="fill-line">
+          <div class="fill-label">④ Exemple</div>
+          <input class="fill-input" type="text" placeholder="Par exemple, quand je...">
+        </div>
+        <div class="fill-line">
+          <div class="fill-label">⑤ Conclusion</div>
+          <input class="fill-input" type="text" placeholder="C'est pourquoi...">
+        </div>
+        <div style="margin-top:18px;padding:14px;background:var(--pink-pale);border-radius:10px;font-size:13px;color:var(--pink-deep);direction:rtl;text-align:right;line-height:1.8;">
+          💡 وقتی هر ۵ مرحله را پر کردی، آن‌ها را با هم بخوان. یک پاراگراف کامل ساخته‌ای! بعد همان را بدون نوشته بلند بگو.
+        </div>
+      </div>
+
+      <div class="exercice">
+        <h4>📋 Sujet 2 : <span class="sujet-badge">La famille</span></h4>
+        <div class="fill-line"><div class="fill-label">① Définition</div><input class="fill-input" type="text" placeholder="La famille, c'est..."></div>
+        <div class="fill-line"><div class="fill-label">② Importance</div><input class="fill-input" type="text" placeholder="Elle est importante parce que..."></div>
+        <div class="fill-line"><div class="fill-label">③ Conséquence</div><input class="fill-input" type="text" placeholder="De plus..."></div>
+        <div class="fill-line"><div class="fill-label">④ Exemple</div><input class="fill-input" type="text" placeholder="Par exemple..."></div>
+        <div class="fill-line"><div class="fill-label">⑤ Conclusion</div><input class="fill-input" type="text" placeholder="C'est pourquoi..."></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUJETS -->
+  <div class="algo">
+    <div class="algo-header">
+      <div class="num">📚</div>
+      <div>
+        <h3>Sujets d'entraînement</h3>
+        <div class="sub">موضوعات تمرین — برای هر جلسه یکی را انتخاب کن</div>
+      </div>
+    </div>
+    <div class="algo-body">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:8px;">
+        <div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">📖 La lecture</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">👫 Les amis</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">👨‍👩‍👧 La famille</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🎓 Les études</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">💼 Le travail</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">✈️ Les voyages</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">💰 L'argent</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">⏰ Le temps</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">📱 Les réseaux sociaux</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">👶 Les enfants</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🏫 L'éducation</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">⚽ Le sport</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🎵 La musique</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🏥 La santé</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">😰 Le stress</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🏖️ Les vacances</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🏙️ La ville</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🌿 La campagne</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">💻 La technologie</div><div style="background:var(--pink-mist);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center;font-size:14px;font-weight:600;color:var(--pink-deep);">🤖 L'intelligence artificielle</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSEILS PROF -->
+  <div style="background:linear-gradient(135deg,var(--pink-deep),var(--pink));color:white;border-radius:16px;padding:28px;margin-top:8px;">
+    <h3 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;margin-bottom:16px;">💌 Message de Hoda</h3>
+    <p style="font-size:15px;line-height:1.9;direction:rtl;text-align:right;font-family:'Estedad',sans-serif;">
+      هدف این نیست که یک متن حفظ کنی و بگویی. هدف اینه که یاد بگیری چطور فکر کنی و فکرت رو به زبان فرانسه بگی.
+      هر روز یک موضوع را بردار. پنج مرحله را پر کن. بعد همه را با هم بگو. بعد سعی کن بدون نوشته بگی.
+      کم‌کم می‌بینی که می‌تونی ۳۰ ثانیه، یک دقیقه، دو دقیقه راحت صحبت کنی! 🌸
+    </p>
+  </div>
+
+  <div class="nav-bottom">
+    <a href="../index.html" class="nav-btn secondary">← Bibliothèque</a>
+    <a href="../je-parle/index.html" class="nav-btn primary">🗣️ Je Parle →</a>
+  </div>
+
+</div>
+
+<div class="footer">💗 Mehr Afarin · Parcours TCF · Français avec Hoda © 2025</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
