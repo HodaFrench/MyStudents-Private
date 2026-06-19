@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 8</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#1E3038; --soft:#54636A; --line:#DCE6E8; --cream:#F4FAFB;
+    --gram:#0E7AA8; --gram-bg:#E1F1F8;
+    --verbe:#1E9E8A; --verbe-bg:#E0F4F0;
+    --vocab:#E08A1E; --vocab-bg:#FBF0DC;
+    --phon:#7A6FB0; --phon-bg:#ECE9F7;
+    --dia:#E2553B; --dia-bg:#FBE9E4;
+    --lect:#2E8B6F; --lect-bg:#E3F2EC;
+    --conseil:#C2941A; --conseil-bg:#FBF3D9;
+    --cult:#C25E9A; --cult-bg:#FAE9F1;
+    --delf:#B0473C; --delf-bg:#F8E8E4;
+    --a0:#1E9E8A; --a1:#0E7AA8; --ap:#E08A1E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #9FC6D0; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #D5EAEF; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.4pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.5pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#F2F8FA; border-right:5px solid #9FC6D0; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#8FAAB2; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#FCE3A6; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+  .formula{ background:#fff; border:1.5px dashed var(--gram); border-radius:8px; padding:10px 13px; text-align:center; font-size:11pt; margin:8px 0; font-family:'Poppins'; color:var(--gram);}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#0E7AA8 0%,#1E9E8A 50%,#E08A1E 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.06; margin:9px 0 4px;">Bonnes vacances !</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 8 — les voyages · l'hébergement · la comparaison · la carte postale</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Lieux, hébergement, comparer.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Verbes -ir, passé composé, voyage.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Récit, carte postale, DELF + mémo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#0E7AA8; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۸ «تعطیلات خوش!»</div>
+    <div class="fa">این جزوه فصل هشتم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (مکان‌های تعطیلات، اقامتگاه، مقایسه)، سپس A1 (فعل‌های -ir، گذشتهٔ نقلی برای روایت سفر، فرودگاه) و در پایان A1+ (روایت سفر، نوشتن کارت‌پستال و تمرین DELF) به‌علاوهٔ یک صفحهٔ خلاصه. همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--gram)">Grammaire</span><span class="pill" style="color:var(--verbe)">Verbes</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Décrire un lieu de vacances</li><li>L'hébergement (hôtel, camping…)</li><li>La comparaison (1) : <i>plus / moins / aussi… que</i></li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>Les verbes en <i>-ir</i> au présent</li><li>La comparaison : <i>bon → meilleur</i> · le superlatif</li><li>Le passé composé pour raconter un voyage</li><li>Rappeler quelque chose · à l'aéroport</li><li>Phonétique : /a/ · /oi/ · /ou/</li><li>Écrire une carte postale · dialogue · texte « Mes vacances »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Un voyage extraordinaire »</li><li>Production écrite : carte postale + récit</li><li>Production orale : raconter ses vacances</li><li>DELF A1 — Compréhension (une offre de séjour)</li><li>Culture : les vacances en France · mémo · bilan</li></ul></div>
+</div>
+
+<!-- ===================== A0 : LIEUX DE VACANCES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Décrire un lieu de vacances <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.2pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>la mer</td><td class="fa">دریا</td><td>la plage</td><td class="fa">ساحل</td></tr>
+    <tr><td>la montagne</td><td class="fa">کوه</td><td>la campagne</td><td class="fa">طبیعت/روستا</td></tr>
+    <tr><td>le lac</td><td class="fa">دریاچه</td><td>la forêt</td><td class="fa">جنگل</td></tr>
+    <tr><td>le soleil</td><td class="fa">آفتاب</td><td>le sable</td><td class="fa">شن</td></tr>
+    <tr><td>le paysage</td><td class="fa">منظره</td><td>la nature</td><td class="fa">طبیعت</td></tr></table>
+
+  <div class="card vocab"><h3>Pour décrire (phrases A0)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>C'est <span class="key">magnifique</span> ! Le paysage est <span class="key">superbe</span>.</li>
+      <li>Il fait <span class="key">beau</span> et <span class="key">chaud</span>.</li>
+      <li>La plage est <span class="key">calme</span> et la ville est <span class="key">animée</span>.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">توصیف محل تعطیلات</div>
+    <div class="fa">واژگان: la mer (دریا)، la plage (ساحل)، la montagne (کوه)، la campagne (طبیعت)، le lac (دریاچه)، la forêt (جنگل)، le soleil (آفتاب)، le paysage (منظره). برای توصیف: «C'est magnifique!» (محشر است)، «Il fait beau» (هوا خوب است)، «calme/animé» (آرام/شلوغ).</div></div>
+</div>
+
+<!-- ===================== A0 : HÉBERGEMENT ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>L'hébergement <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Où dormir en vacances ?</h3>
+    <span class="chip">l'hôtel هتل</span><span class="chip">l'auberge de jeunesse مهمان‌سرای جوانان</span>
+    <span class="chip">le camping کمپینگ</span><span class="chip">le gîte اقامتگاه روستایی</span>
+    <span class="chip">la location اجارهٔ خانه</span><span class="chip">une chambre اتاق</span></div>
+
+  <div class="card vocab"><h3>À l'hôtel</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="key">réserver</span> une chambre · une <span class="key">réservation</span></li>
+      <li>une chambre simple / double · pour <span class="key">deux nuits</span></li>
+      <li>le petit-déjeuner est <span class="key">compris</span> · la <span class="key">réception</span> · la clé</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">اقامتگاه</div>
+    <div class="fa">جای خواب در تعطیلات: l'hôtel (هتل)، l'auberge de jeunesse (مهمان‌سرای جوانان)، le camping (کمپینگ)، le gîte (اقامتگاه روستایی)، la location (اجارهٔ خانه). در هتل: réserver une chambre (رزرو اتاق)، une chambre double (اتاق دونفره)، «le petit-déjeuner est compris» (صبحانه شامل می‌شود).</div></div>
+</div>
+
+<!-- ===================== A0 : COMPARAISON ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A0</div>
+    <h1>La comparaison (1) <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour comparer deux choses avec un adjectif.</p>
+
+  <div class="formula">plus / moins / aussi &nbsp;+&nbsp; adjectif &nbsp;+&nbsp; que</div>
+
+  <table class="tg"><tr><th>Sens</th><th>Structure</th><th>Exemple</th></tr>
+    <tr><td>+ (supériorité)</td><td><span class="hl">plus</span> … que</td><td>La mer est plus calme que la ville.</td></tr>
+    <tr><td>– (infériorité)</td><td><span class="hl">moins</span> … que</td><td>Le camping est moins cher que l'hôtel.</td></tr>
+    <tr><td>= (égalité)</td><td><span class="hl">aussi</span> … que</td><td>La montagne est aussi belle que la mer.</td></tr></table>
+
+  <div class="card gram"><h3>À retenir</h3>
+    L'adjectif <b>s'accorde</b> avec le 1ᵉʳ nom : <i>La plage est plus <span class="key">belle</span>. Les hôtels sont plus <span class="key">chers</span>.</i></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">مقایسه (۱)</div>
+    <div class="fa">برای مقایسه: plus/moins/aussi + صفت + que. «plus … que» (بیشتر/…تر از)، «moins … que» (کمتر از)، «aussi … que» (به‌اندازهٔ). مثال: «La mer est plus calme que la ville» (دریا از شهر آرام‌تر است). صفت با اسم اول مطابقت می‌کند.</div></div>
+</div>
+
+<!-- ===================== A1 : VERBES -IR ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Niveau A1</div>
+    <h1>Les verbes en <span class="serif" style="font-style:italic">-ir</span> au présent <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+
+  <div class="two">
+    <div><table class="tv"><tr><th colspan="2">FINIR (type régulier)</th></tr>
+      <tr><td>je fin<span class="hl">is</span></td><td>nous fin<span class="hl">issons</span></td></tr>
+      <tr><td>tu fin<span class="hl">is</span></td><td>vous fin<span class="hl">issez</span></td></tr>
+      <tr><td>il fin<span class="hl">it</span></td><td>ils fin<span class="hl">issent</span></td></tr></table>
+      <p class="small">aussi : choisir, réfléchir, réussir, grandir.</p></div>
+    <div><table class="tv"><tr><th colspan="2">PARTIR (type irrégulier)</th></tr>
+      <tr><td>je pa<span class="hl">rs</span></td><td>nous part<span class="hl">ons</span></td></tr>
+      <tr><td>tu pa<span class="hl">rs</span></td><td>vous part<span class="hl">ez</span></td></tr>
+      <tr><td>il pa<span class="hl">rt</span></td><td>ils part<span class="hl">ent</span></td></tr></table>
+      <p class="small">comme : sortir (je sors), dormir (je dors).</p></div>
+  </div>
+
+  <div class="card verbe"><h3>Exemples</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Je <span class="key">choisis</span> un hôtel près de la plage.</li>
+      <li>Nous <span class="key">partons</span> en vacances demain !</li>
+      <li>Le matin, je <span class="key">sors</span> tôt pour voir le lever du soleil.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل‌های -ir</div>
+    <div class="fa">گروهِ باقاعده (finir): -is، -is، -it، -issons، -issez، -issent (choisir، réussir هم همین‌طور). گروهِ بی‌قاعده (partir): je pars، tu pars، il part، nous partons، vous partez، ils partent — مثل sortir (je sors) و dormir (je dors). مثال: «Nous partons en vacances!» (به تعطیلات می‌رویم).</div></div>
+</div>
+
+<!-- ===================== A1 : COMPARAISON DÉTAILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Comparer : <span class="serif" style="font-style:italic">meilleur</span> &amp; le superlatif <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card gram"><h3>Le cas spécial de « bon »</h3>
+    <p><i>plus bon</i> n'existe pas ! On dit <span class="key">meilleur(e)</span> :</p>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li>Cet hôtel est <span class="key">meilleur</span> que l'autre.</li>
+      <li>La cuisine ici est <span class="key">meilleure</span> qu'au restaurant.</li></ul></div>
+
+  <div class="card gram"><h3>Le superlatif : « le plus / le moins »</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li>C'est <span class="key">la plus belle</span> plage de la région.</li>
+      <li>C'est <span class="key">le moins cher</span> de tous les hôtels.</li>
+      <li>(bon →) C'est <span class="key">le meilleur</span> souvenir de mon voyage.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">مقایسه: meilleur و عالی</div>
+    <div class="fa">«plus bon» وجود ندارد؛ به‌جایش «meilleur(e)» (بهتر) می‌گوییم: «Cet hôtel est meilleur» (این هتل بهتر است). صفت عالی با «le/la plus» یا «le/la moins»: «la plus belle plage» (زیباترین ساحل)، «le moins cher» (ارزان‌ترین)، «le meilleur souvenir» (بهترین خاطره).</div></div>
+</div>
+
+<!-- ===================== A1 : PASSÉ COMPOSÉ VOYAGE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Raconter un voyage (passé composé) <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Rappel : <b>avoir / être</b> (présent) + <b>participe passé</b>. Idéal pour raconter ses vacances.</p>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">Avec AVOIR</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>J'ai visité un musée.</li><li>Nous avons mangé du poisson.</li><li>J'ai pris beaucoup de photos.</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Avec ÊTRE (mouvement)</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>Je suis parti(e) à la mer.</li><li>Nous sommes arrivé(e)s à midi.</li><li>Elle est restée une semaine.</li></ul></div>
+  </div>
+
+  <div class="tip"><span class="star">Indicateurs :</span> <i>l'été dernier, le mois dernier, pendant les vacances, un jour, le soir.</i></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">روایت سفر با گذشتهٔ نقلی</div>
+    <div class="fa">یادآوری: avoir/être (حال) + اسم مفعول. با avoir: «J'ai visité un musée» (یک موزه دیدم). با être (حرکت): «Je suis parti(e) à la mer» (به دریا رفتم)، «Nous sommes arrivé(e)s» (رسیدیم). قیدها: l'été dernier (تابستان گذشته)، pendant les vacances (در تعطیلات).</div></div>
+</div>
+
+<!-- ===================== A1 : RAPPELER + AÉROPORT ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication + Vocabulaire · Niveau A1</div>
+    <h1>Rappeler quelque chose · à l'aéroport <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Rappeler quelque chose à quelqu'un</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="key">N'oublie pas</span> ton passeport !</li>
+      <li><span class="key">Pense à</span> réserver l'hôtel.</li>
+      <li><span class="key">Tu n'oublies pas</span> les billets ?</li></ul></div>
+
+  <div class="card vocab"><h3>À l'aéroport</h3>
+    <span class="chip">le vol پرواز</span><span class="chip">le billet بلیت</span>
+    <span class="chip">le passeport گذرنامه</span><span class="chip">la valise چمدان</span>
+    <span class="chip">les bagages بار/چمدان‌ها</span><span class="chip">la carte d'embarquement کارت پرواز</span>
+    <span class="chip">décoller بلند شدن</span><span class="chip">atterrir فرود آمدن</span></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">یادآوری و فرودگاه</div>
+    <div class="fa">یادآوری: «N'oublie pas…» (فراموش نکن…)، «Pense à…» (یادت باشد…). فرودگاه: le vol (پرواز)، le billet (بلیت)، le passeport (گذرنامه)، la valise (چمدان)، les bagages (بارها)، la carte d'embarquement (کارت پرواز)، décoller (بلندشدن)، atterrir (فرودآمدن).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>Les sons /a/ · /oi/ · /ou/ <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <table class="tp"><tr><th>Son</th><th>S'écrit</th><th>Exemples</th></tr>
+    <tr><td>/a/</td><td>a</td><td>la · papa · sable · plage</td></tr>
+    <tr><td>/wa/</td><td><span class="hl">oi</span></td><td>moi · toi · voyage · trois · noir</td></tr>
+    <tr><td>/u/</td><td><span class="hl">ou</span></td><td>vous · nous · où · jour · tout</td></tr></table>
+
+  <div class="card phon"><h3>Petites paires</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>l<b>a</b> [a] / l<b>oi</b> [lwa] / l<b>ou</b>p [lu]</li>
+      <li>m<b>a</b> [ma] / m<b>oi</b> [mwa] / m<b>ou</b> [mu]</li></ul>
+    <p class="small">Attention : <b>oi</b> se prononce [wa] (comme « ouah »).</p></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ /a/ · /oi/ · /ou/</div>
+    <div class="fa">/a/ مثل la، plage. نوشتارِ «oi» صدای [wa] می‌دهد (مثل moi، voyage، trois). نوشتارِ «ou» صدای [u] می‌دهد (مثل vous، jour، tout). دقت کن: «oi» را «وا» بخوان، نه «اوی».</div></div>
+</div>
+
+<!-- ===================== A1 : CARTE POSTALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production · Niveau A1</div>
+    <h1>Écrire une carte postale <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:10.8pt; line-height:1.6;">
+    <p style="text-align:right; color:var(--soft);">Nice, le 5 août</p>
+    <p>Chère Léa,</p>
+    <p>Je passe des vacances géniales à Nice ! Il fait très beau et la mer est magnifique. Ce matin, j'ai nagé et cet après-midi, je vais visiter la vieille ville. La nourriture est délicieuse !</p>
+    <p>Je pense à toi. Grosses bises,<br>Hoda</p>
+  </div>
+
+  <div class="card vocab"><h3>La structure (4 étapes)</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span><b>Lieu + date</b> (en haut à droite)</li>
+      <li><span class="num">2</span><b>Salutation</b> : Cher / Chère…</li>
+      <li><span class="num">3</span><b>Le séjour</b> : où, le temps, les activités (présent + passé composé)</li>
+      <li><span class="num">4</span><b>Formule de fin</b> : Grosses bises · À bientôt · Je pense à toi</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">نوشتن کارت‌پستال</div>
+    <div class="fa">«نیس، ۵ اوت. لئای عزیز، تعطیلات فوق‌العاده‌ای در نیس می‌گذرانم! هوا خیلی خوب است و دریا محشر است. امروز صبح شنا کردم و بعدازظهر می‌خواهم شهر قدیمی را ببینم. غذا خوشمزه است! به فکرت هستم. بوس‌های فراوان، هدا.» ساختار: ۱) مکان و تاریخ ۲) خطاب (Cher/Chère) ۳) شرح سفر ۴) عبارت پایانی.</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>À la réception de l'hôtel <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Réceptionniste :</b> Bonjour ! Bienvenue à l'Hôtel du Soleil. Vous avez une réservation ?</div>
+    <div class="dlg"><b class="B">Client :</b> Bonjour ! Oui, au nom de Karimi, pour trois nuits.</div>
+    <div class="dlg"><b class="A">Réceptionniste :</b> Très bien. Une chambre double, c'est ça ? Le petit-déjeuner est compris.</div>
+    <div class="dlg"><b class="B">Client :</b> Parfait. La chambre est près de la mer ?</div>
+    <div class="dlg"><b class="A">Réceptionniste :</b> Oui, au troisième étage, avec un balcon. C'est la plus belle vue de l'hôtel !</div>
+    <div class="dlg"><b class="B">Client :</b> Super ! À quelle heure est le petit-déjeuner ?</div>
+    <div class="dlg"><b class="A">Réceptionniste :</b> De 7 h à 10 h. Voici votre clé. Bon séjour !</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>پذیرش:</b> سلام! به هتل آفتاب خوش آمدید. رزرو دارید؟<br>
+      <b>مشتری:</b> سلام! بله، به نام کریمی، برای سه شب.<br>
+      <b>پذیرش:</b> بسیار خوب. یک اتاق دونفره، درست است؟ صبحانه شامل می‌شود.<br>
+      <b>مشتری:</b> عالی. اتاق نزدیک دریاست؟<br>
+      <b>پذیرش:</b> بله، طبقهٔ سوم با بالکن. بهترین منظرهٔ هتل است!<br>
+      <b>مشتری:</b> عالی! صبحانه چه ساعتی است؟<br>
+      <b>پذیرش:</b> از ۷ تا ۱۰. این هم کلیدتان. اقامت خوبی داشته باشید!
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Mes vacances <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>L'été dernier, je suis parti(e) en vacances au bord de la mer, dans le sud de la France. J'ai voyagé en train avec deux amis. Nous avons loué un petit appartement près de la plage.</p>
+    <p>Le matin, nous avons nagé dans la mer et l'après-midi, nous nous sommes reposés au soleil. Un jour, nous avons fait une randonnée dans la montagne : le paysage était magnifique ! Le soir, nous avons mangé du poisson dans de petits restaurants.</p>
+    <p>La mer est plus calme que la ville, et j'ai adoré le calme. Je n'ai pas voulu rentrer ! <span class="q">Ce sont les meilleures vacances de ma vie.</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">تابستان گذشته به تعطیلات کنار دریا، در جنوب فرانسه رفتم. با دو دوست با قطار سفر کردم. یک آپارتمان کوچک نزدیک ساحل اجاره کردیم. صبح‌ها در دریا شنا کردیم و بعدازظهرها زیر آفتاب استراحت کردیم. یک روز در کوه پیاده‌روی کردیم: منظره محشر بود! شب‌ها در رستوران‌های کوچک ماهی خوردیم. دریا از شهر آرام‌تر است و من عاشق این آرامش شدم. دلم نمی‌خواست برگردم! بهترین تعطیلات زندگی‌ام بود.</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Un voyage extraordinaire <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read" style="font-size:11.6pt;">
+    <p>Il y a deux ans, j'ai fait un voyage extraordinaire. Avec ma sœur, nous avons décidé de partir une semaine au Maroc. Nous avons réservé nos billets d'avion très tôt, parce que c'est moins cher.</p>
+    <p>À l'aéroport, j'étais un peu stressée : c'était mon premier grand voyage. Mais tout s'est bien passé. L'avion a décollé à l'heure et nous sommes arrivées à Marrakech en quatre heures. Là-bas, nous avons logé dans une petite maison traditionnelle. Chaque jour, nous avons visité un endroit différent : les marchés colorés, les jardins, le désert.</p>
+    <p>La nourriture était délicieuse et les gens étaient très accueillants. Un soir, nous avons regardé le coucher de soleil sur les montagnes ; c'était le plus beau moment du voyage. Voyager, c'est sortir de sa routine et découvrir d'autres façons de vivre. On revient toujours un peu différent. <span class="q">Et vous, quel est le voyage qui a changé votre vie ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> passé composé (avoir &amp; être), comparaison (<i>moins cher, le plus beau</i>), verbes en -ir (<i>sortir</i>), connecteurs (<i>parce que, chaque jour, mais</i>).</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">دو سال پیش، یک سفر فوق‌العاده داشتم. با خواهرم تصمیم گرفتیم یک هفته به مراکش برویم. بلیت‌های هواپیما را خیلی زود رزرو کردیم، چون ارزان‌تر است. در فرودگاه کمی استرس داشتم: اولین سفر بزرگم بود. اما همه‌چیز خوب پیش رفت. هواپیما سرِ وقت بلند شد و در چهار ساعت به مراکش رسیدیم. آنجا در یک خانهٔ سنتیِ کوچک اقامت کردیم. هر روز جای متفاوتی را دیدیم: بازارهای رنگارنگ، باغ‌ها، کویر. غذا خوشمزه بود و مردم بسیار مهمان‌نواز بودند. یک شب غروب آفتاب را روی کوه‌ها تماشا کردیم؛ زیباترین لحظهٔ سفر بود. سفرکردن یعنی بیرون‌آمدن از روزمرگی و کشف شیوه‌های دیگرِ زندگی. آدم همیشه کمی متفاوت برمی‌گردد. کدام سفر زندگیِ شما را تغییر داد؟</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Carte postale &amp; récit de voyage <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>📮 Carte postale</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.2pt; line-height:1.5; margin:0;">
+      <span style="color:var(--soft);">Marrakech, le 12 avril</span><br>
+      Cher Marc,<br>
+      Je passe une semaine au Maroc, c'est magnifique ! Hier, j'ai visité les marchés et j'ai mangé un super couscous. Demain, je vais voir le désert.<br>
+      À bientôt ! Bises, Hoda</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>✈️ Mini-récit (3-4 phrases)</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.2pt; line-height:1.5; margin:0;">
+      L'été dernier, je suis allé(e) à la mer. J'ai logé dans un petit hôtel près de la plage. J'ai nagé tous les jours et j'ai pris beaucoup de photos. C'était le plus beau voyage de ma vie !</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan d'un récit de voyage</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span><b>Quand &amp; où</b> (l'été dernier, je suis allé(e) à…)</li>
+      <li><span class="num">2</span><b>L'hébergement &amp; le voyage</b></li>
+      <li><span class="num">3</span><b>Les activités</b> (passé composé)</li>
+      <li><span class="num">4</span><b>Mon avis</b> (c'était… / le plus beau…)</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ نوشته‌ها</div>
+    <div class="fa">کارت‌پستال: «مراکش، ۱۲ آوریل. مارک عزیز، یک هفته در مراکشم، محشر است! دیروز بازارها را دیدم و کوسکوس عالی خوردم. فردا می‌خواهم کویر را ببینم. به‌زودی! بوس، هدا.» روایت کوتاه: «تابستان گذشته به دریا رفتم. در هتلی کوچک نزدیک ساحل ماندم. هر روز شنا کردم و عکس‌های زیادی گرفتم. بهترین سفر زندگی‌ام بود!»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Raconter mes vacances <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue (1 minute)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Quand &amp; où</b> je suis parti(e).</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Le voyage &amp; l'hébergement.</b></li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Mes activités</b> (au passé composé).</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Une comparaison + mon avis</b> (« c'était le plus… »).</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux)</h3>
+    <ul class="clean"><li><b>À l'hôtel :</b> réserver une chambre, demander le prix, les horaires.</li>
+      <li><b>À l'aéroport :</b> « N'oublie pas ton passeport ! » · demander la porte d'embarquement.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) کِی و کجا رفتی ۲) سفر و اقامتگاه ۳) فعالیت‌ها (با گذشتهٔ نقلی) ۴) یک مقایسه و نظرت («بهترین… بود»). سپس نقش‌بازی: در هتل (رزرو اتاق، قیمت، ساعت) و در فرودگاه («پاسپورتت را فراموش نکن!»، پرسیدن گیت).</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « offre de séjour »</h3>
+    <ul class="clean"><li>Repère le <b>prix</b>, le <b>nombre de nuits</b> et ce qui est <b>inclus</b>.</li>
+      <li>Cherche les <b>dates</b> et la <b>localisation</b>.</li>
+      <li>Lis les questions <b>avant</b> de relire le texte.</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>SÉJOUR À LA MER — Hôtel Le Soleil</b></p>
+    <p>7 nuits à partir de 350 € par personne.<br>
+    Chambre double, petit-déjeuner inclus.<br>
+    À 100 m de la plage. Piscine et restaurant.<br>
+    Offre valable du 1ᵉʳ juin au 30 septembre.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Combien de nuits ?</li>
+        <li>2. Le petit-déjeuner est-il inclus ?</li><li>3. À quelle distance de la plage ?</li>
+        <li>4. Jusqu'à quand l'offre est-elle valable ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. 7 nuits.</li>
+        <li>2. Oui.</li><li>3. À 100 mètres.</li><li>4. Jusqu'au 30 septembre.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: قیمت، تعداد شب و آنچه شامل می‌شود را پیدا کن؛ تاریخ‌ها و موقعیت را بیاب؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان. در آگهی نمونه: ۷ شب، صبحانه شامل است، ۱۰۰ متر تا ساحل، و پیشنهاد تا ۳۰ سپتامبر معتبر است.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Les vacances en France</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> les vacances sont très importantes. Les salariés ont environ <b>cinq semaines</b> de congés par an. Beaucoup de gens partent en <b>juillet</b> ou en <b>août</b> : ce sont « les grandes vacances ». Les routes et les plages sont alors très animées !</p>
+    <p>Les destinations préférées sont la <b>mer</b> (la Côte d'Azur, l'Atlantique), la <b>montagne</b> (les Alpes, les Pyrénées) et la <b>campagne</b>. Beaucoup de francophones voyagent aussi à l'étranger : au Maroc, en Tunisie, au Québec ou en Belgique. Partir en vacances, c'est se reposer, mais aussi découvrir de nouveaux paysages et d'autres cultures.</p>
+  </div>
+
+  <table class="tc" style="font-size:10.3pt; margin-top:6px;"><tr><th>Destination</th><th>Pour…</th></tr>
+    <tr><td>la mer (Côte d'Azur)</td><td>la plage, le soleil</td></tr>
+    <tr><td>la montagne (Alpes)</td><td>la randonnée, le ski</td></tr>
+    <tr><td>la campagne</td><td>le calme, la nature</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — تعطیلات در فرانسه</div>
+    <div class="fa">در فرانسه تعطیلات خیلی مهم است. کارمندان حدود پنج هفته مرخصی در سال دارند. بسیاری در ژوئیه یا اوت به سفر می‌روند؛ به این دوره «تعطیلات بزرگ» می‌گویند و جاده‌ها و سواحل شلوغ می‌شوند! مقصدهای محبوب: دریا (کوت‌دازور)، کوه (آلپ، پیرنه) و طبیعت. بسیاری از فرانسوی‌زبان‌ها به خارج هم سفر می‌کنند: مراکش، تونس، کبک یا بلژیک. سفر یعنی استراحت و کشف مناظر و فرهنگ‌های تازه.</div></div>
+</div>
+
+<!-- ===================== MÉMO ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Antisèche · Bonus</div>
+    <h1>Le mémo de l'unité 8 <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">La comparaison</h4>
+      <p class="small" style="font-size:10pt;">plus / moins / aussi + adj + que.<br>
+      bon → <b>meilleur</b>. Superlatif : le plus / le moins.</p></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Verbes en -ir</h4>
+      <p class="small" style="font-size:10pt;">finir : -is, -is, -it, -issons, -issez, -issent.<br>partir : je pars, nous partons.</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">La carte postale</h4>
+      <p class="small" style="font-size:10pt;">Lieu + date · Cher/Chère · le séjour · Grosses bises.</p></div>
+    <div class="box" style="border-left:4px solid var(--dia)"><h4 style="color:var(--dia)">À l'aéroport</h4>
+      <p class="small" style="font-size:10pt;">le vol · le billet · le passeport · la valise · décoller · atterrir.</p></div>
+  </div>
+
+  <div class="card conseil" style="margin-top:10px;"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>L'été dernier, je <span class="key">suis parti(e)</span> à la mer.</li>
+      <li>La mer est <span class="key">plus calme que</span> la ville.</li>
+      <li>C'est <span class="key">le plus beau</span> voyage de ma vie !</li>
+      <li>Je voudrais <span class="key">réserver</span> une chambre double.</li>
+      <li><span class="key">N'oublie pas</span> ton passeport !</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">برگهٔ خلاصهٔ واحد ۸</div>
+    <div class="fa">مقایسه: plus/moins/aussi + صفت + que؛ bon←meilleur؛ عالی: le plus/le moins. فعل‌های -ir: finir (-is…-issent)، partir (je pars). کارت‌پستال: مکان+تاریخ، Cher/Chère، شرح سفر، Grosses bises. فرودگاه: vol، billet، passeport، valise، décoller، atterrir. پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Raconte tes dernières vacances à voix haute, au passé composé.</li>
+      <li>Compare deux endroits : <i>« La mer est plus calme que la ville. »</i></li>
+      <li>Mémorise les blocs de l'hôtel et de l'aéroport.</li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Une carte postale, c'est court : 4-5 phrases suffisent.</li>
+      <li>Mélange présent (ce que tu fais) et passé composé (ce que tu as fait).</li>
+      <li>N'oublie pas l'accord avec <i>être</i> (je suis allée).</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Sers-toi du mémo comme antisèche.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: تعطیلات اخیرت را بلند و در گذشتهٔ نقلی تعریف کن و دو جا را مقایسه کن. برای نوشتن: کارت‌پستال کوتاه است (۴-۵ جمله)؛ زمان حال (آنچه می‌کنی) و گذشتهٔ نقلی (آنچه کردی) را با هم به‌کار ببر و مطابقت با être را فراموش نکن. از مَمو کمک بگیر و در جلسات ۱۵ دقیقه‌ای کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>☐ Décrire un lieu de vacances et un hébergement.</li>
+      <li>☐ Comparer (plus / moins / aussi… que, meilleur).</li>
+      <li>☐ Conjuguer un verbe en -ir (finir, partir).</li>
+      <li>☐ Raconter un voyage au passé composé.</li>
+      <li>☐ Écrire une carte postale.</li>
+      <li>☐ Utiliser le vocabulaire de l'aéroport.</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. <i>finir</i> : je ___, nous ___.</li>
+        <li>2. Comparer : « Le camping / cher / l'hôtel » (–).</li>
+        <li>3. <i>bon</i> au comparatif = ?</li>
+        <li>4. Passé composé : « je / partir » → ?</li>
+        <li>5. Rappel : « ___ ton passeport ! »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. je finis · nous finissons</li>
+        <li>2. Le camping est moins cher que l'hôtel.</li>
+        <li>3. meilleur(e)</li>
+        <li>4. je suis parti(e)</li>
+        <li>5. N'oublie pas</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:15px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#0E7AA8,#E08A1E); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 8 terminée — bon voyage ! ✈️</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد هشتم تمام شد — سفر خوش!</div>
+  </div>
+</div>
+
+</body>
+</html>
