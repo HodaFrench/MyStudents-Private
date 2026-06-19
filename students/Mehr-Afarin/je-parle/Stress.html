@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Stress - Cours de Français A2/B1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .emoji {
+            font-size: 70px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .section.warmup {
+            background: linear-gradient(135deg, #ffe8e8 0%, #f5f5f5 100%);
+            border-left-color: #ff6b6b;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.1);
+        }
+
+        .section.general {
+            background: linear-gradient(135deg, #ffe8e8 0%, #f5f5f5 100%);
+            border-left-color: #e74c3c;
+        }
+
+        .section.personal {
+            background: white;
+            border-left-color: #c0392b;
+            border: 1px solid #e0e6ed;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            color: #e74c3c;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .section.personal h2 {
+            color: #c0392b;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #4a5568;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .section-text p {
+            margin-bottom: 18px;
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-warmup {
+            background: #ffcccc;
+            color: #c0392b;
+        }
+
+        .badge-general {
+            background: #ffe8cc;
+            color: #d35400;
+        }
+
+        .badge-personal {
+            background: #ffe0e0;
+            color: #c0392b;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+            border: 2px solid #ffc107;
+        }
+
+        .highlight-box h4 {
+            color: #cc7a00;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .highlight-box p {
+            color: #8b5f00;
+            line-height: 1.8;
+            margin: 12px 0;
+        }
+
+        /* QUESTIONS BOX */
+        .questions-box {
+            background: #ffe8e8;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .questions-box h4 {
+            color: #c0392b;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .question {
+            background: white;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-left: 3px solid #e74c3c;
+            border-radius: 5px;
+            font-size: 15px;
+            color: #2c3e50;
+        }
+
+        .question::before {
+            content: "❓ ";
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        /* VOCABULARY GRID */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .vocab-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e0e6ed;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .vocab-card:hover {
+            border-color: #e74c3c;
+            box-shadow: 0 8px 24px rgba(231, 76, 60, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .vocab-fr {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .vocab-def {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 10px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .vocab-fa {
+            font-size: 14px;
+            color: #c0392b;
+            border-top: 1px solid #e0e6ed;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* PHRASE BOXES */
+        .phrase-box {
+            background: white;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .phrase-box:hover {
+            box-shadow: 0 4px 16px rgba(231, 76, 60, 0.12);
+            transform: translateX(5px);
+        }
+
+        .phrase-fr {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .phrase-fa {
+            color: #c0392b;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* DIALOGUE */
+        .dialogue-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e74c3c;
+            margin-top: 20px;
+        }
+
+        .dialogue-turn {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            border-radius: 8px;
+        }
+
+        .dialogue-turn:nth-child(odd) {
+            border-left-color: #c0392b;
+            background: #ffe8e8;
+        }
+
+        .dialogue-name {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dialogue-turn:nth-child(odd) .dialogue-name {
+            color: #c0392b;
+        }
+
+        .dialogue-text {
+            color: #2c3e50;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-trans {
+            font-size: 13px;
+            color: #c0392b;
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        /* TIPS */
+        .tip-box {
+            background: #ffe8e8;
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            font-weight: 700;
+            color: #c0392b;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .tip-content {
+            color: #8b4444;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 14px;
+            border-top: 5px solid #e74c3c;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header .emoji {
+                font-size: 50px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 22px;
+            }
+
+            .section-text {
+                text-align: left;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* SCROLL UP BUTTON */
+        #scrollBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #scrollBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(231, 76, 60, 0.5);
+        }
+
+        #scrollBtn.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <span class="emoji">😰</span>
+                <h1>Le Stress</h1>
+                <p>Parler naturellement du stress en français</p>
+                <div class="subtitle">Niveau A2/B1 | 1 warm-up + 2 textes généraux + 2 textes personnels</div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- ========== WARM-UP ========== -->
+
+            <div class="section warmup">
+                <h2>🔥 Échauffement: Le stress, c'est quoi?</h2>
+                <div class="badge badge-warmup">⚡ Warm-up (1 minute)</div>
+
+                <div class="section-text">
+                    <p>
+                        Le stress est une réaction naturelle du corps. Quand tu as peur ou quand tu es en danger, ton corps réagit. 
+                        Tu sens ton cœur qui s'accélère. Tu transpires. Tu ne peux pas te concentrer. C'est le stress.
+                    </p>
+                    <p>
+                        Le stress peut être bon ou mauvais. Un petit stress avant un examen te fait étudier. Mais trop de stress 
+                        t'empêche d'étudier. Le stress peut venir du travail, de la famille, de l'école. Le stress peut même venir 
+                        de rien. Juste une pensée négative.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions rapides:</h4>
+                    <div class="question">Qu'est-ce que le stress pour toi?</div>
+                    <div class="question">Quels symptômes du stress connais-tu?</div>
+                    <div class="question">Est-ce que tu es stressé en ce moment?</div>
+                </div>
+            </div>
+
+            <!-- ========== TEXTES GÉNÉRAUX ========== -->
+
+            <!-- TEXTE GÉNÉRAL 1 -->
+            <div class="section general">
+                <h2>📚 Texte 1: Qu'est-ce que le stress?</h2>
+                <div class="badge badge-general">Contexte général (A2)</div>
+
+                <div class="section-text">
+                    <p>
+                        Le stress est un état d'alerte du corps face à une menace. C'est une réaction biologique qui a évolué pendant 
+                        des millénaires pour nous protéger. Quand tu vois un danger, ton corps libère des hormones comme l'adrénaline 
+                        et le cortisol. Ces hormones te donnent plus de force et d'énergie. Ton cœur s'accélère. Tu peux mieux courir. 
+                        Tu peux combattre. C'est appelé la réaction "combat ou fuite".
+                    </p>
+                    <p>
+                        Dans le monde ancien, le stress était lié à des menaces réelles: un animal sauvage, un ennemi. Ton corps avait 
+                        besoin de cette réaction pour survivre. Mais dans le monde moderne, les menaces sont différentes. Ce n'est plus 
+                        un animal sauvage. C'est un patron qui crie. C'est une deadline. C'est une facture impayée. C'est la peur de 
+                        l'avenir. Et malheureusement, ton corps réagit de la même façon qu'il y a mille ans.
+                    </p>
+                    <p>
+                        Le problème, c'est que le stress est souvent constant. Tu es stressé au travail. Tu es stressé à la maison. 
+                        Tu es stressé avant de dormir. Et sans "deactivation", le stress ne disparaît jamais. Il s'accumule. 
+                        Et un stress accumulé devient un problème de santé.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        استرس یک حالت هشدار بدن در مقابل تهدید است. این یک واکنش بیولوژیکی است. وقتی خطر می‌بینی، 
+                        بدن آدرنالین و کورتیزول آزاد می‌کند. این هورمون‌ها به تو نیروی بیشتری می‌دهند. قلبت تند می‌تپد.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour comprendre:</h4>
+                    <div class="question">Comment le stress affecte le corps?</div>
+                    <div class="question">Pourquoi le stress était utile dans le monde ancien?</div>
+                    <div class="question">Quelles sont les différences entre les menaces anciennes et modernes?</div>
+                    <div class="question">Pourquoi le stress moderne est-il un problème?</div>
+                </div>
+            </div>
+
+            <!-- TEXTE GÉNÉRAL 2 -->
+            <div class="section general">
+                <h2>📚 Texte 2: Les impacts du stress</h2>
+                <div class="badge badge-general">Contexte général (A2/B1)</div>
+
+                <div class="section-text">
+                    <p>
+                        Le stress prolongé a des impacts graves sur la santé physique et mentale. Premièrement, cela affecte le sommeil. 
+                        Une personne stressée ne peut pas dormir. Elle tourne dans son lit. Elle pense à ses problèmes. Et sans sommeil, 
+                        le corps ne peut pas récupérer. Sans sommeil, le stress augmente encore plus. C'est un cycle.
+                    </p>
+                    <p>
+                        Deuxièmement, le stress affecte le système immunitaire. Une personne stressée est plus souvent malade. Elle 
+                        attrape des rhumes, des infections, plus facilement. Son corps dépense trop d'énergie pour gérer le stress et 
+                        n'a pas assez d'énergie pour combattre les virus.
+                    </p>
+                    <p>
+                        Troisièmement, le stress affecte la concentration et la mémoire. Une personne stressée ne peut pas se concentrer 
+                        au travail. Elle oublie les choses. Elle fait des erreurs. Et ironiquement, plus elle fait d'erreurs, plus elle 
+                        devient stressée.
+                    </p>
+                    <p>
+                        Quatrièmement, le stress affecte les relations. Une personne stressée est souvent irritable. Elle crie facilement. 
+                        Elle ne peut pas écouter les autres. Elle ne peut pas être patiente. Alors elle crée des conflits avec sa famille, 
+                        ses amis, ses collègues.
+                    </p>
+                    <p>
+                        Finalement, le stress chronique peut mener à des maladies graves. L'hypertension. Les maladies du cœur. Le 
+                        diabète. La dépression. Et plus grave, beaucoup de personnes stressées développent de l'anxiété ou même le suicide 
+                        dans les cas les plus extrêmes.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        استرس طولانی مدت تأثیرات جدی بر سلامت جسمانی و روانی دارد. اول، بر خواب تأثیر می‌گذارد. 
+                        فردی فشاردار نمی‌تواند بخواب. دوم، سیستم ایمنی را تحت تأثیر قرار می‌دهد.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour réfléchir:</h4>
+                    <div class="question">Pourquoi le stress affecte-t-il le sommeil?</div>
+                    <div class="question">Comment le stress affecte l'immunité?</div>
+                    <div class="question">Pourquoi une personne stressée fait-elle plus d'erreurs?</div>
+                    <div class="question">Comment le stress affecte les relations?</div>
+                    <div class="question">Quelles maladies graves le stress chronique peut-il causer?</div>
+                </div>
+            </div>
+
+            <!-- ========== TEXTES PERSONNELS ========== -->
+
+            <!-- TEXTE PERSONNEL 1 -->
+            <div class="section personal">
+                <h2>👤 Texte 3: L'histoire de Thomas</h2>
+                <div class="badge badge-personal">Histoire personnelle (A2)</div>
+
+                <div class="section-text">
+                    <p>
+                        Thomas est un homme de 32 ans. Il travaille dans une banque depuis dix ans. Son travail est important et très 
+                        exigeant. Il doit gérer des millions d'euros chaque jour. Il doit être précis. Il doit être rapide. Et son chef 
+                        est extrêmement exigeant. Un jour, après une erreur mineure, son chef l'a crié dessus devant tous les collègues. 
+                        C'était humiliant.
+                    </p>
+                    <p>
+                        Depuis ce jour, Thomas vit dans la peur. Chaque matin, avant d'aller au travail, il a un sentiment d'angoisse. 
+                        Son cœur s'accélère. Ses mains tremblent. Il ne peut pas manger. Il ne peut pas penser clairement. Et au travail, 
+                        il est tellement stressé qu'il ne peut pas se concentrer. Ironiquement, c'est exactement ce qui crée les erreurs 
+                        qu'il veut éviter.
+                    </p>
+                    <p>
+                        Le stress de Thomas a commencé à affecter sa vie personnelle aussi. Il ne dort plus. Il pense à son travail toute 
+                        la nuit. Sa femme lui dit qu'il crie pendant son sommeil. Il dit des choses comme "Je suis désolé" ou "C'est ma 
+                        faute". Au travail, ses relations avec ses collègues se détériorent. Il est devenu irritable. Il crie pour rien. 
+                        Il ne peut pas parler à personne sans être en colère.
+                    </p>
+                    <p>
+                        Après six mois, Thomas a eu une crise. Un jour, il ne pouvait pas aller au travail. Il avait peur. Même juste 
+                        penser à aller au travail lui donnait une crise d'anxiété. Son cœur battait trop vite. Il ne pouvait pas respirer. 
+                        C'est à ce moment qu'il a décidé qu'il fallait qu'il cherche de l'aide.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        توماس مردی 32 ساله است. 10 سال است که در یک بانک کار می‌کند. او روزانه با میلیون‌ها یورو سروکار دارد. 
+                        کارش بسیار سخت و فشار‌زا است. یک روز، بعد از یک اشتباه کوچک، رئیسش جلوی همه همکاران شروع به فریاد زدن کرد.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions sur l'histoire:</h4>
+                    <div class="question">Qui est Thomas et quel est son travail?</div>
+                    <div class="question">Quel événement a déclenché son stress?</div>
+                    <div class="question">Quels sont les symptômes du stress de Thomas?</div>
+                    <div class="question">Comment le stress affecte-t-il son sommeil?</div>
+                    <div class="question">Comment cela a-t-il affecté ses relations?</div>
+                    <div class="question">Qu'est-ce qui l'a finalement poussé à chercher de l'aide?</div>
+                </div>
+            </div>
+
+            <!-- TEXTE PERSONNEL 2 -->
+            <div class="section personal">
+                <h2>👤 Texte 4: La guérison de Marie</h2>
+                <div class="badge badge-personal">Histoire personnelle (A2/B1)</div>
+
+                <div class="section-text">
+                    <p>
+                        Marie est une infirmière de 38 ans. Elle travaille dans un hôpital. La pandémie a changé sa vie pour toujours. 
+                        D'un jour à l'autre, elle est passée d'un travail normal à un travail de crise. Elle travaillait 14 heures par jour. 
+                        Elle voyait des gens mourir. Elle avait peur de ramener le virus à sa famille. Pendant un an, elle a vécu dans 
+                        une anxiété extrême. Elle avait des attaques de panique. Elle pleurait sans raison. Elle pensait au suicide.
+                    </p>
+                    <p>
+                        Un jour, une collègue lui a dit quelque chose d'important: "Marie, tu ne peux pas aider les autres si tu ne t'aides 
+                        pas toi-même. Tu ne peux pas être une infirmière si tu es brisée." Ces paroles ont été un déclic. Marie a décidé 
+                        que le stress l'avait contrôlée assez longtemps. Elle a décidé de reprendre le contrôle.
+                    </p>
+                    <p>
+                        Elle a commencé à voir un thérapeute. Elle a commencé à méditer. Elle a commencé à faire du yoga. Elle a changé 
+                        son alimentation. Elle a arrêté de regarder les nouvelles. Elle a arrêté de travailler les weekends. Et peu à peu, 
+                        elle a commencé à se sentir mieux. Pas parfait. Mais mieux.
+                    </p>
+                    <p>
+                        Deux ans plus tard, Marie est une personne différente. Elle comprend que le stress n'est pas quelque chose de honteux. 
+                        C'est une réaction normale à une situation anormale. Elle comprend que prendre soin d'elle-même n'est pas égoïste. 
+                        C'est une responsabilité. Et elle comprend que la guérison n'est pas une destination. C'est un voyage. Un jour à la fois. 
+                        Une respiration à la fois.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        ماری پرستاری 38 ساله است. پاندمی زندگی او را برای ابد تغییر داد. ناگاه، او 14 ساعت در روز کار می‌کرد. 
+                        او مردم را می‌دید که می‌میرند. او می‌ترسید ویروس را به خانه ببرد. برای یک سال، او در اضطراب شدید زندگی می‌کرد.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour discuter:</h4>
+                    <div class="question">Qui est Marie et pourquoi elle était si stressée?</div>
+                    <div class="question">Quels étaient ses symptômes de stress?</div>
+                    <div class="question">Qu'a dit sa collègue qui était important?</div>
+                    <div class="question">Quelles solutions Marie a-t-elle trouvées?</div>
+                    <div class="question">Pourquoi le stress n'est pas quelque chose de honteux?</div>
+                    <div class="question">Pensez-vous que Marie a vraiment guéri?</div>
+                    <div class="question">Quelle leçon importante Marie a-t-elle apprise?</div>
+                </div>
+            </div>
+
+            <!-- VOCABULAIRE -->
+            <div class="section">
+                <h2>📚 Vocabulaire essentiel</h2>
+
+                <h3 style="color: #e74c3c; margin: 30px 0 20px; font-size: 20px; font-weight: 600;">Mots importants:</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Stress</div>
+                        <div class="vocab-def">État d'alerte du corps face à une menace</div>
+                        <div class="vocab-fa">استرس، فشار روحی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Anxiété</div>
+                        <div class="vocab-def">Sentiment d'inquiétude intense et persistant</div>
+                        <div class="vocab-fa">اضطراب</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Adrénaline</div>
+                        <div class="vocab-def">Hormone libérée pendant le stress</div>
+                        <div class="vocab-fa">آدرنالین</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Cortisol</div>
+                        <div class="vocab-def">Hormone du stress</div>
+                        <div class="vocab-fa">کورتیزول</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Accumulation</div>
+                        <div class="vocab-def">Augmentation progressive</div>
+                        <div class="vocab-fa">تجمع</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Immunité</div>
+                        <div class="vocab-def">Capacité du corps à combattre les maladies</div>
+                        <div class="vocab-fa">ایمنی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Concentration</div>
+                        <div class="vocab-def">Capacité à se focaliser</div>
+                        <div class="vocab-fa">تمرکز</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Irritable</div>
+                        <div class="vocab-def">Qui s'énerve facilement</div>
+                        <div class="vocab-fa">بدمزاج</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Crise d'anxiété</div>
+                        <div class="vocab-def">Moment d'intense peur et de panique</div>
+                        <div class="vocab-fa">حمله اضطرابی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Méditation</div>
+                        <div class="vocab-def">Pratique de relaxation mentale</div>
+                        <div class="vocab-fa">مدیتیشن</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPRESSIONS -->
+            <div class="section">
+                <h2>💬 10 expressions utiles</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 25px;">
+                    <div class="phrase-box">
+                        <div class="phrase-fr">1. Je suis stressé</div>
+                        <div class="phrase-fa">من استرس‌دار هستم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">2. Mon cœur s'accélère</div>
+                        <div class="phrase-fa">قلبم تند می‌تپد</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">3. Je ne peux pas me concentrer</div>
+                        <div class="phrase-fa">نمی‌تونم تمرکز کنم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">4. Je suis en panique</div>
+                        <div class="phrase-fa">من وحشت‌زده هستم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">5. C'est trop pour moi</div>
+                        <div class="phrase-fa">برای من خیلی زیادی است</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">6. Je dois me relaxer</div>
+                        <div class="phrase-fa">من باید آرام شوم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">7. Je suis épuisé</div>
+                        <div class="phrase-fa">من خسته‌ام</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">8. Prendre soin de soi</div>
+                        <div class="phrase-fa">نگاه داشتن خود</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">9. C'est une question de temps</div>
+                        <div class="phrase-fa">این یک مسئله زمان است</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">10. Aller chercher de l'aide</div>
+                        <div class="phrase-fa">کمک گرفتن</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIALOGUE -->
+            <div class="section">
+                <h2>🎭 Dialogue naturel</h2>
+
+                <div class="tip-box" style="margin-bottom: 20px;">
+                    <div class="tip-title">💬 Conversation: Entre Thomas et son ami</div>
+                    <div class="tip-content">Thomas parle de son stress avec un ami proche.</div>
+                </div>
+
+                <div class="dialogue-box">
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Ami:</div>
+                        <div class="dialogue-text">Thomas, ça va? Tu as l'air mal.</div>
+                        <div class="dialogue-trans">توماس، خوبی؟ بد به نظر می‌رسی</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Thomas:</div>
+                        <div class="dialogue-text">Je suis stressé. C'est le travail. Je ne peux pas me concentrer. Je suis en panique chaque matin.</div>
+                        <div class="dialogue-trans">من استرس‌دار هستم. بخاطر کار. نمی‌تونم تمرکز کنم</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Ami:</div>
+                        <div class="dialogue-text">Depuis quand tu te sens comme ça?</div>
+                        <div class="dialogue-trans">از کی تو اینطور احساس می‌کنی؟</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Thomas:</div>
+                        <div class="dialogue-text">Depuis six mois. Mon chef m'a crié dessus. Et maintenant j'ai peur. Même juste penser au travail, mon cœur s'accélère.</div>
+                        <div class="dialogue-trans">شش ماه است. رئیسم سر من فریاد زد. حالا ترسیدم. حتی فکر کردن درباره کار، قلبم تند می‌تپد</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Ami:</div>
+                        <div class="dialogue-text">Tu as parlé à quelqu'un? Un thérapeute?</div>
+                        <div class="dialogue-trans">با کسی صحبت کردی؟ یک درمانگر؟</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Thomas:</div>
+                        <div class="dialogue-text">Non, pas encore. Mais je sais que j'ai besoin d'aide. Je ne peux plus vivre comme ça.</div>
+                        <div class="dialogue-trans">نه. اما می‌دونم که باید کمک بگیرم. نمی‌تونم اینطور زندگی کنم</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Ami:</div>
+                        <div class="dialogue-text">Bonne idée. Tu dois prendre soin de toi. Et je suis là pour toi. Tu n'es pas seul.</div>
+                        <div class="dialogue-trans">ایده خوب است. تو باید از خود نگاه داری. و من اینجا هستم برایت</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONSEILS -->
+            <div class="section">
+                <h2>💡 Conseils pratiques</h2>
+
+                <div class="tip-box">
+                    <div class="tip-title">✅ Pour parler naturellement:</div>
+                    <div class="tip-content">Commence par le texte d'échauffement. C'est rapide et te met en confiance. Puis lis les deux textes généraux pour comprendre le contexte. Enfin, lis les deux histoires personnelles pour voir comment le stress affecte les vraies personnes.</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">🎯 Pour mémoriser:</div>
+                    <div class="tip-content">Les 10 expressions sont tes amis. Utilise-les pour parler du stress dans ta propre vie. "Je suis stressé parce que...", "Mon cœur s'accélère quand...", "Je dois me relaxer parce que...". Plus tu pratiques, plus tu deviens naturel.</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">💡 Le message principal:</div>
+                    <div class="tip-content">Le stress n'est pas une faiblesse. C'est une réaction normale à une situation difficile. Et comme Thomas et Marie l'ont découvert, il y a toujours une solution. La première étape est de reconnaître le problème. La deuxième étape est de chercher de l'aide.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>👤 Hoda KHEDMATI</p><p>📚 Dossier complet d'apprentissage | Thème: Le Stress</p>
+            <p>1 texte d'échauffement + 2 textes généraux + 2 textes personnels | Niveau A2/B1</p>
+            <p>👤 Hoda KHEDMATI - Professeur de Français</p><p style="margin-top: 15px; opacity: 0.7; font-size: 12px;">Textes cohérents avec questions après chaque section</p>
+        </div>
+    </div>
+
+    <!-- SCROLL UP BUTTON -->
+    <button id="scrollBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollBtn');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
