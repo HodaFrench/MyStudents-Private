@@ -292,6 +292,7 @@
 const CATEGORIES = [
   { id: "grammaire",      label: "Grammaire",       icon: "§",  color: "#1565c0" },
   { id: "vocabulaire",    label: "Vocabulaire",      icon: "📚", color: "#6a1b9a" },
+  { id: "tcf-oral",       label: "TCF Oral",         icon: "🎙️", color: "#e65100" },
   { id: "mes-erreurs",    label: "Mes erreurs",      icon: "🔴", color: "#b71c1c" },
   { id: "reformulation",  label: "Reformulation",    icon: "🔄", color: "#00695c" },
 ];
@@ -368,6 +369,18 @@ const LESSONS = [
     level: "B1/B2",
     icon: "📚",
     group: "",
+    disabled: false,
+  },
+
+  // ── TCF Oral ──
+  {
+    file: "TCF-oral/tache-1/coaching-tache1.html",
+    title: "Tâche 1 — Coaching complet",
+    titleFr: "Structurer · Développer · Argumenter",
+    category: "tcf-oral",
+    level: "A2→B2",
+    icon: "🎙️",
+    group: "Expression Orale",
     disabled: false,
   },
 
