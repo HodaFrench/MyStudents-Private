@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 2</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#1F2A37; --soft:#5B6675; --line:#E4E2DC; --sand:#FBF8F3;
+    --gram:#1D3557; --gram-bg:#EAEEF5;
+    --verbe:#1C7C73; --verbe-bg:#E4F3F1;
+    --vocab:#6C4F8F; --vocab-bg:#F0EAF6;
+    --phon:#B9762A; --phon-bg:#FBF0E1;
+    --dia:#BD4F3E; --dia-bg:#FBEAE6;
+    --lect:#356B53; --lect-bg:#E7F2EC;
+    --conseil:#A67C1A; --conseil-bg:#FBF4DE;
+    --cult:#33697C; --cult-bg:#E6F0F3;
+    --delf:#9B3149; --delf-bg:#F8E7EB;
+    --a0:#2A9D8F; --a1:#2F6FB0; --ap:#6C4F8F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.4pt; line-height:1.5; }
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.6pt; line-height:1.95; }
+  h1,h2,h3,.disp,.eyebrow,th,.lvl,.pill,.tag{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; }
+  .page:last-child{ page-break-after:auto; }
+
+  /* page header */
+  .phead{ margin-bottom:12px; }
+  .eyebrow{ font-size:8.6pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:21pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:62px; border-radius:3px; margin-top:8px;}
+
+  /* level badge */
+  .lvl{ display:inline-block; color:#fff; font-size:8.8pt; font-weight:600; letter-spacing:.6px;
+    padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+  .lvltag{ display:inline-flex; align-items:center; gap:6px; font-family:'Poppins'; font-size:8.6pt;
+    font-weight:600; letter-spacing:1px; text-transform:uppercase;}
+
+  /* card */
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px;
+    border-radius:8px; padding:14px 17px; margin:11px 0;}
+  .card h3{ font-size:12.5pt; font-weight:600; margin-bottom:7px; letter-spacing:-.2px;}
+  .gram{ border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{ border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{ border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{ border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{ border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{ border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{ border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{ border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{ border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{ border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.6pt;
+    background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.8pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{ font-weight:800;}
+  .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify;
+    background:var(--sand); border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#F6F7FA; border-right:5px solid #C7CDD8; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.4pt; color:#9aa4b2; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px;
+    font-size:9.4pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt;
+    font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#FBE7C2; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil);
+    border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.4pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"—"; position:absolute; left:0; color:var(--soft); font-weight:700;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.4pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.4pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%;
+    background:var(--gram); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:8mm; border:1px solid var(--line); border-radius:14px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#1D3557 0%,#33697C 60%,#1C7C73 100%); color:#fff; padding:34px 32px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.05; margin:10px 0 6px;">Près de moi</div>
+      <div style="font-family:'Poppins'; font-size:13pt; opacity:.9;">Unité 2 — habitation · goûts · famille · professions</div>
+    </div>
+    <div style="padding:20px 32px; background:var(--sand);">
+      <div style="font-family:'Poppins'; font-size:9.6pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px; background:#fff;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Phrases courtes, beaucoup d'appuis.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px; background:#fff;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Grammaire, dialogues, texte suivi.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px; background:#fff;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Textes longs, DELF, production riche.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#1D3557; margin-top:16px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۲ «نزدیک من»</div>
+    <div class="fa">این جزوه فصل دوم را با یک مسیر گام‌به‌گام پوشش می‌دهد: ابتدا سطح A0 (ساده و کوتاه)، سپس A1 (گرامر و دیالوگ)، و در پایان A1+ (متن‌های بلندتر، تمرین DELF و تولید پیشرفته‌تر). موضوع‌ها: محل زندگی، بیان سلیقه، خانواده و شغل‌ها. همه‌چیز همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.8pt;">
+      <div><span class="pill" style="color:var(--gram)">Grammaire</span><span class="pill" style="color:var(--verbe)">Verbes</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode ADHD-friendly :</b> chaque notion tient dans une boîte. Le badge <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> indique la difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Le verbe <i>habiter</i> · dire où on habite</li><li>Articles : <i>un/une/des</i> et <i>le/la/les</i></li><li>La famille (vocabulaire de base)</li><li>Exprimer ses goûts : <i>j'aime / je n'aime pas</i></li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>Les verbes en <i>-er</i> au présent</li><li>Prononciation des <i>-er</i> · liaisons avec les déterminants</li><li>Les adjectifs possessifs</li><li>Masculin / féminin des professions</li><li>Vocabulaire : lieux, loisirs (2), famille, professions</li><li>Dialogue + texte suivi « Ma famille et moi »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Mon quartier et ma famille »</li><li>Production écrite guidée (e-mail de présentation)</li><li>Production orale structurée</li><li>DELF A1 — Compréhension des écrits</li><li>Culture : Cannes &amp; festivals francophones</li><li>Bilan &amp; auto-évaluation</li></ul></div>
+</div>
+
+<!-- ===================== A0 : HABITER ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Verbe · Niveau A0</div>
+    <h1>Dire où j'habite <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+
+  <table class="tv"><tr><th colspan="2">HABITER — zindegi kardan / زندگی کردن</th></tr>
+    <tr><td>j'<span class="hl">habite</span></td><td>nous <span class="hl">habitons</span></td></tr>
+    <tr><td>tu <span class="hl">habites</span></td><td>vous <span class="hl">habitez</span></td></tr>
+    <tr><td>il/elle <span class="hl">habite</span></td><td>ils/elles <span class="hl">habitent</span></td></tr></table>
+
+  <div class="card verbe"><h3>Les 3 phrases-clés</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>J'habite <span class="key">à</span> Téhéran.</li>
+      <li>J'habite <span class="key">en</span> Iran.</li>
+      <li>J'habite <span class="key">dans</span> un appartement.</li>
+    </ul></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">ترجمه</div>
+    <div class="fa">«habiter» یعنی زندگی کردن. برای شهر «à»، برای کشور «en/au»، و برای خانه «dans» به‌کار می‌رود: «J'habite à Téhéran» (در تهران زندگی می‌کنم)، «dans un appartement» (در یک آپارتمان).</div></div>
+
+  <div class="tip"><span class="star">Mini-dialogue A0 :</span> &nbsp;— Tu habites où ? &nbsp;— J'habite à Nice. Et toi ? &nbsp;— Moi, j'habite à Lyon.
+    <div class="fa" style="margin-top:5px;">— کجا زندگی می‌کنی؟ — در نیس زندگی می‌کنم. تو چطور؟ — من در لیون زندگی می‌کنم.</div></div>
+</div>
+
+<!-- ===================== A0 : ARTICLES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A0</div>
+    <h1>Un / une / des &nbsp;·&nbsp; le / la / les <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="two">
+    <div><table class="tg"><tr><th colspan="2">INDÉFINIS (nouveau, pas précis)</th></tr>
+      <tr><td><span class="hl">un</span> (m.)</td><td>un frère, un parc</td></tr>
+      <tr><td><span class="hl">une</span> (f.)</td><td>une sœur, une rue</td></tr>
+      <tr><td><span class="hl">des</span> (pl.)</td><td>des amis, des enfants</td></tr></table></div>
+    <div><table class="tg"><tr><th colspan="2">DÉFINIS (précis, connu, général)</th></tr>
+      <tr><td><span class="hl">le / la / l'</span></td><td>le quartier, la ville</td></tr>
+      <tr><td><span class="hl">les</span></td><td>les voisins, les loisirs</td></tr></table></div>
+  </div>
+
+  <div class="card gram"><h3>La règle simple</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>On présente une chose <b>nouvelle</b> → <i>un / une / des</i>. &nbsp;<span class="ex">J'ai <b>un</b> frère.</span></li>
+      <li>On reparle d'une chose <b>connue</b> → <i>le / la / les</i>. &nbsp;<span class="ex"><b>Le</b> frère de Léa est grand.</span></li>
+      <li>Pour les <b>goûts</b> (en général) → toujours <i>le / la / les</i>. &nbsp;<span class="ex">J'aime <b>le</b> cinéma.</span></li>
+    </ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">حرف تعریف نکره و معین</div>
+    <div class="fa">برای چیز تازه و نامشخص: un (مذکر)، une (مؤنث)، des (جمع). برای چیز مشخص یا کلی: le/la/les. نکتهٔ مهم: برای بیان سلیقه همیشه از le/la/les استفاده کن: «J'aime le cinéma» (سینما را دوست دارم).</div></div>
+</div>
+
+<!-- ===================== A0 : FAMILLE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>La famille <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.6pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>le père</td><td class="fa">پدر</td><td>la mère</td><td class="fa">مادر</td></tr>
+    <tr><td>le frère</td><td class="fa">برادر</td><td>la sœur</td><td class="fa">خواهر</td></tr>
+    <tr><td>le fils</td><td class="fa">پسر (فرزند)</td><td>la fille</td><td class="fa">دختر (فرزند)</td></tr>
+    <tr><td>le grand-père</td><td class="fa">پدربزرگ</td><td>la grand-mère</td><td class="fa">مادربزرگ</td></tr>
+    <tr><td>le mari</td><td class="fa">شوهر</td><td>la femme</td><td class="fa">همسر (زن)</td></tr>
+    <tr><td>les parents</td><td class="fa">والدین</td><td>les enfants</td><td class="fa">بچه‌ها</td></tr></table>
+
+  <div class="card vocab"><h3>Présenter sa famille (phrases A0)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>C'est <span class="key">mon</span> père. Il s'appelle Reza.</li>
+      <li>C'est <span class="key">ma</span> mère. Elle s'appelle Mina.</li>
+      <li>J'ai <span class="key">un</span> frère et <span class="key">une</span> sœur.</li>
+    </ul></div>
+
+  <div class="card vocab"><h3>Situation familiale</h3>
+    <span class="chip">célibataire مجرد</span><span class="chip">marié(e) متأهل</span>
+    <span class="chip">divorcé(e) مطلقه</span><span class="chip">veuf / veuve بیوه</span></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">معرفی خانواده</div>
+    <div class="fa">«C'est mon père» یعنی «این پدرِ من است». «J'ai un frère et une sœur» یعنی «یک برادر و یک خواهر دارم». وضعیت تأهل: مجرد، متأهل، مطلقه، بیوه.</div></div>
+</div>
+
+<!-- ===================== A0 : GOÛTS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication · Niveau A0</div>
+    <h1>Exprimer ses goûts <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>L'échelle des goûts</h3>
+    <table style="font-size:10.8pt;"><tr><th style="background:var(--dia)">J'adore ❤️❤️</th><th style="background:var(--dia)">J'aime ❤️</th><th style="background:var(--dia)">Je n'aime pas 💔</th><th style="background:var(--dia)">Je déteste ✖️</th></tr>
+      <tr><td>la musique</td><td>le cinéma</td><td>le sport</td><td>la pluie</td></tr></table>
+    <p style="margin-top:7px;"><b>Structure :</b> <i>J'aime + <span class="key">le / la / les</span> + nom.</i></p></div>
+
+  <div class="card dia"><h3>Petit dialogue A0</h3>
+    <div class="dlg"><b class="A">— Tu aimes le sport ?</b></div>
+    <div class="dlg"><b class="B">— Non, je n'aime pas le sport. J'aime la musique.</b></div>
+    <div class="dlg"><b class="A">— Moi aussi ! J'adore la musique.</b></div></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">بیان سلیقه</div>
+    <div class="fa">«J'adore» (عاشقشم) ← «J'aime» (دوست دارم) ← «Je n'aime pas» (دوست ندارم) ← «Je déteste» (متنفرم). ساختار: J'aime + le/la/les + اسم. مثال گفتگو: — ورزش دوست داری؟ — نه، دوست ندارم؛ موسیقی دوست دارم. — من هم! عاشق موسیقی‌ام.</div></div>
+</div>
+
+<!-- ===================== A1 : VERBES -ER ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Niveau A1</div>
+    <h1>Les verbes en <span class="serif" style="font-style:italic">-er</span> au présent <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">90 % des verbes français se terminent en <i>-er</i> et suivent <b>le même modèle</b>. Apprends-le une fois, utilise-le partout.</p>
+
+  <div class="two">
+    <div><table class="tv"><tr><th>Terminaison</th><th>AIMER</th></tr>
+      <tr><td>je → <span class="hl">-e</span></td><td>j'aim<span class="hl">e</span></td></tr>
+      <tr><td>tu → <span class="hl">-es</span></td><td>tu aim<span class="hl">es</span></td></tr>
+      <tr><td>il/elle → <span class="hl">-e</span></td><td>il aim<span class="hl">e</span></td></tr>
+      <tr><td>nous → <span class="hl">-ons</span></td><td>nous aim<span class="hl">ons</span></td></tr>
+      <tr><td>vous → <span class="hl">-ez</span></td><td>vous aim<span class="hl">ez</span></td></tr>
+      <tr><td>ils → <span class="hl">-ent</span></td><td>ils aim<span class="hl">ent</span></td></tr></table></div>
+    <div><div class="card verbe" style="margin-top:0;"><h3>Verbes utiles (même modèle)</h3>
+      <span class="chip">habiter</span><span class="chip">travailler</span><span class="chip">aimer</span>
+      <span class="chip">détester</span><span class="chip">adorer</span><span class="chip">regarder</span>
+      <span class="chip">écouter</span><span class="chip">jouer</span><span class="chip">parler</span>
+      <span class="chip">étudier</span></div>
+      <div class="tip"><span class="star">À retenir :</span> on enlève <b>-er</b> (le radical) et on ajoute la terminaison. <i>travaill<u>er</u> → je travaille.</i></div></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل‌های گروه اول (-er)</div>
+    <div class="fa">بیشتر فعل‌های فرانسوی به -er ختم می‌شوند و همگی یک الگو دارند: ریشه را بگیر (مثلاً aim از aimer) و پایانه‌ها را اضافه کن: -e، -es، -e، -ons، -ez، -ent. اگر یکی را یاد بگیری، صدها فعل را می‌سازی.</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>Prononcer les <span class="serif" style="font-style:italic">-er</span> &amp; les liaisons <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. Le piège des terminaisons muettes</h3>
+    <p><i>je parle · tu parles · il parle · ils parlent</i> → on entend <b>la même chose</b> : [parl] !</p>
+    <ul class="clean" style="margin-top:5px;"><li>Muets : <span class="key">-e, -es, -ent</span></li>
+      <li>On entend : <span class="key">-ons</span> [ɔ̃] (nous) et <span class="key">-ez</span> [e] (vous)</li></ul></div>
+
+  <div class="card phon"><h3>2. Les liaisons avec les déterminants</h3>
+    <p>Devant une voyelle, on lie le déterminant au nom :</p>
+    <ul class="clean" style="margin-top:5px;">
+      <li>les_amis → [le<span class="key">z</span>ami] · des_enfants → [de<span class="key">z</span>ɑ̃fɑ̃]</li>
+      <li>un_ami → [œ̃<span class="key">n</span>ami] · mon_ami → [mɔ̃<span class="key">n</span>ami]</li>
+      <li>deux_enfants → [dø<span class="key">z</span>ɑ̃fɑ̃]</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ</div>
+    <div class="fa">پایانه‌های -e، -es و -ent تلفظ نمی‌شوند؛ پس je parle، tu parles و ils parlent هر سه یکسان شنیده می‌شوند. فقط -ons (نوس) و -ez (وه) شنیده می‌شوند. وقتی اسم با صدادار شروع شود، حرفِ آخرِ تعیین‌کننده به آن می‌چسبد: les amis → لِزَمی.</div></div>
+</div>
+
+<!-- ===================== A1 : POSSESSIFS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Les adjectifs possessifs <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils s'accordent avec <b>l'objet possédé</b>, pas avec la personne qui possède.</p>
+
+  <table class="tg" style="font-size:10.4pt;"><tr><th>Personne</th><th>masc.</th><th>fém.</th><th>pluriel</th></tr>
+    <tr><td>je</td><td><span class="hl">mon</span> père</td><td><span class="hl">ma</span> mère</td><td><span class="hl">mes</span> parents</td></tr>
+    <tr><td>tu</td><td><span class="hl">ton</span> frère</td><td><span class="hl">ta</span> sœur</td><td><span class="hl">tes</span> amis</td></tr>
+    <tr><td>il/elle</td><td><span class="hl">son</span> fils</td><td><span class="hl">sa</span> fille</td><td><span class="hl">ses</span> enfants</td></tr>
+    <tr><td>nous</td><td><span class="hl">notre</span> maison</td><td><span class="hl">notre</span> ville</td><td><span class="hl">nos</span> voisins</td></tr>
+    <tr><td>vous</td><td><span class="hl">votre</span> quartier</td><td><span class="hl">votre</span> rue</td><td><span class="hl">vos</span> idées</td></tr>
+    <tr><td>ils/elles</td><td><span class="hl">leur</span> père</td><td><span class="hl">leur</span> mère</td><td><span class="hl">leurs</span> enfants</td></tr></table>
+
+  <div class="card gram"><h3>2 pièges à connaître</h3>
+    <ul class="clean">
+      <li><b>son / sa</b> = « his » <u>et</u> « her ». L'accord suit le nom : <i>sa mère</i> (la mère de Marc OU de Léa).</li>
+      <li>Devant une voyelle, on dit <b>mon / ton / son</b> même au féminin : <i><span class="key">mon</span> amie</i> (pas « ma amie »).</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">صفات ملکی</div>
+    <div class="fa">صفت ملکی با چیزِ متعلق مطابقت می‌کند، نه با صاحبِ آن: mon (مذکر)، ma (مؤنث)، mes (جمع). نکته: son/sa هم «مالِ او (مرد)» و هم «مالِ او (زن)» است. پیش از صدادار حتی برای مؤنث mon/ton/son به‌کار می‌رود: mon amie.</div></div>
+</div>
+
+<!-- ===================== A1 : PROFESSIONS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Grammaire + Vocabulaire · Niveau A1</div>
+    <h1>Masculin / féminin des professions <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.4pt;"><tr><th>Règle</th><th>Masculin</th><th>Féminin</th><th>فارسی</th></tr>
+    <tr><td>+ e</td><td>un étudiant</td><td>une étudiant<span class="hl">e</span></td><td class="fa">دانشجو</td></tr>
+    <tr><td>+ e</td><td>un avocat</td><td>une avocat<span class="hl">e</span></td><td class="fa">وکیل</td></tr>
+    <tr><td>-eur → -euse</td><td>un vend<span class="hl">eur</span></td><td>une vend<span class="hl">euse</span></td><td class="fa">فروشنده</td></tr>
+    <tr><td>-teur → -trice</td><td>un ac<span class="hl">teur</span></td><td>une ac<span class="hl">trice</span></td><td class="fa">بازیگر</td></tr>
+    <tr><td>-ier → -ière</td><td>un infirm<span class="hl">ier</span></td><td>une infirm<span class="hl">ière</span></td><td class="fa">پرستار</td></tr>
+    <tr><td>identique</td><td>un médecin</td><td>une médecin</td><td class="fa">پزشک</td></tr>
+    <tr><td>identique</td><td>un professeur</td><td>une professeur(e)</td><td class="fa">معلم</td></tr></table>
+
+  <div class="card vocab"><h3>Structure pour parler du travail</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Il <span class="key">est</span> ingénieur. (pas d'article avec <i>être</i> + métier)</li>
+      <li>Elle <span class="key">travaille</span> dans un hôpital / dans une école.</li>
+      <li>Je <span class="key">suis</span> étudiant(e) en français.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">شغل‌ها (مذکر/مؤنث)</div>
+    <div class="fa">برای مؤنث‌کردن شغل معمولاً «e» اضافه می‌شود؛ گاهی پایانه تغییر می‌کند: -eur←-euse، -teur←-trice، -ier←-ière. نکته: با فعل être حرف تعریف نمی‌آید: «Il est ingénieur» (او مهندس است).</div></div>
+</div>
+
+<!-- ===================== A1 : VOCAB LIEUX/LOISIRS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A1</div>
+    <h1>Les lieux &amp; les loisirs (2) <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Les lieux où l'on habite / sort</h3>
+    <span class="chip">la ville شهر</span><span class="chip">le quartier محله</span><span class="chip">la rue خیابان</span>
+    <span class="chip">le centre-ville مرکز شهر</span><span class="chip">la campagne روستا/طبیعت</span>
+    <span class="chip">l'immeuble ساختمان</span><span class="chip">l'appartement آپارتمان</span>
+    <span class="chip">la maison خانه</span><span class="chip">le parc پارک</span></div>
+
+  <div class="card vocab"><h3>Les loisirs (2) — avec des verbes</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>écouter <b>de la</b> musique &nbsp;<span class="small">گوش‌دادن به موسیقی</span></li>
+      <li>regarder <b>un</b> film / <b>une</b> série &nbsp;<span class="small">تماشای فیلم/سریال</span></li>
+      <li>jouer <b>au</b> foot / <b>au</b> tennis &nbsp;<span class="small">فوتبال/تنیس بازی کردن</span></li>
+      <li>faire <b>du</b> sport / <b>du</b> vélo &nbsp;<span class="small">ورزش/دوچرخه‌سواری</span></li></ul></div>
+
+  <div class="tip"><span class="star">Note A1 :</span> <i>aimer + nom</i> → article défini (<i>j'aime <b>le</b> sport</i>). <i>aimer + verbe</i> → infinitif (<i>j'aime <b>jouer</b> au foot</i>).</div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">مکان‌ها و سرگرمی‌ها</div>
+    <div class="fa">نکتهٔ مهم: بعد از aimer اگر اسم بیاید با حرف تعریف معین («j'aime le sport»)، و اگر فعل بیاید به‌صورت مصدر («j'aime jouer au foot»).</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Présenter sa famille <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Inès :</b> Tu habites où, exactement ?</div>
+    <div class="dlg"><b class="B">Karim :</b> J'habite à Marseille, dans un appartement au centre-ville. Et toi ?</div>
+    <div class="dlg"><b class="A">Inès :</b> Moi, j'habite à la campagne, dans une petite maison. C'est calme. Tu habites avec ta famille ?</div>
+    <div class="dlg"><b class="B">Karim :</b> Oui, avec mes parents et ma sœur. Mon père est médecin et ma mère est professeure. Ma sœur, elle, est encore étudiante.</div>
+    <div class="dlg"><b class="A">Inès :</b> Et qu'est-ce que vous aimez faire ensemble ?</div>
+    <div class="dlg"><b class="B">Karim :</b> On adore le cinéma. Le week-end, on regarde des films et on écoute de la musique. Je n'aime pas trop le sport, mais ma sœur, elle, adore le tennis.</div>
+    <div class="dlg"><b class="A">Inès :</b> Super ! Ma famille aussi aime les sorties. On habite près d'un parc, alors on fait du vélo le dimanche.</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>اینس:</b> دقیقاً کجا زندگی می‌کنی؟<br>
+      <b>کریم:</b> در مارسی، در یک آپارتمان در مرکز شهر. تو چطور؟<br>
+      <b>اینس:</b> من در طبیعت، در یک خانهٔ کوچک زندگی می‌کنم؛ آرام است. با خانواده‌ات زندگی می‌کنی؟<br>
+      <b>کریم:</b> بله، با پدر و مادر و خواهرم. پدرم پزشک است و مادرم معلم. خواهرم هنوز دانشجوست.<br>
+      <b>اینس:</b> با هم دوست دارید چه کار کنید؟<br>
+      <b>کریم:</b> عاشق سینماییم. آخر هفته فیلم می‌بینیم و موسیقی گوش می‌دهیم. من ورزش را خیلی دوست ندارم، اما خواهرم عاشق تنیس است.<br>
+      <b>اینس:</b> عالی! خانوادهٔ من هم گردش را دوست دارد. نزدیک یک پارک زندگی می‌کنیم، پس یکشنبه‌ها دوچرخه‌سواری می‌کنیم.
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Ma famille et moi <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Bonjour ! Je m'appelle Léa et j'habite à Lyon, en France. J'ai vingt-cinq ans et j'habite dans un petit appartement, au centre-ville.</p>
+    <p>Dans ma famille, nous sommes quatre : mon père, ma mère, mon frère et moi. Mon père s'appelle Marc ; il est médecin et il travaille à l'hôpital. Ma mère s'appelle Sophie ; elle est professeure de musique. Mon frère a dix-huit ans et il est étudiant.</p>
+    <p>Moi, j'aime beaucoup le cinéma et la musique. Le week-end, j'écoute de la musique et je regarde des films avec mes amis. Je n'aime pas le sport, mais j'adore les voyages. Et vous, comment est votre famille ?</p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">سلام! اسم من لئا است و در لیون، در فرانسه، زندگی می‌کنم. بیست‌وپنج سال دارم و در یک آپارتمان کوچک در مرکز شهر زندگی می‌کنم. در خانوادهٔ ما چهار نفریم: پدر، مادر، برادرم و من. پدرم مارک نام دارد؛ پزشک است و در بیمارستان کار می‌کند. مادرم سوفی نام دارد؛ معلم موسیقی است. برادرم هجده سال دارد و دانشجوست. من سینما و موسیقی را خیلی دوست دارم. آخر هفته موسیقی گوش می‌دهم و با دوستانم فیلم می‌بینم. ورزش را دوست ندارم، اما عاشق سفرم. خانوادهٔ شما چگونه است؟</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Mon quartier et ma famille <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Je m'appelle Hoda et j'habite à Téhéran, dans un grand quartier au nord de la ville. J'aime beaucoup mon quartier parce qu'il y a un parc, des cafés et une petite librairie. Le matin, je travaille à la maison, et l'après-midi, je vais souvent au café pour lire ou pour étudier le français.</p>
+    <p>Ma famille n'est pas très grande. Mon père est ingénieur et ma mère est infirmière ; ils habitent près de chez moi. J'ai aussi une sœur qui s'appelle Sara. Elle est mariée et elle a deux enfants. Le vendredi, toute la famille mange ensemble chez mes parents : c'est mon moment préféré de la semaine.</p>
+    <p>J'adore la musique et le cinéma, mais je n'aime pas beaucoup le sport. Le soir, j'écoute de la musique et, quelquefois, je regarde un film français pour pratiquer la langue. Pour moi, apprendre le français, ce n'est pas seulement étudier : c'est aussi découvrir une autre culture.</p>
+  </div>
+
+  <div class="tip"><span class="star">Mots qui « relient » (A1+) :</span> <i>parce que</i> (cause), <i>mais</i> (opposition), <i>aussi</i> (ajout), <i>souvent / quelquefois</i> (fréquence), <i>le matin / l'après-midi / le soir</i> (moments).</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">اسم من هدا است و در تهران، در محله‌ای بزرگ در شمال شهر زندگی می‌کنم. محله‌ام را خیلی دوست دارم، چون یک پارک، چند کافه و یک کتاب‌فروشی کوچک دارد. صبح‌ها در خانه کار می‌کنم و بعدازظهرها اغلب به کافه می‌روم تا کتاب بخوانم یا فرانسوی یاد بگیرم. خانوادهٔ من خیلی بزرگ نیست. پدرم مهندس و مادرم پرستار است؛ نزدیک من زندگی می‌کنند. خواهری هم دارم به نام سارا. او متأهل است و دو فرزند دارد. جمعه‌ها تمام خانواده در خانهٔ والدینم با هم غذا می‌خوریم؛ این بهترین لحظهٔ هفتهٔ من است. عاشق موسیقی و سینما هستم، اما ورزش را زیاد دوست ندارم. شب‌ها موسیقی گوش می‌دهم و گاهی یک فیلم فرانسوی می‌بینم تا زبان را تمرین کنم. برای من، یادگیری فرانسوی فقط درس‌خواندن نیست؛ کشف یک فرهنگ دیگر هم هست.</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Rédiger un e-mail de présentation <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+  <p class="small">Un format plus « pro » : se présenter dans un message clair et structuré (≈ 80 mots).</p>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt; line-height:1.7;">
+    <p><b>Objet :</b> Présentation</p>
+    <p>Bonjour,</p>
+    <p>Je m'appelle Hoda Khedmati. J'habite à Téhéran, en Iran, dans un appartement au centre-ville. Je suis étudiante et je travaille aussi à la maison. Dans ma famille, nous sommes cinq.</p>
+    <p>J'apprends le français parce que j'adore la culture française et le cinéma. Le soir, j'écoute de la musique et je regarde des films pour pratiquer.</p>
+    <p>Au plaisir d'échanger avec vous,<br>Hoda</p>
+  </div>
+
+  <div class="card vocab"><h3>Le plan à réutiliser</h3>
+    <ul class="clean"><li><span class="num">1</span>Identité + lieu d'habitation</li>
+      <li><span class="num">2</span>Profession / situation</li>
+      <li><span class="num">3</span>Famille (en une phrase)</li>
+      <li><span class="num">4</span>Goûts + <i>pourquoi</i> (parce que…)</li>
+      <li><span class="num">5</span>Formule de fin polie</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ ایمیل</div>
+    <div class="fa">موضوع: معرفی. سلام، اسم من هدا خدمتی است. در تهران، ایران، در آپارتمانی در مرکز شهر زندگی می‌کنم. دانشجو هستم و در خانه هم کار می‌کنم. در خانواده پنج نفریم. فرانسوی یاد می‌گیرم چون عاشق فرهنگ فرانسه و سینما هستم. شب‌ها موسیقی گوش می‌دهم و برای تمرین فیلم می‌بینم. مشتاق گفتگو با شما، هدا.</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Parler de soi pendant 1 minute <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Le monologue guidé (4 étapes)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>J'habite…</b> où, dans quel type de logement.</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Ma famille…</b> combien de personnes, professions.</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>J'aime / je n'aime pas…</b> + <i>parce que</i>.</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Le week-end / le soir…</b> ce que je fais.</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux)</h3>
+    <p>Tu rencontres un voisin. Pose-lui 5 questions et réponds aux siennes :</p>
+    <ul class="clean"><li>Vous habitez ici depuis longtemps ?</li><li>Vous travaillez dans le quartier ?</li>
+      <li>Vous avez des enfants ?</li><li>Qu'est-ce que vous aimez faire le week-end ?</li>
+      <li>Il y a un bon café près d'ici ?</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت دربارهٔ خودت، این چهار گام را دنبال کن: ۱) کجا و در چه نوع خانه‌ای زندگی می‌کنی ۲) خانواده‌ات ۳) چه چیزهایی را دوست داری/نداری و چرا ۴) آخر هفته یا شب‌ها چه می‌کنی. سپس نقشِ «همسایه» را با یک نفر تمرین کن و ۵ سؤال بپرس.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie en 3 temps</h3>
+    <ul class="clean"><li><b>1. Regarde d'abord</b> le titre, les chiffres, les mots connus — sans tout lire.</li>
+      <li><b>2. Lis les questions</b> avant le texte : tu sais quoi chercher.</li>
+      <li><b>3. Souligne</b> l'info utile (heure, lieu, prix, nom).</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>LE CAFÉ DES AMIS</b> — Nouveau dans votre quartier !</p>
+    <p>Adresse : 12, rue Victor Hugo, à Nice.<br>
+    Ouvert du lundi au samedi, de 8 h à 20 h.<br>
+    Café, thé, gâteaux et petits plats. Wi-Fi gratuit.<br>
+    Téléphone : 04 93 88 76 21.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. Comment s'appelle le café ?</li>
+        <li>2. Dans quelle ville est-il ?</li><li>3. Est-il ouvert le dimanche ?</li>
+        <li>4. À quelle heure ferme-t-il ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. Le Café des Amis.</li>
+        <li>2. À Nice.</li><li>3. Non (lundi → samedi).</li><li>4. À 20 h.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: اول عنوان، اعداد و کلمات آشنا را نگاه کن؛ بعد سؤال‌ها را بخوان تا بدانی دنبال چه می‌گردی؛ سپس اطلاعات مفید (ساعت، مکان، قیمت، نام) را زیر آن خط بکش. در متن نمونه: نام کافه «Le Café des Amis»، شهر «نیس»، یکشنبه‌ها بسته است، ساعت ۲۰ تعطیل می‌شود.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Cannes &amp; les festivals francophones</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">Cannes, ville du cinéma.</span> Chaque année, au mois de mai, la ville de Cannes (sur la Côte d'Azur) accueille un grand festival de cinéma. Le prix le plus célèbre s'appelle la <b>Palme d'or</b>. Des acteurs et des réalisateurs du monde entier montent les marches du Palais.</p>
+    <p>Mais le français vit aussi dans d'autres festivals : le festival du film de montagne de <b>Banff</b>, au Canada, le <b>Montreux Jazz Festival</b>, en Suisse, et de nombreux événements à <b>Bruxelles</b>, en Belgique. Le cinéma et la musique sont de belles portes d'entrée vers la langue française.</p>
+  </div>
+
+  <table class="tc" style="font-size:10.4pt; margin-top:6px;"><tr><th>Festival</th><th>Lieu</th><th>Domaine</th></tr>
+    <tr><td>Festival de Cannes</td><td>Cannes (France)</td><td>Cinéma</td></tr>
+    <tr><td>Festival de Banff</td><td>Banff (Canada)</td><td>Cinéma de montagne</td></tr>
+    <tr><td>Montreux Jazz</td><td>Montreux (Suisse)</td><td>Musique</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ</div>
+    <div class="fa">هر سال در ماه مه، شهر کن (در ساحل لاجوردی فرانسه) میزبان جشنوارهٔ بزرگ سینمایی است و مهم‌ترین جایزهٔ آن «نخل طلا» نام دارد. زبان فرانسوی در جشنواره‌های دیگری هم حضور دارد: جشنوارهٔ فیلم کوهستان «بَنف» در کانادا، جشنوارهٔ جاز «مونترو» در سوئیس و رویدادهای فراوان در بروکسلِ بلژیک. سینما و موسیقی، دروازه‌های زیبایی برای ورود به زبان فرانسوی‌اند.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Maîtrise d'abord le modèle <i>-er</i> + <i>être / avoir</i> : tu construis presque tout.</li>
+      <li>Mémorise des <b>blocs</b> tout faits : <i>« j'habite à… », « j'aime… parce que… »</i>.</li>
+      <li>Parle à voix haute 3 minutes par jour sur toi, ta famille, tes goûts.</li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Toujours vérifier : article + accord (féminin, pluriel).</li>
+      <li>Relie tes phrases avec <i>et, mais, parce que, aussi</i> → ton texte passe de A0 à A1+.</li>
+      <li>Réutilise les plans (texte suivi, e-mail) comme des <b>moules</b>.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge de niveau à la fois.</li>
+      <li>Couleur = type d'info : reprends ce code dans tes propres fiches.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت‌کردن: ابتدا الگوی فعل‌های -er و être/avoir را مسلط شو و «بلوک‌»های آماده را حفظ کن. برای نوشتن: حرف تعریف و مطابقت را بررسی کن و جمله‌ها را با et، mais، parce que، aussi به هم وصل کن تا از A0 به A1+ برسی. در جلسات ۱۵ دقیقه‌ای و فقط روی یک سطح کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li>☐ Dire où j'habite (ville, pays, logement).</li>
+      <li>☐ Présenter ma famille et les professions.</li>
+      <li>☐ Exprimer mes goûts et dire <i>pourquoi</i>.</li>
+      <li>☐ Conjuguer un verbe en <i>-er</i> sans erreur.</li>
+      <li>☐ Utiliser les possessifs (mon/ma/mes…).</li>
+      <li>☐ Lire une petite annonce et répondre (DELF).</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.4pt;"><li>1. Conjugue <i>travailler</i> : je / nous / ils.</li>
+        <li>2. <i>un / une / des</i> : ___ sœur, ___ amis, ___ frère.</li>
+        <li>3. Possessif : ___ (je) mère, ___ (il) enfants.</li>
+        <li>4. Féminin : acteur, infirmier, vendeur.</li>
+        <li>5. <i>aimer + ?</i> : « J'aime ___ cinéma. »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.4pt;"><li>1. je travaille · nous travaillons · ils travaillent</li>
+        <li>2. une sœur · des amis · un frère</li>
+        <li>3. ma mère · ses enfants</li>
+        <li>4. actrice · infirmière · vendeuse</li>
+        <li>5. le cinéma</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:16px; padding:16px; border-radius:12px;
+     background:linear-gradient(120deg,#1C7C73,#1D3557); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:16pt;">Unité 2 terminée — niveau A1+ atteint ✓</div>
+    <div style="font-size:10.4pt; margin-top:4px;">آفرین! واحد دوم تمام شد و به سطح A1+ رسیدی.</div>
+  </div>
+</div>
+
+</body>
+</html>
