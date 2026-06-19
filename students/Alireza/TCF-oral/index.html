@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پرونده‌ی علیرضا — TCF Canada B2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy:#1e3a5f;--accent:#c4502d;--accent2:#2e7bb5;--purple:#7a5ba8;
+    --green:#2e8b6b;--gold:#b07a4a;
+    --paper:#f4f3f5;--warm:#ebeaed;--cream:#f9f8fa;
+    --ink:#2c2a26;--gray:#8a8275;--line:#e2e1e3;--white:#fcfbfd;
+  }
+  body{font-family:'Estedad',Arial,sans-serif;background:var(--paper);
+    background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(196,80,45,.04) 31px,rgba(196,80,45,.04) 32px);
+    color:var(--ink);min-height:100vh;padding:24px 16px 60px;}
+  .wrap{max-width:680px;margin:0 auto;}
+
+  /* لاک */
+  #lockScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;gap:20px;}
+  .lock-icon{font-size:52px;}
+  .lock-title{font-size:22px;font-weight:700;color:var(--navy);}
+  .lock-sub{font-size:13.5px;color:var(--gray);}
+  .lock-input{font-family:'Roboto',serif;font-size:22px;letter-spacing:8px;text-align:center;
+    border:2px solid var(--line);border-radius:12px;padding:14px 20px;width:180px;
+    outline:none;background:var(--white);color:var(--navy);transition:border-color .2s;}
+  .lock-input:focus{border-color:var(--accent);}
+  .lock-btn{font-family:'Estedad',sans-serif;font-size:15px;font-weight:700;
+    background:var(--accent);color:#fff;border:none;border-radius:30px;
+    padding:13px 36px;cursor:pointer;transition:all .2s;}
+  .lock-btn:hover{background:#a04030;}
+  .lock-err{color:var(--accent);font-size:13px;min-height:18px;}
+
+  /* داشبورد */
+  #dashboard{display:none;}
+  .header{background:linear-gradient(135deg,#8a2040,var(--accent));color:#fff;
+    padding:28px;border-radius:18px;margin-bottom:22px;
+    box-shadow:0 12px 30px rgba(196,80,45,.25);position:relative;overflow:hidden;}
+  .header::after{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;
+    background:rgba(255,255,255,.07);border-radius:50%;}
+  .header .tag{font-size:11px;color:rgba(255,255,255,.7);font-weight:700;letter-spacing:2px;margin-bottom:8px;}
+  .header h1{font-size:23px;font-weight:700;margin-bottom:5px;}
+  .header .sub{font-size:13.5px;opacity:.9;line-height:1.9;}
+  .urgency{display:inline-block;background:rgba(255,255,255,.15);border-radius:20px;
+    padding:5px 16px;font-size:12px;font-weight:700;margin-top:10px;}
+
+  /* کارت‌های منو */
+  .menu-grid{display:grid;gap:12px;}
+  .menu-card{background:var(--white);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;text-decoration:none;color:var(--ink);
+    display:flex;align-items:center;gap:16px;transition:all .2s;
+    box-shadow:0 4px 14px rgba(31,58,95,.04);}
+  .menu-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,58,95,.1);border-color:var(--accent);}
+  .mc-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;
+    justify-content:center;font-size:24px;flex-shrink:0;}
+  .mc-body{flex:1;}
+  .mc-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .mc-desc{font-size:12.5px;color:var(--gray);line-height:1.8;}
+  .mc-arrow{font-size:18px;color:var(--line);flex-shrink:0;}
+  .menu-card:hover .mc-arrow{color:var(--accent);}
+
+  /* بخش‌بندی */
+  .section-label{font-size:12px;font-weight:700;color:var(--gray);
+    letter-spacing:1.5px;margin:20px 0 10px;padding-right:4px;}
+
+  .footer{text-align:center;margin-top:30px;color:var(--gray);font-size:12px;line-height:2;}
+  .footer b{color:var(--accent);}
+  .logout-btn{font-family:'Estedad',sans-serif;font-size:12.5px;color:var(--gray);
+    background:none;border:1px solid var(--line);border-radius:8px;padding:6px 14px;
+    cursor:pointer;margin-top:10px;display:inline-block;}
+  .logout-btn:hover{color:var(--accent);border-color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="../index.html" style="display:inline-block;margin-bottom:18px;color:var(--accent);font-size:13px;text-decoration:none;border:1px solid var(--line);background:var(--cream);padding:8px 16px;border-radius:8px;">← صفحه علیرضا</a>
+
+      <div class="lock-title">پرونده‌ی اختصاصی</div>
+    <div class="lock-sub">علیرضا · TCF Canada B2</div>
+    <input type="password" class="lock-input" id="pwInput" placeholder="••••"
+      maxlength="6" autocomplete="off" onkeydown="if(event.key==='Enter')checkPw()">
+    <button class="lock-btn" onclick="checkPw()">ورود</button>
+    <div class="lock-err" id="lockErr"></div>
+  </div>
+
+  <!-- ═══ داشبورد ═══ -->
+  <div id="dashboard">
+    <div class="header">
+      <div class="tag">DOSSIER PRIVÉ · INTENSIF</div>
+      <h1>علیرضا 👋</h1>
+      <div class="sub">مسیر فشردهٔ TCF Canada B2 — همه‌چیز اینجاست.</div>
+      <div class="urgency">⏰ هدف: B2 در چند ماه آینده</div>
+    </div>
+
+    <div class="section-label">🎙️ Expression Orale</div>
+
+    <div class="menu-grid">
+      <a class="menu-card" href="TCF-oral/tache-3/trainer.html">
+        <div class="mc-icon" style="background:rgba(196,80,45,.1)">🎙️</div>
+        <div class="mc-body">
+          <div class="mc-title">Live Trainer — تمرین زنده Task 3</div>
+          <div class="mc-desc">موضوع انتخاب کن → تایمر ۴:۳۰ → راهنمای گام‌به‌گام → تیک. دقیقاً مثل آزمون.</div>
+        </div>
+        <div class="mc-arrow">←</div>
+      </a>
+
+      <a class="menu-card" href="TCF-oral/tache-3/index.html">
+        <div class="mc-icon" style="background:rgba(46,123,181,.1)">🗣️</div>
+        <div class="mc-body">
+          <div class="mc-title">Expression Orale — Tâche 3</div>
+          <div class="mc-desc">الگوی رسمی + do/don't + ۳ موضوع با استدلال کامل</div>
+        </div>
+        <div class="mc-arrow">←</div>
+      </a>
+
+      <a class="menu-card" href="TCF-oral/tache-1/index.html">
+        <div class="mc-icon" style="background:rgba(122,91,168,.1)">🎤</div>
+        <div class="mc-body">
+          <div class="mc-title">Expression Orale — Tâche 1</div>
+          <div class="mc-desc">داشبورد ۷ سؤال + ۱۰۱ خطا و اصلاح</div>
+        </div>
+        <div class="mc-arrow">←</div>
+      </a>
+    </div>
+
+    <div class="section-label">🎯 استراتژی و کوچینگ</div>
+
+    <div class="menu-grid">
+      <a class="menu-card" href="TCF-coach/index.html">
+        <div class="mc-icon" style="background:rgba(176,80,111,.1)">🎯</div>
+        <div class="mc-body">
+          <div class="mc-title">کوچ TCF B2 — مسیر کامل</div>
+          <div class="mc-desc">تشخیص + اسکلت ذهنی رفلکسی + ۱۵ موضوع + تایمر + برنامهٔ روزانه</div>
+        </div>
+        <div class="mc-arrow">←</div>
+      </a>
+    </div>
+
+    <div class="section-label">✍️ Expression Écrite</div>
+
+    <div class="menu-grid">
+      <a class="menu-card" href="TCF-ecrit/index.html">
+        <div class="mc-icon" style="background:rgba(46,139,107,.1)">✍️</div>
+        <div class="mc-body">
+          <div class="mc-title">Expression Écrite — تحلیل متن B2</div>
+          <div class="mc-desc">ساختار + متن با هایلایت + جعبهٔ ابزار + سؤال دوم با نقشه</div>
+        </div>
+        <div class="mc-arrow">←</div>
+      </a>
+    </div>
+
+    <div class="footer">
+      پرونده‌ی اختصاصی · <b>Français avec Hoda</b><br>
+      <button class="logout-btn" onclick="logout()">🔒 خروج</button>
+    </div>
+  </div>
+
+</div>
+<script>
+  const PW = 'X12X';
+  function checkPw(){
+    const v = document.getElementById('pwInput').value.trim().toUpperCase();
+    if(v === PW){
+      document.getElementById('lockScreen').style.display='none';
+      document.getElementById('dashboard').style.display='block';
+      sessionStorage.setItem('kaveh_auth','1');
+    } else {
+      document.getElementById('lockErr').textContent='رمز اشتباه است.';
+      document.getElementById('pwInput').value='';
+      setTimeout(()=>document.getElementById('lockErr').textContent='',2000);
+    }
+  }
+  function logout(){
+    sessionStorage.removeItem('kaveh_auth');
+    document.getElementById('dashboard').style.display='none';
+    document.getElementById('lockScreen').style.display='flex';
+    document.getElementById('pwInput').value='';
+  }
+  if(sessionStorage.getItem('kaveh_auth')==='1'){
+    document.getElementById('lockScreen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+  }
+</script>
+
+</body>
+</html>
