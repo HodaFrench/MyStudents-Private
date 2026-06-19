@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mehr Afarin — Français avec Hoda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --pink:       #c2185b;
+      --pink-deep:  #880e4f;
+      --pink-soft:  #e91e8c;
+      --pink-pale:  #fce4ec;
+      --pink-mist:  #fdf0f5;
+      --paper:      #fdf5f8;
+      --paper-warm: #f9edf3;
+      --cream:      #fff8fb;
+      --ink:        #2c2a26;
+      --gray:       #8a8275;
+      --line:       #f0d9e5;
+      --white:      #fffafe;
+      --navy:       #3d1a2e;
+    }
+
+    body {
+      font-family: 'Estedad', 'Tahoma', sans-serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      line-height: 1.9;
+      min-height: 100vh;
+    }
+
+    /* پس‌زمینه دفترچه‌ای */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: -1;
+      background-image: repeating-linear-gradient(
+        transparent, transparent 31px,
+        rgba(194,24,91,0.08) 31px,
+        rgba(194,24,91,0.08) 32px
+      );
+      pointer-events: none;
+    }
+    body::after {
+      content: "";
+      position: fixed; top: 0; bottom: 0; right: 58px;
+      width: 2px;
+      background: rgba(194,24,91,0.18);
+      z-index: -1; pointer-events: none;
+    }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      padding: 14px 24px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .topbar .logo {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--pink-deep);
+      border: 2px solid var(--pink-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: white;
+    }
+    .topbar h1 {
+      font-family: 'Roboto', serif;
+      font-size: 26px; font-weight: 700;
+      color: var(--pink-deep); letter-spacing: 0.5px;
+    }
+    .topbar .name-fa { display: block; font-size: 14px; color: var(--pink); font-weight: 600; }
+    .topbar .role-fa { display: block; font-size: 12px; color: var(--gray); margin-top: 1px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 48px 24px;
+      position: relative; z-index: 1;
+      transition: min-height 0.5s ease;
+    }
+    .hero.shrink { min-height: auto; padding: 36px 24px 20px; }
+    .hero.hidden { display: none; }
+
+    .hero .welcome {
+      font-size: 13px; color: var(--pink);
+      font-weight: 600; margin-bottom: 20px;
+      letter-spacing: 4px; text-transform: uppercase;
+    }
+    .hero h2 {
+      font-size: 48px; font-weight: 700;
+      margin-bottom: 10px; color: var(--navy); line-height: 1.4;
+    }
+    .hero .sub {
+      font-size: 18px; color: var(--ink);
+      font-weight: 500; margin: 0 auto 10px; max-width: 540px;
+    }
+    .hero .sub-fr {
+      font-family: 'Roboto', serif;
+      font-size: 26px; color: var(--pink-deep);
+      font-weight: 700; letter-spacing: 0.5px;
+      margin: 0 auto 28px; font-style: italic;
+    }
+
+    /* ─── جستجو ─── */
+    .search-box {
+      width: 100%; max-width: 560px;
+      position: relative; margin-bottom: 32px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 18px 56px 18px 22px;
+      font-size: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px; font-family: inherit;
+      background: var(--cream); color: var(--ink);
+      transition: all 0.25s;
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--pink-soft);
+      box-shadow: 0 6px 22px rgba(194,24,91,0.12);
+    }
+    .search-box::before {
+      content: "🔍";
+      position: absolute; left: 21px; top: 50%;
+      transform: translateY(-50%); font-size: 20px; opacity: 0.45;
+    }
+
+    /* ─── کارت‌های دسته‌بندی ─── */
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; max-width: 580px; width: 100%;
+    }
+    .cat-chip {
+      display: flex; align-items: center; gap: 14px;
+      text-align: right;
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 16px; padding: 20px 18px;
+      cursor: pointer; transition: all 0.3s ease;
+      font-family: inherit; position: relative; overflow: hidden;
+    }
+    .cat-chip::before {
+      content: "";
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 4px; background: var(--c, var(--pink));
+      opacity: 0.85; transition: width 0.3s ease;
+    }
+    .cat-chip:hover {
+      border-color: transparent;
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(194,24,91,0.13);
+    }
+    .cat-chip:hover::before { width: 8px; }
+    .cat-chip .chip-mark {
+      flex-shrink: 0; width: 46px; height: 46px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--c, var(--pink));
+      background: var(--pink-mist); border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .cat-chip:hover .chip-mark {
+      background: var(--c, var(--pink)); color: white;
+    }
+    .cat-chip .chip-body { display: flex; flex-direction: column; }
+    .cat-chip .name { font-size: 16px; font-weight: 600; color: var(--navy); line-height: 1.5; }
+    .cat-chip .num { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    /* ─── بخش محتوا ─── */
+    .library {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 24px 80px;
+      display: none;
+    }
+    .library.active { display: block; }
+
+    .lib-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 18px;
+      border-bottom: 2px solid var(--line);
+    }
+    .lib-back {
+      background: var(--pink-pale); border: none;
+      color: var(--pink-deep); font-size: 22px;
+      width: 42px; height: 42px; border-radius: 10px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-family: inherit;
+    }
+    .lib-back:hover { background: var(--pink); color: white; }
+    .lib-title { font-size: 26px; font-weight: 700; color: var(--navy); }
+    .lib-count { font-size: 13px; color: var(--gray); margin-top: 2px; }
+
+    /* ─── کارت محتوا ─── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .content-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 16px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      box-shadow: 0 4px 14px rgba(194,24,91,0.05);
+      transition: all 0.25s ease; display: flex; flex-direction: column;
+    }
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(194,24,91,0.15);
+      border-color: transparent;
+    }
+    .card-thumb {
+      height: 120px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 44px;
+      background: linear-gradient(135deg, var(--pink-pale), var(--pink-mist));
+      position: relative;
+    }
+    .card-level {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--pink); color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; letter-spacing: 1px;
+    }
+    .card-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
+    .card-cat {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+      color: var(--pink); margin-bottom: 6px; text-transform: uppercase;
+    }
+    .card-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.5; margin-bottom: 6px; }
+    .card-title-fr { font-family: 'Roboto', serif; font-size: 13px; color: var(--gray); font-style: italic; margin-bottom: 12px; flex: 1; }
+    .card-go {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; color: var(--pink);
+      margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line);
+    }
+
+    /* ─── نتایج جستجو ─── */
+    .search-results {
+      max-width: 900px; margin: 0 auto; padding: 0 24px 80px;
+      display: none;
+    }
+    .search-results.active { display: block; }
+    .search-results-title { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 20px; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      text-align: center; padding: 28px 20px;
+      border-top: 1px solid var(--line);
+      font-size: 13px; color: var(--gray);
+    }
+    .footer span { color: var(--pink); font-weight: 600; }
+
+    /* ─── scroll up ─── */
+    #scrollBtn {
+      display: none; position: fixed; bottom: 22px; right: 22px;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+      color: white; border: none; padding: 12px 15px;
+      border-radius: 50%; cursor: pointer; font-size: 20px;
+      box-shadow: 0 4px 14px rgba(194,24,91,0.35);
+      z-index: 1000; transition: all 0.3s ease;
+    }
+    #scrollBtn:hover { transform: translateY(-4px); }
+    #scrollBtn.show { display: block; }
+
+    @media (max-width: 640px) {
+      .hero h2 { font-size: 34px; }
+      .cat-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .content-grid { grid-template-columns: 1fr; }
+      .topbar h1 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="logo">💗</div>
+  <div class="tag">
+    <h1>Mehr Afarin</h1>
+    <span class="name-fa">مهرآفرین</span>
+    <span class="role-fa">Français avec Hoda — فضای یادگیری اختصاصی</span>
+  </div>
+</div>
+
+<!-- ─── HERO ─── -->
+<div class="hero" id="hero">
+  <div class="welcome">✦ کتابخانه‌ی اختصاصی تو ✦</div>
+  <h2>سلام مهرآفرین 👋</h2>
+  <p class="sub">همه‌ی فایل‌ها، تمرین‌ها و درس‌هایت اینجاست</p>
+  <p class="sub-fr">Bienvenue dans ta bibliothèque !</p>
+
+  <!-- جستجو -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="جستجو در محتوا..." oninput="handleSearch(this.value)">
+  </div>
+
+  <!-- دسته‌بندی‌ها -->
+  <div class="cat-grid" id="catGrid"></div>
+</div>
+
+<!-- ─── بخش محتوا ─── -->
+<div class="library" id="library">
+  <div class="lib-header">
+    <button class="lib-back" onclick="goHome()">←</button>
+    <div>
+      <div class="lib-title" id="libTitle"></div>
+      <div class="lib-count" id="libCount"></div>
+    </div>
+  </div>
+  <div class="content-grid" id="contentGrid"></div>
+</div>
+
+<!-- ─── نتایج جستجو ─── -->
+<div class="search-results" id="searchResults">
+  <div class="search-results-title" id="searchResultsTitle"></div>
+  <div class="content-grid" id="searchGrid"></div>
+</div>
+
+<div class="footer">
+  <span>Mehr Afarin</span> · Français avec Hoda · © 2025
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ═══════════════════════════════════════
+//  دسته‌بندی‌ها
+// ═══════════════════════════════════════
+const CATEGORIES = [
+  { id: "je-parle",   label: "Je Parle",              icon: "🗣️", color: "#c2185b" },
+  { id: "edito-a1",   label: "Édito A1",              icon: "📘", color: "#e91e8c" },
+  { id: "edito-a2",   label: "Édito A2",              icon: "📙", color: "#ad1457" },
+  { id: "grammaire",  label: "Grammaire en dialogue", icon: "📗", color: "#880e4f" },
+];
+
+// ═══════════════════════════════════════
+//  محتواها — برای هر فایل جدید یک بلوک اضافه کن
+// ═══════════════════════════════════════
+const LESSONS = [
+  // ── Je Parle ──
+  {
+    file: "je-parle/Droit.html",
+    title: "تحصیل در رشته حقوق",
+    titleFr: "Les Études en Droit",
+    category: "je-parle",
+    level: "A2/B1",
+    icon: "⚖️",
+  },
+  {
+    file: "je-parle/perfectionnisme.html",
+    title: "کمال‌گرایی",
+    titleFr: "Le Perfectionnisme",
+    category: "je-parle",
+    level: "A2/B1",
+    icon: "🎯",
+  },
+  {
+    file: "je-parle/Stress.html",
+    title: "استرس",
+    titleFr: "Le Stress",
+    category: "je-parle",
+    level: "A2/B1",
+    icon: "😤",
+  },
+
+  // ── Édito A2 — Unité 1 ──
+  { file: "Edito-A2/Unite-1/Lecon-1/index.html", title: "Unité 1 — Leçon 1", titleFr: "Édito A2", category: "edito-a2", level: "A2", icon: "📙" },
+  { file: "Edito-A2/Unite-1/Lecon-2/index.html", title: "Unité 1 — Leçon 2", titleFr: "Édito A2", category: "edito-a2", level: "A2", icon: "📙" },
+  { file: "Edito-A2/Unite-1/Lecon-3/index.html", title: "Unité 1 — Leçon 3", titleFr: "Édito A2", category: "edito-a2", level: "A2", icon: "📙" },
+  { file: "Edito-A2/Unite-1/Lecon-4/index.html", title: "Unité 1 — Leçon 4", titleFr: "Édito A2", category: "edito-a2", level: "A2", icon: "📙" },
+];
+
+// ═══════════════════════════════════════
+//  منطق صفحه
+// ═══════════════════════════════════════
+let currentCat = null;
+
+function countCat(id) {
+  return LESSONS.filter(l => l.category === id).length;
+}
+
+function buildCatGrid() {
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = CATEGORIES.map(c => `
+    <button class="cat-chip" style="--c:${c.color}" onclick="openCat('${c.id}')">
+      <div class="chip-mark">${c.icon}</div>
+      <div class="chip-body">
+        <span class="name">${c.label}</span>
+        <span class="num">${countCat(c.id)} محتوا</span>
+      </div>
+    </button>
+  `).join('');
+}
+
+function buildCard(lesson) {
+  const cat = CATEGORIES.find(c => c.id === lesson.category);
+  return `
+    <a class="content-card" href="${lesson.file}">
+      <div class="card-thumb" style="background: linear-gradient(135deg, ${cat?.color}22, ${cat?.color}11)">
+        <span style="font-size:44px">${lesson.icon || cat?.icon || '📄'}</span>
+        ${lesson.level ? `<span class="card-level">${lesson.level}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${cat?.label || lesson.category}</div>
+        <div class="card-title">${lesson.title}</div>
+        <div class="card-title-fr">${lesson.titleFr || ''}</div>
+        <div class="card-go">باز کردن <span>←</span></div>
+      </div>
+    </a>
+  `;
+}
+
+function openCat(id) {
+  currentCat = id;
+  const cat = CATEGORIES.find(c => c.id === id);
+  const items = LESSONS.filter(l => l.category === id);
+
+  document.getElementById('hero').classList.add('hidden');
+  document.getElementById('searchResults').classList.remove('active');
+  document.getElementById('library').classList.add('active');
+  document.getElementById('libTitle').textContent = `${cat?.icon} ${cat?.label}`;
+  document.getElementById('libCount').textContent = `${items.length} محتوا`;
+  document.getElementById('contentGrid').innerHTML = items.length
+    ? items.map(buildCard).join('')
+    : `<p style="color:var(--gray);padding:40px;text-align:center;font-style:italic">محتوایی هنوز اضافه نشده.</p>`;
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goHome() {
+  currentCat = null;
+  document.getElementById('hero').classList.remove('hidden', 'shrink');
+  document.getElementById('library').classList.remove('active');
+  document.getElementById('searchResults').classList.remove('active');
+  document.getElementById('searchInput').value = '';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function handleSearch(q) {
+  q = q.trim();
+  const hero = document.getElementById('hero');
+  const lib = document.getElementById('library');
+  const sr = document.getElementById('searchResults');
+
+  if (!q) {
+    sr.classList.remove('active');
+    if (!currentCat) {
+      hero.classList.remove('shrink');
+      hero.classList.remove('hidden');
+    }
+    return;
+  }
+
+  // جستجو
+  const ql = q.toLowerCase();
+  const results = LESSONS.filter(l =>
+    l.title.includes(q) || l.titleFr?.toLowerCase().includes(ql) ||
+    l.category.includes(ql)
+  );
+
+  lib.classList.remove('active');
+  hero.classList.add('shrink');
+  hero.classList.remove('hidden');
+  sr.classList.add('active');
+  document.getElementById('searchResultsTitle').textContent =
+    results.length ? `${results.length} نتیجه برای «${q}»` : `نتیجه‌ای برای «${q}» یافت نشد`;
+  document.getElementById('searchGrid').innerHTML = results.map(buildCard).join('');
+}
+
+// scroll up
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset > 300);
+});
+
+// init
+buildCatGrid();
+</script>
+</body>
+</html>
