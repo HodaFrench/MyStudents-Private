@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 10</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#232336; --soft:#585770; --line:#E5E2EE; --cream:#F6F6FA;
+    --gram:#3A3A8C; --gram-bg:#E8E8F5;
+    --verbe:#1E7E7A; --verbe-bg:#E1F1F0;
+    --vocab:#B5601E; --vocab-bg:#FBEDDD;
+    --phon:#8A5BB0; --phon-bg:#F0E9F7;
+    --dia:#C24A6A; --dia-bg:#FAE7EC;
+    --lect:#2E6E9E; --lect-bg:#E5EFF6;
+    --conseil:#B08418; --conseil-bg:#FAF2DA;
+    --cult:#4E7C5A; --cult-bg:#E7F1E9;
+    --delf:#9B3F55; --delf-bg:#F6E6EA;
+    --a0:#1E7E7A; --a1:#3A3A8C; --ap:#B5601E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #B7B0CE; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #DDD8EC; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.4pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.5pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#F5F5FA; border-right:5px solid #B7B0CE; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#9F99B5; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F3DDB0; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+  .formula{ background:#fff; border:1.5px dashed var(--gram); border-radius:8px; padding:10px 13px; text-align:center; font-size:11pt; margin:8px 0; font-family:'Poppins'; color:var(--gram);}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#3A3A8C 0%,#8A5BB0 52%,#B5601E 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.06; margin:9px 0 4px;">Beau travail !</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 10 — les études · l'université · les projets · le travail</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF — la dernière unité !</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Études, travail, projets.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Si, durée, relatifs, intensité.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">CV, entretien, DELF + mémo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#3A3A8C; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۱۰ «کارت عالیه!»</div>
+    <div class="fa">این جزوه آخرین فصل را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (تحصیل، دانشگاه، دنیای کار، بیان آرزو/پروژه)، سپس A1 (شرط با si، بیان مدت، ضمیرهای موصولی qui/que/où، شدت) و در پایان A1+ (رزومه، مصاحبهٔ کاری و تمرین DELF) به‌علاوهٔ صفحهٔ خلاصه و یک صفحهٔ پایانیِ تبریک. همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--gram)">Grammaire</span><span class="pill" style="color:var(--verbe)">Verbes</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Parler de ses études · l'université</li><li>Le monde du travail</li><li>Exprimer un souhait / un projet professionnel</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>La condition avec <i>si</i></li><li>L'expression de la durée (<i>depuis, pendant, il y a, pour</i>)</li><li>Les pronoms relatifs <i>qui</i> / <i>que</i></li><li>Le relatif <i>où</i> + l'intensité (<i>très, vraiment, trop</i>)</li><li>Phonétique : la liaison avec <i>très</i> · le son [ʁ]</li><li>Dialogue + texte « Mon parcours »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Mes études et mes projets »</li><li>Production écrite : CV + message de candidature</li><li>Production orale : l'entretien</li><li>DELF A1 — Compréhension (une offre d'emploi)</li><li>Culture : études &amp; travail · mémo · bilan · <b>fin du A1 !</b></li></ul></div>
+</div>
+
+<!-- ===================== A0 : ÉTUDES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Parler de ses études · l'université <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.2pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>les études</td><td class="fa">تحصیلات</td><td>étudier</td><td class="fa">درس خواندن</td></tr>
+    <tr><td>l'université / la fac</td><td class="fa">دانشگاه</td><td>un cours</td><td class="fa">کلاس/درس</td></tr>
+    <tr><td>une matière</td><td class="fa">درس (رشته)</td><td>un examen</td><td class="fa">امتحان</td></tr>
+    <tr><td>un diplôme</td><td class="fa">مدرک</td><td>une licence</td><td class="fa">لیسانس</td></tr>
+    <tr><td>un master</td><td class="fa">کارشناسی ارشد</td><td>s'inscrire</td><td class="fa">ثبت‌نام کردن</td></tr></table>
+
+  <div class="card vocab"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>J'<span class="key">étudie</span> à l'université.</li>
+      <li>Je prépare une <span class="key">licence</span> d'anglais.</li>
+      <li>J'ai un <span class="key">examen</span> demain.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">تحصیل و دانشگاه</div>
+    <div class="fa">واژگان: les études (تحصیلات)، étudier (درس خواندن)، l'université/la fac (دانشگاه)، un cours (کلاس)، une matière (رشته/درس)، un examen (امتحان)، un diplôme (مدرک)، une licence (لیسانس)، un master (ارشد)، s'inscrire (ثبت‌نام). مثال: «J'étudie à l'université» (در دانشگاه درس می‌خوانم).</div></div>
+</div>
+
+<!-- ===================== A0 : TRAVAIL ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Le monde du travail <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Les mots du travail</h3>
+    <span class="chip">un métier شغل/حرفه</span><span class="chip">un emploi کار/استخدام</span>
+    <span class="chip">une entreprise شرکت</span><span class="chip">un bureau دفتر</span>
+    <span class="chip">un(e) collègue همکار</span><span class="chip">un(e) patron(ne) رئیس</span>
+    <span class="chip">un salaire حقوق</span><span class="chip">un CV رزومه</span>
+    <span class="chip">un entretien مصاحبه</span></div>
+
+  <div class="card vocab"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Je <span class="key">travaille</span> dans une entreprise.</li>
+      <li>Je <span class="key">cherche</span> un emploi.</li>
+      <li>J'ai un <span class="key">entretien</span> lundi.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">دنیای کار</div>
+    <div class="fa">واژگان: un métier (شغل)، un emploi (کار)، une entreprise (شرکت)، un bureau (دفتر)، un(e) collègue (همکار)، un(e) patron(ne) (رئیس)، un salaire (حقوق)، un CV (رزومه)، un entretien (مصاحبه). مثال: «Je cherche un emploi» (دنبال کار می‌گردم).</div></div>
+</div>
+
+<!-- ===================== A0 : SOUHAIT / PROJET ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication · Niveau A0</div>
+    <h1>Exprimer un souhait / un projet <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Dire ce qu'on veut faire</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="key">Je voudrais</span> travailler à l'étranger.</li>
+      <li><span class="key">J'aimerais</span> devenir médecin.</li>
+      <li><span class="key">Mon rêve, c'est de</span> voyager pour mon métier.</li>
+      <li><span class="key">Plus tard</span>, je vais chercher un bon travail.</li></ul></div>
+
+  <div class="card dia"><h3>À retenir</h3>
+    <p style="font-size:11pt;"><i>Je voudrais</i> et <i>j'aimerais</i> sont <b>polis</b> → suivis d'un <b>infinitif</b> ou d'un <b>nom</b> : <i>Je voudrais <span class="key">un travail</span> intéressant. · J'aimerais <span class="key">voyager</span>.</i></p></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">بیان آرزو/پروژه</div>
+    <div class="fa">«Je voudrais + مصدر/اسم» (می‌خواهم/مایلم)، «J'aimerais devenir…» (دوست دارم … شوم)، «Mon rêve, c'est de…» (رؤیای من این است که…)، «Plus tard, je vais…» (بعدها می‌خواهم…). «Je voudrais» و «J'aimerais» مؤدبانه‌اند و با مصدر یا اسم می‌آیند.</div></div>
+</div>
+
+<!-- ===================== A1 : CONDITION SI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>La condition avec « si » <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour exprimer une condition. Après <b>si</b>, on met le <b>présent</b> (jamais le futur !).</p>
+
+  <div class="formula">Si + présent &nbsp;,&nbsp; présent / futur proche / impératif</div>
+
+  <table class="tg"><tr><th>Condition (si…)</th><th>Résultat</th></tr>
+    <tr><td>Si j'ai le temps,</td><td>je <span class="hl">viens</span>. (présent)</td></tr>
+    <tr><td>Si tu réussis ton examen,</td><td>tu <span class="hl">vas être</span> content. (futur proche)</td></tr>
+    <tr><td>Si tu veux,</td><td><span class="hl">viens</span> avec moi ! (impératif)</td></tr></table>
+
+  <div class="card gram"><h3>L'erreur à éviter</h3>
+    Après <b>si</b> → jamais de futur ! On dit <i>Si j'<span class="key">ai</span> de l'argent…</i> (pas « si j'aurai »).</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">شرط با si</div>
+    <div class="fa">برای بیان شرط: «Si + حال، حال/آیندهٔ نزدیک/امری». بعد از si هرگز زمان آینده نمی‌آید! مثال: «Si j'ai le temps, je viens» (اگر وقت داشته باشم، می‌آیم)، «Si tu veux, viens!» (اگر می‌خواهی، بیا!).</div></div>
+</div>
+
+<!-- ===================== A1 : DURÉE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>L'expression de la durée <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <table class="tg"><tr><th>Mot</th><th>Sens</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">depuis</span></td><td>action qui continue</td><td>J'étudie le français depuis 2 ans.</td></tr>
+    <tr><td><span class="hl">pendant</span></td><td>durée terminée</td><td>J'ai travaillé pendant 5 ans.</td></tr>
+    <tr><td><span class="hl">il y a</span></td><td>moment dans le passé</td><td>J'ai fini il y a un mois.</td></tr>
+    <tr><td><span class="hl">pour</span></td><td>durée prévue (futur)</td><td>Je pars pour une semaine.</td></tr></table>
+
+  <div class="card gram"><h3>Le piège : depuis ou il y a ?</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li><b>depuis</b> → ça <u>continue</u> maintenant : <i>J'habite ici <span class="key">depuis</span> 2020.</i></li>
+      <li><b>il y a</b> → c'est <u>fini</u> : <i>Je suis arrivé(e) <span class="key">il y a</span> deux ans.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">بیان مدت</div>
+    <div class="fa">depuis (از…، کاری که ادامه دارد): «J'étudie depuis 2 ans» (دو سال است درس می‌خوانم). pendant (به‌مدتِ، تمام‌شده): «J'ai travaillé pendant 5 ans». il y a (… پیش): «J'ai fini il y a un mois» (یک ماه پیش تمام کردم). pour (برای مدتی در آینده): «Je pars pour une semaine».</div></div>
+</div>
+
+<!-- ===================== A1 : RELATIFS QUI/QUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Les pronoms relatifs : qui · que <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils relient deux phrases et évitent la répétition.</p>
+
+  <table class="tg"><tr><th>Pronom</th><th>Fonction</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">qui</span></td><td>sujet (+ verbe)</td><td>C'est un métier <span class="hl">qui</span> me plaît.</td></tr>
+    <tr><td><span class="hl">que</span></td><td>complément (+ sujet)</td><td>C'est le travail <span class="hl">que</span> j'aime.</td></tr></table>
+
+  <div class="card gram"><h3>L'astuce</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li><b>qui</b> est suivi d'un <u>verbe</u> : <i>J'ai un ami <span class="key">qui</span> travaille à Paris.</i></li>
+      <li><b>que</b> est suivi d'un <u>sujet</u> : <i>Le livre <span class="key">que</span> je lis est intéressant.</i></li>
+      <li><b>que → qu'</b> devant une voyelle : <i>l'emploi <span class="key">qu'</span>il cherche.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">ضمیرهای موصولی qui / que</div>
+    <div class="fa">qui (فاعل، بعدش فعل می‌آید): «un métier qui me plaît» (شغلی که خوشم می‌آید). que (مفعول، بعدش فاعل می‌آید): «le travail que j'aime» (کاری که دوستش دارم). نکته: que پیش از صدادار «qu'» می‌شود: «qu'il cherche».</div></div>
+</div>
+
+<!-- ===================== A1 : OÙ + INTENSITÉ ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Le relatif « où » &amp; l'intensité <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card gram"><h3>Le pronom relatif « où » (lieu / temps)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>la ville <span class="key">où</span> je travaille (lieu)</li>
+      <li>le jour <span class="key">où</span> j'ai commencé (temps)</li></ul></div>
+
+  <div class="card vocab"><h3>Exprimer l'intensité</h3>
+    <span class="chip">très خیلی</span><span class="chip">vraiment واقعاً</span>
+    <span class="chip">trop بیش از حد</span><span class="chip">si / tellement آن‌قدر</span>
+    <ul class="clean" style="font-size:10.6pt; margin-top:6px;">
+      <li>C'est un travail <span class="key">très</span> intéressant.</li>
+      <li>C'est <span class="key">vraiment</span> difficile, mais <span class="key">tellement</span> utile !</li>
+      <li>⚠️ <i>trop</i> = excès : <i>C'est <span class="key">trop</span> cher.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">«où» و شدت</div>
+    <div class="fa">où (موصولِ مکان/زمان): «la ville où je travaille» (شهری که در آن کار می‌کنم)، «le jour où…» (روزی که…). شدت: très (خیلی)، vraiment (واقعاً)، trop (بیش از حد)، si/tellement (آن‌قدر). نکته: trop به‌معنای «زیاده» است: «C'est trop cher» (خیلی گران است).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>La liaison avec « très » &amp; le son [ʁ] <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. La liaison après « très »</h3>
+    <p>Devant une voyelle, on lie le <b>s</b> de <i>très</i> :</p>
+    <ul class="clean" style="margin-top:5px;">
+      <li>très_intéressant → [tʁɛ<span class="key">z</span>ɛ̃teʁesɑ̃]</li>
+      <li>très_utile · très_important · très_agréable</li></ul></div>
+
+  <div class="card phon"><h3>2. Le son [ʁ] (le « r » français)</h3>
+    <p>Il vient du fond de la gorge (pas roulé !). On l'entend dans :</p>
+    <p style="font-size:10.8pt;"><i>t<b>r</b>avail · mét<b>i</b>e<b>r</b> · <b>r</b>êve · ca<b>rr</b>ière · t<b>r</b>availle<b>r</b> · bonjou<b>r</b>.</i></p></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ</div>
+    <div class="fa">بعد از «très» اگر کلمهٔ بعدی با صدادار شروع شود، liaison رخ می‌دهد: très intéressant → تره‌زَنترسان. صدای [ʁ] (رِ فرانسوی) از تهِ گلو تولید می‌شود (غلتان نیست): travail، métier، rêve، carrière، bonjour.</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Un entretien d'embauche <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Recruteuse :</b> Bonjour ! Parlez-moi un peu de vous.</div>
+    <div class="dlg"><b class="B">Candidat :</b> Bonjour. J'ai une licence en informatique et je travaille depuis deux ans comme développeur.</div>
+    <div class="dlg"><b class="A">Recruteuse :</b> Très bien. Pourquoi voulez-vous ce poste ?</div>
+    <div class="dlg"><b class="B">Candidat :</b> C'est un métier qui me passionne, et votre entreprise est une entreprise que j'admire beaucoup.</div>
+    <div class="dlg"><b class="A">Recruteuse :</b> Vous parlez des langues ?</div>
+    <div class="dlg"><b class="B">Candidat :</b> Oui, je parle anglais et un peu français. J'apprends le français depuis un an.</div>
+    <div class="dlg"><b class="A">Recruteuse :</b> Parfait. Si tout va bien, nous vous rappelons la semaine prochaine.</div>
+    <div class="dlg"><b class="B">Candidat :</b> Merci beaucoup ! Au revoir.</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>مصاحبه‌گر:</b> سلام! کمی از خودتان بگویید.<br>
+      <b>داوطلب:</b> سلام. لیسانس کامپیوتر دارم و دو سال است به‌عنوان برنامه‌نویس کار می‌کنم.<br>
+      <b>مصاحبه‌گر:</b> خیلی خوب. چرا این شغل را می‌خواهید؟<br>
+      <b>داوطلب:</b> شغلی است که به آن علاقه دارم، و شرکت شما شرکتی است که خیلی تحسینش می‌کنم.<br>
+      <b>مصاحبه‌گر:</b> زبان بلدید؟<br>
+      <b>داوطلب:</b> بله، انگلیسی و کمی فرانسوی. یک سال است فرانسوی یاد می‌گیرم.<br>
+      <b>مصاحبه‌گر:</b> عالی. اگر همه‌چیز خوب پیش برود، هفتهٔ بعد با شما تماس می‌گیریم.<br>
+      <b>داوطلب:</b> خیلی ممنون! خداحافظ.
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Mon parcours <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Je m'appelle Sami et j'ai vingt-quatre ans. Après le bac, je suis allé à l'université pour étudier l'informatique. J'ai étudié pendant trois ans et j'ai obtenu ma licence il y a six mois.</p>
+    <p>Maintenant, je cherche un travail dans une entreprise de technologie. Hier, j'ai passé mon premier entretien : c'était un peu stressant, mais ça s'est bien passé ! Le métier qui m'intéresse, c'est développeur. C'est un travail que j'aime vraiment, parce que j'adore résoudre des problèmes.</p>
+    <p>Si je trouve ce poste, je vais être très heureux. <span class="q">Mon rêve, c'est de travailler un jour dans une grande ville comme Paris ou Montréal.</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">اسم من سامی است و بیست‌وچهار سال دارم. بعد از دیپلم، به دانشگاه رفتم تا کامپیوتر بخوانم. سه سال درس خواندم و شش ماه پیش لیسانسم را گرفتم. حالا دنبال کار در یک شرکت فناوری می‌گردم. دیروز اولین مصاحبه‌ام را دادم: کمی استرس داشت، اما خوب پیش رفت! شغلی که برایم جالب است، برنامه‌نویسی است. کاری است که واقعاً دوستش دارم، چون عاشق حل‌کردن مسئله‌ام. اگر این شغل را پیدا کنم، خیلی خوشحال می‌شوم. رؤیای من این است که روزی در یک شهر بزرگ مثل پاریس یا مونترال کار کنم.</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Mes études et mes projets <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read" style="font-size:11.6pt;">
+    <p>J'étudie le français depuis presque deux ans, et c'est une langue qui me passionne. Au début, c'était difficile, mais aujourd'hui, je peux lire des articles et parler avec des francophones. Apprendre une langue, c'est un long voyage que je trouve passionnant.</p>
+    <p>À l'université, j'ai choisi une formation en commerce international. Les cours que je préfère sont ceux où on travaille en groupe et où on parle de projets concrets. Si je réussis mes examens, je vais faire un stage à l'étranger l'année prochaine.</p>
+    <p>Plus tard, j'aimerais travailler dans une entreprise internationale. Mon rêve, c'est de voyager pour mon métier et de rencontrer des gens de cultures différentes. Je sais que ce n'est pas facile : il faut beaucoup travailler et ne jamais abandonner. Mais je suis vraiment motivé(e). Pour moi, le travail idéal, ce n'est pas seulement un bon salaire ; c'est un métier qui a du sens et qui me rend heureux(se). <span class="q">Et toi, quel est ton projet professionnel ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> <i>si</i> + présent, durée (<i>depuis</i>), relatifs (<i>qui, que, où</i>), intensité (<i>vraiment</i>), souhait (<i>j'aimerais</i>).</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">نزدیک دو سال است فرانسوی می‌خوانم و زبانی است که شیفته‌اش هستم. اولش سخت بود، اما حالا می‌توانم مقاله بخوانم و با فرانسوی‌زبان‌ها حرف بزنم. یادگیری یک زبان سفری طولانی است که برایم بسیار جذاب است. در دانشگاه، رشتهٔ بازرگانی بین‌الملل را انتخاب کردم. درس‌هایی که بیشتر دوست دارم آن‌هایی‌اند که در آن‌ها گروهی کار می‌کنیم و دربارهٔ پروژه‌های واقعی حرف می‌زنیم. اگر امتحان‌هایم را قبول شوم، سال آینده یک کارآموزی در خارج خواهم رفت. بعدها دوست دارم در یک شرکت بین‌المللی کار کنم. رؤیای من سفرکردن برای کارم و آشنایی با آدم‌هایی از فرهنگ‌های گوناگون است. می‌دانم آسان نیست: باید زیاد کار کرد و هرگز تسلیم نشد. اما واقعاً باانگیزه‌ام. برای من، کار ایده‌آل فقط حقوق خوب نیست؛ شغلی است که معنا دارد و خوشحالم می‌کند. پروژهٔ شغلیِ تو چیست؟</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Un CV &amp; un message de candidature <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>📄 CV (simple)</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10pt; line-height:1.5; margin:0;">
+      <b>Hoda Khedmati</b> · 28 ans · Téhéran<br>
+      <b>Formation :</b> Licence en informatique (2022)<br>
+      <b>Langues :</b> persan, anglais, français (A2)<br>
+      <b>Expérience :</b> 2 ans, développeuse<br>
+      <b>Qualités :</b> sérieuse, motivée, créative</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>✉️ Message de candidature</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10pt; line-height:1.5; margin:0;">
+      Bonjour Madame,<br>
+      Je vous écris pour le poste de développeuse. J'ai une licence en informatique et deux ans d'expérience. Je parle trois langues. Je suis disponible pour un entretien.<br>
+      Mon CV est en pièce jointe. Cordialement, Hoda Khedmati</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan d'une candidature</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span>Le poste demandé</li>
+      <li><span class="num">2</span>Ma formation + mon expérience</li>
+      <li><span class="num">3</span>Mes atouts (langues, qualités)</li>
+      <li><span class="num">4</span>Disponibilité + formule polie</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ رزومه و پیام</div>
+    <div class="fa">رزومه: «هدا خدمتی · ۲۸ ساله · تهران. تحصیلات: لیسانس کامپیوتر (۲۰۲۲). زبان‌ها: فارسی، انگلیسی، فرانسوی (A2). سابقه: ۲ سال، برنامه‌نویس. ویژگی‌ها: جدی، باانگیزه، خلاق.» پیام: «سلام خانم، برای شغل برنامه‌نویسی می‌نویسم. لیسانس کامپیوتر و دو سال سابقه دارم. سه زبان بلدم. برای مصاحبه آماده‌ام. رزومه‌ام پیوست است. با احترام، هدا خدمتی.»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Me présenter professionnellement <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue (1 minute)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Mes études</b> (j'ai étudié… pendant…).</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Mon expérience</b> (je travaille depuis…).</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Le métier qui m'intéresse</b> (+ relatifs).</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Mes projets</b> (j'aimerais… / mon rêve, c'est de…).</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — l'entretien</h3>
+    <ul class="clean"><li><b>Recruteur :</b> Parlez-moi de vous · Pourquoi ce poste ? · Vos qualités ?</li>
+      <li><b>Candidat :</b> présente ton parcours, tes projets et tes atouts.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) تحصیلاتت (به‌مدتِ… خواندم) ۲) سابقه‌ات (… است که کار می‌کنم) ۳) شغلی که برایت جالب است (با ضمیرهای موصولی) ۴) پروژه‌هایت (دوست دارم… / رؤیایم این است که…). سپس نقش‌بازی مصاحبه: مصاحبه‌گر سؤال می‌پرسد، داوطلب پاسخ می‌دهد.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « offre d'emploi »</h3>
+    <ul class="clean"><li>Repère le <b>poste</b>, les <b>horaires</b>, le <b>salaire</b>.</li>
+      <li>Cherche <b>comment postuler</b> (CV, email, téléphone).</li>
+      <li>Lis les questions <b>avant</b> de relire le texte.</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>OFFRE D'EMPLOI — Serveur / Serveuse</b></p>
+    <p>Le Restaurant Le Jardin cherche un(e) serveur(se).<br>
+    Temps partiel : 20 h par semaine.<br>
+    Expérience souhaitée. Bon contact avec les clients.<br>
+    Salaire : 12 € / heure.<br>
+    Envoyez votre CV à : contact@lejardin.fr</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Quel poste ?</li>
+        <li>2. Combien d'heures par semaine ?</li><li>3. Quel salaire ?</li>
+        <li>4. Comment postuler ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Serveur / serveuse.</li>
+        <li>2. 20 h.</li><li>3. 12 € / heure.</li><li>4. Envoyer son CV par email.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: شغل، ساعت‌ها و حقوق را پیدا کن؛ نحوهٔ درخواست (رزومه، ایمیل، تلفن) را بیاب؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان. در آگهی نمونه: شغل گارسون، ۲۰ ساعت در هفته، حقوق ساعتی ۱۲ یورو، و برای درخواست باید رزومه را ایمیل کرد.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Étudier &amp; travailler en France</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> après le lycée, les élèves passent le <b>baccalauréat</b> (le « bac »). Ensuite, ils peuvent aller à l'<b>université</b> ou dans une <b>grande école</b>. Les diplômes les plus connus sont la <b>licence</b> (3 ans) et le <b>master</b> (5 ans).</p>
+    <p>Pour trouver un emploi, on prépare un <b>CV</b> et une <b>lettre de motivation</b>, puis on passe un <b>entretien</b>. La durée légale du travail est de <b>35 heures</b> par semaine, et il existe un salaire minimum, le <b>SMIC</b>. Les salariés ont aussi droit à des congés payés. Dans toute la francophonie, l'éducation et le travail ouvrent des portes vers de nouveaux projets.</p>
+  </div>
+
+  <table class="tc" style="font-size:10.3pt; margin-top:6px;"><tr><th>Mot</th><th>Sens</th></tr>
+    <tr><td>le bac</td><td>examen de fin de lycée</td></tr>
+    <tr><td>le CV + l'entretien</td><td>pour chercher un emploi</td></tr>
+    <tr><td>le SMIC</td><td>le salaire minimum</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — تحصیل و کار در فرانسه</div>
+    <div class="fa">در فرانسه بعد از دبیرستان، دانش‌آموزان امتحان «باکالورئا» (bac) می‌دهند. سپس می‌توانند به دانشگاه یا «مدرسهٔ عالی» بروند. معروف‌ترین مدارک: لیسانس (۳ سال) و ارشد (۵ سال). برای کار، رزومه و «نامهٔ انگیزشی» آماده می‌کنند و مصاحبه می‌دهند. مدت قانونی کار ۳۵ ساعت در هفته است و حداقل حقوق «SMIC» نام دارد. کارمندان مرخصیِ باحقوق هم دارند.</div></div>
+</div>
+
+<!-- ===================== MÉMO ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Antisèche · Bonus</div>
+    <h1>Le mémo de l'unité 10 <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">La condition « si »</h4>
+      <p class="small" style="font-size:10pt;">Si + présent → présent / futur proche.<br>Jamais de futur après « si » !</p></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">La durée</h4>
+      <p class="small" style="font-size:10pt;">depuis (continue) · pendant (fini) · il y a (passé) · pour (futur).</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">Les relatifs</h4>
+      <p class="small" style="font-size:10pt;">qui (+ verbe) · que (+ sujet) · où (lieu / temps).</p></div>
+    <div class="box" style="border-left:4px solid var(--dia)"><h4 style="color:var(--dia)">Souhait &amp; intensité</h4>
+      <p class="small" style="font-size:10pt;">Je voudrais / J'aimerais + inf.<br>très · vraiment · trop · tellement.</p></div>
+  </div>
+
+  <div class="card conseil" style="margin-top:10px;"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>J'étudie le français <span class="key">depuis</span> deux ans.</li>
+      <li><span class="key">Si</span> je réussis, je vais faire un stage.</li>
+      <li>C'est un métier <span class="key">qui</span> me plaît et <span class="key">que</span> j'aime.</li>
+      <li><span class="key">J'aimerais</span> travailler à l'étranger.</li>
+      <li>C'est <span class="key">vraiment</span> intéressant !</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">برگهٔ خلاصهٔ واحد ۱۰</div>
+    <div class="fa">شرط: Si + حال → حال/آیندهٔ نزدیک (بعد از si هرگز آینده). مدت: depuis (ادامه‌دار)، pendant (تمام‌شده)، il y a (گذشته)، pour (آینده). موصول‌ها: qui (+فعل)، que (+فاعل)، où (مکان/زمان). آرزو: Je voudrais/J'aimerais + مصدر. شدت: très، vraiment، trop. پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Présente ton parcours à voix haute (études + expérience + projets).</li>
+      <li>Utilise <i>depuis</i> et <i>pendant</i> pour parler de la durée.</li>
+      <li>Décris ton métier idéal avec <i>qui</i> et <i>que</i>.</li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Après <i>si</i>, n'écris jamais le futur : utilise le présent.</li>
+      <li>Vérifie <i>qui</i> (+ verbe) / <i>que</i> (+ sujet).</li>
+      <li>Réutilise les modèles : CV, message de candidature.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Sers-toi du mémo comme antisèche.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: مسیرت را بلند معرفی کن (تحصیل + سابقه + پروژه) و از depuis و pendant برای مدت استفاده کن. برای نوشتن: بعد از si هرگز آینده ننویس؛ qui/que را درست به‌کار ببر. از مَمو و مدل‌های رزومه و درخواست کمک بگیر. در جلسات ۱۵ دقیقه‌ای کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>☐ Parler de mes études et du travail.</li>
+      <li>☐ Exprimer un souhait ou un projet.</li>
+      <li>☐ Utiliser <i>si</i> + présent.</li>
+      <li>☐ Exprimer la durée (depuis, pendant…).</li>
+      <li>☐ Utiliser les relatifs (qui, que, où).</li>
+      <li>☐ Écrire un CV et postuler à un emploi.</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. Durée : « J'étudie ___ 2 ans » (continue).</li>
+        <li>2. « ___ tu veux, viens ! » (condition)</li>
+        <li>3. Relatif : « un métier ___ me plaît ».</li>
+        <li>4. Relatif : « le travail ___ j'aime ».</li>
+        <li>5. Souhait poli : « ___ devenir médecin. »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. depuis 2 ans</li>
+        <li>2. Si tu veux, viens !</li>
+        <li>3. qui</li>
+        <li>4. que</li>
+        <li>5. J'aimerais (devenir médecin).</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:14px; padding:14px; border-radius:12px;
+     background:linear-gradient(120deg,#3A3A8C,#B5601E); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15pt;">Unité 10 terminée — beau travail ! 🎓</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد دهم تمام شد — کارت عالی بود!</div>
+  </div>
+</div>
+
+<!-- ===================== FIN DU A1 ===================== -->
+<div class="page">
+  <div style="text-align:center; margin-top:8mm;">
+    <div style="font-family:'Poppins'; font-size:11pt; letter-spacing:3px; color:var(--soft);">FÉLICITATIONS</div>
+    <div style="font-family:'Poppins'; font-weight:700; font-size:30pt; color:var(--gram); line-height:1.1; margin:8px 0;">Tu as terminé le niveau A1 ! 🎉</div>
+    <div class="fa" style="text-align:center; font-size:12pt; color:var(--ap);">آفرین! سطح A1 را کامل کردی — حالا آمادهٔ A2 هستی!</div>
+  </div>
+
+  <div class="card plain" style="border-left-color:var(--gram); margin-top:16px;"><h3 style="color:var(--gram)">Tout ton parcours Édito A1</h3>
+    <div class="grid2" style="font-size:10pt;">
+      <ul class="clean"><li><b>U1</b> Je suis… (se présenter)</li>
+        <li><b>U2</b> Près de moi (famille, goûts)</li>
+        <li><b>U3</b> Qu'est-ce qu'on mange ? (partitifs)</li>
+        <li><b>U4</b> Les soldes ! (futur proche)</li>
+        <li><b>U5</b> Le programme (pronominaux, l'heure)</li></ul>
+      <ul class="clean"><li><b>U6</b> Félicitations ! (passé composé)</li>
+        <li><b>U7</b> Bienvenue chez moi (COD, logement)</li>
+        <li><b>U8</b> Bonnes vacances ! (comparaison)</li>
+        <li><b>U9</b> Pas de chance ! (santé, COI)</li>
+        <li><b>U10</b> Beau travail ! (si, relatifs)</li></ul></div></div>
+
+  <div class="card conseil"><h3>Et maintenant ?</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li>Relis tes mémos et refais les mini-tests sans regarder.</li>
+      <li>Parle français un peu <b>chaque jour</b>, même 5 minutes.</li>
+      <li>Regarde des vidéos, écoute des chansons, lis de petits textes.</li>
+      <li>Prépare-toi pour le <b>niveau A2</b> : tu es prêt(e) !</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">پایان سطح A1</div>
+    <div class="fa">تبریک! تمام ده فصل Édito A1 را تمام کردی: از معرفی خود تا صحبت دربارهٔ کار و آینده. حالا برگه‌های خلاصه را مرور کن، هر روز کمی فرانسوی حرف بزن، ویدئو ببین و آهنگ گوش بده. تو برای سطح A2 آماده‌ای — به مسیرت ادامه بده!</div></div>
+
+  <div style="text-align:center; margin-top:12px; padding:16px; border-radius:12px;
+     background:linear-gradient(120deg,#3A3A8C,#8A5BB0,#B5601E); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:14pt;">Bravo, Hoda Khedmati ! 🌟</div>
+    <div style="font-size:10.3pt; margin-top:3px;">On se retrouve au niveau A2. Bonne continuation !</div>
+  </div>
+</div>
+
+</body>
+</html>
