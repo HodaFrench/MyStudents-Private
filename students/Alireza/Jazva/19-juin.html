@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jazva · 19 juin — Alireza</title>
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --red:#b71c1c;--red-pale:#ffebee;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Estedad','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;min-height:100vh;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px),
+  repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,.02) 39px,rgba(13,27,42,.02) 40px);
+  pointer-events:none;}
+
+/* TOP */
+.topbar{display:flex;align-items:center;gap:14px;padding:13px 28px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
+.logo{width:40px;height:40px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:white;font-family:'Roboto',sans-serif;}
+.topbar-info h1{font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:white;}
+.topbar-info .sub{font-size:11px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:12px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:6px;transition:.2s;}
+.back:hover{background:var(--blue);color:white;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-soft) 100%);color:white;padding:42px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%;}
+.hero::after{content:"";position:absolute;bottom:-30px;left:30px;width:130px;height:130px;background:rgba(255,255,255,.03);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:36px;font-weight:700;margin-bottom:8px;letter-spacing:-1px;}
+.hero .date-badge{display:inline-block;background:var(--blue);padding:6px 20px;border-radius:20px;font-size:13px;font-weight:700;margin:4px 0 12px;}
+.hero .sub{font-size:14px;opacity:.8;}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+.stat{background:rgba(255,255,255,.1);padding:8px 16px;border-radius:10px;font-size:12px;font-weight:700;}
+.stat span{opacity:.7;font-weight:400;}
+
+/* SEARCH */
+.search-wrap{max-width:860px;margin:24px auto 0;padding:0 24px;}
+.search-box{position:relative;}
+.search-box input{width:100%;padding:14px 46px 14px 18px;font-size:14px;border:2px solid var(--line);border-radius:10px;font-family:inherit;background:white;color:var(--ink);transition:all .2s;}
+.search-box input:focus{outline:none;border-color:var(--blue);box-shadow:0 4px 14px rgba(21,101,192,.12);}
+.search-box::after{content:"🔍";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:16px;opacity:.4;}
+
+/* WORD CARDS */
+.cards{max-width:860px;margin:24px auto 80px;padding:0 24px;display:flex;flex-direction:column;gap:20px;}
+.word-card{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(13,27,42,.06);transition:all .25s;}
+.word-card:hover{box-shadow:0 10px 30px rgba(13,27,42,.12);transform:translateY(-2px);}
+.word-card.hidden{display:none;}
+
+.card-top{display:flex;align-items:stretch;gap:0;}
+.card-num{background:var(--navy);color:white;min-width:52px;display:flex;align-items:center;justify-content:center;font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;flex-shrink:0;}
+.card-head{flex:1;padding:16px 20px;border-right:none;}
+.card-word{font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.card-word .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;margin-right:8px;vertical-align:middle;}
+.badge-b1{background:var(--blue-pale);color:var(--blue);}
+.badge-b2{background:var(--amber-pale);color:var(--amber);}
+.badge-expr{background:var(--teal-pale);color:var(--teal);}
+.card-fa-main{font-size:15px;color:var(--blue);font-weight:600;direction:rtl;}
+
+.card-body{padding:18px 22px;border-top:1px solid var(--line);}
+.section{margin-bottom:16px;}
+.section:last-child{margin-bottom:0;}
+.section-label{font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.section-label::before{content:"";display:block;width:16px;height:2px;background:var(--blue);border-radius:1px;}
+
+/* EXAMPLE ROW */
+.ex-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;margin:6px 0;}
+.ex-fr{padding:11px 16px;font-size:14px;line-height:1.6;color:var(--ink);background:var(--blue-mist);border-right:1.5px solid var(--line);}
+.ex-fa{padding:11px 16px;font-size:13px;line-height:1.6;color:var(--gray);direction:rtl;text-align:right;background:#fafafa;}
+.ex-fr .hl{background:rgba(21,101,192,.15);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--navy);}
+
+/* SYN PILLS */
+.syn-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
+.syn-pill{background:var(--green-pale);color:var(--green);font-size:12px;font-weight:700;padding:4px 12px;border-radius:16px;border:1.5px solid rgba(46,125,50,.2);}
+.syn-pill .syn-fa{font-size:11px;color:var(--green);opacity:.8;margin-right:4px;}
+
+/* TIP BOX */
+.tip-box{background:linear-gradient(90deg,var(--amber-pale),#fffdf5);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:12px 16px;margin-top:10px;font-size:13px;line-height:1.75;}
+.tip-box .tip-icon{color:var(--amber);font-size:15px;margin-left:6px;}
+
+/* SUMMARY CARD */
+.summary-card{background:linear-gradient(135deg,var(--navy-mid),var(--navy-soft));color:white;border-radius:16px;padding:26px 28px;margin:0 24px 60px;}
+.summary-card h3{font-size:16px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.summary-item{background:rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.summary-arrow{color:var(--amber);font-weight:700;flex-shrink:0;font-size:14px;margin-top:2px;}
+.summary-content .sfr{font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;margin-bottom:3px;}
+.summary-content .sfa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;}
+
+/* FOOTER */
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:12px;border-top:1px solid var(--line);}
+.footer a{color:var(--blue);text-decoration:none;}
+
+/* SCROLL BTN */
+#scrollBtn{display:none;position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
+#scrollBtn:hover{background:var(--blue);}
+#scrollBtn.show{display:block;}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:var(--gray);display:none;}
+.empty-state.show{display:block;}
+
+@media(max-width:640px){
+  .ex-row{grid-template-columns:1fr;}
+  .ex-fa{border-right:none;border-top:1.5px solid var(--line);}
+  .summary-grid{grid-template-columns:1fr;}
+  .hero h2{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">A</div>
+  <div class="topbar-info">
+    <h1>Alireza · جزوه ۱۹ ژوئن</h1>
+    <div class="sub">Vocabulaire & Expressions · 19 juin 2025</div>
+  </div>
+  <a class="back" href="../index.html">← Alireza</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">📓 جزوه درس</div>
+    <h2>19 juin · جزوه</h2>
+    <div class="date-badge">📅 ۱۹ ژوئن ۲۰۲۵</div>
+    <div class="sub">واژگان و عبارات کلیدی جلسه — با مثال و ترجمه</div>
+    <div class="stats">
+      <div class="stat">13 <span>مورد</span></div>
+      <div class="stat">👑 <span>B1/B2</span></div>
+      <div class="stat">🎯 <span>TCF</span></div>
+      <div class="stat">🇫🇷 <span>+ جایگزین</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="جستجو در کلمات..." oninput="filterCards(this.value)">
+  </div>
+</div>
+
+<div class="cards" id="cardsContainer">
+
+<!-- 1 rentable -->
+<div class="word-card" data-keywords="rentable soudavor besoude profitable">
+  <div class="card-top">
+    <div class="card-num">1</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b1">B1</span>rentable</div>
+      <div class="card-fa-main">سودآور · به‌صرفه</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">کاربرد</div>
+      <div style="font-size:13px;color:var(--gray);">درباره پروژه، کار، ایده یا سرمایه</div>
+    </div>
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Ce projet est <span class="hl">rentable</span>.</div>
+        <div class="ex-fa">این پروژه سودآور است.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr">Ce n'est pas <span class="hl">rentable</span>.</div>
+        <div class="ex-fa">این به‌صرفه نیست.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین حرفه‌ای</div>
+      <div class="syn-pills">
+        <span class="syn-pill"><span class="syn-fa">سودمند</span> bénéfique</span>
+        <span class="syn-pill"><span class="syn-fa">سودآور</span> profitable</span>
+      </div>
+    </div>
+    <div class="tip-box"><span class="tip-icon">👉</span>به جای «ça coûte moins cher» بگو: <strong>C'est plus rentable.</strong> (حرفه‌ای‌تر)</div>
+  </div>
+</div>
+
+<!-- 2 dirigeant -->
+<div class="word-card" data-keywords="dirigeant modir rahbar responsable chef">
+  <div class="card-top">
+    <div class="card-num">2</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b1">B1</span>dirigeant(e)</div>
+      <div class="card-fa-main">مدیر · رهبر (سازمان یا کشور)</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Le <span class="hl">dirigeant</span> de l'entreprise est compétent.</div>
+        <div class="ex-fa">مدیر شرکت شایسته است.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr">Les <span class="hl">dirigeants</span> politiques.</div>
+        <div class="ex-fa">رهبران سیاسی.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill"><span class="syn-fa">مسئول</span> responsable</span>
+        <span class="syn-pill"><span class="syn-fa">رئیس</span> chef</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 dans le domaine de -->
+<div class="word-card" data-keywords="domaine matiere point vue hawze nazar">
+  <div class="card-top">
+    <div class="card-num">3</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-expr">Expression</span>dans le domaine de / en matière de / du point de vue de</div>
+      <div class="card-fa-main">در حوزه / از نظر</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Dans le domaine de</span> l'éducation, il y a des changements.</div>
+        <div class="ex-fa">در حوزه آموزش تغییراتی وجود دارد.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Du point de vue</span> économique…</div>
+        <div class="ex-fa">از نظر اقتصادی…</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">En matière de</span> santé…</div>
+        <div class="ex-fa">در زمینه سلامت…</div>
+      </div>
+    </div>
+    <div class="tip-box"><span class="tip-icon">👉</span>جایگزین حرفه‌ای برای «sur» یا «à propos de»</div>
+  </div>
+</div>
+
+<!-- 4 ouvrage -->
+<div class="word-card" data-keywords="ouvrage ketab livre publication texte académique">
+  <div class="card-top">
+    <div class="card-num">4</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b2">B2</span>ouvrage</div>
+      <div class="card-fa-main">کتاب · اثر علمی (رسمی‌تر از livre)</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Cet <span class="hl">ouvrage</span> est très connu.</div>
+        <div class="ex-fa">این کتاب بسیار معروف است.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">کاربرد حرفه‌ای</div>
+      <div style="font-size:13px;color:var(--gray);">به‌جای «livre» (کتاب ساده) — در بافت علمی و آکادمیک</div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill">texte académique</span>
+        <span class="syn-pill">publication</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 selon -->
+<div class="word-card" data-keywords="selon tabq bar asas goftan daprès">
+  <div class="card-top">
+    <div class="card-num">5</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b1">B1</span>selon</div>
+      <div class="card-fa-main">طبق / بر اساس / به گفته</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Selon</span> les chercheurs, c'est vrai.</div>
+        <div class="ex-fa">طبق گفته پژوهشگران، این درست است.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Selon</span> moi…</div>
+        <div class="ex-fa">به نظر من…</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین حرفه‌ای</div>
+      <div class="syn-pills">
+        <span class="syn-pill">d'après…</span>
+        <span class="syn-pill">les scientifiques disent que…</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 chercher à -->
+<div class="word-card" data-keywords="chercher essayer tenter talash">
+  <div class="card-top">
+    <div class="card-num">6</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b1">B1</span>chercher à + infinitif</div>
+      <div class="card-fa-main">تلاش کردن برای / سعی کردن</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Il <span class="hl">cherche à</span> comprendre.</div>
+        <div class="ex-fa">او سعی می‌کند بفهمد.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr">Elle <span class="hl">cherche à</span> réussir.</div>
+        <div class="ex-fa">او تلاش می‌کند موفق شود.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill"><span class="syn-fa">ساده‌تر</span> essayer de</span>
+        <span class="syn-pill"><span class="syn-fa">رسمی‌تر</span> tenter de</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7 chacun/chacune -->
+<div class="word-card" data-keywords="chacun chacune har kadam tout le monde">
+  <div class="card-top">
+    <div class="card-num">7</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b2">B2</span>chacun / chacune (de)</div>
+      <div class="card-fa-main">هر کدام / هر شخص</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال پایه</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Chacun</span> a son opinion.</div>
+        <div class="ex-fa">هر کس نظر خودش را دارد.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Chacune</span> est responsable.</div>
+        <div class="ex-fa">هر (مؤنث) مسئول است.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">⭐ ساختار پیشرفته</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Chacun de</span> ces livres est intéressant.</div>
+        <div class="ex-fa">هر کدام از این کتاب‌ها جالب است.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Chacune de</span> ces idées est importante.</div>
+        <div class="ex-fa">هر کدام از این ایده‌ها مهم است.</div>
+      </div>
+    </div>
+    <div class="tip-box"><span class="tip-icon">⚠️</span>بعد از <strong>chacun/chacune de</strong> → اسم جمع می‌آید، ولی فعل مفرد یا جمع هر دو ممکن است</div>
+  </div>
+</div>
+
+<!-- 8 ce qui distingue -->
+<div class="word-card" data-keywords="distingue farq متمایز difference">
+  <div class="card-top">
+    <div class="card-num">8</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b2">B2</span>ce qui distingue A de B</div>
+      <div class="card-fa-main">چیزی که A را از B متمایز می‌کند</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Ce qui distingue</span> cette méthode de l'autre est sa simplicité.</div>
+        <div class="ex-fa">چیزی که این روش را از آن دیگری متمایز می‌کند، سادگی آن است.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill">la différence entre A et B</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 9 un ensemble -->
+<div class="word-card" data-keywords="ensemble majmooe kolliat totalité groupe">
+  <div class="card-top">
+    <div class="card-num">9</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b1">B1</span>un ensemble / l'ensemble de</div>
+      <div class="card-fa-main">یک مجموعه / کلیت</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Un ensemble</span> d'idées.</div>
+        <div class="ex-fa">مجموعه‌ای از ایده‌ها.</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">L'ensemble du</span> projet.</div>
+        <div class="ex-fa">کل پروژه.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill"><span class="syn-fa">کلیت</span> totalité</span>
+        <span class="syn-pill">groupe</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 se mettre à la place de -->
+<div class="word-card" data-keywords="mettre place jaye kasi jodan imaginer">
+  <div class="card-top">
+    <div class="card-num">10</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b1">B1</span>se mettre à la place de</div>
+      <div class="card-fa-main">خود را جای کسی گذاشتن</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr"><span class="hl">Mets-toi à sa place.</span></div>
+        <div class="ex-fa">خودت را جای او بگذار.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill">imaginer la situation de quelqu'un</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 11 être en mesure de -->
+<div class="word-card" data-keywords="mesure qadr tavanastan capable pouvoir">
+  <div class="card-top">
+    <div class="card-num">11</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b2">B2</span>être en mesure de + inf.</div>
+      <div class="card-fa-main">قادر بودن / توانستن (رسمی)</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Il <span class="hl">est en mesure de</span> répondre.</div>
+        <div class="ex-fa">او قادر به پاسخ دادن است.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین ساده</div>
+      <div class="syn-pills">
+        <span class="syn-pill">pouvoir</span>
+        <span class="syn-pill">être capable de</span>
+      </div>
+    </div>
+    <div class="tip-box"><span class="tip-icon">👉</span><strong>être en mesure de</strong> در نوشتار رسمی و TCF écrit بسیار ارزشمند است</div>
+  </div>
+</div>
+
+<!-- 12 consacré à -->
+<div class="word-card" data-keywords="consacré dédié ekhtesas اختصاص makhsoos">
+  <div class="card-top">
+    <div class="card-num">12</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b2">B2</span>consacré(e) à</div>
+      <div class="card-fa-main">اختصاص داده شده به</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Un livre <span class="hl">consacré à</span> la linguistique.</div>
+        <div class="ex-fa">کتابی اختصاص داده شده به زبان‌شناسی.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill">dédié à</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 13 s'adresser à -->
+<div class="word-card" data-keywords="adresser khitab marbout destiné">
+  <div class="card-top">
+    <div class="card-num">13</div>
+    <div class="card-head">
+      <div class="card-word"><span class="badge badge-b2">B2</span>s'adresser à</div>
+      <div class="card-fa-main">خطاب بودن به / مربوط بودن به</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">مثال</div>
+      <div class="ex-row">
+        <div class="ex-fr">Ce cours <span class="hl">s'adresse aux</span> étudiants.</div>
+        <div class="ex-fa">این دوره برای دانشجویان است.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">جایگزین</div>
+      <div class="syn-pills">
+        <span class="syn-pill">être destiné à</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /cards -->
+
+<!-- SUMMARY -->
+<div class="summary-card" style="max-width:860px;margin:0 auto 60px;">
+  <h3>💡 جایگزین‌های حرفه‌ای — مرور سریع</h3>
+  <div class="summary-grid">
+    <div class="summary-item"><span class="summary-arrow">→</span><div class="summary-content"><div class="sfr">«طبق گفته» → selon / d'après</div><div class="sfa">جایگزین حرفه‌ای</div></div></div>
+    <div class="summary-item"><span class="summary-arrow">→</span><div class="summary-content"><div class="sfr">«سعی کردن» → chercher à / tenter de</div><div class="sfa">رسمی‌تر از essayer</div></div></div>
+    <div class="summary-item"><span class="summary-arrow">→</span><div class="summary-content"><div class="sfr">«توانستن» → être en mesure de</div><div class="sfa">برای نوشتار رسمی</div></div></div>
+    <div class="summary-item"><span class="summary-arrow">→</span><div class="summary-content"><div class="sfr">«مخصوص» → consacré à / dédié à</div><div class="sfa">درباره کتاب یا برنامه</div></div></div>
+    <div class="summary-item"><span class="summary-arrow">→</span><div class="summary-content"><div class="sfr">«فرق داشتن» → ce qui distingue A de B</div><div class="sfa">ساختار B2</div></div></div>
+    <div class="summary-item"><span class="summary-arrow">→</span><div class="summary-content"><div class="sfr">«به‌صرفه» → rentable / profitable</div><div class="sfa">درباره اقتصاد و کار</div></div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="../index.html">← علیرضا</a> · Français avec Hoda © 2025
+</div>
+
+<div class="empty-state" id="emptyState">
+  <div style="font-size:40px;margin-bottom:12px;">🔍</div>
+  <div style="font-size:16px;font-weight:600;color:var(--navy);">نتیجه‌ای پیدا نشد</div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function filterCards(q) {
+  q = q.trim().toLowerCase();
+  const cards = document.querySelectorAll('.word-card');
+  let visible = 0;
+  cards.forEach(c => {
+    const kw = (c.dataset.keywords || '') + ' ' + c.textContent.toLowerCase();
+    if (!q || kw.includes(q)) {
+      c.classList.remove('hidden'); visible++;
+    } else {
+      c.classList.add('hidden');
+    }
+  });
+  document.getElementById('emptyState').classList.toggle('show', visible === 0 && q !== '');
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset > 300);
+});
+</script>
+</body>
+</html>
