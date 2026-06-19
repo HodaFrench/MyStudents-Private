@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Études en Droit - Cours de Français A2/B1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .emoji {
+            font-size: 70px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #2980b9;
+        }
+
+        .section.warmup {
+            background: linear-gradient(135deg, #d6eaf8 0%, #f5f5f5 100%);
+            border-left-color: #3498db;
+            box-shadow: 0 8px 20px rgba(41, 128, 185, 0.1);
+        }
+
+        .section.general {
+            background: linear-gradient(135deg, #d6eaf8 0%, #f5f5f5 100%);
+            border-left-color: #2980b9;
+        }
+
+        .section.personal {
+            background: white;
+            border-left-color: #1a5490;
+            border: 1px solid #e0e6ed;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            color: #2980b9;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .section.personal h2 {
+            color: #1a5490;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #4a5568;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .section-text p {
+            margin-bottom: 18px;
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-warmup {
+            background: #aed6f1;
+            color: #0b5394;
+        }
+
+        .badge-general {
+            background: #aed6f1;
+            color: #0b5394;
+        }
+
+        .badge-personal {
+            background: #d6eaf8;
+            color: #1a5490;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+            border: 2px solid #ffc107;
+        }
+
+        .highlight-box h4 {
+            color: #cc7a00;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .highlight-box p {
+            color: #8b5f00;
+            line-height: 1.8;
+            margin: 12px 0;
+        }
+
+        /* QUESTIONS BOX */
+        .questions-box {
+            background: #d6eaf8;
+            border-left: 5px solid #2980b9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .questions-box h4 {
+            color: #0b5394;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .question {
+            background: white;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-left: 3px solid #2980b9;
+            border-radius: 5px;
+            font-size: 15px;
+            color: #2c3e50;
+        }
+
+        .question::before {
+            content: "❓ ";
+            font-weight: 700;
+            color: #2980b9;
+        }
+
+        /* VOCABULARY GRID */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .vocab-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e0e6ed;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .vocab-card:hover {
+            border-color: #2980b9;
+            box-shadow: 0 8px 24px rgba(41, 128, 185, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .vocab-fr {
+            font-weight: 700;
+            color: #2980b9;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .vocab-def {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 10px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .vocab-fa {
+            font-size: 14px;
+            color: #1a5490;
+            border-top: 1px solid #e0e6ed;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* PHRASE BOXES */
+        .phrase-box {
+            background: white;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border-left: 4px solid #2980b9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .phrase-box:hover {
+            box-shadow: 0 4px 16px rgba(41, 128, 185, 0.12);
+            transform: translateX(5px);
+        }
+
+        .phrase-fr {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .phrase-fa {
+            color: #1a5490;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* DIALOGUE */
+        .dialogue-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #2980b9;
+            margin-top: 20px;
+        }
+
+        .dialogue-turn {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8f9fa;
+            border-left: 4px solid #2980b9;
+            border-radius: 8px;
+        }
+
+        .dialogue-turn:nth-child(odd) {
+            border-left-color: #1a5490;
+            background: #d6eaf8;
+        }
+
+        .dialogue-name {
+            font-weight: 700;
+            color: #2980b9;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dialogue-turn:nth-child(odd) .dialogue-name {
+            color: #1a5490;
+        }
+
+        .dialogue-text {
+            color: #2c3e50;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-trans {
+            font-size: 13px;
+            color: #1a5490;
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        /* TIPS */
+        .tip-box {
+            background: #d6eaf8;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            font-weight: 700;
+            color: #0b5394;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .tip-content {
+            color: #1a5490;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 14px;
+            border-top: 5px solid #2980b9;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header .emoji {
+                font-size: 50px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 22px;
+            }
+
+            .section-text {
+                text-align: left;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* SCROLL UP BUTTON */
+        #scrollBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #scrollBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(41, 128, 185, 0.5);
+        }
+
+        #scrollBtn.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <span class="emoji">⚖️</span>
+                <h1>Les Études en Droit</h1>
+                <p>Parler naturellement des études en droit en français</p>
+                <div class="subtitle">Niveau A2/B1 | 1 warm-up + 2 textes généraux + 2 textes personnels</div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- ========== WARM-UP ========== -->
+
+            <div class="section warmup">
+                <h2>🔥 Échauffement: C'est quoi le droit?</h2>
+                <div class="badge badge-warmup">⚡ Warm-up (1 minute)</div>
+
+                <div class="section-text">
+                    <p>
+                        Le droit est un ensemble de règles qui gouvernent la société. Ces règles disent ce qu'on peut faire et ce qu'on 
+                        ne peut pas faire. Par exemple, le droit dit que tu ne peux pas voler. Le droit dit que tu dois payer tes taxes. 
+                        Le droit organise la vie en société.
+                    </p>
+                    <p>
+                        Les études en droit, c'est apprendre ces règles. C'est comprendre comment fonctionnent la justice, les contrats, 
+                        les lois. Les étudiants en droit deviennent avocats, juges, notaires. C'est une profession importante et respectée.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions rapides:</h4>
+                    <div class="question">Qu'est-ce que le droit pour toi?</div>
+                    <div class="question">Pourquoi les lois existent?</div>
+                    <div class="question">Connais-tu quelqu'un qui travaille dans le droit?</div>
+                </div>
+            </div>
+
+            <!-- ========== TEXTES GÉNÉRAUX ========== -->
+
+            <!-- TEXTE GÉNÉRAL 1 -->
+            <div class="section general">
+                <h2>📚 Texte 1: Qu'est-ce que les études en droit?</h2>
+                <div class="badge badge-general">Contexte général (A2)</div>
+
+                <div class="section-text">
+                    <p>
+                        Les études en droit forment les futurs professionnels du système légal. Un étudiant en droit apprend les lois, 
+                        les règles, et les principes qui gouvernent la société. Le programme d'études dure généralement trois à quatre ans 
+                        pour une licence, puis des années supplémentaires pour une spécialisation.
+                    </p>
+                    <p>
+                        Pendant leurs études, les étudiants apprennent plusieurs branches du droit. Le droit civil gère les relations entre 
+                        les personnes. Le droit pénal traite les crimes et les punitions. Le droit commercial règle les affaires des entreprises. 
+                        Le droit du travail s'occupe des relations entre employeurs et employés. Le droit constitutionnel étudie la structure 
+                        du gouvernement.
+                    </p>
+                    <p>
+                        Les études en droit sont structurées de manière rigoureuse. Les étudiants doivent mémoriser énormément de textes légaux. 
+                        Ils doivent aussi apprendre à raisonner juridiquement. C'est-à-dire, analyser les problèmes du point de vue légal et 
+                        trouver des solutions basées sur la loi. C'est un travail intellectuel intense.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        تحصیلات حقوق متخصصان سیستم قانونی آینده را تربیت می‌کند. یک دانشجوی حقوق قوانین و اصول حاکم بر جامعه را یاد می‌گیرد. 
+                        برنامه تحصیل معمولاً سه تا چهار سال برای لیسانس است.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour comprendre:</h4>
+                    <div class="question">Combien de temps dure une licence en droit?</div>
+                    <div class="question">Citez trois branches du droit mentionnées dans le texte.</div>
+                    <div class="question">Qu'est-ce que "raisonner juridiquement"?</div>
+                    <div class="question">Pourquoi les études en droit sont-elles rigoureuses?</div>
+                </div>
+            </div>
+
+            <!-- TEXTE GÉNÉRAL 2 -->
+            <div class="section general">
+                <h2>📚 Texte 2: Les défis des études en droit</h2>
+                <div class="badge badge-general">Contexte général (A2/B1)</div>
+
+                <div class="section-text">
+                    <p>
+                        Les études en droit sont parmi les plus difficiles à l'université. Premièrement, il y a beaucoup de matière à mémoriser. 
+                        Les étudiants doivent apprendre des centaines de lois, des articles de code, des articles de constitution. C'est comme 
+                        apprendre une langue nouvelle. Une langue pleine de vocabulaire technique et de concepts abstraits.
+                    </p>
+                    <p>
+                        Deuxièmement, les études en droit demandent un raisonnement complexe. Ce n'est pas suffisant de mémoriser les lois. 
+                        Il faut comprendre comment elles s'appliquent dans des situations réelles. Il faut apprendre à argumenter, à défendre 
+                        une position légale, à critiquer les arguments de l'autre côté. Cela demande beaucoup de pratique et de réflexion.
+                    </p>
+                    <p>
+                        Troisièmement, le travail est intense. Les examens en droit sont souvent difficiles et stressants. Les professeurs 
+                        attendent un haut niveau. Les étudiants doivent lire beaucoup de textes complexes. Ils doivent écrire des essais longs 
+                        et détaillés. Ils doivent participer à des débats en classe.
+                    </p>
+                    <p>
+                        Quatrièmement, le droit est aussi une question de passion. Les meilleurs avocats et juges ne sont pas seulement ceux 
+                        qui mémorisent les lois. Ce sont ceux qui aiment la justice, qui cherchent à protéger les droits des gens, qui sont 
+                        passionnés par l'équité. Sans cette passion, les études en droit peuvent devenir ennuyeuses et vides de sens.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        تحصیلات حقوق از سخت‌ترین تحصیلات دانشگاهی است. اول، تا به حال زیادی برای یادگیری وجود دارد. 
+                        دانشجویان باید صدها قانون را یاد بگیرند. دوم، تحصیلات حقوق درک پیچیده را می‌خواهد. نه فقط حفظ کردن کافی نیست.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour réfléchir:</h4>
+                    <div class="question">Quels sont les quatre défis des études en droit selon le texte?</div>
+                    <div class="question">Pourquoi la mémorisation n'est pas suffisante?</div>
+                    <div class="question">Pourquoi le travail est-il intense?</div>
+                    <div class="question">Que signifie avoir de la passion pour le droit?</div>
+                    <div class="question">Pensez-vous que c'est difficile de combiner mémorisation et raisonnement?</div>
+                </div>
+            </div>
+
+            <!-- ========== TEXTES PERSONNELS ========== -->
+
+            <!-- TEXTE PERSONNEL 1 -->
+            <div class="section personal">
+                <h2>👤 Texte 3: L'histoire d'Antoine</h2>
+                <div class="badge badge-personal">Histoire personnelle (A2)</div>
+
+                <div class="section-text">
+                    <p>
+                        Antoine a 23 ans. Il est en troisième année d'études en droit à l'université. Quand il a commencé ses études, il n'était 
+                        pas certain que c'était la bonne décision. Ses parents voulaient qu'il devienne avocat. Mais Antoine lui-même n'était 
+                        pas sûr. Il aimait lire sur la justice et les droits de l'homme, mais il ne savait pas s'il pouvait supporter quatre 
+                        années d'études difficiles.
+                    </p>
+                    <p>
+                        La première année a été très difficile. Antoine avait l'impression qu'il nageait dans un océan de textes légaux. Il y avait 
+                        trop à lire. Trop à comprendre. Trop à mémoriser. Il se sentait désespéré. Il a même pensé à abandonner. Mais ses 
+                        professeurs lui ont dit: "Antoine, c'est normal de se sentir overwhelming au début. Continue. Cela devient plus facile."
+                    </p>
+                    <p>
+                        Antoine a continué. Pendant sa deuxième année, quelque chose a changé. Il a commencé à comprendre comment les lois 
+                        fonctionnaient réellement. Il a vu comment un article de loi pouvait affecter la vie réelle des gens. Il a participé 
+                        à des débats en classe et a découvert qu'il aimait argumenter juridiquement. Il a trouvé sa passion.
+                    </p>
+                    <p>
+                        Maintenant, en troisième année, Antoine est confiant. Il sait qu'il veut devenir avocat. Il sait qu'il veut défendre 
+                        les droits des personnes marginalisées. Il a découvert que la loi n'est pas ennuyeuse. C'est une arme pour la justice.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        آنتوان 23 ساله است. او در سال سوم تحصیلات حقوق در دانشگاه است. وقتی شروع کرد، مطمئن نبود. پدر و مادرش می‌خواستند 
+                        وکیل شود. اما آنتوان خود مطمئن نبود. سال اول بسیار سخت بود. احساس کرد که در اقیانوسی از متون قانونی در حال شنا است.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions sur l'histoire:</h4>
+                    <div class="question">Qui est Antoine et à quelle année d'études est-il?</div>
+                    <div class="question">Pourquoi a-t-il hésité à faire des études en droit?</div>
+                    <div class="question">Comment a-t-il trouvé la première année?</div>
+                    <div class="question">Qu'est-ce qui a changé en deuxième année?</div>
+                    <div class="question">Quel est son objectif professionnel maintenant?</div>
+                    <div class="question">Penses-tu qu'Antoine a fait le bon choix?</div>
+                </div>
+            </div>
+
+            <!-- TEXTE PERSONNEL 2 -->
+            <div class="section personal">
+                <h2>👤 Texte 4: La réussite de Valérie</h2>
+                <div class="badge badge-personal">Histoire personnelle (A2/B1)</div>
+
+                <div class="section-text">
+                    <p>
+                        Valérie est une avocate de 45 ans. Elle a réussi dans le domaine du droit des droits de l'homme. Elle a travaillé pour 
+                        des organisations internationales. Elle a plaidé des cas importants. Elle a changé des lois. Mais son chemin vers le succès 
+                        n'a pas été facile.
+                    </p>
+                    <p>
+                        Valérie vient d'une famille pauvre. Ses parents n'avaient pas reçu d'éducation supérieure. Elle a été la première de sa 
+                        famille à aller à l'université. Elle a choisi le droit parce qu'elle croyait au pouvoir de la justice. Elle voulait aider 
+                        les gens qui ne pouvaient pas s'aider eux-mêmes. Mais les études en droit étaient chères. Elle devait travailler à temps 
+                        partiel pour payer ses frais de scolarité.
+                    </p>
+                    <p>
+                        Les années d'études ont été extrêmement difficiles. Pendant la journée, elle allait aux cours. Le soir et le weekend, elle 
+                        travaillait dans un café. Elle avait très peu de temps pour étudier, pour dormir, pour avoir une vie sociale. Ses 
+                        camarades de classe venaient de familles riches. Ils avaient du temps pour étudier, pour faire la fête, pour voyager. 
+                        Valérie, elle, travaillait.
+                    </p>
+                    <p>
+                        Mais Valérie était déterminée. Elle avait une passion qui la poussait. Elle savait pourquoi elle faisait tout cela. Elle 
+                        n'étudiait pas simplement pour obtenir un diplôme. Elle étudiait pour devenir un outil de justice. Elle a réussi ses examens. 
+                        Elle a obtenu son diplôme. Elle a passé l'examen pour devenir avocate.
+                    </p>
+                    <p>
+                        Aujourd'hui, Valérie est une avocate respectée. Elle a gagné plusieurs prix pour son travail. Elle a aidé des centaines de 
+                        personnes. Elle a changé plusieurs lois injustes. Et maintenant, elle utilise son succès pour aider d'autres étudiants comme 
+                        elle. Elle a créé une fondation qui aide les étudiants en droit issus de familles pauvres. Elle leur dit: "Votre situation 
+                        financière n'est pas un obstacle. Votre passion est votre force. Le droit a besoin de personnes comme vous."
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        والری یک وکیل 45 ساله است. او در حقوق حقوق بشر موفق شده است. اما راه او به سوی موفقیت آسان نبود. 
+                        والری از خانواده‌ای فقیر می‌آمد. والدین‌اش تحصیلات عالی دریافت نکرده بودند. او اولین نفر خانواده‌اش برای رفتن به دانشگاه بود.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour discuter:</h4>
+                    <div class="question">Qui est Valérie et quel est son domaine?</div>
+                    <div class="question">Pourquoi a-t-elle choisi le droit?</div>
+                    <div class="question">Quelles difficultés a-t-elle affrontées pendant ses études?</div>
+                    <div class="question">Pourquoi était-elle différente de ses camarades?</div>
+                    <div class="question">Qu'est-ce qui l'a motivée à continuer?</div>
+                    <div class="question">Qu'a-t-elle accompli après ses études?</div>
+                    <div class="question">Qu'est-ce qu'elle fait maintenant pour aider les autres?</div>
+                    <div class="question">Que signifie "Votre passion est votre force"?</div>
+                </div>
+            </div>
+
+            <!-- VOCABULAIRE -->
+            <div class="section">
+                <h2>📚 Vocabulaire essentiel</h2>
+
+                <h3 style="color: #2980b9; margin: 30px 0 20px; font-size: 20px; font-weight: 600;">Mots importants:</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Droit</div>
+                        <div class="vocab-def">Ensemble de règles gouvernant la société</div>
+                        <div class="vocab-fa">حقوق</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Loi</div>
+                        <div class="vocab-def">Règle légale établie par l'État</div>
+                        <div class="vocab-fa">قانون</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Avocat</div>
+                        <div class="vocab-def">Professionnel qui défend les droits en justice</div>
+                        <div class="vocab-fa">وکیل</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Juge</div>
+                        <div class="vocab-def">Personne qui administre la justice</div>
+                        <div class="vocab-fa">قاضی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Tribunal</div>
+                        <div class="vocab-def">Lieu où se juge les procès</div>
+                        <div class="vocab-fa">دادگاه</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Justice</div>
+                        <div class="vocab-def">Traitement équitable et légal</div>
+                        <div class="vocab-fa">عدالت</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Contrat</div>
+                        <div class="vocab-def">Accord légal entre deux personnes</div>
+                        <div class="vocab-fa">قرارداد</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Criminel</div>
+                        <div class="vocab-def">Personne qui a commis un crime</div>
+                        <div class="vocab-fa">جنایتکار</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Plaider</div>
+                        <div class="vocab-def">Présenter un argument devant le tribunal</div>
+                        <div class="vocab-fa">دفاع کردن</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Équité</div>
+                        <div class="vocab-def">Justice et impartialité</div>
+                        <div class="vocab-fa">انصاف</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPRESSIONS -->
+            <div class="section">
+                <h2>💬 10 expressions utiles</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 25px;">
+                    <div class="phrase-box">
+                        <div class="phrase-fr">1. Faire des études en droit</div>
+                        <div class="phrase-fa">تحصیل در حقوق انجام دادن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">2. Devenir avocat</div>
+                        <div class="phrase-fa">وکیل شدن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">3. Défendre les droits</div>
+                        <div class="phrase-fa">حقوق را دفاع کردن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">4. Plaider une cause</div>
+                        <div class="phrase-fa">یک پرونده را دفاع کردن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">5. Raisonner juridiquement</div>
+                        <div class="phrase-fa">از نظر حقوقی فکر کردن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">6. Appliquer la loi</div>
+                        <div class="phrase-fa">قانون را اعمال کردن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">7. Travailler pour la justice</div>
+                        <div class="phrase-fa">برای عدالت کار کردن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">8. Connaître les droits</div>
+                        <div class="phrase-fa">حقوق را شناخت</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">9. Lutter contre l'injustice</div>
+                        <div class="phrase-fa">علیه بی‌عدالتی مبارزه کردن</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">10. Servir la société</div>
+                        <div class="phrase-fa">جامعه را خدمت کردن</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIALOGUE -->
+            <div class="section">
+                <h2>🎭 Dialogue naturel</h2>
+
+                <div class="tip-box" style="margin-bottom: 20px;">
+                    <div class="tip-title">💬 Conversation: Entre Antoine et sa mère</div>
+                    <div class="tip-content">Antoine parle de ses études en droit avec sa mère.</div>
+                </div>
+
+                <div class="dialogue-box">
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Mère:</div>
+                        <div class="dialogue-text">Antoine, comment vont tes études? C'est difficile?</div>
+                        <div class="dialogue-trans">آنتوان، تحصیل‌هایت چطور پیش می‌رود؟ سخت است؟</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Antoine:</div>
+                        <div class="dialogue-text">Maman, c'est très difficile. Surtout la première année. Il y avait trop de matière. Mais maintenant, en troisième année, je commence à aimer le droit.</div>
+                        <div class="dialogue-trans">مامان، خیلی سخت است. بخصوص سال اول. خیلی درس بود. اما حالا، من شروع کردم حقوق را دوست داشتن</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Mère:</div>
+                        <div class="dialogue-text">C'est bon à entendre. Tu te souviens comme tu voulais abandonner après quelques mois?</div>
+                        <div class="dialogue-trans">خوب است. تو یادت است که می‌خواستی ترک کنی؟</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Antoine:</div>
+                        <div class="dialogue-text">Oui, j'avais envie de tout arrêter. Mais j'ai continué. Et j'ai découvert quelque chose d'important. La loi est un outil pour la justice. Je veux devenir avocat et aider les gens.</div>
+                        <div class="dialogue-trans">بله، می‌خواستم همه چیز را ترک کنم. اما ادامه دادم. و کاری مهم کشف کردم. قانون ابزاری برای عدالت است</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Mère:</div>
+                        <div class="dialogue-text">C'est magnifique, mon fils. Tu as trouvé ta passion. C'est ce qui compte.</div>
+                        <div class="dialogue-trans">خیلی خوبه، پسرم. تو اپنا علاقه پیدا کردی</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONSEILS -->
+            <div class="section">
+                <h2>💡 Conseils pratiques</h2>
+
+                <div class="tip-box">
+                    <div class="tip-title">✅ Pour parler naturellement:</div>
+                    <div class="tip-content">Commence par le texte d'échauffement. C'est rapide et te prépare. Puis lis les deux textes généraux pour comprendre les défis. Enfin, lis les deux histoires personnelles pour voir comment des gens réels vivent les études en droit.</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">🎯 Pour mémoriser:</div>
+                    <div class="tip-content">Les 10 expressions sont essentielles. Utilise-les dans des phrases. "Je veux faire des études en droit parce que...", "Mon rêve est de devenir avocat pour...", "Je dois plaider une cause pour...". Plus tu pratiques, plus c'est naturel.</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">💡 Le message principal:</div>
+                    <div class="tip-content">Les études en droit sont difficiles, c'est vrai. Mais si tu as la passion, si tu crois en la justice, si tu veux aider les autres, alors c'est une belle carrière. Comme Antoine et Valérie, tu peux réussir. La clé est la détermination et la passion.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>👤 Hoda KHEDMATI - Professeur de Français</p>
+            <p>📚 Dossier complet d'apprentissage | Thème: Les Études en Droit</p>
+            <p>1 texte d'échauffement + 2 textes généraux + 2 textes personnels | Niveau A2/B1</p>
+            <p style="margin-top: 15px; opacity: 0.7; font-size: 12px;">Textes cohérents avec questions après chaque section</p>
+        </div>
+    </div>
+
+    <!-- SCROLL UP BUTTON -->
+    <button id="scrollBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollBtn');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
