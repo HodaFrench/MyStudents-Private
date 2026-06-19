@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 6</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#2C2230; --soft:#5F5568; --line:#EAE3E0; --cream:#FBF7F2;
+    --gram:#5B3A8C; --gram-bg:#EDE7F6;
+    --verbe:#1E7A6B; --verbe-bg:#E2F2EE;
+    --vocab:#C13670; --vocab-bg:#FBE6EF;
+    --phon:#C2730F; --phon-bg:#FBEEDA;
+    --dia:#D24B4B; --dia-bg:#FAE7E7;
+    --lect:#2E7D5B; --lect-bg:#E4F2EA;
+    --conseil:#B08418; --conseil-bg:#FAF2D8;
+    --cult:#2C6E91; --cult-bg:#E2EFF6;
+    --delf:#9B3149; --delf-bg:#F7E6EB;
+    --a0:#1E7A6B; --a1:#5B3A8C; --ap:#C13670;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #D9B26B; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #EEDFBE; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.4pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.5pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#FAF6F3; border-right:5px solid #D9B26B; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#B3A48F; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F6E3A6; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+  .formula{ background:#fff; border:1.5px dashed var(--gram); border-radius:8px; padding:10px 13px; text-align:center; font-size:11.5pt; margin:8px 0; font-family:'Poppins'; color:var(--gram);}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#5B3A8C 0%,#C13670 55%,#D4A017 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.06; margin:9px 0 4px;">Félicitations !</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 6 — les fêtes · les souhaits · le passé composé · présenter quelqu'un</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF — version enrichie</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Famille, souhaits, caractère.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Le passé composé (avoir &amp; être).</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Récit, vœux, DELF + mémos.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#C13670; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۶ «تبریک!»</div>
+    <div class="fa">این جزوهٔ پُرمحتوا فصل ششم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (خانواده، آرزوها/تبریک‌ها، شخصیت)، سپس A1 (زمان گذشتهٔ passé composé با avoir و être) و در پایان A1+ (روایت خاطره، کارت تبریک، تمرین DELF). به‌علاوهٔ دو صفحهٔ کمکی: «جعبهٔ اسم مفعول‌ها» و «برگهٔ خلاصه». همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--gram)">Grammaire</span><span class="pill" style="color:var(--verbe)">Verbes</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>La famille &amp; la situation familiale</li><li>Les adjectifs possessifs (rappel)</li><li>Adresser un souhait + les fêtes</li><li>Le caractère d'une personne</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>Le passé composé (1) — avec <i>avoir</i></li><li>Le passé composé (2) — participes irréguliers</li><li>Le passé composé (3) — avec <i>être</i> + accord</li><li>La négation au passé + les indicateurs de temps</li><li>Phonétique : /a/ ou /ɑ̃/</li><li>Présenter quelqu'un · dialogue · texte « Une fête de famille »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Mon plus beau souvenir »</li><li>Production écrite : carte de vœux + récit</li><li>Production orale : raconter / présenter</li><li>DELF A1 — Compréhension (une invitation)</li><li>Culture : les fêtes en France</li><li><b>+ Boîte à participes passés</b> &amp; <b>Mémo de l'unité</b></li></ul></div>
+</div>
+
+<!-- ===================== A0 : FAMILLE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>La famille &amp; la situation familiale <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.1pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>les grands-parents</td><td class="fa">پدربزرگ‌ومادربزرگ</td><td>les petits-enfants</td><td class="fa">نوه‌ها</td></tr>
+    <tr><td>l'oncle / la tante</td><td class="fa">عمو/دایی · عمه/خاله</td><td>le neveu / la nièce</td><td class="fa">برادرزاده/خواهرزاده</td></tr>
+    <tr><td>le cousin / la cousine</td><td class="fa">پسرعمو/دختردایی…</td><td>le beau-père / la belle-mère</td><td class="fa">پدرشوهر · مادرشوهر</td></tr>
+    <tr><td>le mari / la femme</td><td class="fa">شوهر / همسر</td><td>le fils / la fille</td><td class="fa">پسر / دختر</td></tr></table>
+
+  <div class="card vocab"><h3>La situation familiale</h3>
+    <span class="chip">célibataire مجرد</span><span class="chip">en couple در رابطه</span>
+    <span class="chip">fiancé(e) نامزد</span><span class="chip">marié(e) متأهل</span>
+    <span class="chip">divorcé(e) مطلقه</span><span class="chip">veuf / veuve بیوه</span></div>
+
+  <div class="card vocab"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>J'ai deux <span class="key">cousins</span> et une <span class="key">tante</span>.</li>
+      <li>Mon <span class="key">oncle</span> est marié ; il a trois enfants.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">خانواده</div>
+    <div class="fa">واژگان خانواده: پدربزرگ‌ومادربزرگ، نوه‌ها، عمو/دایی و عمه/خاله، برادرزاده/خواهرزاده، پسرعمو/دخترعمو، پدرشوهر/مادرشوهر. وضعیت تأهل: célibataire (مجرد)، en couple (در رابطه)، fiancé (نامزد)، marié (متأهل)، divorcé (مطلقه)، veuf/veuve (بیوه).</div></div>
+</div>
+
+<!-- ===================== A0 : POSSESSIFS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A0</div>
+    <h1>Les adjectifs possessifs (rappel) <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils s'accordent avec la <b>chose possédée</b>, pas avec la personne.</p>
+
+  <table class="tg" style="font-size:10.2pt;"><tr><th>Personne</th><th>masc.</th><th>fém.</th><th>pluriel</th></tr>
+    <tr><td>je</td><td><span class="hl">mon</span> frère</td><td><span class="hl">ma</span> sœur</td><td><span class="hl">mes</span> parents</td></tr>
+    <tr><td>tu</td><td><span class="hl">ton</span> oncle</td><td><span class="hl">ta</span> tante</td><td><span class="hl">tes</span> cousins</td></tr>
+    <tr><td>il/elle</td><td><span class="hl">son</span> mari</td><td><span class="hl">sa</span> femme</td><td><span class="hl">ses</span> enfants</td></tr>
+    <tr><td>nous</td><td colspan="2"><span class="hl">notre</span> famille</td><td><span class="hl">nos</span> amis</td></tr>
+    <tr><td>vous</td><td colspan="2"><span class="hl">votre</span> maison</td><td><span class="hl">vos</span> idées</td></tr>
+    <tr><td>ils/elles</td><td colspan="2"><span class="hl">leur</span> fille</td><td><span class="hl">leurs</span> enfants</td></tr></table>
+
+  <div class="card gram"><h3>Le piège à retenir</h3>
+    <i>son / sa</i> = « his » <u>et</u> « her ». Devant une voyelle (fém.), on dit <span class="key">mon / ton / son</span> : <i>mon amie</i>.</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">صفات ملکی</div>
+    <div class="fa">صفت ملکی با چیزِ متعلق مطابقت می‌کند: mon/ma/mes، ton/ta/tes، son/sa/ses، notre/nos، votre/vos، leur/leurs. son/sa هم «مالِ او (مرد)» و هم «مالِ او (زن)» است. پیش از صدادارِ مؤنث: mon amie.</div></div>
+</div>
+
+<!-- ===================== A0 : SOUHAITS + FÊTES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Communication + Vocabulaire · Niveau A0</div>
+    <h1>Adresser un souhait &amp; les fêtes <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.3pt;"><tr><th>On dit…</th><th>Quand ?</th><th>فارسی</th></tr>
+    <tr><td>Joyeux anniversaire !</td><td>un anniversaire</td><td class="fa">تولدت مبارک</td></tr>
+    <tr><td>Félicitations ! / Bravo !</td><td>une réussite</td><td class="fa">تبریک! آفرین!</td></tr>
+    <tr><td>Bonne année !</td><td>le Nouvel An</td><td class="fa">سال نو مبارک</td></tr>
+    <tr><td>Joyeux Noël !</td><td>Noël</td><td class="fa">کریسمس مبارک</td></tr>
+    <tr><td>Bon courage !</td><td>un effort, un examen</td><td class="fa">موفق باشی</td></tr>
+    <tr><td>Bon rétablissement !</td><td>une maladie</td><td class="fa">زود خوب شو</td></tr></table>
+
+  <div class="card vocab"><h3>Le vocabulaire de la fête</h3>
+    <span class="chip">un anniversaire تولد</span><span class="chip">un cadeau هدیه</span>
+    <span class="chip">un gâteau کیک</span><span class="chip">une bougie شمع</span>
+    <span class="chip">une carte کارت</span><span class="chip">inviter دعوت کردن</span>
+    <span class="chip">offrir هدیه دادن</span><span class="chip">fêter جشن گرفتن</span></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">آرزو/تبریک و جشن</div>
+    <div class="fa">عبارت‌های تبریک: «Joyeux anniversaire!» (تولدت مبارک)، «Félicitations!» (تبریک)، «Bonne année!» (سال نو مبارک)، «Bon courage!» (موفق باشی)، «Bon rétablissement!» (زود خوب شو). واژگان جشن: anniversaire (تولد)، cadeau (هدیه)، gâteau (کیک)، bougie (شمع)، inviter (دعوت کردن)، offrir (هدیه دادن).</div></div>
+</div>
+
+<!-- ===================== A0 : CARACTÈRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Décrire le caractère <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.3pt;"><tr><th>Masculin</th><th>Féminin</th><th>فارسی</th></tr>
+    <tr><td>sympathique (sympa)</td><td>sympathique</td><td class="fa">خوش‌برخورد</td></tr>
+    <tr><td>gentil</td><td>gentille</td><td class="fa">مهربان</td></tr>
+    <tr><td>drôle</td><td>drôle</td><td class="fa">بامزه</td></tr>
+    <tr><td>sérieux</td><td>sérieuse</td><td class="fa">جدی</td></tr>
+    <tr><td>timide</td><td>timide</td><td class="fa">خجالتی</td></tr>
+    <tr><td>généreux</td><td>généreuse</td><td class="fa">سخاوتمند</td></tr>
+    <tr><td>bavard</td><td>bavarde</td><td class="fa">پرحرف</td></tr></table>
+
+  <div class="card vocab"><h3>Comment décrire</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Il <span class="key">est</span> très gentil et drôle.</li>
+      <li>Elle <span class="key">a</span> beaucoup d'humour.</li>
+      <li>C'est quelqu'un <span class="key">de</span> sympa.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">توصیف شخصیت</div>
+    <div class="fa">صفت‌های شخصیت: sympathique (خوش‌برخورد)، gentil/gentille (مهربان)، drôle (بامزه)، sérieux/sérieuse (جدی)، timide (خجالتی)، généreux/généreuse (سخاوتمند)، bavard (پرحرف). ساختار: «Il est gentil» (مهربان است)، «Elle a de l'humour» (شوخ است)، «C'est quelqu'un de sympa» (آدم خوبی است).</div></div>
+</div>
+
+<!-- ===================== A1 : PASSÉ COMPOSÉ 1 (AVOIR) ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Le passé composé (1) — avec <span class="serif" style="font-style:italic">avoir</span> <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour parler d'une action <b>terminée</b> dans le passé. C'est le temps du récit.</p>
+
+  <div class="formula">avoir (présent) &nbsp;+&nbsp; participe passé</div>
+
+  <div class="two">
+    <div><table class="tg"><tr><th colspan="2">MANGER → mangé</th></tr>
+      <tr><td>j'ai mangé</td><td>nous avons mangé</td></tr>
+      <tr><td>tu as mangé</td><td>vous avez mangé</td></tr>
+      <tr><td>il/elle a mangé</td><td>ils/elles ont mangé</td></tr></table></div>
+    <div><div class="card gram" style="margin-top:0;"><h3>Le participe passé régulier</h3>
+      <ul class="clean" style="font-size:10.5pt;">
+        <li>verbes en <b>-er</b> → <b>-é</b> : parler → parl<span class="key">é</span></li>
+        <li>verbes en <b>-ir</b> → <b>-i</b> : finir → fin<span class="key">i</span></li></ul>
+      <p class="small">j'ai parlé · tu as choisi · elle a regardé</p></div></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">گذشتهٔ نقلی (۱) — با avoir</div>
+    <div class="fa">برای کارِ تمام‌شده در گذشته. ساختار: avoir (زمان حال) + اسم مفعول. اسم مفعولِ باقاعده: فعل‌های -er ← -é (manger←mangé)، فعل‌های -ir ← -i (finir←fini). مثال: «j'ai mangé» (خوردم)، «elle a regardé» (تماشا کرد).</div></div>
+</div>
+
+<!-- ===================== A1 : PASSÉ COMPOSÉ 2 (IRRÉGULIERS) ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Le passé composé (2) — participes irréguliers <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Beaucoup de verbes fréquents ont un participe passé irrégulier. À mémoriser !</p>
+
+  <div class="two">
+    <div><table class="tg" style="font-size:10.2pt;"><tr><th>Verbe</th><th>Participe</th></tr>
+      <tr><td>avoir</td><td><span class="hl">eu</span></td></tr>
+      <tr><td>être</td><td><span class="hl">été</span></td></tr>
+      <tr><td>faire</td><td><span class="hl">fait</span></td></tr>
+      <tr><td>voir</td><td><span class="hl">vu</span></td></tr>
+      <tr><td>prendre</td><td><span class="hl">pris</span></td></tr>
+      <tr><td>boire</td><td><span class="hl">bu</span></td></tr></table></div>
+    <div><table class="tg" style="font-size:10.2pt;"><tr><th>Verbe</th><th>Participe</th></tr>
+      <tr><td>lire</td><td><span class="hl">lu</span></td></tr>
+      <tr><td>écrire</td><td><span class="hl">écrit</span></td></tr>
+      <tr><td>dire</td><td><span class="hl">dit</span></td></tr>
+      <tr><td>mettre</td><td><span class="hl">mis</span></td></tr>
+      <tr><td>pouvoir</td><td><span class="hl">pu</span></td></tr>
+      <tr><td>vouloir</td><td><span class="hl">voulu</span></td></tr></table></div>
+  </div>
+
+  <div class="card gram"><h3>Exemples</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>J'ai <span class="key">fait</span> un gâteau. · Elle a <span class="key">pris</span> des photos.</li>
+      <li>Nous avons <span class="key">vu</span> nos amis. · Ils ont <span class="key">bu</span> du café.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">گذشتهٔ نقلی (۲) — بی‌قاعده‌ها</div>
+    <div class="fa">بسیاری از فعل‌های پرکاربرد اسم مفعولِ بی‌قاعده دارند: avoir←eu، être←été، faire←fait، voir←vu، prendre←pris، boire←bu، lire←lu، écrire←écrit، dire←dit، mettre←mis، pouvoir←pu، vouloir←voulu. مثال: «J'ai fait un gâteau» (یک کیک درست کردم).</div></div>
+</div>
+
+<!-- ===================== A1 : PASSÉ COMPOSÉ 3 (ÊTRE) ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Le passé composé (3) — avec <span class="serif" style="font-style:italic">être</span> <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Certains verbes (surtout de <b>mouvement</b>) utilisent <b>être</b>. Le participe <b>s'accorde</b> avec le sujet.</p>
+
+  <div class="formula">être (présent) &nbsp;+&nbsp; participe passé&nbsp;<span style="font-size:9pt;">(accordé)</span></div>
+
+  <div class="two">
+    <div><table class="tg"><tr><th colspan="2">ALLER → allé(e)(s)</th></tr>
+      <tr><td>je suis allé(e)</td><td>nous sommes allé(e)s</td></tr>
+      <tr><td>tu es allé(e)</td><td>vous êtes allé(e)s</td></tr>
+      <tr><td>il est allé</td><td>ils sont allés</td></tr>
+      <tr><td>elle est allée</td><td>elles sont allées</td></tr></table></div>
+    <div><div class="card gram" style="margin-top:0;"><h3>Les verbes avec « être »</h3>
+      <span class="chip" style="border-color:var(--gram)">aller</span><span class="chip" style="border-color:var(--gram)">venir</span><span class="chip" style="border-color:var(--gram)">arriver</span><span class="chip" style="border-color:var(--gram)">partir</span><span class="chip" style="border-color:var(--gram)">entrer</span><span class="chip" style="border-color:var(--gram)">sortir</span><span class="chip" style="border-color:var(--gram)">rester</span><span class="chip" style="border-color:var(--gram)">tomber</span><span class="chip" style="border-color:var(--gram)">naître</span><span class="chip" style="border-color:var(--gram)">+ pronominaux</span></div></div>
+  </div>
+
+  <div class="card gram"><h3>L'accord du participe</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li>Paul est <span class="key">allé</span>. · Marie est <span class="key">allée</span>. (+e)</li>
+      <li>Ils sont <span class="key">venus</span>. · Elles sont <span class="key">venues</span>. (+s / +es)</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">گذشتهٔ نقلی (۳) — با être</div>
+    <div class="fa">برخی فعل‌ها (به‌ویژه فعل‌های حرکت) با être ساخته می‌شوند و اسم مفعول با فاعل مطابقت می‌کند: aller، venir، arriver، partir، entrer، sortir، rester، tomber، naître و فعل‌های انعکاسی. مثال: «Marie est allée» (ماری رفت)، «Elles sont venues» (آن‌ها (مؤنث) آمدند).</div></div>
+</div>
+
+<!-- ===================== A1 : NÉGATION + TEMPS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Négation &amp; indicateurs de temps <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card gram"><h3>La négation : ne … pas autour de l'auxiliaire</h3>
+    <table class="tg" style="margin-top:6px; font-size:10.4pt;"><tr><th>Affirmatif</th><th>Négatif</th></tr>
+      <tr><td>J'ai mangé.</td><td>Je <span class="hl">n'</span>ai <span class="hl">pas</span> mangé.</td></tr>
+      <tr><td>Il est venu.</td><td>Il <span class="hl">n'</span>est <span class="hl">pas</span> venu.</td></tr></table></div>
+
+  <div class="card gram"><h3>Quand ? — les indicateurs du passé</h3>
+    <span class="chip" style="border-color:var(--gram)">hier دیروز</span>
+    <span class="chip" style="border-color:var(--gram)">avant-hier پریروز</span>
+    <span class="chip" style="border-color:var(--gram)">la semaine dernière هفتهٔ پیش</span>
+    <span class="chip" style="border-color:var(--gram)">le mois dernier ماه پیش</span>
+    <span class="chip" style="border-color:var(--gram)">il y a deux jours دو روز پیش</span></div>
+
+  <div class="tip"><span class="star">Passé ? Présent ? Futur ?</span> <i>Hier, j'ai travaillé</i> (passé) · <i>Aujourd'hui, je travaille</i> (présent) · <i>Demain, je vais travailler</i> (futur proche).</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">منفی و قیدهای زمان</div>
+    <div class="fa">منفی: ne/n' + فعل کمکی + pas + اسم مفعول → «Je n'ai pas mangé»، «Il n'est pas venu». قیدهای گذشته: hier (دیروز)، avant-hier (پریروز)، la semaine dernière (هفتهٔ پیش)، il y a deux jours (دو روز پیش). مقایسه: دیروز کار کردم (گذشته) / امروز کار می‌کنم (حال) / فردا کار خواهم کرد (آیندهٔ نزدیک).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>Le son /a/ ou /ɑ̃/ <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>Voyelle orale ou nasale ?</h3>
+    <div class="two"><div><b>/a/</b> (bouche ouverte, air par la bouche) :<br>
+      <i>ami · papa · ça · femme · gâteau</i></div>
+      <div><b>/ɑ̃/</b> (air par le nez) — <i>an, am, en, em</i> :<br>
+      <i>an · dans · enfant · maman · content · vacances</i></div></div></div>
+
+  <div class="card phon"><h3>Petites paires à écouter</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>l'<b>a</b>n [ɑ̃] / il <b>a</b> [a]</li>
+      <li>s<b>an</b>s [sɑ̃] / s<b>a</b> [sa]</li>
+      <li>gr<b>an</b>d [grɑ̃] / gr<b>a</b>s [gra]</li></ul>
+    <p class="small">Règle d'écriture : <b>an / am / en / em</b> = son nasal /ɑ̃/.</p></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ /a/ یا /ɑ̃/</div>
+    <div class="fa">/a/ مثل ami، papa با دهان باز و از راه دهان تلفظ می‌شود. /ɑ̃/ صدای خیشومی است (هوا از بینی) و در نوشتارِ an/am/en/em می‌آید: dans، enfant، content، vacances. مقایسه: «an» (ɑ̃) با «a» (a).</div></div>
+</div>
+
+<!-- ===================== A1 : PRÉSENTER QUELQU'UN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication · Niveau A1</div>
+    <h1>Présenter quelqu'un <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Les formules</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="key">Voici</span> ma sœur, Sara.</li>
+      <li><span class="key">Je te présente</span> mon ami Marc.</li>
+      <li>C'est mon collègue. Il s'appelle Tom, il a 30 ans, il est très sympa.</li></ul>
+    <p class="small">Réponses : <i>Enchanté(e) !</i> · <i>Ravi(e) de te/vous rencontrer.</i></p></div>
+
+  <div class="card dia"><h3>La fiche « portrait » (à réutiliser)</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li><b>Nom :</b> il/elle s'appelle…</li>
+      <li><b>Lien :</b> c'est mon/ma… (ami, cousine…)</li>
+      <li><b>Âge / métier :</b> il a … ans, il est…</li>
+      <li><b>Caractère :</b> il est gentil, drôle…</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">معرفی کردنِ کسی</div>
+    <div class="fa">عبارت‌ها: «Voici ma sœur» (این خواهرم است)، «Je te présente mon ami» (دوستم را معرفی می‌کنم)، «C'est mon collègue» (همکارم است). پاسخ: «Enchanté(e)!» (خوشوقتم). برای معرفی: نام، نسبت، سن/شغل و شخصیت را بگو.</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>À une fête d'anniversaire <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Inès :</b> Bon anniversaire, Léo ! Tiens, c'est pour toi.</div>
+    <div class="dlg"><b class="B">Léo :</b> Oh, merci beaucoup ! C'est très gentil. Tu es venue avec quelqu'un ?</div>
+    <div class="dlg"><b class="A">Inès :</b> Oui ! Je te présente mon cousin, Hadi. Il est étudiant à Lyon.</div>
+    <div class="dlg"><b class="B">Léo :</b> Enchanté, Hadi ! Vous êtes arrivés comment ?</div>
+    <div class="dlg"><b class="A">Hadi :</b> On a pris le train. On est partis à midi et on est arrivés à trois heures.</div>
+    <div class="dlg"><b class="B">Léo :</b> Super ! Vous avez mangé ? Il y a un gâteau au chocolat.</div>
+    <div class="dlg"><b class="A">Inès :</b> Pas encore ! On va goûter ça. Félicitations encore, Léo !</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>اینس:</b> تولدت مبارک لئو! بیا، این برای توست.<br>
+      <b>لئو:</b> اوه، خیلی ممنون! خیلی لطف کردی. با کسی آمدی؟<br>
+      <b>اینس:</b> بله! پسرعمویم هادی را معرفی می‌کنم. در لیون دانشجوست.<br>
+      <b>لئو:</b> خوشوقتم هادی! چطور آمدید؟<br>
+      <b>هادی:</b> با قطار آمدیم. ظهر راه افتادیم و ساعت سه رسیدیم.<br>
+      <b>لئو:</b> عالی! غذا خوردید؟ کیک شکلاتی هست.<br>
+      <b>اینس:</b> هنوز نه! امتحانش می‌کنیم. باز هم تبریک لئو!
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Une fête de famille <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Samedi dernier, c'était l'anniversaire de ma grand-mère. Toute la famille est venue chez mes parents. Ma mère a préparé un grand repas et mon oncle a apporté un gâteau au chocolat.</p>
+    <p>À midi, nous avons mangé ensemble dans le jardin. Après le déjeuner, ma grand-mère a soufflé ses bougies et nous avons chanté « Joyeux anniversaire ! ». Mes cousins ont offert un joli cadeau : un album de photos de famille. Ma grand-mère a beaucoup aimé.</p>
+    <p>L'après-midi, les enfants ont joué dans le jardin et les adultes ont parlé et ri. Je n'ai pas vu le temps passer. Le soir, nous sommes rentrés très contents. <span class="q">C'était une journée magnifique !</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">شنبهٔ گذشته، تولد مادربزرگم بود. تمام خانواده به خانهٔ پدر و مادرم آمدند. مادرم یک غذای بزرگ آماده کرد و دایی‌ام یک کیک شکلاتی آورد. ظهر با هم در باغ غذا خوردیم. بعد از ناهار، مادربزرگم شمع‌ها را فوت کرد و ما «تولدت مبارک» خواندیم. پسرعموهایم یک هدیهٔ قشنگ دادند: یک آلبوم عکس خانوادگی. مادربزرگم خیلی خوشش آمد. بعدازظهر بچه‌ها در باغ بازی کردند و بزرگ‌ترها حرف زدند و خندیدند. اصلاً نفهمیدم زمان چطور گذشت. شب خیلی خوشحال برگشتیم. روز فوق‌العاده‌ای بود!</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Mon plus beau souvenir <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read" style="font-size:11.6pt;">
+    <p>Je voudrais vous raconter un beau souvenir. L'année dernière, mon meilleur ami s'est marié, et toute notre bande d'amis est allée à la fête. C'était au mois de juin, dans un petit village à la campagne.</p>
+    <p>Le matin, nous sommes arrivés très tôt pour aider à préparer la salle. Nous avons mis des fleurs sur les tables et nous avons accroché des lumières. À cinq heures, la cérémonie a commencé. Mon ami était très élégant et un peu nerveux ! Après, nous avons dîné tous ensemble, puis nous avons dansé jusqu'à minuit.</p>
+    <p>J'ai rencontré beaucoup de gens sympathiques ce jour-là. Une femme très drôle m'a raconté des histoires pendant tout le dîner ; nous avons beaucoup ri. Je n'ai pas beaucoup dormi cette nuit-là, mais ce n'est pas grave. Pour moi, les fêtes réunissent les gens qu'on aime : on partage un moment et on garde un souvenir pour toute la vie. <span class="q">Et vous, quel est votre plus beau souvenir ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> passé composé (<i>avoir</i> &amp; <i>être</i>), négation au passé, <i>parce que / après / puis / pendant</i>, adjectifs de caractère.</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">می‌خواهم یک خاطرهٔ زیبا برایتان تعریف کنم. سال گذشته، بهترین دوستم ازدواج کرد و تمام گروه دوستانمان به جشن رفتیم. ماه ژوئن بود، در یک روستای کوچک. صبح خیلی زود رسیدیم تا در آماده‌کردن سالن کمک کنیم. روی میزها گل گذاشتیم و چراغ‌ها را آویزان کردیم. ساعت پنج، مراسم شروع شد. دوستم خیلی شیک و کمی مضطرب بود! بعد، همه با هم شام خوردیم و تا نیمه‌شب رقصیدیم. آن روز با آدم‌های خوش‌برخورد زیادی آشنا شدم. یک خانم بسیار بامزه در تمام مدت شام برایم داستان تعریف کرد؛ خیلی خندیدیم. آن شب زیاد نخوابیدم، اما مهم نیست. برای من، جشن‌ها آدم‌هایی را که دوست داریم کنار هم می‌آورند: لحظه‌ای را قسمت می‌کنیم و خاطره‌ای برای تمام عمر نگه می‌داریم. زیباترین خاطرهٔ شما چیست؟</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Carte de vœux &amp; récit <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>🎉 Message de félicitations</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.4pt; line-height:1.55; margin:0;">
+      Chère Léa,<br>
+      Félicitations pour ton nouveau travail ! Je suis très content(e) pour toi. Tu le mérites vraiment.<br>
+      On va fêter ça bientôt ! Bisous 🎈</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>✉️ Raconter un événement</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.4pt; line-height:1.55; margin:0;">
+      Salut !<br>
+      Le week-end dernier, je suis allé(e) à un mariage. C'était magnifique ! Nous avons dansé toute la nuit et j'ai rencontré des gens sympas.<br>
+      Je t'envoie des photos ! À bientôt.</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan d'un petit récit au passé</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span><b>Quand ?</b> (hier, le week-end dernier…)</li>
+      <li><span class="num">2</span><b>Quoi ?</b> (je suis allé(e) à…, j'ai fait…)</li>
+      <li><span class="num">3</span><b>Détails</b> (avec qui, où, les actions)</li>
+      <li><span class="num">4</span><b>Mon avis</b> (c'était super / fatigant…)</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ نوشته‌ها</div>
+    <div class="fa">پیام تبریک: «لئای عزیز، برای کار جدیدت تبریک می‌گویم! خیلی برایت خوشحالم. واقعاً لیاقتش را داری. به‌زودی جشن می‌گیریم! بوس.» روایت رویداد: «سلام! آخر هفتهٔ گذشته به یک عروسی رفتم. فوق‌العاده بود! تمام شب رقصیدیم و با آدم‌های خوبی آشنا شدم. عکس‌ها را می‌فرستم!»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Raconter &amp; présenter <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue (1 minute) — un souvenir</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Quand :</b> « L'année dernière / Le mois dernier… »</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>L'événement</b> (une fête, un voyage…).</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Les actions</b> au passé composé (j'ai…, je suis…).</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Mon ressenti</b> (c'était… / j'ai adoré).</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — à une fête</h3>
+    <ul class="clean"><li><b>A :</b> souhaite un bon anniversaire et offre un cadeau.</li>
+      <li><b>B :</b> remercie, puis présente une personne de sa famille.</li>
+      <li><b>Ensemble :</b> racontez ce que vous avez fait le week-end dernier.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت دربارهٔ یک خاطره: ۱) زمان («سال گذشته…») ۲) رویداد (جشن، سفر) ۳) کارها با گذشتهٔ نقلی (j'ai…، je suis…) ۴) احساست («عالی بود / خیلی دوست داشتم»). سپس نقش‌بازی: یکی تبریک می‌گوید و هدیه می‌دهد، دیگری تشکر می‌کند و یکی از اعضای خانواده‌اش را معرفی می‌کند.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « invitation »</h3>
+    <ul class="clean"><li>Repère <b>qui</b> invite, <b>quand</b>, <b>où</b> et pour <b>quelle occasion</b>.</li>
+      <li>Cherche une <b>date limite</b> de réponse.</li>
+      <li>Lis les questions <b>avant</b> de relire le texte.</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>Tu es invité·e ! 🎉</b></p>
+    <p>Pour fêter mes 30 ans, j'organise une soirée.<br>
+    <b>Quand ?</b> Samedi 15 juin, à 20 h.<br>
+    <b>Où ?</b> Chez moi, 8 rue des Lilas.<br>
+    Apporte ta bonne humeur ! Réponds avant le 10 juin.<br>
+    — Camille</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Quel âge fête Camille ?</li>
+        <li>2. Quel jour est la fête ?</li><li>3. À quelle heure ?</li>
+        <li>4. Avant quelle date faut-il répondre ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. 30 ans.</li>
+        <li>2. Samedi 15 juin.</li><li>3. À 20 h.</li><li>4. Avant le 10 juin.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: بفهم چه کسی دعوت می‌کند، چه زمانی، کجا و به چه مناسبت؛ دنبال «مهلت پاسخ» بگرد؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان. در دعوت‌نامهٔ نمونه: کامی ۳۰ سالگی‌اش را جشن می‌گیرد، شنبه ۱۵ ژوئن ساعت ۲۰، و باید پیش از ۱۰ ژوئن پاسخ داد.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Les fêtes en France</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> on célèbre beaucoup de fêtes pendant l'année. Pour un <b>anniversaire</b>, on offre un cadeau, on mange un gâteau avec des bougies et on chante « Joyeux anniversaire ». Le <b>1ᵉʳ janvier</b>, on se souhaite une « Bonne année » et on présente ses vœux à la famille et aux amis.</p>
+    <p>Le <b>14 juillet</b> est la fête nationale, avec un défilé et des feux d'artifice. À <b>Noël</b> (le 25 décembre), on se réunit en famille pour un grand repas et on offre des cadeaux. Et le <b>21 juin</b>, c'est la <b>Fête de la musique</b> : partout dans les rues, des concerts gratuits. Les fêtes sont des moments de partage importants dans toute la francophonie.</p>
+  </div>
+
+  <table class="tc" style="font-size:10.3pt; margin-top:6px;"><tr><th>Fête</th><th>Quand</th><th>On dit…</th></tr>
+    <tr><td>Le Nouvel An</td><td>1ᵉʳ janvier</td><td>Bonne année !</td></tr>
+    <tr><td>La fête nationale</td><td>14 juillet</td><td>—</td></tr>
+    <tr><td>Noël</td><td>25 décembre</td><td>Joyeux Noël !</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — جشن‌ها در فرانسه</div>
+    <div class="fa">در فرانسه در طول سال جشن‌های زیادی برگزار می‌شود. برای تولد، هدیه می‌دهند، کیک با شمع می‌خورند و «Joyeux anniversaire» می‌خوانند. اول ژانویه «Bonne année» می‌گویند. ۱۴ ژوئیه روز ملی با رژه و آتش‌بازی است. کریسمس (۲۵ دسامبر) دور هم جمع می‌شوند و هدیه می‌دهند. ۲۱ ژوئن «جشن موسیقی» است با کنسرت‌های رایگان در خیابان‌ها.</div></div>
+</div>
+
+<!-- ===================== EXTRA : PARTICIPES PASSÉS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Mémo grammaire · Bonus</div>
+    <h1>Boîte à participes passés <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">Ta réserve de participes passés pour parler du passé. Apprends-en 5 par jour !</p>
+
+  <div class="two">
+    <div><table class="tv" style="font-size:10pt;"><tr><th>Verbe</th><th>Participe</th><th>Aux.</th></tr>
+      <tr><td>parler</td><td>parlé</td><td>avoir</td></tr>
+      <tr><td>manger</td><td>mangé</td><td>avoir</td></tr>
+      <tr><td>finir</td><td>fini</td><td>avoir</td></tr>
+      <tr><td>faire</td><td>fait</td><td>avoir</td></tr>
+      <tr><td>voir</td><td>vu</td><td>avoir</td></tr>
+      <tr><td>prendre</td><td>pris</td><td>avoir</td></tr>
+      <tr><td>boire</td><td>bu</td><td>avoir</td></tr>
+      <tr><td>lire</td><td>lu</td><td>avoir</td></tr>
+      <tr><td>écrire</td><td>écrit</td><td>avoir</td></tr>
+      <tr><td>avoir</td><td>eu</td><td>avoir</td></tr>
+      <tr><td>être</td><td>été</td><td>avoir</td></tr></table></div>
+    <div><table class="tv" style="font-size:10pt;"><tr><th>Verbe</th><th>Participe</th><th>Aux.</th></tr>
+      <tr><td>aller</td><td>allé(e)</td><td><b>être</b></td></tr>
+      <tr><td>venir</td><td>venu(e)</td><td><b>être</b></td></tr>
+      <tr><td>partir</td><td>parti(e)</td><td><b>être</b></td></tr>
+      <tr><td>arriver</td><td>arrivé(e)</td><td><b>être</b></td></tr>
+      <tr><td>sortir</td><td>sorti(e)</td><td><b>être</b></td></tr>
+      <tr><td>rester</td><td>resté(e)</td><td><b>être</b></td></tr>
+      <tr><td>naître</td><td>né(e)</td><td><b>être</b></td></tr>
+      <tr><td>mettre</td><td>mis</td><td>avoir</td></tr>
+      <tr><td>dire</td><td>dit</td><td>avoir</td></tr>
+      <tr><td>pouvoir</td><td>pu</td><td>avoir</td></tr>
+      <tr><td>vouloir</td><td>voulu</td><td>avoir</td></tr></table></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">جعبهٔ اسم مفعول‌ها</div>
+    <div class="fa">این جدول، اسم مفعولِ فعل‌های پرکاربرد را می‌دهد و نشان می‌دهد فعل کمکیِ هرکدام avoir است یا être. فعل‌های être (مثل aller، venir، partir، arriver، rester، naître) با فاعل مطابقت دارند. روزی ۵ تا حفظ کن!</div></div>
+</div>
+
+<!-- ===================== EXTRA : MÉMO DE L'UNITÉ ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Antisèche · Bonus</div>
+    <h1>Le mémo de l'unité 6 <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">Le passé composé</h4>
+      <p class="small" style="font-size:10pt;"><b>avoir / être</b> (présent) + <b>participe passé</b>.<br>
+      Avec <i>être</i> → accord avec le sujet.<br>
+      Négation : <i>n'ai pas mangé</i>.</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">Les souhaits</h4>
+      <p class="small" style="font-size:10pt;">Joyeux anniversaire · Félicitations · Bonne année · Bon courage · Bon rétablissement.</p></div>
+    <div class="box" style="border-left:4px solid var(--dia)"><h4 style="color:var(--dia)">Présenter quelqu'un</h4>
+      <p class="small" style="font-size:10pt;">Voici… · Je te présente… · Il s'appelle…, il est…, il a … ans. — Enchanté(e) !</p></div>
+    <div class="box" style="border-left:4px solid var(--phon)"><h4 style="color:var(--phon)">Indicateurs du passé</h4>
+      <p class="small" style="font-size:10pt;">hier · avant-hier · la semaine dernière · le mois dernier · il y a 2 jours.</p></div>
+  </div>
+
+  <div class="card conseil" style="margin-top:10px;"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>Hier, j'<span class="key">ai</span> fait un gâteau.</li>
+      <li>Le week-end dernier, je <span class="key">suis</span> allé(e) à une fête.</li>
+      <li>Je <span class="key">te présente</span> mon ami. — Enchanté !</li>
+      <li>Joyeux anniversaire ! <span class="key">Félicitations</span> !</li>
+      <li>C'est quelqu'un de très <span class="key">gentil</span> et drôle.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">برگهٔ خلاصهٔ واحد ۶</div>
+    <div class="fa">گذشتهٔ نقلی: avoir/être (حال) + اسم مفعول؛ با être مطابقت با فاعل؛ منفی n'ai pas. تبریک‌ها: Joyeux anniversaire، Félicitations، Bonne année. معرفی: «Je te présente…»، «Enchanté!». قیدهای گذشته: hier، la semaine dernière، il y a 2 jours. پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour le PASSÉ COMPOSÉ</h3>
+    <ul class="clean"><li>2 questions à te poser : <b>quel auxiliaire</b> (avoir ou être) ? <b>quel participe</b> ?</li>
+      <li>Apprends les verbes « être » comme une petite famille (mouvement + naître/mourir).</li>
+      <li>Avec <i>être</i>, vérifie l'accord (féminin + e, pluriel + s).</li></ul></div>
+
+  <div class="card conseil"><h3>Pour PARLER &amp; ÉCRIRE</h3>
+    <ul class="clean"><li>Raconte ta journée d'hier à voix haute, au passé composé.</li>
+      <li>Commence par un indicateur de temps : <i>« Hier… », « La semaine dernière… »</i>.</li>
+      <li>Réutilise les modèles : carte de vœux, petit récit, fiche-portrait.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Sers-toi de la « boîte à participes » et du mémo comme antisèches.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای گذشتهٔ نقلی دو سؤال بپرس: کدام فعل کمکی (avoir یا être)؟ کدام اسم مفعول؟ فعل‌های être را مثل یک خانوادهٔ کوچک (حرکت + naître/mourir) حفظ کن و مطابقت را با être بررسی کن. دیروزت را بلند و در گذشتهٔ نقلی تعریف کن و با قید زمان شروع کن. از «جعبهٔ اسم مفعول‌ها» و «برگهٔ خلاصه» کمک بگیر.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>☐ Parler de ma famille et décrire un caractère.</li>
+      <li>☐ Adresser un souhait selon l'occasion.</li>
+      <li>☐ Former le passé composé avec <i>avoir</i>.</li>
+      <li>☐ Former le passé composé avec <i>être</i> (+ accord).</li>
+      <li>☐ Mettre une phrase au passé à la négation.</li>
+      <li>☐ Présenter quelqu'un · raconter un souvenir.</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. Passé composé : « je / manger » → ?</li>
+        <li>2. « elle / aller » → ? (attention à l'accord)</li>
+        <li>3. Participe : faire = ? · prendre = ? · voir = ?</li>
+        <li>4. Négatif : « J'ai vu le film. » → ?</li>
+        <li>5. Souhait pour un examen ?</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. j'ai mangé</li>
+        <li>2. elle est allée</li>
+        <li>3. fait · pris · vu</li>
+        <li>4. Je n'ai pas vu le film.</li>
+        <li>5. Bon courage ! / Bonne chance !</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:14px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#5B3A8C,#C13670); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 6 terminée — Félicitations ! 🎉</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد ششم تمام شد — تبریک!</div>
+  </div>
+</div>
+
+</body>
+</html>
