@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 5</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#1E2A38; --soft:#5A6677; --line:#E2E6EE; --cream:#F6F8FB;
+    --gram:#1F4E79; --gram-bg:#E7EEF6;
+    --verbe:#1E8385; --verbe-bg:#E1F1F1;
+    --vocab:#B5730F; --vocab-bg:#FBEFD8;
+    --phon:#6A4FB3; --phon-bg:#ECE7F8;
+    --dia:#D14B4B; --dia-bg:#FAE8E8;
+    --lect:#2E7D5B; --lect-bg:#E4F2EA;
+    --conseil:#A6781C; --conseil-bg:#FAF2DA;
+    --cult:#2C6E91; --cult-bg:#E2EFF6;
+    --delf:#8A3A63; --delf-bg:#F6E6EF;
+    --a0:#1E8385; --a1:#1F4E79; --ap:#6A4FB3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #9DB4CC; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #D6E2EE; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.5pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.6pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#F4F7FB; border-right:5px solid #B7C6D8; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#98A6BA; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#FCE3A6; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#1F4E79 0%,#2C8C8C 52%,#B5730F 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:36pt; line-height:1.08; margin:9px 0 4px;">C'est quoi le programme ?</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 5 — la journée · l'heure · les sorties · les invitations</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Routine, l'heure, activités.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Pronominaux, fréquence, sorties.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Invitations, textes longs, DELF.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#1F4E79; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۵ «برنامه چیه؟»</div>
+    <div class="fa">این جزوه فصل پنجم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (کارهای روزمره، ساعت، فعالیت‌ها)، سپس A1 (فعل‌های انعکاسی، بسامد/تکرار، بیرون‌رفتن) و در پایان A1+ (دعوت‌کردن و قرار گذاشتن، متن‌های بلند و تمرین DELF). همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--verbe)">Verbes</span><span class="pill" style="color:var(--gram)">Grammaire</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Les verbes pronominaux au présent (<i>se lever…</i>)</li><li>L'heure : <i>Quelle heure est-il ?</i></li><li>Les activités et le temps libre</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>Pronominaux : négation &amp; routine (d'abord, ensuite…)</li><li>L'heure officielle (24 h) · à quelle heure ?</li><li>La fréquence + avant / après</li><li>Phonétique : l'élision (m'/t'/s') &amp; les liaisons</li><li>Inviter, accepter, refuser · fixer un rendez-vous</li><li>Dialogue + texte « Une journée typique »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Mon emploi du temps et mes sorties »</li><li>Production écrite : proposer / répondre à une invitation</li><li>Production orale : fixer un rendez-vous</li><li>DELF A1 — Compréhension des écrits (un programme)</li><li>Culture : le rythme de la journée &amp; les sorties · bilan</li></ul></div>
+</div>
+
+<!-- ===================== A0 : PRONOMINAUX ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Verbes · Niveau A0</div>
+    <h1>Les verbes pronominaux <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">Ce sont les verbes du quotidien : l'action « revient » sur la personne (me, te, se…).</p>
+
+  <table class="tv"><tr><th colspan="2">SE LAVER — shostan / شستن خود</th></tr>
+    <tr><td>je <span class="hl">me</span> lave</td><td>nous <span class="hl">nous</span> lavons</td></tr>
+    <tr><td>tu <span class="hl">te</span> laves</td><td>vous <span class="hl">vous</span> lavez</td></tr>
+    <tr><td>il/elle <span class="hl">se</span> lave</td><td>ils/elles <span class="hl">se</span> lavent</td></tr></table>
+
+  <div class="card verbe"><h3>Les verbes de la routine</h3>
+    <span class="chip">se réveiller بیدار شدن</span><span class="chip">se lever بلند شدن</span>
+    <span class="chip">s'habiller لباس پوشیدن</span><span class="chip">se préparer آماده شدن</span>
+    <span class="chip">se reposer استراحت کردن</span><span class="chip">se coucher خوابیدن</span>
+    <div class="tip" style="margin-top:6px;"><span class="star">Phrase A0 :</span> <i>Le matin, je <span class="key">me lève</span> à 7 heures et je <span class="key">m'habille</span>.</i></div></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل‌های انعکاسی</div>
+    <div class="fa">فعل‌های انعکاسی با ضمیر می‌آیند: me, te, se, nous, vous, se. مثل se laver (شستنِ خود): je me lave، tu te laves… فعل‌های روزمره: se réveiller (بیدار شدن)، se lever (بلند شدن)، s'habiller (لباس پوشیدن)، se coucher (خوابیدن). مثال: «صبح ساعت ۷ بلند می‌شوم و لباس می‌پوشم».</div></div>
+</div>
+
+<!-- ===================== A0 : L'HEURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>L'heure : Quelle heure est-il ? <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx"><tr><th>Horloge</th><th>On dit…</th><th>فارسی</th></tr>
+    <tr><td>8:00</td><td>Il est huit heures</td><td class="fa">ساعت هشت</td></tr>
+    <tr><td>8:15</td><td>huit heures <span class="hl">et quart</span></td><td class="fa">هشت و ربع</td></tr>
+    <tr><td>8:30</td><td>huit heures <span class="hl">et demie</span></td><td class="fa">هشت و نیم</td></tr>
+    <tr><td>8:45</td><td>neuf heures <span class="hl">moins le quart</span></td><td class="fa">یک ربع به نه</td></tr>
+    <tr><td>12:00</td><td>il est <span class="hl">midi</span></td><td class="fa">ظهر</td></tr>
+    <tr><td>00:00</td><td>il est <span class="hl">minuit</span></td><td class="fa">نیمه‌شب</td></tr></table>
+
+  <div class="card vocab"><h3>Demander &amp; donner l'heure</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>— <span class="key">Quelle heure est-il</span> ? — Il est dix heures.</li>
+      <li>— <span class="key">À quelle heure</span> tu te lèves ? — À sept heures.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ساعت</div>
+    <div class="fa">«Quelle heure est-il؟» یعنی «ساعت چند است؟». پاسخ: «Il est huit heures» (ساعت هشت)، et quart (و ربع)، et demie (و نیم)، moins le quart (یک ربع به…)، midi (ظهر)، minuit (نیمه‌شب). برای پرسش زمانِ کار: «À quelle heure…؟» (چه ساعتی…؟).</div></div>
+</div>
+
+<!-- ===================== A0 : ACTIVITÉS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les activités &amp; le temps libre <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Ce que je fais</h3>
+    <span class="chip">faire du sport ورزش کردن</span><span class="chip">aller au cinéma سینما رفتن</span>
+    <span class="chip">lire خواندن</span><span class="chip">écouter de la musique موسیقی گوش دادن</span>
+    <span class="chip">voir des amis دیدن دوستان</span><span class="chip">se promener قدم زدن</span>
+    <span class="chip">regarder une série تماشای سریال</span><span class="chip">jouer بازی کردن</span></div>
+
+  <div class="card vocab"><h3>Les moments de la journée</h3>
+    <span class="chip">le matin صبح</span><span class="chip">l'après-midi بعدازظهر</span>
+    <span class="chip">le soir شب</span><span class="chip">la nuit شب (دیروقت)</span>
+    <span class="chip">le week-end آخر هفته</span>
+    <div class="tip" style="margin-top:6px;"><span class="star">Phrase A0 :</span> <i>Le soir, j'écoute de la musique et je me repose.</i></div></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">فعالیت‌ها و اوقات فراغت</div>
+    <div class="fa">کارها: faire du sport (ورزش)، aller au cinéma (سینما)، lire (خواندن)، écouter de la musique (موسیقی)، voir des amis (دیدن دوستان)، se promener (قدم‌زدن). اوقات روز: le matin (صبح)، l'après-midi (بعدازظهر)، le soir (شب)، le week-end (آخر هفته).</div></div>
+</div>
+
+<!-- ===================== A1 : PRONOMINAUX DÉTAIL ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Niveau A1</div>
+    <h1>Pronominaux : négation &amp; routine <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+
+  <div class="card verbe"><h3>La négation</h3>
+    <p>Le <b>ne … pas</b> entoure le pronom + le verbe :</p>
+    <table class="tv" style="margin-top:6px; font-size:10.5pt;"><tr><th>Affirmatif</th><th>Négatif</th></tr>
+      <tr><td>Je me lève tôt.</td><td>Je <span class="hl">ne</span> me lève <span class="hl">pas</span> tôt.</td></tr>
+      <tr><td>Il se couche tard.</td><td>Il <span class="hl">ne</span> se couche <span class="hl">pas</span> tard.</td></tr></table></div>
+
+  <div class="card verbe"><h3>Raconter sa routine dans l'ordre</h3>
+    <p style="font-size:11pt;"><span class="key">D'abord</span>, je me réveille. <span class="key">Ensuite</span>, je me lève. <span class="key">Puis</span>, je m'habille. <span class="key">Enfin</span>, je prends le petit-déjeuner.</p>
+    <p class="small">⚠️ Verbes à accent : <i>se lever → je me l<b>è</b>ve</i> · <i>s'appeler → je m'app<b>elle</b></i>.</p></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">منفی و ترتیب کارها</div>
+    <div class="fa">منفی: ne + ضمیر + فعل + pas → «Je ne me lève pas tôt» (زود بلند نمی‌شوم). برای ترتیب کارها: d'abord (اول)، ensuite (سپس)، puis (بعد)، enfin (در آخر). توجه: se lever → je me lève (با é→è).</div></div>
+</div>
+
+<!-- ===================== A1 : HEURE OFFICIELLE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Vocabulaire · Niveau A1</div>
+    <h1>L'heure officielle (24 h) <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour les horaires (trains, rendez-vous, programmes), on utilise l'heure officielle de 0 à 24.</p>
+
+  <table class="tg"><tr><th>Officiel</th><th>Courant</th><th>فارسی</th></tr>
+    <tr><td>13 h 00</td><td>une heure (de l'après-midi)</td><td class="fa">یک بعدازظهر</td></tr>
+    <tr><td>14 h 30</td><td>deux heures et demie</td><td class="fa">دو و نیم</td></tr>
+    <tr><td>18 h 15</td><td>six heures et quart</td><td class="fa">شش و ربع</td></tr>
+    <tr><td>20 h 45</td><td>neuf heures moins le quart</td><td class="fa">یک ربع به نه (شب)</td></tr></table>
+
+  <div class="card gram"><h3>Fixer une heure</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Le film commence <span class="key">à 20 h 30</span>.</li>
+      <li>On se retrouve <span class="key">à 19 heures</span> ?</li>
+      <li>Le magasin ouvre <span class="key">de 9 h à 19 h</span>.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">ساعت رسمی (۲۴ ساعته)</div>
+    <div class="fa">برای برنامه‌ها و قرارها از ساعت رسمی (۰ تا ۲۴) استفاده می‌شود: 14h30 = «quatorze heures trente» = «دو و نیمِ بعدازظهر». برای قرار: «à 20 h 30» (ساعت هشت‌ونیم شب)، «de 9 h à 19 h» (از ۹ تا ۱۹).</div></div>
+</div>
+
+<!-- ===================== A1 : FRÉQUENCE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>La fréquence &amp; avant / après <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card gram"><h3>À quelle fréquence ?</h3>
+    <div style="text-align:center; font-size:10pt; margin:4px 0;">
+      <span class="chip" style="border-color:var(--gram)">toujours همیشه</span>→
+      <span class="chip" style="border-color:var(--gram)">souvent اغلب</span>→
+      <span class="chip" style="border-color:var(--gram)">quelquefois گاهی</span>→
+      <span class="chip" style="border-color:var(--gram)">rarement به‌ندرت</span>→
+      <span class="chip" style="border-color:var(--gram)">ne…jamais هرگز</span></div>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li><i>une / deux fois par semaine</i> (یک/دو بار در هفته)</li>
+      <li><i>tous les jours</i> (هر روز) · <i>le lundi</i> (دوشنبه‌ها)</li>
+      <li>Je ne fais <span class="key">jamais</span> de sport le dimanche.</li></ul></div>
+
+  <div class="card gram"><h3>Avant / après (l'ordre des actions)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="key">avant</span> le travail · <span class="key">après</span> le dîner</li>
+      <li><span class="key">avant de</span> manger, je me lave les mains.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">بسامد و ترتیب زمانی</div>
+    <div class="fa">قیدهای تکرار: toujours (همیشه)، souvent (اغلب)، quelquefois (گاهی)، rarement (به‌ندرت)، ne…jamais (هرگز). همچنین: «une fois par semaine» (یک بار در هفته)، «tous les jours» (هر روز). برای ترتیب: avant (قبل از) + اسم، après (بعد از) + اسم، و «avant de + مصدر» (قبل از اینکه…).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>L'élision &amp; les liaisons <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. L'élision : me → m', te → t', se → s'</h3>
+    <p>Devant une voyelle, le pronom perd son « e » :</p>
+    <ul class="clean" style="margin-top:5px;">
+      <li>je me + habille → je <span class="key">m'</span>habille</li>
+      <li>tu te + amuses → tu <span class="key">t'</span>amuses</li>
+      <li>il se + appelle → il <span class="key">s'</span>appelle</li></ul></div>
+
+  <div class="card phon"><h3>2. La liaison avec « heures »</h3>
+    <ul class="clean" style="margin-top:5px;">
+      <li>deux_heures → [dø<span class="key">z</span>œʁ]</li>
+      <li>trois_heures → [tʁwa<span class="key">z</span>œʁ]</li>
+      <li>dix_heures → [di<span class="key">z</span>œʁ] · six_heures → [si<span class="key">z</span>œʁ]</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ</div>
+    <div class="fa">«élision»: پیش از حرف صدادار، ضمیر «e» خود را از دست می‌دهد: je m'habille، tu t'amuses، il s'appelle. در گفتنِ ساعت، liaison رخ می‌دهد: deux heures → دوزُر، dix heures → دیزُر.</div></div>
+</div>
+
+<!-- ===================== A1 : INVITER / RDV ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication · Niveau A1</div>
+    <h1>Inviter, accepter, refuser <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--dia)"><h4 style="color:var(--dia)">Proposer / inviter</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>Tu veux aller au cinéma ?</li><li>Ça te dit de prendre un café ?</li><li>Tu es libre samedi ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Accepter</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>Oui, avec plaisir !</li><li>D'accord, bonne idée !</li><li>Volontiers !</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Refuser (poliment)</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>Désolé(e), je ne peux pas.</li><li>Je suis occupé(e) ce soir.</li><li>Une autre fois, peut-être ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">Fixer un rendez-vous</h4>
+      <ul class="clean" style="font-size:10.2pt;"><li>On se retrouve où ?</li><li>À quelle heure ?</li><li>À 18 h devant le cinéma !</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">دعوت‌کردن و قرار گذاشتن</div>
+    <div class="fa">دعوت: «Tu veux aller au cinéma؟» (می‌خواهی سینما برویم؟)، «Ça te dit…؟» (پایه‌ای…؟). پذیرفتن: «Avec plaisir!» (با کمال میل)، «D'accord!» (باشه). ردکردنِ مؤدبانه: «Désolé, je ne peux pas» (ببخشید، نمی‌توانم)، «Une autre fois» (یک وقت دیگر). قرار گذاشتن: «On se retrouve à 18 h devant le cinéma» (ساعت ۱۸ جلوی سینما همدیگر را می‌بینیم).</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Proposer une sortie <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Léa :</b> Salut Karim ! Tu es libre samedi soir ?</div>
+    <div class="dlg"><b class="B">Karim :</b> Oui, je crois. Pourquoi ?</div>
+    <div class="dlg"><b class="A">Léa :</b> Il y a un bon film au cinéma. Ça te dit ?</div>
+    <div class="dlg"><b class="B">Karim :</b> Avec plaisir ! À quelle heure commence le film ?</div>
+    <div class="dlg"><b class="A">Léa :</b> À vingt heures trente. On peut dîner avant, si tu veux.</div>
+    <div class="dlg"><b class="B">Karim :</b> Bonne idée ! On se retrouve où ?</div>
+    <div class="dlg"><b class="A">Léa :</b> À dix-neuf heures, devant le restaurant italien. Ça te va ?</div>
+    <div class="dlg"><b class="B">Karim :</b> Parfait. À samedi alors !</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>لئا:</b> سلام کریم! شنبه شب آزادی؟<br>
+      <b>کریم:</b> آره، فکر کنم. چطور؟<br>
+      <b>لئا:</b> یک فیلم خوب در سینماست. پایه‌ای؟<br>
+      <b>کریم:</b> با کمال میل! فیلم چه ساعتی شروع می‌شود؟<br>
+      <b>لئا:</b> ساعت بیست‌ونیم. اگر بخواهی قبلش شام بخوریم.<br>
+      <b>کریم:</b> فکر خوبی است! کجا همدیگر را ببینیم؟<br>
+      <b>لئا:</b> ساعت نوزده، جلوی رستوران ایتالیایی. خوبه؟<br>
+      <b>کریم:</b> عالی. پس تا شنبه!
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Une journée typique <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>En semaine, je me réveille à sept heures. D'abord, je me lève et je prends une douche. Ensuite, je m'habille et je prends mon petit-déjeuner. Je quitte la maison à huit heures et quart.</p>
+    <p>Je travaille toute la matinée. À midi et demi, je déjeune avec mes collègues. L'après-midi, je suis souvent fatiguée, alors je bois un café. Le soir, je rentre vers dix-huit heures. Je me repose un peu, puis je prépare le dîner.</p>
+    <p>Après le dîner, je regarde une série ou je lis. Je me couche toujours avant minuit. Le week-end, c'est différent : je me lève tard et je sors avec mes amis ! <span class="q">Et toi, comment est ta journée ?</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">در روزهای کاری، ساعت هفت بیدار می‌شوم. اول بلند می‌شوم و دوش می‌گیرم. بعد لباس می‌پوشم و صبحانه می‌خورم. ساعت هشت‌وربع از خانه بیرون می‌روم. تمام صبح کار می‌کنم. ساعت دوازده‌ونیم با همکارانم ناهار می‌خورم. بعدازظهر اغلب خسته‌ام، پس یک قهوه می‌نوشم. شب حدود ساعت هجده برمی‌گردم. کمی استراحت می‌کنم، بعد شام درست می‌کنم. بعد از شام یک سریال می‌بینم یا کتاب می‌خوانم. همیشه قبل از نیمه‌شب می‌خوابم. آخر هفته فرق دارد: دیر بلند می‌شوم و با دوستانم بیرون می‌روم! روزِ تو چطور است؟</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Mon emploi du temps &amp; mes sorties <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Pendant la semaine, mon emploi du temps est très chargé. Je me lève tôt, vers six heures et demie, parce que je commence le travail à huit heures. Avant de partir, je prends toujours un bon petit-déjeuner. Le midi, je n'ai pas beaucoup de temps : je mange rapidement, puis je retourne travailler.</p>
+    <p>Le soir, j'aime me détendre. Deux ou trois fois par semaine, je fais du sport ; les autres jours, je lis ou j'écoute de la musique. Je me couche rarement après minuit, parce que j'ai besoin de dormir.</p>
+    <p>Le week-end, je profite de mon temps libre. Le samedi, je fais souvent une sortie avec mes amis : on va au cinéma ou on prend un verre en ville. Quelquefois, on se retrouve chez moi pour dîner ensemble. Pour moi, le programme idéal, c'est un équilibre : travailler la semaine, se reposer et s'amuser le week-end. <span class="q">Et toi, c'est quoi ton programme ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> <i>parce que</i> (cause), <i>avant de</i> + infinitif, <i>puis / ensuite</i> (ordre), <i>deux fois par semaine</i> (fréquence), <i>rarement / souvent</i>.</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">در طول هفته، برنامه‌ام خیلی پر است. صبح زود، حدود شش‌ونیم بیدار می‌شوم، چون کارم ساعت هشت شروع می‌شود. قبل از رفتن، همیشه یک صبحانهٔ خوب می‌خورم. ظهر وقت زیادی ندارم: سریع غذا می‌خورم و بعد به کار برمی‌گردم. شب‌ها دوست دارم استراحت کنم. دو یا سه بار در هفته ورزش می‌کنم؛ روزهای دیگر کتاب می‌خوانم یا موسیقی گوش می‌دهم. به‌ندرت بعد از نیمه‌شب می‌خوابم، چون به خواب نیاز دارم. آخر هفته از وقت آزادم لذت می‌برم. شنبه‌ها اغلب با دوستانم بیرون می‌روم: به سینما می‌رویم یا در شهر یک نوشیدنی می‌خوریم. گاهی برای شام در خانهٔ من جمع می‌شویم. برای من، برنامهٔ ایده‌آل یک تعادل است: هفته کار، آخر هفته استراحت و تفریح. برنامهٔ تو چیست؟</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Proposer / répondre à une invitation <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>💬 Proposer une sortie</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.4pt; line-height:1.55; margin:0;">
+      Salut Sami !<br>
+      Tu es libre samedi soir ? Il y a un bon film au cinéma. Ça te dit ? On peut dîner avant.<br>
+      Réponds-moi vite ! 😊</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>✅ Accepter &amp; fixer le RDV</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.4pt; line-height:1.55; margin:0;">
+      Salut !<br>
+      Oui, avec plaisir ! Bonne idée. On se retrouve à 19 h devant le restaurant ?<br>
+      À samedi ! Bises</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan à réutiliser</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span>Salutation + question (« Tu es libre… ? »)</li>
+      <li><span class="num">2</span>La proposition (quoi + quand)</li>
+      <li><span class="num">3</span>Réponse : accepter / refuser poliment</li>
+      <li><span class="num">4</span>Fixer le lieu et l'heure du rendez-vous</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ پیام‌ها</div>
+    <div class="fa">پیشنهاد: «سلام سامی! شنبه شب آزادی؟ یک فیلم خوب در سینماست. پایه‌ای؟ قبلش می‌توانیم شام بخوریم. زود جواب بده!» پذیرفتن و قرار: «سلام! آره، با کمال میل! فکر خوبی است. ساعت ۱۹ جلوی رستوران همدیگر را ببینیم؟ تا شنبه! بوس.»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Mon programme &amp; mes rendez-vous <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue guidé (1 minute)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Ma routine :</b> « Le matin, je me lève à… »</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Mes activités</b> + la fréquence (souvent, deux fois…).</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Mes sorties</b> du week-end.</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Ma journée idéale</b> et pourquoi.</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — fixer un rendez-vous</h3>
+    <ul class="clean"><li><b>A :</b> propose une sortie (cinéma, café, sport…).</li>
+      <li><b>B :</b> accepte ou refuse poliment.</li>
+      <li><b>Ensemble :</b> fixez le jour, l'heure et le lieu.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) روتین صبحت «Le matin, je me lève à…» ۲) فعالیت‌ها + بسامد ۳) برنامهٔ آخر هفته ۴) روزِ ایده‌آلت و دلیلش. سپس نقش‌بازی: یکی سینما/کافه پیشنهاد می‌دهد، دیگری می‌پذیرد یا مؤدبانه رد می‌کند، و با هم روز/ساعت/مکان قرار را تعیین می‌کنید.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « programme »</h3>
+    <ul class="clean"><li>Repère les <b>jours</b>, les <b>heures</b> et les <b>activités</b>.</li>
+      <li>Lis les questions <b>avant</b> de relire en détail.</li>
+      <li>Mots-clés : <i>gratuit, inscription, à… h, le mardi.</i></li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>CENTRE CULTUREL — Programme de la semaine</b></p>
+    <p><b>Lundi 18 h :</b> cours de danse<br>
+    <b>Mercredi 17 h :</b> atelier cuisine<br>
+    <b>Vendredi 20 h :</b> concert de jazz<br>
+    <b>Samedi 14 h :</b> sortie au musée<br>
+    Entrée gratuite. Inscription à l'accueil.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Quel jour le concert ?</li>
+        <li>2. À quelle heure le cours de danse ?</li><li>3. Combien coûte l'entrée ?</li>
+        <li>4. Quelle activité le mercredi ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Vendredi.</li>
+        <li>2. À 18 h.</li><li>3. C'est gratuit.</li><li>4. Un atelier cuisine.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: اول روزها، ساعت‌ها و فعالیت‌ها را پیدا کن؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان؛ کلمات کلیدی: gratuit (رایگان)، inscription (ثبت‌نام). در برنامهٔ نمونه: کنسرت روز جمعه، کلاس رقص ساعت ۱۸، ورود رایگان، و چهارشنبه کارگاه آشپزی است.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Le rythme de la journée &amp; les sorties</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> la journée a son rythme. On déjeune souvent entre midi et treize heures, et on dîne plutôt vers dix-neuf ou vingt heures. Pour les horaires officiels (trains, cinémas, rendez-vous), on utilise presque toujours l'<b>heure de 0 à 24</b> : « le train de 18 h 45 ».</p>
+    <p>Le soir et le week-end, les gens aiment <b>sortir</b> : aller au café, au cinéma, se promener ou prendre un verre entre amis. Proposer une sortie et « se retrouver » quelque part fait partie de la vie sociale. Dans toute la francophonie, partager un moment ensemble est important.</p>
+  </div>
+
+  <table class="tc" style="font-size:10.4pt; margin-top:6px;"><tr><th>Repas</th><th>Heure habituelle</th></tr>
+    <tr><td>le petit-déjeuner</td><td>le matin (7 h – 8 h)</td></tr>
+    <tr><td>le déjeuner</td><td>midi – 13 h</td></tr>
+    <tr><td>le dîner</td><td>19 h – 20 h</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — ریتم روز و بیرون‌رفتن</div>
+    <div class="fa">در فرانسه، روز ریتم خود را دارد: ناهار اغلب بین ظهر و ساعت ۱۳، و شام حدود ۱۹ تا ۲۰. برای ساعت‌های رسمی (قطار، سینما، قرار) تقریباً همیشه از ساعت ۰ تا ۲۴ استفاده می‌شود: «قطار ساعت 18h45». شب‌ها و آخر هفته‌ها مردم دوست دارند بیرون بروند: کافه، سینما، قدم‌زدن یا نوشیدنی با دوستان. پیشنهادِ بیرون‌رفتن و «قرار گذاشتن» بخشی از زندگی اجتماعی است.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Raconte ta journée à voix haute avec <i>d'abord, ensuite, puis, enfin</i>.</li>
+      <li>Mémorise des blocs : <i>« Je me lève à… », « On se retrouve à… ».</i></li>
+      <li>Entraîne-toi à dire 5 heures différentes (courant + officiel).</li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>N'oublie pas le pronom du verbe pronominal : <i>je <b>me</b> lève</i>.</li>
+      <li>Place la fréquence avant le verbe ou en début de phrase : <i>« Je fais souvent… »</i>.</li>
+      <li>Utilise <i>avant / après</i> pour organiser tes phrases.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Couleur = type d'info ; encadre tes fiches comme ce livret.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: روزت را بلند تعریف کن با d'abord، ensuite، puis، enfin؛ «بلوک‌»های آماده را حفظ کن. برای نوشتن: ضمیرِ فعل انعکاسی را فراموش نکن (je me lève)، قید بسامد را قبل از فعل بگذار، و با avant/après جمله‌ها را مرتب کن. در جلسات ۱۵ دقیقه‌ای کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.7pt;">
+      <li>☐ Conjuguer un verbe pronominal (je me lève…).</li>
+      <li>☐ Dire et demander l'heure (courant + officiel).</li>
+      <li>☐ Raconter ma journée dans l'ordre.</li>
+      <li>☐ Indiquer la fréquence (souvent, jamais…).</li>
+      <li>☐ Inviter, accepter ou refuser poliment.</li>
+      <li>☐ Fixer un rendez-vous (jour, heure, lieu).</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.3pt;"><li>1. <i>se coucher</i> : je ___, nous ___.</li>
+        <li>2. Négatif : « Je me lève tôt. » → ?</li>
+        <li>3. L'heure : 14 h 30 = ?</li>
+        <li>4. Élision : « je me + habille » → ?</li>
+        <li>5. Range : <i>enfin / d'abord / ensuite</i>.</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.3pt;"><li>1. je me couche · nous nous couchons</li>
+        <li>2. Je ne me lève pas tôt.</li>
+        <li>3. quatorze heures trente (deux heures et demie)</li>
+        <li>4. je m'habille</li>
+        <li>5. d'abord → ensuite → enfin</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:15px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#1F4E79,#2C8C8C); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 5 terminée — à bientôt ! ⏰</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد پنجم تمام شد — به‌زودی می‌بینیمت!</div>
+  </div>
+</div>
+
+</body>
+</html>
