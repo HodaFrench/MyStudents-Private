@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching TCF Canada — Soroush Bagheri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Vazirmatn:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1614;
+    --paper:#f6f1e8;
+    --paper-2:#efe7d6;
+    --accent:#c8442a;       /* terracotta rouge */
+    --accent-2:#1d4d3f;     /* vert sapin */
+    --accent-3:#d4a437;     /* moutarde */
+    --accent-4:#3a4d8f;     /* bleu nuit */
+    --muted:#6e6357;
+    --line:#2a2420;
+    --soft:#fdfaf3;
+    --shadow: 6px 6px 0 var(--ink);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Fraunces', Georgia, serif;
+    font-optical-sizing:auto;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:17px;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(200,68,42,0.06) 0%, transparent 35%),
+      radial-gradient(circle at 88% 92%, rgba(29,77,63,0.05) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .fa{ direction:rtl; font-family:'Vazirmatn', sans-serif; text-align:right; }
+
+  /* ====== LAYOUT ====== */
+  .page{
+    max-width:980px;
+    margin:0 auto;
+    padding:60px 32px 80px;
+  }
+
+  /* ====== HERO ====== */
+  .hero{
+    position:relative;
+    border:2px solid var(--ink);
+    background:var(--soft);
+    padding:48px 44px 44px;
+    box-shadow:var(--shadow);
+    margin-bottom:56px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-40px;right:-40px;
+    width:200px;height:200px;
+    background:var(--accent);
+    border-radius:50%;
+    opacity:0.92;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    bottom:-30px;left:-30px;
+    width:120px;height:120px;
+    background:var(--accent-3);
+    border-radius:50%;
+    opacity:0.85;
+  }
+  .hero-content{position:relative;z-index:2;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:32px;height:2px;
+    background:var(--accent);
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    font-variation-settings:"opsz" 144;
+    margin-bottom:16px;
+  }
+  h1 .it{ font-style:italic; font-weight:400; color:var(--accent); }
+  .hero-sub{
+    font-size:18px;
+    color:var(--muted);
+    max-width:540px;
+    font-style:italic;
+  }
+  .hero-tag{
+    display:inline-block;
+    margin-top:24px;
+    padding:8px 16px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+  }
+
+  /* ====== SECTION TITRES ====== */
+  .section-title{
+    font-family:'Fraunces', serif;
+    font-weight:800;
+    font-size:clamp(28px, 4vw, 40px);
+    line-height:1.1;
+    letter-spacing:-0.015em;
+    margin: 64px 0 28px;
+    padding-bottom:14px;
+    border-bottom:2px solid var(--ink);
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+  }
+  .section-title .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--accent);
+    font-weight:600;
+    letter-spacing:0.1em;
+  }
+
+  /* ====== SQUELETTE / PLAN ====== */
+  .skeleton{
+    background:var(--ink);
+    color:var(--paper);
+    padding:36px 40px;
+    border:2px solid var(--ink);
+    box-shadow:var(--shadow);
+    margin-bottom:40px;
+    position:relative;
+  }
+  .skeleton h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--accent-3);
+    margin-bottom:24px;
+  }
+  .skeleton-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  .skeleton-list li{
+    border-left:3px solid var(--accent-3);
+    padding-left:14px;
+    font-family:'Fraunces', serif;
+    font-size:16px;
+  }
+  .skeleton-list li b{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.15em;
+    color:var(--accent-3);
+    margin-bottom:4px;
+    font-weight:600;
+  }
+  .skeleton-tip{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px dashed rgba(246,241,232,0.3);
+    font-style:italic;
+    font-size:15px;
+    color:#d4c8b3;
+  }
+
+  /* ====== VERSION CARD ====== */
+  .version{
+    border:2px solid var(--ink);
+    background:var(--soft);
+    margin-bottom:48px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .version-header{
+    padding:28px 36px;
+    border-bottom:2px solid var(--ink);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .version-header h2{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:32px;
+    letter-spacing:-0.01em;
+    line-height:1;
+  }
+  .badge{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    padding:6px 14px;
+    border:1.5px solid var(--ink);
+    font-weight:600;
+  }
+  .version.a2 .version-header{ background:#e8f0e6; }
+  .version.b1 .version-header{ background:#e6ecf5; }
+  .version.b2 .version-header{ background:#fdeacc; }
+  .version.a2 .badge{ background:var(--accent-2); color:var(--paper); border-color:var(--accent-2); }
+  .version.b1 .badge{ background:var(--accent-4); color:var(--paper); border-color:var(--accent-4); }
+  .version.b2 .badge{ background:var(--accent); color:var(--paper); border-color:var(--accent); }
+
+  .version-intro{
+    padding:16px 36px;
+    background:var(--paper-2);
+    border-bottom:1px dashed var(--ink);
+    font-style:italic;
+    color:var(--muted);
+    font-size:15px;
+  }
+  .version-text{
+    padding:32px 40px;
+    font-size:17.5px;
+    line-height:1.8;
+  }
+  .version-text p{ margin-bottom:14px; }
+
+  /* Highlights */
+  .hl{ background:linear-gradient(180deg, transparent 60%, rgba(212,164,55,0.45) 60%); padding:0 2px; font-weight:600; }
+  .hl-c{ background:linear-gradient(180deg, transparent 60%, rgba(200,68,42,0.3) 60%); padding:0 2px; font-weight:600; color:var(--accent); font-style:italic; }
+  .hl-v{ background:linear-gradient(180deg, transparent 60%, rgba(29,77,63,0.25) 60%); padding:0 2px; font-weight:700; }
+  .hl-b{ font-weight:700; color:var(--ink); }
+
+  /* Persan */
+  .persian{
+    padding:28px 40px;
+    background:#f3ece0;
+    border-top:1px dashed var(--ink);
+    font-family:'Vazirmatn', sans-serif;
+    direction:rtl;
+    text-align:right;
+    line-height:2.1;
+    font-size:16px;
+    color:#3d342a;
+  }
+  .persian h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    margin-bottom:14px;
+    direction:ltr;
+    text-align:left;
+    font-weight:600;
+  }
+
+  /* Analyse */
+  .analysis{
+    padding:32px 40px;
+    background:#fffaf0;
+    border-top:2px solid var(--ink);
+  }
+  .analysis h4{
+    font-family:'Fraunces', serif;
+    font-weight:800;
+    font-size:20px;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .analysis h4::before{
+    content:"";
+    width:24px;height:3px;
+    background:var(--accent);
+  }
+  .analysis ul{ list-style:none; }
+  .analysis ul li{
+    padding:8px 0 8px 28px;
+    position:relative;
+    font-size:15.5px;
+  }
+  .analysis ul li::before{
+    content:"→";
+    position:absolute;
+    left:0;
+    color:var(--accent);
+    font-weight:700;
+  }
+  .analysis ul li.ok::before{ content:"✓"; color:var(--accent-2); }
+  .analysis ul li.warn::before{ content:"!"; color:var(--accent-3); font-weight:900; }
+
+  /* Tables */
+  .tbl{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+    font-size:15.5px;
+    background:var(--soft);
+    border:2px solid var(--ink);
+  }
+  .tbl th{
+    background:var(--ink);
+    color:var(--paper);
+    padding:12px 16px;
+    text-align:left;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .tbl td{
+    padding:12px 16px;
+    border-top:1px solid var(--ink);
+    vertical-align:top;
+  }
+  .tbl td:first-child{ font-family:'JetBrains Mono', monospace; font-size:14px; color:var(--accent); font-weight:600; width:36%; }
+
+  /* Conseils du prof */
+  .prof-block{
+    border:2px solid var(--ink);
+    background:var(--soft);
+    padding:36px 40px;
+    margin-bottom:40px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .prof-block::before{
+    content:"";
+    position:absolute;
+    top:-2px;left:-2px;right:-2px;
+    height:8px;
+    background:repeating-linear-gradient(
+      45deg,
+      var(--accent),
+      var(--accent) 8px,
+      var(--ink) 8px,
+      var(--ink) 16px
+    );
+  }
+  .prof-block h3{
+    font-family:'Fraunces', serif;
+    font-weight:800;
+    font-size:24px;
+    margin-bottom:20px;
+    margin-top:12px;
+  }
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    margin:18px 0;
+    border:1.5px solid var(--ink);
+  }
+  .compare > div{
+    padding:14px 18px;
+    font-size:15.5px;
+  }
+  .compare .bad{ background:#f5e1dc; border-right:1.5px solid var(--ink); }
+  .compare .good{ background:#e3eee3; }
+  .compare .bad::before{ content:"✗ "; color:var(--accent); font-weight:700; }
+  .compare .good::before{ content:"✓ "; color:var(--accent-2); font-weight:700; }
+
+  .tip-list{
+    list-style:none;
+  }
+  .tip-list li{
+    padding:10px 0 10px 32px;
+    position:relative;
+    font-size:16px;
+    border-bottom:1px dashed rgba(26,22,20,0.15);
+  }
+  .tip-list li:last-child{ border:none; }
+  .tip-list li::before{
+    content:"●";
+    position:absolute;
+    left:8px;
+    color:var(--accent);
+  }
+
+  /* Examen — version finale */
+  .exam{
+    background:linear-gradient(135deg, var(--accent) 0%, #a8351f 100%);
+    color:var(--paper);
+    padding:48px 44px;
+    border:2px solid var(--ink);
+    box-shadow:var(--shadow);
+    margin-bottom:48px;
+    position:relative;
+    overflow:hidden;
+  }
+  .exam::before{
+    content:"🎯";
+    position:absolute;
+    top:30px;right:36px;
+    font-size:60px;
+    opacity:0.9;
+  }
+  .exam .eyebrow{
+    color:var(--accent-3);
+  }
+  .exam .eyebrow::before{ background:var(--accent-3); }
+  .exam h2{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:36px;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:8px;
+    max-width:600px;
+  }
+  .exam .duration{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.2em;
+    opacity:0.85;
+    margin-bottom:28px;
+  }
+  .exam-text{
+    background:rgba(255,255,255,0.08);
+    padding:28px 32px;
+    border:1px solid rgba(255,255,255,0.25);
+    font-size:17px;
+    line-height:1.85;
+  }
+  .exam-text p{ margin-bottom:12px; }
+
+  /* Footer / outro */
+  .outro{
+    text-align:center;
+    padding:56px 32px;
+    border:2px solid var(--ink);
+    background:var(--soft);
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .outro h2{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:38px;
+    line-height:1.1;
+    margin-bottom:16px;
+  }
+  .outro p{
+    font-size:17px;
+    color:var(--muted);
+    max-width:560px;
+    margin:0 auto 14px;
+  }
+  .outro .signature{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.2em;
+    margin-top:24px;
+    color:var(--accent);
+  }
+  .outro-flag{
+    font-size:36px;
+    margin:8px 0;
+  }
+
+  /* Responsive */
+  @media (max-width:720px){
+    .page{ padding:36px 18px 60px; }
+    .hero{ padding:36px 24px 32px; }
+    .hero::before{ width:120px;height:120px; top:-30px;right:-30px; }
+    .skeleton{ padding:28px 22px; }
+    .skeleton-list{ grid-template-columns:1fr; }
+    .version-header{ padding:22px 22px; }
+    .version-text, .persian, .analysis, .exam, .prof-block{ padding-left:22px;padding-right:22px; }
+    .version-header h2{ font-size:24px; }
+    .compare{ grid-template-columns:1fr; }
+    .compare .bad{ border-right:none; border-bottom:1.5px solid var(--ink); }
+    .tbl td:first-child{ width:auto; }
+    .exam h2{ font-size:26px; }
+    .exam::before{ font-size:36px; top:20px;right:18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ====== HERO ====== -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Coaching premium · TCF Canada · Tâche 1</div>
+      <h1>Présentation <span class="it">personnelle</span><br>de Soroush <span class="it">Bagheri</span></h1>
+      <p class="hero-sub">De A2 à B2 — trois versions progressives, mémorisables, prêtes pour l'oral. Avec analyse pédagogique complète et traductions en persan.</p>
+      <span class="hero-tag">📍 Téhéran → 🇮🇹 Italie → 🇨🇦 Canada</span>
+    </div>
+  </header>
+
+  <!-- ====== SQUELETTE ====== -->
+  <div class="skeleton">
+    <h3>📋 Structure logique à mémoriser</h3>
+    <ul class="skeleton-list">
+      <li><b>01 — Identité</b>Nom · nationalité · année de naissance</li>
+      <li><b>02 — Métier</b>Architecte paysagiste · 5 ans d'expérience</li>
+      <li><b>03 — Études</b>Guilan (Iran) → Rome (Italie)</li>
+      <li><b>04 — Travail actuel</b>Parcnouveau · Milan · projet Côme</li>
+      <li><b>05 — Langues &amp; Projet</b>Français · TCF · Canada</li>
+      <li><b>06 — Loisirs &amp; personnalité</b>Natation · cinéma · qualités</li>
+    </ul>
+    <div class="skeleton-tip">Si tu oublies une phrase pendant l'examen, reviens à ce squelette : tu retrouveras toujours ton fil.</div>
+  </div>
+
+  <!-- ====== VERSION A2 ====== -->
+  <h2 class="section-title"><span class="num">PARTIE 01</span> Les trois versions progressives</h2>
+
+  <article class="version a2">
+    <div class="version-header">
+      <h2>Version <em>A2</em> — Simple &amp; sûre</h2>
+      <span class="badge">Niveau A2</span>
+    </div>
+    <div class="version-intro">À utiliser si tu veux sécuriser un score de base, sans erreurs.</div>
+    <div class="version-text">
+      <p>Bonjour, je m'appelle <span class="hl-b">Soroush Bagheri</span>. Je suis <span class="hl-b">iranien</span> et je suis né à <span class="hl-b">Téhéran</span> en <span class="hl-b">1992</span>. Aujourd'hui, je suis ici pour passer l'<span class="hl">examen du TCF</span>, <span class="hl-c">parce que</span> j'ai un projet d'<span class="hl">immigration au Canada</span>.</p>
+      <p>Je suis <span class="hl">architecte paysagiste</span> et j'ai environ <span class="hl-b">cinq ans</span> d'expérience professionnelle. J'aime beaucoup mon travail <span class="hl-c">parce qu'</span>il combine la <span class="hl">nature</span>, le <span class="hl">design</span> et l'<span class="hl">urbanisme</span>. C'est un métier varié et créatif.</p>
+      <p>Pour mes études, j'ai d'abord étudié à l'<span class="hl-b">Université de Guilan</span>, dans le <span class="hl">nord de l'Iran</span>. C'est une belle région, avec beaucoup de forêts et la mer Caspienne. J'ai obtenu une <span class="hl">licence en architecture</span>. <span class="hl-c">Ensuite</span>, j'ai décidé de continuer mes études en <span class="hl-b">Italie</span>. J'ai fait un <span class="hl">master en architecture du paysage</span> à <span class="hl-b">Rome</span>. C'était une expérience très importante pour moi, à la fois sur le plan académique et culturel.</p>
+      <p>Pendant mes études en Italie, j'ai commencé à travailler dans un <span class="hl">cabinet d'architecture</span> à Rome. Ça m'a permis d'avoir une <span class="hl-v">première expérience professionnelle</span>. <span class="hl-c">Après</span> mon diplôme, je suis allé à <span class="hl-b">Milan</span> <span class="hl-c">pour</span> trouver un travail spécialisé dans l'architecture du paysage.</p>
+      <p>Maintenant, je travaille dans un cabinet qui s'appelle <span class="hl-b">Parcnouveau</span>. Nous faisons des projets d'<span class="hl">aménagement urbain et paysager</span> : des <span class="hl-v">espaces publics</span>, la <span class="hl-v">restauration écologique</span>, les <span class="hl-v">plantations</span> et la <span class="hl-v">régénération urbaine</span>. <span class="hl-c">En ce moment</span>, je travaille sur un projet privé à <span class="hl-b">Côme</span>, une belle ville au nord de Milan. C'est l'<span class="hl">aménagement paysager d'une villa privée</span>.</p>
+      <p>Je parle quatre langues : le <span class="hl">persan</span>, qui est ma langue maternelle, l'<span class="hl">anglais</span>, l'<span class="hl">italien</span> que j'ai appris en Italie, et j'apprends maintenant le <span class="hl-b">français</span>. J'étudie le français <span class="hl-v">tous les jours</span> <span class="hl-c">parce que</span> je veux <span class="hl">immigrer au Canada</span> et trouver un bon travail là-bas.</p>
+      <p><span class="hl-c">Pendant mon temps libre</span>, j'aime beaucoup <span class="hl">nager</span>. C'est une activité qui me permet de rester en bonne santé, de me détendre et de garder un bon équilibre après une semaine de travail.</p>
+      <p>J'aime <span class="hl-c">aussi</span> beaucoup regarder des <span class="hl">films</span>. Le cinéma m'aide à <span class="hl-v">découvrir de nouvelles cultures</span> et à comprendre le monde. <span class="hl-c">Par exemple</span>, j'aime beaucoup les films européens et les films iraniens.</p>
+      <p><span class="hl-c">Pour finir</span>, je suis quelqu'un de <span class="hl-v">créatif</span>, <span class="hl-v">curieux</span> et <span class="hl-v">passionné</span> par mon métier. J'aime apprendre des choses nouvelles et travailler sur des projets variés.</p>
+    </div>
+    <div class="persian">
+      <h4>🇮🇷 Traduction persane</h4>
+      سلام، اسم من سروش باقری است. ایرانی هستم و در سال ۱۹۹۲ در تهران به دنیا آمدم. امروز اینجا هستم تا در آزمون TCF شرکت کنم، چون پروژه‌ی مهاجرت به کانادا دارم.<br><br>
+      من معمار منظر هستم و حدود پنج سال تجربه‌ی کاری دارم. کارم را خیلی دوست دارم چون طبیعت، طراحی و شهرسازی را با هم ترکیب می‌کند. حرفه‌ای متنوع و خلاق است.<br><br>
+      برای تحصیلاتم، اول در دانشگاه گیلان، در شمال ایران، درس خواندم. منطقه‌ی زیبایی است با جنگل‌های زیاد و دریای خزر. لیسانس معماری گرفتم. بعد از آن، تصمیم گرفتم تحصیلاتم را در ایتالیا ادامه دهم. کارشناسی ارشد معماری منظر را در رم گرفتم. این تجربه‌ی خیلی مهمی برای من بود، هم از نظر دانشگاهی و هم فرهنگی.<br><br>
+      در طول تحصیلاتم در ایتالیا، در یک دفتر معماری در رم شروع به کار کردم. این به من اجازه داد اولین تجربه‌ی کاری‌ام را داشته باشم. بعد از مدرکم، به میلان رفتم تا کاری تخصصی در معماری منظر پیدا کنم.<br><br>
+      الان در دفتری به نام پارک‌نوو کار می‌کنم. ما پروژه‌های طراحی شهری و منظر انجام می‌دهیم: فضاهای عمومی، احیای اکولوژیک، کاشت گیاهان و بازآفرینی شهری. در حال حاضر، روی یک پروژه‌ی خصوصی در کومو، شهر زیبایی در شمال میلان، کار می‌کنم. این طراحی منظر یک ویلای خصوصی است.<br><br>
+      چهار زبان صحبت می‌کنم: فارسی که زبان مادری‌ام است، انگلیسی، ایتالیایی که در ایتالیا یاد گرفتم، و الان فرانسوی یاد می‌گیرم. هر روز فرانسوی مطالعه می‌کنم چون می‌خواهم به کانادا مهاجرت کنم و در آنجا کار خوبی پیدا کنم.<br><br>
+      در اوقات فراغت، شنا کردن را خیلی دوست دارم. این فعالیتی است که به من اجازه می‌دهد سالم بمانم، استراحت کنم و بعد از یک هفته‌ی کاری تعادل خوبی داشته باشم.<br><br>
+      تماشای فیلم را هم خیلی دوست دارم. سینما به من کمک می‌کند فرهنگ‌های جدید را کشف کنم و جهان را بهتر بفهمم. مثلاً فیلم‌های اروپایی و ایرانی را خیلی دوست دارم.<br><br>
+      در پایان، آدمی خلاق، کنجکاو و عاشق حرفه‌ام هستم. دوست دارم چیزهای جدید یاد بگیرم و روی پروژه‌های متنوع کار کنم.
+    </div>
+    <div class="analysis">
+      <h4>Analyse pédagogique — A2</h4>
+      <ul>
+        <li class="ok">Phrases courtes, une idée par phrase → <b>facile à mémoriser</b></li>
+        <li class="ok">Connecteurs basiques mais corrects : <em>ensuite, aussi, parce que, mais</em></li>
+        <li class="ok">Vocabulaire concret, sans risque d'erreur</li>
+        <li class="warn">Peu de nuances, manque de richesse → <b>ne suffit pas pour viser un B2</b></li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ====== VERSION B1 ====== -->
+  <article class="version b1">
+    <div class="version-header">
+      <h2>Version <em>B1</em> — Naturelle &amp; fluide</h2>
+      <span class="badge">Niveau B1</span>
+    </div>
+    <div class="version-intro">Le niveau pivot : naturel à l'oral, sans complexité inutile.</div>
+    <div class="version-text">
+      <p>Bonjour ! Je m'appelle <span class="hl-b">Soroush Bagheri</span>, je suis <span class="hl-b">iranien</span> et je suis né à <span class="hl-b">Téhéran</span> en <span class="hl-b">1992</span>. Aujourd'hui, je suis ici pour passer l'<span class="hl">examen du TCF Canada</span>, <span class="hl-c">dans le cadre de</span> mon <span class="hl">projet d'immigration au Canada</span>, un projet sur lequel je travaille avec beaucoup de motivation depuis quelque temps.</p>
+      <p><span class="hl-c">Sur le plan professionnel</span>, je suis <span class="hl">architecte paysagiste</span> et j'ai environ <span class="hl-b">cinq ans</span> d'expérience. C'est un métier qui me passionne énormément, <span class="hl-c">parce qu'</span>il combine plusieurs domaines que j'aime beaucoup : la <span class="hl-v">nature</span>, le <span class="hl-v">design</span>, l'<span class="hl-v">urbanisme</span> et l'<span class="hl-v">écologie</span>. Je trouve très intéressant de pouvoir créer des espaces qui améliorent la vie des gens dans les villes.</p>
+      <p><span class="hl-c">Côté études</span>, mon parcours a commencé dans le <span class="hl">nord de l'Iran</span>, <span class="hl-c">où</span> j'ai obtenu une <span class="hl">licence en architecture</span> à l'<span class="hl-b">Université de Guilan</span>. C'est une région magnifique, entourée de forêts et de la mer Caspienne, qui m'a probablement donné mon amour pour la nature. <span class="hl-c">Par la suite</span>, j'ai décidé de poursuivre mes études en <span class="hl-b">Italie</span>, un pays connu pour la qualité de son architecture et de son design. J'ai donc fait un <span class="hl">master en architecture du paysage</span> à <span class="hl-b">Rome</span>, ce qui a été une expérience vraiment enrichissante, à la fois sur le plan académique et culturel.</p>
+      <p><span class="hl-c">Pendant mes études</span> en Italie, j'ai commencé à travailler dans un <span class="hl">cabinet d'architecture</span> à Rome, <span class="hl-c">ce qui m'a permis d'</span>acquérir une <span class="hl-v">première expérience professionnelle</span>. <span class="hl-c">Après l'obtention de mon diplôme</span>, je me suis installé à <span class="hl-b">Milan</span>, qui est la <span class="hl">capitale italienne du design</span>, <span class="hl-c">afin de</span> trouver un emploi spécialisé dans mon domaine.</p>
+      <p><span class="hl-c">Actuellement</span>, je travaille dans un cabinet qui s'appelle <span class="hl-b">Parcnouveau</span>. Nous intervenons sur différents <span class="hl">projets d'aménagement urbain et paysager</span>, comme la <span class="hl-v">conception d'espaces publics</span>, la <span class="hl-v">restauration écologique</span>, les <span class="hl-v">plantations</span> et la <span class="hl-v">régénération urbaine</span>. <span class="hl-c">En ce moment</span>, je travaille sur un projet privé à <span class="hl-b">Côme</span>, une belle ville située au nord de Milan, célèbre pour son lac. Il s'agit de l'<span class="hl">aménagement paysager d'une villa privée</span>.</p>
+      <p><span class="hl-c">Au niveau des langues</span>, je parle <span class="hl">persan</span> qui est ma langue maternelle, <span class="hl">anglais</span> que j'utilise au travail, <span class="hl">italien</span> que j'ai appris pendant mes années en Italie, et j'apprends actuellement le <span class="hl">français</span> pour mon projet canadien. <span class="hl-c">C'est la raison pour laquelle</span> je prépare le <span class="hl-b">TCF Canada</span> avec beaucoup de sérieux.</p>
+      <p>J'ai choisi le Canada <span class="hl-c">parce que</span> c'est un pays qui accorde une grande importance à l'<span class="hl">environnement</span>, à l'<span class="hl">urbanisme durable</span> et à la <span class="hl">diversité culturelle</span> — des valeurs qui correspondent vraiment aux miennes. J'aimerais m'installer dans une ville dynamique comme Montréal ou Toronto.</p>
+      <p><span class="hl-c">Pendant mon temps libre</span>, j'aime beaucoup <span class="hl">nager</span>. C'est une activité qui me permet de <span class="hl-v">rester en bonne santé</span>, de me détendre et de garder un bon équilibre après une semaine de travail très chargée. J'aime également regarder des <span class="hl">films</span> et <span class="hl-v">découvrir de nouvelles cultures</span> à travers le cinéma, surtout les films européens et iraniens, qui m'inspirent aussi dans mon travail.</p>
+      <p><span class="hl-c">Pour finir</span>, je dirais que je suis quelqu'un de <span class="hl-v">créatif</span>, <span class="hl-v">curieux</span> et <span class="hl-v">passionné</span> par mon métier, ce qui m'aide à m'adapter facilement à de nouveaux environnements et à de nouveaux défis professionnels.</p>
+    </div>
+    <div class="persian">
+      <h4>🇮🇷 Traduction persane</h4>
+      سلام! اسم من سروش باقری است، ایرانی هستم و در سال ۱۹۹۲ در تهران به دنیا آمدم. امروز اینجا هستم تا در آزمون TCF Canada شرکت کنم، در چارچوب پروژه‌ی مهاجرتم به کانادا، پروژه‌ای که مدتی است با انگیزه‌ی زیادی روی آن کار می‌کنم.<br><br>
+      از نظر شغلی، معمار منظر هستم و حدود پنج سال تجربه دارم. این شغلی است که خیلی به آن علاقه دارم، چون چندین حوزه‌ای را که خیلی دوست دارم با هم ترکیب می‌کند: طبیعت، طراحی، شهرسازی و اکولوژی. خیلی برایم جالب است که می‌توانم فضاهایی بسازم که زندگی مردم را در شهرها بهتر کند.<br><br>
+      از نظر تحصیلات، مسیرم در شمال ایران شروع شد، جایی که لیسانس معماری را در دانشگاه گیلان گرفتم. منطقه‌ای فوق‌العاده زیبا، احاطه‌شده با جنگل‌ها و دریای خزر، که احتمالاً به من عشق به طبیعت را داده است. سپس، تصمیم گرفتم تحصیلاتم را در ایتالیا ادامه دهم، کشوری که به کیفیت معماری و طراحی‌اش معروف است. کارشناسی ارشد معماری منظر را در رم گرفتم، که تجربه‌ی واقعاً غنی‌بخشی بود، هم از نظر دانشگاهی و هم فرهنگی.<br><br>
+      در طول تحصیلاتم در ایتالیا، در یک دفتر معماری در رم شروع به کار کردم، که به من اجازه داد اولین تجربه‌ی کاری‌ام را به‌دست آورم. بعد از فارغ‌التحصیلی، به میلان نقل مکان کردم، شهری که پایتخت طراحی ایتالیاست، تا کاری تخصصی در حوزه‌ی خودم پیدا کنم.<br><br>
+      در حال حاضر، در دفتری به نام پارک‌نوو کار می‌کنم. ما روی پروژه‌های مختلف طراحی شهری و منظر کار می‌کنیم، مانند طراحی فضاهای عمومی، احیای اکولوژیک، کاشت گیاهان و بازآفرینی شهری. در حال حاضر، روی یک پروژه‌ی خصوصی در کومو، شهر زیبایی در شمال میلان که به دریاچه‌اش معروف است، کار می‌کنم. این طراحی منظر یک ویلای خصوصی است.<br><br>
+      از نظر زبان‌ها، فارسی که زبان مادری‌ام است، انگلیسی که در کار استفاده می‌کنم، ایتالیایی که در طول سال‌های اقامتم در ایتالیا یاد گرفتم را صحبت می‌کنم، و الان فرانسوی را برای پروژه‌ی کانادایی‌ام یاد می‌گیرم. به همین دلیل، با جدیت زیاد دارم برای TCF Canada آماده می‌شوم.<br><br>
+      کانادا را انتخاب کرده‌ام چون کشوری است که اهمیت زیادی به محیط زیست، شهرسازی پایدار و تنوع فرهنگی می‌دهد — ارزش‌هایی که واقعاً با ارزش‌های من همخوانی دارند. دوست دارم در شهری پویا مانند مونترال یا تورنتو ساکن شوم.<br><br>
+      در اوقات فراغت، شنا کردن را خیلی دوست دارم. این فعالیتی است که به من اجازه می‌دهد سالم بمانم، استراحت کنم و بعد از یک هفته‌ی کاری پر‌مشغله، تعادل خوبی داشته باشم. همچنین تماشای فیلم و کشف فرهنگ‌های جدید از طریق سینما را دوست دارم، به‌ویژه فیلم‌های اروپایی و ایرانی، که در کار من نیز الهام‌بخش هستند.<br><br>
+      در پایان، می‌توانم بگویم که آدمی خلاق، کنجکاو و عاشق حرفه‌ام هستم، که به من کمک می‌کند به‌راحتی با محیط‌های جدید و چالش‌های حرفه‌ای جدید سازگار شوم.
+    </div>
+    <div class="analysis">
+      <h4>Connecteurs &amp; structures clés — B1</h4>
+      <ul>
+        <li class="ok"><b>Sur le plan professionnel</b> → introduit le travail élégamment</li>
+        <li class="ok"><b>Côté études</b> → transition orale très naturelle</li>
+        <li class="ok"><b>Ce qui me passionne, c'est…</b> → mise en relief typique B1+</li>
+        <li class="ok"><b>Depuis quelque temps</b> → marqueur temporel élégant</li>
+        <li class="ok"><b>D'ailleurs</b> → ajoute une info connexe (mieux que <em>aussi</em>)</li>
+        <li class="ok"><b>En dehors du travail</b> → transition naturelle vers les loisirs</li>
+        <li class="ok"><b>quelqu'un de + adjectif</b> → structure idiomatique à mémoriser</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ====== VERSION B2 ====== -->
+  <article class="version b2">
+    <div class="version-header">
+      <h2>Version <em>B2</em> — Riche &amp; convaincante</h2>
+      <span class="badge">Niveau B2</span>
+    </div>
+    <div class="version-intro">La version que tu présentes le jour J pour viser <b>12+/20</b>.</div>
+    <div class="version-text">
+      <p>Bonjour ! Je m'appelle <span class="hl-b">Soroush Bagheri</span>, je suis <span class="hl-b">iranien</span> et je suis né à <span class="hl-b">Téhéran</span> en <span class="hl-b">1992</span>. <span class="hl-c">Si je suis ici aujourd'hui</span>, c'est pour passer l'<span class="hl">examen du TCF Canada</span>, <span class="hl-c">dans le cadre de</span> mon <span class="hl">projet d'immigration au Canada</span> — un projet qui me tient particulièrement à cœur et auquel je consacre énormément d'énergie depuis plusieurs mois.</p>
+      <p><span class="hl-c">Sur le plan professionnel</span>, je suis <span class="hl">architecte paysagiste</span> et j'ai désormais environ <span class="hl-b">cinq ans</span> d'expérience dans le métier. <span class="hl-c">C'est une profession qui me passionne véritablement</span>, <span class="hl-c">dans la mesure où</span> elle se situe à la croisée de plusieurs disciplines que j'apprécie particulièrement : la <span class="hl-v">nature</span>, le <span class="hl-v">design</span>, l'<span class="hl-v">urbanisme</span> et l'<span class="hl-v">écologie</span>. <span class="hl-c">À mes yeux</span>, l'architecture du paysage est bien plus qu'un simple métier : c'est une manière de <span class="hl">repenser la relation entre l'homme et son environnement</span> et de contribuer, à mon échelle, à la création de villes plus durables et plus humaines.</p>
+      <p><span class="hl-c">Côté formation</span>, mon parcours a débuté dans le <span class="hl">nord de l'Iran</span>, <span class="hl-c">où</span> j'ai obtenu une <span class="hl">licence en architecture</span> à l'<span class="hl-b">Université de Guilan</span>. C'est une région magnifique, entourée par les forêts denses du nord et par la mer Caspienne, et je pense que c'est précisément ce cadre naturel qui a forgé ma <span class="hl-v">sensibilité pour les paysages</span>. <span class="hl-c">Par la suite</span>, j'ai pris la décision de poursuivre mes études en <span class="hl-b">Italie</span>, un pays universellement reconnu pour la richesse de son patrimoine architectural et la qualité de sa formation en design. J'ai donc obtenu un <span class="hl">master en architecture du paysage</span> à <span class="hl-b">Rome</span>, une expérience qui s'est avérée extrêmement enrichissante, <span class="hl-c">tant sur le plan académique</span> que sur le plan personnel et culturel.</p>
+      <p><span class="hl-c">Dès mes années d'études</span>, j'ai commencé à travailler dans un <span class="hl">cabinet d'architecture</span> à Rome, <span class="hl-c">ce qui m'a permis d'</span>acquérir une <span class="hl-v">première expérience professionnelle</span> très formatrice. Après l'obtention de mon diplôme, je me suis installé à <span class="hl-b">Milan</span> — qui est considérée comme <span class="hl">la capitale italienne du design</span> — <span class="hl-c">afin de</span> trouver un emploi spécialisé dans l'architecture du paysage et d'évoluer dans un environnement plus international.</p>
+      <p><span class="hl-c">Actuellement</span>, je travaille dans un cabinet qui s'appelle <span class="hl-b">Parcnouveau</span>. Nous intervenons sur une grande variété de <span class="hl">projets d'aménagement urbain et paysager</span> : la <span class="hl-v">conception d'espaces publics</span>, la <span class="hl-v">restauration écologique</span>, les <span class="hl-v">plantations</span> et la <span class="hl-v">régénération urbaine</span>. <span class="hl-c">En ce moment</span>, je me consacre à un projet privé particulièrement passionnant à <span class="hl-b">Côme</span>, une magnifique ville située au nord de Milan, célèbre pour son lac. Il s'agit de l'<span class="hl">aménagement paysager d'une villa privée</span>, un projet qui me permet de <span class="hl">mettre à profit</span> l'ensemble de mes compétences en design et en écologie.</p>
+      <p><span class="hl-c">En ce qui concerne les langues</span>, je suis aujourd'hui <span class="hl">quadrilingue</span> : ma langue maternelle est le <span class="hl-v">persan</span>, je maîtrise l'<span class="hl-v">anglais</span> que je pratique au quotidien, l'<span class="hl-v">italien</span> que j'ai appris durant mes années en Italie, et j'apprends actuellement le <span class="hl-v">français</span>. <span class="hl-c">Si j'ai choisi le Canada</span>, c'est pour plusieurs raisons : c'est un pays qui accorde une grande importance à l'<span class="hl">environnement</span>, à l'<span class="hl">urbanisme durable</span> et à la <span class="hl">diversité culturelle</span> — autant de valeurs qui correspondent profondément aux miennes. <span class="hl-c">C'est la raison pour laquelle</span> je consacre actuellement beaucoup d'énergie à la préparation du <span class="hl-b">TCF Canada</span>. <span class="hl-c">À terme</span>, mon ambition est de poursuivre ma carrière dans le domaine de l'architecture du paysage au Canada, idéalement à Montréal ou à Toronto.</p>
+      <p><span class="hl-c">Au-delà de mon travail</span>, je suis quelqu'un qui accorde une grande importance à l'équilibre de vie. <span class="hl-c">Pour rester en forme</span> physiquement et mentalement, je pratique régulièrement la <span class="hl">natation</span>, une discipline qui me permet de me détendre et de <span class="hl">maintenir un bon équilibre</span> après une semaine de travail très chargée. <span class="hl-c">Par ailleurs</span>, je suis également passionné de <span class="hl">cinéma</span>. <span class="hl-c">C'est pour cette raison que</span> je regarde régulièrement des films de différents pays, ce qui me permet de <span class="hl-v">découvrir de nouvelles cultures</span> et d'<span class="hl">enrichir ma sensibilité artistique</span> — ce qui, <span class="hl-c">à long terme</span>, nourrit aussi mon travail de paysagiste.</p>
+      <p><span class="hl-c">Pour conclure</span>, je dirais que je suis quelqu'un de <span class="hl-v">créatif</span>, <span class="hl-v">curieux</span> et <span class="hl-v">passionné</span> par ce que je fais. Je fais également preuve d'une grande <span class="hl-v">capacité d'adaptation</span>, comme l'illustre mon parcours entre l'Iran, l'Italie et bientôt le Canada. <span class="hl-c">Au final</span>, je pense que c'est précisément cette combinaison de <span class="hl">sensibilité artistique</span>, de <span class="hl">rigueur professionnelle</span> et d'<span class="hl">ouverture internationale</span> qui définit le mieux mon profil et qui me donne confiance pour réussir cette nouvelle étape de ma vie.</p>
+    </div>
+    <div class="persian">
+      <h4>🇮🇷 Traduction persane</h4>
+      سلام! اسم من سروش باقری است، ایرانی هستم و در سال ۱۹۹۲ در تهران به دنیا آمدم. اگر امروز اینجا هستم، به این دلیل است که در آزمون TCF Canada شرکت کنم، در چارچوب پروژه‌ی مهاجرتم به کانادا — پروژه‌ای که برایم بسیار اهمیت دارد و چندین ماه است انرژی زیادی صرف آن می‌کنم.<br><br>
+      از نظر شغلی، معمار منظر هستم و اکنون حدود پنج سال تجربه در این حرفه دارم. این شغلی است که واقعاً به آن علاقه دارم، چرا که در تقاطع چندین رشته‌ای قرار دارد که برایم بسیار جذاب‌اند: طبیعت، طراحی، شهرسازی و اکولوژی. به نظر من، معماری منظر چیزی بسیار فراتر از یک شغل ساده است: راهی است برای بازاندیشی رابطه‌ی انسان با محیط‌اش و کمک به ایجاد شهرهایی پایدارتر و انسانی‌تر، در حد توان خودم.<br><br>
+      در زمینه‌ی تحصیلات، مسیرم در شمال ایران آغاز شد، جایی که لیسانس معماری را در دانشگاه گیلان گرفتم. منطقه‌ای فوق‌العاده زیبا، احاطه‌شده با جنگل‌های انبوه شمال و دریای خزر، و فکر می‌کنم دقیقاً همین محیط طبیعی است که حساسیت من نسبت به مناظر را شکل داده است. سپس، تصمیم گرفتم تحصیلاتم را در ایتالیا ادامه دهم، کشوری که به دلیل غنای میراث معماری و کیفیت آموزش طراحی در سراسر جهان شناخته شده است. بنابراین، کارشناسی ارشد معماری منظر را در رم گرفتم، تجربه‌ای که هم از نظر دانشگاهی و هم از نظر شخصی و فرهنگی، فوق‌العاده غنی‌بخش بود.<br><br>
+      از همان سال‌های تحصیلم، در یک دفتر معماری در رم شروع به کار کردم، که به من اجازه داد اولین تجربه‌ی حرفه‌ای بسیار آموزنده‌ام را به‌دست آورم. پس از فارغ‌التحصیلی، به میلان نقل مکان کردم — شهری که پایتخت طراحی ایتالیا محسوب می‌شود — تا کاری تخصصی در معماری منظر پیدا کنم و در محیطی بین‌المللی‌تر فعالیت کنم.<br><br>
+      در حال حاضر، در دفتری به نام پارک‌نوو کار می‌کنم. ما روی طیف گسترده‌ای از پروژه‌های طراحی شهری و منظر فعالیت می‌کنیم: طراحی فضاهای عمومی، احیای اکولوژیک، کاشت گیاهان و بازآفرینی شهری. در حال حاضر، روی یک پروژه‌ی خصوصی بسیار جذاب در شهر کومو کار می‌کنم، شهری زیبا در شمال میلان که به دریاچه‌اش معروف است. این پروژه‌ی طراحی منظر یک ویلای خصوصی است، پروژه‌ای که به من اجازه می‌دهد مجموعه‌ی مهارت‌هایم در طراحی و اکولوژی را به کار بگیرم.<br><br>
+      در مورد زبان‌ها، امروزه چهارزبانه هستم: زبان مادری‌ام فارسی است، انگلیسی را به‌طور روزانه تسلط دارم، ایتالیایی که در طول سال‌های اقامتم در ایتالیا یاد گرفتم، و الان فرانسوی یاد می‌گیرم. اگر کانادا را انتخاب کرده‌ام، به چندین دلیل است: کشوری است که اهمیت زیادی به محیط زیست، شهرسازی پایدار و تنوع فرهنگی می‌دهد — همگی ارزش‌هایی که عمیقاً با ارزش‌های من همخوانی دارند. به همین دلیل، الان انرژی زیادی صرف آماده‌سازی برای TCF Canada می‌کنم. در درازمدت، جاه‌طلبی من این است که حرفه‌ام را در حوزه‌ی معماری منظر در کانادا، ترجیحاً در مونترال یا تورنتو، ادامه دهم.<br><br>
+      فراتر از کار، آدمی هستم که به تعادل زندگی اهمیت زیادی می‌دهد. برای حفظ تناسب جسمی و ذهنی، مرتب شنا می‌کنم، رشته‌ای که به من اجازه می‌دهد استراحت کنم و پس از یک هفته‌ی کاری بسیار فشرده، تعادل خوبی حفظ کنم. علاوه بر این، عاشق سینما هم هستم. به همین دلیل، مرتب فیلم‌هایی از کشورهای مختلف تماشا می‌کنم، که به من اجازه می‌دهد فرهنگ‌های جدید را کشف کنم و حساسیت هنری‌ام را غنی‌تر کنم — چیزی که در درازمدت، کار من به‌عنوان معمار منظر را نیز تغذیه می‌کند.<br><br>
+      در پایان، می‌توانم بگویم که آدمی خلاق، کنجکاو و عاشق آنچه که انجام می‌دهم هستم. همچنین از قابلیت سازگاری بالایی برخوردارم، چنان‌که مسیر من بین ایران، ایتالیا و به‌زودی کانادا، آن را نشان می‌دهد. در نهایت، فکر می‌کنم همین ترکیب از حساسیت هنری، دقت حرفه‌ای و گشودگی بین‌المللی است که نیمرخ مرا به بهترین شکل تعریف می‌کند و به من اعتمادبه‌نفس می‌دهد تا این مرحله‌ی جدید زندگی‌ام را با موفقیت پیش ببرم.
+    </div>
+    <div class="analysis">
+      <h4>Pourquoi cette version impressionne l'examinateur</h4>
+      <table class="tbl">
+        <thead>
+          <tr><th>Structure B2</th><th>Pourquoi c'est élégant</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>dans la mesure où</td><td>Connecteur causal soutenu (mieux que <em>parce que</em>)</td></tr>
+          <tr><td>Si j'ai commencé…, c'est parce que…</td><td>Mise en relief + structure complexe</td></tr>
+          <tr><td>C'est la raison pour laquelle</td><td>Plus élégant que <em>c'est pourquoi</em></td></tr>
+          <tr><td>À terme</td><td>Marqueur temporel sophistiqué</td></tr>
+          <tr><td>mettre à profit</td><td>Verbe idiomatique riche</td></tr>
+          <tr><td>mener plusieurs objectifs de front</td><td>Expression très authentique</td></tr>
+          <tr><td>y compris lorsque</td><td>Connecteur de concession nuancé</td></tr>
+          <tr><td>Au-delà de</td><td>Bien mieux que <em>en plus de</em></td></tr>
+        </tbody>
+      </table>
+      <h4 style="margin-top:24px;">Procédés stylistiques B2 à retenir</h4>
+      <ul>
+        <li class="ok"><b>La mise en relief :</b> « Si… c'est parce que… » / « Ce qui me passionne, c'est… »</li>
+        <li class="ok"><b>L'incise :</b> « — même si je n'ai pas encore commencé — »</li>
+        <li class="ok"><b>Le rythme ternaire :</b> trois adjectifs en série = très français</li>
+        <li class="ok"><b>L'effet de chute :</b> la dernière phrase résume avec force</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ====== CONSEILS DU PROF ====== -->
+  <h2 class="section-title"><span class="num">PARTIE 02</span> Conseils du professeur</h2>
+
+  <div class="prof-block">
+    <h3>Formulations à éviter → alternatives élégantes</h3>
+    <div class="compare">
+      <div class="bad">Je suis Soroush</div>
+      <div class="good">Je m'appelle Soroush Bagheri</div>
+    </div>
+    <div class="compare">
+      <div class="bad">J'ai 33 ans (calcul à faire chaque année)</div>
+      <div class="good">Je suis né à Téhéran en 1992 (formulation intemporelle, plus élégante)</div>
+    </div>
+    <div class="compare">
+      <div class="bad">Je suis architecte (trop vague)</div>
+      <div class="good">Je suis architecte paysagiste / Je travaille dans l'architecture du paysage</div>
+    </div>
+    <div class="compare">
+      <div class="bad">J'aime mon travail (×3)</div>
+      <div class="good">Varie : ce métier me passionne / je suis passionné par / c'est une profession qui me tient à cœur</div>
+    </div>
+    <div class="compare">
+      <div class="bad">Parce que… parce que… parce que…</div>
+      <div class="good">Alterne : car / dans la mesure où / c'est la raison pour laquelle</div>
+    </div>
+    <div class="compare">
+      <div class="bad">En plus de cela (trop lourd à l'oral)</div>
+      <div class="good">D'ailleurs / Par ailleurs / Au-delà de</div>
+    </div>
+    <div class="compare">
+      <div class="bad">J'ai fait mon master (familier)</div>
+      <div class="good">J'ai obtenu un master / Je suis titulaire d'un master</div>
+    </div>
+  </div>
+
+  <div class="prof-block">
+    <h3>⚠️ Pièges typiques pour un candidat persanophone / italianophone</h3>
+    <ul class="tip-list">
+      <li><b>« actuellement » ≠ « actually » / « attualmente » ≠ « currently »</b> → en français, ça veut dire <em>maintenant, en ce moment</em>. ✓ Bien utilisé dans ton texte !</li>
+      <li><b>Attention aux faux amis avec l'italien :</b> <em>cabinet</em> (FR) = bureau / <em>cabinet</em> (EN, IT « gabinetto » = toilettes !). Utilise bien le mot « cabinet » en français professionnel.</li>
+      <li><b>« paysage » vs « paesaggio »</b> → en français, le mot reste « paysage » (pas « paesage » ni « paisaje »). Attention à la prononciation : [pe-i-zaj].</li>
+      <li><b>Placement de l'adverbe :</b> <em>j'apprends sérieusement</em> ✓ — pas <em>je sérieusement apprends</em> ✗</li>
+      <li><b>« Par la suite » vs « ensuite »</b> → « par la suite » = plus tard, après dans le temps. C'est plus élégant que « après ».</li>
+      <li><b>« afin de » = « pour »</b> → version plus soutenue, idéale pour l'écrit et le B2 oral.</li>
+    </ul>
+  </div>
+
+  <div class="prof-block">
+    <h3>🎤 Conseils oraux spécifiques TCF Canada</h3>
+    <ul class="tip-list">
+      <li><b>Parle lentement et clairement</b> — le jury préfère un débit calme à une fluidité rapide avec des erreurs.</li>
+      <li><b>Marque les transitions à voix haute :</b> <em>Sur le plan professionnel… / Côté études… / Actuellement… / Pendant mon temps libre…</em></li>
+      <li><b>Souris en parlant de ton métier et du Canada</b> → ça donne de la chaleur à ta présentation et montre ta passion pour l'architecture du paysage.</li>
+      <li><b>Insiste sur les noms propres importants</b> : Guilan, Rome, Milan, Côme, Parcnouveau — ça structure ton récit géographique.</li>
+      <li><b>Mets en valeur ton parcours international</b> → Iran → Italie → Canada = un récit cohérent et impressionnant.</li>
+      <li><b>Termine fort</b> : la dernière phrase doit résumer ta personnalité de manière percutante.</li>
+      <li><b>N'en dis pas trop</b> : la tâche 1 dure ~1 min 30. Vise <b>150–180 mots</b> maximum.</li>
+    </ul>
+  </div>
+
+  <!-- ====== VERSION EXAMEN ====== -->
+  <h2 class="section-title"><span class="num">PARTIE 03</span> Version finale pour le jour J</h2>
+
+  <div class="exam">
+    <div class="eyebrow">À mémoriser absolument</div>
+    <h2>Version B2 « Examen »</h2>
+    <div class="duration">⏱ Format ~1 min 30 · ~180 mots</div>
+    <div class="exam-text">
+      <p>Bonjour ! Je m'appelle Soroush Bagheri, je suis iranien et je suis né à Téhéran en 1992. Je suis ici aujourd'hui pour passer le TCF, dans le cadre de mon projet d'immigration au Canada.</p>
+      <p>Je suis architecte paysagiste et j'ai environ cinq ans d'expérience. C'est un métier qui me passionne, dans la mesure où il combine la nature, le design et l'urbanisme.</p>
+      <p>Mon parcours a commencé dans le nord de l'Iran, où j'ai obtenu une licence en architecture à l'Université de Guilan. Par la suite, j'ai poursuivi mes études en Italie, avec un master en architecture du paysage à Rome. Après mon diplôme, je me suis installé à Milan, où je travaille actuellement dans un cabinet appelé Parcnouveau. Nous intervenons sur des projets d'aménagement urbain et paysager, comme la conception d'espaces publics et la régénération urbaine.</p>
+      <p>Pendant mon temps libre, j'aime nager — ça me permet de rester en forme et de me détendre — et regarder des films pour découvrir de nouvelles cultures.</p>
+      <p>Pour conclure, je suis quelqu'un de créatif, curieux et passionné par mon métier.</p>
+    </div>
+  </div>
+
+  <!-- ====== OUTRO ====== -->
+  <div class="outro">
+    <div class="outro-flag">🇮🇷 → 🇮🇹 → 🇨🇦</div>
+    <h2>Un parcours <em>vraiment</em> international</h2>
+    <p>Ton profil entre l'Iran, l'Italie et bientôt le Canada raconte déjà une belle histoire. À toi maintenant de la <b>raconter avec confiance</b> et de la <b>simplifier sans appauvrir</b>.</p>
+    <p>Mémorise la version B2 « Examen », entraîne-toi à voix haute <b>3 fois par jour pendant une semaine</b>, et tu vas exploser le TCF Canada. 🔥</p>
+    <div class="signature">— Bon courage · موفق باشی · Buona fortuna —</div>
+  </div>
+
+</div>
+
+</body>
+</html>
