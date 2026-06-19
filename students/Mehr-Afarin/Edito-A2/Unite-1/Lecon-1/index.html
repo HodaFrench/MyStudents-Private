@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unité 1 · Leçon 1 — Le Passé Composé | Édito A2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fdf5f8 0%, #f8e1ec 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(194,24,91,0.12);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #c2185b 0%, #880e4f 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute; top: -50%; right: -10%;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.08); border-radius: 50%;
+        }
+        .header::after {
+            content: '';
+            position: absolute; bottom: -30%; left: 5%;
+            width: 300px; height: 300px;
+            background: rgba(255,255,255,0.05); border-radius: 50%;
+        }
+        .header-content { position: relative; z-index: 1; }
+        .header .breadcrumb {
+            font-size: 13px; opacity: 0.8;
+            letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .header .breadcrumb a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+        }
+        .header .breadcrumb a:hover { color: white; }
+        .header .emoji { font-size: 60px; display: block; margin-bottom: 16px; }
+        .header h1 { font-size: 48px; font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; }
+        .header p { font-size: 18px; opacity: 0.92; font-weight: 300; }
+        .header .subtitle {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 20px; border-radius: 20px;
+            font-size: 13px; margin-top: 14px; letter-spacing: 1px;
+        }
+
+        /* NAV TABS */
+        .tabs {
+            display: flex; overflow-x: auto;
+            border-bottom: 3px solid #fce4ec;
+            background: #fff8fb;
+            padding: 0 20px;
+        }
+        .tab {
+            padding: 16px 22px; cursor: pointer;
+            font-size: 14px; font-weight: 600;
+            color: #9e6b80; white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px; transition: all 0.2s;
+        }
+        .tab:hover { color: #c2185b; }
+        .tab.active { color: #c2185b; border-bottom-color: #c2185b; }
+
+        /* CONTENT SECTIONS */
+        .content { padding: 40px; }
+        .section-panel { display: none; }
+        .section-panel.active { display: block; }
+
+        /* SECTION CARD */
+        .section {
+            margin-bottom: 40px;
+            padding: 35px;
+            background: #fdf5f8;
+            border-radius: 15px;
+            border-left: 5px solid #c2185b;
+        }
+        .section.warmup {
+            background: linear-gradient(135deg, #fce4ec 0%, #fff8fb 100%);
+            border-left-color: #e91e8c;
+            box-shadow: 0 8px 20px rgba(194,24,91,0.08);
+        }
+        .section h2 { font-size: 26px; color: #880e4f; margin-bottom: 20px; font-weight: 700; }
+        .section-text { font-size: 16px; line-height: 2; color: #4a5568; margin-bottom: 20px; }
+
+        /* BADGE */
+        .badge {
+            display: inline-block; padding: 6px 14px;
+            border-radius: 20px; font-size: 11px; font-weight: 700;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .badge-pink { background: #fce4ec; color: #880e4f; }
+        .badge-grammar { background: #f8bbd0; color: #c2185b; }
+
+        /* RÈGLE GRAMMAIRE */
+        .grammar-box {
+            background: linear-gradient(135deg, #880e4f 0%, #c2185b 100%);
+            color: white; padding: 28px 30px; border-radius: 14px;
+            margin: 25px 0;
+        }
+        .grammar-box h3 { font-size: 18px; margin-bottom: 16px; opacity: 0.9; letter-spacing: 0.5px; }
+        .grammar-formula {
+            background: rgba(255,255,255,0.15);
+            padding: 16px 20px; border-radius: 10px;
+            font-size: 20px; font-weight: 700; text-align: center;
+            margin-bottom: 16px; letter-spacing: 1px;
+        }
+        .grammar-note { font-size: 14px; opacity: 0.88; line-height: 1.8; }
+
+        /* MAISON ÊTRE */
+        .house-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 20px; margin: 20px 0;
+        }
+        .house-card {
+            background: white; border-radius: 14px;
+            border: 2px solid #f8bbd0;
+            padding: 22px; box-shadow: 0 4px 14px rgba(194,24,91,0.07);
+        }
+        .house-card h3 {
+            font-size: 16px; color: #880e4f; font-weight: 700;
+            margin-bottom: 14px; padding-bottom: 10px;
+            border-bottom: 2px solid #fce4ec;
+        }
+        .house-card ul { list-style: none; }
+        .house-card ul li {
+            padding: 6px 0; font-size: 14px; color: #4a5568;
+            border-bottom: 1px solid #fdf5f8;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .house-card ul li:last-child { border: none; }
+        .house-card ul li::before { content: "→"; color: #c2185b; font-weight: 700; }
+
+        /* TABLEAU PARTICIPES */
+        .pp-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .pp-table th {
+            background: #c2185b; color: white;
+            padding: 12px 16px; text-align: left;
+            font-size: 13px; letter-spacing: 0.5px;
+        }
+        .pp-table th:first-child { border-radius: 10px 0 0 0; }
+        .pp-table th:last-child { border-radius: 0 10px 0 0; }
+        .pp-table td {
+            padding: 10px 16px; border-bottom: 1px solid #fce4ec;
+            font-size: 14px;
+        }
+        .pp-table tr:nth-child(even) { background: #fff8fb; }
+        .pp-table tr:hover { background: #fce4ec; }
+        .pp-table .verb { font-weight: 700; color: #880e4f; }
+        .pp-table .pp { color: #c2185b; font-weight: 600; }
+
+        /* CONJUGAISON */
+        .conj-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px; margin: 20px 0;
+        }
+        .conj-card {
+            background: white; border-radius: 12px;
+            border: 2px solid #f8bbd0; overflow: hidden;
+        }
+        .conj-card-title {
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+            color: white; padding: 12px 16px; font-size: 15px; font-weight: 700;
+        }
+        .conj-card table { width: 100%; border-collapse: collapse; }
+        .conj-card td { padding: 8px 14px; font-size: 14px; border-bottom: 1px solid #fdf5f8; }
+        .conj-card td:first-child { color: #880e4f; font-weight: 600; width: 40%; }
+        .conj-card td:last-child { color: #2c3e50; }
+
+        /* EXEMPLE */
+        .example-box {
+            background: white; padding: 20px 24px;
+            border-radius: 12px; border-left: 4px solid #c2185b;
+            margin: 15px 0; box-shadow: 0 2px 10px rgba(194,24,91,0.07);
+        }
+        .example-fr { font-size: 16px; font-weight: 600; color: #2c3e50; margin-bottom: 6px; }
+        .example-fa { font-size: 14px; color: #880e4f; font-style: italic; direction: rtl; text-align: right; }
+
+        /* HIGHLIGHT */
+        .highlight-box {
+            background: linear-gradient(135deg, #fce4ec 0%, #fff8fb 100%);
+            padding: 22px; border-radius: 12px;
+            margin: 20px 0; border: 2px solid #f8bbd0;
+        }
+        .highlight-box h4 { color: #880e4f; margin-bottom: 12px; font-size: 15px; }
+        .highlight-box p { color: #4a5568; font-size: 14px; line-height: 1.9; margin: 8px 0; direction: rtl; text-align: right; }
+
+        /* QUESTIONS */
+        .questions-box {
+            background: #fce4ec; border-left: 5px solid #c2185b;
+            padding: 22px; border-radius: 12px; margin-top: 22px;
+        }
+        .questions-box h4 { color: #880e4f; margin-bottom: 14px; font-size: 15px; font-weight: 700; }
+        .question {
+            background: white; padding: 11px 15px;
+            margin: 8px 0; border-left: 3px solid #c2185b;
+            border-radius: 6px; font-size: 15px; color: #2c3e50;
+        }
+        .question::before { content: "❓ "; font-weight: 700; color: #c2185b; }
+
+        /* NÉGATION */
+        .neg-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px; margin: 20px 0;
+        }
+        .neg-card {
+            background: white; padding: 18px;
+            border-radius: 12px; border: 2px solid #fce4ec;
+            box-shadow: 0 3px 10px rgba(194,24,91,0.06);
+        }
+        .neg-card .neg-type {
+            font-size: 13px; font-weight: 700; color: #c2185b;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+        }
+        .neg-card .neg-formula {
+            font-size: 14px; color: #880e4f; font-weight: 600;
+            background: #fdf5f8; padding: 8px 12px;
+            border-radius: 8px; margin-bottom: 10px;
+        }
+        .neg-card .neg-ex { font-size: 13px; color: #6b7280; font-style: italic; }
+
+        /* EXERCICES */
+        .exercise {
+            background: #fff8fb; border-radius: 14px;
+            padding: 28px; margin-bottom: 28px;
+            border: 2px solid #fce4ec;
+        }
+        .exercise h3 {
+            font-size: 18px; color: #880e4f; margin-bottom: 18px;
+            font-weight: 700; display: flex; align-items: center; gap: 10px;
+        }
+        .ex-num {
+            background: #c2185b; color: white;
+            width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700; flex-shrink: 0;
+        }
+        .ex-item {
+            padding: 12px 0; border-bottom: 1px solid #fce4ec;
+            font-size: 15px; color: #2c3e50;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .ex-item:last-child { border: none; }
+        .ex-num-small {
+            background: #fce4ec; color: #c2185b;
+            width: 26px; height: 26px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+        }
+        .ex-text { flex: 1; }
+        .blank {
+            display: inline-block;
+            min-width: 140px; padding: 3px 6px;
+            border: none; border-bottom: 2px solid #c2185b;
+            background: transparent; font-size: 15px;
+            color: #880e4f; font-weight: 600; font-family: inherit;
+            outline: none; transition: border-color 0.2s;
+        }
+        .blank:focus { border-bottom-color: #880e4f; background: #fdf5f8; border-radius: 4px 4px 0 0; }
+        .blank.correct { border-bottom-color: #2e7d32; color: #2e7d32; background: #e8f5e9; border-radius: 4px; }
+        .blank.wrong { border-bottom-color: #c62828; color: #c62828; background: #ffebee; border-radius: 4px; }
+
+        /* BOUTONS */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 26px; border-radius: 10px;
+            font-size: 15px; font-weight: 700; cursor: pointer;
+            border: none; font-family: inherit; transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+            color: white; box-shadow: 0 4px 14px rgba(194,24,91,0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(194,24,91,0.4); }
+        .btn-secondary {
+            background: #fce4ec; color: #880e4f;
+        }
+        .btn-secondary:hover { background: #f8bbd0; }
+        .btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+
+        /* SCORE */
+        .score-box {
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+            color: white; padding: 18px 24px; border-radius: 12px;
+            margin-top: 16px; display: none; text-align: center;
+        }
+        .score-box.show { display: block; }
+        .score-num { font-size: 36px; font-weight: 700; }
+        .score-label { font-size: 14px; opacity: 0.85; margin-top: 4px; }
+
+        /* TIP */
+        .tip-box {
+            background: #fce4ec; border-left: 5px solid #c2185b;
+            padding: 18px 20px; border-radius: 10px; margin: 18px 0;
+        }
+        .tip-title { font-weight: 700; color: #880e4f; margin-bottom: 8px; font-size: 15px; }
+        .tip-content { color: #4a5568; font-size: 14px; line-height: 1.8; }
+        .tip-content.rtl { direction: rtl; text-align: right; }
+
+        /* ATTENTION */
+        .attention-box {
+            background: linear-gradient(135deg, #fff3cd, #ffe8a1);
+            padding: 20px; border-radius: 10px; margin: 18px 0;
+            border: 2px solid #ffc107;
+        }
+        .attention-box h4 { color: #cc7a00; margin-bottom: 10px; font-size: 14px; font-weight: 700; }
+        .attention-box p, .attention-box li { color: #8b5f00; font-size: 14px; line-height: 1.8; }
+        .attention-box ul { padding-right: 20px; }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #c2185b 0%, #880e4f 100%);
+            color: white; text-align: center; padding: 28px;
+            font-size: 14px;
+        }
+        .footer p { margin: 6px 0; opacity: 0.9; }
+        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .footer a:hover { color: white; }
+
+        /* SCROLL UP */
+        #scrollBtn {
+            display: none; position: fixed; bottom: 22px; right: 22px;
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+            color: white; border: none; padding: 12px 15px;
+            border-radius: 50%; cursor: pointer; font-size: 20px;
+            box-shadow: 0 4px 14px rgba(194,24,91,0.35); z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        #scrollBtn:hover { transform: translateY(-4px); }
+        #scrollBtn.show { display: block; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 32px; }
+            .content { padding: 22px; }
+            .section { padding: 22px; }
+            .house-grid { grid-template-columns: 1fr; }
+            .conj-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Mehr Afarin</a>
+                &nbsp;/&nbsp; Édito A2 &nbsp;/&nbsp; Unité 1
+            </div>
+            <span class="emoji">🌱</span>
+            <h1>Le Passé Composé</h1>
+            <p>Parler de son parcours — Nouvelles vies</p>
+            <div class="subtitle">Unité 1 · Leçon 1 · Niveau A2</div>
+        </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('grammaire')">📖 Grammaire</div>
+        <div class="tab" onclick="showTab('conjugaison')">🔢 Conjugaison</div>
+        <div class="tab" onclick="showTab('negation')">🚫 Négation</div>
+        <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+        <div class="tab" onclick="showTab('dialogue')">💬 Dialogue</div>
+    </div>
+
+    <div class="content">
+
+        <!-- ═══════════════ TAB 1 : GRAMMAIRE ═══════════════ -->
+        <div class="section-panel active" id="tab-grammaire">
+
+            <!-- WARM-UP -->
+            <div class="section warmup">
+                <h2>🔥 Échauffement</h2>
+                <div class="badge badge-pink">⚡ Warm-up — 1 minute</div>
+                <div class="section-text">
+                    <p>Regarde ces phrases. Tu reconnais le temps verbal ?</p>
+                </div>
+                <div class="example-box">
+                    <div class="example-fr">— J'<strong>ai passé</strong> un super week-end !</div>
+                    <div class="example-fa">آخر هفته عالی گذراندم!</div>
+                </div>
+                <div class="example-box">
+                    <div class="example-fr">— Qu'est-ce que tu <strong>as fait</strong> ?</div>
+                    <div class="example-fa">چی کردی؟</div>
+                </div>
+                <div class="example-box">
+                    <div class="example-fr">— Je <strong>suis allé</strong>(e) au restaurant avec des amis.</div>
+                    <div class="example-fa">با دوستام رفتم رستوران.</div>
+                </div>
+                <div class="questions-box">
+                    <h4>❓ Questions rapides :</h4>
+                    <div class="question">Qu'est-ce que tu as fait hier soir ?</div>
+                    <div class="question">Tu es sorti(e) ce week-end ?</div>
+                    <div class="question">Tu as déjà voyagé en France ?</div>
+                </div>
+            </div>
+
+            <!-- RÈGLE PRINCIPALE -->
+            <div class="section">
+                <h2>📚 Le Passé Composé — La règle</h2>
+                <div class="badge badge-grammar">Grammaire essentielle A2</div>
+
+                <div class="grammar-box">
+                    <h3>🔑 Formation :</h3>
+                    <div class="grammar-formula">AVOIR ou ÊTRE (présent) + PARTICIPE PASSÉ</div>
+                    <div class="grammar-note">
+                        Le passé composé sert à exprimer une action <strong>terminée dans le passé</strong> — un événement, une durée limitée, une succession d'actions.
+                    </div>
+                </div>
+
+                <div class="section-text">
+                    <p>Il y a deux auxiliaires possibles : <strong>AVOIR</strong> (règle générale) et <strong>ÊTRE</strong> (exceptions).</p>
+                </div>
+
+                <div class="house-grid">
+                    <div class="house-card">
+                        <h3>🏠 Verbes avec ÊTRE — La maison d'être</h3>
+                        <ul>
+                            <li>aller / venir</li>
+                            <li>arriver / partir</li>
+                            <li>entrer / sortir</li>
+                            <li>monter / descendre</li>
+                            <li>rester / retourner</li>
+                            <li>naître / mourir</li>
+                            <li>tomber / devenir</li>
+                            <li>rentrer / revenir</li>
+                            <li>passer</li>
+                        </ul>
+                        <div style="margin-top:14px; padding:12px; background:#fdf5f8; border-radius:8px; font-size:13px; color:#880e4f;">
+                            ✨ <strong>+</strong> tous les verbes pronominaux<br>
+                            (se lever, se coucher, s'habiller…)
+                        </div>
+                    </div>
+                    <div class="house-card">
+                        <h3>⚡ Verbes avec AVOIR</h3>
+                        <ul>
+                            <li>manger → j'ai mangé</li>
+                            <li>faire → j'ai fait</li>
+                            <li>prendre → j'ai pris</li>
+                            <li>voir → j'ai vu</li>
+                            <li>dire → j'ai dit</li>
+                            <li>écrire → j'ai écrit</li>
+                            <li>finir → j'ai fini</li>
+                            <li>vouloir → j'ai voulu</li>
+                            <li>pouvoir → j'ai pu</li>
+                        </ul>
+                        <div style="margin-top:14px; padding:12px; background:#fdf5f8; border-radius:8px; font-size:13px; color:#880e4f;">
+                            ✨ Tous les autres verbes !
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 توضیح به فارسی:</h4>
+                    <p>گذشته مرکب (passé composé) برای بیان کارهایی که در گذشته تمام شده استفاده می‌شود.</p>
+                    <p>ساخته می‌شود از: کمکی فعل (avoir یا être) در زمان حال + اسم مفعول فعل اصلی</p>
+                    <p>بیشتر افعال با <strong>avoir</strong> هستند. فقط ۱۴ فعل حرکتی + افعال انعکاسی با <strong>être</strong> می‌آیند.</p>
+                </div>
+
+                <div class="attention-box">
+                    <h4>⚠️ ATTENTION ! Accord avec ÊTRE</h4>
+                    <p>Avec <strong>être</strong>, on accorde le participe passé avec le sujet :</p>
+                    <ul style="padding-right:20px; margin-top:10px;">
+                        <li>Il est <strong>parti</strong> → Elle est <strong>partie</strong></li>
+                        <li>Ils sont <strong>partis</strong> → Elles sont <strong>parties</strong></li>
+                        <li>Il s'est <strong>levé</strong> → Elle s'est <strong>levée</strong></li>
+                    </ul>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions de compréhension :</h4>
+                    <div class="question">Quel auxiliaire utilise-t-on avec le verbe "aller" ?</div>
+                    <div class="question">Qu'est-ce qu'un verbe pronominal ? Donne un exemple.</div>
+                    <div class="question">Pourquoi dit-on "elle est partie" et non "elle a partie" ?</div>
+                </div>
+            </div>
+
+            <!-- PARTICIPES PASSÉS RÉGULIERS -->
+            <div class="section">
+                <h2>📝 Formation du participe passé</h2>
+                <div class="badge badge-pink">Règle régulière</div>
+
+                <div class="conj-grid">
+                    <div class="house-card">
+                        <h3>Verbes en -ER → -É</h3>
+                        <ul>
+                            <li>parler → parl<strong style="color:#c2185b">é</strong></li>
+                            <li>manger → mang<strong style="color:#c2185b">é</strong></li>
+                            <li>aller → all<strong style="color:#c2185b">é</strong></li>
+                            <li>arriver → arriv<strong style="color:#c2185b">é</strong></li>
+                            <li>travailler → travaill<strong style="color:#c2185b">é</strong></li>
+                        </ul>
+                    </div>
+                    <div class="house-card">
+                        <h3>Verbes en -IR → -I</h3>
+                        <ul>
+                            <li>finir → fin<strong style="color:#c2185b">i</strong></li>
+                            <li>choisir → chois<strong style="color:#c2185b">i</strong></li>
+                            <li>sortir → sort<strong style="color:#c2185b">i</strong></li>
+                            <li>partir → part<strong style="color:#c2185b">i</strong></li>
+                            <li>dormir → dorm<strong style="color:#c2185b">i</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color:#880e4f; margin:24px 0 14px; font-size:18px;">🚨 Participes passés irréguliers — à mémoriser !</h3>
+                <table class="pp-table">
+                    <thead>
+                        <tr><th>Infinitif</th><th>Participe passé</th><th>Infinitif</th><th>Participe passé</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="verb">avoir</td><td class="pp">eu</td><td class="verb">prendre</td><td class="pp">pris</td></tr>
+                        <tr><td class="verb">être</td><td class="pp">été</td><td class="verb">apprendre</td><td class="pp">appris</td></tr>
+                        <tr><td class="verb">faire</td><td class="pp">fait</td><td class="verb">comprendre</td><td class="pp">compris</td></tr>
+                        <tr><td class="verb">voir</td><td class="pp">vu</td><td class="verb">mettre</td><td class="pp">mis</td></tr>
+                        <tr><td class="verb">vouloir</td><td class="pp">voulu</td><td class="verb">dire</td><td class="pp">dit</td></tr>
+                        <tr><td class="verb">pouvoir</td><td class="pp">pu</td><td class="verb">écrire</td><td class="pp">écrit</td></tr>
+                        <tr><td class="verb">devoir</td><td class="pp">dû</td><td class="verb">lire</td><td class="pp">lu</td></tr>
+                        <tr><td class="verb">savoir</td><td class="pp">su</td><td class="verb">boire</td><td class="pp">bu</td></tr>
+                        <tr><td class="verb">venir</td><td class="pp">venu</td><td class="verb">ouvrir</td><td class="pp">ouvert</td></tr>
+                        <tr><td class="verb">tenir</td><td class="pp">tenu</td><td class="verb">recevoir</td><td class="pp">reçu</td></tr>
+                        <tr><td class="verb">vivre</td><td class="pp">vécu</td><td class="verb">connaître</td><td class="pp">connu</td></tr>
+                        <tr><td class="verb">courir</td><td class="pp">couru</td><td class="verb">croire</td><td class="pp">cru</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══════════════ TAB 2 : CONJUGAISON ═══════════════ -->
+        <div class="section-panel" id="tab-conjugaison">
+            <div class="section">
+                <h2>🔢 Conjugaison complète</h2>
+                <div class="badge badge-grammar">Tableaux de conjugaison</div>
+
+                <div class="conj-grid">
+                    <div class="conj-card">
+                        <div class="conj-card-title">PARLER (avoir)</div>
+                        <table><tbody>
+                            <tr><td>Je</td><td>ai parlé</td></tr>
+                            <tr><td>Tu</td><td>as parlé</td></tr>
+                            <tr><td>Il/Elle</td><td>a parlé</td></tr>
+                            <tr><td>Nous</td><td>avons parlé</td></tr>
+                            <tr><td>Vous</td><td>avez parlé</td></tr>
+                            <tr><td>Ils/Elles</td><td>ont parlé</td></tr>
+                        </tbody></table>
+                    </div>
+                    <div class="conj-card">
+                        <div class="conj-card-title">FINIR (avoir)</div>
+                        <table><tbody>
+                            <tr><td>Je</td><td>ai fini</td></tr>
+                            <tr><td>Tu</td><td>as fini</td></tr>
+                            <tr><td>Il/Elle</td><td>a fini</td></tr>
+                            <tr><td>Nous</td><td>avons fini</td></tr>
+                            <tr><td>Vous</td><td>avez fini</td></tr>
+                            <tr><td>Ils/Elles</td><td>ont fini</td></tr>
+                        </tbody></table>
+                    </div>
+                    <div class="conj-card">
+                        <div class="conj-card-title">ALLER (être)</div>
+                        <table><tbody>
+                            <tr><td>Je</td><td>suis allé(e)</td></tr>
+                            <tr><td>Tu</td><td>es allé(e)</td></tr>
+                            <tr><td>Il/Elle</td><td>est allé(e)</td></tr>
+                            <tr><td>Nous</td><td>sommes allé(e)s</td></tr>
+                            <tr><td>Vous</td><td>êtes allé(e)s</td></tr>
+                            <tr><td>Ils/Elles</td><td>sont allé(e)s</td></tr>
+                        </tbody></table>
+                    </div>
+                    <div class="conj-card">
+                        <div class="conj-card-title">SE LEVER (être)</div>
+                        <table><tbody>
+                            <tr><td>Je</td><td>me suis levé(e)</td></tr>
+                            <tr><td>Tu</td><td>t'es levé(e)</td></tr>
+                            <tr><td>Il/Elle</td><td>s'est levé(e)</td></tr>
+                            <tr><td>Nous</td><td>nous sommes levé(e)s</td></tr>
+                            <tr><td>Vous</td><td>vous êtes levé(e)s</td></tr>
+                            <tr><td>Ils/Elles</td><td>se sont levé(e)s</td></tr>
+                        </tbody></table>
+                    </div>
+                    <div class="conj-card">
+                        <div class="conj-card-title">FAIRE (avoir)</div>
+                        <table><tbody>
+                            <tr><td>Je</td><td>ai fait</td></tr>
+                            <tr><td>Tu</td><td>as fait</td></tr>
+                            <tr><td>Il/Elle</td><td>a fait</td></tr>
+                            <tr><td>Nous</td><td>avons fait</td></tr>
+                            <tr><td>Vous</td><td>avez fait</td></tr>
+                            <tr><td>Ils/Elles</td><td>ont fait</td></tr>
+                        </tbody></table>
+                    </div>
+                    <div class="conj-card">
+                        <div class="conj-card-title">VENIR (être)</div>
+                        <table><tbody>
+                            <tr><td>Je</td><td>suis venu(e)</td></tr>
+                            <tr><td>Tu</td><td>es venu(e)</td></tr>
+                            <tr><td>Il/Elle</td><td>est venu(e)</td></tr>
+                            <tr><td>Nous</td><td>sommes venu(e)s</td></tr>
+                            <tr><td>Vous</td><td>êtes venu(e)s</td></tr>
+                            <tr><td>Ils/Elles</td><td>sont venu(e)s</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">💡 Astuce pour mémoriser</div>
+                    <div class="tip-content rtl">برای یادآوری افعالی که با être می‌آیند، از خانه être کمک بگیر! این افعال اغلب مربوط به حرکت (رفتن، آمدن، ورود، خروج) یا تغییر حالت (تولد، مرگ، تبدیل شدن) هستند.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ TAB 3 : NÉGATION ═══════════════ -->
+        <div class="section-panel" id="tab-negation">
+            <div class="section">
+                <h2>🚫 La Négation au Passé Composé</h2>
+                <div class="badge badge-grammar">Règle importante</div>
+
+                <div class="grammar-box">
+                    <h3>🔑 La négation encadre l'auxiliaire :</h3>
+                    <div class="grammar-formula">NE + auxiliaire + PAS + participe passé</div>
+                    <div class="grammar-note">
+                        Je <strong>n'ai pas</strong> mangé. &nbsp;|&nbsp; Elle <strong>n'est pas</strong> venue. &nbsp;|&nbsp; Je <strong>ne me suis pas</strong> levé(e) tôt.
+                    </div>
+                </div>
+
+                <div class="neg-grid">
+                    <div class="neg-card">
+                        <div class="neg-type">ne … pas</div>
+                        <div class="neg-formula">Je n'ai pas travaillé.</div>
+                        <div class="neg-ex">کار نکردم</div>
+                    </div>
+                    <div class="neg-card">
+                        <div class="neg-type">ne … rien</div>
+                        <div class="neg-formula">Il n'a rien fait.</div>
+                        <div class="neg-ex">هیچ کاری نکرد</div>
+                    </div>
+                    <div class="neg-card">
+                        <div class="neg-type">ne … jamais</div>
+                        <div class="neg-formula">Tu n'es jamais allé à Paris.</div>
+                        <div class="neg-ex">هرگز به پاریس نرفتی</div>
+                    </div>
+                    <div class="neg-card">
+                        <div class="neg-type">ne … personne</div>
+                        <div class="neg-formula">Elle n'a vu personne.</div>
+                        <div class="neg-ex">کسی را ندید (après le PP !)</div>
+                    </div>
+                    <div class="neg-card">
+                        <div class="neg-type">déjà → pas encore</div>
+                        <div class="neg-formula">Je n'ai pas encore fini.</div>
+                        <div class="neg-ex">هنوز تمام نکردم</div>
+                    </div>
+                    <div class="neg-card">
+                        <div class="neg-type">ne … plus</div>
+                        <div class="neg-formula">Nous n'avons plus mangé.</div>
+                        <div class="neg-ex">دیگر نخوردیم</div>
+                    </div>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Exercice rapide — Mets à la forme négative :</h4>
+                    <div class="question">J'ai compris la leçon. → ?</div>
+                    <div class="question">Elle est venue hier. → ?</div>
+                    <div class="question">Nous avons mangé au restaurant. → ?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ TAB 4 : EXERCICES ═══════════════ -->
+        <div class="section-panel" id="tab-exercices">
+
+            <!-- EX 1 -->
+            <div class="exercise" id="ex1">
+                <h3><span class="ex-num">1</span> Conjugue avec AVOIR</h3>
+                <div id="ex1-items">
+                    <div class="ex-item"><span class="ex-num-small">1</span><span class="ex-text">Mes cousins <input class="blank" data-answer="ont fait" placeholder="faire"> une promenade dans la forêt.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">2</span><span class="ex-text">Elle <input class="blank" data-answer="a envoyé" placeholder="envoyer"> une carte postale à ses parents.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">3</span><span class="ex-text">La semaine dernière, nous <input class="blank" data-answer="avons couru" placeholder="courir"> un marathon.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">4</span><span class="ex-text">Tu <input class="blank" data-answer="as vu" placeholder="voir"> le dernier film d'Audiard ?</span></div>
+                    <div class="ex-item"><span class="ex-num-small">5</span><span class="ex-text">J' <input class="blank" data-answer="ai entendu" placeholder="entendre"> dire que le concert était annulé.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">6</span><span class="ex-text">Sa sœur <input class="blank" data-answer="a cru" placeholder="croire"> au Père Noël jusqu'à 13 ans.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">7</span><span class="ex-text">On <input class="blank" data-answer="a fini" placeholder="finir"> ce projet avant la date limite.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">8</span><span class="ex-text">Le dernier livre que j' <input class="blank" data-answer="ai lu" placeholder="lire"> était génial !</span></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="checkEx('ex1')">✅ Vérifier</button>
+                    <button class="btn btn-secondary" onclick="resetEx('ex1')">🔄 Recommencer</button>
+                </div>
+                <div class="score-box" id="score-ex1"></div>
+            </div>
+
+            <!-- EX 2 -->
+            <div class="exercise" id="ex2">
+                <h3><span class="ex-num">2</span> Conjugue avec ÊTRE</h3>
+                <div id="ex2-items">
+                    <div class="ex-item"><span class="ex-num-small">1</span><span class="ex-text">Hier, elle <input class="blank" data-answer="s'est souvenue" placeholder="se souvenir"> que c'était l'anniversaire de son père.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">2</span><span class="ex-text">Ils <input class="blank" data-answer="sont rentrés" placeholder="rentrer"> tard du mariage.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">3</span><span class="ex-text">Elles <input class="blank" data-answer="sont parties" placeholder="partir"> en vacances ensemble.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">4</span><span class="ex-text">Nous <input class="blank" data-answer="sommes nés" placeholder="naître"> la même année.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">5</span><span class="ex-text">Je <input class="blank" data-answer="me suis promené(e)" placeholder="se promener"> au parc avec mon chien.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">6</span><span class="ex-text">Vous <input class="blank" data-answer="êtes allés" placeholder="aller"> dans ce nouveau restaurant ?</span></div>
+                    <div class="ex-item"><span class="ex-num-small">7</span><span class="ex-text">Les smartphones <input class="blank" data-answer="sont devenus" placeholder="devenir"> indispensables.</span></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="checkEx('ex2')">✅ Vérifier</button>
+                    <button class="btn btn-secondary" onclick="resetEx('ex2')">🔄 Recommencer</button>
+                </div>
+                <div class="score-box" id="score-ex2"></div>
+            </div>
+
+            <!-- EX 3 -->
+            <div class="exercise" id="ex3">
+                <h3><span class="ex-num">3</span> Avoir ou Être ? — Choisis et conjugue</h3>
+                <div id="ex3-items">
+                    <div class="ex-item"><span class="ex-num-small">1</span><span class="ex-text">Il <input class="blank" data-answer="a pris" placeholder="prendre"> son parapluie et il <input class="blank" data-answer="est sorti" placeholder="sortir">.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">2</span><span class="ex-text">Hier soir, nous <input class="blank" data-answer="avons mangé" placeholder="manger"> tôt.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">3</span><span class="ex-text">Ils <input class="blank" data-answer="sont venus" placeholder="venir"> souvent nous visiter.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">4</span><span class="ex-text">Tu <input class="blank" data-answer="as pris" placeholder="prendre"> une douche et tu <input class="blank" data-answer="es allé(e)" placeholder="aller"> au lit.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">5</span><span class="ex-text">Elle <input class="blank" data-answer="a adoré" placeholder="adorer"> cette chanson.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">6</span><span class="ex-text">Ils <input class="blank" data-answer="sont tombés" placeholder="tomber"> amoureux il y a 10 ans.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">7</span><span class="ex-text">J'<input class="blank" data-answer="ai ouvert" placeholder="ouvrir"> la porte et le chien <input class="blank" data-answer="a couru" placeholder="courir"> dehors.</span></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="checkEx('ex3')">✅ Vérifier</button>
+                    <button class="btn btn-secondary" onclick="resetEx('ex3')">🔄 Recommencer</button>
+                </div>
+                <div class="score-box" id="score-ex3"></div>
+            </div>
+
+            <!-- EX 4 : NÉGATION -->
+            <div class="exercise" id="ex4">
+                <h3><span class="ex-num">4</span> Mets à la forme négative</h3>
+                <div id="ex4-items">
+                    <div class="ex-item"><span class="ex-num-small">1</span><span class="ex-text">Tu as envoyé l'email ? — Non, je <input class="blank" data-answer="n'ai pas envoyé" placeholder="ne … pas envoyer"> l'email.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">2</span><span class="ex-text">Vous êtes allés à la plage ? — Non, nous <input class="blank" data-answer="ne sommes pas allés" placeholder="ne … pas aller"> à la plage.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">3</span><span class="ex-text">Il est venu en bus ? — Non, il <input class="blank" data-answer="n'est pas venu" placeholder="ne … pas venir"> en bus.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">4</span><span class="ex-text">Tu as compris ? — Non, je <input class="blank" data-answer="n'ai pas compris" placeholder="ne … pas comprendre">.</span></div>
+                    <div class="ex-item"><span class="ex-num-small">5</span><span class="ex-text">Elle t'a vu(e) ? — Non, elle <input class="blank" data-answer="ne m'a pas vu" placeholder="ne … pas voir">.</span></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="checkEx('ex4')">✅ Vérifier</button>
+                    <button class="btn btn-secondary" onclick="resetEx('ex4')">🔄 Recommencer</button>
+                </div>
+                <div class="score-box" id="score-ex4"></div>
+            </div>
+
+        </div>
+
+        <!-- ═══════════════ TAB 5 : DIALOGUE ═══════════════ -->
+        <div class="section-panel" id="tab-dialogue">
+            <div class="section">
+                <h2>💬 Dialogue naturel</h2>
+                <div class="badge badge-pink">Conversation authentique</div>
+
+                <div class="tip-box">
+                    <div class="tip-title">📞 Contexte : Un coup de téléphone entre deux amis</div>
+                    <div class="tip-content">Lire le dialogue à voix haute. Souligner tous les verbes au passé composé.</div>
+                </div>
+
+                <div style="background:white; border-radius:14px; border:2px solid #f8bbd0; padding:28px; margin:20px 0;">
+                    <div style="margin:18px 0; padding:16px; background:#fdf5f8; border-left:4px solid #c2185b; border-radius:8px;">
+                        <div style="font-weight:700; color:#c2185b; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Sophie :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Allô ! Salut ! Comment ça va ?</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fff8fb; border-left:4px solid #880e4f; border-radius:8px;">
+                        <div style="font-weight:700; color:#880e4f; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Léa :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Super ! J'<strong style="color:#c2185b">ai passé</strong> un excellent week-end !</div>
+                        <div style="font-size:13px; color:#880e4f; direction:rtl; text-align:right; margin-top:6px; font-style:italic;">آخر هفته عالی داشتم!</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fdf5f8; border-left:4px solid #c2185b; border-radius:8px;">
+                        <div style="font-weight:700; color:#c2185b; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Sophie :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Ah… Qu'est-ce que tu <strong style="color:#c2185b">as fait</strong> ?</div>
+                        <div style="font-size:13px; color:#880e4f; direction:rtl; text-align:right; margin-top:6px; font-style:italic;">چی کردی؟</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fff8fb; border-left:4px solid #880e4f; border-radius:8px;">
+                        <div style="font-weight:700; color:#880e4f; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Léa :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Vendredi soir, j'<strong style="color:#c2185b">ai rencontré</strong> Simon au café. On <strong style="color:#c2185b">a parlé</strong> de son nouveau travail. On <strong style="color:#c2185b">n'a pas vu</strong> le temps passer, on <strong style="color:#c2185b">est restés</strong> ensemble jusqu'à la fermeture !</div>
+                        <div style="font-size:13px; color:#880e4f; direction:rtl; text-align:right; margin-top:6px; font-style:italic;">جمعه شب سیمون رو توی کافه دیدم. از کار جدیدش حرف زدیم. وقت رو نفهمیدیم، تا آخر موندیم!</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fdf5f8; border-left:4px solid #c2185b; border-radius:8px;">
+                        <div style="font-weight:700; color:#c2185b; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Sophie :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Génial ! Et après ?</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fff8fb; border-left:4px solid #880e4f; border-radius:8px;">
+                        <div style="font-weight:700; color:#880e4f; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Léa :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Après… On <strong style="color:#c2185b">a encore beaucoup parlé</strong>, on <strong style="color:#c2185b">est allés</strong> prendre un verre puis on <strong style="color:#c2185b">a dîné</strong> au restaurant.</div>
+                        <div style="font-size:13px; color:#880e4f; direction:rtl; text-align:right; margin-top:6px; font-style:italic;">بعدش خیلی حرف زدیم، رفتیم یه نوشیدنی خوردیم، بعد هم رستوران شام خوردیم.</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fdf5f8; border-left:4px solid #c2185b; border-radius:8px;">
+                        <div style="font-weight:700; color:#c2185b; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Sophie :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Cool ! Et toi, ton week-end ?</div>
+                    </div>
+                    <div style="margin:18px 0; padding:16px; background:#fff8fb; border-left:4px solid #880e4f; border-radius:8px;">
+                        <div style="font-weight:700; color:#880e4f; font-size:13px; margin-bottom:6px; text-transform:uppercase;">— Sophie :</div>
+                        <div style="font-size:15px; color:#2c3e50; line-height:1.8;">Moi… oh là là, je <strong style="color:#c2185b">n'ai rien fait</strong> ! Je <strong style="color:#c2185b">suis restée</strong> à la maison. Je <strong style="color:#c2185b">n'ai pas</strong> même <strong style="color:#c2185b">sorti</strong> la poubelle ! 😅</div>
+                        <div style="font-size:13px; color:#880e4f; direction:rtl; text-align:right; margin-top:6px; font-style:italic;">من… اوه لالا، هیچی نکردم! خونه موندم. حتی آشغال هم نبردم بیرون!</div>
+                    </div>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions de compréhension :</h4>
+                    <div class="question">Qu'est-ce que Léa a fait vendredi soir ?</div>
+                    <div class="question">Où est-ce qu'elles sont allées après le café ?</div>
+                    <div class="question">Qu'est-ce que Sophie a fait pendant le week-end ?</div>
+                    <div class="question">Trouve tous les verbes au passé composé dans le dialogue.</div>
+                </div>
+
+                <div class="tip-box" style="margin-top:24px;">
+                    <div class="tip-title">🎯 À toi de parler !</div>
+                    <div class="tip-content rtl">به فارسی فکر کن، بعد به فرانسه بگو: آخر هفته‌ات چطور بود؟ چی کردی؟ ۵ جمله با passé composé بساز.</div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /content -->
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>👤 Hoda KHEDMATI — Professeur de Français</p>
+        <p>📙 Édito A2 · Unité 1 · Leçon 1 — Le Passé Composé</p>
+        <p style="margin-top:12px;">
+            <a href="../../index.html">← Retour à la bibliothèque de Mehr Afarin</a>
+        </p>
+        <p style="margin-top:10px; opacity:0.7; font-size:12px;">Français avec Hoda © 2025</p>
+    </div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// TABS
+function showTab(id) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// EXERCISES
+const ANSWERS = {};
+
+function normalize(str) {
+    return str.trim().toLowerCase()
+        .replace(/[éèêë]/g,'e').replace(/[àâ]/g,'a')
+        .replace(/[îï]/g,'i').replace(/[ôö]/g,'o')
+        .replace(/[ùûü]/g,'u').replace(/ç/g,'c')
+        .replace(/\s+/g,' ');
+}
+
+function checkEx(exId) {
+    const blanks = document.querySelectorAll('#' + exId + ' .blank');
+    let correct = 0, total = 0;
+    blanks.forEach(b => {
+        total++;
+        const answer = b.dataset.answer;
+        const userVal = b.value;
+        // Accept multiple valid answers separated by /
+        const validAnswers = answer.split('/').map(a => normalize(a.trim()));
+        if (validAnswers.some(v => normalize(userVal) === v || normalize(userVal).replace(/[()]/g,'') === v.replace(/[()]/g,''))) {
+            b.classList.add('correct');
+            b.classList.remove('wrong');
+            correct++;
+        } else {
+            b.classList.add('wrong');
+            b.classList.remove('correct');
+        }
+    });
+    const scoreEl = document.getElementById('score-' + exId);
+    const pct = Math.round((correct/total)*100);
+    let msg = pct === 100 ? '🎉 Parfait !' : pct >= 70 ? '👍 Bien !' : '💪 Continue !';
+    scoreEl.innerHTML = `<div class="score-num">${correct} / ${total}</div><div class="score-label">${pct}% · ${msg}</div>`;
+    scoreEl.classList.add('show');
+}
+
+function resetEx(exId) {
+    document.querySelectorAll('#' + exId + ' .blank').forEach(b => {
+        b.value = '';
+        b.classList.remove('correct', 'wrong');
+    });
+    const scoreEl = document.getElementById('score-' + exId);
+    scoreEl.classList.remove('show');
+}
+
+// SCROLL UP
+window.addEventListener('scroll', () => {
+    document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset > 300);
+});
+</script>
+</body>
+</html>
