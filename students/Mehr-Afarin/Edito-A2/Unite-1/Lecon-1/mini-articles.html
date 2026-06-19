@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-articles — Être multi-talents | Édito A2 · Unité 1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fdf5f8 0%, #f8e1ec 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(194,24,91,0.12);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #c2185b 0%, #880e4f 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute;
+            top: -50%; right: -10%;
+            width: 350px; height: 350px;
+            background: rgba(255,255,255,0.07); border-radius: 50%;
+        }
+        .header::after {
+            content: ''; position: absolute;
+            bottom: -30%; left: 5%;
+            width: 250px; height: 250px;
+            background: rgba(255,255,255,0.04); border-radius: 50%;
+        }
+        .header-content { position: relative; z-index: 1; }
+        .breadcrumb {
+            font-size: 12px; opacity: 0.75; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 14px;
+        }
+        .breadcrumb a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .header .emoji { font-size: 58px; display: block; margin-bottom: 14px; }
+        .header h1 { font-size: 42px; font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; }
+        .header .sub { font-size: 17px; opacity: 0.9; }
+        .header .badges {
+            display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px;
+        }
+        .badge-pill {
+            background: rgba(255,255,255,0.18);
+            padding: 5px 16px; border-radius: 20px;
+            font-size: 12px; font-weight: 700;
+        }
+
+        /* NAV TABS */
+        .tabs {
+            display: flex; overflow-x: auto;
+            border-bottom: 3px solid #fce4ec;
+            background: #fff8fb; padding: 0 16px;
+        }
+        .tab {
+            padding: 14px 18px; cursor: pointer;
+            font-size: 13px; font-weight: 600;
+            color: #9e6b80; white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px; transition: all 0.2s;
+        }
+        .tab:hover { color: #c2185b; }
+        .tab.active { color: #c2185b; border-bottom-color: #c2185b; }
+
+        /* CONTENT */
+        .content { padding: 40px; }
+        .panel { display: none; }
+        .panel.active { display: block; }
+
+        /* INTRO BOX */
+        .intro-box {
+            background: linear-gradient(135deg, #fce4ec, #fff8fb);
+            border: 2px solid #f8bbd0;
+            border-radius: 14px; padding: 24px 28px;
+            margin-bottom: 36px;
+        }
+        .intro-box h2 { font-size: 20px; color: #880e4f; margin-bottom: 10px; }
+        .intro-box .fa {
+            font-size: 14px; color: #6b4c60;
+            direction: rtl; text-align: right;
+            line-height: 1.9; margin-top: 10px;
+            background: rgba(255,255,255,0.6);
+            padding: 12px 16px; border-radius: 10px;
+        }
+
+        /* ARTICLE CARD */
+        .article-card {
+            border: 2px solid #f0d9e5;
+            border-radius: 16px; overflow: hidden;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 16px rgba(194,24,91,0.07);
+            transition: box-shadow 0.3s;
+        }
+        .article-card:hover {
+            box-shadow: 0 10px 30px rgba(194,24,91,0.14);
+        }
+
+        /* ARTICLE HEADER */
+        .art-header {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px 26px;
+            border-bottom: 2px solid #fce4ec;
+        }
+        .art-num {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+            color: white; display: flex; align-items: center;
+            justify-content: center; font-size: 18px; font-weight: 700;
+            flex-shrink: 0;
+        }
+        .art-title { font-size: 18px; font-weight: 700; color: #880e4f; line-height: 1.3; }
+        .art-tag {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            padding: 3px 10px; border-radius: 12px; margin-top: 4px;
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .tag-a2 { background: #fce4ec; color: #c2185b; }
+        .tag-b1 { background: #e3f2fd; color: #1565c0; }
+        .tag-b1b2 { background: #e8f5e9; color: #2e7d32; }
+
+        /* TEXT BODY */
+        .art-body {
+            padding: 24px 28px;
+            font-size: 16px; line-height: 1.85;
+            color: #2c3e50;
+        }
+        .art-body p { margin-bottom: 14px; }
+        .art-body p:last-child { margin-bottom: 0; }
+
+        /* HIGHLIGHT WORD */
+        .hl { background: rgba(194,24,91,0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700; color: #880e4f; }
+        .hl-blue { background: rgba(21,101,192,0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700; color: #1565c0; }
+        .hl-green { background: rgba(46,125,50,0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700; color: #2e7d32; }
+
+        /* TRANSLATION */
+        .translation {
+            background: #fdf5f8; border-right: 5px solid #c2185b;
+            padding: 18px 22px; margin: 16px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .translation .tlabel {
+            font-size: 11px; font-weight: 700; color: #c2185b;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+        }
+        .translation .ttext {
+            font-family: 'Tahoma', sans-serif;
+            direction: rtl; text-align: right;
+            font-size: 14px; line-height: 1.95;
+            color: #4a3040;
+        }
+
+        /* ANALYSE */
+        .analyse {
+            background: linear-gradient(135deg, #1b2e45, #2c4a6e);
+            color: white; padding: 22px 26px;
+            border-top: 2px solid #fce4ec;
+        }
+        .analyse h4 {
+            font-size: 14px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: rgba(255,255,255,0.65); margin-bottom: 14px;
+        }
+        .analyse-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .analyse-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 12px 14px;
+        }
+        .analyse-item .alabel {
+            font-size: 10px; font-weight: 700; color: #f8bbd0;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+        }
+        .analyse-item .atext { font-size: 13px; line-height: 1.7; }
+        .analyse-item .afa {
+            font-size: 12px; color: rgba(255,255,255,0.65);
+            direction: rtl; text-align: right; margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* VOCAB HIGHLIGHT */
+        .vocab-strip {
+            background: #fff8fb; border-top: 1px dashed #f0d9e5;
+            padding: 16px 26px;
+            display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        }
+        .vocab-label {
+            font-size: 11px; font-weight: 700; color: #9e6b80;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .vocab-pill {
+            display: inline-flex; flex-direction: column;
+            background: white; border: 1.5px solid #f8bbd0;
+            border-radius: 10px; padding: 6px 12px;
+            font-size: 12px; cursor: default;
+            transition: all 0.2s;
+        }
+        .vocab-pill:hover { border-color: #c2185b; background: #fce4ec; }
+        .vocab-pill .vfr { font-weight: 700; color: #880e4f; }
+        .vocab-pill .vfa { font-size: 11px; color: #9e6b80; direction: rtl; }
+
+        /* QUESTIONS */
+        .questions {
+            background: #fce4ec; padding: 18px 26px;
+            border-top: 2px solid #f8bbd0;
+        }
+        .questions h4 {
+            font-size: 13px; font-weight: 700; color: #880e4f;
+            margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .question {
+            background: white; padding: 10px 14px;
+            margin: 7px 0; border-left: 3px solid #c2185b;
+            border-radius: 4px; font-size: 14px; color: #2c3e50;
+        }
+        .question::before { content: "❓ "; color: #c2185b; }
+
+        /* EXERCICE */
+        .exercice {
+            background: #fdf5f8; border: 2px dashed #f8bbd0;
+            border-radius: 14px; padding: 24px 28px;
+            margin-top: 32px;
+        }
+        .exercice h3 { font-size: 18px; color: #880e4f; margin-bottom: 18px; font-weight: 700; }
+        .ex-q {
+            padding: 12px 0; border-bottom: 1px solid #fce4ec;
+            font-size: 15px; display: flex; align-items: flex-start; gap: 10px;
+        }
+        .ex-q:last-child { border: none; }
+        .ex-num {
+            background: #c2185b; color: white;
+            width: 26px; height: 26px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+        }
+        .blank {
+            display: inline-block; min-width: 130px;
+            border: none; border-bottom: 2px solid #c2185b;
+            background: transparent; font-size: 15px; font-family: inherit;
+            color: #c2185b; font-weight: 600; padding: 2px 6px; outline: none;
+        }
+        .blank.ok { border-bottom-color: #2e7d32; color: #2e7d32; background: #e8f5e9; border-radius: 4px 4px 0 0; }
+        .blank.err { border-bottom-color: #c62828; color: #c62828; background: #ffebee; border-radius: 4px 4px 0 0; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 24px; border-radius: 10px;
+            font-size: 14px; font-weight: 700; cursor: pointer;
+            border: none; font-family: inherit; transition: all 0.2s;
+        }
+        .btn-pink { background: linear-gradient(135deg, #c2185b, #880e4f); color: white; box-shadow: 0 4px 12px rgba(194,24,91,0.28); }
+        .btn-pink:hover { transform: translateY(-2px); }
+        .btn-ghost { background: #fce4ec; color: #880e4f; }
+        .btn-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+        .score { background: linear-gradient(135deg, #c2185b, #880e4f); color: white; padding: 14px; border-radius: 10px; margin-top: 12px; display: none; text-align: center; }
+        .score.show { display: block; }
+        .score .sn { font-size: 28px; font-weight: 700; }
+        .score .sl { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+
+        /* GLOBAL NOTE */
+        .global-note {
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+            color: white; border-radius: 14px; padding: 24px 28px;
+            margin-top: 36px;
+        }
+        .global-note h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .global-note .ntext { font-size: 14px; line-height: 1.9; }
+        .global-note .nfa { font-size: 13px; direction: rtl; text-align: right; margin-top: 12px; color: rgba(255,255,255,0.85); line-height: 1.9; font-style: italic; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(135deg, #c2185b, #880e4f); color: white; text-align: center; padding: 24px; font-size: 13px; }
+        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+
+        #scrollBtn { display: none; position: fixed; bottom: 22px; right: 22px; background: linear-gradient(135deg, #c2185b, #880e4f); color: white; border: none; padding: 12px 15px; border-radius: 50%; cursor: pointer; font-size: 18px; box-shadow: 0 4px 14px rgba(194,24,91,0.35); z-index: 1000; transition: all 0.3s; }
+        #scrollBtn:hover { transform: translateY(-3px); }
+        #scrollBtn.show { display: block; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 28px; }
+            .content { padding: 20px; }
+            .art-body { padding: 18px; }
+            .analyse-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-content">
+        <div class="breadcrumb">
+            <a href="../../../../index.html">← Mehr Afarin</a>
+            &nbsp;/&nbsp; Édito A2 &nbsp;/&nbsp; Unité 1 — Leçon 1
+        </div>
+        <span class="emoji">🌟</span>
+        <h1>Être multi-talents</h1>
+        <p class="sub">Mini-articles · Lecture analytique · Traduction persane</p>
+        <div class="badges">
+            <span class="badge-pill">📖 5 textes</span>
+            <span class="badge-pill">🔍 Analyse</span>
+            <span class="badge-pill">📝 Exercices</span>
+            <span class="badge-pill">🇮🇷 Traduction</span>
+        </div>
+    </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+    <div class="tab active" onclick="showTab('articles')">📖 Mini-articles</div>
+    <div class="tab" onclick="showTab('analyse')">🔍 Analyse globale</div>
+    <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+</div>
+
+<div class="content">
+
+<!-- ═══ TAB 1 : ARTICLES ═══ -->
+<div class="panel active" id="tab-articles">
+
+    <div class="intro-box">
+        <h2>🌟 Qu'est-ce qu'être multi-talents ?</h2>
+        <p style="font-size:15px;color:#4a3040;line-height:1.8;">Certaines personnes ont plusieurs talents à la fois : elles peuvent être artistes <em>et</em> scientifiques, musiciens <em>et</em> architectes. On les appelle <strong>multi-talents</strong> ou <em>multipotentiels</em>. Ces cinq textes courts explorent ce phénomène fascinant.</p>
+        <div class="fa">برخی افراد چندین استعداد هم‌زمان دارند: می‌توانند هم هنرمند باشند هم دانشمند، هم موسیقی‌دان باشند هم معمار. به آن‌ها «چندتوانا» یا «multi-talents» می‌گویند. این پنج متن کوتاه این پدیده جذاب را بررسی می‌کنند.</div>
+    </div>
+
+    <!-- ═══ ARTICLE 1 ═══ -->
+    <div class="article-card">
+        <div class="art-header">
+            <div class="art-num">1</div>
+            <div>
+                <div class="art-title">Léonard de Vinci : le premier multi-talent</div>
+                <span class="art-tag tag-a2">Texte A2 · Passé composé · Être + professions</span>
+            </div>
+        </div>
+        <div class="art-body">
+            <p>Léonard de Vinci <span class="hl">a été</span> peintre, sculpteur, architecte, ingénieur, musicien et scientifique. Il <span class="hl">est né</span> en Italie en 1452. Dans sa vie, il <span class="hl">a peint</span> la Joconde, il <span class="hl">a inventé</span> des machines volantes, et il <span class="hl">a étudié</span> le corps humain comme un médecin.</p>
+            <p>Pour Léonard, tout était lié : l'art et la science ne <span class="hl">faisaient</span> qu'un. Il <span class="hl">pensait</span> que pour bien peindre un muscle, il fallait d'abord comprendre l'anatomie. C'est pourquoi il <span class="hl">a disséqué</span> des cadavres pour apprendre.</p>
+            <p>Aujourd'hui, on <span class="hl">utilise</span> son nom pour parler d'une personne qui excelle dans plusieurs domaines : <em>un vrai Léonard de Vinci moderne !</em></p>
+        </div>
+
+        <div class="translation">
+            <div class="tlabel">🇮🇷 ترجمه فارسی</div>
+            <div class="ttext">
+                لئوناردو داوینچی نقاش، مجسمه‌ساز، معمار، مهندس، موسیقی‌دان و دانشمند بود. در سال ۱۴۵۲ در ایتالیا به دنیا آمد. در طول زندگی‌اش، مونالیزا را نقاشی کرد، ماشین‌های پرنده اختراع کرد و مثل یک پزشک بدن انسان را مطالعه کرد.
+                <br><br>
+                برای لئوناردو همه چیز به هم مرتبط بود: هنر و علم یکی بودند. فکر می‌کرد که برای نقاشی خوب یک عضله، ابتدا باید آناتومی را بفهمی. به همین دلیل اجساد را تشریح کرد تا یاد بگیرد.
+                <br><br>
+                امروز از اسم او برای صحبت درباره کسی که در چندین حوزه برتری دارد استفاده می‌شود.
+            </div>
+        </div>
+
+        <div class="analyse">
+            <h4>🔍 Analyse linguistique</h4>
+            <div class="analyse-grid">
+                <div class="analyse-item">
+                    <div class="alabel">Grammaire clé</div>
+                    <div class="atext"><span class="hl" style="background:rgba(248,187,208,0.3);color:#f8bbd0;">Passé composé avec ÊTRE :</span><br>est né · a été · a peint · a inventé</div>
+                    <div class="afa">گذشته مرکب با être و avoir</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Structure importante</div>
+                    <div class="atext"><em>«pour bien peindre… il fallait d'abord comprendre»</em><br>→ pour + infinitif = but</div>
+                    <div class="afa">pour + مصدر = هدف — برای + فعل</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Connecteurs</div>
+                    <div class="atext">C'est pourquoi · Pour · Aujourd'hui</div>
+                    <div class="afa">روابط منطقی بین جملات</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Lien avec Unité 1</div>
+                    <div class="atext">Parler de son <strong>parcours de vie</strong> : professions, dates, actions passées</div>
+                    <div class="afa">ارتباط با یونیته ۱: صحبت درباره مسیر زندگی</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-strip">
+            <span class="vocab-label">📚 Mots clés :</span>
+            <span class="vocab-pill"><span class="vfr">exceller</span><span class="vfa">برتری داشتن</span></span>
+            <span class="vocab-pill"><span class="vfr">lié(e)</span><span class="vfa">مرتبط — متصل</span></span>
+            <span class="vocab-pill"><span class="vfr">un domaine</span><span class="vfa">یک حوزه</span></span>
+            <span class="vocab-pill"><span class="vfr">disséquer</span><span class="vfa">تشریح کردن</span></span>
+            <span class="vocab-pill"><span class="vfr">l'anatomie</span><span class="vfa">آناتومی</span></span>
+        </div>
+
+        <div class="questions">
+            <h4>❓ Questions de compréhension :</h4>
+            <div class="question">Dans combien de domaines Léonard de Vinci excellait-il ?</div>
+            <div class="question">Pourquoi a-t-il étudié le corps humain ?</div>
+            <div class="question">Que signifie «être un Léonard de Vinci moderne» ?</div>
+        </div>
+    </div>
+
+    <!-- ═══ ARTICLE 2 ═══ -->
+    <div class="article-card">
+        <div class="art-header">
+            <div class="art-num">2</div>
+            <div>
+                <div class="art-title">Le mythe du spécialiste : doit-on choisir ?</div>
+                <span class="art-tag tag-b1">Texte B1 · Conditionnel · On</span>
+            </div>
+        </div>
+        <div class="art-body">
+            <p>Dans notre société, on <span class="hl">pense</span> souvent qu'il faut choisir : être médecin <em>ou</em> artiste, ingénieur <em>ou</em> musicien. On <span class="hl">dit</span> que «qui trop embrasse, mal étreint». Autrement dit : si on fait trop de choses, on ne fait rien bien.</p>
+            <p>Mais les recherches modernes <span class="hl">montrent</span> le contraire. Les personnes multi-talents <span class="hl">apportent</span> des idées originales parce qu'elles <span class="hl">voient</span> les connexions entre des domaines différents. Un architecte qui <span class="hl">joue</span> de la musique <span class="hl">comprend</span> mieux le rythme et l'harmonie dans ses bâtiments.</p>
+            <p>Alors, faut-il choisir ? Peut-être pas. Ce qui <span class="hl">compte</span>, c'est d'être curieux, de <span class="hl">continuer</span> à apprendre, et de ne pas <span class="hl">avoir</span> peur de toucher à tout.</p>
+        </div>
+
+        <div class="translation">
+            <div class="tlabel">🇮🇷 ترجمه فارسی</div>
+            <div class="ttext">
+                در جامعه ما، اغلب فکر می‌کنند که باید انتخاب کرد: پزشک «یا» هنرمند، مهندس «یا» موسیقی‌دان. می‌گویند «کسی که خیلی چیزها را در آغوش می‌گیرد، هیچ‌کدام را خوب انجام نمی‌دهد».
+                <br><br>
+                اما تحقیقات مدرن عکس آن را نشان می‌دهند. افراد چندتوانا ایده‌های اصیل می‌آورند چون ارتباط بین حوزه‌های مختلف را می‌بینند. یک معمار که موسیقی می‌نوازد، ریتم و هارمونی را در ساختمان‌هایش بهتر درک می‌کند.
+                <br><br>
+                پس باید انتخاب کرد؟ شاید نه. آنچه مهم است کنجکاو بودن، ادامه یادگیری و نترسیدن از دست زدن به همه چیز است.
+            </div>
+        </div>
+
+        <div class="analyse">
+            <h4>🔍 Analyse linguistique</h4>
+            <div class="analyse-grid">
+                <div class="analyse-item">
+                    <div class="alabel">Pronom ON</div>
+                    <div class="atext">«on pense» · «on dit» · «on fait»<br>→ on = les gens en général</div>
+                    <div class="afa">«on» = «مردم به طور کلی» — خیلی کاربردی در TCF</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Expression idiomatique</div>
+                    <div class="atext"><em>«qui trop embrasse, mal étreint»</em><br>→ ضرب‌المثل فرانسوی</div>
+                    <div class="afa">کسی که زیاد آغوش می‌گیرد، بد فشار می‌دهد = هر چیزی به اندازه</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Structure : Ce qui compte</div>
+                    <div class="atext">«Ce qui compte, c'est de…»<br>→ mise en relief</div>
+                    <div class="afa">«آنچه مهم است...» — ساختار تأکیدی B1/B2</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Connecteur de contraste</div>
+                    <div class="atext"><span class="hl-blue" style="background:rgba(21,101,192,0.15);">Mais</span> · <span class="hl-blue" style="background:rgba(21,101,192,0.15);">Autrement dit</span> · <span class="hl-blue" style="background:rgba(21,101,192,0.15);">Alors</span></div>
+                    <div class="afa">روابط ضدی و نتیجه‌گیری</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-strip">
+            <span class="vocab-label">📚 Mots clés :</span>
+            <span class="vocab-pill"><span class="vfr">le contraire</span><span class="vfa">عکس — خلاف</span></span>
+            <span class="vocab-pill"><span class="vfr">apporter</span><span class="vfa">آوردن — ارائه دادن</span></span>
+            <span class="vocab-pill"><span class="vfr">une connexion</span><span class="vfa">ارتباط — پیوند</span></span>
+            <span class="vocab-pill"><span class="vfr">curieux/se</span><span class="vfa">کنجکاو</span></span>
+            <span class="vocab-pill"><span class="vfr">toucher à tout</span><span class="vfa">دست زدن به همه چیز</span></span>
+        </div>
+
+        <div class="questions">
+            <h4>❓ Questions de compréhension :</h4>
+            <div class="question">Quelle est l'idée reçue que le texte remet en question ?</div>
+            <div class="question">Comment un architecte musicien voit-il son travail différemment ?</div>
+            <div class="question">Selon le texte, quelles sont les trois qualités importantes ?</div>
+        </div>
+    </div>
+
+    <!-- ═══ ARTICLE 3 ═══ -->
+    <div class="article-card">
+        <div class="art-header">
+            <div class="art-num">3</div>
+            <div>
+                <div class="art-title">Gaël Faye : quand la musique rencontre la littérature</div>
+                <span class="art-tag tag-a2">Texte A2 · Présent · Professions · Lien Unité 1</span>
+            </div>
+        </div>
+        <div class="art-body">
+            <p>Gaël Faye <span class="hl">est</span> un artiste multi-talents. Il <span class="hl">est</span> à la fois <strong>chanteur</strong>, <strong>rappeur</strong> et <strong>écrivain</strong>. Il <span class="hl">est né</span> au Burundi et il <span class="hl">a grandi</span> entre l'Afrique et la France.</p>
+            <p>Son roman <em>«Petit Pays»</em> <span class="hl">a remporté</span> le prix Renaudot en 2016. C'est <span class="hl">une histoire</span> sur son enfance en Afrique, la guerre et l'exil. En même temps, il <span class="hl">continue</span> à faire de la musique avec son groupe.</p>
+            <p>Gaël Faye <span class="hl">pense</span> que la musique et l'écriture se <span class="hl">complètent</span> : la musique <span class="hl">permet</span> de sentir les émotions, et les mots permettent de les <span class="hl">expliquer</span>. Pour lui, ce ne sont pas deux métiers différents, c'est <em>la même chose</em>.</p>
+        </div>
+
+        <div class="translation">
+            <div class="tlabel">🇮🇷 ترجمه فارسی</div>
+            <div class="ttext">
+                گائل فای یک هنرمند چندتوانا است. او هم‌زمان خواننده، رپر و نویسنده است. در بوروندی به دنیا آمد و بین آفریقا و فرانسه بزرگ شد.
+                <br><br>
+                رمانش «پتی پِی» (کشور کوچک) در سال ۲۰۱۶ جایزه رنودو را برد. داستانی است درباره کودکی‌اش در آفریقا، جنگ و تبعید. در همان زمان با گروهش موسیقی می‌سازد.
+                <br><br>
+                گائل فای فکر می‌کند موسیقی و نوشتن یکدیگر را کامل می‌کنند: موسیقی اجازه می‌دهد احساسات را حس کنیم، و کلمات اجازه می‌دهند آن‌ها را توضیح دهیم. برای او این دو شغل مختلف نیستند، بلکه یک چیز هستند.
+            </div>
+        </div>
+
+        <div class="analyse">
+            <h4>🔍 Analyse linguistique</h4>
+            <div class="analyse-grid">
+                <div class="analyse-item">
+                    <div class="alabel">Lien direct Unité 1</div>
+                    <div class="atext">Gaël Faye = personnalité francophone de l'Unité 1 · Édito A2</div>
+                    <div class="afa">این شخصیت مستقیماً در یونیته ۱ کتاب Édito A2 آمده است!</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">«À la fois»</div>
+                    <div class="atext"><em>«Il est à la fois chanteur et écrivain»</em><br>→ = en même temps</div>
+                    <div class="afa">«à la fois» = هم‌زمان — بسیار کاربردی</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Permettre de + inf.</div>
+                    <div class="atext">«la musique <strong>permet de</strong> sentir»<br>→ structure très utile B1</div>
+                    <div class="afa">«اجازه می‌دهد» — ساختار مهم برای بیان امکانات</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Verbes pronominaux</div>
+                    <div class="atext">«se compléter» = یکدیگر را کامل کردن<br>→ pronom réciproque</div>
+                    <div class="afa">افعال انعکاسی متقابل — یکدیگر را...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-strip">
+            <span class="vocab-label">📚 Mots clés :</span>
+            <span class="vocab-pill"><span class="vfr">à la fois</span><span class="vfa">هم‌زمان</span></span>
+            <span class="vocab-pill"><span class="vfr">remporter</span><span class="vfa">بردن (جایزه)</span></span>
+            <span class="vocab-pill"><span class="vfr">l'exil</span><span class="vfa">تبعید</span></span>
+            <span class="vocab-pill"><span class="vfr">se compléter</span><span class="vfa">یکدیگر را کامل کردن</span></span>
+            <span class="vocab-pill"><span class="vfr">les émotions</span><span class="vfa">احساسات</span></span>
+        </div>
+
+        <div class="questions">
+            <h4>❓ Questions de compréhension :</h4>
+            <div class="question">Quels sont les trois métiers de Gaël Faye ?</div>
+            <div class="question">Quel est le titre de son roman et quand l'a-t-il écrit ?</div>
+            <div class="question">Comment décrit-il la relation entre musique et écriture ?</div>
+        </div>
+    </div>
+
+    <!-- ═══ ARTICLE 4 ═══ -->
+    <div class="article-card">
+        <div class="art-header">
+            <div class="art-num">4</div>
+            <div>
+                <div class="art-title">Les avantages d'être multi-talents au travail</div>
+                <span class="art-tag tag-b1">Texte B1 · Conditionnel présent · Argumentation</span>
+            </div>
+        </div>
+        <div class="art-body">
+            <p>Dans le monde professionnel moderne, <span class="hl">avoir</span> plusieurs compétences <span class="hl">est</span> un grand avantage. Un graphiste qui <span class="hl">sait</span> coder <span class="hl">peut</span> créer des sites web complets. Un médecin qui <span class="hl">parle</span> plusieurs langues <span class="hl">peut</span> soigner des patients internationaux.</p>
+            <p>Les entreprises <span class="hl">recherchent</span> de plus en plus des profils <em>«T-shaped»</em> : des personnes qui <span class="hl">ont</span> une expertise profonde dans un domaine, mais aussi des connaissances dans plusieurs autres. Ce n'est plus suffisant d'être bon dans une seule chose.</p>
+            <p>Si vous <span class="hl">étiez</span> multi-talents, vous <span class="hl">seriez</span> plus adaptable, plus créatif, et vous <span class="hl">auriez</span> plus d'opportunités professionnelles. Alors, pourquoi ne pas <span class="hl">explorer</span> un nouveau talent aujourd'hui ?</p>
+        </div>
+
+        <div class="translation">
+            <div class="tlabel">🇮🇷 ترجمه فارسی</div>
+            <div class="ttext">
+                در دنیای حرفه‌ای مدرن، داشتن چندین مهارت یک مزیت بزرگ است. یک گرافیست که بلد است کدنویسی کند می‌تواند وب‌سایت‌های کامل بسازد. یک پزشک که چندین زبان صحبت می‌کند می‌تواند بیماران بین‌المللی را درمان کند.
+                <br><br>
+                شرکت‌ها بیشتر و بیشتر به دنبال پروفایل‌های «T-شکل» هستند: افرادی که تخصص عمیق در یک حوزه دارند، اما در چندین حوزه دیگر هم دانش دارند. دیگر کافی نیست که فقط در یک چیز خوب باشی.
+                <br><br>
+                اگر چندتوانا بودید، انعطاف‌پذیرتر، خلاق‌تر بودید و فرصت‌های شغلی بیشتری داشتید. پس چرا امروز یک استعداد جدید را کشف نمی‌کنید؟
+            </div>
+        </div>
+
+        <div class="analyse">
+            <h4>🔍 Analyse linguistique</h4>
+            <div class="analyse-grid">
+                <div class="analyse-item">
+                    <div class="alabel">Conditionnel présent ✨</div>
+                    <div class="atext">«Si vous étiez… vous <strong>seriez</strong>»<br>→ si + imparfait → conditionnel</div>
+                    <div class="afa">شرط فرضی: اگر ... بودید، ... می‌بودید — بسیار مهم!</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">De plus en plus</div>
+                    <div class="atext"><em>«de plus en plus des profils»</em><br>→ روزبه‌روز بیشتر</div>
+                    <div class="afa">«de plus en plus» = بیشتر و بیشتر — ترکیب رایج B1</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Ce n'est plus suffisant</div>
+                    <div class="atext"><em>«Il n'est plus suffisant de…»</em><br>→ négation + infinitif</div>
+                    <div class="afa">«دیگر کافی نیست که...» — نفی با مصدر</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Pourquoi ne pas + inf.</div>
+                    <div class="atext">«Pourquoi ne pas explorer ?»<br>→ suggestion polie</div>
+                    <div class="afa">«چرا نمی‌کنی؟» — پیشنهاد ملایم — خیلی کاربردی</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-strip">
+            <span class="vocab-label">📚 Mots clés :</span>
+            <span class="vocab-pill"><span class="vfr">une compétence</span><span class="vfa">مهارت — شایستگی</span></span>
+            <span class="vocab-pill"><span class="vfr">un profil</span><span class="vfa">پروفایل — نمایه</span></span>
+            <span class="vocab-pill"><span class="vfr">adaptable</span><span class="vfa">انعطاف‌پذیر</span></span>
+            <span class="vocab-pill"><span class="vfr">une expertise</span><span class="vfa">تخصص</span></span>
+            <span class="vocab-pill"><span class="vfr">soigner</span><span class="vfa">درمان کردن — مراقبت کردن</span></span>
+        </div>
+
+        <div class="questions">
+            <h4>❓ Questions de compréhension :</h4>
+            <div class="question">Qu'est-ce qu'un profil «T-shaped» ?</div>
+            <div class="question">Donnez un exemple d'avantage professionnel d'être multi-talents.</div>
+            <div class="question">Quelle question le texte pose-t-il à la fin ? Pourquoi ?</div>
+        </div>
+    </div>
+
+    <!-- ═══ ARTICLE 5 ═══ -->
+    <div class="article-card">
+        <div class="art-header">
+            <div class="art-num">5</div>
+            <div>
+                <div class="art-title">Et toi, es-tu multi-talents ?</div>
+                <span class="art-tag tag-b1">Texte B1 · Réflexion personnelle · Production orale</span>
+            </div>
+        </div>
+        <div class="art-body">
+            <p>Tout le monde <span class="hl">a</span> plusieurs talents. Parfois, on ne <span class="hl">sait</span> pas encore qu'on <span class="hl">est</span> doué pour quelque chose. On <span class="hl">pense</span> : <em>«Je suis seulement juriste»</em> ou <em>«Je suis seulement architecte»</em>. Mais souvent, c'est faux.</p>
+            <p>La chercheuse américaine Emilie Wapnick <span class="hl">a inventé</span> le mot <em>«multipotentiel»</em>. Elle <span class="hl">dit</span> que certaines personnes n'ont pas <em>une seule</em> passion dans la vie — elles <span class="hl">en ont</span> plusieurs. Et c'est une force, pas un problème.</p>
+            <p>Alors, réfléchissez : qu'est-ce que vous <span class="hl">aimez</span> faire en dehors de votre travail principal ? Peut-être que votre hobby cache un <span class="hl">talent caché</span>. Peut-être que vous <span class="hl">êtes</span>, vous aussi, un vrai multi-talent.</p>
+        </div>
+
+        <div class="translation">
+            <div class="tlabel">🇮🇷 ترجمه فارسی</div>
+            <div class="ttext">
+                همه استعدادهای متعددی دارند. گاهی هنوز نمی‌دانیم که در چیزی با استعداد هستیم. فکر می‌کنیم: «فقط حقوق‌دان هستم» یا «فقط معمار هستم». اما اغلب این اشتباه است.
+                <br><br>
+                محقق آمریکایی امیلی واپنیک کلمه «چندپتانسیل» را اختراع کرد. او می‌گوید برخی افراد در زندگی «یک» علاقه ندارند — چندتایی دارند. و این یک قدرت است، نه مشکل.
+                <br><br>
+                پس فکر کنید: در خارج از شغل اصلی‌تان چه دوست دارید انجام دهید؟ شاید سرگرمی‌تان یک استعداد پنهان داشته باشد. شاید شما هم یک چندتوانای واقعی باشید.
+            </div>
+        </div>
+
+        <div class="analyse">
+            <h4>🔍 Analyse linguistique</h4>
+            <div class="analyse-grid">
+                <div class="analyse-item">
+                    <div class="alabel">Pronom EN</div>
+                    <div class="atext">«elles <strong>en</strong> ont plusieurs»<br>→ en remplace «des passions»</div>
+                    <div class="afa">«en» ضمیر جانشین — جایگزین اسم با «de» می‌شود</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Peut-être que...</div>
+                    <div class="atext">«Peut-être que votre hobby cache...»<br>→ expression de la possibilité</div>
+                    <div class="afa">«شاید که...» — بیان احتمال — خیلی کاربردی</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Impératif</div>
+                    <div class="atext">«<strong>Réfléchissez</strong> : qu'est-ce que...»<br>→ impératif + question</div>
+                    <div class="afa">امر + سؤال = فراخوان به تأمل</div>
+                </div>
+                <div class="analyse-item">
+                    <div class="alabel">Adjectif caché</div>
+                    <div class="atext">«un <strong>talent caché</strong>»<br>→ adjectif après le nom</div>
+                    <div class="afa">«استعداد پنهان» — صفت بعد از اسم</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-strip">
+            <span class="vocab-label">📚 Mots clés :</span>
+            <span class="vocab-pill"><span class="vfr">doué(e)</span><span class="vfa">با استعداد</span></span>
+            <span class="vocab-pill"><span class="vfr">une passion</span><span class="vfa">علاقه شدید — اشتیاق</span></span>
+            <span class="vocab-pill"><span class="vfr">une force</span><span class="vfa">قدرت — نقطه قوت</span></span>
+            <span class="vocab-pill"><span class="vfr">en dehors de</span><span class="vfa">خارج از — فراتر از</span></span>
+            <span class="vocab-pill"><span class="vfr">caché(e)</span><span class="vfa">پنهان — مخفی</span></span>
+        </div>
+
+        <div class="questions">
+            <h4>❓ Questions de compréhension :</h4>
+            <div class="question">Qui est Emilie Wapnick et qu'a-t-elle inventé ?</div>
+            <div class="question">Selon elle, avoir plusieurs passions est-il un problème ?</div>
+            <div class="question">Quelle question le texte vous pose personnellement ?</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ═══ TAB 2 : ANALYSE GLOBALE ═══ -->
+<div class="panel" id="tab-analyse">
+
+    <div class="global-note">
+        <h3>🧠 Ce que ces textes ont en commun</h3>
+        <div class="ntext">Ces cinq articles explorent le thème du <strong>multi-talent</strong> sous des angles différents : historique (Léonard de Vinci), sociologique (le mythe du spécialiste), biographique (Gaël Faye), professionnel (avantages au travail), et personnel (et toi ?). C'est la méthode de l'Unité 1 : parler de son <strong>parcours de vie</strong> avec des exemples réels.</div>
+        <div class="nfa">این پنج مقاله موضوع چندتوانایی را از زوایای مختلف بررسی می‌کنند: تاریخی، جامعه‌شناختی، بیوگرافیک، حرفه‌ای و شخصی. این روش یونیته ۱ است: صحبت از مسیر زندگی با مثال‌های واقعی.</div>
+    </div>
+
+    <div class="intro-box" style="margin-top:28px;">
+        <h2>🔗 Liens avec la grammaire de l'Unité 1</h2>
+        <p style="font-size:14px;color:#4a3040;line-height:1.8;margin-top:8px;">هر متن یک ساختار گرامری از یونیته ۱ را تمرین می‌دهد:</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+        <div style="background:#fdf5f8;border:2px solid #f8bbd0;border-radius:12px;padding:18px;">
+            <div style="font-size:12px;font-weight:700;color:#c2185b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Texte 1</div>
+            <div style="font-size:15px;font-weight:700;color:#880e4f;">Passé composé</div>
+            <div style="font-size:13px;color:#6b4c60;margin-top:4px;">«a peint · a inventé · est né» → raconter un parcours</div>
+            <div style="font-size:12px;color:#9e6b80;direction:rtl;text-align:right;margin-top:6px;font-style:italic;">صحبت از یک مسیر زندگی — گذشته مرکب</div>
+        </div>
+        <div style="background:#fdf5f8;border:2px solid #f8bbd0;border-radius:12px;padding:18px;">
+            <div style="font-size:12px;font-weight:700;color:#c2185b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Texte 2</div>
+            <div style="font-size:15px;font-weight:700;color:#880e4f;">Pronom ON + Argumentation</div>
+            <div style="font-size:13px;color:#6b4c60;margin-top:4px;">«on dit · on pense · on fait» → opinion générale</div>
+            <div style="font-size:12px;color:#9e6b80;direction:rtl;text-align:right;margin-top:6px;font-style:italic;">«on» = مردم — بیان نظر عمومی</div>
+        </div>
+        <div style="background:#fdf5f8;border:2px solid #f8bbd0;border-radius:12px;padding:18px;">
+            <div style="font-size:12px;font-weight:700;color:#c2185b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Texte 3</div>
+            <div style="font-size:15px;font-weight:700;color:#880e4f;">Professions + À la fois</div>
+            <div style="font-size:13px;color:#6b4c60;margin-top:4px;">«il est chanteur et écrivain» → Unité 1 direct</div>
+            <div style="font-size:12px;color:#9e6b80;direction:rtl;text-align:right;margin-top:6px;font-style:italic;">شخصیت مستقیم یونیته ۱ + مشاغل</div>
+        </div>
+        <div style="background:#fdf5f8;border:2px solid #f8bbd0;border-radius:12px;padding:18px;">
+            <div style="font-size:12px;font-weight:700;color:#c2185b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Textes 4 & 5</div>
+            <div style="font-size:15px;font-weight:700;color:#880e4f;">Conditionnel + Pronom EN</div>
+            <div style="font-size:13px;color:#6b4c60;margin-top:4px;">«si vous étiez → vous seriez» · «elles en ont»</div>
+            <div style="font-size:12px;color:#9e6b80;direction:rtl;text-align:right;margin-top:6px;font-style:italic;">شرط فرضی + ضمیر en</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ═══ TAB 3 : EXERCICES ═══ -->
+<div class="panel" id="tab-exercices">
+
+    <div class="exercice" id="ex1">
+        <h3>✏️ Exercice 1 — Vocabulaire : trouvez le mot</h3>
+        <p style="font-size:13px;color:#9e6b80;margin-bottom:16px;direction:rtl;text-align:right;">براساس تعریف، کلمه مناسب از متن‌ها پیدا کن:</p>
+        <div class="ex-q"><span class="ex-num">1</span><span>Être bon dans plusieurs domaines → exceller dans plusieurs <input class="blank" data-ans="domaines" placeholder="…"></span></div>
+        <div class="ex-q"><span class="ex-num">2</span><span>En même temps → <input class="blank" data-ans="à la fois" placeholder="…"></span></div>
+        <div class="ex-q"><span class="ex-num">3</span><span>Quelqu'un qui a plusieurs talents → une personne <input class="blank" data-ans="multi-talents" placeholder="…"></span></div>
+        <div class="ex-q"><span class="ex-num">4</span><span>Une compétence qu'on n'a pas encore découverte → un talent <input class="blank" data-ans="caché" placeholder="…"></span></div>
+        <div class="ex-q"><span class="ex-num">5</span><span>Pouvoir s'adapter à beaucoup de situations → être <input class="blank" data-ans="adaptable" placeholder="…"></span></div>
+        <div class="btn-row">
+            <button class="btn btn-pink" onclick="checkEx('ex1')">✅ Vérifier</button>
+            <button class="btn btn-ghost" onclick="resetEx('ex1')">🔄 Reset</button>
+        </div>
+        <div class="score" id="score-ex1"></div>
+    </div>
+
+    <div class="exercice" id="ex2">
+        <h3>✏️ Exercice 2 — Grammaire : complète avec le bon temps</h3>
+        <p style="font-size:13px;color:#9e6b80;margin-bottom:16px;direction:rtl;text-align:right;">فعل مناسب را با زمان درست پر کن (passé composé / présent / conditionnel) :</p>
+        <div class="ex-q"><span class="ex-num">1</span><span>Léonard de Vinci <input class="blank" data-ans="a peint" placeholder="peindre (PC)"> la Joconde.</span></div>
+        <div class="ex-q"><span class="ex-num">2</span><span>Gaël Faye <input class="blank" data-ans="est né" placeholder="naître (PC)"> au Burundi.</span></div>
+        <div class="ex-q"><span class="ex-num">3</span><span>Si vous étiez multi-talents, vous <input class="blank" data-ans="seriez" placeholder="être (cond.)"> plus adaptable.</span></div>
+        <div class="ex-q"><span class="ex-num">4</span><span>Les entreprises <input class="blank" data-ans="recherchent" placeholder="rechercher (prés.)"> des profils variés.</span></div>
+        <div class="ex-q"><span class="ex-num">5</span><span>Emilie Wapnick <input class="blank" data-ans="a inventé" placeholder="inventer (PC)"> le mot «multipotentiel».</span></div>
+        <div class="btn-row">
+            <button class="btn btn-pink" onclick="checkEx('ex2')">✅ Vérifier</button>
+            <button class="btn btn-ghost" onclick="resetEx('ex2')">🔄 Reset</button>
+        </div>
+        <div class="score" id="score-ex2"></div>
+    </div>
+
+    <div class="exercice" id="ex3">
+        <h3>✏️ Exercice 3 — Production écrite : Et toi ?</h3>
+        <p style="font-size:13px;color:#9e6b80;margin-bottom:16px;direction:rtl;text-align:right;">براساس الگوی متن‌ها، درباره یک استعداد پنهان خودت ۵ تا ۶ جمله بنویس. از این ساختارها استفاده کن:</p>
+        <div style="background:#fce4ec;border-radius:10px;padding:14px 18px;margin-bottom:14px;">
+            <div style="font-size:13px;font-weight:700;color:#880e4f;margin-bottom:8px;">Structures à utiliser :</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span style="background:white;border:1.5px solid #f8bbd0;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;color:#c2185b;">Je suis à la fois…</span>
+                <span style="background:white;border:1.5px solid #f8bbd0;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;color:#c2185b;">Depuis… , j'ai…</span>
+                <span style="background:white;border:1.5px solid #f8bbd0;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;color:#c2185b;">Ce qui me plaît, c'est de…</span>
+                <span style="background:white;border:1.5px solid #f8bbd0;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;color:#c2185b;">Si j'avais plus de temps, je…</span>
+                <span style="background:white;border:1.5px solid #f8bbd0;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;color:#c2185b;">Je pense que…</span>
+            </div>
+        </div>
+        <textarea style="width:100%;border:2px solid #f8bbd0;border-radius:10px;padding:14px;font-family:inherit;font-size:15px;color:#2c3e50;resize:vertical;min-height:130px;outline:none;background:#fff8fb;" placeholder="Écris ici ta réponse…"></textarea>
+        <div style="margin-top:12px;font-size:13px;color:#9e6b80;direction:rtl;text-align:right;">💡 هدف: ۵ تا ۶ جمله طبیعی — نه متن حفظ‌شده. فکر کن، بعد بنویس!</div>
+    </div>
+
+</div>
+
+</div><!-- /content -->
+
+<div class="footer">
+    <p>👤 Hoda KHEDMATI — Professeur de Français</p>
+    <p>📙 Édito A2 · Unité 1 · Leçon 1 — Mini-articles : Être multi-talents</p>
+    <p style="margin-top:10px;"><a href="../../../../index.html">← Retour à la bibliothèque de Mehr Afarin</a></p>
+    <p style="margin-top:8px;opacity:0.7;font-size:12px;">Français avec Hoda © 2025</p>
+</div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function normalize(s) {
+    return s.trim().toLowerCase()
+        .replace(/[éèê]/g,'e').replace(/[àâ]/g,'a')
+        .replace(/[îï]/g,'i').replace(/[ùû]/g,'u').replace(/ç/g,'c')
+        .replace(/\s+/g,' ');
+}
+
+function checkEx(id) {
+    const blanks = document.querySelectorAll('#' + id + ' .blank');
+    let ok = 0;
+    blanks.forEach(b => {
+        const answers = b.dataset.ans.split('/').map(a => normalize(a.trim()));
+        if (answers.some(a => normalize(b.value) === a)) {
+            b.classList.add('ok'); b.classList.remove('err'); ok++;
+        } else {
+            b.classList.add('err'); b.classList.remove('ok');
+        }
+    });
+    const pct = Math.round(ok / blanks.length * 100);
+    const s = document.getElementById('score-' + id);
+    const msg = pct === 100 ? '🎉 Parfait !' : pct >= 70 ? '👍 Bien !' : '💪 Continue !';
+    s.innerHTML = `<div class="sn">${ok}/${blanks.length}</div><div class="sl">${pct}% · ${msg}</div>`;
+    s.classList.add('show');
+}
+
+function resetEx(id) {
+    document.querySelectorAll('#' + id + ' .blank').forEach(b => {
+        b.value = ''; b.classList.remove('ok','err');
+    });
+    const s = document.getElementById('score-' + id);
+    if(s) s.classList.remove('show');
+}
+
+window.addEventListener('scroll', () => {
+    document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset > 300);
+});
+</script>
+</body>
+</html>
