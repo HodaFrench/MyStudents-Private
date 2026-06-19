@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#262234; --soft:#5F5972; --line:#E6E2EF; --cream:#F8F6FB;
+    --gram:#3949AB; --gram-bg:#E8EAF7;
+    --verbe:#00897B; --verbe-bg:#E0F2F0;
+    --vocab:#C2185B; --vocab-bg:#FCE4EE;
+    --phon:#D97706; --phon-bg:#FEF0DC;
+    --dia:#E0533D; --dia-bg:#FCEBE7;
+    --lect:#7B3FA0; --lect-bg:#F2E9F8;
+    --conseil:#B07A1E; --conseil-bg:#FBF3D9;
+    --cult:#0277BD; --cult-bg:#E1F0FA;
+    --delf:#A03060; --delf-bg:#F8E6EE;
+    --a0:#00897B; --a1:#3949AB; --ap:#C2185B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #B49AD0; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #E0D4EE; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.5pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.6pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#FBFAFE; border-right:5px solid #C9B6E0; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#A99CC0; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F6D9E6; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+  .swatch{ display:inline-block; width:13px; height:13px; border-radius:3px; border:1px solid #0002; vertical-align:middle; margin-right:5px;}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#5B2A86 0%,#C2185B 55%,#E0533D 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:36pt; line-height:1.08; margin:9px 0 4px;">Les soldes, c'est parti !</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 4 — vêtements · couleurs · adjectifs · futur proche</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Vêtements, couleurs, accords simples.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Adjectifs, démonstratifs, futur proche.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Projets, textes longs, annonce, DELF.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#C2185B; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۴ «حراج شروع شد!»</div>
+    <div class="fa">این جزوه فصل چهارم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (لباس‌ها، رنگ‌ها، مطابقت سادهٔ صفت)، سپس A1 (صفت‌ها، صفت اشاره، آیندهٔ نزدیک) و در پایان A1+ (صحبت از برنامه‌ها، متن‌های بلند، آگهی فروش و تمرین DELF). همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--gram)">Grammaire</span></div>
+      <div><span class="pill" style="color:var(--verbe)">Verbes</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Les vêtements et les accessoires</li><li>Les couleurs</li><li>Les adjectifs : l'accord de base (masc./fém.)</li><li>Le verbe <i>venir</i> + <i>venir de</i> (origine)</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>La place et l'accord des adjectifs (avant / après)</li><li>L'adjectif démonstratif (<i>ce, cet, cette, ces</i>)</li><li>Le futur proche (<i>aller</i> + infinitif)</li><li>Phonétique : adjectifs féminins &amp; liaisons</li><li>Vocabulaire : la boutique, les soldes, le prix</li><li>Dialogue en boutique + texte « Les soldes »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Parler de ses projets (futur proche + temps)</li><li>Texte long « Une journée de shopping »</li><li>Production écrite : annonce de vente + message</li><li>Production orale : jeu de rôle en boutique</li><li>DELF A1 — Compréhension des écrits (une annonce)</li><li>Culture : les soldes &amp; la mode · bilan</li></ul></div>
+</div>
+
+<!-- ===================== A0 : VÊTEMENTS + COULEURS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les vêtements &amp; les couleurs <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.2pt;"><tr><th>Vêtement</th><th>فارسی</th><th>Vêtement</th><th>فارسی</th></tr>
+    <tr><td>un pull</td><td class="fa">پلیور</td><td>un tee-shirt</td><td class="fa">تی‌شرت</td></tr>
+    <tr><td>une chemise</td><td class="fa">پیراهن</td><td>un pantalon</td><td class="fa">شلوار</td></tr>
+    <tr><td>une robe</td><td class="fa">پیراهن زنانه</td><td>une jupe</td><td class="fa">دامن</td></tr>
+    <tr><td>une veste</td><td class="fa">کت</td><td>un manteau</td><td class="fa">پالتو</td></tr>
+    <tr><td>des chaussures</td><td class="fa">کفش</td><td>des baskets</td><td class="fa">کفش ورزشی</td></tr>
+    <tr><td>un sac</td><td class="fa">کیف</td><td>un chapeau</td><td class="fa">کلاه</td></tr></table>
+
+  <div class="card vocab"><h3>Les couleurs</h3>
+    <span class="chip"><span class="swatch" style="background:#E11D2A"></span>rouge قرمز</span>
+    <span class="chip"><span class="swatch" style="background:#1E66C9"></span>bleu آبی</span>
+    <span class="chip"><span class="swatch" style="background:#23A455"></span>vert سبز</span>
+    <span class="chip"><span class="swatch" style="background:#F2C200"></span>jaune زرد</span>
+    <span class="chip"><span class="swatch" style="background:#111"></span>noir سیاه</span>
+    <span class="chip"><span class="swatch" style="background:#fff"></span>blanc سفید</span>
+    <span class="chip"><span class="swatch" style="background:#E86AA6"></span>rose صورتی</span>
+    <span class="chip"><span class="swatch" style="background:#888"></span>gris خاکستری</span>
+    <span class="chip"><span class="swatch" style="background:#7B3FA0"></span>violet بنفش</span></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">لباس و رنگ</div>
+    <div class="fa">لباس‌ها: پلیور، تی‌شرت، پیراهن، شلوار، پیراهن زنانه (robe)، دامن، کت، پالتو، کفش، کیف، کلاه. رنگ‌ها: rouge (قرمز)، bleu (آبی)، vert (سبز)، jaune (زرد)، noir (سیاه)، blanc (سفید)، rose (صورتی)، gris (خاکستری)، violet (بنفش).</div></div>
+</div>
+
+<!-- ===================== A0 : ADJECTIFS ACCORD ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A0</div>
+    <h1>Les adjectifs : l'accord <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">L'adjectif <b>s'accorde</b> avec le nom : masculin/féminin et singulier/pluriel.</p>
+
+  <table class="tg"><tr><th>Règle</th><th>Masculin</th><th>Féminin</th></tr>
+    <tr><td>+ e</td><td>un pull ver<span class="hl">t</span></td><td>une robe vert<span class="hl">e</span></td></tr>
+    <tr><td>+ e</td><td>un petit sac</td><td>une petit<span class="hl">e</span> jupe</td></tr>
+    <tr><td>déjà -e (invariable)</td><td>rouge, jaune, rose</td><td>rouge, jaune, rose</td></tr>
+    <tr><td>+ s (pluriel)</td><td>des pulls noir<span class="hl">s</span></td><td>des vestes noire<span class="hl">s</span></td></tr></table>
+
+  <div class="card gram"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>un pull <span class="key">bleu</span> → une robe <span class="key">bleue</span></li>
+      <li>un petit chapeau <span class="key">noir</span> → des chaussures <span class="key">noires</span></li>
+      <li>J'aime cette jupe <span class="key">rouge</span>.</li></ul>
+    <p class="small">⚠️ <i>orange</i> et <i>marron</i> ne changent jamais : des chaussures <b>marron</b>.</p></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">مطابقت صفت</div>
+    <div class="fa">صفت با اسم مطابقت می‌کند: برای مؤنث معمولاً «e» اضافه می‌شود (vert ← verte) و برای جمع «s». صفت‌هایی که به «e» ختم می‌شوند تغییر نمی‌کنند (rouge، jaune). استثنا: orange و marron همیشه ثابت‌اند.</div></div>
+</div>
+
+<!-- ===================== A0 : VENIR ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Verbe · Niveau A0</div>
+    <h1>Le verbe « venir » <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+
+  <table class="tv"><tr><th colspan="2">VENIR — âmadan / آمدن</th></tr>
+    <tr><td>je <span class="hl">viens</span></td><td>nous <span class="hl">venons</span></td></tr>
+    <tr><td>tu <span class="hl">viens</span></td><td>vous <span class="hl">venez</span></td></tr>
+    <tr><td>il/elle <span class="hl">vient</span></td><td>ils/elles <span class="hl">viennent</span></td></tr></table>
+
+  <div class="card verbe"><h3>« venir de » = l'origine</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Je <span class="key">viens de</span> Téhéran. (ville)</li>
+      <li>Elle <span class="key">vient d'</span>Iran. (devant voyelle)</li>
+      <li>Ils <span class="key">viennent du</span> Japon. (de + le = du)</li></ul>
+    <div class="tip" style="margin-top:6px;"><span class="star">Pour inviter :</span> <i>Tu <span class="key">viens</span> avec moi aux soldes ?</i></div></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل venir</div>
+    <div class="fa">«venir» یعنی «آمدن». ساختار «venir de» برای اهل‌کجابودن: «Je viens de Téhéran» (اهل تهرانم)، «Elle vient d'Iran» (اهل ایران است). نکته: de+le=du (du Japon). برای دعوت: «Tu viens avec moi؟» (با من می‌آیی؟).</div></div>
+</div>
+
+<!-- ===================== A1 : PLACE DES ADJECTIFS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>La place des adjectifs <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card gram"><h3>Avant ou après le nom ?</h3>
+    <div class="two"><div><b>AVANT</b> (courts &amp; fréquents) :<br>
+      <span class="chip" style="border-color:var(--gram)">beau</span><span class="chip" style="border-color:var(--gram)">joli</span><span class="chip" style="border-color:var(--gram)">petit</span><span class="chip" style="border-color:var(--gram)">grand</span><span class="chip" style="border-color:var(--gram)">nouveau</span><span class="chip" style="border-color:var(--gram)">vieux</span><span class="chip" style="border-color:var(--gram)">bon</span>
+      <br><i>un <b>joli</b> sac, une <b>belle</b> robe</i></div>
+      <div><b>APRÈS</b> (couleur, forme, type) :<br>
+      <span class="chip" style="border-color:var(--gram)">rouge</span><span class="chip" style="border-color:var(--gram)">noir</span><span class="chip" style="border-color:var(--gram)">long</span><span class="chip" style="border-color:var(--gram)">moderne</span>
+      <br><i>un pull <b>noir</b>, une veste <b>moderne</b></i></div></div></div>
+
+  <table class="tg" style="font-size:10.2pt;"><tr><th>Masculin</th><th>Féminin</th><th>sens</th></tr>
+    <tr><td>beau / bel</td><td>bell<span class="hl">e</span></td><td>زیبا</td></tr>
+    <tr><td>nouveau / nouvel</td><td>nouvell<span class="hl">e</span></td><td>نو</td></tr>
+    <tr><td>vieux / vieil</td><td>vieill<span class="hl">e</span></td><td>کهنه/پیر</td></tr>
+    <tr><td>blanc</td><td>blanch<span class="hl">e</span></td><td>سفید</td></tr>
+    <tr><td>long</td><td>long<span class="hl">ue</span></td><td>بلند</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">جای صفت</div>
+    <div class="fa">بیشتر صفت‌ها بعد از اسم می‌آیند (رنگ، شکل): un pull noir. اما چند صفت کوتاه و پرکاربرد قبل از اسم می‌آیند: beau، joli، petit، grand، nouveau، vieux، bon → une belle robe. برخی صفت‌ها بی‌قاعده‌اند: beau/belle، nouveau/nouvelle، vieux/vieille، blanc/blanche.</div></div>
+</div>
+
+<!-- ===================== A1 : DÉMONSTRATIFS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>L'adjectif démonstratif <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour montrer une chose : « ce / cette… » = <i>this / that</i> (این / آن).</p>
+
+  <table class="tg"><tr><th>Forme</th><th>Avec…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">ce</span></td><td>masculin</td><td>ce pull, ce manteau</td></tr>
+    <tr><td><span class="hl">cet</span></td><td>masc. devant voyelle / h</td><td>cet anorak, cet homme</td></tr>
+    <tr><td><span class="hl">cette</span></td><td>féminin</td><td>cette robe, cette veste</td></tr>
+    <tr><td><span class="hl">ces</span></td><td>pluriel</td><td>ces chaussures, ces gants</td></tr></table>
+
+  <div class="card gram"><h3>En boutique</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>J'aime beaucoup <span class="key">cette</span> jupe.</li>
+      <li>Je vais essayer <span class="key">ce</span> pantalon et <span class="key">ces</span> baskets.</li>
+      <li>Combien coûte <span class="key">cet</span> imperméable ?</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">صفت اشاره</div>
+    <div class="fa">برای اشاره به چیزی: ce (مذکر)، cet (مذکر پیش از صدادار)، cette (مؤنث)، ces (جمع). همه به معنی «این/آن» هستند: «cette robe» (این پیراهن)، «ces chaussures» (این کفش‌ها)، «cet anorak» (این کاپشن).</div></div>
+</div>
+
+<!-- ===================== A1 : FUTUR PROCHE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Niveau A1</div>
+    <h1>Le futur proche : <span class="serif" style="font-style:italic">aller</span> + infinitif <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">Pour une action <b>bientôt</b> ou un projet : <i>aller</i> (présent) + un verbe à l'infinitif.</p>
+
+  <div class="two">
+    <div><table class="tv"><tr><th colspan="2">ALLER (présent)</th></tr>
+      <tr><td>je <span class="hl">vais</span></td><td>nous <span class="hl">allons</span></td></tr>
+      <tr><td>tu <span class="hl">vas</span></td><td>vous <span class="hl">allez</span></td></tr>
+      <tr><td>il/elle <span class="hl">va</span></td><td>ils/elles <span class="hl">vont</span></td></tr></table></div>
+    <div><div class="card verbe" style="margin-top:0;"><h3>Exemples</h3>
+      <ul class="clean" style="font-size:10.6pt;"><li>Je <span class="key">vais acheter</span> un manteau.</li>
+        <li>Nous <span class="key">allons faire</span> les soldes.</li>
+        <li>Ils <span class="key">vont essayer</span> ces vestes.</li></ul></div></div>
+  </div>
+
+  <div class="card verbe"><h3>La négation</h3>
+    <p style="font-size:11pt;"><b>ne</b> + <b>aller</b> + <b>pas</b> + infinitif :<br>
+    <i>Je <span class="key">ne vais pas</span> acheter ce pull. · Elle <span class="key">ne va pas</span> venir.</i></p>
+    <p class="small">Marqueurs de temps : <i>demain, ce soir, ce week-end, la semaine prochaine, bientôt.</i></p></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">آیندهٔ نزدیک</div>
+    <div class="fa">برای کاری که به‌زودی انجام می‌شود: فعل aller (در زمان حال) + مصدر. مثال: «Je vais acheter» (می‌خواهم بخرم/خواهم خرید). منفی: ne + aller + pas + مصدر → «Je ne vais pas acheter». قیدهای زمان: demain (فردا)، ce soir (امشب)، la semaine prochaine (هفتهٔ بعد).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>Adjectifs féminins &amp; liaisons <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. La consonne finale du féminin se prononce</h3>
+    <p>Au masculin elle est muette, au féminin on l'entend :</p>
+    <table class="tp" style="margin-top:5px; font-size:10.4pt;"><tr><th>Masculin (muet)</th><th>Féminin (prononcé)</th></tr>
+      <tr><td>petit [pəti]</td><td>peti<span class="hl">te</span> [pətit]</td></tr>
+      <tr><td>grand [grɑ̃]</td><td>gran<span class="hl">de</span> [grɑ̃d]</td></tr>
+      <tr><td>vert [vɛr]</td><td>ver<span class="hl">te</span> [vɛrt]</td></tr>
+      <tr><td>gris [gri]</td><td>gri<span class="hl">se</span> [griz]</td></tr></table></div>
+
+  <div class="card phon"><h3>2. Les liaisons devant une voyelle</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>cet_anorak → [sɛ<span class="key">t</span>anɔʁak]</li>
+      <li>ces_articles → [se<span class="key">z</span>aʁtikl]</li>
+      <li>un grand_homme · des_écharpes</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ</div>
+    <div class="fa">در مذکر، صامت پایانیِ صفت تلفظ نمی‌شود، اما در مؤنث شنیده می‌شود: petit (پُتی) ← petite (پُتیت)، grand (گرُن) ← grande (گرُند). همچنین در liaison، پیش از صدادار صامت پایانی تلفظ می‌شود: cet anorak، ces articles.</div></div>
+</div>
+
+<!-- ===================== A1 : VOCAB BOUTIQUE + PRIX ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire + Communication · Niveau A1</div>
+    <h1>En boutique : prix &amp; tailles <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Les mots des soldes</h3>
+    <span class="chip">les soldes حراج</span><span class="chip">une réduction تخفیف</span>
+    <span class="chip">-30 % سی درصد</span><span class="chip">cher گران</span>
+    <span class="chip">pas cher ارزان</span><span class="chip">la taille سایز (لباس)</span>
+    <span class="chip">la pointure سایز کفش</span><span class="chip">la cabine اتاق پرو</span></div>
+
+  <div class="card vocab"><h3>Phrases utiles</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>— Je peux <span class="key">essayer</span> ce pull ?</li>
+      <li>— Quelle <span class="key">taille</span> faites-vous ? — Je fais du 38.</li>
+      <li>— C'est <span class="key">combien</span> ? — 25 euros, c'est en solde.</li>
+      <li>— Ça vous <span class="key">va</span> très bien !</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">در فروشگاه</div>
+    <div class="fa">واژگان حراج: les soldes (حراج)، une réduction (تخفیف)، cher (گران)، pas cher (ارزان)، la taille (سایز لباس)، la pointure (سایز کفش)، la cabine (اتاق پرو). جمله‌ها: «Je peux essayer؟» (می‌توانم پرو کنم؟)، «Quelle taille faites-vous؟» (چه سایزی هستید؟)، «Ça vous va bien» (بهتان می‌آید).</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE BOUTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Dans une boutique <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Vendeuse :</b> Bonjour ! Je peux vous aider ?</div>
+    <div class="dlg"><b class="B">Cliente :</b> Oui, j'aime beaucoup cette veste bleue. Vous l'avez en quelle taille ?</div>
+    <div class="dlg"><b class="A">Vendeuse :</b> Du 36 au 44. Quelle taille faites-vous ?</div>
+    <div class="dlg"><b class="B">Cliente :</b> Je fais du 40. Je peux l'essayer ?</div>
+    <div class="dlg"><b class="A">Vendeuse :</b> Bien sûr, la cabine est à droite… Alors, ça vous va très bien !</div>
+    <div class="dlg"><b class="B">Cliente :</b> Oui, elle est parfaite. Elle coûte combien ?</div>
+    <div class="dlg"><b class="A">Vendeuse :</b> Elle est en solde : 45 euros, avec une réduction de trente pour cent.</div>
+    <div class="dlg"><b class="B">Cliente :</b> Super, je vais la prendre !</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>فروشنده:</b> سلام! می‌توانم کمکتان کنم؟<br>
+      <b>مشتری:</b> بله، این کت آبی را خیلی دوست دارم. چه سایزهایی دارید؟<br>
+      <b>فروشنده:</b> از ۳۶ تا ۴۴. چه سایزی هستید؟<br>
+      <b>مشتری:</b> سایز ۴۰. می‌توانم پرو کنم؟<br>
+      <b>فروشنده:</b> البته، اتاق پرو سمت راست است… بهتان خیلی می‌آید!<br>
+      <b>مشتری:</b> بله، عالی است. چند است؟<br>
+      <b>فروشنده:</b> روی حراج است: ۴۵ یورو با سی درصد تخفیف.<br>
+      <b>مشتری:</b> عالی، برش می‌دارم!
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Les soldes <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Aujourd'hui, c'est le premier jour des soldes ! Avec mon amie Léa, nous allons faire les magasins dans le centre-ville. Léa cherche une robe d'été et moi, je voudrais un nouveau manteau pour l'hiver.</p>
+    <p>Dans la première boutique, il y a des réductions de trente pour cent. J'essaie un manteau gris, mais il est trop petit. La vendeuse m'apporte une autre taille : c'est parfait ! Léa, elle, trouve une jolie robe rouge à vingt euros. Ce n'est pas cher !</p>
+    <p>Après le shopping, nous allons prendre un café et regarder nos achats. Demain, nous allons peut-être retourner aux soldes. <span class="q">J'adore cette journée !</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">امروز اولین روز حراج است! با دوستم لئا قرار است در مرکز شهر به مغازه‌ها برویم. لئا دنبال یک پیراهن تابستانی است و من، یک پالتوی نوِ زمستانی می‌خواهم. در اولین مغازه، سی درصد تخفیف هست. یک پالتوی خاکستری پرو می‌کنم، اما خیلی کوچک است. فروشنده سایز دیگری می‌آورد: عالی است! لئا هم یک پیراهن قرمز قشنگ به قیمت بیست یورو پیدا می‌کند. ارزان است! بعد از خرید، قهوه می‌نوشیم و خریدهایمان را نگاه می‌کنیم. فردا شاید دوباره به حراج برگردیم. عاشق این روزم!</div></div>
+</div>
+
+<!-- ===================== A1+ : PROJETS + TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Parler de ses projets · Texte long · Niveau A1+</div>
+    <h1>Une journée de shopping <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>J'adore la mode, mais je n'achète pas beaucoup de vêtements neufs. Je préfère les friperies et les marchés, parce que les vêtements sont moins chers et plus originaux. Mon style est simple : un jean, un pull et des baskets blanches. Pour les occasions spéciales, je porte une belle robe ou une veste élégante.</p>
+    <p>Ce week-end, c'est le début des soldes, alors je vais aller en ville avec mes amies. D'abord, nous allons visiter quelques boutiques ; ensuite, nous allons déjeuner ensemble. Je cherche un manteau d'hiver, mais je ne vais pas dépenser trop d'argent. Si je trouve un beau manteau pas cher, je vais l'acheter tout de suite !</p>
+    <p>Pour moi, s'habiller, c'est une façon de montrer qui on est. La mode raconte une histoire, comme une langue — et apprendre le français, c'est un peu comme essayer un nouveau style : au début c'est étrange, puis on se sent bien.</p>
+  </div>
+
+  <div class="tip"><span class="star">Pour les projets (A1+) :</span> <i>ce week-end, demain, d'abord… ensuite…, alors, si… je vais…</i></div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">عاشق مُد هستم، اما لباس نوِ زیاد نمی‌خرم. لباس‌فروشی‌های دست‌دوم و بازارها را ترجیح می‌دهم، چون لباس‌ها ارزان‌تر و خاص‌ترند. سبک من ساده است: یک شلوار جین، یک پلیور و کفش‌های ورزشی سفید. برای مناسبت‌های خاص، یک پیراهن زیبا یا یک کت شیک می‌پوشم. این آخر هفته، شروع حراج است، پس با دوستانم به شهر می‌روم. اول چند مغازه را می‌بینیم؛ بعد با هم ناهار می‌خوریم. دنبال یک پالتوی زمستانی‌ام، اما نمی‌خواهم پول زیادی خرج کنم. اگر یک پالتوی زیبای ارزان پیدا کنم، فوراً می‌خرم! برای من، لباس‌پوشیدن راهی است برای نشان‌دادن اینکه چه کسی هستیم. مُد هم مثل زبان، داستانی روایت می‌کند؛ و یادگیری فرانسوی کمی شبیه امتحانِ یک سبک تازه است: اولش عجیب است، بعد احساس راحتی می‌کنی.</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Annonce de vente &amp; message <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>🏷️ Petite annonce</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.4pt; line-height:1.55; margin:0;">
+      <b>À vendre : manteau d'hiver</b><br>
+      Couleur : gris · Taille : M<br>
+      Très bon état, porté deux fois.<br>
+      <b>Prix : 25 €</b> (négociable)<br>
+      Contactez-moi par message !</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>💬 Message à une amie</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.4pt; line-height:1.55; margin:0;">
+      Salut Léa !<br>
+      Demain, je vais aller aux soldes en ville. Tu viens avec moi ? On va déjeuner ensemble.<br>
+      Je cherche une veste et des baskets.<br>
+      Réponds-moi vite ! Bises 😊</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan à réutiliser</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span>Quoi ? (l'objet + couleur + taille)</li>
+      <li><span class="num">2</span>État + prix</li>
+      <li><span class="num">3</span>Action attendue (contactez / réponds)</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ آگهی و پیام</div>
+    <div class="fa">آگهی فروش: «فروش پالتوی زمستانی — رنگ: خاکستری، سایز: M، در وضعیت خیلی خوب، دو بار پوشیده شده، قیمت: ۲۵ یورو (قابل مذاکره)، با پیام تماس بگیرید.» پیام به دوست: «سلام لئا! فردا می‌روم حراجِ شهر. با من می‌آیی؟ با هم ناهار می‌خوریم. دنبال یک کت و کفش ورزشی‌ام. زود جواب بده! بوس.»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Parler de mon style &amp; mes projets <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue guidé (1 minute)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Mon style :</b> qu'est-ce que je porte d'habitude ?</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Ma couleur / mon vêtement préféré</b> + pourquoi.</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Mes projets :</b> « Ce week-end, je vais… »</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Aux soldes,</b> qu'est-ce que je vais acheter ?</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — en boutique</h3>
+    <ul class="clean"><li><b>Vendeur :</b> Je peux vous aider ? · Quelle taille ? · Ça vous va bien · C'est en solde.</li>
+      <li><b>Client :</b> Je cherche… · Je peux essayer ? · C'est combien ? · Je vais le/la prendre.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) سبک لباست چیست و معمولاً چه می‌پوشی ۲) رنگ یا لباس موردعلاقه‌ات و دلیلش ۳) برنامه‌هایت: «این آخر هفته، می‌خواهم…» ۴) در حراج چه می‌خری. سپس نقش «فروشنده» و «مشتری» را با هم تمرین کنید.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « annonce »</h3>
+    <ul class="clean"><li>Repère les <b>dates</b>, les <b>prix / pourcentages</b> et les <b>horaires</b>.</li>
+      <li>Lis les questions <b>avant</b> de relire en détail.</li>
+      <li>Souligne les mots-clés : <i>soldes, réduction, ouvert, jusqu'à.</i></li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>GRANDES SOLDES — Boutique MODA</b></p>
+    <p>Du 8 au 28 janvier.<br>
+    Jusqu'à <b>-50 %</b> sur tout le magasin !<br>
+    Vêtements, chaussures et accessoires.<br>
+    Ouvert du lundi au samedi, de 10 h à 19 h.<br>
+    5, rue de la Mode, Lyon.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Quand commencent les soldes ?</li>
+        <li>2. Quelle est la réduction maximale ?</li><li>3. Le magasin ouvre-t-il le dimanche ?</li>
+        <li>4. Qu'est-ce qu'on peut acheter ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Le 8 janvier.</li>
+        <li>2. Jusqu'à -50 %.</li><li>3. Non (lundi → samedi).</li><li>4. Vêtements, chaussures, accessoires.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: اول تاریخ‌ها، قیمت‌ها/درصدها و ساعت‌ها را پیدا کن؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان؛ کلمات کلیدی را زیر آن خط بکش (soldes، réduction، ouvert). در آگهی نمونه: حراج از ۸ ژانویه، حداکثر تخفیف ۵۰٪، یکشنبه‌ها بسته است، و می‌توان لباس، کفش و اکسسوری خرید.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Les soldes &amp; la mode en France</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> les soldes ont lieu deux fois par an : les <b>soldes d'hiver</b> (en janvier) et les <b>soldes d'été</b> (en juin-juillet). Les dates sont fixées par la loi et durent environ quatre semaines. C'est le moment où les magasins baissent beaucoup leurs prix.</p>
+    <p><b>Paris</b> est une grande capitale de la mode, avec ses défilés (la <b>Fashion Week</b>) et ses grands magasins. Aujourd'hui, beaucoup de gens aiment aussi la <b>seconde main</b> : les friperies et les applications de vente entre particuliers sont très populaires. Acheter de façon plus responsable devient une nouvelle tendance.</p>
+  </div>
+
+  <table class="tc" style="font-size:10.4pt; margin-top:6px;"><tr><th>Quand ?</th><th>Quoi ?</th></tr>
+    <tr><td>Janvier</td><td>les soldes d'hiver</td></tr>
+    <tr><td>Juin – juillet</td><td>les soldes d'été</td></tr>
+    <tr><td>Toute l'année</td><td>la seconde main (friperies, applis)</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — حراج و مُد</div>
+    <div class="fa">در فرانسه حراج‌ها سالی دو بار است: حراج زمستانه (ژانویه) و حراج تابستانه (ژوئن–ژوئیه). تاریخ‌ها را قانون تعیین می‌کند و حدود چهار هفته طول می‌کشد. پاریس یکی از پایتخت‌های مُد است (هفتهٔ مُد و فروشگاه‌های بزرگ). امروزه خریدِ دست‌دوم و اپ‌های فروش بین مردم هم بسیار محبوب است؛ خرید مسئولانه‌تر به یک گرایش تازه تبدیل شده.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Mémorise des blocs : <i>« Je peux essayer ? », « Ça coûte combien ? », « Je vais prendre… »</i></li>
+      <li>Décris à voix haute ta tenue d'aujourd'hui : couleur + adjectif.</li>
+      <li>Annonce 3 projets avec le futur proche : <i>« Demain, je vais… »</i></li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Vérifie l'accord de l'adjectif (féminin <i>+e</i>, pluriel <i>+s</i>).</li>
+      <li>Place : couleur <b>après</b> le nom, <i>beau/petit/joli</i> <b>avant</b>.</li>
+      <li>Futur proche = <i>aller</i> + infinitif (le 2ᵉ verbe ne change pas).</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Couleur = type d'info ; encadre tes fiches comme ce livret.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: «بلوک‌»های آماده را حفظ کن و لباس امروزت را با رنگ و صفت توصیف کن. برای نوشتن: مطابقت صفت (مؤنث e+، جمع s+) و جای صفت را رعایت کن (رنگ بعد از اسم؛ beau/petit/joli قبل از اسم). آیندهٔ نزدیک = aller + مصدر. در جلسات ۱۵ دقیقه‌ای کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.7pt;">
+      <li>☐ Nommer des vêtements et des couleurs.</li>
+      <li>☐ Accorder et placer un adjectif.</li>
+      <li>☐ Utiliser <i>ce / cet / cette / ces</i>.</li>
+      <li>☐ Conjuguer <i>venir</i> et dire d'où je viens.</li>
+      <li>☐ Parler de mes projets (futur proche).</li>
+      <li>☐ Demander un prix et une taille en boutique.</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.3pt;"><li>1. Féminin : un pull vert → une robe ___.</li>
+        <li>2. Démonstratif : ___ pull, ___ robe, ___ anorak, ___ gants.</li>
+        <li>3. Futur proche : « demain / je / acheter une veste ».</li>
+        <li>4. <i>venir</i> : nous ___, ils ___.</li>
+        <li>5. Place : « une robe (joli / rouge) ».</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.3pt;"><li>1. une robe verte</li>
+        <li>2. ce pull · cette robe · cet anorak · ces gants</li>
+        <li>3. Demain, je vais acheter une veste.</li>
+        <li>4. nous venons · ils viennent</li>
+        <li>5. une jolie robe rouge</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:15px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#5B2A86,#C2185B); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 4 terminée — bonnes affaires ! 🛍️</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد چهارم تمام شد — خریدِ خوبی داشته باشی!</div>
+  </div>
+</div>
+
+</body>
+</html>
