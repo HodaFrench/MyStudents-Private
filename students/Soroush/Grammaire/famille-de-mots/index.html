@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Famille de mots — Soroush</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#0d1b2a;--navy-soft:#2c4a6e;--blue:#1565c0;--blue-soft:#1976d2;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;--paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;--green:#2e7d32;--green-pale:#e8f5e9;--red:#b71c1c;--red-pale:#ffebee;--amber:#e65100;--amber-pale:#fff3e0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;padding:20px;}
+.wrap{max-width:860px;margin:0 auto;}
+a.back{display:inline-flex;align-items:center;gap:6px;color:var(--navy);text-decoration:none;font-size:13px;font-weight:600;background:white;border:2px solid var(--line);padding:8px 16px;border-radius:8px;margin-bottom:20px;transition:all .2s;}
+a.back:hover{background:var(--navy);color:white;}
+.header{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:40px 36px;border-radius:16px;text-align:center;margin-bottom:24px;}
+.header .tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.header h1{font-size:34px;font-weight:700;margin-bottom:8px;}
+.header .sub{font-size:14px;opacity:.8;}
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;border-radius:12px 12px 0 0;}
+.tab{padding:14px 20px;cursor:pointer;font-size:13px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+.tab:hover{color:var(--blue);}.tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+.tc{background:white;border:2px solid var(--line);border-top:none;border-radius:0 0 12px 12px;padding:30px;}
+.panel{display:none;}.panel.active{display:block;}
+.sec-title{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.sec-sub{font-size:13px;color:var(--gray);margin-bottom:18px;direction:rtl;text-align:right;}
+.formula{background:var(--blue-mist);border:2px dashed var(--blue-soft);border-radius:12px;padding:18px;text-align:center;margin:16px 0;}
+.formula .big{font-size:19px;font-weight:700;color:var(--navy);}
+.formula .a{color:var(--blue);}.formula .b{color:var(--amber);}
+.formula .note{font-size:13px;color:var(--gray);margin-top:8px;direction:rtl;}
+.box{background:white;border:2px solid var(--line);border-radius:12px;padding:22px;margin-bottom:18px;}
+.use{background:var(--blue-mist);border-right:4px solid var(--blue);border-radius:10px;padding:14px 18px;margin:12px 0;}
+.use-t{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.ex{font-size:15px;color:var(--navy);background:white;padding:9px 12px;border-radius:8px;margin:5px 0;line-height:1.6;}
+.ex .hl{background:rgba(21,101,192,.15);padding:2px 5px;border-radius:4px;font-weight:700;}
+.ex-fa{font-size:12px;color:var(--gray);margin:2px 0 7px;direction:rtl;text-align:right;}
+.ex-bad{text-decoration:line-through;color:var(--red);}
+.ex-good{color:var(--green);font-weight:600;}
+.rule{border-radius:10px;padding:14px 18px;margin:14px 0;}
+.rule.ok{background:var(--green-pale);border-right:4px solid var(--green);}
+.rule.danger{background:var(--red-pale);border-right:4px solid var(--red);}
+.rule.warn{background:var(--amber-pale);border-right:4px solid var(--amber);}
+.rule-t{font-size:13px;font-weight:700;margin-bottom:8px;}
+.rule-t.ok{color:var(--green);}.rule-t.danger{color:var(--red);}.rule-t.warn{color:var(--amber);}
+table.neat{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+table.neat th{background:var(--navy);color:white;padding:9px 14px;text-align:left;font-size:12px;}
+table.neat td{padding:8px 14px;border-bottom:1px solid var(--line);}
+table.neat tr:nth-child(even){background:var(--blue-mist);}
+.footer{text-align:center;margin-top:24px;color:var(--gray);font-size:13px;}
+.footer a{color:var(--blue);text-decoration:none;}</style></head><body><div class="wrap">
+<a class="back" href="../../index.html">← Soroush</a>
+<div class="header"><div class="tag">Grammaire · B1/B2</div><h1>Famille de mots</h1><div class="sub">Adjectif → Verbe · Enrichir son vocabulaire</div></div>
+<div class="tabs">
+  <div class="tab active" onclick="showTab('formation')">📐 Formation</div>
+  <div class="tab" onclick="showTab('verbes')">🔤 Verbes dérivés</div>
+  <div class="tab" onclick="showTab('exemples')">💬 Exemples B2</div>
+</div>
+<div class="tc">
+
+<div class="panel active" id="panel-formation">
+  <div class="sec-title">Adjectif → Verbe : comment ça marche ?</div>
+  <div class="sec-sub">چطور از صفت، فعل می‌سازیم؟</div>
+  <div class="formula">
+    <div class="big"><span class="a">adjectif</span> + <span class="b">suffixe (-ifier / -ir / -iser…)</span> = <span style="color:var(--green)">verbe</span></div>
+    <div class="note">یاد گرفتن این الگوها دایره لغات را بدون حفظ کردن جداگانه هر کلمه گسترش می‌دهد</div>
+  </div>
+  <table class="neat">
+    <thead><tr><th>Adjectif</th><th>Verbe</th><th>Suffixe</th><th>معنی فعل</th></tr></thead>
+    <tbody>
+      <tr><td><strong>simple</strong></td><td>simplifier</td><td>-ifier</td><td>ساده کردن</td></tr>
+      <tr><td><strong>clair</strong></td><td>clarifier</td><td>-ifier</td><td>روشن کردن</td></tr>
+      <tr><td><strong>pur</strong></td><td>purifier</td><td>-ifier</td><td>خالص کردن</td></tr>
+      <tr><td><strong>intense</strong></td><td>intensifier</td><td>-ifier</td><td>شدت دادن</td></tr>
+      <tr><td><strong>faux</strong></td><td>falsifier</td><td>-ifier</td><td>جعل کردن</td></tr>
+      <tr><td><strong>facile</strong></td><td>faciliter</td><td>(direct)</td><td>آسان‌تر کردن</td></tr>
+      <tr><td><strong>large</strong></td><td>élargir</td><td>é-…-ir</td><td>گسترش دادن</td></tr>
+      <tr><td><strong>riche</strong></td><td>enrichir</td><td>en-…-ir</td><td>غنی‌سازی کردن</td></tr>
+      <tr><td><strong>grand</strong></td><td>agrandir</td><td>a-…-ir</td><td>بزرگ‌تر کردن</td></tr>
+      <tr><td><strong>doux</strong></td><td>adoucir</td><td>a-…-ir</td><td>نرم‌تر کردن</td></tr>
+    </tbody>
+  </table>
+  <div class="rule warn">
+    <div class="rule-t warn">⚠️ Nuance importante :</div>
+    <div class="ex"><span class="hl">faciliter</span> ≠ <span class="hl">aider</span></div>
+    <div class="ex-fa">faciliter = شرایط را آسان‌تر کردن / aider = کمک کردن مستقیم</div>
+    <div class="ex"><span class="hl">élargir</span> ≠ <span class="hl">augmenter</span></div>
+    <div class="ex-fa">élargir = دامنه را گسترش دادن / augmenter = مقدار را زیاد کردن</div>
+  </div>
+</div>
+
+<div class="panel" id="panel-verbes">
+  <div class="use">
+    <div class="use-t">1. simplifier — ساده کردن</div>
+    <div class="ex">Le gouvernement <span class="hl">devrait simplifier</span> les procédures administratives.</div>
+    <div class="ex-fa">دولت باید روندهای اداری را ساده‌تر کند.</div>
+    <div class="ex">La technologie a <span class="hl">simplifié</span> notre quotidien, mais a créé une dépendance.</div>
+    <div class="ex-fa">فناوری زندگی روزمره را ساده‌تر کرده ولی وابستگی ایجاد کرده.</div>
+  </div>
+  <div class="use">
+    <div class="use-t">2. faciliter — تسهیل کردن</div>
+    <div class="ex">Le télétravail peut <span class="hl">faciliter</span> l'équilibre entre vie professionnelle et vie privée.</div>
+    <div class="ex-fa">دورکاری می‌تواند تعادل بین کار و زندگی شخصی را آسان‌تر کند.</div>
+    <div class="ex">Des programmes d'accompagnement <span class="hl">facilitent</span> l'intégration des étudiants étrangers.</div>
+    <div class="ex-fa">برنامه‌های حمایتی ادغام دانشجویان خارجی را آسان‌تر می‌کنند.</div>
+  </div>
+  <div class="use">
+    <div class="use-t">3. élargir — گسترش دادن</div>
+    <div class="ex">Voyager permet d'<span class="hl">élargir</span> ses horizons culturels.</div>
+    <div class="ex-fa">سفر کردن افق فرهنگی را گسترش می‌دهد.</div>
+    <div class="ex">Les réseaux sociaux ont <span class="hl">élargi</span> l'accès à l'information.</div>
+    <div class="ex-fa">شبکه‌های اجتماعی دسترسی به اطلاعات را گسترده‌تر کرده‌اند.</div>
+  </div>
+  <div class="use">
+    <div class="use-t">4. enrichir — غنی‌سازی کردن</div>
+    <div class="ex">Les échanges culturels <span class="hl">enrichissent</span> la vision du monde.</div>
+    <div class="ex-fa">تبادل فرهنگی دیدگاه نسبت به جهان را غنی‌تر می‌کند.</div>
+  </div>
+  <div class="use">
+    <div class="use-t">5. adoucir — نرم‌تر / ملایم‌تر کردن</div>
+    <div class="ex">Il faut <span class="hl">adoucir</span> le ton pendant une discussion.</div>
+    <div class="ex-fa">باید هنگام بحث لحن را ملایم کرد.</div>
+    <div class="ex">Adoucir son discours permet de rendre une critique plus acceptable.</div>
+    <div class="ex-fa">ملایم‌تر کردن لحن باعث می‌شود انتقاد پذیرفتنی‌تر شود.</div>
+  </div>
+</div>
+
+<div class="panel" id="panel-exemples">
+  <div class="sec-title">Exemples niveau B2 — contexte TCF</div>
+  <div class="sec-sub">جملاتی که در آزمون TCF می‌توان استفاده کرد</div>
+  <div class="box">
+    <p style="font-size:14px;color:var(--gray);margin-bottom:14px;direction:rtl;text-align:right;">این جملات را بخوان، بلند بگو و سعی کن از هر فعل یک جمله شخصی بسازی:</p>
+    <div class="ex">Afin de <span class="hl">simplifier</span> l'accès à l'éducation, certaines universités proposent des formations entièrement en ligne.</div>
+    <div class="ex-fa">برای ساده‌تر کردن دسترسی به آموزش، بعضی دانشگاه‌ها دوره‌های آنلاین ارائه می‌دهند.</div>
+    <div class="ex">Les applications de traduction <span class="hl">facilitent</span> la communication interculturelle, bien qu'elles ne remplacent pas une véritable maîtrise linguistique.</div>
+    <div class="ex-fa">اپ‌های ترجمه ارتباط بین‌فرهنگی را آسان می‌کنند، هرچند جای تسلط واقعی را نمی‌گیرند.</div>
+    <div class="ex">Les nouvelles technologies peuvent <span class="hl">adoucir</span> certaines difficultés liées au travail à distance.</div>
+    <div class="ex-fa">فناوری‌های جدید می‌توانند بعضی مشکلات دورکاری را کاهش دهند.</div>
+    <div class="ex">Pour <span class="hl">élargir</span> leurs compétences professionnelles, de nombreux étudiants suivent des formations complémentaires.</div>
+    <div class="ex-fa">برای گسترش مهارت‌های حرفه‌ای، بسیاری از دانشجویان دوره‌های تکمیلی می‌گذرانند.</div>
+  </div>
+</div>
+
+</div>
+<div class="footer"><a href="../../index.html">← Soroush</a> · Français avec Hoda © 2025</div>
+</div>
+<script>function showTab(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('panel-'+id).classList.add('active');event.currentTarget.classList.add('active');}</script>
+</body></html>
