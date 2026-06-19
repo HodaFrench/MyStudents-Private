@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 1 (version complète)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#2A2433; --soft:#5C5469; --line:#E7E1EF; --cream:#FAF7FB;
+    --gram:#6A4C93; --gram-bg:#EEE8F5;
+    --verbe:#2A9D8F; --verbe-bg:#E0F2EF;
+    --vocab:#D2603F; --vocab-bg:#FBEAE2;
+    --phon:#C79A1E; --phon-bg:#FBF2D8;
+    --dia:#C44B7A; --dia-bg:#FAE7EE;
+    --lect:#3E7CB1; --lect-bg:#E7EFF7;
+    --conseil:#B08418; --conseil-bg:#FAF2DA;
+    --cult:#4E8C72; --cult-bg:#E7F1EC;
+    --delf:#9B4A6B; --delf-bg:#F6E8EE;
+    --a0:#2A9D8F; --a1:#6A4C93; --ap:#D2603F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.2pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #C9B6D6; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #E6DCEE; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.3pt; line-height:1.9; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:10px; }
+  .eyebrow{ font-size:8.3pt; letter-spacing:2.3px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:19pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .rule{ height:3px; width:58px; border-radius:3px; margin-top:7px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.4pt; font-weight:600; letter-spacing:.5px; padding:3px 9px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:12px 15px; margin:9px 0;}
+  .card h3{ font-size:12pt; font-weight:600; margin-bottom:5px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:7px 0; font-size:10.3pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:5px 10px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.4pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .ex{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 13px; margin:7px 0;}
+  .ex .extitle{ font-family:'Poppins'; font-size:8.6pt; letter-spacing:.6px; text-transform:uppercase; color:var(--soft); margin-bottom:4px; font-weight:600;}
+  .ex ol{ margin:0; padding-left:20px;}
+  .ex ol li{ margin:3px 0; font-size:10.7pt;}
+  .ex ol li .fa{ display:inline; font-size:9.6pt; color:var(--soft);}
+  .ex.g{border-left:4px solid var(--gram);} .ex.v{border-left:4px solid var(--verbe);}
+  .ex.x{border-left:4px solid var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:11.8pt; line-height:1.8; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:14px 17px; margin:8px 0;}
+  .read p{ margin-bottom:8px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#FAF6FB; border-right:5px solid #C9B6D6; border-radius:8px; padding:9px 13px; margin:8px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.2pt; color:#A99CB8; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 10px; font-size:9.1pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 9px; margin:3px 4px 3px 0; font-size:9.8pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F3DDB0; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:8px 12px; margin:7px 0; font-size:10.1pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:17px; margin:3px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:12px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 12px;}
+  .box h4{ font-family:'Poppins'; font-size:10.1pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.2pt; color:var(--soft);}
+  .dlg{ margin:4px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:19px; height:19px; line-height:19px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:8.8pt; margin-right:5px; font-family:'Poppins';}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#6A4C93 0%,#C44B7A 55%,#E07856 100%); color:#fff; padding:30px 28px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION COMPLET · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.05; margin:8px 0 4px;">Je suis…</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 1 — se présenter · toutes les structures &amp; tout le vocabulaire</div>
+    </div>
+    <div style="padding:16px 28px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.3pt; letter-spacing:1px; color:var(--soft); margin-bottom:8px;">VERSION EXHAUSTIVE — 3 exemples par point</div>
+      <div style="display:flex; gap:9px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--gram); border-radius:8px; padding:10px;">
+          <div style="font-weight:700; color:var(--gram);">Grammaire</div><div class="small">11 structures, chacune avec 3 exemples.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--vocab); border-radius:8px; padding:10px;">
+          <div style="font-weight:700; color:var(--vocab);">Vocabulaire</div><div class="small">Tout le lexique de l'unité + exemples.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:10px;">
+          <div style="font-weight:700; color:var(--ap);">+ Pratique</div><div class="small">Phonétique, dialogue, DELF, mémo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#6A4C93; margin-top:13px;">
+    <div class="falabel">دفترچهٔ کاملِ مرور — واحد ۱ «من … هستم»</div>
+    <div class="fa">این نسخهٔ کامل، همهٔ ساختارهای دستوری و تمام واژگانِ فصل اول را پوشش می‌دهد و برای هر نکته (دستور، ساختار یا واژهٔ تازه) ۳ مثال می‌آورد. موضوع فصل: معرفی خود. همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Comment utiliser ce carnet</h3>
+    <ul class="clean" style="font-size:10.2pt;">
+      <li>Chaque <b>structure</b> a une règle + un tableau + <b>3 exemples</b> traduits.</li>
+      <li>Chaque <b>liste de mots</b> est donnée avec le persan et des exemples d'usage.</li>
+      <li>Travaille par sessions de 15 min ; relis les 3 exemples à voix haute.</li></ul></div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan complet</div>
+    <h1>Tout ce que contient l'unité 1</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Grammaire (11 structures)</h3>
+      <ul class="clean" style="font-size:9.9pt;">
+        <li>1. Les pronoms sujets</li><li>2. Le verbe <i>être</i></li><li>3. Le verbe <i>avoir</i></li>
+        <li>4. Le verbe <i>s'appeler</i></li><li>5. Les verbes en <i>-er</i></li>
+        <li>6. Les articles définis</li><li>7. Les articles indéfinis</li>
+        <li>8. Le masculin / féminin (nationalités)</li><li>9. à / en / au / aux (pays)</li>
+        <li>10. L'interrogatif <i>quel</i></li><li>11. La négation <i>ne… pas</i></li></ul></div>
+    <div class="card vocab" style="margin-top:0;"><h3>Vocabulaire &amp; pratique</h3>
+      <ul class="clean" style="font-size:9.9pt;">
+        <li>Les nombres (0–100)</li><li>Les salutations &amp; présentations</li>
+        <li>Les nationalités &amp; les pays</li><li>Les langues &amp; les professions</li>
+        <li>L'alphabet &amp; les coordonnées</li><li>Phonétique : accent tonique &amp; liaisons</li>
+        <li>Dialogue &amp; texte « Je me présente »</li><li>Production écrite / orale</li>
+        <li>DELF A1 · Culture · Mémo · Bilan</li></ul></div>
+  </div>
+
+  <div class="tip"><b>Logique du carnet :</b> d'abord les <b>outils</b> (grammaire), puis les <b>mots</b> (vocabulaire), enfin la <b>pratique</b> (phonétique, dialogue, production, DELF). Chaque point grammatical est suivi de ses 3 exemples.</div>
+</div>
+
+<!-- ===================== G1 : PRONOMS SUJETS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 1</div>
+    <h1>Les pronoms sujets <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils indiquent <b>qui</b> fait l'action. Toujours devant le verbe.</p>
+
+  <table class="tg"><tr><th>Singulier</th><th>فارسی</th><th>Pluriel</th><th>فارسی</th></tr>
+    <tr><td><span class="hl">je</span> (j')</td><td class="fa">من</td><td><span class="hl">nous</span></td><td class="fa">ما</td></tr>
+    <tr><td><span class="hl">tu</span></td><td class="fa">تو</td><td><span class="hl">vous</span></td><td class="fa">شما</td></tr>
+    <tr><td><span class="hl">il / elle / on</span></td><td class="fa">او / آن</td><td><span class="hl">ils / elles</span></td><td class="fa">آن‌ها</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li><b>Je</b> suis étudiant. <span class="fa">(من دانشجو هستم)</span></li>
+    <li><b>Tu</b> parles français ? <span class="fa">(تو فرانسوی حرف می‌زنی؟)</span></li>
+    <li><b>Nous</b> habitons à Paris. <span class="fa">(ما در پاریس زندگی می‌کنیم)</span></li></ol></div>
+
+  <div class="card gram"><h3>À savoir</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li><b>je → j'</b> devant une voyelle : <i>j'habite, j'aime</i>.</li>
+      <li><b>tu</b> = informel (un ami) · <b>vous</b> = poli ou pluriel.</li>
+      <li><b>on</b> = « nous » à l'oral : <i>On parle français.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">ضمیرهای فاعلی</div>
+    <div class="fa">ضمیرهای فاعلی نشان می‌دهند چه کسی کار را انجام می‌دهد و همیشه پیش از فعل می‌آیند: je (من)، tu (تو)، il/elle/on (او)، nous (ما)، vous (شما)، ils/elles (آن‌ها). نکته: je پیش از صدادار «j'» می‌شود. tu خودمانی و vous مؤدبانه/جمع است. on در گفتار یعنی «ما».</div></div>
+</div>
+
+<!-- ===================== G2 : ÊTRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Structure 2</div>
+    <h1>Le verbe « être » <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">Verbe essentiel : l'identité, la nationalité, la profession, l'état.</p>
+
+  <table class="tv"><tr><th colspan="2">ÊTRE — boudan / بودن</th></tr>
+    <tr><td>je <span class="hl">suis</span></td><td>nous <span class="hl">sommes</span></td></tr>
+    <tr><td>tu <span class="hl">es</span></td><td>vous <span class="hl">êtes</span></td></tr>
+    <tr><td>il/elle/on <span class="hl">est</span></td><td>ils/elles <span class="hl">sont</span></td></tr></table>
+
+  <div class="ex v"><div class="extitle">3 exemples</div><ol>
+    <li>Je <b>suis</b> iranienne. <span class="fa">(من ایرانی هستم)</span></li>
+    <li>Tu <b>es</b> professeur ? <span class="fa">(تو معلم هستی؟)</span></li>
+    <li>Ils <b>sont</b> français. <span class="fa">(آن‌ها فرانسوی هستند)</span></li></ol></div>
+
+  <div class="card verbe"><h3>On l'utilise pour…</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li>la nationalité : <i>Je suis marocain.</i></li>
+      <li>la profession : <i>Elle est médecin.</i></li>
+      <li>un état / une description : <i>Nous sommes contents.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل être</div>
+    <div class="fa">être یعنی «بودن» و برای هویت، ملیت، شغل و حالت به‌کار می‌رود: je suis، tu es، il est، nous sommes، vous êtes، ils sont. مثال: «Je suis iranienne» (ایرانی‌ام)، «Elle est médecin» (پزشک است).</div></div>
+</div>
+
+<!-- ===================== G3 : AVOIR ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Structure 3</div>
+    <h1>Le verbe « avoir » <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">Pour l'âge, la possession, et certaines expressions.</p>
+
+  <table class="tv"><tr><th colspan="2">AVOIR — dâshtan / داشتن</th></tr>
+    <tr><td>j'<span class="hl">ai</span></td><td>nous <span class="hl">avons</span></td></tr>
+    <tr><td>tu <span class="hl">as</span></td><td>vous <span class="hl">avez</span></td></tr>
+    <tr><td>il/elle/on <span class="hl">a</span></td><td>ils/elles <span class="hl">ont</span></td></tr></table>
+
+  <div class="ex v"><div class="extitle">3 exemples</div><ol>
+    <li>J'<b>ai</b> vingt-cinq ans. <span class="fa">(بیست‌وپنج سال دارم)</span></li>
+    <li>Tu <b>as</b> un frère ? <span class="fa">(یک برادر داری؟)</span></li>
+    <li>Nous <b>avons</b> un chat. <span class="fa">(ما یک گربه داریم)</span></li></ol></div>
+
+  <div class="card verbe"><h3>Attention : l'âge</h3>
+    En français, on <b>a</b> un âge (on n'« est » pas un âge) : <i>J'<span class="key">ai</span> 30 ans.</i> (et non « je suis 30 ans »).</div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل avoir</div>
+    <div class="fa">avoir یعنی «داشتن» و برای سن و مالکیت به‌کار می‌رود: j'ai، tu as، il a، nous avons، vous avez، ils ont. نکته مهم: در فرانسوی سن را «داریم»: «J'ai 30 ans» (۳۰ سال دارم)، نه «هستم».</div></div>
+</div>
+
+<!-- ===================== G4 : S'APPELER ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Structure 4</div>
+    <h1>Le verbe « s'appeler » <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">Verbe pronominal pour dire son nom (« je m'appelle… »).</p>
+
+  <table class="tv"><tr><th colspan="2">S'APPELER — nâmidan / نامیده شدن</th></tr>
+    <tr><td>je m'<span class="hl">appelle</span></td><td>nous nous <span class="hl">appelons</span></td></tr>
+    <tr><td>tu t'<span class="hl">appelles</span></td><td>vous vous <span class="hl">appelez</span></td></tr>
+    <tr><td>il/elle s'<span class="hl">appelle</span></td><td>ils/elles s'<span class="hl">appellent</span></td></tr></table>
+
+  <div class="ex v"><div class="extitle">3 exemples</div><ol>
+    <li>Je <b>m'appelle</b> Hoda. <span class="fa">(اسم من هدا است)</span></li>
+    <li>Comment tu <b>t'appelles</b> ? <span class="fa">(اسمت چیست؟)</span></li>
+    <li>Il <b>s'appelle</b> Karim. <span class="fa">(اسم او کریم است)</span></li></ol></div>
+
+  <div class="card verbe"><h3>Demander le nom</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li>— Comment tu t'appelles ? — Je m'appelle Léa.</li>
+      <li>— Comment vous appelez-vous ? (poli)</li>
+      <li>— Vous êtes Monsieur… ? — Oui, c'est moi.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل s'appeler</div>
+    <div class="fa">s'appeler فعل انعکاسی است و برای گفتن نام به‌کار می‌رود: je m'appelle، tu t'appelles، il s'appelle. مثال: «Je m'appelle Hoda» (اسم من هدا است). برای پرسش: «Comment tu t'appelles؟» (اسمت چیست؟).</div></div>
+</div>
+
+<!-- ===================== G5 : VERBES -ER ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Structure 5</div>
+    <h1>Les verbes en « -er » au présent <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+  <p class="small">La plupart des verbes finissent en <b>-er</b>. Même conjugaison : <i>parler, habiter, travailler, aimer, étudier…</i></p>
+
+  <table class="tv"><tr><th colspan="2">PARLER → racine « parl- » + terminaison</th></tr>
+    <tr><td>je parl<span class="hl">e</span></td><td>nous parl<span class="hl">ons</span></td></tr>
+    <tr><td>tu parl<span class="hl">es</span></td><td>vous parl<span class="hl">ez</span></td></tr>
+    <tr><td>il/elle parl<span class="hl">e</span></td><td>ils/elles parl<span class="hl">ent</span></td></tr></table>
+
+  <div class="ex v"><div class="extitle">3 exemples (parler)</div><ol>
+    <li>Je <b>parle</b> persan et français. <span class="fa">(فارسی و فرانسوی حرف می‌زنم)</span></li>
+    <li>Vous <b>parlez</b> anglais ? <span class="fa">(انگلیسی صحبت می‌کنید؟)</span></li>
+    <li>Ils <b>parlent</b> trois langues. <span class="fa">(آن‌ها سه زبان حرف می‌زنند)</span></li></ol></div>
+
+  <div class="ex v"><div class="extitle">3 exemples (habiter / travailler)</div><ol>
+    <li>J'<b>habite</b> à Téhéran. <span class="fa">(در تهران زندگی می‌کنم)</span></li>
+    <li>Tu <b>travailles</b> ici ? <span class="fa">(اینجا کار می‌کنی؟)</span></li>
+    <li>Nous <b>aimons</b> le français. <span class="fa">(ما فرانسوی را دوست داریم)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">فعل‌های گروه -er</div>
+    <div class="fa">بیشتر فعل‌ها به -er ختم می‌شوند و یکسان صرف می‌شوند: ریشه + e، es، e، ons، ez، ent. مثل parler (حرف زدن)، habiter (زندگی کردن)، travailler (کار کردن)، aimer (دوست داشتن). مثال: «Je parle français»، «J'habite à Téhéran».</div></div>
+</div>
+
+<!-- ===================== G6 : ARTICLES DÉFINIS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 6</div>
+    <h1>Les articles définis : le · la · l' · les <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour une chose précise ou générale (« the »).</p>
+
+  <table class="tg"><tr><th>Article</th><th>Avec…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">le</span></td><td>masculin</td><td>le professeur, le français</td></tr>
+    <tr><td><span class="hl">la</span></td><td>féminin</td><td>la France, la langue</td></tr>
+    <tr><td><span class="hl">l'</span></td><td>devant voyelle</td><td>l'ami, l'école</td></tr>
+    <tr><td><span class="hl">les</span></td><td>pluriel</td><td>les étudiants, les langues</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>J'aime <b>le</b> français. <span class="fa">(فرانسوی را دوست دارم)</span></li>
+    <li><b>La</b> France est en Europe. <span class="fa">(فرانسه در اروپاست)</span></li>
+    <li><b>Les</b> étudiants parlent anglais. <span class="fa">(دانشجوها انگلیسی حرف می‌زنند)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">حروف تعریف معین</div>
+    <div class="fa">برای چیزِ مشخص یا کلی: le (مذکر)، la (مؤنث)، l' (پیش از صدادار)، les (جمع). مثال: «J'aime le français» (فرانسوی را دوست دارم)، «la France» (فرانسه)، «les étudiants» (دانشجوها).</div></div>
+</div>
+
+<!-- ===================== G7 : ARTICLES INDÉFINIS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 7</div>
+    <h1>Les articles indéfinis : un · une · des <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour une chose non précise (« a / some »).</p>
+
+  <table class="tg"><tr><th>Article</th><th>Avec…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">un</span></td><td>masculin</td><td>un ami, un livre</td></tr>
+    <tr><td><span class="hl">une</span></td><td>féminin</td><td>une amie, une table</td></tr>
+    <tr><td><span class="hl">des</span></td><td>pluriel</td><td>des amis, des livres</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>J'ai <b>un</b> frère et <b>une</b> sœur. <span class="fa">(یک برادر و یک خواهر دارم)</span></li>
+    <li>C'est <b>une</b> amie iranienne. <span class="fa">(این یک دوستِ ایرانی است)</span></li>
+    <li>Il y a <b>des</b> étudiants ici. <span class="fa">(اینجا چند دانشجو هست)</span></li></ol></div>
+
+  <div class="card gram"><h3>Défini ou indéfini ?</h3>
+    <i>un</i> ami = un ami quelconque · <i>l'</i>ami = un ami précis. Au pluriel : <i>des</i> (indéfini) / <i>les</i> (défini).</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">حروف تعریف نامعین</div>
+    <div class="fa">برای چیزِ نامشخص: un (مذکر)، une (مؤنث)، des (جمع). مثال: «un frère et une sœur» (یک برادر و یک خواهر)، «des étudiants» (چند دانشجو). فرق: un ami (یک دوستِ نامشخص) با l'ami (دوستِ مشخص).</div></div>
+</div>
+
+<!-- ===================== G8 : MASCULIN/FÉMININ ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 8</div>
+    <h1>Masculin / féminin (nationalités) <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour le féminin, on ajoute souvent un <b>-e</b>.</p>
+
+  <table class="tg"><tr><th>Masculin</th><th>Féminin</th><th>Règle</th></tr>
+    <tr><td>français</td><td>français<span class="hl">e</span></td><td>+ e</td></tr>
+    <tr><td>iranien</td><td>iranien<span class="hl">ne</span></td><td>+ ne</td></tr>
+    <tr><td>italien</td><td>italien<span class="hl">ne</span></td><td>+ ne</td></tr>
+    <tr><td>espagnol</td><td>espagnol<span class="hl">e</span></td><td>+ e</td></tr>
+    <tr><td>belge / russe</td><td>belge / russe</td><td>déjà -e (=)</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>Il est <b>français</b>, elle est <b>française</b>. <span class="fa">(او فرانسوی است — مرد/زن)</span></li>
+    <li>Je suis <b>iranienne</b>. <span class="fa">(من ایرانی‌ام — مؤنث)</span></li>
+    <li>Marco est <b>italien</b>. <span class="fa">(مارکو ایتالیایی است)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">مذکر / مؤنث (ملیت‌ها)</div>
+    <div class="fa">برای مؤنث معمولاً «e» اضافه می‌شود: français ← française، espagnol ← espagnole. برخی «ne» می‌گیرند: iranien ← iranienne، italien ← italienne. صفت‌هایی که به «e» ختم می‌شوند تغییری نمی‌کنند: belge، russe.</div></div>
+</div>
+
+<!-- ===================== G9 : À / EN / AU / AUX ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 9</div>
+    <h1>à / en / au / aux (villes &amp; pays) <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <table class="tg"><tr><th>On utilise</th><th>Pour…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">à</span></td><td>une ville</td><td>à Paris, à Téhéran</td></tr>
+    <tr><td><span class="hl">en</span></td><td>pays féminin / voyelle</td><td>en France, en Iran</td></tr>
+    <tr><td><span class="hl">au</span></td><td>pays masculin</td><td>au Maroc, au Japon</td></tr>
+    <tr><td><span class="hl">aux</span></td><td>pays pluriel</td><td>aux États-Unis</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>J'habite <b>à</b> Téhéran, <b>en</b> Iran. <span class="fa">(در تهران، در ایران زندگی می‌کنم)</span></li>
+    <li>Il travaille <b>au</b> Canada. <span class="fa">(در کانادا کار می‌کند)</span></li>
+    <li>Elles vont <b>aux</b> États-Unis. <span class="fa">(آن‌ها به آمریکا می‌روند)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">à / en / au / aux</div>
+    <div class="fa">برای شهر: à (à Paris). برای کشور مؤنث یا با حرف صدادار: en (en France، en Iran). برای کشور مذکر: au (au Maroc). برای کشور جمع: aux (aux États-Unis). مثال: «J'habite à Téhéran, en Iran».</div></div>
+</div>
+
+<!-- ===================== G10 : QUEL ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 10</div>
+    <h1>L'adjectif interrogatif « quel » <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour poser une question (« quel ? » = which/what). Il s'accorde avec le nom.</p>
+
+  <table class="tg"><tr><th></th><th>Masculin</th><th>Féminin</th></tr>
+    <tr><td>singulier</td><td><span class="hl">quel</span></td><td><span class="hl">quelle</span></td></tr>
+    <tr><td>pluriel</td><td><span class="hl">quels</span></td><td><span class="hl">quelles</span></td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li><b>Quel</b> est ton nom ? <span class="fa">(نامت چیست؟)</span></li>
+    <li><b>Quelle</b> est ta nationalité ? <span class="fa">(ملیتت چیست؟)</span></li>
+    <li><b>Quelles</b> langues tu parles ? <span class="fa">(چه زبان‌هایی حرف می‌زنی؟)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">صفت پرسشی quel</div>
+    <div class="fa">برای پرسش به‌کار می‌رود و با اسم مطابقت می‌کند: quel (مذکر)، quelle (مؤنث)، quels/quelles (جمع). مثال: «Quel est ton nom؟» (نامت چیست؟)، «Quelle est ta nationalité؟»، «Quelles langues tu parles؟».</div></div>
+</div>
+
+<!-- ===================== G11 : NÉGATION ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 11</div>
+    <h1>La négation « ne… pas » <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour dire « non ». On entoure le verbe : <b>ne</b> + verbe + <b>pas</b>.</p>
+
+  <table class="tg"><tr><th>Affirmatif</th><th>Négatif</th></tr>
+    <tr><td>Je suis français.</td><td>Je <span class="hl">ne</span> suis <span class="hl">pas</span> français.</td></tr>
+    <tr><td>Tu parles anglais.</td><td>Tu <span class="hl">ne</span> parles <span class="hl">pas</span> anglais.</td></tr>
+    <tr><td>Il a 20 ans.</td><td>Il <span class="hl">n'</span>a <span class="hl">pas</span> 20 ans.</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>Je <b>ne</b> parle <b>pas</b> espagnol. <span class="fa">(اسپانیایی حرف نمی‌زنم)</span></li>
+    <li>Elle <b>n'</b>est <b>pas</b> mariée. <span class="fa">(او متأهل نیست)</span></li>
+    <li>Nous <b>n'</b>habitons <b>pas</b> à Paris. <span class="fa">(در پاریس زندگی نمی‌کنیم)</span></li></ol></div>
+
+  <div class="card gram"><h3>À retenir</h3>
+    <b>ne → n'</b> devant une voyelle : <i>n'ai pas, n'habite pas, n'est pas</i>.</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">منفی‌سازی ne… pas</div>
+    <div class="fa">برای «نه»: ne + فعل + pas. مثال: «Je ne parle pas espagnol»، «Elle n'est pas mariée». نکته: ne پیش از صدادار «n'» می‌شود: n'ai pas، n'habite pas.</div></div>
+</div>
+
+<!-- ===================== VOCAB : NOMBRES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Les nombres</div>
+    <h1>Les nombres de 0 à 100 <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:9.8pt;"><tr><th>0–10</th><th>11–20</th><th>Dizaines</th></tr>
+    <tr><td>0 zéro · 1 un · 2 deux · 3 trois · 4 quatre · 5 cinq</td><td>11 onze · 12 douze · 13 treize · 14 quatorze · 15 quinze</td><td>20 vingt · 30 trente · 40 quarante</td></tr>
+    <tr><td>6 six · 7 sept · 8 huit · 9 neuf · 10 dix</td><td>16 seize · 17 dix-sept · 18 dix-huit · 19 dix-neuf · 20 vingt</td><td>50 cinquante · 60 soixante</td></tr>
+    <tr><td colspan="2">70 soixante-dix · 80 quatre-vingts · 90 quatre-vingt-dix · 100 cent</td><td>71 = 60+11 · 80 = 4×20</td></tr></table>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li>J'ai <b>vingt-huit</b> ans. <span class="fa">(بیست‌وهشت سال دارم)</span></li>
+    <li>Il y a <b>quinze</b> étudiants. <span class="fa">(پانزده دانشجو هست)</span></li>
+    <li>Mon numéro : <b>zéro six, douze, …</b> <span class="fa">(شمارهٔ من: …)</span></li></ol></div>
+
+  <div class="tip"><span class="star">Astuce :</span> 70 = soixante-dix (60+10), 80 = quatre-vingts (4×20), 90 = quatre-vingt-dix (4×20+10).</div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">اعداد ۰ تا ۱۰۰</div>
+    <div class="fa">اعداد پایه را حفظ کن: ۰ zéro تا ۱۰ dix، سپس ۱۱ onze… ۲۰ vingt، و دهگان‌ها: trente (۳۰)، quarante (۴۰)… نکتهٔ مهم: ۷۰ = soixante-dix (۶۰+۱۰)، ۸۰ = quatre-vingts (۴×۲۰)، ۹۰ = quatre-vingt-dix. مثال: «J'ai vingt-huit ans» (۲۸ سال دارم).</div></div>
+</div>
+
+<!-- ===================== VOCAB : SALUTATIONS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Communication</div>
+    <h1>Saluer &amp; se présenter <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:9.9pt;"><tr><th>Expression</th><th>فارسی</th><th>Quand ?</th></tr>
+    <tr><td>Bonjour / Bonsoir</td><td class="fa">روز بخیر / عصر بخیر</td><td>arriver</td></tr>
+    <tr><td>Salut</td><td class="fa">سلام (خودمانی)</td><td>un ami</td></tr>
+    <tr><td>Au revoir / À bientôt</td><td class="fa">خداحافظ / به‌زودی</td><td>partir</td></tr>
+    <tr><td>Enchanté(e)</td><td class="fa">خوشوقتم</td><td>rencontrer</td></tr>
+    <tr><td>Comment ça va ?</td><td class="fa">حالت چطور است؟</td><td>demander</td></tr></table>
+
+  <div class="ex x"><div class="extitle">3 exemples (se présenter)</div><ol>
+    <li><b>Bonjour</b>, je m'appelle Hoda. <span class="fa">(سلام، اسم من هدا است)</span></li>
+    <li>Je suis iranienne et j'habite à Téhéran. <span class="fa">(ایرانی‌ام و در تهران زندگی می‌کنم)</span></li>
+    <li><b>Enchantée</b> ! Et vous, comment vous appelez-vous ? <span class="fa">(خوشوقتم! شما چه نامی دارید؟)</span></li></ol></div>
+
+  <div class="card vocab"><h3>La « fiche » pour se présenter</h3>
+    <span class="chip">Je m'appelle…</span><span class="chip">J'ai … ans</span><span class="chip">Je suis… (nationalité)</span>
+    <span class="chip">J'habite à…</span><span class="chip">Je parle…</span><span class="chip">Je suis… (profession)</span></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">سلام و معرفی</div>
+    <div class="fa">عبارت‌ها: Bonjour (روز بخیر)، Salut (سلام خودمانی)، Au revoir (خداحافظ)، Enchanté(e) (خوشوقتم)، Comment ça va؟ (حالت چطور است؟). برای معرفی: «Je m'appelle…»، «J'ai … ans»، «Je suis…»، «J'habite à…»، «Je parle…».</div></div>
+</div>
+
+<!-- ===================== VOCAB : NATIONALITÉS / PAYS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Origine</div>
+    <h1>Les nationalités &amp; les pays <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:9.8pt;"><tr><th>Pays</th><th>Nationalité (m. / f.)</th><th>فارسی</th></tr>
+    <tr><td>la France</td><td>français / française</td><td class="fa">فرانسه / فرانسوی</td></tr>
+    <tr><td>l'Iran</td><td>iranien / iranienne</td><td class="fa">ایران / ایرانی</td></tr>
+    <tr><td>l'Italie</td><td>italien / italienne</td><td class="fa">ایتالیا / ایتالیایی</td></tr>
+    <tr><td>l'Espagne</td><td>espagnol / espagnole</td><td class="fa">اسپانیا / اسپانیایی</td></tr>
+    <tr><td>le Maroc</td><td>marocain / marocaine</td><td class="fa">مراکش / مراکشی</td></tr>
+    <tr><td>le Canada</td><td>canadien / canadienne</td><td class="fa">کانادا / کانادایی</td></tr></table>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li>Je suis <b>iranienne</b>, de l'<b>Iran</b>. <span class="fa">(ایرانی‌ام، اهل ایران)</span></li>
+    <li>Marc est <b>français</b>, il vient de <b>France</b>. <span class="fa">(مارک فرانسوی است)</span></li>
+    <li>Ils sont <b>marocains</b>. <span class="fa">(آن‌ها مراکشی‌اند)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ملیت‌ها و کشورها</div>
+    <div class="fa">کشور و ملیت (مذکر/مؤنث): la France ← français/française، l'Iran ← iranien/iranienne، l'Italie ← italien/italienne، le Maroc ← marocain/marocaine، le Canada ← canadien/canadienne. مثال: «Je suis iranienne, de l'Iran».</div></div>
+</div>
+
+<!-- ===================== VOCAB : LANGUES / PROFESSIONS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Langues &amp; métiers</div>
+    <h1>Les langues &amp; les professions <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Les langues</h3>
+    <span class="chip">le français فرانسوی</span><span class="chip">l'anglais انگلیسی</span>
+    <span class="chip">le persan فارسی</span><span class="chip">l'espagnol اسپانیایی</span>
+    <span class="chip">l'arabe عربی</span><span class="chip">l'allemand آلمانی</span></div>
+
+  <table class="tx" style="font-size:9.9pt;"><tr><th>Profession (m.)</th><th>(f.)</th><th>فارسی</th></tr>
+    <tr><td>étudiant</td><td>étudiante</td><td class="fa">دانشجو</td></tr>
+    <tr><td>professeur</td><td>professeure</td><td class="fa">معلم/استاد</td></tr>
+    <tr><td>médecin</td><td>médecin</td><td class="fa">پزشک</td></tr>
+    <tr><td>ingénieur</td><td>ingénieure</td><td class="fa">مهندس</td></tr></table>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li>Je <b>parle</b> persan, anglais et un peu français. <span class="fa">(فارسی، انگلیسی و کمی فرانسوی)</span></li>
+    <li>Elle est <b>médecin</b>. <span class="fa">(او پزشک است)</span></li>
+    <li>Je suis <b>étudiante</b> en informatique. <span class="fa">(دانشجوی کامپیوترم)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">زبان‌ها و شغل‌ها</div>
+    <div class="fa">زبان‌ها: le français، l'anglais، le persan، l'arabe، l'allemand. شغل‌ها (مذکر/مؤنث): étudiant/étudiante (دانشجو)، professeur (معلم)، médecin (پزشک)، ingénieur (مهندس). نکته: برای شغل بدون حرف تعریف: «Elle est médecin».</div></div>
+</div>
+
+<!-- ===================== VOCAB : ALPHABET / COORDONNÉES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Épeler</div>
+    <h1>L'alphabet &amp; les coordonnées <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Épeler (l'alphabet)</h3>
+    <p style="font-size:10.4pt;">A [a] · B [bé] · C [sé] · D [dé] · E [eu] · F [èf] · G [jé] · H [ach] · I [i] · J [ji] · K [ka] · L [èl] · M [èm] · N [èn] · O [o] · P [pé] · Q [ku] · R [èr] · S [ès] · T [té] · U [u] · V [vé] · W [doubl-vé] · X [iks] · Y [i grec] · Z [zèd]</p></div>
+
+  <div class="card vocab"><h3>Les coordonnées</h3>
+    <span class="chip">le nom نام خانوادگی</span><span class="chip">le prénom نام</span>
+    <span class="chip">l'adresse آدرس</span><span class="chip">le numéro de téléphone شمارهٔ تلفن</span>
+    <span class="chip">l'e-mail ایمیل</span></div>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li>Mon nom s'écrit K-H-E-D-M-A-T-I. <span class="fa">(نام خانوادگی‌ام این‌طور نوشته می‌شود)</span></li>
+    <li>Mon e-mail, c'est hoda@mail.com (« arobase »). <span class="fa">(ایمیلم …)</span></li>
+    <li>— Quel est ton numéro ? — C'est le 06 12 34 56 78. <span class="fa">(شماره‌ات چیست؟)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">الفبا و مشخصات</div>
+    <div class="fa">برای هجی‌کردن، تلفظ حروف را یاد بگیر (A «آ»، B «بِ»…). مشخصات: le nom (نام خانوادگی)، le prénom (نام)، l'adresse (آدرس)، le numéro de téléphone (شمارهٔ تلفن)، l'e-mail (ایمیل). علامت @ را «arobase» می‌گویند.</div></div>
+</div>
+
+<!-- ===================== PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie</div>
+    <h1>L'accent tonique &amp; les liaisons <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. L'accent tonique</h3>
+    <p>En français, l'accent est sur la <b>dernière syllabe</b> du groupe :</p>
+    <p style="font-size:10.6pt;"><i>bonJOUR · merCI · étuDIANT · je m'apPELLE</i></p></div>
+
+  <div class="card phon"><h3>2. Les liaisons</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li>vous_êtes → [vu<span class="key">z</span>ɛt]</li>
+      <li>nous_avons → [nu<span class="key">z</span>avɔ̃]</li>
+      <li>un_ami → [œ̃<span class="key">n</span>ami]</li></ul></div>
+
+  <div class="ex" style="border-left:4px solid var(--phon)"><div class="extitle">3 exemples</div><ol>
+    <li>Vous_êtes français ? <span class="fa">(فرانسوی هستید؟ — با liaison)</span></li>
+    <li>Nous_avons deux enfants. <span class="fa">(دو فرزند داریم)</span></li>
+    <li>C'est_un_ami. <span class="fa">(این یک دوست است)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تکیه و liaison</div>
+    <div class="fa">در فرانسوی تکیه روی آخرین هجای گروه است: bonJOUR، étuDIANT. در liaison، صامت پایانی پیش از صدادار تلفظ می‌شود: vous êtes → ووزِت، nous avons → نوزاوُن، un ami → اَنامی.</div></div>
+</div>
+
+<!-- ===================== DIALOGUE + TEXTE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue &amp; texte</div>
+    <h1>Je me présente <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Léa :</b> Bonjour ! Comment tu t'appelles ?</div>
+    <div class="dlg"><b class="B">Hoda :</b> Bonjour ! Je m'appelle Hoda. Et toi ?</div>
+    <div class="dlg"><b class="A">Léa :</b> Moi, c'est Léa. Tu es française ?</div>
+    <div class="dlg"><b class="B">Hoda :</b> Non, je suis iranienne. J'habite à Téhéran. Je parle persan, anglais et un peu français.</div>
+    <div class="dlg"><b class="A">Léa :</b> Super ! Quel âge tu as ?</div>
+    <div class="dlg"><b class="B">Hoda :</b> J'ai vingt-huit ans. Et je suis étudiante. Enchantée !</div>
+  </div>
+
+  <div class="read" style="font-size:11pt; margin-top:6px;">
+    <p>Bonjour ! Je m'appelle Hoda Khedmati. Je suis iranienne et j'habite à Téhéran. J'ai vingt-huit ans. Je parle persan, anglais et j'apprends le français. Je ne suis pas mariée. <span class="q">Et vous, comment vous appelez-vous ?</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ و متن</div>
+    <div class="fa"><b>لئا:</b> سلام! اسمت چیست؟ <b>هدا:</b> سلام! اسم من هدا است. تو چی؟ <b>لئا:</b> من لئا هستم. فرانسوی هستی؟ <b>هدا:</b> نه، ایرانی‌ام. در تهران زندگی می‌کنم. فارسی، انگلیسی و کمی فرانسوی حرف می‌زنم. <b>لئا:</b> عالی! چند سالت است؟ <b>هدا:</b> بیست‌وهشت سال. دانشجو هستم. خوشوقتم!<br>— متن: «سلام! اسم من هدا خدمتی است. ایرانی‌ام و در تهران زندگی می‌کنم. بیست‌وهشت سال دارم. فارسی و انگلیسی حرف می‌زنم و فرانسوی یاد می‌گیرم. مجرد هستم. شما چه نامی دارید؟»</div></div>
+</div>
+
+<!-- ===================== PRODUCTION + DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Production &amp; DELF A1</div>
+    <h1>Écrire / parler &amp; un formulaire <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>✍️ Se présenter par écrit</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10pt; line-height:1.5; margin:0;">
+      Je m'appelle Hoda. Je suis iranienne et j'habite à Téhéran. J'ai 28 ans. Je parle persan et anglais, et j'apprends le français. Je suis étudiante.</div></div>
+    <div class="card dia" style="margin-top:0;"><h3>🗣️ Se présenter à l'oral (plan)</h3>
+      <ul class="clean" style="font-size:9.8pt;"><li>Nom + prénom</li><li>Âge</li><li>Nationalité + ville</li><li>Langues</li><li>Profession</li></ul></div>
+  </div>
+
+  <div class="card delf"><h3>DELF A1 — un formulaire d'inscription</h3>
+    <table style="font-size:10pt;"><tr><th style="background:var(--delf)">Champ</th><th style="background:var(--delf)">Réponse</th></tr>
+      <tr><td>Nom</td><td>KHEDMATI</td></tr><tr><td>Prénom</td><td>Hoda</td></tr>
+      <tr><td>Nationalité</td><td>iranienne</td></tr><tr><td>Ville</td><td>Téhéran</td></tr>
+      <tr><td>Langues</td><td>persan, anglais, français</td></tr></table>
+    <p class="small" style="margin-top:4px;">Question type : « Quel est le prénom ? » → Hoda. « Quelle est la nationalité ? » → iranienne.</p></div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">تولید و DELF</div>
+    <div class="fa">برای معرفی کتبی: نام، ملیت، شهر، سن، زبان‌ها و شغل را بنویس. برای گفتاری همان ترتیب را دنبال کن. در DELF اغلب یک فرم ثبت‌نام می‌آید؛ سؤال‌ها مثل «نام چیست؟»، «ملیت چیست؟» پرسیده می‌شود.</div></div>
+</div>
+
+<!-- ===================== CULTURE + MÉMO ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture &amp; mémo</div>
+    <h1>Tu / vous, la bise &amp; récap <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:10.8pt;">
+    <p><span class="q">En France,</span> on dit <b>tu</b> à un ami ou à la famille, et <b>vous</b> à une personne qu'on ne connaît pas ou par politesse. Pour se saluer, les amis font souvent <b>la bise</b> (un ou deux bisous sur la joue) ; au travail, on se serre la main.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">Les outils</h4>
+      <p class="small" style="font-size:9.6pt;">être · avoir · s'appeler · -er · le/la/les · un/une/des · m./f. · à/en/au/aux · quel · ne…pas.</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">Les mots-clés</h4>
+      <p class="small" style="font-size:9.6pt;">salutations · nombres · nationalités · pays · langues · professions · coordonnées.</p></div>
+  </div>
+
+  <div class="card conseil"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li>Je <span class="key">m'appelle</span> Hoda.</li>
+      <li>Je <span class="key">suis</span> iranienne.</li>
+      <li>J'<span class="key">ai</span> vingt-huit ans.</li>
+      <li>J'<span class="key">habite</span> à Téhéran, en Iran.</li>
+      <li>Je <span class="key">parle</span> persan et un peu français.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ و خلاصه</div>
+    <div class="fa">در فرانسه به دوست و خانواده «tu» و به غریبه یا از روی ادب «vous» می‌گویند. دوستان اغلب «la bise» (بوسه روی گونه) می‌کنند؛ در محیط کار دست می‌دهند. ابزارها: être، avoir، s'appeler، -er، le/la/les، un/une/des، à/en/au/aux، quel، ne…pas. پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li>☐ Me présenter (nom, âge, nationalité, ville).</li>
+      <li>☐ Conjuguer être, avoir, s'appeler, parler.</li>
+      <li>☐ Choisir le bon article (le/la/les, un/une/des).</li>
+      <li>☐ Utiliser à / en / au / aux.</li>
+      <li>☐ Poser une question avec quel.</li>
+      <li>☐ Faire une phrase négative (ne… pas).</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10pt;"><li>1. être : je ___, vous ___.</li>
+        <li>2. avoir : « j'___ 25 ans ».</li>
+        <li>3. Pays : « J'habite ___ France, ___ Téhéran ».</li>
+        <li>4. quel : « ___ est ta nationalité ? »</li>
+        <li>5. Négatif : « Je suis français. » → ?</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10pt;"><li>1. je suis · vous êtes</li>
+        <li>2. j'ai 25 ans</li>
+        <li>3. en France, à Téhéran</li>
+        <li>4. Quelle est ta nationalité ?</li>
+        <li>5. Je ne suis pas français.</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:14px; padding:14px; border-radius:12px;
+     background:linear-gradient(120deg,#6A4C93,#E07856); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15pt;">Unité 1 (complète) terminée ! 🌟</div>
+    <div style="font-size:10.2pt; margin-top:3px;">آفرین! نسخهٔ کاملِ واحد ۱ تمام شد!</div>
+  </div>
+</div>
+
+</body>
+</html>
