@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulaire — Parcours de vie | Édito A2 Unité 1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fdf5f8 0%, #f8e1ec 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(194,24,91,0.12);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
+            color: white; padding: 50px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: -50%; right: -10%;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.07); border-radius: 50%;
+        }
+        .header::after {
+            content: ''; position: absolute; bottom: -30%; left: 5%;
+            width: 300px; height: 300px;
+            background: rgba(255,255,255,0.04); border-radius: 50%;
+        }
+        .header-content { position: relative; z-index: 1; }
+        .breadcrumb { font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-bottom: 14px; }
+        .breadcrumb a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .header .emoji { font-size: 60px; display: block; margin-bottom: 14px; }
+        .header h1 { font-size: 46px; font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; }
+        .header p { font-size: 18px; opacity: 0.9; }
+        .header .subtitle {
+            display: inline-block; background: rgba(255,255,255,0.18);
+            padding: 6px 20px; border-radius: 20px;
+            font-size: 13px; margin-top: 14px; letter-spacing: 1px;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex; overflow-x: auto;
+            border-bottom: 3px solid #f3e5f5;
+            background: #fdf5ff; padding: 0 20px;
+        }
+        .tab {
+            padding: 15px 20px; cursor: pointer;
+            font-size: 13px; font-weight: 600;
+            color: #9c6ab5; white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px; transition: all 0.2s;
+        }
+        .tab:hover { color: #7b1fa2; }
+        .tab.active { color: #7b1fa2; border-bottom-color: #7b1fa2; }
+
+        /* CONTENT */
+        .content { padding: 40px; }
+        .section-panel { display: none; }
+        .section-panel.active { display: block; }
+
+        /* SECTION */
+        .section {
+            margin-bottom: 36px; padding: 32px;
+            background: #fdf5ff; border-radius: 15px;
+            border-left: 5px solid #7b1fa2;
+        }
+        .section h2 { font-size: 24px; color: #4a148c; margin-bottom: 20px; font-weight: 700; }
+
+        /* BADGE */
+        .badge {
+            display: inline-block; padding: 5px 14px;
+            border-radius: 20px; font-size: 11px; font-weight: 700;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+            background: #f3e5f5; color: #7b1fa2;
+        }
+
+        /* VOCAB CARDS GRID */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px; margin-top: 10px;
+        }
+
+        .vocab-card {
+            background: white; border-radius: 16px;
+            border: 2px solid #e1bee7;
+            box-shadow: 0 4px 14px rgba(123,31,162,0.07);
+            overflow: hidden; transition: all 0.3s ease;
+        }
+        .vocab-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(123,31,162,0.15);
+            border-color: #7b1fa2;
+        }
+
+        .vocab-card-header {
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            padding: 16px 20px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .vocab-icon { font-size: 26px; }
+        .vocab-fr {
+            font-size: 17px; font-weight: 700; color: white;
+            line-height: 1.3;
+        }
+        .vocab-type {
+            font-size: 11px; color: rgba(255,255,255,0.7);
+            margin-top: 2px;
+        }
+
+        .vocab-card-body { padding: 18px 20px; }
+
+        .vocab-fa {
+            font-size: 16px; color: #4a148c; font-weight: 700;
+            direction: rtl; text-align: right;
+            margin-bottom: 14px; padding-bottom: 12px;
+            border-bottom: 1px solid #f3e5f5;
+        }
+
+        .syn-ant {
+            display: flex; gap: 8px; flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .syn-tag, .ant-tag {
+            font-size: 11px; font-weight: 700;
+            padding: 3px 10px; border-radius: 12px;
+        }
+        .syn-tag { background: #e8f5e9; color: #2e7d32; }
+        .ant-tag { background: #ffebee; color: #c62828; }
+        .tag-label { font-size: 10px; opacity: 0.7; margin-right: 3px; }
+
+        .phrases { display: flex; flex-direction: column; gap: 10px; }
+
+        .phrase-item {
+            background: #fdf5ff; border-radius: 10px;
+            padding: 12px 14px; border-left: 3px solid #7b1fa2;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .phrase-item:hover { background: #f3e5f5; }
+        .phrase-fr {
+            font-size: 14px; font-weight: 600; color: #2c3e50;
+            line-height: 1.5; margin-bottom: 0;
+        }
+        .phrase-fr strong { color: #7b1fa2; }
+        .phrase-fa {
+            font-size: 13px; color: #7b1fa2; direction: rtl;
+            text-align: right; margin-top: 6px; line-height: 1.6;
+            font-style: italic; display: none;
+        }
+        .phrase-item.open .phrase-fa { display: block; }
+        .phrase-toggle {
+            font-size: 11px; color: #9c6ab5; margin-top: 5px;
+            font-weight: 600;
+        }
+
+        /* CATEGORY HEADER */
+        .cat-header {
+            display: flex; align-items: center; gap: 14px;
+            margin: 32px 0 18px;
+        }
+        .cat-icon {
+            width: 46px; height: 46px; border-radius: 12px;
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; flex-shrink: 0;
+        }
+        .cat-title { font-size: 22px; font-weight: 700; color: #4a148c; }
+        .cat-count { font-size: 13px; color: #9c6ab5; margin-top: 2px; }
+
+        /* EXERCICES */
+        .exercise {
+            background: #fdf5ff; border-radius: 14px;
+            padding: 28px; margin-bottom: 28px;
+            border: 2px solid #e1bee7;
+        }
+        .exercise h3 {
+            font-size: 17px; color: #4a148c; margin-bottom: 18px;
+            font-weight: 700; display: flex; align-items: center; gap: 10px;
+        }
+        .ex-num {
+            background: #7b1fa2; color: white;
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700; flex-shrink: 0;
+        }
+        .ex-item {
+            padding: 12px 0; border-bottom: 1px solid #f3e5f5;
+            font-size: 15px; color: #2c3e50;
+            display: flex; align-items: flex-start; gap: 10px;
+        }
+        .ex-item:last-child { border: none; }
+        .ex-num-s {
+            background: #f3e5f5; color: #7b1fa2;
+            width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+        }
+        .blank {
+            display: inline-block; min-width: 130px;
+            padding: 2px 6px; border: none;
+            border-bottom: 2px solid #7b1fa2;
+            background: transparent; font-size: 15px;
+            color: #7b1fa2; font-weight: 600; font-family: inherit;
+            outline: none; transition: all 0.2s;
+        }
+        .blank:focus { background: #fdf5ff; border-radius: 4px 4px 0 0; }
+        .blank.correct { border-bottom-color: #2e7d32; color: #2e7d32; background: #e8f5e9; border-radius: 4px; }
+        .blank.wrong { border-bottom-color: #c62828; color: #c62828; background: #ffebee; border-radius: 4px; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 24px; border-radius: 10px;
+            font-size: 14px; font-weight: 700; cursor: pointer;
+            border: none; font-family: inherit; transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            color: white; box-shadow: 0 4px 14px rgba(123,31,162,0.28);
+        }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-secondary { background: #f3e5f5; color: #7b1fa2; }
+        .btn-secondary:hover { background: #e1bee7; }
+        .btn-row { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+
+        .score-box {
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            color: white; padding: 16px 22px; border-radius: 12px;
+            margin-top: 14px; display: none; text-align: center;
+        }
+        .score-box.show { display: block; }
+        .score-num { font-size: 32px; font-weight: 700; }
+        .score-label { font-size: 13px; opacity: 0.85; margin-top: 3px; }
+
+        /* PRODUCTION */
+        .prod-box {
+            background: white; border: 2px solid #e1bee7;
+            border-radius: 12px; padding: 22px; margin-top: 20px;
+        }
+        .prod-box textarea {
+            width: 100%; border: 1px solid #e1bee7;
+            border-radius: 10px; padding: 14px;
+            font-family: inherit; font-size: 15px;
+            color: #2c3e50; resize: vertical; min-height: 120px;
+            outline: none; transition: border 0.2s;
+        }
+        .prod-box textarea:focus { border-color: #7b1fa2; }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
+            color: white; text-align: center; padding: 26px;
+            font-size: 13px;
+        }
+        .footer p { margin: 5px 0; opacity: 0.9; }
+        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+
+        #scrollBtn {
+            display: none; position: fixed; bottom: 22px; right: 22px;
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            color: white; border: none; padding: 12px 15px;
+            border-radius: 50%; cursor: pointer; font-size: 20px;
+            box-shadow: 0 4px 14px rgba(123,31,162,0.35); z-index: 1000;
+            transition: all 0.3s;
+        }
+        #scrollBtn:hover { transform: translateY(-4px); }
+        #scrollBtn.show { display: block; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 30px; }
+            .content { padding: 20px; }
+            .section { padding: 20px; }
+            .vocab-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-content">
+        <div class="breadcrumb">
+            <a href="../../../../index.html">← Mehr Afarin</a>
+            &nbsp;/&nbsp; Édito A2 &nbsp;/&nbsp; Unité 1
+        </div>
+        <span class="emoji">🗺️</span>
+        <h1>Parcours de vie</h1>
+        <p>Vocabulaire essentiel — Unité 1</p>
+        <div class="subtitle">📖 Lexique · 🇮🇷 Traduction · ✏️ Phrases · 🔄 Exercices</div>
+    </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+    <div class="tab active" onclick="showTab('vivre')">❤️ Vivre</div>
+    <div class="tab" onclick="showTab('personnelle')">👥 Vie personnelle</div>
+    <div class="tab" onclick="showTab('scolaire')">🎓 Parcours scolaire</div>
+    <div class="tab" onclick="showTab('artistique')">🎭 Professions</div>
+    <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+</div>
+
+<div class="content">
+
+<!-- ═══════ TAB 1 : VIVRE ═══════ -->
+<div class="section-panel active" id="tab-vivre">
+<div class="section">
+    <h2>❤️ Vivre</h2>
+    <div class="badge">💡 Cliquez sur une phrase pour voir la traduction</div>
+
+    <div class="vocab-grid">
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">⚡</span>
+                <div><div class="vocab-fr">avoir un coup de foudre</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">عاشق شدن از نگاه اول — دل باختن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>tomber amoureux</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">La première fois que je l'ai vu, j'ai eu un <strong>coup de foudre</strong>.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">اولین باری که دیدمش، دل باختم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle a eu un <strong>coup de foudre</strong> pour Paris dès son arrivée.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">از همان لحظه ورود، عاشق پاریس شد.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Les <strong>coups de foudre</strong> existent vraiment !</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">عشق در نگاه اول واقعاً وجود دارد!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">👶</span>
+                <div><div class="vocab-fr">avoir un enfant</div><div class="vocab-type">expression verbale</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">بچه‌دار شدن — فرزند داشتن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>fonder une famille</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Ils ont eu leur premier <strong>enfant</strong> à 30 ans.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">اولین بچه‌شان را در سن ۳۰ سالگی به دنیا آوردند.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Nous voulons <strong>avoir un enfant</strong> dans deux ans.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">می‌خواهیم دو سال دیگر بچه‌دار شویم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle a décidé d'<strong>avoir un enfant</strong> seule.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">تصمیم گرفت تنها بچه‌دار شود.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">📦</span>
+                <div><div class="vocab-fr">déménager</div><div class="vocab-type">verbe</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">引越し اسباب‌کشی کردن — نقل مکان کردن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>s'installer ailleurs</span>
+                    <span class="ant-tag"><span class="tag-label">≠</span>rester, emménager</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">J'ai <strong>déménagé</strong> trois fois en cinq ans.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در پنج سال، سه بار اسباب‌کشی کردم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle va <strong>déménager</strong> à Lyon pour son nouveau travail.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">برای کار جدیدش به لیون نقل مکان می‌کند.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr"><strong>Déménager</strong> dans une nouvelle ville, c'est stressant mais excitant !</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">اسباب‌کشی به شهر جدید، هم استرس‌زاست هم هیجان‌انگیز!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">💔❤️</span>
+                <div><div class="vocab-fr">être célibataire / en couple</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">مجرد بودن / در رابطه بودن</div>
+                <div class="syn-ant">
+                    <span class="ant-tag"><span class="tag-label">≠</span>célibataire ↔ en couple</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Je suis <strong>célibataire</strong> depuis un an.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">یک سال است که مجرد هستم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Ils sont <strong>en couple</strong> depuis 3 ans et ils sont très heureux.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">۳ سال است که با هم هستند و خیلی خوشحال‌اند.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Tu es <strong>célibataire</strong> ou <strong>en couple</strong> ?</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">مجردی یا در رابطه هستی؟</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">🤝</span>
+                <div><div class="vocab-fr">faire connaissance</div><div class="vocab-type">expression verbale</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">آشنا شدن — آشنایی پیدا کردن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>rencontrer, se rencontrer</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">On a <strong>fait connaissance</strong> lors d'un voyage en Italie.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در یک سفر به ایتالیا با هم آشنا شدیم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Enchantée de <strong>faire votre connaissance</strong> !</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">خوشحالم از آشنایی با شما! (فرمال)</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">J'ai <strong>fait connaissance</strong> avec mes voisins hier.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">دیروز با همسایه‌هایم آشنا شدم.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">🌱</span>
+                <div><div class="vocab-fr">grandir</div><div class="vocab-type">verbe</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">بزرگ شدن — رشد کردن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>se développer</span>
+                    <span class="ant-tag"><span class="tag-label">≠</span>rester petit</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">J'ai <strong>grandi</strong> à Téhéran mais j'habite à Paris maintenant.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در تهران بزرگ شدم اما الان در پاریس زندگی می‌کنم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Il a <strong>grandi</strong> dans une petite ville de province.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در یک شهر کوچک استانی بزرگ شد.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Où est-ce que tu as <strong>grandi</strong> ?</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">کجا بزرگ شدی؟</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">🍼</span>
+                <div><div class="vocab-fr">naître</div><div class="vocab-type">verbe (être)</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">به دنیا آمدن — متولد شدن</div>
+                <div class="syn-ant">
+                    <span class="ant-tag"><span class="tag-label">≠</span>mourir</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Je suis <strong>né</strong>(e) le 15 mars 1995 à Ispahan.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در ۱۵ مارس ۱۹۹۵ در اصفهان به دنیا آمدم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle est <strong>née</strong> en France mais elle a grandi en Iran.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در فرانسه به دنیا آمد اما در ایران بزرگ شد.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Tu es <strong>né</strong>(e) dans quelle ville ?</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در کدام شهر به دنیا آمدی؟</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">💍</span>
+                <div><div class="vocab-fr">se marier (avec)</div><div class="vocab-type">verbe pronominal</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">ازدواج کردن (با کسی)</div>
+                <div class="syn-ant">
+                    <span class="ant-tag"><span class="tag-label">≠</span>divorcer, se séparer</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Ils se sont <strong>mariés</strong> en juin dernier à Nice.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">ژوئن گذشته در نیس ازدواج کردند.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle veut se <strong>marier</strong> avec quelqu'un qui partage ses valeurs.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">می‌خواهد با کسی ازدواج کند که ارزش‌هایش را به اشتراک بگذارد.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Quand est-ce que vous vous êtes <strong>mariés</strong> ?</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">کی ازدواج کردید؟</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">💔</span>
+                <div><div class="vocab-fr">se séparer (de)</div><div class="vocab-type">verbe pronominal</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">جدا شدن — از هم جدا شدن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>divorcer, rompre</span>
+                    <span class="ant-tag"><span class="tag-label">≠</span>se réconcilier</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Ils se sont <strong>séparés</strong> après dix ans de mariage.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">بعد از ده سال ازدواج از هم جدا شدند.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Il est difficile de <strong>se séparer</strong> de quelqu'un qu'on aime.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">جدا شدن از کسی که دوستش داریم سخت است.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle s'est <strong>séparée</strong> de son mari l'année dernière.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">سال گذشته از شوهرش جدا شد.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">🏠</span>
+                <div><div class="vocab-fr">s'installer</div><div class="vocab-type">verbe pronominal</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">مستقر شدن — ساکن شدن — جا افتادن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>emménager, s'établir</span>
+                    <span class="ant-tag"><span class="tag-label">≠</span>déménager, partir</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Je vais <strong>m'installer</strong> dans un nouvel appartement le mois prochain.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">ماه آینده در یک آپارتمان جدید ساکن می‌شوم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Ils se sont <strong>installés</strong> à Lyon après leurs études.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">بعد از تحصیل در لیون ساکن شدند.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Elle s'est <strong>installée</strong> à son compte en 2022.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در سال ۲۰۲۲ کار مستقل راه انداخت.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">😍</span>
+                <div><div class="vocab-fr">tomber amoureux / amoureuse (de)</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">عاشق شدن (از کسی)</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>avoir un coup de foudre</span>
+                    <span class="ant-tag"><span class="tag-label">≠</span>tomber de l'amour</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Il est <strong>tombé amoureux</strong> d'elle au premier regard.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">از نگاه اول عاشقش شد.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Je suis <strong>tombée amoureuse</strong> de la langue française !</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">عاشق زبان فرانسه شدم!</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">On peut <strong>tomber amoureux</strong> à tout âge.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">در هر سنی می‌توان عاشق شد.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header">
+                <span class="vocab-icon">👫</span>
+                <div><div class="vocab-fr">rencontrer / se rencontrer</div><div class="vocab-type">verbe</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">ملاقات کردن / با هم آشنا شدن</div>
+                <div class="syn-ant">
+                    <span class="syn-tag"><span class="tag-label">≈</span>faire connaissance, voir</span>
+                </div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">J'ai <strong>rencontré</strong> ma meilleure amie à l'université.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">بهترین دوستم را در دانشگاه ملاقات کردم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Nous nous sommes <strong>rencontrés</strong> dans un café il y a 5 ans.</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">۵ سال پیش در یک کافه با هم آشنا شدیم.</div>
+                    </div>
+                    <div class="phrase-item" onclick="togglePhrase(this)">
+                        <div class="phrase-fr">Où est-ce que vous vous êtes <strong>rencontrés</strong> ?</div>
+                        <div class="phrase-toggle">👆 voir la traduction</div>
+                        <div class="phrase-fa">کجا با هم آشنا شدید؟</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- ═══════ TAB 2 : VIE PERSONNELLE ═══════ -->
+<div class="section-panel" id="tab-personnelle">
+<div class="section">
+    <h2>👥 La vie personnelle</h2>
+    <div class="badge">💡 Cliquez sur une phrase pour voir la traduction</div>
+    <div class="vocab-grid">
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🚶</span>
+                <div><div class="vocab-fr">le/la célibataire</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">مجرد</div>
+                <div class="syn-ant"><span class="ant-tag"><span class="tag-label">≠</span>marié(e), en couple</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle est <strong>célibataire</strong> et elle est très heureuse.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">مجرد است و خیلی خوشحال است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">La vie de <strong>célibataire</strong>, ça a ses avantages !</div><div class="phrase-toggle">👆</div><div class="phrase-fa">زندگی مجردی مزایای خودش را دارد!</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Il est <strong>célibataire</strong> depuis sa rupture en janvier.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">از جدایی‌اش در ژانویه مجرد است.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">💑</span>
+                <div><div class="vocab-fr">le conjoint / la conjointe</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">همسر (رسمی) — شریک زندگی</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>le/la partenaire, le mari, la femme</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Mon <strong>conjoint</strong> travaille dans la médecine.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">همسرم در حوزه پزشکی کار می‌کند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Les <strong>conjoints</strong> ont le droit de travailler dans l'UE.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">همسران حق کار در اتحادیه اروپا را دارند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Sa <strong>conjointe</strong> est française, lui est iranien.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">همسرش فرانسوی است، او ایرانی است.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">👨‍👩‍👦</span>
+                <div><div class="vocab-fr">le couple</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">زوج — دو نفر در رابطه</div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">C'est un <strong>couple</strong> très uni et très amoureux.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">زوج بسیار یکپارچه و عاشقی هستند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Ils forment un <strong>couple</strong> depuis 10 ans.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">۱۰ سال است که زوج هستند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Vivre <strong>en couple</strong>, ça demande des compromis.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">زندگی زوجی نیاز به سازش دارد.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">👧👦</span>
+                <div><div class="vocab-fr">l'enfant (m., f.)</div><div class="vocab-type">nom (mixte)</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">کودک — بچه (هم مذکر هم مؤنث)</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>le gamin (familier)</span><span class="ant-tag"><span class="tag-label">≠</span>l'adulte</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Quand j'étais <strong>enfant</strong>, j'habitais à Shiraz.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">وقتی بچه بودم، در شیراز زندگی می‌کردم.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Ils ont deux <strong>enfants</strong>, une fille et un garçon.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">دو بچه دارند، یک دختر و یک پسر.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">C'est un <strong>enfant</strong> très curieux et intelligent.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">بچه‌ای خیلی کنجکاو و باهوش است.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">💛</span>
+                <div><div class="vocab-fr">le/la meilleur(e) ami(e)</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">بهترین دوست — صمیمی‌ترین دوست</div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Ma <strong>meilleure amie</strong> me connaît depuis l'enfance.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">بهترین دوستم از بچگی مرا می‌شناسد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Mon <strong>meilleur ami</strong> habite maintenant en Allemagne.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">بهترین دوستم الان در آلمان زندگی می‌کند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Un <strong>bon ami</strong> est là pour toi dans les moments difficiles.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">یک دوست خوب در لحظات سخت کنارت است.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🤗</span>
+                <div><div class="vocab-fr">la rencontre</div><div class="vocab-type">nom féminin</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">ملاقات — آشنایی — دیدار</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>la réunion, le rendez-vous</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Notre <strong>rencontre</strong> a changé ma vie pour toujours.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">آشناییمان زندگی‌ام را برای همیشه تغییر داد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">C'est une <strong>rencontre</strong> inattendue qui a tout changé.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">یک ملاقات غیرمنتظره بود که همه چیز را تغییر داد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Les voyages permettent des <strong>rencontres</strong> magnifiques.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">سفرها امکان آشنایی‌های فوق‌العاده را فراهم می‌کنند.</div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- ═══════ TAB 3 : PARCOURS SCOLAIRE ═══════ -->
+<div class="section-panel" id="tab-scolaire">
+<div class="section">
+    <h2>🎓 Le parcours scolaire et professionnel</h2>
+    <div class="badge">💡 Cliquez sur une phrase pour voir la traduction</div>
+    <div class="vocab-grid">
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">💼</span>
+                <div><div class="vocab-fr">chercher du travail</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">دنبال کار گشتن — جویای کار بودن</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>être à la recherche d'un emploi</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Je <strong>cherche du travail</strong> depuis trois mois.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">سه ماه است دنبال کار می‌گردم.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Après ses études, elle a <strong>cherché du travail</strong> pendant six mois.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">بعد از تحصیل، شش ماه دنبال کار گشت.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr"><strong>Chercher du travail</strong> en France n'est pas toujours facile pour les étrangers.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">پیدا کردن کار در فرانسه برای خارجی‌ها همیشه آسان نیست.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">📚</span>
+                <div><div class="vocab-fr">faire / finir ses études</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">تحصیل کردن / تمام کردن تحصیلات</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>étudier, se former</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">J'ai <strong>fait mes études</strong> de droit à Paris.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">تحصیلات حقوقم را در پاریس گذراندم.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle a <strong>fini ses études</strong> en juin et elle cherche un emploi.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">تحصیلاتش را در ژوئن تمام کرد و دنبال کار می‌گردد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Quand tu <strong>finiras tes études</strong>, qu'est-ce que tu veux faire ?</div><div class="phrase-toggle">👆</div><div class="phrase-fa">وقتی تحصیلاتت را تمام کنی، می‌خواهی چه کار کنی؟</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🌍</span>
+                <div><div class="vocab-fr">faire un séjour Erasmus / partir en Erasmus</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">دوره اراسموس رفتن — تبادل دانشجویی اروپایی</div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">J'ai <strong>fait un séjour Erasmus</strong> à Madrid l'année dernière.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">سال گذشته یک دوره اراسموس در مادرید گذراندم.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle est <strong>partie en Erasmus</strong> à Rome et elle a adoré.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">برای اراسموس به رم رفت و خیلی دوست داشت.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr"><strong>Partir en Erasmus</strong>, c'est une expérience qui change la vie !</div><div class="phrase-toggle">👆</div><div class="phrase-fa">رفتن برای اراسموس یک تجربه زندگی‌ساز است!</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🏢</span>
+                <div><div class="vocab-fr">faire un stage</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">کارآموزی کردن — استاژ انجام دادن</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>effectuer un stage</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">J'ai <strong>fait un stage</strong> de trois mois dans une startup.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">سه ماه در یک استارتاپ کارآموزی کردم.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Ce <strong>stage</strong> m'a beaucoup appris sur le monde du travail.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">این کارآموزی خیلی چیزها درباره دنیای کار به من آموخت.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle <strong>fait un stage</strong> dans une entreprise internationale à Paris.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">در یک شرکت بین‌المللی در پاریس کارآموزی می‌کند.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎓</span>
+                <div><div class="vocab-fr">obtenir un diplôme</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">مدرک گرفتن — دیپلم اخذ کردن</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>décrocher un diplôme (familier)</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle a <strong>obtenu son diplôme</strong> de médecine en juin.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">در ژوئن مدرک پزشکی‌اش را گرفت.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Pour <strong>obtenir ce diplôme</strong>, il faut travailler dur.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">برای گرفتن این مدرک باید سخت کار کرد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">J'ai enfin <strong>obtenu mon diplôme</strong> après 5 ans d'études !</div><div class="phrase-toggle">👆</div><div class="phrase-fa">بالاخره بعد از ۵ سال تحصیل مدرکم را گرفتم!</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🏗️</span>
+                <div><div class="vocab-fr">travailler dans une entreprise</div><div class="vocab-type">expression</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">در یک شرکت کار کردن</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>être salarié(e)</span><span class="ant-tag"><span class="tag-label">≠</span>travailler à son compte</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Il <strong>travaille dans une entreprise</strong> internationale depuis 2 ans.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">۲ سال است در یک شرکت بین‌المللی کار می‌کند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Je préfère <strong>travailler dans une petite entreprise</strong> pour avoir plus de responsabilités.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">ترجیح می‌دهم در یک شرکت کوچک کار کنم تا مسئولیت بیشتری داشته باشم.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle a quitté son poste pour <strong>monter sa propre entreprise</strong>.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">پستش را رها کرد تا شرکت خودش را راه بیندازد.</div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- ═══════ TAB 4 : PROFESSIONS ARTISTIQUES ═══════ -->
+<div class="section-panel" id="tab-artistique">
+<div class="section">
+    <h2>🎭 Les professions artistiques</h2>
+    <div class="badge">💡 Cliquez sur une phrase pour voir la traduction</div>
+    <div class="vocab-grid">
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎬</span>
+                <div><div class="vocab-fr">l'acteur / l'actrice</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">بازیگر (مرد / زن)</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>le comédien / la comédienne</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">C'est une <strong>actrice</strong> très connue du cinéma français.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">او یک بازیگر بسیار مشهور سینمای فرانسه است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Il est devenu <strong>acteur</strong> après des études au Cours Florent.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">بعد از تحصیل در Cours Florent بازیگر شد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Virginie Efira est une <strong>actrice</strong> franco-belge très talentueuse.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">ویرژینی افیرا یک بازیگر فرانسوی-بلژیکی بسیار بااستعداد است.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎤</span>
+                <div><div class="vocab-fr">le chanteur / la chanteuse</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">خواننده (مرد / زن)</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>l'artiste, l'interprète</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Aya Nakamura est une <strong>chanteuse</strong> malienne très populaire en France.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">آیا ناکامورا یک خواننده مالیایی بسیار محبوب در فرانسه است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Mon <strong>chanteur</strong> préféré sort un nouvel album ce mois-ci.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">خواننده مورد علاقه‌ام این ماه آلبوم جدید منتشر می‌کند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle est devenue <strong>chanteuse</strong> professionnelle à 18 ans.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">در ۱۸ سالگی خواننده حرفه‌ای شد.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎵</span>
+                <div><div class="vocab-fr">le compositeur / la compositrice</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">آهنگساز (مرد / زن)</div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Manu Katché est un <strong>compositeur</strong> et batteur français célèbre.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">مانو کاشه یک آهنگساز و نوازنده درام مشهور فرانسوی است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Cette <strong>compositrice</strong> a écrit la musique de plusieurs films.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">این آهنگساز موسیقی چندین فیلم را نوشته است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Il est à la fois <strong>compositeur</strong> et interprète de ses chansons.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">هم آهنگساز است هم مجری ترانه‌هایش.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">✍️</span>
+                <div><div class="vocab-fr">l'écrivain(e)</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">نویسنده</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>l'auteur(e)</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Mohamed Mbougar Sarr est un <strong>écrivain</strong> sénégalais très talentueux.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">محمد مبوغار سار یک نویسنده سنگالی بسیار بااستعداد است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Son rêve est de devenir <strong>écrivaine</strong> et de publier un roman.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">رویایش این است که نویسنده شود و یک رمان منتشر کند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Cet <strong>écrivain</strong> a écrit plus de vingt romans.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">این نویسنده بیش از بیست رمان نوشته است.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎙️</span>
+                <div><div class="vocab-fr">l'interprète</div><div class="vocab-type">nom (m./f.)</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">مجری — خواننده/نوازنده (مجری اثر) — مترجم شفاهی</div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle est une brillante <strong>interprète</strong> de la chanson française.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">او یک مجری درخشان ترانه فرانسوی است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Il travaille comme <strong>interprète</strong> pour les Nations Unies.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">به عنوان مترجم شفاهی برای سازمان ملل کار می‌کند.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Cet <strong>interprète</strong> joue Bach mieux que personne.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">این مجری، باخ را بهتر از هر کسی می‌نوازد.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎸</span>
+                <div><div class="vocab-fr">le/la musicien(ne)</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">موزیسین — نوازنده</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>l'instrumentiste</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Manu Katché est un <strong>musicien</strong> de jazz mondialement connu.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">مانو کاشه یک موزیسین جاز مشهور در سطح جهانی است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle est <strong>musicienne</strong> professionnelle et donne des concerts.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">موزیسین حرفه‌ای است و کنسرت می‌دهد.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Pour devenir <strong>musicien</strong>, il faut pratiquer tous les jours.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">برای موزیسین شدن باید هر روز تمرین کرد.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="vocab-card-header"><span class="vocab-icon">🎬✍️</span>
+                <div><div class="vocab-fr">le/la scénariste</div><div class="vocab-type">nom</div></div>
+            </div>
+            <div class="vocab-card-body">
+                <div class="vocab-fa">فیلمنامه‌نویس</div>
+                <div class="syn-ant"><span class="syn-tag"><span class="tag-label">≈</span>l'auteur de scénario</span></div>
+                <div class="phrases">
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Elle est <strong>scénariste</strong> pour une série très populaire sur Netflix.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">فیلمنامه‌نویس یک سریال بسیار محبوب در نتفلیکس است.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Le <strong>scénariste</strong> a écrit le script en seulement deux mois.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">فیلمنامه‌نویس اسکریپت را فقط در دو ماه نوشت.</div></div>
+                    <div class="phrase-item" onclick="togglePhrase(this)"><div class="phrase-fr">Il est à la fois réalisateur et <strong>scénariste</strong> de ses films.</div><div class="phrase-toggle">👆</div><div class="phrase-fa">هم کارگردان است هم فیلمنامه‌نویس فیلم‌هایش.</div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- ═══════ TAB 5 : EXERCICES ═══════ -->
+<div class="section-panel" id="tab-exercices">
+
+    <div class="exercise" id="ex1">
+        <h3><span class="ex-num">1</span> Complétez avec les mots du vocabulaire</h3>
+        <div id="ex1-items">
+            <div class="ex-item"><span class="ex-num-s">a</span><span>Ma sœur et son <input class="blank" data-answer="mari" placeholder="mari/conjoint"> ont eu un <input class="blank" data-answer="enfant" placeholder="…"> l'année dernière.</span></div>
+            <div class="ex-item"><span class="ex-num-s">b</span><span>Ils sont <input class="blank" data-answer="tombés amoureux" placeholder="tomber amoureux"> en 2019. Ils vont <input class="blank" data-answer="se marier" placeholder="se marier"> l'an prochain.</span></div>
+            <div class="ex-item"><span class="ex-num-s">c</span><span>Elle n'est pas <input class="blank" data-answer="célibataire" placeholder="célibataire">, elle vit <input class="blank" data-answer="en couple" placeholder="en couple">.</span></div>
+            <div class="ex-item"><span class="ex-num-s">d</span><span>Je vais <input class="blank" data-answer="m'installer" placeholder="s'installer"> dans un nouvel appartement.</span></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="checkEx('ex1')">✅ Vérifier</button>
+            <button class="btn btn-secondary" onclick="resetEx('ex1')">🔄 Reset</button>
+        </div>
+        <div class="score-box" id="score-ex1"></div>
+    </div>
+
+    <div class="exercise" id="ex2">
+        <h3><span class="ex-num">2</span> Associe les deux parties (relie par écrit)</h3>
+        <div id="ex2-items">
+            <div class="ex-item"><span class="ex-num-s">a</span><span>Simon a l'intention de faire un séjour Erasmus <input class="blank" data-answer="dans une université à Rome" placeholder="1, 2 ou 3 ?">.</span></div>
+            <div class="ex-item"><span class="ex-num-s">b</span><span>J'ai fait un stage de trois mois <input class="blank" data-answer="dans une entreprise internationale" placeholder="1, 2 ou 3 ?">.</span></div>
+            <div class="ex-item"><span class="ex-num-s">c</span><span>Julie compte travailler dur pour <input class="blank" data-answer="obtenir son diplôme en juin" placeholder="1, 2 ou 3 ?">.</span></div>
+        </div>
+        <div style="background:#f3e5f5; border-radius:10px; padding:14px; margin-top:14px; font-size:13px; color:#4a148c;">
+            <strong>Options :</strong> 1. obtenir son diplôme en juin &nbsp;|&nbsp; 2. dans une entreprise internationale &nbsp;|&nbsp; 3. dans une université à Rome
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="checkEx('ex2')">✅ Vérifier</button>
+            <button class="btn btn-secondary" onclick="resetEx('ex2')">🔄 Reset</button>
+        </div>
+        <div class="score-box" id="score-ex2"></div>
+    </div>
+
+    <div class="exercise" id="ex3">
+        <h3><span class="ex-num">3</span> Professions artistiques — Complète</h3>
+        <div id="ex3-items">
+            <div class="ex-item"><span class="ex-num-s">a</span><span>Mohamed Mbougar Sarr est un <input class="blank" data-answer="écrivain" placeholder="profession"> sénégalais.</span></div>
+            <div class="ex-item"><span class="ex-num-s">b</span><span>Virginie Efira est une <input class="blank" data-answer="actrice" placeholder="profession"> franco-belge.</span></div>
+            <div class="ex-item"><span class="ex-num-s">c</span><span>Aya Nakamura est une <input class="blank" data-answer="chanteuse" placeholder="profession"> malienne.</span></div>
+            <div class="ex-item"><span class="ex-num-s">d</span><span>Manu Katché est un <input class="blank" data-answer="musicien" placeholder="profession"> français.</span></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="checkEx('ex3')">✅ Vérifier</button>
+            <button class="btn btn-secondary" onclick="resetEx('ex3')">🔄 Reset</button>
+        </div>
+        <div class="score-box" id="score-ex3"></div>
+    </div>
+
+    <!-- PRODUCTION ÉCRITE -->
+    <div class="exercise">
+        <h3><span class="ex-num">5</span> ✍️ Production écrite</h3>
+        <p style="color:#4a5568; font-size:14px; margin-bottom:16px;">
+            Écrivez une courte biographie (8-10 lignes) d'une personne de votre choix — une célébrité, un(e) ami(e) ou un membre de votre famille. Utilisez au moins <strong>8 mots du vocabulaire</strong> de cette leçon et conjuguez au passé composé.
+        </p>
+        <div class="prod-box">
+            <textarea placeholder="Exemple : Mon actrice préférée est Virginie Efira. Elle est née en Belgique en 1977. Elle a grandi à Bruxelles. Elle a fait ses études de théâtre et elle est devenue actrice. Elle s'est installée en France et elle a eu beaucoup de succès…"></textarea>
+        </div>
+        <div style="margin-top:14px; padding:14px; background:#f3e5f5; border-radius:10px; font-size:13px; color:#7b1fa2; direction:rtl; text-align:right; line-height:1.9;">
+            <strong>راهنما :</strong> از این کلمات استفاده کن: naître · grandir · faire ses études · s'installer · se marier · avoir un enfant · tomber amoureux · déménager · obtenir un diplôme · travailler dans une entreprise
+        </div>
+    </div>
+
+</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>👤 Hoda KHEDMATI — Professeur de Français</p>
+    <p>📙 Édito A2 · Unité 1 — Vocabulaire : Parcours de vie</p>
+    <p style="margin-top:10px;"><a href="../../../../index.html">← Retour à la bibliothèque de Mehr Afarin</a></p>
+    <p style="margin-top:8px; opacity:0.7; font-size:12px;">Français avec Hoda © 2025</p>
+</div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function togglePhrase(el) {
+    el.classList.toggle('open');
+    const toggle = el.querySelector('.phrase-toggle');
+    if (toggle) toggle.textContent = el.classList.contains('open') ? '👆 masquer' : '👆 voir la traduction';
+}
+
+function normalize(str) {
+    return str.trim().toLowerCase()
+        .replace(/[éèêë]/g,'e').replace(/[àâ]/g,'a')
+        .replace(/[îï]/g,'i').replace(/[ôö]/g,'o')
+        .replace(/[ùûü]/g,'u').replace(/ç/g,'c')
+        .replace(/\s+/g,' ');
+}
+
+function checkEx(exId) {
+    const blanks = document.querySelectorAll('#' + exId + ' .blank');
+    let correct = 0, total = 0;
+    blanks.forEach(b => {
+        total++;
+        const answers = b.dataset.answer.split('/').map(a => normalize(a.trim()));
+        const userVal = normalize(b.value);
+        if (answers.some(a => userVal === a || userVal.replace(/[()]/g,'') === a.replace(/[()]/g,''))) {
+            b.classList.add('correct'); b.classList.remove('wrong'); correct++;
+        } else {
+            b.classList.add('wrong'); b.classList.remove('correct');
+        }
+    });
+    const pct = Math.round((correct/total)*100);
+    const msg = pct===100 ? '🎉 Parfait !' : pct>=70 ? '👍 Bien !' : '💪 Continue !';
+    const scoreEl = document.getElementById('score-' + exId);
+    scoreEl.innerHTML = `<div class="score-num">${correct} / ${total}</div><div class="score-label">${pct}% · ${msg}</div>`;
+    scoreEl.classList.add('show');
+}
+
+function resetEx(exId) {
+    document.querySelectorAll('#' + exId + ' .blank').forEach(b => {
+        b.value = ''; b.classList.remove('correct','wrong');
+    });
+    const s = document.getElementById('score-' + exId);
+    if(s) s.classList.remove('show');
+}
+
+window.addEventListener('scroll', () => {
+    document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset > 300);
+});
+</script>
+</body>
+</html>
