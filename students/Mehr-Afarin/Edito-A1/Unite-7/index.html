@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 7</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#26251F; --soft:#5E5A50; --line:#E7E1D5; --cream:#F7F5EF;
+    --gram:#2B6E73; --gram-bg:#E2EFEF;
+    --verbe:#5F8C63; --verbe-bg:#E8F1E7;
+    --vocab:#C2603B; --vocab-bg:#FAEAE2;
+    --phon:#BE911F; --phon-bg:#FAF1D6;
+    --dia:#C04A6A; --dia-bg:#FAE7EC;
+    --lect:#3E6FA0; --lect-bg:#E7EEF7;
+    --conseil:#A6781C; --conseil-bg:#FAF2DA;
+    --cult:#6A5BA0; --cult-bg:#ECE9F7;
+    --delf:#9B4636; --delf-bg:#F6E7E2;
+    --a0:#5F8C63; --a1:#2B6E73; --ap:#C2603B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #CBBA9C; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #E3D8C2; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.4pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.5pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#FAF7F0; border-right:5px solid #CBBA9C; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#AFA48C; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F3DDB0; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+  .formula{ background:#fff; border:1.5px dashed var(--gram); border-radius:8px; padding:10px 13px; text-align:center; font-size:11pt; margin:8px 0; font-family:'Poppins'; color:var(--gram);}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#2B6E73 0%,#5F8C63 45%,#C2603B 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:38pt; line-height:1.06; margin:9px 0 4px;">Bienvenue chez moi !</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 7 — le logement · les meubles · localiser · les règles</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Pièces, meubles, localiser.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Pronoms COD, obligation, location.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Textes longs, annonces, DELF + mémo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#2B6E73; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۷ «به خانهٔ من خوش آمدید!»</div>
+    <div class="fa">این جزوه فصل هفتم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (اتاق‌ها، مبلمان، مکان‌یابی)، سپس A1 (ضمیرهای مفعولی مستقیم COD، بایدها و نبایدها، اطلاعات دربارهٔ خانه و بیان مشکل) و در پایان A1+ (متن‌های بلند، آگهی اجاره و تمرین DELF) به‌علاوهٔ یک صفحهٔ خلاصه. همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--gram)">Grammaire</span><span class="pill" style="color:var(--verbe)">Verbes</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Les pièces de la maison</li><li>Les meubles &amp; l'électroménager</li><li>Localiser : prépositions &amp; étages</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>Les pronoms COD (<i>le, la, l', les</i>)</li><li>L'obligation et l'interdiction (<i>il faut, devoir…</i>)</li><li>S'informer sur un logement (l'immeuble, la location)</li><li>Parler d'un problème (pannes, réparations)</li><li>Phonétique : <i>le</i> / <i>les</i> · les liaisons</li><li>Dialogue + texte « Mon nouvel appartement »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Mon logement idéal »</li><li>Production écrite : annonce + message au propriétaire</li><li>Production orale : visiter un appartement</li><li>DELF A1 — Compréhension (une annonce)</li><li>Culture : le logement en France · mémo · bilan</li></ul></div>
+</div>
+
+<!-- ===================== A0 : PIÈCES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les pièces de la maison <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.2pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>l'entrée</td><td class="fa">ورودی</td><td>le couloir</td><td class="fa">راهرو</td></tr>
+    <tr><td>la cuisine</td><td class="fa">آشپزخانه</td><td>le salon</td><td class="fa">پذیرایی</td></tr>
+    <tr><td>la chambre</td><td class="fa">اتاق خواب</td><td>la salle de bains</td><td class="fa">حمام</td></tr>
+    <tr><td>les toilettes</td><td class="fa">دستشویی</td><td>la salle à manger</td><td class="fa">اتاق غذاخوری</td></tr>
+    <tr><td>le balcon</td><td class="fa">بالکن</td><td>la terrasse</td><td class="fa">تراس</td></tr>
+    <tr><td>le jardin</td><td class="fa">باغ/حیاط</td><td>le garage</td><td class="fa">پارکینگ</td></tr></table>
+
+  <div class="card vocab"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Dans mon appartement, il y a <span class="key">trois pièces</span>.</li>
+      <li>La cuisine est <span class="key">à côté du</span> salon.</li>
+      <li>Je dors dans <span class="key">la chambre</span>.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">اتاق‌های خانه</div>
+    <div class="fa">اتاق‌ها: l'entrée (ورودی)، le couloir (راهرو)، la cuisine (آشپزخانه)، le salon (پذیرایی)، la chambre (اتاق خواب)، la salle de bains (حمام)، les toilettes (دستشویی)، le balcon (بالکن). مثال: «Il y a trois pièces» (سه اتاق هست).</div></div>
+</div>
+
+<!-- ===================== A0 : MEUBLES ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les meubles &amp; l'électroménager <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Les meubles</h3>
+    <span class="chip">le lit تخت</span><span class="chip">la table میز</span>
+    <span class="chip">la chaise صندلی</span><span class="chip">le canapé مبل</span>
+    <span class="chip">le fauteuil مبل تک‌نفره</span><span class="chip">l'armoire کمد</span>
+    <span class="chip">l'étagère قفسه</span><span class="chip">le bureau میز کار</span></div>
+
+  <div class="card vocab"><h3>L'électroménager</h3>
+    <span class="chip">le frigo یخچال</span><span class="chip">le four فر</span>
+    <span class="chip">la cuisinière اجاق</span><span class="chip">le micro-ondes مایکروویو</span>
+    <span class="chip">le lave-linge ماشین لباسشویی</span><span class="chip">le lave-vaisselle ماشین ظرفشویی</span></div>
+
+  <div class="tip"><span class="star">Phrase A0 :</span> <i>Dans la cuisine, il y a <span class="key">un frigo</span> et <span class="key">une table</span>. Dans la chambre, il y a <span class="key">un lit</span> et <span class="key">une armoire</span>.</i></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">مبلمان و لوازم خانگی</div>
+    <div class="fa">مبلمان: le lit (تخت)، la table (میز)، la chaise (صندلی)، le canapé (مبل)، l'armoire (کمد)، l'étagère (قفسه)، le bureau (میز کار). لوازم برقی: le frigo (یخچال)، le four (فر)، le micro-ondes (مایکروویو)، le lave-linge (لباسشویی)، le lave-vaisselle (ظرفشویی).</div></div>
+</div>
+
+<!-- ===================== A0 : LOCALISER ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A0</div>
+    <h1>Localiser dans la maison <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="two">
+    <div><table class="tg" style="font-size:10.3pt;"><tr><th>Préposition</th><th>فارسی</th></tr>
+      <tr><td><span class="hl">sur</span> / <span class="hl">sous</span></td><td class="fa">روی / زیر</td></tr>
+      <tr><td><span class="hl">dans</span></td><td class="fa">داخلِ</td></tr>
+      <tr><td><span class="hl">à côté de</span></td><td class="fa">کنارِ</td></tr>
+      <tr><td><span class="hl">en face de</span></td><td class="fa">روبه‌رویِ</td></tr></table></div>
+    <div><table class="tg" style="font-size:10.3pt;"><tr><th>L'immeuble</th><th>فارسی</th></tr>
+      <tr><td>le <span class="hl">rez-de-chaussée</span></td><td class="fa">طبقهٔ همکف</td></tr>
+      <tr><td>au 1ᵉʳ / 2ᵉ <span class="hl">étage</span></td><td class="fa">طبقهٔ اول / دوم</td></tr>
+      <tr><td>en <span class="hl">haut</span> / en <span class="hl">bas</span></td><td class="fa">بالا / پایین</td></tr>
+      <tr><td>l'<span class="hl">ascenseur</span> / l'escalier</td><td class="fa">آسانسور / پله</td></tr></table></div>
+  </div>
+
+  <div class="card gram"><h3>Exemples</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Le canapé est <span class="key">dans</span> le salon.</li>
+      <li>J'habite <span class="key">au troisième étage</span>.</li>
+      <li>La salle de bains est <span class="key">en face de</span> la chambre.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">مکان‌یابی در خانه</div>
+    <div class="fa">برای محل چیزها: sur (روی)، sous (زیر)، dans (داخل)، à côté de (کنار)، en face de (روبه‌رو). در ساختمان: le rez-de-chaussée (همکف)، au premier étage (طبقهٔ اول)، en haut/en bas (بالا/پایین)، l'ascenseur (آسانسور).</div></div>
+</div>
+
+<!-- ===================== A1 : PRONOMS COD ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Les pronoms COD : le · la · l' · les <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils remplacent un nom <b>complément d'objet direct</b> déjà connu, pour ne pas le répéter.</p>
+
+  <table class="tg"><tr><th>Pronom</th><th>Remplace…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">le</span></td><td>nom masculin</td><td>Le canapé ? Je <span class="hl">le</span> prends.</td></tr>
+    <tr><td><span class="hl">la</span></td><td>nom féminin</td><td>La table ? Je <span class="hl">la</span> vois.</td></tr>
+    <tr><td><span class="hl">l'</span></td><td>devant voyelle</td><td>L'appartement ? Je <span class="hl">l'</span>adore.</td></tr>
+    <tr><td><span class="hl">les</span></td><td>pluriel</td><td>Les clés ? Je <span class="hl">les</span> cherche.</td></tr></table>
+
+  <div class="card gram"><h3>La place du pronom</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li><b>Avant le verbe :</b> Tu connais Marie ? — Oui, je <span class="key">la</span> connais.</li>
+      <li><b>Négatif :</b> Je ne <span class="key">le</span> connais pas.</li>
+      <li><b>Avec un infinitif :</b> Je vais <span class="key">le</span> louer. · Je dois <span class="key">la</span> payer.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">ضمیرهای مفعولی مستقیم (COD)</div>
+    <div class="fa">این ضمیرها جای مفعولِ مستقیمِ شناخته‌شده می‌نشینند تا تکرار نشود: le (مذکر)، la (مؤنث)، l' (پیش از صدادار)، les (جمع). جایگاه: قبل از فعل می‌آیند: «Je le prends» (آن را می‌گیرم)، منفی «Je ne le connais pas»، با مصدر «Je vais le louer».</div></div>
+</div>
+
+<!-- ===================== A1 : OBLIGATION / INTERDICTION ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>L'obligation &amp; l'interdiction <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>✅ L'obligation</h3>
+      <ul class="clean" style="font-size:10.6pt;">
+        <li><span class="key">Il faut</span> + infinitif : <i>Il faut payer le loyer.</i></li>
+        <li><span class="key">devoir</span> + infinitif : <i>Je dois ranger.</i></li>
+        <li><i>Il est obligatoire de</i> trier les déchets.</li></ul></div>
+    <div class="card gram" style="margin-top:0;"><h3>⛔ L'interdiction</h3>
+      <ul class="clean" style="font-size:10.6pt;">
+        <li><span class="key">Il est interdit de</span> + inf : <i>Il est interdit de fumer.</i></li>
+        <li><span class="key">Ne pas</span> + inf (consigne) : <i>Ne pas faire de bruit.</i></li>
+        <li><i>Défense de</i> stationner.</li></ul></div>
+  </div>
+
+  <div class="card verbe"><h3>DEVOIR (présent)</h3>
+    <table class="tv" style="margin-top:5px; font-size:10.3pt;"><tr><td>je <span class="hl">dois</span></td><td>nous <span class="hl">devons</span></td><td>il <span class="hl">doit</span></td></tr>
+      <tr><td>tu <span class="hl">dois</span></td><td>vous <span class="hl">devez</span></td><td>ils <span class="hl">doivent</span></td></tr></table></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">باید و نباید</div>
+    <div class="fa">اجبار: «Il faut + مصدر» (باید…)، «devoir + مصدر» (Je dois = باید)، «Il est obligatoire de…». منع: «Il est interdit de + مصدر» (… ممنوع است)، «Ne pas + مصدر» (در تابلوها)، «Défense de…». فعل devoir: je dois، tu dois، il doit، nous devons، vous devez، ils doivent.</div></div>
+</div>
+
+<!-- ===================== A1 : S'INFORMER LOGEMENT ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire + Communication · Niveau A1</div>
+    <h1>S'informer sur un logement <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Le vocabulaire de la location</h3>
+    <span class="chip">l'immeuble ساختمان</span><span class="chip">le loyer اجاره</span>
+    <span class="chip">les charges شارژ/هزینه‌ها</span><span class="chip">le/la propriétaire مالک</span>
+    <span class="chip">le/la locataire مستأجر</span><span class="chip">meublé مبله</span>
+    <span class="chip">la surface (m²) متراژ</span><span class="chip">déménager اسباب‌کشی</span></div>
+
+  <div class="card vocab"><h3>Les questions à poser</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>C'est combien, <span class="key">le loyer</span> ?</li>
+      <li>Il y a <span class="key">combien de pièces</span> ? Quelle <span class="key">surface</span> ?</li>
+      <li>C'est <span class="key">meublé</span> ou vide ? Il y a un ascenseur ?</li>
+      <li>Les <span class="key">charges</span> sont comprises ?</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">پرس‌وجو دربارهٔ خانه</div>
+    <div class="fa">واژگان اجاره: l'immeuble (ساختمان)، le loyer (اجاره)، les charges (هزینه‌ها/شارژ)، le propriétaire (مالک)، le locataire (مستأجر)، meublé (مبله)، déménager (اسباب‌کشی). سؤال‌ها: «C'est combien le loyer؟» (اجاره چقدر است؟)، «Combien de pièces؟» (چند اتاق؟)، «C'est meublé؟» (مبله است؟).</div></div>
+</div>
+
+<!-- ===================== A1 : PROBLÈME ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication · Niveau A1</div>
+    <h1>Parler d'un problème <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Quand ça ne va pas…</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Ça ne <span class="key">marche</span> pas. / Ça ne <span class="key">fonctionne</span> pas.</li>
+      <li>C'est <span class="key">cassé</span>. · Il y a une <span class="key">fuite</span> d'eau.</li>
+      <li>Le chauffage est <span class="key">en panne</span>.</li>
+      <li>Le robinet <span class="key">fuit</span>. · L'ascenseur ne marche pas.</li></ul></div>
+
+  <div class="card dia"><h3>Demander de l'aide</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Il faut <span class="key">réparer</span> le chauffage.</li>
+      <li>Pouvez-vous <span class="key">envoyer</span> quelqu'un ?</li>
+      <li>Je dois <span class="key">appeler</span> le propriétaire.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">بیان مشکل</div>
+    <div class="fa">وقتی چیزی خراب است: «Ça ne marche pas» (کار نمی‌کند)، «C'est cassé» (شکسته است)، «Il y a une fuite» (نشتی هست)، «Le chauffage est en panne» (شوفاژ خراب است)، «Le robinet fuit» (شیر چکه می‌کند). درخواست کمک: «Il faut réparer…» (باید تعمیر شود)، «Pouvez-vous envoyer quelqu'un؟» (می‌توانید کسی را بفرستید؟).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>Le son <span class="serif" style="font-style:italic">le</span> / <span class="serif" style="font-style:italic">les</span> <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. [ə] comme <i>le</i> vs [e] comme <i>les</i></h3>
+    <div class="two"><div><b>[ə]</b> (bouche presque fermée) :<br>
+      <i>le · je · de · ne · que</i></div>
+      <div><b>[e]</b> (bouche souriante) :<br>
+      <i>les · des · mes · et · chez</i></div></div>
+    <p class="small" style="margin-top:5px;">C'est important : <i>le</i> livre (1) ≠ <i>les</i> livres (plusieurs) !</p></div>
+
+  <div class="card phon"><h3>2. La liaison avec « les »</h3>
+    <ul class="clean" style="margin-top:5px;">
+      <li>les_appartements → [le<span class="key">z</span>apaʁtəmɑ̃]</li>
+      <li>les_escaliers → [le<span class="key">z</span>ɛskalje]</li>
+      <li>des_amis → [de<span class="key">z</span>ami]</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ le / les</div>
+    <div class="fa">صدای [ə] در le، je، de با دهان تقریباً بسته؛ صدای [e] در les، des، mes با لب‌های کشیده. تفاوت مهم است: «le livre» (یک کتاب) با «les livres» (چند کتاب). در liaison: les appartements → لِزاپارتمان.</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Visiter un appartement <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Agent :</b> Bonjour ! Voici l'appartement. Il fait 45 mètres carrés.</div>
+    <div class="dlg"><b class="B">Cliente :</b> Il y a combien de pièces ?</div>
+    <div class="dlg"><b class="A">Agent :</b> Deux : un salon et une chambre. La cuisine est équipée.</div>
+    <div class="dlg"><b class="B">Cliente :</b> C'est lumineux, j'aime beaucoup. C'est à quel étage ?</div>
+    <div class="dlg"><b class="A">Agent :</b> Au troisième, avec un ascenseur. Il y a aussi un petit balcon.</div>
+    <div class="dlg"><b class="B">Cliente :</b> Et le loyer, c'est combien ?</div>
+    <div class="dlg"><b class="A">Agent :</b> 650 euros, charges comprises. Mais il est interdit de fumer dans l'immeuble.</div>
+    <div class="dlg"><b class="B">Cliente :</b> Pas de problème ! Je le prends. Quand est-il libre ?</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>مشاور:</b> سلام! این هم آپارتمان. ۴۵ مترمربع است.<br>
+      <b>مشتری:</b> چند اتاق دارد؟<br>
+      <b>مشاور:</b> دو تا: یک پذیرایی و یک اتاق خواب. آشپزخانه مجهز است.<br>
+      <b>مشتری:</b> روشن است، خیلی دوست دارم. طبقهٔ چند است؟<br>
+      <b>مشاور:</b> طبقهٔ سوم، با آسانسور. یک بالکن کوچک هم دارد.<br>
+      <b>مشتری:</b> اجاره چقدر است؟<br>
+      <b>مشاور:</b> ۶۵۰ یورو، با هزینه‌ها. اما سیگارکشیدن در ساختمان ممنوع است.<br>
+      <b>مشتری:</b> مشکلی نیست! می‌گیرمش. کِی خالی است؟
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Mon nouvel appartement <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Le mois dernier, j'ai déménagé. Maintenant, j'habite dans un petit appartement au troisième étage d'un immeuble, en centre-ville. Il y a deux pièces : une chambre et un salon avec une cuisine ouverte.</p>
+    <p>Ce n'est pas très grand, mais je l'adore ! Dans le salon, j'ai mis un canapé, une table et une grande étagère pour mes livres. Il y a aussi un balcon : le matin, j'y prends mon café. L'immeuble est calme et les voisins sont sympas.</p>
+    <p>Le loyer n'est pas trop cher et les charges sont comprises. Le seul problème, c'est l'ascenseur : il est souvent en panne ! Mais je suis très content de mon nouveau chez-moi. <span class="q">Et toi, comment est ton logement ?</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">ماه گذشته اسباب‌کشی کردم. حالا در یک آپارتمان کوچک در طبقهٔ سوم یک ساختمان، در مرکز شهر زندگی می‌کنم. دو اتاق دارد: یک اتاق خواب و یک پذیرایی با آشپزخانهٔ open. خیلی بزرگ نیست، اما عاشقشم! در پذیرایی یک مبل، یک میز و یک قفسهٔ بزرگ برای کتاب‌هایم گذاشته‌ام. یک بالکن هم دارد: صبح‌ها آنجا قهوه‌ام را می‌خورم. ساختمان آرام است و همسایه‌ها خوب‌اند. اجاره خیلی گران نیست و هزینه‌ها هم شامل است. تنها مشکل، آسانسور است: اغلب خراب است! اما از خانهٔ جدیدم خیلی راضی‌ام. خانهٔ تو چطور است؟</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Mon logement idéal <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read" style="font-size:11.6pt;">
+    <p>Aujourd'hui, j'habite dans un studio, mais je rêve d'un autre logement. Mon appartement idéal n'est pas immense ; il est lumineux et confortable. Je voudrais un grand salon avec un canapé près de la fenêtre, parce que j'aime lire au soleil. La cuisine doit être ouverte sur le salon, pour parler avec mes amis quand je cuisine.</p>
+    <p>Pour moi, le quartier est aussi important que l'appartement. Il faut des commerces, un parc et de bons transports. Je ne veux pas habiter trop loin du centre. Le calme compte beaucoup : dans un immeuble, il est interdit de faire du bruit la nuit, et c'est très bien comme ça !</p>
+    <p>Quand on cherche un logement, il faut faire attention à beaucoup de choses : le loyer, les charges, l'étage, l'ascenseur. Avant de signer, on doit toujours visiter et poser des questions. Un bon logement, ce n'est pas seulement des murs : c'est un endroit où on se sent bien, où on peut inviter les gens qu'on aime. <span class="q">Et toi, c'est quoi, ton logement idéal ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> pronoms COD, <i>il faut / devoir / il est interdit de</i>, <i>parce que / pour / quand</i>, prépositions de lieu.</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">امروز در یک استودیو زندگی می‌کنم، اما رؤیای خانهٔ دیگری را دارم. آپارتمان ایده‌آلِ من خیلی بزرگ نیست؛ روشن و راحت است. یک پذیرایی بزرگ می‌خواهم با مبلی کنار پنجره، چون دوست دارم زیر نور آفتاب کتاب بخوانم. آشپزخانه باید به پذیرایی باز باشد تا وقتی آشپزی می‌کنم با دوستانم حرف بزنم. برای من، محله به‌اندازهٔ خودِ آپارتمان مهم است. باید مغازه، پارک و حمل‌ونقل خوب باشد. نمی‌خواهم خیلی دور از مرکز زندگی کنم. آرامش خیلی مهم است: در ساختمان، شب‌ها سروصدا ممنوع است، و همین خیلی خوب است! وقتی دنبال خانه می‌گردیم، باید به چیزهای زیادی توجه کنیم: اجاره، هزینه‌ها، طبقه، آسانسور. پیش از امضا، همیشه باید بازدید کنیم و سؤال بپرسیم. خانهٔ خوب فقط چند دیوار نیست: جایی است که در آن احساس خوبی داری و می‌توانی کسانی را که دوست داری دعوت کنی. خانهٔ ایده‌آلِ تو چیست؟</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Annonce &amp; message au propriétaire <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>🏠 Annonce de location</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.2pt; line-height:1.5; margin:0;">
+      <b>À louer :</b> studio meublé, 25 m².<br>
+      3ᵉ étage avec ascenseur. Cuisine équipée, balcon.<br>
+      Quartier calme, proche du métro.<br>
+      <b>Loyer : 550 €/mois</b>, charges comprises.<br>
+      Libre le 1ᵉʳ septembre. Contact : 06 12 …</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>✉️ Signaler un problème</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.2pt; line-height:1.5; margin:0;">
+      Bonjour Monsieur,<br>
+      Je vous écris parce que le chauffage ne marche plus depuis hier. Il fait très froid.<br>
+      Pouvez-vous envoyer quelqu'un pour le réparer ?<br>
+      Merci d'avance. Cordialement, Hoda</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan à réutiliser</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span><b>Annonce :</b> type + surface + étage + équipements + loyer + dispo</li>
+      <li><span class="num">2</span><b>Message :</b> salutation + le problème + la demande + formule polie</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ نوشته‌ها</div>
+    <div class="fa">آگهی اجاره: «اجاره: استودیوی مبله، ۲۵ مترمربع، طبقهٔ سوم با آسانسور، آشپزخانهٔ مجهز، بالکن، محلهٔ آرام نزدیک مترو. اجاره: ۵۵۰ یورو در ماه با هزینه‌ها. از اول سپتامبر خالی.» پیام به مالک: «سلام آقا، می‌نویسم چون شوفاژ از دیروز کار نمی‌کند و خیلی سرد است. می‌توانید کسی را برای تعمیر بفرستید؟ پیشاپیش ممنون.»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Décrire &amp; visiter un logement <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue (1 minute) — mon logement</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Où :</b> type de logement, étage, quartier.</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Les pièces</b> et les meubles importants.</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Ce que j'aime / un problème</b> (l'ascenseur…).</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Mon logement idéal</b> et pourquoi.</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — la visite</h3>
+    <ul class="clean"><li><b>Agent :</b> présente l'appartement, donne le loyer, les règles (il faut / il est interdit de…).</li>
+      <li><b>Client :</b> pose des questions (pièces, étage, charges) et réagit.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) نوع خانه، طبقه، محله ۲) اتاق‌ها و مبلمان مهم ۳) چه چیزی را دوست داری یا چه مشکلی هست ۴) خانهٔ ایده‌آلت و دلیلش. سپس نقش‌بازی: یکی نقش مشاور املاک (معرفی، اجاره، قوانین) و دیگری نقش مشتری (سؤال‌ها) را بازی کند.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « annonce immobilière »</h3>
+    <ul class="clean"><li>Repère la <b>surface</b>, le <b>nombre de pièces</b>, l'<b>étage</b> et le <b>loyer</b>.</li>
+      <li>Cherche la <b>date de disponibilité</b> et les <b>charges</b>.</li>
+      <li>Lis les questions <b>avant</b> de relire le texte.</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>À LOUER — Bel appartement</b></p>
+    <p>2 pièces, 45 m², 2ᵉ étage (avec ascenseur).<br>
+    Cuisine équipée, salle de bains, balcon.<br>
+    Loyer : 700 € + 50 € de charges.<br>
+    Proche des transports et des commerces.<br>
+    Libre à partir du 15 septembre.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Combien de pièces ?</li>
+        <li>2. À quel étage ?</li><li>3. Quel est le loyer (sans charges) ?</li>
+        <li>4. Quand est-il libre ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. 2 pièces.</li>
+        <li>2. Au 2ᵉ étage.</li><li>3. 700 €.</li><li>4. À partir du 15 septembre.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: متراژ، تعداد اتاق، طبقه و اجاره را پیدا کن؛ تاریخ خالی‌شدن و هزینه‌ها را بیاب؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان. در آگهی نمونه: ۲ اتاق، طبقهٔ دوم، اجاره ۷۰۰ یورو (بدون هزینه)، از ۱۵ سپتامبر خالی است.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>Le logement en France</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> beaucoup de gens vivent en appartement, surtout dans les villes. Les étudiants et les jeunes choisissent souvent un <b>studio</b> ou la <b>colocation</b> pour partager le loyer. Quand on loue, on paie un <b>loyer</b> chaque mois, plus des <b>charges</b> (eau, chauffage, entretien de l'immeuble).</p>
+    <p>Avant d'emménager, on fait un <b>état des lieux</b> avec le propriétaire : on note l'état de chaque pièce. Dans un immeuble, il y a des règles à respecter : il est souvent interdit de faire du bruit la nuit. Bien s'entendre avec ses <b>voisins</b>, c'est important pour vivre tranquille !</p>
+  </div>
+
+  <table class="tc" style="font-size:10.3pt; margin-top:6px;"><tr><th>Mot utile</th><th>Sens</th></tr>
+    <tr><td>la colocation</td><td>partager un logement à plusieurs</td></tr>
+    <tr><td>les charges</td><td>frais en plus du loyer</td></tr>
+    <tr><td>l'état des lieux</td><td>vérifier l'appartement avant/après</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — مسکن در فرانسه</div>
+    <div class="fa">در فرانسه بسیاری از مردم، به‌ویژه در شهرها، در آپارتمان زندگی می‌کنند. دانشجوها و جوان‌ها اغلب استودیو یا «colocation» (هم‌خانگی) را برای تقسیم اجاره انتخاب می‌کنند. هنگام اجاره، هر ماه «loyer» (اجاره) به‌علاوهٔ «charges» (هزینه‌های آب، گرمایش، نگهداری) پرداخت می‌شود. پیش از اسباب‌کشی، با مالک «état des lieux» (صورت‌وضعیت) می‌گیرند. در ساختمان قوانینی هست؛ اغلب شب‌ها سروصدا ممنوع است. رابطهٔ خوب با همسایه‌ها مهم است!</div></div>
+</div>
+
+<!-- ===================== MÉMO ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Antisèche · Bonus</div>
+    <h1>Le mémo de l'unité 7 <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">Les pronoms COD</h4>
+      <p class="small" style="font-size:10pt;">le / la / l' / les → <b>avant le verbe</b>.<br>
+      Je <i>le</i> prends · Je ne <i>la</i> vois pas · Je vais <i>les</i> louer.</p></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Obligation / interdiction</h4>
+      <p class="small" style="font-size:10pt;">il faut + inf · devoir + inf<br>il est interdit de + inf · ne pas + inf</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">Le logement</h4>
+      <p class="small" style="font-size:10pt;">pièces · meubles · électroménager · étage · loyer · charges · meublé.</p></div>
+    <div class="box" style="border-left:4px solid var(--dia)"><h4 style="color:var(--dia)">Un problème</h4>
+      <p class="small" style="font-size:10pt;">Ça ne marche pas · c'est cassé · une fuite · en panne · il faut réparer.</p></div>
+  </div>
+
+  <div class="card conseil" style="margin-top:10px;"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>J'habite <span class="key">au 3ᵉ étage</span> d'un immeuble.</li>
+      <li>L'appartement ? Je <span class="key">le</span> prends !</li>
+      <li><span class="key">Il faut</span> payer le loyer le 1ᵉʳ du mois.</li>
+      <li><span class="key">Il est interdit de</span> faire du bruit la nuit.</li>
+      <li>Le chauffage <span class="key">est en panne</span>, il faut le réparer.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">برگهٔ خلاصهٔ واحد ۷</div>
+    <div class="fa">ضمیرهای COD (le/la/l'/les) قبل از فعل. اجبار: il faut/devoir + مصدر؛ منع: il est interdit de / ne pas + مصدر. واژگان خانه: اتاق‌ها، مبلمان، لوازم، طبقه، اجاره، هزینه‌ها. مشکل: «Ça ne marche pas»، «en panne»، «il faut réparer». پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Fais le tour de ton logement à voix haute : nomme chaque pièce et chaque meuble.</li>
+      <li>Entraîne les pronoms COD : « Tu prends le canapé ? — Oui, je <b>le</b> prends. »</li>
+      <li>Mémorise des blocs : <i>« Il faut… », « Il est interdit de… ».</i></li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Place le pronom COD <b>avant</b> le verbe (ou l'infinitif).</li>
+      <li>Réutilise les modèles : annonce de location, message au propriétaire.</li>
+      <li>Utilise <i>il faut / devoir</i> pour exprimer les règles.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Sers-toi du mémo comme antisèche.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: خانه‌ات را بلند توصیف کن و هر اتاق و وسیله را نام ببر؛ ضمیرهای COD را تمرین کن («Je le prends»). برای نوشتن: ضمیر COD را قبل از فعل بگذار و از il faut/devoir برای بیان قوانین استفاده کن. از مدل‌های آگهی و پیام کمک بگیر و در جلسات ۱۵ دقیقه‌ای کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>☐ Nommer les pièces, les meubles, l'électroménager.</li>
+      <li>☐ Localiser un objet ou une pièce.</li>
+      <li>☐ Utiliser les pronoms COD (le, la, l', les).</li>
+      <li>☐ Exprimer une obligation / une interdiction.</li>
+      <li>☐ M'informer sur un logement (loyer, pièces…).</li>
+      <li>☐ Signaler un problème dans un logement.</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. COD : « Tu vois la table ? — Oui, je ___ vois. »</li>
+        <li>2. COD : « Tu prends les clés ? — Oui, je ___ prends. »</li>
+        <li>3. Obligation : « ___ payer le loyer. » (il faut)</li>
+        <li>4. Interdiction : « ___ fumer. »</li>
+        <li>5. Problème : « Le chauffage ___ (panne). »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. je la vois</li>
+        <li>2. je les prends</li>
+        <li>3. Il faut payer le loyer.</li>
+        <li>4. Il est interdit de fumer.</li>
+        <li>5. est en panne</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:15px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#2B6E73,#C2603B); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 7 terminée — fais comme chez toi ! 🏡</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد هفتم تمام شد — راحت باش!</div>
+  </div>
+</div>
+
+</body>
+</html>
