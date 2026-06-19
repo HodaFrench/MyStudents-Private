@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditionnel présent — Soroush</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --navy:#0d1b2a; --navy-mid:#1b2e45; --navy-soft:#2c4a6e;
+      --blue:#1565c0; --blue-soft:#1976d2; --blue-pale:#e3f2fd; --blue-mist:#f0f7ff;
+      --paper:#f8fafc; --ink:#1a2332; --gray:#64748b; --line:#cbd5e1; --white:#ffffff;
+      --green:#1b5e20; --green-soft:#2e7d32; --green-pale:#e8f5e9;
+      --red:#b71c1c; --red-pale:#ffebee; --amber:#e65100; --amber-pale:#fff3e0;
+    }
+    body{font-family:'Segoe UI',Arial,sans-serif; background:var(--paper); color:var(--ink); line-height:1.7; padding:20px;}
+    .wrap{max-width:860px; margin:0 auto;}
+    .topbar{margin-bottom:20px;}
+    .topbar a{display:inline-flex;align-items:center;gap:6px;color:var(--navy);text-decoration:none;font-size:13px;font-weight:600;background:var(--white);border:2px solid var(--line);padding:8px 16px;border-radius:8px;transition:all .2s;}
+    .topbar a:hover{background:var(--navy);color:white;border-color:var(--navy);}
+
+    .header{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:44px 36px;border-radius:16px;text-align:center;margin-bottom:24px;position:relative;overflow:hidden;}
+    .header::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,0.04);border-radius:50%;}
+    .header .tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:12px;}
+    .header h1{font-family:'Roboto',sans-serif;font-size:38px;font-weight:700;margin-bottom:8px;letter-spacing:-1px;}
+    .header .sub{font-size:15px;opacity:0.8;}
+    .header .badge{display:inline-block;background:var(--blue);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-top:12px;letter-spacing:1px;}
+
+    /* TABS */
+    .tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;border-radius:12px 12px 0 0;margin-bottom:0;}
+    .tab{padding:14px 20px;cursor:pointer;font-size:13px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+    .tab:hover{color:var(--blue);}
+    .tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+    .tab-content{background:white;border:2px solid var(--line);border-top:none;border-radius:0 0 12px 12px;padding:32px;}
+    .panel{display:none;} .panel.active{display:block;}
+
+    /* SECTIONS */
+    .sec{margin-bottom:32px;}
+    .sec-title{font-family:'Roboto',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;direction:ltr;}
+    .sec-sub{font-size:13px;color:var(--gray);margin-bottom:18px;direction:rtl;text-align:right;}
+
+    /* FORMULA */
+    .formula{background:var(--blue-mist);border:2px dashed var(--blue-soft);border-radius:12px;padding:20px;text-align:center;margin:18px 0;}
+    .formula .big{font-family:'Roboto',sans-serif;font-size:22px;font-weight:700;color:var(--navy);direction:ltr;}
+    .formula .big .a{color:var(--blue);}
+    .formula .big .b{color:var(--amber);}
+    .formula .note{font-size:13px;color:var(--gray);margin-top:10px;direction:rtl;}
+
+    /* CONJ TABLE */
+    .conj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0;}
+    .conj-card{background:var(--blue-mist);border-radius:10px;overflow:hidden;border:2px solid #bfdbfe;}
+    .conj-card h4{background:var(--navy);color:white;padding:10px 16px;font-family:'Roboto',sans-serif;font-size:15px;text-align:center;direction:ltr;}
+    .conj-card table{width:100%;border-collapse:collapse;}
+    .conj-card td{padding:7px 14px;font-size:14px;border-bottom:1px solid #dbeafe;direction:ltr;}
+    .conj-card td:first-child{color:var(--gray);width:40%;}
+    .conj-card td:last-child{font-weight:600;color:var(--navy);}
+    .conj-card td span.end{color:var(--blue);font-weight:700;}
+
+    /* IRREGULAR TABLE */
+    .irreg-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .irreg-table th{background:var(--navy);color:white;padding:10px 14px;text-align:left;font-size:12px;letter-spacing:0.5px;}
+    .irreg-table td{padding:9px 14px;border-bottom:1px solid var(--line);direction:ltr;}
+    .irreg-table tr:nth-child(even){background:var(--blue-mist);}
+    .irreg-table td:nth-child(2){font-weight:700;color:var(--blue);}
+
+    /* USE BOXES */
+    .use{background:var(--blue-mist);border-right:4px solid var(--blue);border-radius:10px;padding:16px 18px;margin:14px 0;}
+    .use-t{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+    .ex{direction:ltr;text-align:left;font-family:'Roboto',sans-serif;font-size:16px;color:var(--navy);background:white;padding:10px 14px;border-radius:8px;margin:6px 0;line-height:1.6;}
+    .ex .hl{background:rgba(21,101,192,0.15);padding:2px 6px;border-radius:4px;font-weight:700;}
+    .ex-fa{font-size:12px;color:var(--gray);margin:2px 0 8px;direction:rtl;text-align:right;padding:0 4px;}
+    .ex-note{font-size:12px;color:var(--blue);font-style:italic;direction:ltr;padding:0 4px;}
+
+    /* RULE BOX */
+    .rule{background:var(--amber-pale);border-right:5px solid var(--amber);border-radius:10px;padding:16px 18px;margin:16px 0;}
+    .rule.ok{background:var(--green-pale);border-right-color:var(--green-soft);}
+    .rule.danger{background:var(--red-pale);border-right-color:var(--red);}
+    .rule-t{font-size:13px;font-weight:700;margin-bottom:8px;}
+    .rule-t.ok{color:var(--green-soft);}
+    .rule-t.danger{color:var(--red);}
+    .rule-t.warn{color:var(--amber);}
+
+    /* SI TABLE */
+    .si-table{width:100%;border-collapse:collapse;margin:16px 0;}
+    .si-table th{background:var(--navy-soft);color:white;padding:10px 14px;font-size:12px;letter-spacing:0.5px;}
+    .si-table td{padding:10px 14px;border:1px solid var(--line);font-size:14px;direction:ltr;}
+    .si-table tr:nth-child(2){background:var(--blue-mist);}
+    .si-table tr:nth-child(3){background:#fff3e0;}
+    .si-table tr:nth-child(4){background:#fce4ec;}
+    .si-table td:first-child{font-weight:700;color:var(--navy);}
+
+    /* EXERCISES */
+    .ex-block{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:24px;margin-bottom:20px;}
+    .ex-block h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+    .ex-n{background:var(--blue);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+    .q-item{margin-bottom:20px;padding-bottom:20px;border-bottom:1px dashed var(--line);}
+    .q-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+    .q-text{font-size:16px;color:var(--ink);margin-bottom:5px;direction:ltr;text-align:left;font-family:'Roboto',sans-serif;font-weight:600;}
+    .q-fa{font-size:12px;color:var(--gray);margin-bottom:10px;direction:rtl;text-align:right;}
+    .q-opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+    .q-opt{font-family:'Roboto',sans-serif;font-size:15px;font-weight:600;direction:ltr;background:white;border:2px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;transition:all .2s;}
+    .q-opt:hover:not(.done){border-color:var(--blue);background:var(--blue-mist);}
+    .q-opt.correct{background:var(--green-pale);border-color:var(--green-soft);color:var(--green-soft);}
+    .q-opt.wrong{background:var(--red-pale);border-color:var(--red);color:var(--red);}
+    .q-ans{display:none;font-size:13px;line-height:1.9;background:var(--green-pale);border-right:3px solid var(--green-soft);border-radius:8px;padding:10px 14px;margin-top:8px;}
+    .q-ans.show{display:block;}
+    .q-ans b{color:var(--green-soft);}
+
+    .blank-input{display:inline-block;min-width:140px;padding:3px 8px;border:none;border-bottom:2px solid var(--blue);background:transparent;font-size:15px;color:var(--blue);font-weight:600;font-family:'Roboto',sans-serif;outline:none;}
+    .blank-input.ok{border-bottom-color:var(--green-soft);color:var(--green-soft);background:var(--green-pale);border-radius:4px 4px 0 0;}
+    .blank-input.err{border-bottom-color:var(--red);color:var(--red);background:var(--red-pale);border-radius:4px 4px 0 0;}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:all .2s;}
+    .btn-primary{background:var(--navy);color:white;box-shadow:0 4px 12px rgba(13,27,42,0.2);}
+    .btn-primary:hover{background:var(--blue);transform:translateY(-1px);}
+    .btn-secondary{background:var(--blue-pale);color:var(--blue);}
+    .btn-secondary:hover{background:var(--blue-mist);}
+    .btn-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+    .score{background:var(--navy);color:white;padding:14px;border-radius:10px;margin-top:12px;display:none;text-align:center;}
+    .score.show{display:block;}
+    .score .n{font-size:30px;font-weight:700;}
+    .score .l{font-size:12px;opacity:0.8;margin-top:2px;}
+
+    /* B1 UPGRADE BOX */
+    .upgrade{background:linear-gradient(135deg,#1b2e45,#2c4a6e);color:white;border-radius:12px;padding:20px 22px;margin:18px 0;}
+    .upgrade h4{font-size:14px;font-weight:700;margin-bottom:12px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase;}
+    .upgrade .ex{background:rgba(255,255,255,0.1);color:white;}
+    .upgrade .ex .hl{background:rgba(255,255,255,0.2);}
+    .upgrade .ex-fa{color:rgba(255,255,255,0.6);}
+
+    .footer{text-align:center;margin-top:30px;padding:20px;color:var(--gray);font-size:13px;}
+    .footer a{color:var(--blue);text-decoration:none;}
+
+    #scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,0.3);z-index:999;transition:all .3s;}
+    #scrollBtn:hover{background:var(--blue);}
+    #scrollBtn.show{display:block;}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><a href="../../index.html">← Retour à Soroush</a></div>
+
+  <div class="header">
+    <div class="tag">Grammaire · B1</div>
+    <h1>Le Conditionnel présent</h1>
+    <div class="sub">Formation · 5 emplois · Règle du SI · Niveau B1</div>
+    <span class="badge">💭 وجه شرطی حال</span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('formation')">📐 Formation</div>
+    <div class="tab" onclick="showTab('emplois')">🎯 Emplois</div>
+    <div class="tab" onclick="showTab('si')">🔑 Règle du SI</div>
+    <div class="tab" onclick="showTab('b1')">⭐ Niveau B1</div>
+    <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+  </div>
+
+  <div class="tab-content">
+
+    <!-- TAB 1 : FORMATION -->
+    <div class="panel active" id="panel-formation">
+      <div class="sec">
+        <div class="sec-title">1. La formation</div>
+        <div class="sec-sub">چطور می‌سازیم؟ — فرمول طلایی</div>
+
+        <div class="formula">
+          <div class="big"><span class="a">Radical du futur</span> + <span class="b">terminaisons de l'imparfait</span></div>
+          <div class="note">همان ریشه‌ی آینده + پایانه‌های ماضی استمراری: -ais · -ais · -ait · -ions · -iez · -aient</div>
+        </div>
+
+        <div class="conj-grid">
+          <div class="conj-card">
+            <h4>PARLER</h4>
+            <table><tbody>
+              <tr><td>je</td><td>parler<span class="end">ais</span></td></tr>
+              <tr><td>tu</td><td>parler<span class="end">ais</span></td></tr>
+              <tr><td>il/elle</td><td>parler<span class="end">ait</span></td></tr>
+              <tr><td>nous</td><td>parler<span class="end">ions</span></td></tr>
+              <tr><td>vous</td><td>parler<span class="end">iez</span></td></tr>
+              <tr><td>ils/elles</td><td>parler<span class="end">aient</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="conj-card">
+            <h4>FINIR</h4>
+            <table><tbody>
+              <tr><td>je</td><td>finir<span class="end">ais</span></td></tr>
+              <tr><td>tu</td><td>finir<span class="end">ais</span></td></tr>
+              <tr><td>il/elle</td><td>finir<span class="end">ait</span></td></tr>
+              <tr><td>nous</td><td>finir<span class="end">ions</span></td></tr>
+              <tr><td>vous</td><td>finir<span class="end">iez</span></td></tr>
+              <tr><td>ils/elles</td><td>finir<span class="end">aient</span></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+
+        <h3 style="color:var(--navy);font-size:16px;margin:20px 0 12px;">🚨 Verbes irréguliers — à mémoriser !</h3>
+        <table class="irreg-table">
+          <thead><tr><th>Infinitif</th><th>Radical conditionnel</th><th>Exemple (je)</th><th>فارسی</th></tr></thead>
+          <tbody>
+            <tr><td>être</td><td>ser-</td><td>je <strong>serais</strong></td><td>بودم / می‌بودم</td></tr>
+            <tr><td>avoir</td><td>aur-</td><td>j'<strong>aurais</strong></td><td>داشتم / می‌داشتم</td></tr>
+            <tr><td>aller</td><td>ir-</td><td>j'<strong>irais</strong></td><td>می‌رفتم</td></tr>
+            <tr><td>faire</td><td>fer-</td><td>je <strong>ferais</strong></td><td>می‌کردم</td></tr>
+            <tr><td>pouvoir</td><td>pourr-</td><td>je <strong>pourrais</strong></td><td>می‌توانستم</td></tr>
+            <tr><td>vouloir</td><td>voudr-</td><td>je <strong>voudrais</strong></td><td>می‌خواستم</td></tr>
+            <tr><td>venir</td><td>viendr-</td><td>je <strong>viendrais</strong></td><td>می‌آمدم</td></tr>
+            <tr><td>savoir</td><td>saur-</td><td>je <strong>saurais</strong></td><td>می‌دانستم</td></tr>
+            <tr><td>devoir</td><td>devr-</td><td>je <strong>devrais</strong></td><td>باید می‌… (نصیحت)</td></tr>
+            <tr><td>falloir</td><td>faudr-</td><td>il <strong>faudrait</strong></td><td>باید می‌بود / بهتر بود</td></tr>
+            <tr><td>envoyer</td><td>enverr-</td><td>j'<strong>enverrais</strong></td><td>می‌فرستادم</td></tr>
+          </tbody>
+        </table>
+
+        <div class="rule">
+          <div class="rule-t warn">⚡ Astuce futur vs conditionnel :</div>
+          <p style="font-size:14px;line-height:1.8;">à la 1ère personne : je parler<strong>ai</strong> (futur) ↔ je parler<strong>ais</strong> (conditionnel). Teste avec <strong>nous</strong> : <em>nous parlerions</em> = conditionnel ; <em>nous parlerons</em> = futur.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2 : EMPLOIS -->
+    <div class="panel" id="panel-emplois">
+      <div class="sec">
+        <div class="sec-title">2. Les 5 emplois essentiels</div>
+        <div class="sec-sub">۵ کاربرد اصلی که باید بلد باشی</div>
+
+        <div class="use">
+          <div class="use-t">🙏 1. Politesse — درخواست مؤدبانه</div>
+          <div class="ex">Je <span class="hl">voudrais</span> un café, s'il vous plaît.</div>
+          <div class="ex-fa">یک قهوه می‌خواستم لطفاً. (نه: je veux — که خشن است)</div>
+          <div class="ex"><span class="hl">Pourriez</span>-vous m'expliquer ce plan ?</div>
+          <div class="ex-fa">می‌توانستید این پلان را برایم توضیح دهید؟</div>
+          <div class="ex"><span class="hl">Auriez</span>-vous un moment à m'accorder ?</div>
+          <div class="ex-fa">آیا می‌توانستید لحظه‌ای به من اختصاص دهید؟</div>
+        </div>
+
+        <div class="use">
+          <div class="use-t">💭 2. Souhait / Désir — آرزو</div>
+          <div class="ex">J'<span class="hl">aimerais</span> concevoir une maison bioclimatique un jour.</div>
+          <div class="ex-fa">دلم می‌خواست یک روز یک خانه بیوکلیماتیک طراحی کنم.</div>
+          <div class="ex">Nous <span class="hl">voudrions</span> visiter le musée Guggenheim.</div>
+          <div class="ex-fa">دلمان می‌خواست موزه گوگنهایم را ببینیم.</div>
+        </div>
+
+        <div class="use">
+          <div class="use-t">🔑 3. Hypothèse — فرض و شرط (si + imparfait)</div>
+          <div class="ex">Si j'avais plus de budget, je <span class="hl">choisirais</span> des matériaux durables.</div>
+          <div class="ex-fa">اگر بودجه بیشتری داشتم، مواد بادوام انتخاب می‌کردم.</div>
+          <div class="ex">Si nous <span class="hl">pouvions</span>, nous <span class="hl">construirions</span> en hauteur.</div>
+          <div class="ex-fa">اگر می‌توانستیم، در ارتفاع می‌ساختیم.</div>
+        </div>
+
+        <div class="use">
+          <div class="use-t">💡 4. Conseil / Suggestion — نصیحت</div>
+          <div class="ex">Tu <span class="hl">devrais</span> réviser les plans avant la réunion.</div>
+          <div class="ex-fa">بهتر است قبل از جلسه پلان‌ها را مرور کنی.</div>
+          <div class="ex">Il <span class="hl">faudrait</span> agrandir les fenêtres pour la lumière naturelle.</div>
+          <div class="ex-fa">بهتر بود پنجره‌ها را برای نور طبیعی بزرگ‌تر کنیم.</div>
+          <div class="ex-note">→ devrais = نصیحت شخصی / il faudrait = نصیحت عمومی</div>
+        </div>
+
+        <div class="use">
+          <div class="use-t">📰 5. Information non confirmée — خبر تأییدنشده</div>
+          <div class="ex">Selon l'article, le chantier <span class="hl">débuterait</span> en mars.</div>
+          <div class="ex-fa">به گفته مقاله، ظاهراً کارگاه از مارس شروع می‌شود.</div>
+          <div class="ex">Le client <span class="hl">voudrait</span> modifier les fondations.</div>
+          <div class="ex-fa">به نظر می‌رسد مشتری می‌خواهد پی‌ها را تغییر دهد.</div>
+          <div class="ex-note">→ این کاربرد در B1/B2 خیلی مهم است!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3 : SI -->
+    <div class="panel" id="panel-si">
+      <div class="sec">
+        <div class="sec-title">3. La règle du « SI »</div>
+        <div class="sec-sub">قاعده طلایی «اگر» — این جدول را حفظ کن!</div>
+
+        <table class="si-table">
+          <thead><tr><th>Proposition SI</th><th>Proposition principale</th><th>Sens</th></tr></thead>
+          <tbody>
+            <tr><td>si + <strong>présent</strong></td><td><strong>futur simple</strong></td><td>شرط واقعی (آینده)</td></tr>
+            <tr><td>si + <strong>imparfait</strong></td><td><strong>conditionnel présent</strong></td><td>شرط غیرواقعی (حال/آینده)</td></tr>
+            <tr><td>si + <strong>plus-que-parfait</strong></td><td><strong>conditionnel passé</strong></td><td>شرط غیرواقعی (گذشته)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="ex" style="margin-top:16px;">Si tu <strong>étudies</strong>, tu <strong>réussiras</strong>. (présent → futur)</div>
+        <div class="ex-fa">اگر درس بخوانی، موفق می‌شوی. (واقعی و ممکن)</div>
+        <div class="ex">Si tu <strong>étudiais</strong>, tu <strong>réussirais</strong>. (imparfait → conditionnel)</div>
+        <div class="ex-fa">اگر درس می‌خواندی، موفق می‌شدی. (غیرواقعی یا بعید)</div>
+
+        <div class="rule danger" style="margin-top:20px;">
+          <div class="rule-t danger">⛔ JAMAIS conditionnel après SI !</div>
+          <div class="ex" style="text-decoration:line-through;color:var(--red);">Si j'<strong>aurais</strong> le temps... ❌</div>
+          <div class="ex" style="color:var(--green-soft);">Si j'<strong>avais</strong> le temps... ✅</div>
+          <div class="ex-fa">بعد از «si» هرگز پایانه‌ی -rais نمی‌آید! همیشه imparfait.</div>
+        </div>
+
+        <div class="upgrade" style="margin-top:20px;">
+          <h4>⭐ Niveau B1 — structure mixte</h4>
+          <div class="ex">Si j'avais su plus tôt, je <span class="hl">changerais</span> encore le projet.</div>
+          <div class="ex-fa">اگر زودتر می‌دانستم، هنوز پروژه را تغییر می‌دادم. (mix des temps)</div>
+          <div class="ex">À ta place, je <span class="hl">demanderais</span> une révision du contrat.</div>
+          <div class="ex-fa">جای تو بودم، درخواست بازنگری قرارداد می‌کردم.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4 : B1 -->
+    <div class="panel" id="panel-b1">
+      <div class="sec">
+        <div class="sec-title">4. Niveau B1 — Aller plus loin</div>
+        <div class="sec-sub">نکات پیشرفته‌ای که گفتارت را واقعاً B1 می‌کند</div>
+
+        <div class="upgrade">
+          <h4>🏗️ Dans le contexte de l'architecture</h4>
+          <div class="ex">Il <span class="hl">faudrait</span> revoir l'orientation du bâtiment pour optimiser la lumière.</div>
+          <div class="ex-fa">بهتر بود جهت‌گیری ساختمان را برای بهینه‌سازی نور بازبینی کنیم.</div>
+          <div class="ex">Je <span class="hl">suggèrerais</span> d'utiliser du béton apparent dans le hall.</div>
+          <div class="ex-fa">پیشنهاد می‌کردم از بتن نمایان در سالن استفاده شود.</div>
+          <div class="ex">Nous <span class="hl">pourrions</span> intégrer un patio central pour la ventilation naturelle.</div>
+          <div class="ex-fa">می‌توانستیم یک حیاط مرکزی برای تهویه طبیعی در نظر بگیریم.</div>
+        </div>
+
+        <div class="upgrade" style="margin-top:16px;">
+          <h4>💼 Dans une réunion professionnelle</h4>
+          <div class="ex">Il <span class="hl">serait</span> préférable de présenter deux variantes au client.</div>
+          <div class="ex-fa">ترجیحاً بهتر بود دو گزینه به مشتری ارائه می‌دادیم.</div>
+          <div class="ex">Vous <span class="hl">devriez</span> vérifier les normes parasismiques de la zone.</div>
+          <div class="ex-fa">باید استانداردهای لرزه‌ای منطقه را بررسی می‌کردید.</div>
+          <div class="ex">Le délai <span class="hl">pourrait</span> être réduit si on parallélisait les phases.</div>
+          <div class="ex-fa">اگر مراحل را موازی‌سازی می‌کردیم، مهلت می‌توانست کاهش یابد.</div>
+        </div>
+
+        <div class="rule ok" style="margin-top:20px;">
+          <div class="rule-t ok">✅ 5 expressions B1 à connaître absolument</div>
+          <div class="ex">Ce <span class="hl">serait</span> une bonne idée de... → ایده خوبی می‌بود اگر...</div>
+          <div class="ex">On <span class="hl">pourrait</span> envisager de... → می‌توانستیم در نظر بگیریم که...</div>
+          <div class="ex">Il <span class="hl">vaudrait</span> mieux... → بهتر بود...</div>
+          <div class="ex">Ça <span class="hl">m'étonnerait</span> que... → تعجب می‌کردم اگر... (doute)</div>
+          <div class="ex">J'<span class="hl">aurais</span> tendance à penser que... → تمایل داشتم فکر کنم که...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5 : EXERCICES -->
+    <div class="panel" id="panel-exercices">
+
+      <div class="ex-block" id="q1">
+        <h3><span class="ex-n">1</span> Conjugue au conditionnel présent</h3>
+        <div class="q-item"><div class="q-text">Si j'étais toi, je ___ (faire) attention.</div><div class="q-fa">اگر جای تو بودم، حواسم را جمع می‌کردم.</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,1)">faisais</button><button class="q-opt" onclick="ans(this,1,1)">ferais</button><button class="q-opt" onclick="ans(this,2,1)">ferai</button></div><div class="q-ans"><b>ferais</b> — ریشه bی‌قاعده‌ی faire : «fer-» + ais = ferais</div></div>
+        <div class="q-item"><div class="q-text">Nous ___ (venir) avec plaisir si vous nous invitiez.</div><div class="q-fa">با کمال میل می‌آمدیم اگر دعوتمان می‌کردید.</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,1)">venions</button><button class="q-opt" onclick="ans(this,1,1)">viendrions</button></div><div class="q-ans"><b>viendrions</b> — venir → viendr- + ions = viendrions</div></div>
+        <div class="q-item"><div class="q-text">Vous ___ (devoir) consulter un architecte.</div><div class="q-fa">بهتر است با یک معمار مشورت کنید.</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,1)">devriez</button><button class="q-opt" onclick="ans(this,1,1)">deviez</button></div><div class="q-ans"><b>devriez</b> — devoir → devr- + iez = devriez</div></div>
+        <div class="q-item"><div class="q-text">Il ___ (falloir) agrandir les ouvertures.</div><div class="q-fa">بهتر بود دهانه‌ها را بزرگ‌تر کنیم.</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,1)">faudrait</button><button class="q-opt" onclick="ans(this,1,1)">fallait</button></div><div class="q-ans"><b>faudrait</b> — falloir → faudr- + ait = faudrait</div></div>
+      </div>
+
+      <div class="ex-block" id="q2">
+        <h3><span class="ex-n">2</span> Choisis : futur ou conditionnel ?</h3>
+        <div class="q-item"><div class="q-text">Si tu étudies bien, tu ___ (réussir).</div><div class="q-fa">اگر خوب درس بخوانی، موفق می‌شوی. (واقعی)</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,0)">réussirais</button><button class="q-opt" onclick="ans(this,1,1)">réussiras</button></div><div class="q-ans"><b>réussiras</b> — si + présent → futur. شرط واقعی است!</div></div>
+        <div class="q-item"><div class="q-text">Si tu étudiais mieux, tu ___ (réussir).</div><div class="q-fa">اگر بهتر درس می‌خواندی، موفق می‌شدی. (فرضی)</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,1)">réussirais</button><button class="q-opt" onclick="ans(this,1,0)">réussiras</button></div><div class="q-ans"><b>réussirais</b> — si + imparfait → conditionnel présent</div></div>
+        <div class="q-item"><div class="q-text">Demain, je ___ (aller) au chantier. (décision certaine)</div><div class="q-fa">فردا به کارگاه می‌روم. (قطعی)</div><div class="q-opts"><button class="q-opt" onclick="ans(this,0,1)">irai</button><button class="q-opt" onclick="ans(this,1,0)">irais</button></div><div class="q-ans"><b>irai</b> — futur simple : تصمیم قطعی. conditionnel برای فرض و شرط است.</div></div>
+      </div>
+
+      <div class="ex-block" id="fill1">
+        <h3><span class="ex-n">3</span> Complète avec le bon verbe au conditionnel</h3>
+        <div style="font-size:13px;color:var(--gray);margin-bottom:16px;direction:rtl;">وجوه: vouloir · devoir · pouvoir · aimer · falloir</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div><span style="font-family:'Roboto';font-size:15px;direction:ltr;display:block;">— <input class="blank-input" data-ans="Pourriez" placeholder="…"> -vous m'envoyer les plans révisés ?</span><span style="font-size:12px;color:var(--gray);direction:rtl;display:block;text-align:right;">می‌توانستید پلان‌های اصلاح‌شده را برایم بفرستید؟</span></div>
+          <div><span style="font-family:'Roboto';font-size:15px;direction:ltr;display:block;">— Il <input class="blank-input" data-ans="faudrait" placeholder="…"> revoir les normes d'isolation.</span><span style="font-size:12px;color:var(--gray);direction:rtl;display:block;text-align:right;">بهتر بود استانداردهای عایق‌بندی بازنگری شوند.</span></div>
+          <div><span style="font-family:'Roboto';font-size:15px;direction:ltr;display:block;">— J'<input class="blank-input" data-ans="aimerais" placeholder="…"> travailler sur un projet à Dubaï.</span><span style="font-size:12px;color:var(--gray);direction:rtl;display:block;text-align:right;">دلم می‌خواست روی پروژه‌ای در دبی کار کنم.</span></div>
+          <div><span style="font-family:'Roboto';font-size:15px;direction:ltr;display:block;">— Tu <input class="blank-input" data-ans="devrais" placeholder="…"> présenter une maquette 3D.</span><span style="font-size:12px;color:var(--gray);direction:rtl;display:block;text-align:right;">بهتر است یک ماکت سه‌بعدی ارائه دهی.</span></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="checkFill('fill1')">✅ Vérifier</button>
+          <button class="btn btn-secondary" onclick="resetFill('fill1')">🔄 Reset</button>
+        </div>
+        <div class="score" id="score-fill1"></div>
+      </div>
+
+    </div>
+
+  </div><!-- /tab-content -->
+
+  <div class="footer"><a href="../../index.html">← Soroush</a> · Français avec Hoda © 2025</div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function ans(el,idx,correct){
+  const item=el.closest('.q-item');
+  if(item.dataset.done) return;
+  item.dataset.done="1";
+  item.querySelectorAll('.q-opt').forEach((o,i)=>{o.classList.add('done');if(i===correct)o.classList.add('correct');});
+  if(idx!==correct)el.classList.add('wrong');
+  item.querySelector('.q-ans').classList.add('show');
+}
+
+function normalize(s){return s.trim().toLowerCase().replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').replace(/[îï]/g,'i').replace(/[ùûü]/g,'u').replace(/ç/g,'c');}
+
+function checkFill(id){
+  const inputs=document.querySelectorAll('#'+id+' .blank-input');
+  let ok=0;
+  inputs.forEach(i=>{
+    if(normalize(i.value)===normalize(i.dataset.ans)){i.classList.add('ok');i.classList.remove('err');ok++;}
+    else{i.classList.add('err');i.classList.remove('ok');}
+  });
+  const s=document.getElementById('score-'+id);
+  const pct=Math.round(ok/inputs.length*100);
+  s.innerHTML=`<div class="n">${ok}/${inputs.length}</div><div class="l">${pct}% · ${pct===100?'🎉 Parfait!':pct>=70?'👍 Bien!':'💪 Continue!'}</div>`;
+  s.classList.add('show');
+}
+function resetFill(id){
+  document.querySelectorAll('#'+id+' .blank-input').forEach(i=>{i.value='';i.classList.remove('ok','err');});
+  const s=document.getElementById('score-'+id);
+  if(s) s.classList.remove('show');
+}
+
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
