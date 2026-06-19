@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Perfectionnisme - Cours de Français A2/B1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .emoji {
+            font-size: 70px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section.general {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8f9fa 100%);
+            border-left-color: #0099ff;
+        }
+
+        .section.personal {
+            background: white;
+            border-left-color: #764ba2;
+            border: 1px solid #e0e6ed;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            color: #667eea;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .section.personal h2 {
+            color: #764ba2;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #4a5568;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .section-text p {
+            margin-bottom: 18px;
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-general {
+            background: #d4edff;
+            color: #0066cc;
+        }
+
+        .badge-personal {
+            background: #f8e8ff;
+            color: #764ba2;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+            border: 2px solid #ffc107;
+        }
+
+        .highlight-box h4 {
+            color: #cc7a00;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .highlight-box p {
+            color: #8b5f00;
+            line-height: 1.8;
+            margin: 12px 0;
+        }
+
+        /* QUESTIONS BOX */
+        .questions-box {
+            background: #e8f4f8;
+            border-left: 5px solid #0099ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .questions-box h4 {
+            color: #0066cc;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .question {
+            background: white;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-left: 3px solid #0099ff;
+            border-radius: 5px;
+            font-size: 15px;
+            color: #2c3e50;
+        }
+
+        .question::before {
+            content: "❓ ";
+            font-weight: 700;
+            color: #0099ff;
+        }
+
+        /* VOCABULARY GRID */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .vocab-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e0e6ed;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .vocab-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .vocab-fr {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .vocab-def {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 10px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .vocab-fa {
+            font-size: 14px;
+            color: #764ba2;
+            border-top: 1px solid #e0e6ed;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* PHRASE BOXES */
+        .phrase-box {
+            background: white;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .phrase-box:hover {
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.12);
+            transform: translateX(5px);
+        }
+
+        .phrase-fr {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .phrase-fa {
+            color: #764ba2;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* DIALOGUE */
+        .dialogue-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #667eea;
+            margin-top: 20px;
+        }
+
+        .dialogue-turn {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+
+        .dialogue-turn:nth-child(odd) {
+            border-left-color: #764ba2;
+            background: #faf8ff;
+        }
+
+        .dialogue-name {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dialogue-turn:nth-child(odd) .dialogue-name {
+            color: #764ba2;
+        }
+
+        .dialogue-text {
+            color: #2c3e50;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-trans {
+            font-size: 13px;
+            color: #764ba2;
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        /* TIPS */
+        .tip-box {
+            background: #d4edff;
+            border-left: 5px solid #0099ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .tip-content {
+            color: #004999;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 14px;
+            border-top: 5px solid #667eea;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header .emoji {
+                font-size: 50px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 22px;
+            }
+
+            .section-text {
+                text-align: left;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* SCROLL UP BUTTON */
+        #scrollBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #scrollBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.5);
+        }
+
+        #scrollBtn.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <span class="emoji">🎯</span>
+                <h1>Le Perfectionnisme</h1>
+                <p>Parler naturellement du perfectionnisme en français</p>
+                <div class="subtitle">Niveau A2/B1 | 2 textes généraux + 2 textes personnels</div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- ========== TEXTES GÉNÉRAUX ========== -->
+
+            <!-- TEXTE GÉNÉRAL 1 -->
+            <div class="section general">
+                <h2>📚 Texte 1: Qu'est-ce que le perfectionnisme?</h2>
+                <div class="badge badge-general">Contexte général (A2)</div>
+
+                <div class="section-text">
+                    <p>
+                        Le perfectionnisme est un trait de personnalité complexe. C'est le désir de faire les choses sans erreur, 
+                        de chercher l'excellence dans tout ce qu'on fait. À première vue, cela semble être une qualité positive. 
+                        Qui ne voudrait pas être excellent dans son travail? Qui ne voudrait pas produire du travail de haute qualité?
+                    </p>
+                    <p>
+                        Cependant, il y a une grande différence entre vouloir faire un bon travail et être perfectionniste. 
+                        Un person qui veut faire un bon travail se fixe des objectifs réalistes. Elle travaille dur, mais elle 
+                        accepte que tout le monde fait des erreurs. Le perfectionniste, au contraire, a des attentes impossibles. 
+                        Il ou elle croit que tout doit être parfait, sans exception, sans compromis.
+                    </p>
+                    <p>
+                        Le perfectionnisme existe chez beaucoup de personnes différentes. Les étudiants sont souvent perfectionnistes 
+                        parce qu'ils veulent avoir les meilleures notes. Les travailleurs sont perfectionnistes parce qu'ils veulent 
+                        impressionner leur chef. Les artistes sont perfectionnistes parce qu'ils veulent créer une œuvre parfaite. 
+                        Les parents sont perfectionnistes parce qu'ils veulent être des parents parfaits.
+                    </p>
+                    <p>
+                        Mais voici le paradoxe intéressant: souvent, le perfectionnisme n'aide pas les gens à réussir. En réalité, 
+                        cela peut être un obstacle. Et c'est important de comprendre pourquoi. Comprendre le perfectionnisme, c'est 
+                        comprendre la peur qui se cache derrière. C'est comprendre comment une qualité apparente peut devenir un piège 
+                        psychologique.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        کمال‌گرایی یک ویژگی شخصیتی پیچیده است. این تمایل به انجام کارها بدون خطا است. در نگاه اول، این یک کیفیت 
+                        مثبت به نظر می‌رسد. اما تفاوت بزرگی بین خواهش انجام کار خوب و کمال‌گرایی وجود دارد.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour comprendre:</h4>
+                    <div class="question">Qu'est-ce que le perfectionnisme selon ce texte?</div>
+                    <div class="question">Quelle est la différence entre vouloir faire bon travail et être perfectionniste?</div>
+                    <div class="question">Donnez trois exemples de personnes perfectionnistes mentionnées dans le texte.</div>
+                    <div class="question">Selon le texte, pourquoi le perfectionnisme peut-il être un obstacle?</div>
+                    <div class="question">Qu'est-ce qui se cache derrière le perfectionnisme?</div>
+                </div>
+            </div>
+
+            <!-- TEXTE GÉNÉRAL 2 -->
+            <div class="section general">
+                <h2>📚 Texte 2: Les conséquences du perfectionnisme</h2>
+                <div class="badge badge-general">Contexte général (A2/B1)</div>
+
+                <div class="section-text">
+                    <p>
+                        Si le perfectionnisme était simplement une question d'avoir des standards élevés, ce ne serait peut-être pas 
+                        un problème grave. Mais en réalité, le perfectionnisme crée des conséquences psychologiques et pratiques très importantes. 
+                        Commençons par comprendre le cycle vicieux qu'il crée.
+                    </p>
+                    <p>
+                        D'abord, le perfectionniste se fixe un objectif extrêmement élevé. Cet objectif est si élevé qu'il est presque 
+                        impossible à atteindre. Ensuite, le perfectionniste commence à travailler. Il travaille beaucoup. Il travaille 
+                        pendant des heures. Mais, parce que son objectif est impossible, il ne se sent jamais satisfait de son travail. 
+                        Du coup, il continue à travailler. Il refait les choses. Il les relit. Il les corrige encore et encore.
+                    </p>
+                    <p>
+                        Ce processus crée plusieurs problèmes. D'abord, il crée une procrastination paradoxale. Le perfectionniste repousse 
+                        souvent ses tâches parce qu'il a peur de ne pas être à la hauteur. Il repousse au lieu de commencer. Deuxièmement, 
+                        cela crée une anxiété chronique. Le perfectionniste se demande constamment: "Est-ce que c'est assez bon? Aurais-je pu faire 
+                        mieux?" Cette voix critique dans sa tête ne s'arrête jamais.
+                    </p>
+                    <p>
+                        Troisièmement, le perfectionnisme peut endommager les relations personnelles. Si quelqu'un est perfectionniste avec lui-même, 
+                        il ou elle sera souvent perfectionniste aussi avec les autres. Cela crée de la tension et du conflit. Quatrièmement, cela 
+                        affecte la santé physique. Le stress constant peut mener à des problèmes de sommeil, de l'hypertension, de la fatigue chronique.
+                    </p>
+                    <p>
+                        Ironiquement, le perfectionnisme peut aussi empêcher la vraie excellence. Pourquoi? Parce qu'une personne excellente doit 
+                        apprendre de ses erreurs. Elle doit prendre des risques. Elle doit essayer de nouvelles choses et accepter qu'elle va échouer 
+                        parfois. Le perfectionniste, au contraire, a peur de l'échec. Il ou elle se retire plutôt que de risquer l'imperfection. 
+                        C'est un paradoxe fascinant.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        اگر کمال‌گرایی صرفاً یک مسئله داشتن استانداردهای بالا بود، شاید خیلی مشکل نبود. اما در واقع، کمال‌گرایی عواقب 
+                        روانی و عملی بسیار مهمی ایجاد می‌کند. بیایید چرخه شرور را درک کنیم که ایجاد می‌کند.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour réfléchir:</h4>
+                    <div class="question">Quel est le premier problème créé par le perfectionnisme selon ce texte?</div>
+                    <div class="question">Pourquoi le perfectionniste procrastine-t-il?</div>
+                    <div class="question">Comment le perfectionnisme affecte-t-il les relations personnelles?</div>
+                    <div class="question">Expliquez le paradoxe final du texte: pourquoi le perfectionnisme empêche l'excellence?</div>
+                    <div class="question">À votre avis, quel est le problème le plus grave du perfectionnisme?</div>
+                    <div class="question">Avez-vous expérimenté l'un de ces problèmes? Lequel?</div>
+                </div>
+            </div>
+
+            <!-- ========== TEXTES PERSONNELS ========== -->
+
+            <!-- TEXTE PERSONNEL 1 -->
+            <div class="section personal">
+                <h2>👤 Texte 3: L'histoire de Mathieu</h2>
+                <div class="badge badge-personal">Histoire personnelle (A2)</div>
+
+                <div class="section-text">
+                    <p>
+                        Mathieu est un ingénieur informatique de 28 ans. Il travaille chez une grande entreprise depuis cinq ans. 
+                        Il est considéré comme un excellent employé. Ses collègues le respectent, et son chef le valorise. Mais ce que 
+                        personne ne sait vraiment, c'est que Mathieu souffre d'une anxiété profonde liée à son perfectionnisme.
+                    </p>
+                    <p>
+                        Cela a commencé lors de son premier projet important. Mathieu voulait montrer sa valeur à l'entreprise. 
+                        Il voulait que son code soit impeccable, que sa documentation soit parfaite, que son rapport soit excellent. 
+                        Il a passé deux mois sur ce projet qui devrait normalement prendre trois semaines. Il a revu son code cinquante fois. 
+                        Il a écrit et réécrit sa documentation. Il n'était jamais satisfait.
+                    </p>
+                    <p>
+                        Finalement, le projet a été livré. Les résultats ont été excellents. Son chef a félicité Mathieu. Tout le monde 
+                        a été impressionné. Mais Mathieu, lui, pensait à tout ce qu'il aurait pu faire mieux. Il pensait aux petits détails 
+                        qu'il aurait dû changer. C'est là qu'il a réalisé quelque chose d'important: peu importe combien il travaille, peu importe 
+                        à quel point son travail est bon, il ne sera jamais satisfait.
+                    </p>
+                    <p>
+                        Depuis ce moment, ce pattern s'est répété. Chaque nouveau projet devient une montagne à gravir. Chaque tâche devient 
+                        une obsession. Mathieu passe des nuits blanches à repenser à un détail mineur. Il vérouille tout plusieurs fois avant 
+                        de partir du bureau, inquiet d'avoir oublié quelque chose. Il envoie des emails à ses collègues tard le soir pour 
+                        corriger une petite erreur qu'il vient de remarquer.
+                    </p>
+                    <p>
+                        Ce qui est étrange, c'est que ce perfectionnisme n'a pas rendu Mathieu plus heureux ou plus réussi. Au contraire, 
+                        cela l'a rendu malheureuse. Il ne se repose jamais vraiment. Il n'profite pas de ses succès. Il est toujours en 
+                        train de penser à ce qui aurait pu être mieux. Et ironiquement, il ne progresse pas aussi vite qu'il pourrait parce 
+                        qu'il passe trop de temps à perfectionner les détails et pas assez de temps à développer de nouvelles compétences.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        متیو یک مهندس نرم‌افزار 28 ساله است. پنج سال است که برای یک شرکت بزرگ کار می‌کند. او به عنوان یک کارمند عالی 
+                        محسوب می‌شود. اما آنچه هیچ‌کس واقعاً نمی‌داند، این است که متیو از اضطراب عمیقی که به کمال‌گرایی او مربوط است رنج می‌برد.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions sur l'histoire:</h4>
+                    <div class="question">Qui est Mathieu et quel est son métier?</div>
+                    <div class="question">Quand a commencé le problème de perfectionnisme de Mathieu?</div>
+                    <div class="question">Combien de temps Mathieu a-t-il passé sur son premier projet important?</div>
+                    <div class="question">Était-il satisfait de son travail après la livraison du projet? Pourquoi?</div>
+                    <div class="question">Décrivez comment le perfectionnisme affecte la vie quotidienne de Mathieu.</div>
+                    <div class="question">Pourquoi est-ce ironique que le perfectionnisme l'empêche de progresser?</div>
+                    <div class="question">Pensez-vous que Mathieu est unique ou que beaucoup de gens vivent la même chose?</div>
+                </div>
+            </div>
+
+            <!-- TEXTE PERSONNEL 2 -->
+            <div class="section personal">
+                <h2>👤 Texte 4: La transformation de Sandrine</h2>
+                <div class="badge badge-personal">Histoire personnelle (A2/B1)</div>
+
+                <div class="section-text">
+                    <p>
+                        Sandrine est une graphiste créative. Elle a 35 ans et elle travaille à son compte depuis dix ans. 
+                        Elle crée des logos, des brochures, des designs pour des clients de tous les secteurs. Son portefeuille 
+                        est impressionnant. Ses clients sont satisfaits. Mais pendant des années, Sandrine a vécu avec une 
+                        culpabilité constante et une peur permanente.
+                    </p>
+                    <p>
+                        Sandrine était extrêmement perfectionniste. Elle pensait que si elle ne livrait pas une œuvre parfaite, 
+                        elle ne méritait pas d'être payée. Elle pensait que si un client trouvait une petite erreur ou un point faible 
+                        dans son travail, sa réputation serait ruinée. Elle pensait que pour rester compétitive, chaque projet devait 
+                        être une masterpiece absolue.
+                    </p>
+                    <p>
+                        Alors, elle a passé des semaines sur des projets qui devaient prendre quelques jours. Elle a refusé des clients 
+                        parce qu'elle pensait ne pas être capable de faire un travail assez excellent pour eux. Elle a rejeté des 
+                        opportunités de collaboration parce qu'elle avait peur que le travail ne soit pas à la hauteur de ses standards. 
+                        Peu à peu, ses revenus ont baissé. Peu à peu, elle s'est sentie de plus en plus frustrée.
+                    </p>
+                    <p>
+                        Le point de rupture est venu lors d'une conversation avec une vieille amie. Son amie lui a dit simplement: 
+                        "Sandrine, je vois ton perfectionnisme te rendre malheureuse. Je vois ta peur t'empêcher de vivre. Et c'est 
+                        triste parce que tu es talentueuse. Mais tu ne travailles pas pour la perfection — tu travailles par peur. 
+                        Il faut que tu apprennes à différencier entre excellence et obsession."
+                    </p>
+                    <p>
+                        Ces paroles ont beaucoup marqué Sandrine. Elle a commencé à réfléchir. Peu à peu, elle a pris des décisions 
+                        importantes. Elle a décidé de fixer des délais raisonnables pour ses projets. Elle a décidé que "bon" est 
+                        suffisant. Elle a commencé à accepter que même les créatifs qu'elle admirait faisaient parfois du travail 
+                        qui n'était pas parfait. Et elle a réalisé que c'était okay.
+                    </p>
+                    <p>
+                        Aujourd'hui, deux ans plus tard, Sandrine est une personne différente. Elle travaille plus rapidement. 
+                        Elle accepte plus de clients. Elle a augmenté ses revenus de 40%. Mais plus important encore, elle est 
+                        plus heureuse. Elle se repose le weekend. Elle profite de ses succès. Elle peut critiquer son propre travail 
+                        sans se sentir personnellement attaquée. Elle a compris que l'excellence vient de la liberté créative, 
+                        pas de l'obsession.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🇮🇷 Traduction en persan:</h4>
+                    <p>
+                        ساندرین یک طراح گرافیکی خلاق است. 35 ساله است و ده سال است که به صورت مستقل کار می‌کند. 
+                        برای سالها، ساندرین با حس گناه مدام و ترس دائمی زندگی می‌کرد. اما دو سال پیش، او درک کرد که 
+                        کمال‌گرایی او او را خوشبخت نمی‌کند — بلکه بد حال می‌کند.
+                    </p>
+                </div>
+
+                <div class="questions-box">
+                    <h4>❓ Questions pour discuter:</h4>
+                    <div class="question">Qui est Sandrine et quel est son métier?</div>
+                    <div class="question">Quelles croyances fausses Sandrine avait-elle à propos de son travail?</div>
+                    <div class="question">Comment le perfectionnisme a-t-il affecté ses revenus et ses opportunités?</div>
+                    <div class="question">Qu'a dit son amie de crucial à Sandrine?</div>
+                    <div class="question">Quelle est la différence entre excellence et obsession selon cette histoire?</div>
+                    <div class="question">Quels changements Sandrine a-t-elle faits pour surmonter son perfectionnisme?</div>
+                    <div class="question">Comparez la Sandrine d'avant et la Sandrine d'aujourd'hui. Qu'a changé réellement?</div>
+                    <div class="question">Pensez-vous que Sandrine a trouvé la vrai solution? Pourquoi?</div>
+                </div>
+            </div>
+
+            <!-- VOCABULAIRE -->
+            <div class="section">
+                <h2>📚 Vocabulaire essentiel</h2>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px; font-size: 20px; font-weight: 600;">Mots importants:</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Perfectionnisme</div>
+                        <div class="vocab-def">L'obsession de faire les choses sans erreur</div>
+                        <div class="vocab-fa">کمال‌گرایی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Procrastination</div>
+                        <div class="vocab-def">Repousser ses tâches à plus tard</div>
+                        <div class="vocab-fa">تأخیر اندازی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Cycle vicieux</div>
+                        <div class="vocab-def">Une situation qui s'aggrave constamment</div>
+                        <div class="vocab-fa">چرخه شرور</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Anxiété</div>
+                        <div class="vocab-def">Un sentiment d'inquiétude intense</div>
+                        <div class="vocab-fa">اضطراب</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Lâcher prise</div>
+                        <div class="vocab-def">Arrêter de contrôler, accepter</div>
+                        <div class="vocab-fa">رها کردن</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Obsession</div>
+                        <div class="vocab-def">Une préoccupation constante et excessive</div>
+                        <div class="vocab-fa">وسواس</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Imperfection</div>
+                        <div class="vocab-def">Absence de perfection, défaut</div>
+                        <div class="vocab-fa">بی‌کمالی</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Excellence</div>
+                        <div class="vocab-def">Qualité très élevée et distinguée</div>
+                        <div class="vocab-fa">برتری، تفوق</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Surmonter</div>
+                        <div class="vocab-def">Vaincre une difficulté</div>
+                        <div class="vocab-fa">فائق آمدن</div>
+                    </div>
+
+                    <div class="vocab-card">
+                        <div class="vocab-fr">Paradoxe</div>
+                        <div class="vocab-def">Quelque chose de contradictoire</div>
+                        <div class="vocab-fa">تناقض</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPRESSIONS -->
+            <div class="section">
+                <h2>💬 10 expressions utiles</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 25px;">
+                    <div class="phrase-box">
+                        <div class="phrase-fr">1. C'est un piège</div>
+                        <div class="phrase-fa">این یک دام است</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">2. Du coup, je procrastine</div>
+                        <div class="phrase-fa">به همین دلیل، من تأخیر می‌اندازم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">3. En réalité</div>
+                        <div class="phrase-fa">در واقع</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">4. Franchement</div>
+                        <div class="phrase-fa">صادقانه بگویم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">5. À mon avis</div>
+                        <div class="phrase-fa">به نظر من</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">6. Ironiquement</div>
+                        <div class="phrase-fa">به طور متناقض</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">7. Je fais de mon mieux</div>
+                        <div class="phrase-fa">من بهترین‌ام را می‌کنم</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">8. Personne n'est parfait</div>
+                        <div class="phrase-fa">هیچ‌کس کامل نیست</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">9. C'est suffisant</div>
+                        <div class="phrase-fa">این کافی است</div>
+                    </div>
+                    <div class="phrase-box">
+                        <div class="phrase-fr">10. Accepter l'imperfection</div>
+                        <div class="phrase-fa">قبول کردن بی‌کمالی</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIALOGUE -->
+            <div class="section">
+                <h2>🎭 Dialogue naturel</h2>
+
+                <div class="tip-box" style="margin-bottom: 20px;">
+                    <div class="tip-title">💬 Conversation: Mathieu et son collègue</div>
+                    <div class="tip-content">Mathieu parle de son perfectionnisme avec un collègue.</div>
+                </div>
+
+                <div class="dialogue-box">
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Collègue:</div>
+                        <div class="dialogue-text">Mathieu, pourquoi tu n'as pas encore livré le rapport? Ça fait deux semaines déjà.</div>
+                        <div class="dialogue-trans">متیو، چرا هنوز گزارش رو تسلیم نکردی؟ دو هفته شده</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Mathieu:</div>
+                        <div class="dialogue-text">Je sais, je sais. Mais il y a encore quelques choses que je veux corriger. Les graphiques ne sont pas parfaits. La structure pourrait être meilleure.</div>
+                        <div class="dialogue-trans">می‌دونم. اما هنوز چند چیز هستند که می‌خوام درستش کنم. نمودارها کامل نیستند</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Collègue:</div>
+                        <div class="dialogue-text">Mais c'est déjà très bon! C'est une excellente première version. Qu'est-ce que tu cherches exactement?</div>
+                        <div class="dialogue-trans">اما خیلی خوبه! این یک نسخه عالی است. دقیقاً چی میخوای؟</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Mathieu:</div>
+                        <div class="dialogue-text">La perfection. Je veux que ce soit parfait.</div>
+                        <div class="dialogue-trans">کمال. می‌خوام کامل باشه</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Collègue:</div>
+                        <div class="dialogue-text">Mathieu, écoute-moi. La perfection n'existe pas. Et tu le sais, non? Tu fais du travail excellent. Mais cette obsession de perfection, elle te rend malheureux.</div>
+                        <div class="dialogue-trans">متیو، منو گوش کن. کمال وجود ندارد. این وسواس کمال دارد تو رو ناراضی می‌کند</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Mathieu:</div>
+                        <div class="dialogue-text">Tu as peut-être raison... J'ai peur que si je lâche prise, mon travail ne sera pas assez bon.</div>
+                        <div class="dialogue-trans">شاید حق داری... می‌ترسم اگر رها کنم، کار من خوب نباشه</div>
+                    </div>
+
+                    <div class="dialogue-turn">
+                        <div class="dialogue-name">Collègue:</div>
+                        <div class="dialogue-text">Franchement, c'est faux. Ton travail est excellent PARCE que tu le fais avec soin, pas parce que c'est parfait. Remets le rapport maintenant. C'est assez.</div>
+                        <div class="dialogue-trans">صادقانه، اشتباهه. کارت عالیه چون با دقت می‌کنی، نه چون کامل است</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONSEILS -->
+            <div class="section">
+                <h2>💡 Conseils pratiques</h2>
+
+                <div class="tip-box">
+                    <div class="tip-title">✅ Pour parler naturellement:</div>
+                    <div class="tip-content">Relis les textes plusieurs fois. Essaie de comprendre comment les personnages Mathieu et Sandrine sont liés par le même problème. Cela va t'aider à construire une compréhension profonde.</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">🎯 Pour répondre aux questions:</div>
+                    <div class="tip-content">Essaie de répondre d'abord sans regarder le texte. Puis vérifie. Cela va développer ta compréhension naturelle. Enregistre tes réponses et écoute-toi.</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">🧠 Pour mémoriser:</div>
+                    <div class="tip-content">Mémorise d'abord les 10 expressions. Elles vont t'aider à parler de n'importe quel sujet. Franchement, Du coup, À mon avis — ces connecteurs sont puissants!</div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">🎤 Le message final:</div>
+                    <div class="tip-content">N'oublie pas: le perfectionnisme n'est pas une qualité. C'est une prison. La vraie excellence vient de la liberté, pas de l'obsession. Sois bienveillant avec toi-même.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>📚 Dossier complet d'apprentissage | Thème: Le Perfectionnisme</p>
+            <p>2 textes généraux + 2 textes personnels | Niveau A2/B1</p>
+            <p style="margin-top: 15px; opacity: 0.7; font-size: 12px;">Version finale | Textes cohérents avec questions après chaque section</p>
+        </div>
+    </div>
+
+    <!-- SCROLL UP BUTTON -->
+    <button id="scrollBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollBtn');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
