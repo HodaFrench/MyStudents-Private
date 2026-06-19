@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Édito A1 — Mehr Afarin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Fredoka:wght@400;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --pink:#c2185b; --pink-deep:#880e4f; --pink-pale:#fce4ec;
+      --pink-mist:#fdf0f5; --paper:#fdf5f8; --ink:#2c2a26;
+      --gray:#8a8275; --line:#f0d9e5; --white:#fffafe;
+    }
+    body { font-family:'Estedad','Tahoma',sans-serif; background:var(--paper); color:var(--ink); line-height:1.8; min-height:100vh; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(194,24,91,0.06) 31px,rgba(194,24,91,0.06) 32px); pointer-events:none; }
+
+    /* TOPBAR */
+    .topbar { display:flex; align-items:center; gap:14px; padding:14px 28px; background:var(--white); border-bottom:2px solid var(--pink-pale); position:sticky; top:0; z-index:100; }
+    .logo { width:42px; height:42px; border-radius:8px; background:var(--pink-deep); display:flex; align-items:center; justify-content:center; font-size:20px; color:white; font-family:'Fredoka',sans-serif; font-weight:700; }
+    .topbar h1 { font-family:'Fredoka',sans-serif; font-size:22px; font-weight:700; color:var(--pink-deep); }
+    .topbar .sub { font-size:12px; color:var(--gray); }
+    .back { margin-right:auto; font-size:13px; font-weight:600; color:var(--pink); text-decoration:none; background:var(--pink-pale); padding:6px 14px; border-radius:8px; transition:.2s; }
+    .back:hover { background:var(--pink); color:white; }
+
+    /* HERO */
+    .hero { background:linear-gradient(135deg,#7C3AED 0%,#E11D74 55%,#EA8C00 100%); color:white; padding:44px 32px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:""; position:absolute; top:-50px; right:-50px; width:180px; height:180px; background:rgba(255,255,255,0.08); border-radius:50%; }
+    .hero .tag { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:10px; }
+    .hero h2 { font-family:'Fredoka',sans-serif; font-size:42px; font-weight:700; margin-bottom:8px; letter-spacing:1px; }
+    .hero .sub { font-size:15px; opacity:0.88; max-width:500px; margin:0 auto; }
+    .hero .badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
+    .hero .badge { background:rgba(255,255,255,0.2); padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+
+    /* STATS */
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:700px; margin:28px auto; padding:0 24px; }
+    .stat { background:var(--white); border:2px solid var(--pink-pale); border-radius:14px; padding:16px; text-align:center; }
+    .stat .snum { font-family:'Fredoka',sans-serif; font-size:28px; font-weight:700; color:var(--pink-deep); }
+    .stat .slabel { font-size:12px; color:var(--gray); margin-top:2px; }
+
+    /* GRID */
+    .grid { max-width:900px; margin:0 auto; padding:0 24px 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); gap:20px; }
+
+    /* UNIT CARDS */
+    .unit-card {
+      background:var(--white); border:2px solid var(--line); border-radius:16px;
+      overflow:hidden; box-shadow:0 4px 16px rgba(194,24,91,0.06);
+      transition:all .25s; border-top:4px solid var(--uc);
+    }
+    .unit-card:hover { transform:translateY(-4px); box-shadow:0 14px 32px rgba(194,24,91,0.14); border-color:var(--uc); }
+    .unit-header { padding:18px 20px; display:flex; align-items:flex-start; gap:14px; }
+    .unit-num { width:44px; height:44px; border-radius:10px; color:white; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:15px; font-weight:700; flex-shrink:0; }
+    .unit-icon { font-size:24px; margin-bottom:4px; }
+    .unit-title { font-size:16px; font-weight:700; color:var(--ink); line-height:1.3; }
+    .unit-desc { font-size:12px; color:var(--gray); margin-top:4px; line-height:1.6; }
+    .unit-actions { padding:14px 20px; display:flex; gap:10px; border-top:1px solid var(--line); flex-wrap:wrap; }
+    .btn-main { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; font-size:13px; font-weight:700; color:white; text-decoration:none; transition:.2s; }
+    .btn-main:hover { opacity:0.88; transform:translateX(-3px); }
+    .btn-complet { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; font-size:12px; font-weight:700; text-decoration:none; border:2px solid; background:transparent; transition:.2s; }
+    .btn-complet:hover { opacity:0.75; }
+    .btn-soon { font-size:12px; color:var(--gray); padding:9px 0; font-style:italic; }
+
+    /* COLOR LEGEND */
+    .legend { max-width:900px; margin:24px auto 0; padding:0 24px; }
+    .legend-inner { background:var(--white); border:2px solid var(--pink-pale); border-radius:14px; padding:18px 22px; }
+    .legend-title { font-size:13px; font-weight:700; color:var(--pink-deep); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; }
+    .legend-grid { display:flex; flex-wrap:wrap; gap:10px; }
+    .lbadge { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:700; border:1.5px solid; }
+
+    .footer { text-align:center; padding:24px; color:var(--gray); font-size:13px; border-top:2px solid var(--pink-pale); }
+    #scrollBtn { display:none; position:fixed; bottom:22px; right:22px; background:var(--pink); color:white; border:none; padding:12px 15px; border-radius:50%; cursor:pointer; font-size:18px; box-shadow:0 4px 14px rgba(194,24,91,0.35); z-index:1000; }
+    #scrollBtn.show { display:block; }
+
+    @media (max-width:640px) {
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .grid { grid-template-columns:1fr; }
+      .hero h2 { font-size:30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">A1</div>
+  <div>
+    <h1>Édito A1</h1>
+    <div class="sub">Carnet de révision complet</div>
+  </div>
+  <a class="back" href="../index.html">← Bibliothèque</a>
+</div>
+
+<div class="hero">
+  <div class="tag">✦ Mehr Afarin · Édito A1 ✦</div>
+  <h2>Mon carnet Édito A1 📘</h2>
+  <div class="sub">10 unités complètes · grammaire · vocabulaire · phonétique · dialogues · exercices · traduction persane</div>
+  <div class="badges">
+    <span class="badge">🔵 Grammaire</span>
+    <span class="badge">🟢 Verbes</span>
+    <span class="badge">🟣 Vocabulaire</span>
+    <span class="badge">🟠 Phonétique</span>
+    <span class="badge">💗 Dialogues</span>
+    <span class="badge">🟡 Exercices</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="snum">10</div><div class="slabel">Unités</div></div>
+  <div class="stat"><div class="snum">2</div><div class="slabel">Versions complètes</div></div>
+  <div class="stat"><div class="snum">🇮🇷</div><div class="slabel">Traduction</div></div>
+  <div class="stat"><div class="snum">A1</div><div class="slabel">Niveau</div></div>
+</div>
+
+<div class="legend">
+  <div class="legend-inner">
+    <div class="legend-title">🎨 Code couleur du carnet :</div>
+    <div class="legend-grid">
+      <span class="lbadge" style="color:#2563EB;border-color:#2563EB;background:#EAF1FF;">🔵 Grammaire</span>
+      <span class="lbadge" style="color:#0EA371;border-color:#0EA371;background:#E5F8F0;">🟢 Verbes</span>
+      <span class="lbadge" style="color:#7C3AED;border-color:#7C3AED;background:#F2EAFF;">🟣 Vocabulaire</span>
+      <span class="lbadge" style="color:#EA8C00;border-color:#EA8C00;background:#FFF2DE;">🟠 Phonétique</span>
+      <span class="lbadge" style="color:#E11D74;border-color:#E11D74;background:#FFE9F3;">💗 Dialogues</span>
+      <span class="lbadge" style="color:#CA8A04;border-color:#CA8A04;background:#FFF7D6;">🟡 Conseils & Exercices</span>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:900px;margin:20px auto 0;padding:0 24px;">
+  <div style="background:linear-gradient(135deg,var(--pink-mist),#f9f0ff);border:2px solid var(--pink-pale);border-radius:14px;padding:16px 20px;direction:rtl;text-align:right;font-size:14px;line-height:1.9;color:var(--ink);">
+    💡 <strong>چطور استفاده کنی:</strong> هر واحد رو باز کن. یک کادر رنگی بخوان، استراحت کن، بعد به سراغ بعدی برو. نسخه «کامل» جزئیات بیشتری داره. هدف: هر واحد رو کامل یاد بگیری قبل از رفتن به بعدی.
+  </div>
+</div>
+
+<div class="grid" style="margin-top:24px;">
+
+    <div class="unit-card" style="--uc:#7C3AED">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#7C3AED">U1</div>
+        <div>
+          <div class="unit-icon">🙋</div>
+          <div class="unit-title">Unité 1 — Je suis…</div>
+          <div class="unit-desc">être · avoir · s'appeler · nationalités · nombres</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-1/index.html" class="btn-main" style="background:#7C3AED">📖 Ouvrir →</a>
+        <a href="Unite-1/complet.html" class="btn-complet" style="border-color:#7C3AED;color:#7C3AED;">📘 Version complète</a>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#E11D74">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#E11D74">U2</div>
+        <div>
+          <div class="unit-icon">👨‍👩‍👧</div>
+          <div class="unit-title">Unité 2 — Ma famille</div>
+          <div class="unit-desc">famille · possessifs · professions · habitation</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-2/index.html" class="btn-main" style="background:#E11D74">📖 Ouvrir →</a>
+        <a href="Unite-2/complet.html" class="btn-complet" style="border-color:#E11D74;color:#E11D74;">📘 Version complète</a>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#0EA371">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#0EA371">U3</div>
+        <div>
+          <div class="unit-icon">🛒</div>
+          <div class="unit-title">Unité 3 — Au marché</div>
+          <div class="unit-desc">alimentation · courses · prix · quantités · restaurant</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-3/index.html" class="btn-main" style="background:#0EA371">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#2563EB">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#2563EB">U4</div>
+        <div>
+          <div class="unit-icon">👗</div>
+          <div class="unit-title">Unité 4 — Je m'habille</div>
+          <div class="unit-desc">vêtements · couleurs · adjectifs · futur proche</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-4/index.html" class="btn-main" style="background:#2563EB">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#EA8C00">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#EA8C00">U5</div>
+        <div>
+          <div class="unit-icon">⏰</div>
+          <div class="unit-title">Unité 5 — Ma journée</div>
+          <div class="unit-desc">l'heure · la journée · sorties · invitations</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-5/index.html" class="btn-main" style="background:#EA8C00">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#E11D74">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#E11D74">U6</div>
+        <div>
+          <div class="unit-icon">🎉</div>
+          <div class="unit-title">Unité 6 — On fête !</div>
+          <div class="unit-desc">les fêtes · souhaits · passé composé · présenter</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-6/index.html" class="btn-main" style="background:#E11D74">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#0EA371">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#0EA371">U7</div>
+        <div>
+          <div class="unit-icon">🏠</div>
+          <div class="unit-title">Unité 7 — Chez moi</div>
+          <div class="unit-desc">logement · meubles · localiser · les règles</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-7/index.html" class="btn-main" style="background:#0EA371">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#2563EB">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#2563EB">U8</div>
+        <div>
+          <div class="unit-icon">✈️</div>
+          <div class="unit-title">Unité 8 — En voyage</div>
+          <div class="unit-desc">voyages · hébergement · comparaison · carte postale</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-8/index.html" class="btn-main" style="background:#2563EB">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#7C3AED">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#7C3AED">U9</div>
+        <div>
+          <div class="unit-icon">💊</div>
+          <div class="unit-title">Unité 9 — Je vais mieux</div>
+          <div class="unit-desc">santé · le corps · émotions · les conseils</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-9/index.html" class="btn-main" style="background:#7C3AED">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+    <div class="unit-card" style="--uc:#EA8C00">
+      <div class="unit-header">
+        <div class="unit-num" style="background:#EA8C00">U10</div>
+        <div>
+          <div class="unit-icon">🎓</div>
+          <div class="unit-title">Unité 10 — Mes projets</div>
+          <div class="unit-desc">études · université · projets · le travail</div>
+        </div>
+      </div>
+      <div class="unit-actions">
+        <a href="Unite-10/index.html" class="btn-main" style="background:#EA8C00">📖 Ouvrir →</a>
+        <div class="btn-soon">📘 Version complète — bientôt</div>
+      </div>
+    </div>
+</div>
+
+<div class="footer">💗 Mehr Afarin · Édito A1 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});</script>
+</body>
+</html>
