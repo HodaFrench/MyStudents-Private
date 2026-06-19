@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 2 (version complète)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#233037; --soft:#52606A; --line:#DEE7E5; --cream:#F6F9F8;
+    --gram:#1F7A8C; --gram-bg:#E1F0F2;
+    --verbe:#4E8C6A; --verbe-bg:#E5F1EA;
+    --vocab:#C95B7A; --vocab-bg:#FAE7EC;
+    --phon:#C2901E; --phon-bg:#FAF2D8;
+    --dia:#D2683F; --dia-bg:#FBEBE2;
+    --lect:#3E6FA0; --lect-bg:#E7EEF7;
+    --conseil:#B08418; --conseil-bg:#FAF2DA;
+    --cult:#6A5BA0; --cult-bg:#ECE9F7;
+    --delf:#8A4A5E; --delf-bg:#F5E8EC;
+    --a0:#4E8C6A; --a1:#1F7A8C; --ap:#C95B7A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.2pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #A7C4BC; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #D6E7E2; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.3pt; line-height:1.9; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:10px; }
+  .eyebrow{ font-size:8.3pt; letter-spacing:2.3px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:19pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .rule{ height:3px; width:58px; border-radius:3px; margin-top:7px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.4pt; font-weight:600; letter-spacing:.5px; padding:3px 9px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:12px 15px; margin:9px 0;}
+  .card h3{ font-size:12pt; font-weight:600; margin-bottom:5px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:7px 0; font-size:10.3pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:5px 10px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.4pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .ex{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 13px; margin:7px 0;}
+  .ex .extitle{ font-family:'Poppins'; font-size:8.6pt; letter-spacing:.6px; text-transform:uppercase; color:var(--soft); margin-bottom:4px; font-weight:600;}
+  .ex ol{ margin:0; padding-left:20px;}
+  .ex ol li{ margin:3px 0; font-size:10.7pt;}
+  .ex ol li .fa{ display:inline; font-size:9.6pt; color:var(--soft);}
+  .ex.g{border-left:4px solid var(--gram);} .ex.v{border-left:4px solid var(--verbe);}
+  .ex.x{border-left:4px solid var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:11.8pt; line-height:1.8; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:14px 17px; margin:8px 0;}
+  .read p{ margin-bottom:8px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#F4F8F7; border-right:5px solid #A7C4BC; border-radius:8px; padding:9px 13px; margin:8px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.2pt; color:#94ABA4; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 10px; font-size:9.1pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 9px; margin:3px 4px 3px 0; font-size:9.8pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F3DDB0; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:8px 12px; margin:7px 0; font-size:10.1pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:17px; margin:3px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:12px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 12px;}
+  .box h4{ font-family:'Poppins'; font-size:10.1pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.2pt; color:var(--soft);}
+  .dlg{ margin:4px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:19px; height:19px; line-height:19px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:8.8pt; margin-right:5px; font-family:'Poppins';}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#1F7A8C 0%,#4E8C6A 50%,#C95B7A 100%); color:#fff; padding:30px 28px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION COMPLET · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.05; margin:8px 0 4px;">Près de moi</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 2 — la famille · les possessifs · les professions</div>
+    </div>
+    <div style="padding:16px 28px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.3pt; letter-spacing:1px; color:var(--soft); margin-bottom:8px;">VERSION EXHAUSTIVE — 3 exemples par point</div>
+      <div style="display:flex; gap:9px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--gram); border-radius:8px; padding:10px;">
+          <div style="font-weight:700; color:var(--gram);">Grammaire</div><div class="small">6 structures, chacune avec 3 exemples.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--vocab); border-radius:8px; padding:10px;">
+          <div style="font-weight:700; color:var(--vocab);">Vocabulaire</div><div class="small">Famille, situation, professions.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:10px;">
+          <div style="font-weight:700; color:var(--ap);">+ Pratique</div><div class="small">Phonétique, dialogue, DELF, mémo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#1F7A8C; margin-top:13px;">
+    <div class="falabel">دفترچهٔ کاملِ مرور — واحد ۲ «نزدیکِ من»</div>
+    <div class="fa">این نسخهٔ کامل، همهٔ ساختارهای دستوری و تمام واژگانِ فصل دوم را پوشش می‌دهد و برای هر نکته ۳ مثال می‌آورد. موضوع فصل: خانواده، صفت‌های ملکی، شغل‌ها و معرفی خانواده. همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Comment utiliser ce carnet</h3>
+    <ul class="clean" style="font-size:10.2pt;">
+      <li>Chaque <b>structure</b> a une règle + un tableau + <b>3 exemples</b> traduits.</li>
+      <li>Chaque <b>liste de mots</b> est donnée avec le persan et des exemples.</li>
+      <li>Travaille par sessions de 15 min ; relis les exemples à voix haute.</li></ul></div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan complet</div>
+    <h1>Tout ce que contient l'unité 2</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Grammaire (6 structures)</h3>
+      <ul class="clean" style="font-size:9.9pt;">
+        <li>1. Les possessifs (un possesseur) : mon/ton/son</li>
+        <li>2. Les possessifs (plusieurs) : notre/votre/leur</li>
+        <li>3. mon/ton/son + nom féminin à voyelle</li>
+        <li>4. C'est / Ce sont (présenter)</li>
+        <li>5. La négation : <i>pas de</i></li>
+        <li>6. Le masculin / féminin des professions</li></ul></div>
+    <div class="card vocab" style="margin-top:0;"><h3>Vocabulaire &amp; pratique</h3>
+      <ul class="clean" style="font-size:9.9pt;">
+        <li>La famille</li><li>La situation familiale · présenter sa famille</li>
+        <li>Les professions</li><li>Phonétique : mon/ton/son &amp; liaisons</li>
+        <li>Dialogue &amp; textes « Ma famille »</li>
+        <li>Production écrite / orale</li><li>DELF A1 · Culture · Mémo · Bilan</li></ul></div>
+  </div>
+
+  <div class="tip"><b>Logique du carnet :</b> d'abord les <b>outils</b> (grammaire), puis les <b>mots</b> (vocabulaire), enfin la <b>pratique</b>. Chaque point grammatical est suivi de ses 3 exemples.</div>
+</div>
+
+<!-- ===================== G1 : POSSESSIFS (1) ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 1</div>
+    <h1>Les possessifs : mon · ton · son <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour dire à qui appartient une chose. Un seul possesseur (je, tu, il/elle). Ils s'accordent avec la <b>chose possédée</b>.</p>
+
+  <table class="tg"><tr><th>Possesseur</th><th>masc.</th><th>fém.</th><th>pluriel</th></tr>
+    <tr><td>je</td><td><span class="hl">mon</span> frère</td><td><span class="hl">ma</span> sœur</td><td><span class="hl">mes</span> parents</td></tr>
+    <tr><td>tu</td><td><span class="hl">ton</span> oncle</td><td><span class="hl">ta</span> tante</td><td><span class="hl">tes</span> cousins</td></tr>
+    <tr><td>il/elle</td><td><span class="hl">son</span> mari</td><td><span class="hl">sa</span> femme</td><td><span class="hl">ses</span> enfants</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li><b>Mon</b> père est ingénieur. <span class="fa">(پدرم مهندس است)</span></li>
+    <li>Où habite <b>ta</b> sœur ? <span class="fa">(خواهرت کجا زندگی می‌کند؟)</span></li>
+    <li>Elle adore <b>ses</b> grands-parents. <span class="fa">(او عاشق پدربزرگ‌ومادربزرگش است)</span></li></ol></div>
+
+  <div class="card gram"><h3>Le piège : son / sa</h3>
+    <i>son</i> et <i>sa</i> = « his » <u>et</u> « her ». On choisit selon la chose, pas selon la personne : <i>sa voiture</i> = la voiture de Marc <b>ou</b> de Marie.</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">صفت‌های ملکی (یک مالک)</div>
+    <div class="fa">برای گفتن اینکه چیزی مالِ کیست. صفت با چیزِ متعلق مطابقت می‌کند، نه با شخص: mon/ma/mes (مالِ من)، ton/ta/tes (مالِ تو)، son/sa/ses (مالِ او). نکته: son/sa هم «مالِ او (مرد)» و هم «مالِ او (زن)» است.</div></div>
+</div>
+
+<!-- ===================== G2 : POSSESSIFS (2) ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 2</div>
+    <h1>Les possessifs : notre · votre · leur <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Plusieurs possesseurs (nous, vous, ils/elles). Ici, une seule forme au singulier (m. = f.).</p>
+
+  <table class="tg"><tr><th>Possesseur</th><th>singulier (m./f.)</th><th>pluriel</th></tr>
+    <tr><td>nous</td><td><span class="hl">notre</span> maison</td><td><span class="hl">nos</span> amis</td></tr>
+    <tr><td>vous</td><td><span class="hl">votre</span> famille</td><td><span class="hl">vos</span> enfants</td></tr>
+    <tr><td>ils/elles</td><td><span class="hl">leur</span> fille</td><td><span class="hl">leurs</span> parents</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li><b>Notre</b> famille est grande. <span class="fa">(خانوادهٔ ما بزرگ است)</span></li>
+    <li>Quel est <b>votre</b> nom ? <span class="fa">(نام شما چیست؟)</span></li>
+    <li>Ils aiment <b>leurs</b> cousins. <span class="fa">(آن‌ها عموزاده‌هایشان را دوست دارند)</span></li></ol></div>
+
+  <div class="card gram"><h3>leur ou leurs ?</h3>
+    <i>leur</i> + nom singulier (<i>leur fille</i>) · <i>leurs</i> + nom pluriel (<i>leurs enfants</i>). Le « s » s'accorde avec la chose possédée.</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">صفت‌های ملکی (چند مالک)</div>
+    <div class="fa">برای چند مالک: notre/nos (مالِ ما)، votre/vos (مالِ شما)، leur/leurs (مالِ آن‌ها). در مفرد یک شکل دارند (مذکر=مؤنث). نکته: leur + اسم مفرد، leurs + اسم جمع. مثال: «Notre famille est grande»، «leurs enfants».</div></div>
+</div>
+
+<!-- ===================== G3 : MON DEVANT VOYELLE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 3</div>
+    <h1>mon / ton / son + nom féminin à voyelle <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Devant un nom <b>féminin</b> qui commence par une <b>voyelle</b> (ou h), on dit <b>mon / ton / son</b> (pas ma/ta/sa).</p>
+
+  <table class="tg"><tr><th>Au lieu de…</th><th>On dit…</th><th>Pourquoi</th></tr>
+    <tr><td>ma amie</td><td><span class="hl">mon</span> amie</td><td>amie commence par « a »</td></tr>
+    <tr><td>ta école</td><td><span class="hl">ton</span> école</td><td>école commence par « é »</td></tr>
+    <tr><td>sa histoire</td><td><span class="hl">son</span> histoire</td><td>histoire commence par « h »</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li><b>Mon</b> amie habite à Lyon. <span class="fa">(دوستم — مؤنث — در لیون زندگی می‌کند)</span></li>
+    <li>C'est <b>ton</b> adresse ? <span class="fa">(این آدرس توست؟)</span></li>
+    <li><b>Son</b> université est grande. <span class="fa">(دانشگاهش بزرگ است)</span></li></ol></div>
+
+  <div class="card gram"><h3>À retenir</h3>
+    C'est juste pour la <b>prononciation</b> (éviter « ma-amie »). Le nom reste féminin : <i>mon amie est gentil<b>le</b>.</i></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">mon/ton/son پیش از اسم مؤنثِ صدادار</div>
+    <div class="fa">پیش از اسم مؤنثی که با حرف صدادار (یا h) شروع می‌شود، به‌جای ma/ta/sa از mon/ton/son استفاده می‌کنیم: «mon amie» (نه ma amie)، «ton école»، «son histoire». این فقط برای تلفظ است؛ اسم همچنان مؤنث می‌ماند.</div></div>
+</div>
+
+<!-- ===================== G4 : C'EST / CE SONT ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Grammaire · Structure 4</div>
+    <h1>C'est / Ce sont (présenter) <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+  <p class="small">Pour montrer ou présenter une personne / une chose.</p>
+
+  <table class="tg" style="border-color:var(--dia)"><tr><th style="background:var(--dia)">Singulier</th><th style="background:var(--dia)">Pluriel</th></tr>
+    <tr><td><span class="hl">C'est</span> mon frère.</td><td><span class="hl">Ce sont</span> mes frères.</td></tr>
+    <tr><td><span class="hl">C'est</span> ma mère.</td><td><span class="hl">Ce sont</span> mes parents.</td></tr></table>
+
+  <div class="ex" style="border-left:4px solid var(--dia)"><div class="extitle">3 exemples</div><ol>
+    <li><b>C'est</b> mon ami Karim. <span class="fa">(این دوستم کریم است)</span></li>
+    <li><b>Ce sont</b> mes cousins. <span class="fa">(این‌ها عموزاده‌هایم هستند)</span></li>
+    <li><b>C'est</b> une photo de ma famille. <span class="fa">(این یک عکس از خانواده‌ام است)</span></li></ol></div>
+
+  <div class="card dia"><h3>C'est ou Il est ?</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li><b>C'est</b> + nom : <i>C'est un médecin. C'est mon père.</i></li>
+      <li><b>Il/Elle est</b> + profession/adjectif : <i>Il est médecin. Elle est gentille.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">C'est / Ce sont</div>
+    <div class="fa">برای نشان‌دادن یا معرفی: C'est (مفرد) و Ce sont (جمع). مثال: «C'est mon frère» (این برادرم است)، «Ce sont mes parents» (این‌ها والدینم هستند). فرق: «C'est + اسم» ولی «Il/Elle est + شغل/صفت» (Il est médecin).</div></div>
+</div>
+
+<!-- ===================== G5 : NÉGATION PAS DE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 5</div>
+    <h1>La négation : <span class="serif" style="font-style:italic">pas de</span> <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">À la forme négative, <b>un / une / des</b> deviennent <b>de</b> (ou <b>d'</b>).</p>
+
+  <table class="tg"><tr><th>Affirmatif</th><th>Négatif</th></tr>
+    <tr><td>J'ai <span class="hl">un</span> frère.</td><td>Je n'ai <span class="hl">pas de</span> frère.</td></tr>
+    <tr><td>J'ai <span class="hl">une</span> sœur.</td><td>Je n'ai <span class="hl">pas de</span> sœur.</td></tr>
+    <tr><td>J'ai <span class="hl">des</span> enfants.</td><td>Je n'ai <span class="hl">pas d'</span>enfants.</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>Je n'ai <b>pas de</b> frères et sœurs. <span class="fa">(خواهر و برادر ندارم)</span></li>
+    <li>Il n'a <b>pas d'</b>enfants. <span class="fa">(او بچه ندارد)</span></li>
+    <li>Nous n'avons <b>pas de</b> voiture. <span class="fa">(ما ماشین نداریم)</span></li></ol></div>
+
+  <div class="card gram"><h3>Une expression utile</h3>
+    <i>Je n'ai pas de frères et sœurs</i> = <span class="key">Je suis fils / fille unique.</span> (تک‌فرزند)</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">منفی: pas de</div>
+    <div class="fa">در جملهٔ منفی، un/une/des به «de» (یا d') تبدیل می‌شوند: «J'ai un frère» ← «Je n'ai pas de frère». مثال: «Je n'ai pas d'enfants». عبارت مفید: «Je suis fils/fille unique» (تک‌فرزندم).</div></div>
+</div>
+
+<!-- ===================== G6 : PROFESSIONS M/F ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Structure 6</div>
+    <h1>Le masculin / féminin des professions <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <table class="tg" style="font-size:10pt;"><tr><th>Masculin</th><th>Féminin</th><th>Règle</th></tr>
+    <tr><td>un employé</td><td>une employé<span class="hl">e</span></td><td>+ e</td></tr>
+    <tr><td>un vendeur</td><td>une vend<span class="hl">euse</span></td><td>-eur → -euse</td></tr>
+    <tr><td>un acteur</td><td>une ac<span class="hl">trice</span></td><td>-teur → -trice</td></tr>
+    <tr><td>un infirmier</td><td>une infirm<span class="hl">ière</span></td><td>-ier → -ière</td></tr>
+    <tr><td>un médecin</td><td>un médecin</td><td>invariable</td></tr></table>
+
+  <div class="ex g"><div class="extitle">3 exemples</div><ol>
+    <li>Il est <b>vendeur</b>, elle est <b>vendeuse</b>. <span class="fa">(او فروشنده است — مرد/زن)</span></li>
+    <li>Ma mère est <b>infirmière</b>. <span class="fa">(مادرم پرستار است)</span></li>
+    <li>Mon oncle est <b>médecin</b>. <span class="fa">(دایی‌ام پزشک است)</span></li></ol></div>
+
+  <div class="card gram"><h3>Rappel</h3>
+    Pas d'article pour la profession après <i>être</i> : <i>Elle est <b>professeure</b></i> (et non « une professeure »).</div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">مذکر/مؤنثِ شغل‌ها</div>
+    <div class="fa">قاعده‌ها: +e (employé←employée)، -eur←-euse (vendeur←vendeuse)، -teur←-trice (acteur←actrice)، -ier←-ière (infirmier←infirmière)، بعضی ثابت‌اند (médecin). نکته: بعد از être حرف تعریف نمی‌آید: «Elle est professeure».</div></div>
+</div>
+
+<!-- ===================== VOCAB : FAMILLE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · La famille</div>
+    <h1>Les membres de la famille <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:9.9pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>le père / la mère</td><td class="fa">پدر / مادر</td><td>les parents</td><td class="fa">والدین</td></tr>
+    <tr><td>le mari / la femme</td><td class="fa">شوهر / همسر</td><td>le fils / la fille</td><td class="fa">پسر / دختر</td></tr>
+    <tr><td>le frère / la sœur</td><td class="fa">برادر / خواهر</td><td>les enfants</td><td class="fa">بچه‌ها</td></tr>
+    <tr><td>le grand-père / la grand-mère</td><td class="fa">پدربزرگ / مادربزرگ</td><td>les grands-parents</td><td class="fa">پدربزرگ‌ومادربزرگ</td></tr>
+    <tr><td>l'oncle / la tante</td><td class="fa">عمو/دایی · عمه/خاله</td><td>le cousin / la cousine</td><td class="fa">عموزاده/دخترخاله…</td></tr>
+    <tr><td>le neveu / la nièce</td><td class="fa">برادرزاده/خواهرزاده</td><td>les petits-enfants</td><td class="fa">نوه‌ها</td></tr></table>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li><b>Mes parents</b> habitent à Téhéran. <span class="fa">(والدینم در تهران زندگی می‌کنند)</span></li>
+    <li>J'ai un <b>frère</b> et deux <b>sœurs</b>. <span class="fa">(یک برادر و دو خواهر دارم)</span></li>
+    <li>Ma <b>grand-mère</b> a soixante-dix ans. <span class="fa">(مادربزرگم هفتاد سال دارد)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">اعضای خانواده</div>
+    <div class="fa">le père/la mère (پدر/مادر)، les parents (والدین)، le mari/la femme (شوهر/همسر)، le fils/la fille (پسر/دختر)، le frère/la sœur (برادر/خواهر)، les grands-parents (پدربزرگ‌ومادربزرگ)، l'oncle/la tante (عمو/عمه)، le cousin/la cousine، le neveu/la nièce.</div></div>
+</div>
+
+<!-- ===================== VOCAB : SITUATION + PRÉSENTER ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Communication</div>
+    <h1>La situation familiale &amp; présenter sa famille <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>La situation familiale</h3>
+    <span class="chip">célibataire مجرد</span><span class="chip">marié(e) متأهل</span>
+    <span class="chip">divorcé(e) مطلقه</span><span class="chip">fils / fille unique تک‌فرزند</span>
+    <span class="chip">un bébé نوزاد</span></div>
+
+  <div class="card vocab"><h3>Pour présenter sa famille</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>J'ai un frère et une sœur.</li>
+      <li>Je n'ai pas de frères et sœurs. = Je suis fils / fille unique.</li>
+      <li>Chez moi, nous sommes quatre.</li></ul></div>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li>Mon frère est <b>marié</b>. <span class="fa">(برادرم متأهل است)</span></li>
+    <li>Je suis <b>fille unique</b>. <span class="fa">(تک‌فرزندم — دختر)</span></li>
+    <li><b>Chez moi, nous sommes</b> cinq. <span class="fa">(خانهٔ ما پنج‌نفریم)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">وضعیت خانوادگی و معرفی خانواده</div>
+    <div class="fa">وضعیت: célibataire (مجرد)، marié(e) (متأهل)، divorcé(e) (مطلقه)، fils/fille unique (تک‌فرزند). برای معرفی خانواده: «J'ai un frère et une sœur»، «Je suis fille unique»، «Chez moi, nous sommes quatre» (خانهٔ ما چهارنفریم).</div></div>
+</div>
+
+<!-- ===================== VOCAB : PROFESSIONS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Les professions</div>
+    <h1>Les métiers <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:9.8pt;"><tr><th>Masculin</th><th>Féminin</th><th>فارسی</th></tr>
+    <tr><td>étudiant</td><td>étudiante</td><td class="fa">دانشجو</td></tr>
+    <tr><td>professeur</td><td>professeure</td><td class="fa">معلم/استاد</td></tr>
+    <tr><td>ingénieur</td><td>ingénieure</td><td class="fa">مهندس</td></tr>
+    <tr><td>médecin</td><td>médecin</td><td class="fa">پزشک</td></tr>
+    <tr><td>vendeur</td><td>vendeuse</td><td class="fa">فروشنده</td></tr>
+    <tr><td>infirmier</td><td>infirmière</td><td class="fa">پرستار</td></tr>
+    <tr><td>serveur</td><td>serveuse</td><td class="fa">پیشخدمت</td></tr></table>
+
+  <div class="ex x"><div class="extitle">3 exemples</div><ol>
+    <li>Mon père est <b>ingénieur</b>. <span class="fa">(پدرم مهندس است)</span></li>
+    <li>Je suis <b>étudiante</b>. <span class="fa">(دانشجو هستم)</span></li>
+    <li>Ma sœur est <b>infirmière</b> dans un hôpital. <span class="fa">(خواهرم در یک بیمارستان پرستار است)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">شغل‌ها</div>
+    <div class="fa">شغل‌ها (مذکر/مؤنث): étudiant/étudiante (دانشجو)، professeur (معلم)، ingénieur (مهندس)، médecin (پزشک)، vendeur/vendeuse (فروشنده)، infirmier/infirmière (پرستار)، serveur/serveuse (پیشخدمت). مثال: «Mon père est ingénieur».</div></div>
+</div>
+
+<!-- ===================== PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie</div>
+    <h1>Le son [ɔ̃] (mon, ton, son) &amp; la liaison <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. Le son nasal [ɔ̃]</h3>
+    <p>L'air passe par le nez. On l'entend dans :</p>
+    <p style="font-size:10.8pt;"><i><b>mon</b> · <b>ton</b> · <b>son</b> · b<b>on</b>jour · maix<b>on</b>… (maison) · n<b>om</b></i></p></div>
+
+  <div class="card phon"><h3>2. La liaison : mon/ton/son + voyelle</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li>mon_ami → [mɔ̃<span class="key">n</span>ami]</li>
+      <li>ton_école → [tɔ̃<span class="key">n</span>ekɔl]</li>
+      <li>son_oncle → [sɔ̃<span class="key">n</span>ɔ̃kl]</li></ul></div>
+
+  <div class="ex" style="border-left:4px solid var(--phon)"><div class="extitle">3 exemples</div><ol>
+    <li><b>Mon</b> frère (nasal [ɔ̃]). <span class="fa">(برادرم)</span></li>
+    <li><b>Mon_</b>ami (liaison [n]). <span class="fa">(دوستم)</span></li>
+    <li>bon / bonne : [bɔ̃] / [bɔn]. <span class="fa">(خوب — مذکر/مؤنث)</span></li></ol></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">صدای [ɔ̃] و liaison</div>
+    <div class="fa">صدای خیشومیِ [ɔ̃] در mon، ton، son، bonjour، nom. پیش از حرف صدادار، liaison با [n] رخ می‌دهد: mon ami → مُن‌نامی، son oncle → سُن‌نُنکل. مقایسه: bon [bɔ̃] / bonne [bɔn].</div></div>
+</div>
+
+<!-- ===================== DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Tu me présentes ta famille ? <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Léa :</b> C'est une photo de ta famille ?</div>
+    <div class="dlg"><b class="B">Sara :</b> Oui ! Là, c'est mon père. Il est ingénieur.</div>
+    <div class="dlg"><b class="A">Léa :</b> Et la dame à côté, c'est ta mère ?</div>
+    <div class="dlg"><b class="B">Sara :</b> Oui, c'est ma mère. Elle est professeure. Et ce sont mes deux frères.</div>
+    <div class="dlg"><b class="A">Léa :</b> Tu as une sœur aussi ?</div>
+    <div class="dlg"><b class="B">Sara :</b> Non, je n'ai pas de sœur. Mais j'ai beaucoup de cousins !</div>
+    <div class="dlg"><b class="A">Léa :</b> Vous habitez ensemble ?</div>
+    <div class="dlg"><b class="B">Sara :</b> Mes parents et mes frères, oui. Chez moi, nous sommes cinq.</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>لئا:</b> این عکس خانواده‌ات است؟<br>
+      <b>سارا:</b> بله! اینجا پدرم است. مهندس است.<br>
+      <b>لئا:</b> و خانمِ کنارش، مادرت است؟<br>
+      <b>سارا:</b> بله، مادرم است. معلم است. و این‌ها دو برادرم هستند.<br>
+      <b>لئا:</b> خواهر هم داری؟<br>
+      <b>سارا:</b> نه، خواهر ندارم. اما عموزاده‌های زیادی دارم!<br>
+      <b>لئا:</b> با هم زندگی می‌کنید؟<br>
+      <b>سارا:</b> والدینم و برادرهایم بله. خانهٔ ما پنج‌نفریم.
+    </div></div>
+</div>
+
+<!-- ===================== TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Ma famille <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Je m'appelle Sara et je vais vous présenter ma famille. Mon père s'appelle Reza ; il est ingénieur. Ma mère, Maryam, est professeure. J'ai un frère et une sœur.</p>
+    <p>Mon frère a vingt ans et il est étudiant. Ma sœur a dix ans ; elle va à l'école. Nous habitons tous ensemble à Téhéran. J'adore mes grands-parents : ils habitent près de chez nous.</p>
+    <p>Le week-end, toute la famille mange ensemble chez ma grand-mère. Chez moi, nous sommes une famille très unie. <span class="q">Et vous, comment est votre famille ?</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">اسم من سارا است و می‌خواهم خانواده‌ام را معرفی کنم. پدرم رضا نام دارد؛ مهندس است. مادرم، مریم، معلم است. یک برادر و یک خواهر دارم. برادرم بیست سال دارد و دانشجوست. خواهرم ده سال دارد؛ به مدرسه می‌رود. همه با هم در تهران زندگی می‌کنیم. عاشق پدربزرگ‌ومادربزرگم هستم: نزدیک ما زندگی می‌کنند. آخر هفته، تمام خانواده در خانهٔ مادربزرگم با هم غذا می‌خوریم. خانوادهٔ ما خیلی صمیمی است. خانوادهٔ شما چطور است؟</div></div>
+</div>
+
+<!-- ===================== TEXTE LONG A1+ ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Ma famille et moi <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p>Ma famille est assez grande et j'en suis très fière. Mes parents sont mariés depuis trente ans. Mon père est médecin et ma mère est enseignante ; ils travaillent beaucoup, mais ils ont toujours du temps pour nous. J'ai deux frères et une sœur. Mon frère aîné est marié et il a deux enfants : ce sont mes neveux préférés !</p>
+    <p>Nos grands-parents sont très importants dans notre vie. Leur maison est un peu vieille, mais on adore y aller. Chaque été, toute la famille — mes oncles, mes tantes et mes cousins — se retrouve à la campagne. On est parfois plus de vingt personnes !</p>
+    <p>Je n'ai pas une famille parfaite, bien sûr : parfois, on n'est pas d'accord. Mais l'amour est toujours là. Pour moi, la famille, ce n'est pas seulement les liens du sang ; ce sont aussi les amis proches qu'on aime comme des frères et des sœurs. <span class="q">Et toi, qui sont les personnes les plus importantes de ta vie ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> possessifs (mon, mes, nos, leur), c'est / ce sont, professions, négation, <i>depuis</i>, connecteurs (<i>mais</i>).</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">خانواده‌ام نسبتاً بزرگ است و خیلی به آن افتخار می‌کنم. والدینم سی سال است که ازدواج کرده‌اند. پدرم پزشک و مادرم معلم است؛ زیاد کار می‌کنند، اما همیشه برای ما وقت دارند. دو برادر و یک خواهر دارم. برادر بزرگم متأهل است و دو فرزند دارد: این‌ها برادرزاده‌های موردعلاقه‌ام هستند! پدربزرگ‌ومادربزرگمان در زندگی ما خیلی مهم‌اند. خانه‌شان کمی قدیمی است، اما عاشق رفتن به آنجاییم. هر تابستان، تمام خانواده — عموها، عمه‌ها و عموزاده‌ها — در روستا جمع می‌شویم. گاهی بیش از بیست نفریم! البته خانواده‌ام بی‌نقص نیست: گاهی با هم اختلاف داریم. اما عشق همیشه هست. برای من، خانواده فقط پیوند خونی نیست؛ دوستان نزدیکی هم هستند که مثل خواهر و برادر دوستشان داریم. مهم‌ترین آدم‌های زندگیِ تو چه کسانی‌اند؟</div></div>
+</div>
+
+<!-- ===================== PRODUCTION ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite &amp; orale · Niveau A1+</div>
+    <h1>Présenter sa famille <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>✍️ À l'écrit (modèle)</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10pt; line-height:1.5; margin:0;">
+      Dans ma famille, nous sommes quatre. Mon père est ingénieur et ma mère est professeure. J'ai une petite sœur ; elle a 8 ans. Mes grands-parents habitent près de chez nous. J'adore ma famille !</div></div>
+    <div class="card dia" style="margin-top:0;"><h3>🗣️ À l'oral (plan)</h3>
+      <ul class="clean" style="font-size:9.8pt;"><li>Combien de personnes ?</li><li>Qui ? (père, mère, frères…)</li><li>Leur profession</li><li>Où ils habitent</li><li>Ce que vous aimez faire ensemble</li></ul></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan « famille »</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li><span class="num">1</span>Chez moi, nous sommes…</li>
+      <li><span class="num">2</span>Voici mon/ma… ; il/elle est… (profession)</li>
+      <li><span class="num">3</span>J'ai / je n'ai pas de… (frères, sœurs)</li>
+      <li><span class="num">4</span>Ce que vous faites ensemble</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">معرفی خانواده</div>
+    <div class="fa">نمونهٔ کتبی: «در خانوادهٔ ما چهار نفریم. پدرم مهندس و مادرم معلم است. یک خواهر کوچک دارم؛ ۸ ساله است. پدربزرگ‌ومادربزرگم نزدیک ما زندگی می‌کنند. عاشق خانواده‌ام هستم!» طرح گفتاری: تعداد، اعضا، شغل، محل زندگی، کارهای مشترک.</div></div>
+</div>
+
+<!-- ===================== DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « présentation »</h3>
+    <ul class="clean"><li>Repère <b>qui</b> est qui (les liens de famille).</li>
+      <li>Note les <b>professions</b> et les <b>âges</b>.</li>
+      <li>Lis les questions <b>avant</b> de relire le texte.</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:10.8pt;">
+    <p>Salut ! Je m'appelle Théo. Dans ma famille, nous sommes cinq. Mon père est cuisinier et ma mère est médecin. J'ai un grand frère, Paul, qui est étudiant, et une petite sœur, Aya, qui a 7 ans. Nous avons aussi un chien. Le dimanche, nous mangeons toujours chez mes grands-parents.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Combien sont-ils dans la famille ?</li>
+        <li>2. Quelle est la profession de la mère ?</li><li>3. Qui est Paul ?</li>
+        <li>4. Quel âge a Aya ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Cinq.</li>
+        <li>2. Médecin.</li><li>3. Le grand frère (étudiant).</li><li>4. 7 ans.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: نسبت‌های خانوادگی، شغل‌ها و سن‌ها را پیدا کن؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان. در متن نمونه: خانواده پنج‌نفر است، مادر پزشک است، پاول برادر بزرگ (دانشجو) است و آیا ۷ سال دارد.</div></div>
+</div>
+
+<!-- ===================== CULTURE + MÉMO ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture &amp; mémo</div>
+    <h1>La famille en France &amp; récap <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:10.8pt;">
+    <p><span class="q">En France,</span> les familles sont très variées : il y a des familles traditionnelles, des familles <b>recomposées</b> (avec des « demi-frères » et « belles-mères ») et des familles <b>monoparentales</b>. Beaucoup de couples vivent ensemble sans être mariés, ou choisissent le <b>PACS</b>. Le dimanche, beaucoup de familles aiment se retrouver pour un grand repas.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">Les outils</h4>
+      <p class="small" style="font-size:9.6pt;">mon/ma/mes · ton/ta/tes · son/sa/ses · notre/nos · votre/vos · leur/leurs · c'est/ce sont · pas de.</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">Les mots-clés</h4>
+      <p class="small" style="font-size:9.6pt;">la famille · la situation familiale · les professions (m./f.).</p></div>
+  </div>
+
+  <div class="card conseil"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li>Voici <span class="key">ma</span> famille.</li>
+      <li><span class="key">C'est</span> mon père ; il <span class="key">est</span> ingénieur.</li>
+      <li><span class="key">Ce sont</span> mes parents.</li>
+      <li>Je n'ai <span class="key">pas de</span> frères et sœurs.</li>
+      <li>Chez moi, <span class="key">nous sommes</span> quatre.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ و خلاصه</div>
+    <div class="fa">در فرانسه خانواده‌ها بسیار متنوع‌اند: سنتی، «بازترکیب‌شده» (با ناتنی‌ها) و تک‌والد. بسیاری بدون ازدواج با هم زندگی می‌کنند یا «PACS» را انتخاب می‌کنند. یکشنبه‌ها خانواده‌ها دور هم غذا می‌خورند. ابزارها: صفت‌های ملکی، c'est/ce sont، pas de. پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.3pt;">
+      <li>☐ Nommer les membres de la famille.</li>
+      <li>☐ Utiliser tous les possessifs (mon… leurs).</li>
+      <li>☐ Dire mon/ton/son devant une voyelle.</li>
+      <li>☐ Présenter avec c'est / ce sont.</li>
+      <li>☐ Faire une négation avec « pas de ».</li>
+      <li>☐ Donner une profession (m./f.).</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10pt;"><li>1. Possessif (je) : ___ frère, ___ sœur, ___ parents.</li>
+        <li>2. Voyelle : « ___ amie » (je).</li>
+        <li>3. Présenter (pluriel) : « ___ mes cousins ».</li>
+        <li>4. Négatif : « J'ai un frère. » → ?</li>
+        <li>5. Féminin : « Il est vendeur. » → « Elle est ___. »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10pt;"><li>1. mon · ma · mes</li>
+        <li>2. mon amie</li>
+        <li>3. Ce sont mes cousins.</li>
+        <li>4. Je n'ai pas de frère.</li>
+        <li>5. Elle est vendeuse.</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:14px; padding:14px; border-radius:12px;
+     background:linear-gradient(120deg,#1F7A8C,#C95B7A); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15pt;">Unité 2 (complète) terminée ! 👨‍👩‍👧‍👦</div>
+    <div style="font-size:10.2pt; margin-top:3px;">آفرین! نسخهٔ کاملِ واحد ۲ تمام شد!</div>
+  </div>
+</div>
+
+</body>
+</html>
