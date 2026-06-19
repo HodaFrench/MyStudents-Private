@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 9</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#25333A; --soft:#566169; --line:#DDE6E6; --cream:#F5F8F8;
+    --gram:#2C7A8C; --gram-bg:#E2F0F2;
+    --verbe:#4E8C72; --verbe-bg:#E6F1EB;
+    --vocab:#C24A52; --vocab-bg:#FAE7E8;
+    --phon:#B57A2A; --phon-bg:#FAF1DE;
+    --dia:#D06A4A; --dia-bg:#FBEBE3;
+    --lect:#4A7AA8; --lect-bg:#E7EFF6;
+    --conseil:#B08418; --conseil-bg:#FAF2DA;
+    --cult:#6B6FA8; --cult-bg:#ECEDF7;
+    --delf:#9B4A6B; --delf-bg:#F6E8EE;
+    --a0:#4E8C72; --a1:#2C7A8C; --ap:#C24A52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #A9C4C2; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #D6E6E4; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.4pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.5pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#F3F7F7; border-right:5px solid #A9C4C2; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#8FA6A4; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F3DDB0; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+  .formula{ background:#fff; border:1.5px dashed var(--gram); border-radius:8px; padding:10px 13px; text-align:center; font-size:11pt; margin:8px 0; font-family:'Poppins'; color:var(--gram);}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#2C7A8C 0%,#4E8C72 50%,#C24A52 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:40pt; line-height:1.06; margin:9px 0 4px;">Pas de chance !</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 9 — la santé · le corps · les émotions · les conseils</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Le corps, la santé, les émotions.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Pronominaux au passé, COI, conseils.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Récit, message, DELF + mémo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#2C7A8C; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۹ «شانس نیاوردم!»</div>
+    <div class="fa">این جزوه فصل نهم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (اعضای بدن، حالِ سلامتی، احساسات)، سپس A1 (گذشتهٔ نقلیِ فعل‌های انعکاسی، ضمیرهای مفعولی غیرمستقیم lui/leur، باید و نباید و دادن توصیه) و در پایان A1+ (روایت، پیام عذرخواهی و تمرین DELF) به‌علاوهٔ یک صفحهٔ خلاصه. همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--gram)">Grammaire</span><span class="pill" style="color:var(--verbe)">Verbes</span></div>
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Les parties du corps</li><li>Parler de l'état de santé (<i>Ça va ? J'ai mal…</i>)</li><li>Les émotions négatives</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li><i>Avoir mal à</i> + le corps · chez le médecin</li><li>Le passé composé des verbes pronominaux</li><li>Les pronoms COI (<i>lui, leur</i>)</li><li>L'obligation &amp; l'interdiction (donner un conseil)</li><li>Les problèmes du quotidien · phonétique [j]</li><li>Dialogue + texte « Quelle journée ! »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Texte long « Une semaine difficile »</li><li>Production écrite : message d'excuse + conseils</li><li>Production orale : chez le médecin</li><li>DELF A1 — Compréhension (une pharmacie)</li><li>Culture : la santé en France · mémo · bilan</li></ul></div>
+</div>
+
+<!-- ===================== A0 : CORPS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les parties du corps <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.2pt;"><tr><th>Français</th><th>فارسی</th><th>Français</th><th>فارسی</th></tr>
+    <tr><td>la tête</td><td class="fa">سر</td><td>les cheveux</td><td class="fa">مو</td></tr>
+    <tr><td>les yeux (un œil)</td><td class="fa">چشم‌ها</td><td>le nez</td><td class="fa">بینی</td></tr>
+    <tr><td>la bouche / les dents</td><td class="fa">دهان / دندان‌ها</td><td>les oreilles</td><td class="fa">گوش‌ها</td></tr>
+    <tr><td>la gorge / le cou</td><td class="fa">گلو / گردن</td><td>le bras / la main</td><td class="fa">بازو / دست</td></tr>
+    <tr><td>le dos / le ventre</td><td class="fa">پشت / شکم</td><td>la jambe / le pied</td><td class="fa">پا / کف پا</td></tr></table>
+
+  <div class="card vocab"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>J'ai deux <span class="key">yeux</span>, un <span class="key">nez</span> et une <span class="key">bouche</span>.</li>
+      <li>Je me lave <span class="key">les mains</span> et <span class="key">le visage</span>.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">اعضای بدن</div>
+    <div class="fa">اعضای بدن: la tête (سر)، les yeux (چشم‌ها)، le nez (بینی)، la bouche (دهان)، les dents (دندان‌ها)، les oreilles (گوش‌ها)، la gorge (گلو)، le bras (بازو)، la main (دست)، le dos (پشت)، le ventre (شکم)، la jambe (پا)، le pied (کف پا).</div></div>
+</div>
+
+<!-- ===================== A0 : ÉTAT DE SANTÉ ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Communication · Niveau A0</div>
+    <h1>Parler de l'état de santé <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Comment ça va ?</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>— Ça va ? — Ça <span class="key">ne va pas</span>. Je suis <span class="key">malade</span>.</li>
+      <li>Je suis <span class="key">fatigué(e)</span>. · J'ai de la <span class="key">fièvre</span>.</li>
+      <li>J'ai un <span class="key">rhume</span>. · Je <span class="key">tousse</span>.</li></ul></div>
+
+  <div class="card vocab"><h3>Chez le médecin</h3>
+    <span class="chip">le médecin پزشک</span><span class="chip">malade مریض</span>
+    <span class="chip">la fièvre تب</span><span class="chip">une ordonnance نسخه</span>
+    <span class="chip">un médicament دارو</span><span class="chip">se reposer استراحت کردن</span></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">حالِ سلامتی</div>
+    <div class="fa">«Ça va؟» (حالت چطوره؟) — «Ça ne va pas» (خوب نیستم)، «Je suis malade» (مریضم)، «Je suis fatigué(e)» (خسته‌ام)، «J'ai de la fièvre» (تب دارم)، «J'ai un rhume» (سرما خورده‌ام). نزد پزشک: le médecin (پزشک)، une ordonnance (نسخه)، un médicament (دارو)، se reposer (استراحت کردن).</div></div>
+</div>
+
+<!-- ===================== A0 : ÉMOTIONS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les émotions négatives <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.3pt;"><tr><th>Masculin</th><th>Féminin</th><th>فارسی</th></tr>
+    <tr><td>triste</td><td>triste</td><td class="fa">غمگین</td></tr>
+    <tr><td>fatigué</td><td>fatiguée</td><td class="fa">خسته</td></tr>
+    <tr><td>stressé</td><td>stressée</td><td class="fa">مضطرب</td></tr>
+    <tr><td>inquiet</td><td>inquiète</td><td class="fa">نگران</td></tr>
+    <tr><td>en colère</td><td>en colère</td><td class="fa">عصبانی</td></tr>
+    <tr><td>déçu</td><td>déçue</td><td class="fa">ناامید</td></tr></table>
+
+  <div class="card vocab"><h3>Comment dire</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Je <span class="key">suis</span> triste / fatigué(e).</li>
+      <li>Je <span class="key">me sens</span> stressé(e) aujourd'hui.</li>
+      <li>J'<span class="key">ai peur</span> · je suis <span class="key">de mauvaise humeur</span>.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">احساسات منفی</div>
+    <div class="fa">صفت‌های احساس: triste (غمگین)، fatigué(e) (خسته)، stressé(e) (مضطرب)، inquiet/inquiète (نگران)، en colère (عصبانی)، déçu(e) (ناامید). ساختار: «Je suis triste» (غمگینم)، «Je me sens stressé(e)» (احساس استرس می‌کنم).</div></div>
+</div>
+
+<!-- ===================== A1 : AVOIR MAL À ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Avoir mal à + le corps <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Attention à la contraction : à + le = <b>au</b>, à + les = <b>aux</b>.</p>
+
+  <table class="tg"><tr><th>Partie du corps</th><th>On dit…</th><th>فارسی</th></tr>
+    <tr><td>la tête (f.)</td><td>j'ai mal <span class="hl">à la</span> tête</td><td class="fa">سردرد دارم</td></tr>
+    <tr><td>la gorge (f.)</td><td>j'ai mal <span class="hl">à la</span> gorge</td><td class="fa">گلودرد دارم</td></tr>
+    <tr><td>le dos (m.)</td><td>j'ai mal <span class="hl">au</span> dos</td><td class="fa">کمردرد دارم</td></tr>
+    <tr><td>le ventre (m.)</td><td>j'ai mal <span class="hl">au</span> ventre</td><td class="fa">دل‌درد دارم</td></tr>
+    <tr><td>les dents (pl.)</td><td>j'ai mal <span class="hl">aux</span> dents</td><td class="fa">دندان‌درد دارم</td></tr></table>
+
+  <div class="card gram"><h3>La formule</h3>
+    <div class="formula" style="border-color:var(--gram); color:var(--gram);">avoir mal &nbsp;+&nbsp; à la / à l' / au / aux &nbsp;+&nbsp; corps</div>
+    <p class="small">Ex : <i>Elle a mal <b>à l'</b>oreille. · Ils ont mal <b>aux</b> pieds.</i></p></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">«درد داشتن»</div>
+    <div class="fa">ساختار: avoir mal + à la / à l' / au / aux + عضو بدن. توجه: à+le=au، à+les=aux. مثال: «j'ai mal à la tête» (سردرد)، «j'ai mal au dos» (کمردرد)، «j'ai mal aux dents» (دندان‌درد).</div></div>
+</div>
+
+<!-- ===================== A1 : PC PRONOMINAUX ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Passé composé des pronominaux <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Les verbes pronominaux se conjuguent toujours avec <b>être</b> → accord avec le sujet.</p>
+
+  <div class="formula">se + être (présent) + participe passé&nbsp;<span style="font-size:9pt;">(accordé)</span></div>
+
+  <table class="tg"><tr><th colspan="2">SE LEVER → levé(e)(s)</th></tr>
+    <tr><td>je me suis levé(e)</td><td>nous nous sommes levé(e)s</td></tr>
+    <tr><td>tu t'es levé(e)</td><td>vous vous êtes levé(e)s</td></tr>
+    <tr><td>il s'est levé · elle s'est levée</td><td>ils se sont levés · elles se sont levées</td></tr></table>
+
+  <div class="card gram"><h3>La négation</h3>
+    <p style="font-size:11pt;"><i>Je <span class="key">ne</span> me suis <span class="key">pas</span> reposé(e). · Il <span class="key">ne</span> s'est <span class="key">pas</span> dépêché.</i></p>
+    <p class="small">aussi : se réveiller, se reposer, se coucher, se blesser, se tromper.</p></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">گذشتهٔ نقلیِ فعل‌های انعکاسی</div>
+    <div class="fa">فعل‌های انعکاسی همیشه با être ساخته می‌شوند و با فاعل مطابقت دارند: je me suis levé(e)، il s'est levé، elle s'est levée، nous nous sommes levé(e)s. منفی: ne + ضمیرها + pas → «Je ne me suis pas reposé(e)».</div></div>
+</div>
+
+<!-- ===================== A1 : COI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Les pronoms COI : lui · leur <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils remplacent <b>à + une personne</b> (complément d'objet <b>indirect</b>).</p>
+
+  <table class="tg"><tr><th>Pronom</th><th>Remplace…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">lui</span></td><td>à lui / à elle (1 personne)</td><td>Je parle à Marc → Je <span class="hl">lui</span> parle.</td></tr>
+    <tr><td><span class="hl">leur</span></td><td>à eux / à elles (plusieurs)</td><td>Je téléphone à mes parents → Je <span class="hl">leur</span> téléphone.</td></tr></table>
+
+  <div class="card gram"><h3>Les verbes avec « à quelqu'un »</h3>
+    <span class="chip" style="border-color:var(--gram)">parler à</span><span class="chip" style="border-color:var(--gram)">téléphoner à</span><span class="chip" style="border-color:var(--gram)">écrire à</span><span class="chip" style="border-color:var(--gram)">répondre à</span><span class="chip" style="border-color:var(--gram)">offrir à</span><span class="chip" style="border-color:var(--gram)">dire à</span>
+    <p style="font-size:10.6pt; margin-top:6px;">Place : <b>avant le verbe</b>. Négatif : <i>Je ne <span class="key">lui</span> parle pas.</i></p></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">ضمیرهای مفعولی غیرمستقیم (COI)</div>
+    <div class="fa">جای «à + شخص» می‌نشینند: lui = به او (یک نفر)، leur = به آن‌ها. مثال: «Je parle à Marc» ← «Je lui parle» (به او حرف می‌زنم). «Je téléphone à mes parents» ← «Je leur téléphone». فعل‌هایی با à: parler، téléphoner، écrire، répondre، offrir، dire. جایگاه: قبل از فعل.</div></div>
+</div>
+
+<!-- ===================== A1 : OBLIGATION / CONSEIL ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--verbe)">Grammaire · Niveau A1</div>
+    <h1>Donner un conseil : il faut / devoir <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--verbe)"></div></div>
+
+  <div class="two">
+    <div class="card verbe" style="margin-top:0;"><h3>✅ Conseiller</h3>
+      <ul class="clean" style="font-size:10.6pt;">
+        <li><span class="key">Il faut</span> te reposer.</li>
+        <li>Tu <span class="key">dois</span> boire beaucoup d'eau.</li>
+        <li>Tu <span class="key">devrais</span> voir un médecin.</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>⛔ Déconseiller</h3>
+      <ul class="clean" style="font-size:10.6pt;">
+        <li><span class="key">Il ne faut pas</span> sortir.</li>
+        <li>Tu <span class="key">ne dois pas</span> travailler aujourd'hui.</li>
+        <li>Évite le froid !</li></ul></div>
+  </div>
+
+  <div class="card verbe"><h3>DEVOIR (présent)</h3>
+    <table class="tv" style="margin-top:5px; font-size:10.3pt;"><tr><td>je <span class="hl">dois</span></td><td>nous <span class="hl">devons</span></td><td>il <span class="hl">doit</span></td></tr>
+      <tr><td>tu <span class="hl">dois</span></td><td>vous <span class="hl">devez</span></td><td>ils <span class="hl">doivent</span></td></tr></table></div>
+
+  <div class="fabox" style="border-right-color:var(--verbe)"><div class="falabel">دادنِ توصیه</div>
+    <div class="fa">برای توصیه: «Il faut + مصدر» (باید…)، «Tu dois + مصدر» (باید…)، «Tu devrais + مصدر» (بهتر است…). برای منع: «Il ne faut pas + مصدر» (نباید…)، «Tu ne dois pas…». مثال: «Il faut te reposer» (باید استراحت کنی)، «Il ne faut pas sortir» (نباید بیرون بروی).</div></div>
+</div>
+
+<!-- ===================== A1 : PROBLÈMES + PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Vocabulaire + Phonie-graphie · Niveau A1</div>
+    <h1>Les problèmes du quotidien &amp; le son [j] <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card dia"><h3>Quand rien ne va… 😣</h3>
+    <span class="chip">être en retard دیر رسیدن</span><span class="chip">rater le bus جا ماندن از اتوبوس</span>
+    <span class="chip">perdre ses clés گم‌کردن کلید</span><span class="chip">oublier فراموش کردن</span>
+    <span class="chip">tomber افتادن</span><span class="chip">se tromper اشتباه کردن</span>
+    <p style="font-size:10.4pt; margin-top:6px;">On dit : <i>« Quelle journée ! », « Pas de chance ! », « C'est la catastrophe ! »</i></p></div>
+
+  <div class="card phon"><h3>Le son [j] (yod)</h3>
+    <p>On l'entend dans : <i>les <b>y</b>eux · l'ore<b>ill</b>e · la f<b>ill</b>e · trava<b>ill</b>er · le réve<b>il</b> · h<b>i</b>er.</i></p>
+    <p class="small">Intonation expressive : <i>« Aïe ! », « Oh là là ! »</i> (la voix monte).</p></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">مشکلات روزمره و صدای [j]</div>
+    <div class="fa">مشکلات: être en retard (دیر رسیدن)، rater le bus (جاماندن از اتوبوس)، perdre ses clés (گم‌کردن کلید)، tomber (افتادن)، se tromper (اشتباه کردن). عبارت‌ها: «Quelle journée!»، «Pas de chance!». صدای [j] (یاء) در: les yeux، l'oreille، la fille، travailler، hier.</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Chez le médecin <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Médecin :</b> Bonjour ! Qu'est-ce qui ne va pas ?</div>
+    <div class="dlg"><b class="B">Patiente :</b> Bonjour, docteur. Je suis malade. J'ai mal à la gorge et de la fièvre.</div>
+    <div class="dlg"><b class="A">Médecin :</b> Depuis quand ?</div>
+    <div class="dlg"><b class="B">Patiente :</b> Depuis hier. Je tousse et je suis très fatiguée.</div>
+    <div class="dlg"><b class="A">Médecin :</b> Bon… Vous avez un rhume. Il faut vous reposer et boire beaucoup d'eau.</div>
+    <div class="dlg"><b class="B">Patiente :</b> Je dois prendre des médicaments ?</div>
+    <div class="dlg"><b class="A">Médecin :</b> Oui, voici une ordonnance. Ne sortez pas pendant deux jours.</div>
+    <div class="dlg"><b class="B">Patiente :</b> D'accord. Merci, docteur !</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>پزشک:</b> سلام! چه مشکلی دارید؟<br>
+      <b>بیمار:</b> سلام دکتر. مریضم. گلودرد و تب دارم.<br>
+      <b>پزشک:</b> از کِی؟<br>
+      <b>بیمار:</b> از دیروز. سرفه می‌کنم و خیلی خسته‌ام.<br>
+      <b>پزشک:</b> خب… سرما خورده‌اید. باید استراحت کنید و آب زیاد بنوشید.<br>
+      <b>بیمار:</b> باید دارو بخورم؟<br>
+      <b>پزشک:</b> بله، این نسخه. دو روز بیرون نروید.<br>
+      <b>بیمار:</b> باشه. ممنون دکتر!
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Quelle journée ! <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Hier, j'ai eu une mauvaise journée. Le matin, je ne me suis pas réveillé(e) à l'heure : mon réveil n'a pas sonné ! Je me suis levé(e) en retard et je me suis dépêché(e).</p>
+    <p>Dans la rue, je suis tombé(e) et je me suis fait mal au genou. Au travail, j'avais mal à la tête et j'étais très fatigué(e). À midi, je n'ai pas eu le temps de manger.</p>
+    <p>Le soir, je me suis enfin reposé(e). J'ai pris un médicament et je me suis couché(e) tôt. Aujourd'hui, ça va mieux ! <span class="q">Mais quelle journée… pas de chance !</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">دیروز روز بدی داشتم. صبح سرِ وقت بیدار نشدم: ساعتم زنگ نزد! دیر بلند شدم و عجله کردم. در خیابان زمین خوردم و زانویم درد گرفت. سرِ کار سردرد داشتم و خیلی خسته بودم. ظهر وقت نکردم غذا بخورم. شب بالاخره استراحت کردم. یک دارو خوردم و زود خوابیدم. امروز بهترم! اما عجب روزی… شانس نیاوردم!</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Une semaine difficile <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read" style="font-size:11.6pt;">
+    <p>La semaine dernière, tout est allé de travers. Lundi, je me suis réveillé(e) avec mal à la gorge et un peu de fièvre. J'ai pensé : « Ce n'est rien. » Mais mardi, ça n'allait pas mieux : je me suis senti(e) très fatigué(e) et je n'ai pas pu aller travailler.</p>
+    <p>Alors, j'ai pris rendez-vous chez le médecin. Il m'a examiné(e) et il m'a dit : « Vous avez un gros rhume. Il faut vous reposer et boire beaucoup d'eau. » Il m'a donné une ordonnance. Je suis allé(e) à la pharmacie et je lui ai expliqué mon problème ; la pharmacienne a été très gentille.</p>
+    <p>J'ai passé trois jours à la maison. Je me suis ennuyé(e), mais j'ai aussi beaucoup dormi. Mes amis m'ont écrit pour prendre de mes nouvelles, et je leur ai répondu que ça allait mieux. Aujourd'hui, je suis presque guéri(e). Cette semaine m'a rappelé une chose simple : la santé, c'est le plus important. <span class="q">Et toi, qu'est-ce que tu fais quand tu es malade ?</span></p>
+  </div>
+
+  <div class="tip"><span class="star">Outils A1+ :</span> passé composé des pronominaux, pronoms COI (<i>lui, leur</i>), <i>avoir mal à</i>, <i>il faut</i>, connecteurs (<i>mais, alors</i>).</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">هفتهٔ گذشته همه‌چیز خراب شد. دوشنبه با گلودرد و کمی تب بیدار شدم. فکر کردم: «چیزی نیست.» اما سه‌شنبه بهتر نشد: خیلی خسته بودم و نتوانستم سرِ کار بروم. پس نزد پزشک وقت گرفتم. مرا معاینه کرد و گفت: «سرماخوردگیِ شدیدی دارید. باید استراحت کنید و آب زیاد بنوشید.» یک نسخه به من داد. به داروخانه رفتم و مشکلم را برایش توضیح دادم؛ داروساز خیلی مهربان بود. سه روز در خانه ماندم. حوصله‌ام سر رفت، اما خیلی هم خوابیدم. دوستانم برایم نوشتند تا حالم را بپرسند و من به آن‌ها جواب دادم که بهترم. امروز تقریباً خوب شده‌ام. این هفته یک چیز ساده را به من یادآوری کرد: سلامتی از همه مهم‌تر است. تو وقتی مریض می‌شوی چه می‌کنی؟</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ÉCRITE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Message d'excuse &amp; conseils <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>✉️ S'excuser (malade)</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.2pt; line-height:1.5; margin:0;">
+      Bonjour Madame,<br>
+      Je suis désolé(e), mais je suis malade aujourd'hui : j'ai de la fièvre et mal à la gorge. Je ne peux pas venir au travail.<br>
+      Je vais voir le médecin. Merci de votre compréhension.<br>
+      Cordialement, Hoda</div></div>
+    <div class="card vocab" style="margin-top:0;"><h3>💙 Donner des conseils</h3>
+      <div class="read" style="font-family:'Nunito'; font-size:10.2pt; line-height:1.5; margin:0;">
+      Repose-toi bien ! Il faut boire beaucoup d'eau et dormir. Tu dois rester à la maison aujourd'hui. Ne sors pas et ne travaille pas !<br>
+      Prends soin de toi. À bientôt.</div></div>
+  </div>
+
+  <div class="card gram"><h3>Le plan à réutiliser</h3>
+    <ul class="clean" style="font-size:10.4pt;">
+      <li><span class="num">1</span><b>Excuse :</b> salutation + le problème (je suis malade) + la demande</li>
+      <li><span class="num">2</span><b>Conseils :</b> il faut + inf · tu dois + inf · il ne faut pas + inf</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ نوشته‌ها</div>
+    <div class="fa">عذرخواهی: «سلام خانم، متأسفم، اما امروز مریضم: تب و گلودرد دارم. نمی‌توانم سرِ کار بیایم. می‌روم پیش پزشک. ممنون از درکتان.» توصیه: «خوب استراحت کن! باید آب زیاد بنوشی و بخوابی. باید امروز خانه بمانی. بیرون نرو و کار نکن! مراقب خودت باش.»</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Décrire un problème de santé <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue (1 minute)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Le problème :</b> « Je suis malade, j'ai mal à… »</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>Depuis quand</b> et comment je me sens.</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Ce que j'ai fait</b> (passé composé : je me suis reposé(e)…).</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Mes conseils</b> (il faut… / il ne faut pas…).</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — chez le médecin</h3>
+    <ul class="clean"><li><b>Patient :</b> décris tes symptômes (mal à…, fièvre, fatigue).</li>
+      <li><b>Médecin :</b> pose des questions, donne un diagnostic et des conseils.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) مشکل: «مریضم، … درد دارم» ۲) از کِی و چه حسی داری ۳) چه کردی (گذشتهٔ نقلی: استراحت کردم…) ۴) توصیه‌هایت (il faut… / il ne faut pas…). سپس نقش‌بازی: بیمار علائم را می‌گوید، پزشک سؤال می‌پرسد و توصیه می‌دهد.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « notice / horaires »</h3>
+    <ul class="clean"><li>Repère les <b>horaires</b>, les <b>jours</b> et les <b>numéros</b>.</li>
+      <li>Cherche les mots-clés : <i>ouvert, fermé, urgence, de garde.</i></li>
+      <li>Lis les questions <b>avant</b> de relire le texte.</li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>PHARMACIE DU CENTRE</b></p>
+    <p>Ouvert du lundi au samedi, de 9 h à 19 h 30.<br>
+    Fermé le dimanche.<br>
+    Pharmacie de garde le dimanche : Pharmacie de la Gare.<br>
+    En cas d'urgence, appelez le 15.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Ouverte le dimanche ?</li>
+        <li>2. Jusqu'à quelle heure le samedi ?</li><li>3. Quelle pharmacie de garde le dimanche ?</li>
+        <li>4. Quel numéro en cas d'urgence ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Non.</li>
+        <li>2. Jusqu'à 19 h 30.</li><li>3. La Pharmacie de la Gare.</li><li>4. Le 15.</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: ساعت‌ها، روزها و شماره‌ها را پیدا کن؛ کلمات کلیدی: ouvert (باز)، fermé (بسته)، urgence (اورژانس)، de garde (کشیک). در آگهی نمونه: داروخانه یکشنبه بسته است، شنبه تا ۱۹:۳۰ باز است، داروخانهٔ کشیکِ یکشنبه «de la Gare» است و شمارهٔ اورژانس ۱۵ است.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>La santé en France</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> quand on est malade, on va d'abord chez le <b>médecin généraliste</b>. Il donne une <b>ordonnance</b>, et on va ensuite à la <b>pharmacie</b> (reconnaissable à sa <b>croix verte</b>). Avec la <b>carte Vitale</b>, une grande partie des frais est remboursée.</p>
+    <p>Pour une urgence, il existe des numéros gratuits : le <b>15</b> (le SAMU, urgences médicales) et le <b>112</b> (le numéro d'urgence européen). Il y a aussi des <b>pharmacies de garde</b> ouvertes la nuit et le dimanche. Prendre soin de sa santé et se reposer quand on est fatigué, c'est important partout dans le monde !</p>
+  </div>
+
+  <table class="tc" style="font-size:10.3pt; margin-top:6px;"><tr><th>Service</th><th>À quoi ça sert</th></tr>
+    <tr><td>le médecin généraliste</td><td>consulter quand on est malade</td></tr>
+    <tr><td>la pharmacie (croix verte)</td><td>acheter des médicaments</td></tr>
+    <tr><td>le 15 / le 112</td><td>les urgences</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — سلامت در فرانسه</div>
+    <div class="fa">در فرانسه وقتی مریض می‌شوی، اول پیش پزشک عمومی می‌روی. او نسخه می‌دهد و بعد به داروخانه (با علامت صلیب سبز) می‌روی. با «carte Vitale» بخش زیادی از هزینه‌ها بازپرداخت می‌شود. برای اورژانس شماره‌های رایگان هست: ۱۵ (اورژانس پزشکی) و ۱۱۲ (شمارهٔ اورژانس اروپا). داروخانه‌های کشیک هم شب و یکشنبه باز هستند. مراقبت از سلامتی همه‌جا مهم است!</div></div>
+</div>
+
+<!-- ===================== MÉMO ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Antisèche · Bonus</div>
+    <h1>Le mémo de l'unité 9 <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="grid2">
+    <div class="box" style="border-left:4px solid var(--gram)"><h4 style="color:var(--gram)">PC des pronominaux</h4>
+      <p class="small" style="font-size:10pt;">se + <b>être</b> + participe passé (accord).<br>Je me suis levé(e) · Il s'est reposé.</p></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Pronoms COI</h4>
+      <p class="small" style="font-size:10pt;">lui (1 pers.) · leur (plusieurs).<br>Je lui parle · Je leur réponds.</p></div>
+    <div class="box" style="border-left:4px solid var(--vocab)"><h4 style="color:var(--vocab)">Avoir mal à</h4>
+      <p class="small" style="font-size:10pt;">à la / à l' / au / aux + corps.<br>mal à la tête · au dos · aux dents.</p></div>
+    <div class="box" style="border-left:4px solid var(--dia)"><h4 style="color:var(--dia)">Conseils</h4>
+      <p class="small" style="font-size:10pt;">Il faut + inf · Tu dois + inf · Il ne faut pas + inf.</p></div>
+  </div>
+
+  <div class="card conseil" style="margin-top:10px;"><h3>Les 5 phrases à savoir par cœur</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>Je suis malade, j'ai mal <span class="key">à la</span> gorge.</li>
+      <li>Ce matin, je <span class="key">me suis levé(e)</span> en retard.</li>
+      <li>Je <span class="key">lui</span> ai téléphoné hier.</li>
+      <li><span class="key">Il faut</span> te reposer et boire de l'eau.</li>
+      <li><span class="key">Il ne faut pas</span> sortir quand on est malade.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">برگهٔ خلاصهٔ واحد ۹</div>
+    <div class="fa">گذشتهٔ نقلیِ انعکاسی‌ها: se + être + اسم مفعول (با مطابقت). ضمیرهای COI: lui (یک نفر)، leur (چند نفر). «avoir mal à»: à la/à l'/au/aux + عضو بدن. توصیه: il faut/tu dois/il ne faut pas + مصدر. پنج جملهٔ کلیدی را حفظ کن.</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Décris comment tu te sens aujourd'hui (corps + émotion).</li>
+      <li>Raconte ta matinée au passé composé : <i>« Je me suis levé(e)… »</i></li>
+      <li>Donne 3 conseils santé avec <i>« Il faut… »</i>.</li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Pronominaux au passé : pense à <b>être</b> + l'accord.</li>
+      <li>COI <i>lui / leur</i> : place-les <b>avant</b> le verbe.</li>
+      <li>Réutilise les modèles : message d'excuse, conseils à un ami.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Sers-toi du mémo comme antisèche.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: حال امروزت را توصیف کن (بدن + احساس)، صبحت را با گذشتهٔ نقلی تعریف کن، و سه توصیهٔ سلامتی با «Il faut…» بده. برای نوشتن: انعکاسی‌ها در گذشته با être و مطابقت؛ ضمیرهای lui/leur قبل از فعل. از مَمو و مدل‌ها کمک بگیر و در جلسات ۱۵ دقیقه‌ای کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.6pt;">
+      <li>☐ Nommer les parties du corps.</li>
+      <li>☐ Dire que j'ai mal quelque part (avoir mal à…).</li>
+      <li>☐ Exprimer une émotion négative.</li>
+      <li>☐ Conjuguer un pronominal au passé composé.</li>
+      <li>☐ Utiliser les pronoms COI (lui, leur).</li>
+      <li>☐ Donner un conseil (il faut / il ne faut pas).</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. « avoir mal » : tête / dos / dents → ?</li>
+        <li>2. PC : « je / se lever » → ?</li>
+        <li>3. COI : « Je parle à Marie. » → ?</li>
+        <li>4. COI : « Je réponds à mes amis. » → ?</li>
+        <li>5. Conseil (déconseiller) : « ___ sortir. »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.2pt;"><li>1. mal à la tête · au dos · aux dents</li>
+        <li>2. je me suis levé(e)</li>
+        <li>3. Je lui parle.</li>
+        <li>4. Je leur réponds.</li>
+        <li>5. Il ne faut pas sortir.</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:15px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#2C7A8C,#C24A52); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 9 terminée — prends soin de toi ! 💙</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد نهم تمام شد — مراقب خودت باش!</div>
+  </div>
+</div>
+
+</body>
+</html>
