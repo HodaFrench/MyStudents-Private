@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alireza — Français avec Hoda</title>
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-soft:#1976d2;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;
+  --red:#b71c1c;--red-pale:#ffebee;--green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Estedad','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.9;min-height:100vh;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,0.04) 39px,rgba(13,27,42,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,0.02) 39px,rgba(13,27,42,0.02) 40px);pointer-events:none;}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
+.topbar-left{display:flex;align-items:center;gap:14px;}
+.logo{width:44px;height:44px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;font-family:'Roboto',sans-serif;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:22px;font-weight:700;color:white;}
+.topbar .sub{font-size:12px;color:rgba(255,255,255,.5);}
+.topbar-right{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase;}
+
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:48px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,0.05);border-radius:50%;}
+.hero::after{content:"";position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,0.03);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:50px;font-weight:700;letter-spacing:-2px;margin-bottom:10px;}
+.hero .sub-fa{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:6px;}
+.hero .sub-fr{font-family:'Roboto',sans-serif;font-size:20px;color:rgba(255,255,255,.7);font-style:italic;margin-bottom:28px;}
+
+.search-box{width:100%;max-width:480px;position:relative;margin-bottom:32px;}
+.search-box input{width:100%;padding:15px 48px 15px 18px;font-size:14px;border:2px solid rgba(255,255,255,.2);border-radius:8px;font-family:inherit;background:rgba(255,255,255,.1);color:white;transition:all .2s;}
+.search-box input::placeholder{color:rgba(255,255,255,.5);}
+.search-box input:focus{outline:none;border-color:var(--blue);background:rgba(255,255,255,.15);}
+.search-box::before{content:"🔍";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:17px;opacity:.5;}
+
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:580px;width:100%;}
+.cat-chip{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:10px;padding:18px 16px;cursor:pointer;transition:all .25s ease;font-family:inherit;position:relative;overflow:hidden;text-align:right;}
+.cat-chip::after{content:"";position:absolute;top:0;right:0;bottom:0;width:3px;background:var(--c,var(--blue));transition:width .25s;}
+.cat-chip:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);transform:translateY(-3px);}
+.cat-chip:hover::after{width:6px;}
+.cat-chip .chip-icon{width:42px;height:42px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:all .25s;}
+.cat-chip:hover .chip-icon{background:var(--c,var(--blue));}
+.cat-chip .name{font-size:14px;font-weight:600;color:white;line-height:1.3;}
+.cat-chip .num{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
+
+.library{max-width:860px;margin:0 auto;padding:0 24px 80px;display:none;}
+.library.active{display:block;}
+.lib-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--line);}
+.lib-back{background:var(--blue-pale);border:none;color:var(--blue);font-size:20px;width:40px;height:40px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit;}
+.lib-back:hover{background:var(--blue);color:white;}
+.lib-title{font-family:'Roboto',sans-serif;font-size:22px;font-weight:700;color:var(--navy);}
+.lib-count{font-size:12px;color:var(--gray);margin-top:2px;}
+
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;}
+.content-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:all .25s;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(13,27,42,.05);}
+.content-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(13,27,42,.12);border-color:var(--blue);}
+.card-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;}
+.card-level{position:absolute;top:8px;left:8px;background:var(--navy);color:white;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:0.5px;}
+.card-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;text-align:right;}
+.card-cat{font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;}
+.card-title{font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:4px;}
+.card-sub{font-family:'Roboto',sans-serif;font-size:11px;color:var(--gray);font-style:italic;margin-bottom:10px;flex:1;}
+.card-go{font-size:11px;font-weight:700;color:var(--blue);margin-top:auto;padding-top:8px;border-top:1px solid var(--line);}
+
+.group-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px;}
+.group-hd{background:var(--navy);padding:14px 18px;display:flex;align-items:center;gap:12px;}
+.group-hd .gi{font-size:22px;}
+.group-hd .gt{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.group-hd .gs{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
+.group-items{padding:10px 14px;display:flex;flex-direction:column;gap:8px;}
+.group-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:8px;text-decoration:none;transition:all .2s;}
+.group-item.av{background:var(--blue-mist);border:1px solid #bfdbfe;}
+.group-item.av:hover{background:var(--blue-pale);transform:translateX(-3px);}
+.group-item.lk{background:var(--paper);opacity:.45;cursor:not-allowed;border:1px solid var(--line);}
+.group-item .gi-title{font-size:13px;font-weight:600;color:var(--navy);flex:1;}
+.group-item .gi-arr{color:var(--blue);font-weight:700;font-size:13px;}
+
+.hero-wrap{display:flex;flex-direction:column;align-items:center;padding:48px 24px;}
+.hero-wrap.shrink{padding:32px 24px 16px;}
+.hero-wrap.hidden{display:none;}
+
+.footer{text-align:center;padding:24px;color:var(--gray);font-size:12px;border-top:1px solid var(--line);}
+#scrollBtn{display:none;position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;border:none;padding:12px 15px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 14px rgba(13,27,42,.3);z-index:1000;}
+#scrollBtn:hover{background:var(--blue);}
+#scrollBtn.show{display:block;}
+@media(max-width:640px){.hero h2{font-size:34px;}.cat-grid{grid-template-columns:1fr;max-width:360px;}.topbar{padding:12px 16px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">A</div>
+    <div><h1>Alireza</h1><div class="sub">Espace d'apprentissage · Français avec Hoda</div></div>
+  </div>
+  <div class="topbar-right">Français avec Hoda</div>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">✦ Espace personnel ✦</div>
+    <div class="hero-wrap" id="hero">
+      <h2>Bienvenue, Alireza</h2>
+      <div class="sub-fa">فضای یادگیری اختصاصی تو</div>
+      <div class="sub-fr">Construis ton français, pas à pas.</div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="جستجو در محتوا..." oninput="handleSearch(this.value)">
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="library" id="library">
+  <div class="lib-header">
+    <button class="lib-back" onclick="goHome()">←</button>
+    <div>
+      <div class="lib-title" id="libTitle"></div>
+      <div class="lib-count" id="libCount"></div>
+    </div>
+  </div>
+  <div id="contentGrid"></div>
+</div>
+
+<div class="footer">
+  <span style="font-weight:700;color:var(--navy);">Alireza</span> · Français avec Hoda · © 2025
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const CATEGORIES = [
+  { id:"grammaire",    label:"Grammaire",       icon:"§",   color:"#1565c0" },
+  { id:"tcf",          label:"TCF Canada",       icon:"🎙️",  color:"#e65100" },
+  { id:"vocabulaire",  label:"Vocabulaire",      icon:"📚",  color:"#6a1b9a" },
+  { id:"mes-erreurs",  label:"Mes erreurs",      icon:"🔴",  color:"#b71c1c" },
+];
+
+const LESSONS = [
+  // ── Grammaire ──
+  {
+    file:"Grammaire/passe-compose/index.html",
+    title:"Passé composé",
+    titleFr:"Formation · Emplois · Verbes TCF · A2→B2+",
+    category:"grammaire", level:"A2→B2+", icon:"⏰",
+    group:"Temps du passé", disabled:false,
+  },
+  {
+    file:"Grammaire/passe-compose/index.html#panel-conditionnel",
+    title:"Conditionnel présent & passé",
+    titleFr:"Politesse · Hypothèse · Regret · B1→B2",
+    category:"grammaire", level:"B1→B2", icon:"💭",
+    group:"Modes", disabled:false,
+  },
+  // Futures leçons
+  { file:"#", title:"Imparfait", titleFr:"Bientôt disponible", category:"grammaire", level:"B1", icon:"🔒", group:"Temps du passé", disabled:true },
+  { file:"#", title:"Subjonctif", titleFr:"Bientôt disponible", category:"grammaire", level:"B2", icon:"🔒", group:"Modes", disabled:true },
+
+  // ── TCF ──
+  {
+    file:"Grammaire/passe-compose/index.html#panel-tcf",
+    title:"Stratégie TCF — Tâches 1·2·3",
+    titleFr:"Exemples complets · Phrases-outils · B2",
+    category:"tcf", level:"B1→B2", icon:"🎙️",
+    group:"Expression orale & écrite", disabled:false,
+  },
+
+  // Placeholders
+  { file:"#", title:"Mes erreurs", titleFr:"Bientôt", category:"mes-erreurs", level:"—", icon:"🔴", group:"", disabled:true },
+];
+
+let currentCat=null;
+
+function countCat(id){return LESSONS.filter(l=>l.category===id).length;}
+
+function buildCatGrid(){
+  const grid=document.getElementById('catGrid');
+  grid.innerHTML=CATEGORIES.map(c=>`
+    <button class="cat-chip" style="--c:${c.color}" onclick="openCat('${c.id}')">
+      <div class="chip-icon">${c.icon}</div>
+      <div class="chip-body" style="text-align:right;">
+        <span class="name">${c.label}</span>
+        <span class="num">${countCat(c.id)} contenu${countCat(c.id)>1?'s':''}</span>
+      </div>
+    </button>`).join('');
+}
+
+function openCat(id){
+  currentCat=id;
+  const cat=CATEGORIES.find(c=>c.id===id);
+  const items=LESSONS.filter(l=>l.category===id);
+  document.getElementById('hero').classList.add('hidden');
+  document.getElementById('library').classList.add('active');
+  document.getElementById('libTitle').textContent=`${cat?.icon} ${cat?.label}`;
+  document.getElementById('libCount').textContent=`${items.length} contenu${items.length>1?'s':''}`;
+
+  if(id==='grammaire'){
+    const groups=[...new Set(items.map(l=>l.group))];
+    document.getElementById('contentGrid').innerHTML=groups.map(g=>{
+      const gItems=items.filter(l=>l.group===g);
+      return `<div class="group-card">
+        <div class="group-hd"><span class="gi">${gItems[0].icon}</span><div><div class="gt">${g}</div><div class="gs">${gItems.length} leçon${gItems.length>1?'s':''}</div></div></div>
+        <div class="group-items">
+          ${gItems.map(l=>l.disabled
+            ?`<div class="group-item lk"><span>🔒</span><span class="gi-title">${l.title} · ${l.titleFr}</span><span style="font-size:11px;color:#94a3b8;">Bientôt</span></div>`
+            :`<a class="group-item av" href="${l.file}"><span>✅</span><span class="gi-title">${l.title} <span style="font-size:11px;font-weight:400;color:#64748b;font-style:italic;">${l.titleFr}</span></span><span class="gi-arr">→</span></a>`
+          ).join('')}
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    const avail=items.filter(l=>!l.disabled);
+    document.getElementById('contentGrid').innerHTML=`<div class="content-grid">${items.map(l=>{
+      if(l.disabled) return `<div class="content-card" style="opacity:.4;cursor:not-allowed;"><div class="card-thumb" style="background:#f1f5f9;"><span>🔒</span></div><div class="card-body"><div class="card-title">${l.title}</div><div class="card-go">Bientôt ⏳</div></div></div>`;
+      const cat=CATEGORIES.find(c=>c.id===l.category);
+      return `<a class="content-card" href="${l.file}"><div class="card-thumb" style="background:${cat?.color}14;"><span style="font-size:38px;">${l.icon}</span>${l.level?`<span class="card-level">${l.level}</span>`:''}</div><div class="card-body"><div class="card-cat">${cat?.label}</div><div class="card-title">${l.title}</div><div class="card-sub">${l.titleFr}</div><div class="card-go">Ouvrir →</div></div></a>`;
+    }).join('')}</div>`;
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goHome(){
+  currentCat=null;
+  document.getElementById('hero').classList.remove('hidden');
+  document.getElementById('library').classList.remove('active');
+  document.getElementById('searchInput').value='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function handleSearch(q){
+  q=q.trim();
+  if(!q){goHome();return;}
+  const ql=q.toLowerCase();
+  const results=LESSONS.filter(l=>l.title.toLowerCase().includes(ql)||l.titleFr?.toLowerCase().includes(ql));
+  document.getElementById('hero').classList.add('hidden');
+  document.getElementById('library').classList.add('active');
+  document.getElementById('libTitle').textContent=`🔍 Résultats pour «${q}»`;
+  document.getElementById('libCount').textContent=`${results.length} résultat${results.length>1?'s':''}`;
+  document.getElementById('contentGrid').innerHTML=`<div class="content-grid">${results.filter(l=>!l.disabled).map(l=>{
+    const cat=CATEGORIES.find(c=>c.id===l.category);
+    return `<a class="content-card" href="${l.file}"><div class="card-thumb" style="background:${cat?.color}14;"><span style="font-size:38px;">${l.icon}</span></div><div class="card-body"><div class="card-cat">${cat?.label}</div><div class="card-title">${l.title}</div><div class="card-sub">${l.titleFr}</div><div class="card-go">Ouvrir →</div></div></a>`;
+  }).join('')}</div>`;
+}
+
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+buildCatGrid();
+</script>
+</body>
+</html>
