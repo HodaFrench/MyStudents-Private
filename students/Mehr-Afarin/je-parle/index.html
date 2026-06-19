@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Je Parle — Mehr Afarin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .emoji {
+            font-size: 70px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        .student-name {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 18px;
+            margin-top: 18px;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENT */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* INTRO */
+        .section {
+            margin-bottom: 40px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #2980b9;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            color: #2980b9;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        /* LESSON CARDS */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .lesson-card {
+            background: white;
+            border-radius: 16px;
+            border: 2px solid #e0e6ed;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .lesson-card:hover {
+            border-color: #2980b9;
+            box-shadow: 0 12px 32px rgba(41, 128, 185, 0.18);
+            transform: translateY(-6px);
+        }
+
+        .lesson-card-header {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            padding: 28px 25px 22px;
+            text-align: center;
+        }
+
+        .lesson-card-emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .lesson-card-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .lesson-card-level {
+            color: rgba(255,255,255,0.8);
+            font-size: 12px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .lesson-card-body {
+            padding: 22px 25px 26px;
+        }
+
+        .lesson-card-desc {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .lesson-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #d6eaf8;
+            color: #0b5394;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .lesson-card-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .lesson-card-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* TIP BOX */
+        .tip-box {
+            background: #d6eaf8;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            font-weight: 700;
+            color: #0b5394;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .tip-content {
+            color: #1a5490;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        /* SCROLL UP */
+        #scrollBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2980b9 0%, #1a5490 100%);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #scrollBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(41, 128, 185, 0.5);
+        }
+
+        #scrollBtn.show {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 36px; }
+            .header .emoji { font-size: 50px; }
+            .content { padding: 25px; }
+            .section { padding: 25px; }
+            .lessons-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <span class="emoji">🗣️</span>
+            <h1>Je Parle</h1>
+            <p>مکالمه و تمرین زبان فرانسه</p>
+            <div class="subtitle">Français avec Hoda | Niveau A2/B1</div>
+            <div class="student-name">👩‍🎓 Mehr Afarin</div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="section">
+            <h2>📂 دروس این پوشه</h2>
+            <p style="color:#4a5568; margin-bottom:30px; font-size:15px; line-height:1.8;">
+                در این بخش، تمام فایل‌های آموزشی مربوط به مهرآفرین قرار دارد. روی هر درس کلیک کن تا محتوای کامل آن را ببینی.
+            </p>
+
+            <div class="lessons-grid">
+
+                <!-- Droit -->
+                <a class="lesson-card" href="Droit.html">
+                    <div class="lesson-card-header">
+                        <span class="lesson-card-emoji">⚖️</span>
+                        <div class="lesson-card-title">Les Études en Droit</div>
+                        <div class="lesson-card-level">Niveau A2/B1</div>
+                    </div>
+                    <div class="lesson-card-body">
+                        <p class="lesson-card-desc">
+                            صحبت درباره تحصیل در رشته حقوق، دنیای وکالت و عدالت به زبان فرانسه.
+                        </p>
+                        <div class="lesson-card-tags">
+                            <span class="tag">📖 ۵ متن</span>
+                            <span class="tag">💬 دیالوگ</span>
+                            <span class="tag">📚 واژه‌نامه</span>
+                            <span class="tag">❓ سوال</span>
+                        </div>
+                        <span class="lesson-card-btn">باز کردن درس ←</span>
+                    </div>
+                </a>
+
+                <!-- Perfectionnisme -->
+                <a class="lesson-card" href="perfectionnisme.html">
+                    <div class="lesson-card-header">
+                        <span class="lesson-card-emoji">🎯</span>
+                        <div class="lesson-card-title">Le Perfectionnisme</div>
+                        <div class="lesson-card-level">Niveau A2/B1</div>
+                    </div>
+                    <div class="lesson-card-body">
+                        <p class="lesson-card-desc">
+                            بحث و گفتگو درباره کمال‌گرایی، مزایا و معایب آن در زندگی روزمره.
+                        </p>
+                        <div class="lesson-card-tags">
+                            <span class="tag">📖 ۵ متن</span>
+                            <span class="tag">💬 دیالوگ</span>
+                            <span class="tag">📚 واژه‌نامه</span>
+                            <span class="tag">❓ سوال</span>
+                        </div>
+                        <span class="lesson-card-btn">باز کردن درس ←</span>
+                    </div>
+                </a>
+
+                <!-- Stress -->
+                <a class="lesson-card" href="Stress.html">
+                    <div class="lesson-card-header">
+                        <span class="lesson-card-emoji">😤</span>
+                        <div class="lesson-card-title">Le Stress</div>
+                        <div class="lesson-card-level">Niveau A2/B1</div>
+                    </div>
+                    <div class="lesson-card-body">
+                        <p class="lesson-card-desc">
+                            یادگیری واژه‌ها و عبارات کاربردی برای صحبت درباره استرس و مدیریت آن.
+                        </p>
+                        <div class="lesson-card-tags">
+                            <span class="tag">📖 ۵ متن</span>
+                            <span class="tag">💬 دیالوگ</span>
+                            <span class="tag">📚 واژه‌نامه</span>
+                            <span class="tag">❓ سوال</span>
+                        </div>
+                        <span class="lesson-card-btn">باز کردن درس ←</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- TIP -->
+        <div class="section" style="background: linear-gradient(135deg, #d6eaf8 0%, #f5f5f5 100%); border-left-color: #3498db;">
+            <h2>💡 چطور از این صفحه استفاده کنی؟</h2>
+            <div class="tip-box">
+                <div class="tip-title">✅ مرحله اول:</div>
+                <div class="tip-content">هر درس رو از بالا شروع کن — از بخش Échauffement (گرم‌کردن) که کوتاه و سریعه.</div>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">🎯 مرحله دوم:</div>
+                <div class="tip-content">متن‌های اصلی رو بخوان و سعی کن به سوال‌ها جواب بدی بدون نگاه کردن به متن.</div>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">💬 مرحله سوم:</div>
+                <div class="tip-content">۱۰ عبارت مهم هر درس رو تمرین کن و با جمله‌های خودت استفاده کن.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>👤 Hoda KHEDMATI — Professeur de Français</p>
+        <p>📁 Dossier: Je Parle | 👩‍🎓 Mehr Afarin</p>
+        <p style="margin-top:15px; opacity:0.7; font-size:12px;">Français avec Hoda © 2025</p>
+    </div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        const scrollBtn = document.getElementById('scrollBtn');
+        if (window.pageYOffset > 300) {
+            scrollBtn.classList.add('show');
+        } else {
+            scrollBtn.classList.remove('show');
+        }
+    });
+</script>
+</body>
+</html>
