@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Passé Composé A2→B2+ — Alireza</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a; --navy-mid:#1b2e45; --navy-soft:#2c4a6e;
+  --blue:#1565c0; --blue-soft:#1976d2; --blue-pale:#e3f2fd; --blue-mist:#f0f7ff;
+  --paper:#f8fafc; --ink:#1a2332; --gray:#64748b; --line:#cbd5e1; --white:#fff;
+  --green:#2e7d32; --green-pale:#e8f5e9; --green-soft:#388e3c;
+  --red:#b71c1c; --red-pale:#ffebee;
+  --amber:#e65100; --amber-pale:#fff3e0;
+  --teal:#00695c; --teal-pale:#e0f2f1;
+  --purple:#6a1b9a; --purple-pale:#f3e5f5;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;padding-bottom:60px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,0.04) 39px,rgba(13,27,42,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,0.02) 39px,rgba(13,27,42,0.02) 40px);pointer-events:none;}
+
+/* ── TOPBAR ── */
+.topbar{display:flex;align-items:center;gap:14px;padding:14px 28px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
+.logo{width:42px;height:42px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:white;letter-spacing:-1px;}
+.topbar h1{font-size:20px;font-weight:700;color:white;}
+.topbar .sub{font-size:11px;color:rgba(255,255,255,0.55);}
+.back{margin-right:auto;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:6px;transition:.2s;}
+.back:hover{background:var(--blue);color:white;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:44px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;}
+.hero .tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+.hero h2{font-size:38px;font-weight:700;margin-bottom:8px;letter-spacing:-1px;}
+.hero .sub{font-size:15px;opacity:.8;}
+.level-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+.lvbadge{padding:5px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:0.5px;}
+.lv-a2{background:var(--green);color:white;} .lv-b1{background:var(--blue);color:white;} .lv-b2{background:var(--amber);color:white;} .lv-b2p{background:var(--purple);color:white;}
+
+/* ── TABS ── */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:75px;z-index:99;}
+.tab{padding:13px 18px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+.tab:hover{color:var(--blue);} .tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+.tc{background:white;max-width:900px;margin:0 auto;padding:32px 28px;}
+.panel{display:none;} .panel.active{display:block;}
+
+/* ── SECTIONS ── */
+.sec{margin-bottom:36px;}
+.sec-title{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.sec-sub{font-size:13px;color:var(--gray);margin-bottom:16px;direction:rtl;text-align:right;}
+
+/* ── LEVEL TAG ── */
+.ltag{display:inline-block;padding:2px 10px;border-radius:10px;font-size:10px;font-weight:700;margin-left:8px;vertical-align:middle;}
+.ltag.a2{background:var(--green-pale);color:var(--green);} .ltag.b1{background:var(--blue-pale);color:var(--blue);} .ltag.b2{background:var(--amber-pale);color:var(--amber);} .ltag.b2p{background:var(--purple-pale);color:var(--purple);}
+
+/* ── FORMULA ── */
+.formula{background:var(--blue-mist);border:2px dashed var(--blue-soft);border-radius:12px;padding:18px;text-align:center;margin:16px 0;}
+.formula .big{font-size:19px;font-weight:700;color:var(--navy);}
+.formula .a{color:var(--blue);} .formula .b{color:var(--amber);}
+.formula .note{font-size:13px;color:var(--gray);margin-top:8px;direction:rtl;}
+
+/* ── CONJ TABLE ── */
+.conj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:16px 0;}
+.ccard{background:var(--blue-mist);border-radius:10px;overflow:hidden;border:2px solid #bfdbfe;}
+.ccard h4{background:var(--navy);color:white;padding:10px 14px;font-size:13px;text-align:center;}
+.ccard table{width:100%;border-collapse:collapse;}
+.ccard td{padding:6px 13px;font-size:13px;border-bottom:1px solid #dbeafe;}
+.ccard td:first-child{color:var(--gray);width:42%;}
+.ccard td:last-child{font-weight:600;color:var(--navy);}
+.end{color:var(--blue);font-weight:700;} .aux{color:var(--blue);font-weight:700;} .pp{color:var(--amber);}
+
+/* ── TABLE ── */
+table.neat{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;}
+table.neat th{background:var(--navy);color:white;padding:10px 14px;text-align:left;font-size:11px;letter-spacing:0.5px;}
+table.neat td{padding:9px 14px;border-bottom:1px solid var(--line);}
+table.neat tr:nth-child(even){background:var(--blue-mist);}
+table.neat td:first-child{font-weight:700;color:var(--navy);}
+
+/* ── EX BOXES ── */
+.ex{font-size:14.5px;color:var(--navy);background:white;padding:10px 14px;border-radius:8px;margin:5px 0;line-height:1.6;border-left:3px solid var(--blue);}
+.ex .hl{background:rgba(21,101,192,.15);padding:1px 5px;border-radius:4px;font-weight:700;}
+.ex-fa{font-size:12px;color:var(--gray);margin:2px 0 8px;direction:rtl;text-align:right;padding:0 4px;}
+.ex-tcf{background:linear-gradient(90deg,var(--navy) 0%,var(--navy-soft) 100%);color:white;border-left:4px solid var(--amber);}
+.ex-tcf .hl{background:rgba(230,81,0,.3);color:#ffd180;}
+
+/* ── USE BOX ── */
+.use{background:var(--blue-mist);border-right:4px solid var(--blue);border-radius:10px;padding:14px 18px;margin:12px 0;}
+.use-t{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+
+/* ── RULE BOX ── */
+.rule{border-radius:10px;padding:14px 18px;margin:14px 0;}
+.rule.ok{background:var(--green-pale);border-right:4px solid var(--green);}
+.rule.danger{background:var(--red-pale);border-right:4px solid var(--red);}
+.rule.warn{background:var(--amber-pale);border-right:4px solid var(--amber);}
+.rule.info{background:var(--blue-mist);border-right:4px solid var(--blue);}
+.rule.purple{background:var(--purple-pale);border-right:4px solid var(--purple);}
+.rule-t{font-size:13px;font-weight:700;margin-bottom:8px;}
+.rule-t.ok{color:var(--green);} .rule-t.danger{color:var(--red);} .rule-t.warn{color:var(--amber);} .rule-t.info{color:var(--blue);} .rule-t.purple{color:var(--purple);}
+
+/* ── TCF BOX ── */
+.tcf-card{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;border-radius:14px;padding:22px 24px;margin:18px 0;}
+.tcf-card h3{font-size:16px;font-weight:700;margin-bottom:14px;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;}
+.tcf-item{background:rgba(255,255,255,.08);border-radius:10px;padding:14px 16px;margin:10px 0;}
+.tcf-item .tnum{display:inline-block;background:var(--blue);color:white;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:11px;font-weight:700;margin-left:8px;}
+.tcf-item .ttitle{font-size:14px;font-weight:700;margin-bottom:6px;}
+.tcf-item .tdesc{font-size:13px;color:rgba(255,255,255,.75);line-height:1.7;}
+.tcf-item .tfa{font-size:12px;color:rgba(255,255,255,.55);direction:rtl;text-align:right;margin-top:6px;font-style:italic;}
+.tcf-ex{font-size:13.5px;font-family:'Courier New',monospace;background:rgba(255,255,255,.12);padding:10px 14px;border-radius:8px;margin:6px 0;line-height:1.7;border-left:3px solid var(--amber);}
+.tcf-hl{color:#ffd180;font-weight:700;}
+
+/* ── COMPARE ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;margin:12px 0;}
+.compare .bad{background:var(--red-pale);padding:12px 16px;border-right:1.5px solid var(--line);}
+.compare .good{background:var(--green-pale);padding:12px 16px;}
+.compare .bad::before{content:"✗ ";color:var(--red);font-weight:700;}
+.compare .good::before{content:"✓ ";color:var(--green);font-weight:700;}
+.compare div{font-size:14px;line-height:1.7;}
+
+/* ── EXERCISES ── */
+.exblock{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:24px;margin-bottom:20px;}
+.exblock h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.exn{background:var(--blue);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.qi{margin-bottom:16px;padding-bottom:16px;border-bottom:1px dashed var(--line);}
+.qi:last-child{margin:0;padding:0;border:none;}
+.qt{font-size:14.5px;color:var(--ink);margin-bottom:5px;}
+.qfa{font-size:12px;color:var(--gray);margin-bottom:10px;direction:rtl;text-align:right;}
+.qopts{display:flex;flex-wrap:wrap;gap:8px;}
+.qopt{font-size:13px;font-weight:600;background:white;border:2px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer;transition:all .2s;}
+.qopt:hover:not(.done){border-color:var(--blue);background:var(--blue-mist);}
+.qopt.correct{background:var(--green-pale);border-color:var(--green);color:var(--green);}
+.qopt.wrong{background:var(--red-pale);border-color:var(--red);color:var(--red);}
+.qans{display:none;font-size:13px;background:var(--green-pale);border-right:3px solid var(--green);border-radius:8px;padding:10px;margin-top:8px;line-height:1.8;}
+.qans.show{display:block;} .qans b{color:var(--green);}
+.blank{display:inline-block;min-width:130px;padding:2px 7px;border:none;border-bottom:2px solid var(--blue);background:transparent;font-size:14px;color:var(--blue);font-weight:600;font-family:inherit;outline:none;}
+.blank.ok{border-bottom-color:var(--green);color:var(--green);background:var(--green-pale);border-radius:4px 4px 0 0;}
+.blank.err{border-bottom-color:var(--red);color:var(--red);background:var(--red-pale);border-radius:4px 4px 0 0;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:all .2s;}
+.btn-p{background:var(--navy);color:white;box-shadow:0 4px 12px rgba(13,27,42,.2);}
+.btn-p:hover{background:var(--blue);transform:translateY(-1px);}
+.btn-s{background:var(--blue-pale);color:var(--blue);}
+.btn-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.score{background:var(--navy);color:white;padding:14px;border-radius:10px;margin-top:12px;display:none;text-align:center;}
+.score.show{display:block;} .score .sn{font-size:28px;font-weight:700;} .score .sl{font-size:12px;opacity:.8;margin-top:2px;}
+
+/* ── UPGRADE BOX ── */
+.upgrade{background:linear-gradient(135deg,var(--navy-mid),var(--navy-soft));color:white;border-radius:12px;padding:20px 22px;margin:16px 0;}
+.upgrade h4{font-size:12px;font-weight:700;margin-bottom:12px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;}
+
+/* ── PILL CLOUD ── */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.pill{background:white;border:1.5px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700;color:var(--navy);}
+.pill.verb{border-color:var(--blue);color:var(--blue);background:var(--blue-mist);}
+.pill.imp{border-color:var(--amber);color:var(--amber);background:var(--amber-pale);}
+
+/* footer */
+.footer{text-align:center;margin-top:30px;padding:18px;color:var(--gray);font-size:12px;border-top:1px solid var(--line);}
+.footer a{color:var(--blue);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
+#scrollBtn:hover{background:var(--blue);}
+#scrollBtn.show{display:block;}
+@media(max-width:640px){.conj-grid{grid-template-columns:1fr;}.compare{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">A</div>
+  <div><h1>Alireza</h1><div class="sub">Grammaire · Passé composé A2→B2+</div></div>
+  <a class="back" href="../index.html">← Alireza</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tag">Grammaire complète · TCF Canada</div>
+  <h2>Le Passé composé & Le Conditionnel</h2>
+  <div class="sub">Formation · Emplois · Verbes essentiels · Exemples TCF · A2 → B2+</div>
+  <div class="level-badges">
+    <span class="lvbadge lv-a2">A2 · Base</span>
+    <span class="lvbadge lv-b1">B1 · Intermédiaire</span>
+    <span class="lvbadge lv-b2">B2 · Avancé</span>
+    <span class="lvbadge lv-b2p">B2+ · Expert TCF</span>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('formation')">📐 Formation PC</div>
+  <div class="tab" onclick="showTab('emplois')">🎯 Emplois</div>
+  <div class="tab" onclick="showTab('verbes')">📋 Verbes essentiels</div>
+  <div class="tab" onclick="showTab('negation')">🚫 Négation</div>
+  <div class="tab" onclick="showTab('conditionnel')">💭 Conditionnel</div>
+  <div class="tab" onclick="showTab('tcf')">🎙️ TCF Canada</div>
+  <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+</div>
+
+<div class="tc">
+
+<!-- ══════════════════════════════════════════
+     TAB 1 — FORMATION
+══════════════════════════════════════════ -->
+<div class="panel active" id="panel-formation">
+
+  <div class="sec">
+    <div class="sec-title">1. La formation du passé composé <span class="ltag a2">A2</span></div>
+    <div class="sec-sub">ساخت گذشته مرکب</div>
+
+    <div class="formula">
+      <div class="big"><span class="a">AVOIR ou ÊTRE (présent)</span> + <span class="b">PARTICIPE PASSÉ</span></div>
+      <div class="note">کمکی فعل در زمان حال + اسم مفعول · ۹۹٪ افعال از avoir · فقط ۱۴+pronominaux از être</div>
+    </div>
+
+    <div class="conj-grid">
+      <div class="ccard">
+        <h4>PARLER (avoir) — مثال کامل</h4>
+        <table><tbody>
+          <tr><td>j'</td><td><span class="aux">ai</span> <span class="pp">parlé</span></td></tr>
+          <tr><td>tu</td><td><span class="aux">as</span> <span class="pp">parlé</span></td></tr>
+          <tr><td>il/elle</td><td><span class="aux">a</span> <span class="pp">parlé</span></td></tr>
+          <tr><td>nous</td><td><span class="aux">avons</span> <span class="pp">parlé</span></td></tr>
+          <tr><td>vous</td><td><span class="aux">avez</span> <span class="pp">parlé</span></td></tr>
+          <tr><td>ils/elles</td><td><span class="aux">ont</span> <span class="pp">parlé</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>ALLER (être) — با accord</h4>
+        <table><tbody>
+          <tr><td>je</td><td><span class="aux">suis</span> <span class="pp">allé(e)</span></td></tr>
+          <tr><td>tu</td><td><span class="aux">es</span> <span class="pp">allé(e)</span></td></tr>
+          <tr><td>il/elle</td><td><span class="aux">est</span> <span class="pp">allé(e)</span></td></tr>
+          <tr><td>nous</td><td><span class="aux">sommes</span> <span class="pp">allé(e)s</span></td></tr>
+          <tr><td>vous</td><td><span class="aux">êtes</span> <span class="pp">allé(e)s</span></td></tr>
+          <tr><td>ils/elles</td><td><span class="aux">sont</span> <span class="pp">allé(e)s</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>SE LEVER (pronominal + être)</h4>
+        <table><tbody>
+          <tr><td>je</td><td><span class="aux">me suis</span> <span class="pp">levé(e)</span></td></tr>
+          <tr><td>tu</td><td><span class="aux">t'es</span> <span class="pp">levé(e)</span></td></tr>
+          <tr><td>il/elle</td><td><span class="aux">s'est</span> <span class="pp">levé(e)</span></td></tr>
+          <tr><td>nous</td><td><span class="aux">nous sommes</span> <span class="pp">levé(e)s</span></td></tr>
+          <tr><td>vous</td><td><span class="aux">vous êtes</span> <span class="pp">levé(e)s</span></td></tr>
+          <tr><td>ils</td><td><span class="aux">se sont</span> <span class="pp">levés</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTICIPES PASSÉS -->
+  <div class="sec">
+    <div class="sec-title">2. Formation du participe passé <span class="ltag a2">A2</span></div>
+    <div class="sec-sub">ساخت اسم مفعول — سه گروه</div>
+
+    <table class="neat">
+      <thead><tr><th>Groupe</th><th>Règle</th><th>Exemples</th><th>فارسی</th></tr></thead>
+      <tbody>
+        <tr><td>-ER → -É</td><td>ریشه + é</td><td>parl<b>é</b> · mang<b>é</b> · all<b>é</b> · arriv<b>é</b></td><td>گروه اول — ساده‌ترین</td></tr>
+        <tr><td>-IR → -I</td><td>ریشه + i</td><td>fin<b>i</b> · chois<b>i</b> · sort<b>i</b> · part<b>i</b></td><td>گروه دوم — ی‌ می‌شود</td></tr>
+        <tr><td>-RE → -U</td><td>ریشه + u</td><td>attend<b>u</b> · vend<b>u</b> · descend<b>u</b></td><td>گروه سوم منظم</td></tr>
+        <tr><td style="color:var(--red);">Irréguliers !</td><td>باید حفظ شود</td><td>fait · dit · pris · mis · vu · eu · été…</td><td>نامنظم — جدول بعد</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:16px;margin-top:24px;">🚨 Participes irréguliers essentiels <span class="ltag b1">B1</span></div>
+    <table class="neat">
+      <thead><tr><th>Infinitif</th><th>Participe</th><th>Infinitif</th><th>Participe</th><th>Infinitif</th><th>Participe</th></tr></thead>
+      <tbody>
+        <tr><td>avoir</td><td><b>eu</b></td><td>être</td><td><b>été</b></td><td>faire</td><td><b>fait</b></td></tr>
+        <tr><td>prendre</td><td><b>pris</b></td><td>apprendre</td><td><b>appris</b></td><td>comprendre</td><td><b>compris</b></td></tr>
+        <tr><td>mettre</td><td><b>mis</b></td><td>promettre</td><td><b>promis</b></td><td>permettre</td><td><b>permis</b></td></tr>
+        <tr><td>dire</td><td><b>dit</b></td><td>écrire</td><td><b>écrit</b></td><td>conduire</td><td><b>conduit</b></td></tr>
+        <tr><td>voir</td><td><b>vu</b></td><td>vouloir</td><td><b>voulu</b></td><td>pouvoir</td><td><b>pu</b></td></tr>
+        <tr><td>devoir</td><td><b>dû</b></td><td>savoir</td><td><b>su</b></td><td>recevoir</td><td><b>reçu</b></td></tr>
+        <tr><td>venir</td><td><b>venu</b></td><td>tenir</td><td><b>tenu</b></td><td>boire</td><td><b>bu</b></td></tr>
+        <tr><td>lire</td><td><b>lu</b></td><td>vivre</td><td><b>vécu</b></td><td>connaître</td><td><b>connu</b></td></tr>
+        <tr><td>ouvrir</td><td><b>ouvert</b></td><td>offrir</td><td><b>offert</b></td><td>mourir</td><td><b>mort</b></td></tr>
+        <tr><td>naître</td><td><b>né</b></td><td>croire</td><td><b>cru</b></td><td>courir</td><td><b>couru</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MAISON ÊTRE -->
+  <div class="sec">
+    <div class="sec-title">3. La «maison ÊTRE» <span class="ltag a2">A2</span></div>
+    <div class="sec-sub">۱۴ فعلی که با être می‌آیند — حتماً حفظ شود</div>
+    <div class="pills">
+      <span class="pill imp">aller ↔ venir</span>
+      <span class="pill imp">arriver ↔ partir</span>
+      <span class="pill imp">entrer ↔ sortir</span>
+      <span class="pill imp">monter ↔ descendre</span>
+      <span class="pill imp">naître ↔ mourir</span>
+      <span class="pill imp">rester</span>
+      <span class="pill imp">tomber</span>
+      <span class="pill imp">devenir</span>
+      <span class="pill imp">retourner</span>
+      <span class="pill imp">+ tous les pronominaux</span>
+    </div>
+    <div class="rule ok" style="margin-top:12px;">
+      <div class="rule-t ok">✅ Accord avec le sujet (ÊTRE uniquement)</div>
+      <div class="ex">Elle est <b>partie</b>. · Ils sont <b>arrivés</b>. · Elles se sont <b>réveillées</b>.</div>
+      <div class="ex-fa">با être: اسم مفعول با فاعل مطابقت می‌کند (جنس + عدد)</div>
+    </div>
+    <div class="rule warn" style="margin-top:10px;">
+      <div class="rule-t warn">⚠️ Verbes doubles (être OU avoir selon COD)</div>
+      <div class="ex">Elle <b>est</b> mont<b>ée</b>. (sans COD) &nbsp;|&nbsp; Elle <b>a</b> mont<b>é</b> les valises. (COD = avoir)</div>
+      <div class="ex-fa">monter · descendre · sortir · rentrer · passer → با COD → avoir · بدون COD → être</div>
+    </div>
+  </div>
+
+  <!-- ACCORD avoir -->
+  <div class="sec">
+    <div class="sec-title">4. Accord du participe passé avec AVOIR <span class="ltag b1">B1</span> → <span class="ltag b2">B2</span></div>
+    <div class="sec-sub">پیچیده‌ترین بخش — مهم برای نوشتار TCF</div>
+    <div class="rule info">
+      <div class="rule-t info">📌 Règle : accord avec le COD si placé AVANT le verbe</div>
+      <div class="ex">J'ai <b>mangé</b> des pommes. <span class="ex-fa" style="display:inline;font-size:12px;">→ COD après : pas d'accord</span></div>
+      <div class="ex">Les pommes que j'ai <b>mangées</b>. <span class="ex-fa" style="display:inline;font-size:12px;">→ COD «que» avant : accord féminin pluriel</span></div>
+      <div class="ex">Je les ai <b>mangées</b>. <span class="ex-fa" style="display:inline;font-size:12px;">→ pronom COD «les» avant : accord</span></div>
+    </div>
+    <div class="upgrade">
+      <h4>⭐ Niveau B2+ — accord TCF écrit</h4>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Les résultats qu'il <span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">a obtenus</span> sont remarquables.</div>
+      <div class="ex-fa" style="color:rgba(255,255,255,.65);">نتایجی که به دست آورد قابل توجه هستند — accord avec «que» (masculin pluriel)</div>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Combien de langues <span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">a-t-il apprises</span> ?</div>
+      <div class="ex-fa" style="color:rgba(255,255,255,.65);">چند زبان یاد گرفته؟ — accord avec «combien de langues» (féminin pluriel)</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 2 — EMPLOIS
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-emplois">
+
+  <div class="use">
+    <div class="use-t">1. Action terminée dans le passé <span class="ltag a2">A2</span></div>
+    <div class="ex">Hier, j'<span class="hl">ai travaillé</span> jusqu'à 22h.</div>
+    <div class="ex-fa">دیروز تا ساعت ۲۲ کار کردم.</div>
+    <div class="ex">L'année dernière, nous <span class="hl">avons voyagé</span> en France.</div>
+    <div class="ex-fa">سال گذشته به فرانسه سفر کردیم.</div>
+    <div class="ex tcf">Dans ma vie, j'<span class="tcf-hl">ai toujours essayé</span> de me former en continu.</div>
+    <div class="ex-fa">در زندگی‌ام همیشه تلاش کردم که مداوم یاد بگیرم. ← مثال TCF Tâche 2</div>
+  </div>
+
+  <div class="use">
+    <div class="use-t">2. Succession d'actions <span class="ltag a2">A2</span> — raconter un parcours</div>
+    <div class="ex">D'abord, j'<span class="hl">ai fait</span> mes études. Ensuite, j'<span class="hl">ai travaillé</span>. Puis, j'<span class="hl">ai décidé</span> d'émigrer.</div>
+    <div class="ex-fa">ابتدا تحصیلاتم را کردم. سپس کار کردم. بعد تصمیم گرفتم مهاجرت کنم.</div>
+    <div class="ex tcf">J'<span class="tcf-hl">ai obtenu</span> mon diplôme en 2018, puis j'<span class="tcf-hl">ai travaillé</span> dans une grande entreprise avant de <span class="tcf-hl">décider</span> de poursuivre mes études au Canada.</div>
+    <div class="ex-fa">در ۲۰۱۸ مدرکم را گرفتم، سپس در یک شرکت بزرگ کار کردم، قبل از اینکه تصمیم بگیرم در کانادا ادامه تحصیل دهم. ← TCF Tâche 2</div>
+  </div>
+
+  <div class="use">
+    <div class="use-t">3. Expérience de vie — «déjà / jamais» <span class="ltag b1">B1</span></div>
+    <div class="ex">J'<span class="hl">ai déjà vécu</span> à l'étranger. / Je n'<span class="hl">ai jamais fumé</span>.</div>
+    <div class="ex-fa">قبلاً در خارج از کشور زندگی کرده‌ام. / هرگز سیگار نکشیده‌ام.</div>
+    <div class="ex tcf">Je n'<span class="tcf-hl">ai jamais hésité</span> à sortir de ma zone de confort, et c'est ce qui m'<span class="tcf-hl">a permis</span> de progresser.</div>
+    <div class="ex-fa">هرگز در خروج از منطقه آسایشم تردید نکردم، و این چیزی است که به من اجازه داد پیشرفت کنم. ← TCF Tâche 3</div>
+  </div>
+
+  <div class="use">
+    <div class="use-t">4. Durée limitée — résultat dans le présent <span class="ltag b1">B1</span></div>
+    <div class="ex">Il <span class="hl">a vécu</span> dix ans en France. (durée révolue)</div>
+    <div class="ex">Elle <span class="hl">a changé</span> — elle est différente maintenant. (résultat présent)</div>
+    <div class="ex-fa">او ده سال در فرانسه زندگی کرد. / او تغییر کرده — الان متفاوت است.</div>
+  </div>
+
+  <div class="use">
+    <div class="use-t">5. PC vs Imparfait <span class="ltag b1">B1</span> → <span class="ltag b2">B2</span> — distinction essentielle</div>
+    <div class="rule info">
+      <div class="rule-t info">📌 La règle fondamentale</div>
+      <table class="neat" style="margin-top:8px;">
+        <thead><tr><th>Passé composé</th><th>Imparfait</th></tr></thead>
+        <tbody>
+          <tr><td>action <b>terminée</b>, ponctuelle</td><td>action <b>en cours</b>, habituelle, description</td></tr>
+          <tr><td>premier plan du récit</td><td>décor, contexte</td></tr>
+          <tr><td>«ce qui s'est passé»</td><td>«comment c'était»</td></tr>
+        </tbody>
+      </table>
+      <div class="ex" style="margin-top:10px;">Il <span class="hl">faisait</span> beau quand nous <span class="hl">sommes arrivés</span>.</div>
+      <div class="ex-fa">هوا خوب بود [امپرفه = زمینه] وقتی رسیدیم [گذشته مرکب = عمل]</div>
+    </div>
+    <div class="upgrade">
+      <h4>⭐ Niveau B2 — narration complexe</h4>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Quand j'<span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">habitais</span> à Téhéran, je <span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">travaillais</span> dans une startup. Un jour, un recruteur m'<span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">a contacté</span> et tout <span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">a changé</span>.</div>
+      <div class="ex-fa" style="color:rgba(255,255,255,.65);">وقتی در تهران زندگی می‌کردم، در یک استارتاپ کار می‌کردم. یک روز یک استخدام‌کننده با من تماس گرفت و همه چیز تغییر کرد.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 3 — VERBES ESSENTIELS
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-verbes">
+
+  <div class="sec">
+    <div class="sec-title">Verbes essentiels TCF — classés par thème <span class="ltag b1">B1→B2+</span></div>
+    <div class="sec-sub">این افعال برای Tâche 1، 2 و 3 بیشترین کاربرد را دارند</div>
+
+    <div class="use">
+      <div class="use-t">👤 Parler de soi — Tâche 1 & 2</div>
+      <table class="neat">
+        <thead><tr><th>Infinitif</th><th>PP</th><th>Exemple TCF</th><th>فارسی</th></tr></thead>
+        <tbody>
+          <tr><td>naître</td><td><b>né(e)</b></td><td>Je suis <b>né(e)</b> à Ispahan en 1990.</td><td>به دنیا آمدم</td></tr>
+          <tr><td>grandir</td><td><b>grandi</b></td><td>J'ai <b>grandi</b> dans une petite ville.</td><td>بزرگ شدم</td></tr>
+          <tr><td>faire ses études</td><td><b>fait</b></td><td>J'ai <b>fait</b> mes études d'architecture.</td><td>تحصیل کردم</td></tr>
+          <tr><td>obtenir</td><td><b>obtenu</b></td><td>J'ai <b>obtenu</b> mon diplôme en 2018.</td><td>مدرک گرفتم</td></tr>
+          <tr><td>travailler</td><td><b>travaillé</b></td><td>J'ai <b>travaillé</b> pendant 5 ans dans une agence.</td><td>کار کردم</td></tr>
+          <tr><td>décider de</td><td><b>décidé</b></td><td>J'ai <b>décidé</b> de changer de carrière.</td><td>تصمیم گرفتم</td></tr>
+          <tr><td>s'installer</td><td><b>installé(e)</b></td><td>Je me suis <b>installé(e)</b> au Canada en 2022.</td><td>ساکن شدم</td></tr>
+          <tr><td>apprendre</td><td><b>appris</b></td><td>J'ai <b>appris</b> le français en deux ans.</td><td>یاد گرفتم</td></tr>
+          <tr><td>se former</td><td><b>formé(e)</b></td><td>Je me suis <b>formé(e)</b> en ligne.</td><td>آموزش دیدم</td></tr>
+          <tr><td>réussir</td><td><b>réussi</b></td><td>J'ai <b>réussi</b> à surmonter les difficultés.</td><td>موفق شدم</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="use">
+      <div class="use-t">🌍 Société & Opinion — Tâche 3</div>
+      <table class="neat">
+        <thead><tr><th>Infinitif</th><th>PP</th><th>Exemple TCF</th><th>فارسی</th></tr></thead>
+        <tbody>
+          <tr><td>montrer</td><td><b>montré</b></td><td>Les études ont <b>montré</b> que…</td><td>نشان داده‌اند</td></tr>
+          <tr><td>prouver</td><td><b>prouvé</b></td><td>La science a <b>prouvé</b> que…</td><td>ثابت کرده</td></tr>
+          <tr><td>changer</td><td><b>changé</b></td><td>La technologie a <b>changé</b> notre quotidien.</td><td>تغییر داده</td></tr>
+          <tr><td>permettre de</td><td><b>permis</b></td><td>Internet a <b>permis</b> de connecter le monde.</td><td>امکان داده</td></tr>
+          <tr><td>transformer</td><td><b>transformé</b></td><td>L'IA a <b>transformé</b> le marché du travail.</td><td>متحول کرده</td></tr>
+          <tr><td>devenir</td><td><b>devenu</b></td><td>Ce problème est <b>devenu</b> mondial.</td><td>تبدیل شده</td></tr>
+          <tr><td>augmenter</td><td><b>augmenté</b></td><td>Les inégalités ont <b>augmenté</b> ces dernières années.</td><td>افزایش یافته</td></tr>
+          <tr><td>mettre en place</td><td><b>mis en place</b></td><td>Le gouvernement a <b>mis en place</b> des mesures.</td><td>اجرا کرده</td></tr>
+          <tr><td>contribuer à</td><td><b>contribué</b></td><td>L'éducation a <b>contribué</b> à réduire la pauvreté.</td><td>کمک کرده به</td></tr>
+          <tr><td>démontrer</td><td><b>démontré</b></td><td>L'expérience a <b>démontré</b> l'efficacité de cette méthode.</td><td>اثبات کرده</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="use">
+      <div class="use-t">🏃 Actions du quotidien — Tâche 1</div>
+      <div class="pills" style="margin:8px 0 14px;">
+        <span class="pill verb">j'ai mangé</span><span class="pill verb">j'ai bu</span><span class="pill verb">j'ai dormi</span>
+        <span class="pill verb">je me suis levé(e)</span><span class="pill verb">j'ai pris le bus</span>
+        <span class="pill verb">j'ai rencontré</span><span class="pill verb">j'ai téléphoné</span>
+        <span class="pill verb">j'ai regardé</span><span class="pill verb">j'ai lu</span>
+        <span class="pill verb">je suis sorti(e)</span><span class="pill verb">je suis rentré(e)</span>
+        <span class="pill verb">j'ai fait du sport</span><span class="pill verb">j'ai cuisiné</span>
+      </div>
+      <div class="ex tcf">Ce matin, je <span class="tcf-hl">me suis réveillé(e)</span> à 7h, j'<span class="tcf-hl">ai pris</span> un café rapide, puis je <span class="tcf-hl">suis parti(e)</span> au travail en transports en commun.</div>
+      <div class="ex-fa">امروز صبح ساعت ۷ بیدار شدم، یک قهوه سریع خوردم، سپس با حمل‌ونقل عمومی رفتم سر کار.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 4 — NÉGATION
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-negation">
+
+  <div class="sec">
+    <div class="sec-title">La négation au passé composé <span class="ltag a2">A2</span></div>
+    <div class="sec-sub">نفی — پوشش کامل از ساده تا پیشرفته</div>
+
+    <div class="formula">
+      <div class="big">NE + <span class="a">auxiliaire</span> + <span class="b">négation</span> + participe passé</div>
+      <div class="note">کلمه نفی بین دو بخش کمکی فعل قرار می‌گیرد</div>
+    </div>
+
+    <div class="conj-grid">
+      <div class="ccard">
+        <h4>ne … pas — ساده‌ترین</h4>
+        <table><tbody>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Je <b>n'ai pas</b> compris.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">نفهمیدم</td></tr>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Elle <b>n'est pas</b> venue.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">نیامد</td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>ne … jamais <span class="ltag a2" style="font-size:9px;">A2</span></h4>
+        <table><tbody>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Je <b>n'ai jamais</b> fumé.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">هرگز سیگار نکشیده‌ام</td></tr>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Il <b>n'est jamais</b> allé en France.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">هرگز به فرانسه نرفته</td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>ne … rien <span class="ltag b1" style="font-size:9px;">B1</span></h4>
+        <table><tbody>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Il <b>n'a rien</b> dit.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">هیچ چیز نگفت</td></tr>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Je <b>n'ai rien</b> compris.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">هیچ چیز نفهمیدم</td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>ne … plus <span class="ltag b1" style="font-size:9px;">B1</span></h4>
+        <table><tbody>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Elle <b>n'a plus</b> travaillé.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">دیگر کار نکرد</td></tr>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Il <b>n'est plus</b> venu.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">دیگر نیامد</td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>ne … pas encore <span class="ltag b1" style="font-size:9px;">B1</span></h4>
+        <table><tbody>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Je <b>n'ai pas encore</b> fini.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;padding:6px 13px;">هنوز تمام نکرده‌ام</td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard">
+        <h4>ne … personne <span class="ltag b2" style="font-size:9px;">B2</span> — APRÈS le PP !</h4>
+        <table><tbody>
+          <tr><td colspan="2" style="font-size:13px;padding:10px;">Il <b>n'a vu</b> <u>personne</u>.</td></tr>
+          <tr><td colspan="2" style="font-size:12px;color:var(--red);padding:6px 13px;">⚠️ personne APRÈS le participe</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="upgrade">
+      <h4>⭐ Niveau B2 — double négation & nuances</h4>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Je <span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">n'ai jamais rien regretté</span> dans mes choix professionnels.</div>
+      <div class="ex-fa" style="color:rgba(255,255,255,.65);">هرگز از انتخاب‌های حرفه‌ای‌ام پشیمان نشده‌ام. ← Tâche 2 TCF parfait</div>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Cette décision ne <span class="hl" style="background:rgba(230,81,0,.3);color:#ffd180;">s'est pas faite</span> sans réflexion.</div>
+      <div class="ex-fa" style="color:rgba(255,255,255,.65);">این تصمیم بدون فکر گرفته نشد. ← Tâche 3</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 5 — CONDITIONNEL (depuis Soroush)
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-conditionnel">
+
+  <div class="sec">
+    <div class="sec-title">Le Conditionnel présent <span class="ltag b1">B1</span></div>
+    <div class="sec-sub">وجه شرطی حال — ادغام از دروس سوروش</div>
+
+    <div class="formula">
+      <div class="big"><span class="a">Radical du futur</span> + <span class="b">terminaisons de l'imparfait</span></div>
+      <div class="note">-ais · -ais · -ait · -ions · -iez · -aient · همان ریشه آینده + پایانه‌های ماضی استمراری</div>
+    </div>
+
+    <div class="conj-grid">
+      <div class="ccard"><h4>VOULOIR → voudr-</h4>
+        <table><tbody>
+          <tr><td>je</td><td>voudr<span class="end">ais</span></td></tr>
+          <tr><td>tu</td><td>voudr<span class="end">ais</span></td></tr>
+          <tr><td>il/elle</td><td>voudr<span class="end">ait</span></td></tr>
+          <tr><td>nous</td><td>voudr<span class="end">ions</span></td></tr>
+          <tr><td>vous</td><td>voudr<span class="end">iez</span></td></tr>
+          <tr><td>ils</td><td>voudr<span class="end">aient</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="ccard"><h4>Irréguliers clés</h4>
+        <table><tbody>
+          <tr><td>être</td><td>ser<span class="end">ais</span></td></tr>
+          <tr><td>avoir</td><td>aur<span class="end">ais</span></td></tr>
+          <tr><td>aller</td><td>ir<span class="end">ais</span></td></tr>
+          <tr><td>faire</td><td>fer<span class="end">ais</span></td></tr>
+          <tr><td>pouvoir</td><td>pourr<span class="end">ais</span></td></tr>
+          <tr><td>devoir</td><td>devr<span class="end">ais</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="use" style="margin-top:20px;"><div class="use-t">5 emplois essentiels</div>
+      <div class="ex">🙏 <b>Politesse :</b> Je <span class="hl">voudrais</span> savoir si… (A2) — Au lieu de «je veux»</div>
+      <div class="ex-fa">مؤدبانه‌تر از «je veux» — خیلی رایج در TCF oral</div>
+      <div class="ex">💭 <b>Souhait :</b> J'<span class="hl">aimerais</span> travailler dans un environnement international. (B1)</div>
+      <div class="ex-fa">آرزو — دوست داشتم در محیط بین‌المللی کار کنم</div>
+      <div class="ex">🔑 <b>Hypothèse :</b> Si j'avais plus de temps, je <span class="hl">lirais</span> davantage. (B1)</div>
+      <div class="ex-fa">شرط فرضی — si + imparfait → conditionnel présent</div>
+      <div class="ex">💡 <b>Conseil :</b> Tu <span class="hl">devrais</span> réviser avant l'examen. (A2)</div>
+      <div class="ex-fa">نصیحت ملایم — بهتر است... مهم‌ترین کاربرد TCF</div>
+      <div class="ex">📰 <b>Info non confirmée :</b> Selon l'article, le taux <span class="hl">augmenterait</span>. (B2)</div>
+      <div class="ex-fa">خبر تأییدنشده — ظاهراً — بسیار مهم در B2</div>
+    </div>
+
+    <div class="rule danger">
+      <div class="rule-t danger">⛔ JAMAIS conditionnel après «si» d'hypothèse</div>
+      <div class="compare">
+        <div class="bad">Si j'<b>aurais</b> le temps… ❌</div>
+        <div class="good">Si j'<b>avais</b> le temps… ✅ (imparfait)</div>
+      </div>
+    </div>
+
+    <table class="neat" style="margin-top:20px;">
+      <thead><tr><th>SI + …</th><th>Principale</th><th>Sens</th><th>فارسی</th></tr></thead>
+      <tbody>
+        <tr><td><b>présent</b></td><td>futur simple</td><td>shart-e vaqei آینده</td><td>شرط واقعی</td></tr>
+        <tr><td><b>imparfait</b></td><td><b>conditionnel présent</b></td><td>شرط فرضی حال/آینده</td><td>اگر ... بودم</td></tr>
+        <tr><td><b>plus-que-parfait</b></td><td>conditionnel passé</td><td>شرط فرضی گذشته</td><td>اگر ... بوده بودم</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title" style="font-size:18px;margin-top:28px;">Le Conditionnel passé <span class="ltag b2">B1/B2</span></div>
+    <div class="sec-sub">وجه شرطی گذشته — پشیمانی · سرزنش · فرض در گذشته</div>
+    <div class="formula">
+      <div class="big"><span class="a">Conditionnel présent de ÊTRE/AVOIR</span> + <span class="b">Participe passé</span></div>
+      <div class="note">j'aurais parlé · je serais allé(e) · je me serais levé(e)</div>
+    </div>
+    <div class="use"><div class="use-t">3 emplois essentiels TCF</div>
+      <div class="ex">😔 <b>Regret :</b> J'<span class="hl">aurais dû</span> étudier davantage.</div>
+      <div class="ex-fa">باید بیشتر درس می‌خواندم — پشیمانی از گذشته</div>
+      <div class="ex">😤 <b>Reproche :</b> Tu <span class="hl">aurais pu</span> me prévenir !</div>
+      <div class="ex-fa">می‌توانستی به من خبر دهی! — سرزنش</div>
+      <div class="ex tcf">Si j'<span class="tcf-hl">avais su</span> plus tôt, j'<span class="tcf-hl">aurais choisi</span> une autre orientation.</div>
+      <div class="ex-fa">اگر زودتر می‌دانستم، مسیر دیگری انتخاب می‌کردم. ← Tâche 3 parfait</div>
+    </div>
+
+    <div class="upgrade">
+      <h4>⭐ 5 expressions B2 à retenir absolument</h4>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Ce <span class="tcf-hl">serait</span> une bonne idée de…</div>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Il <span class="tcf-hl">vaudrait mieux</span>…</div>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">On <span class="tcf-hl">pourrait envisager</span> de…</div>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">J'<span class="tcf-hl">aurais tendance</span> à penser que…</div>
+      <div class="ex" style="background:rgba(255,255,255,.1);color:white;border-left-color:var(--amber);">Ça m'<span class="tcf-hl">étonnerait</span> que… (doute)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 6 — TCF CANADA
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-tcf">
+
+  <div class="tcf-card">
+    <h3>🎙️ TCF Canada — Comment utiliser le PC dans chaque tâche</h3>
+
+    <div class="tcf-item">
+      <span class="tnum">1</span>
+      <div class="ttitle">Tâche 1 — Raconter sa journée ou un événement récent</div>
+      <div class="tdesc">Contexte : «Parlez d'une journée typique» ou «Décrivez ce que vous avez fait hier».<br>→ Utilise le PC pour enchaîner des actions précises.</div>
+      <div class="tfa">موضوع: روز خودت یا یک رویداد اخیر را توصیف کن — گذشته مرکب برای توالی عمل‌ها</div>
+      <div class="tcf-ex">Hier matin, je <span class="tcf-hl">me suis levé(e)</span> à 6h30. J'<span class="tcf-hl">ai pris</span> une douche rapide, puis j'<span class="tcf-hl">ai préparé</span> mon café. Ensuite, je <span class="tcf-hl">suis parti(e)</span> au travail à pied. Dans l'après-midi, j'<span class="tcf-hl">ai eu</span> une réunion importante. Le soir, je <span class="tcf-hl">suis rentré(e)</span> fatigué(e) mais satisfait(e).</div>
+    </div>
+
+    <div class="tcf-item">
+      <span class="tnum">2</span>
+      <div class="ttitle">Tâche 2 — Parler de son parcours de vie / expériences</div>
+      <div class="tdesc">Contexte : «Parlez de votre formation / votre carrière».<br>→ PC pour le parcours + conditionnel pour les projets + «depuis / il y a» pour la durée.</div>
+      <div class="tfa">موضوع: از مسیر تحصیلی و حرفه‌ای‌ات صحبت کن — ترکیب PC + conditionnel</div>
+      <div class="tcf-ex">Je <span class="tcf-hl">suis né(e)</span> en Iran et j'<span class="tcf-hl">ai fait</span> mes études d'architecture à l'Université de Téhéran. Après mon diplôme, j'<span class="tcf-hl">ai travaillé</span> pendant quatre ans dans un cabinet d'architectes. J'<span class="tcf-hl">ai décidé</span> de venir au Canada il y a deux ans pour développer mes compétences et découvrir une nouvelle culture. Depuis mon arrivée, j'<span class="tcf-hl">ai beaucoup appris</span> et je <span class="tcf-hl">me suis adapté(e)</span> rapidement.</div>
+    </div>
+
+    <div class="tcf-item">
+      <span class="tnum">3</span>
+      <div class="ttitle">Tâche 3 — Donner son opinion sur un sujet de société</div>
+      <div class="tdesc">Contexte : «Que pensez-vous de… ? / Comment expliquez-vous… ?»<br>→ PC pour les faits passés + conditionnel pour les hypothèses + imparfait pour le contexte.</div>
+      <div class="tfa">موضوع: نظر بده — PC برای استدلال با شواهد گذشته</div>
+      <div class="tcf-ex">Les études <span class="tcf-hl">ont montré</span> que l'utilisation excessive des réseaux sociaux <span class="tcf-hl">a eu</span> des effets négatifs sur la santé mentale des jeunes. Dans mon entourage, j'<span class="tcf-hl">ai observé</span> que certains amis <span class="tcf-hl">ont développé</span> une dépendance préoccupante. Si les gouvernements <span class="tcf-hl">avaient agi</span> plus tôt, on <span class="tcf-hl">aurait pu</span> éviter certaines dérives. Je pense que la régulation <span class="tcf-hl">aurait dû</span> commencer bien avant.</div>
+    </div>
+  </div>
+
+  <div class="rule purple" style="margin-top:20px;">
+    <div class="rule-t purple">⭐ Expressions TCF à haute valeur — mémorise ces phrases-outils</div>
+    <div class="ex">Au cours de ma vie, j'<span class="hl">ai eu</span> l'occasion de…</div>
+    <div class="ex-fa">در طول زندگی‌ام فرصت داشتم که...</div>
+    <div class="ex">Ce qui m'<span class="hl">a le plus marqué(e)</span>, c'est…</div>
+    <div class="ex-fa">آنچه بیشتر از همه روی من تأثیر گذاشت این است که...</div>
+    <div class="ex">Cette expérience m'<span class="hl">a appris</span> que…</div>
+    <div class="ex-fa">این تجربه به من آموخت که...</div>
+    <div class="ex">Depuis que je <span class="hl">suis arrivé(e)</span> ici, j'<span class="hl">ai réalisé</span> que…</div>
+    <div class="ex-fa">از زمانی که اینجا آمده‌ام فهمیده‌ام که...</div>
+    <div class="ex">Comme je <span class="hl">l'ai mentionné</span> précédemment…</div>
+    <div class="ex-fa">همانطور که قبلاً ذکر کردم... ← برای ساختار دادن به پاسخ</div>
+    <div class="ex">Personnellement, j'<span class="hl">ai toujours cru</span> que…</div>
+    <div class="ex-fa">شخصاً همیشه اعتقاد داشته‌ام که...</div>
+  </div>
+
+  <div class="rule ok" style="margin-top:16px;">
+    <div class="rule-t ok">✅ Stratégie marqueur temporel — booster ton score</div>
+    <div class="ex">il y a + durée → il y a deux ans, j'<span class="hl">ai commencé</span>…</div>
+    <div class="ex">depuis que → depuis que je <span class="hl">suis arrivé(e)</span>…</div>
+    <div class="ex">au bout de → au bout de six mois, j'<span class="hl">ai trouvé</span> un emploi.</div>
+    <div class="ex">dès que → dès que j'<span class="hl">ai eu</span> mon diplôme, j'<span class="hl">ai cherché</span> du travail.</div>
+    <div class="ex-fa">این عبارات زمانی به ارزیاب نشان می‌دهند که زبانت طبیعی و B2 است</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 7 — EXERCICES
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-exercices">
+
+  <div class="exblock" id="ex1">
+    <h3><span class="exn">1</span> Conjugue au passé composé — avoir ou être ?</h3>
+    <div class="qi"><div class="qt">Hier soir, elle ___ (rentrer) tard.</div><div class="qfa">دیشب دیر به خانه برگشت.</div><div class="qopts"><button class="qopt" onclick="qans(this,0,1)">est rentrée</button><button class="qopt" onclick="qans(this,1,0)">a rentrée</button></div><div class="qans">est rentrée — rentrer sans COD → être + accord féminin</div></div>
+    <div class="qi"><div class="qt">Ils ___ (sortir) les poubelles ce matin.</div><div class="qfa">آن‌ها این صبح آشغال‌ها را بیرون گذاشتند.</div><div class="qopts"><button class="qopt" onclick="qans(this,0,0)">sont sortis</button><button class="qopt" onclick="qans(this,1,1)">ont sorti</button></div><div class="qans">ont sorti — avec COD «les poubelles» → avoir !</div></div>
+    <div class="qi"><div class="qt">Nous ___ (prendre) le métro ce matin.</div><div class="qfa">ما امروز صبح مترو گرفتیم.</div><div class="qopts"><button class="qopt" onclick="qans(this,0,1)">avons pris</button><button class="qopt" onclick="qans(this,1,0)">sommes pris</button></div><div class="qans">avons pris — prendre toujours avec avoir, PP = «pris»</div></div>
+    <div class="qi"><div class="qt">Les mesures que le gouvernement ___ (mettre en place) ___ (permettre) de réduire les inégalités.</div><div class="qfa">اقداماتی که دولت اجرا کرد امکان کاهش نابرابری‌ها را داد.</div><div class="qopts"><button class="qopt" onclick="qans(this,0,1)">a mises en place · ont permis</button><button class="qopt" onclick="qans(this,1,0)">a mis en place · ont permis</button></div><div class="qans">a mises en place — accord avec COD «les mesures» (fém. pluriel) placé avant ← niveau B2</div></div>
+  </div>
+
+  <div class="exblock" id="ex2">
+    <h3><span class="exn">2</span> Passé composé ou Conditionnel ? Complète</h3>
+    <div style="font-size:13px;color:var(--gray);margin-bottom:14px;direction:rtl;text-align:right;">PC = گذشته مرکب · Cond. prés = وجه شرطی حال · Cond. passé = وجه شرطی گذشته</div>
+    <div class="qi"><div class="qt">Si tu <input class="blank" data-ans="avais étudié" placeholder="étudier (PC)"> davantage, tu <input class="blank" data-ans="aurais réussi" placeholder="réussir (cond. passé)"> l'examen.</div><div class="qfa">اگر بیشتر درس خوانده بودی، در امتحان موفق می‌شدی.</div></div>
+    <div class="qi"><div class="qt">J'<input class="blank" data-ans="ai décidé" placeholder="décider (PC)"> de venir au Canada il y a deux ans.</div><div class="qfa">دو سال پیش تصمیم گرفتم به کانادا بیایم.</div></div>
+    <div class="qi"><div class="qt">Tu <input class="blank" data-ans="devrais" placeholder="devoir (cond. prés.)"> réviser la règle du SI avant l'examen.</div><div class="qfa">بهتر است قبل از امتحان قانون SI را مرور کنی.</div></div>
+    <div class="qi"><div class="qt">Cette expérience m'<input class="blank" data-ans="a appris" placeholder="apprendre (PC)"> que la persévérance est essentielle.</div><div class="qfa">این تجربه به من آموخت که پشتکار ضروری است.</div></div>
+    <div class="btn-row">
+      <button class="btn btn-p" onclick="chkFill('ex2')">✅ Vérifier</button>
+      <button class="btn btn-s" onclick="rstFill('ex2')">🔄 Reset</button>
+    </div>
+    <div class="score" id="score-ex2"></div>
+  </div>
+
+  <div class="exblock" id="ex3">
+    <h3><span class="exn">3</span> Production — Tâche 2 TCF Canada</h3>
+    <div style="background:var(--blue-mist);border-radius:10px;padding:14px 18px;margin-bottom:14px;font-size:13.5px;color:var(--navy);">
+      <b>Sujet :</b> «Parlez de votre parcours de formation et de votre expérience professionnelle. Qu'est-ce qui vous a amené(e) à vouloir immigrer au Canada ?»<br>
+      <span style="font-size:12px;color:var(--gray);direction:rtl;text-align:right;display:block;margin-top:8px;">پاسخ را با حداقل ۸ جمله بنویس. از PC · conditionnel · marqueurs temporels (il y a / depuis / dès que) استفاده کن.</span>
+    </div>
+    <div class="pills" style="margin-bottom:12px;">
+      <span class="pill">Je suis né(e)…</span><span class="pill">J'ai fait mes études…</span>
+      <span class="pill">J'ai travaillé pendant…</span><span class="pill">J'ai décidé de…</span>
+      <span class="pill">Ce qui m'a le plus marqué(e)…</span><span class="pill">Depuis mon arrivée…</span>
+      <span class="pill">J'aurais voulu…</span><span class="pill">Cette expérience m'a appris…</span>
+    </div>
+    <textarea style="width:100%;border:2px solid var(--line);border-radius:10px;padding:14px;font-family:inherit;font-size:14px;color:var(--ink);resize:vertical;min-height:150px;outline:none;transition:border .2s;" placeholder="Écris ta réponse ici…" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'"></textarea>
+    <div style="margin-top:10px;font-size:12px;color:var(--gray);direction:rtl;text-align:right;">💡 هدف: پاسخی که در امتحان TCF B2 نمره کامل بگیرد — طبیعی · ساختارمند · متنوع از نظر زمان فعل</div>
+  </div>
+
+</div>
+
+</div><!-- /tc -->
+
+<div class="footer"><a href="../index.html">← Alireza</a> · Passé composé A2→B2+ · Français avec Hoda © 2025</div>
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('panel-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+
+function qans(el,idx,correct){const item=el.closest('.qi');if(item.dataset.done)return;item.dataset.done="1";item.querySelectorAll('.qopt').forEach((o,i)=>{o.classList.add('done');if(i===correct)o.classList.add('correct');});if(idx!==correct)el.classList.add('wrong');const a=item.querySelector('.qans');if(a)a.classList.add('show');}
+
+function norm(s){return s.trim().toLowerCase().replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').replace(/[îï]/g,'i').replace(/[ùû]/g,'u').replace(/ç/g,'c');}
+
+function chkFill(id){const b=document.querySelectorAll('#'+id+' .blank');let ok=0;b.forEach(i=>{const ans=i.dataset.ans.split('/').map(a=>norm(a.trim()));if(ans.some(a=>norm(i.value)===a)){i.classList.add('ok');i.classList.remove('err');ok++;}else{i.classList.add('err');i.classList.remove('ok');}});const s=document.getElementById('score-'+id);const p=Math.round(ok/b.length*100);s.innerHTML=`<div class="sn">${ok}/${b.length}</div><div class="sl">${p}% · ${p===100?'🎉 Parfait!':p>=70?'👍 Bien!':'💪 Continue!'}</div>`;s.classList.add('show');}
+
+function rstFill(id){document.querySelectorAll('#'+id+' .blank').forEach(i=>{i.value='';i.classList.remove('ok','err');});const s=document.getElementById('score-'+id);if(s)s.classList.remove('show');}
+
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
