@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Édito A1 — Unité 3</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Fredoka:wght@400;600&family=Vazirmatn:wght@400;600;700&display=swap');
+  :root{
+    --ink:#2C2118; --soft:#6A5C4E; --line:#E7DDCB; --cream:#FBF7EF;
+    --frame:#D8C6A2; --frame2:#EADFC6;
+    --gram:#6D3B5E; --gram-bg:#F2E9EF;
+    --verbe:#5E7B33; --verbe-bg:#EEF3E2;
+    --vocab:#C0392B; --vocab-bg:#FBEAE6;
+    --phon:#A6781C; --phon-bg:#FAF1D9;
+    --dia:#BE5B36; --dia-bg:#FBEBE2;
+    --lect:#3C6E47; --lect-bg:#E8F2EA;
+    --conseil:#A6781C; --conseil-bg:#FAF1D9;
+    --cult:#8C3B4A; --cult-bg:#F7E9EC;
+    --delf:#3C5A7A; --delf-bg:#E9EFF6;
+    --a0:#6E8B3D; --a1:#C56A2C; --ap:#8C3B4A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Nunito',sans-serif; color:var(--ink); font-size:11.3pt; line-height:1.5; background:var(--cream); }
+
+  /* decorative double frame, repeats on every printed page (positioned relative to content box → push outward) */
+  .frame{ position:fixed; top:-7mm; left:-8mm; right:-8mm; bottom:-8mm;
+    border:1.7px solid #B5925A; border-radius:13px; pointer-events:none; z-index:0;}
+  .frame::after{ content:""; position:absolute; inset:3.5px; border:.9px solid #D8C6A2; border-radius:10px;}
+
+  .fa{ font-family:'Vazirmatn',sans-serif; direction:rtl; text-align:right; font-size:10.5pt; line-height:1.95; }
+  h1,h2,h3,.eyebrow,th,.lvl,.pill,.tag,.disp{ font-family:'Poppins','Nunito',sans-serif; }
+  .serif{ font-family:'Lora',serif; }
+
+  .page{ page-break-after:always; padding:2mm 0; position:relative; z-index:1;}
+  .page:last-child{ page-break-after:auto; }
+
+  .phead{ margin-bottom:11px; }
+  .eyebrow{ font-size:8.4pt; letter-spacing:2.4px; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .phead h1{ font-size:20pt; font-weight:700; line-height:1.12; letter-spacing:-.3px; display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
+  .rule{ height:3px; width:60px; border-radius:3px; margin-top:8px;}
+
+  .lvl{ display:inline-block; color:#fff; font-size:8.6pt; font-weight:600; letter-spacing:.6px; padding:3px 10px; border-radius:6px; vertical-align:middle;}
+  .lvl.a0{ background:var(--a0);} .lvl.a1{ background:var(--a1);} .lvl.ap{ background:var(--ap);}
+
+  .card{ background:#fff; border:1px solid var(--line); border-left-width:5px; border-radius:8px; padding:13px 16px; margin:10px 0;}
+  .card h3{ font-size:12.3pt; font-weight:600; margin-bottom:6px; letter-spacing:-.2px;}
+  .gram{border-left-color:var(--gram); background:var(--gram-bg);} .gram h3{color:var(--gram);}
+  .verbe{border-left-color:var(--verbe); background:var(--verbe-bg);} .verbe h3{color:var(--verbe);}
+  .vocab{border-left-color:var(--vocab); background:var(--vocab-bg);} .vocab h3{color:var(--vocab);}
+  .phon{border-left-color:var(--phon); background:var(--phon-bg);} .phon h3{color:var(--phon);}
+  .dia{border-left-color:var(--dia); background:var(--dia-bg);} .dia h3{color:var(--dia);}
+  .lect{border-left-color:var(--lect); background:var(--lect-bg);} .lect h3{color:var(--lect);}
+  .conseil{border-left-color:var(--conseil); background:var(--conseil-bg);} .conseil h3{color:var(--conseil);}
+  .cult{border-left-color:var(--cult); background:var(--cult-bg);} .cult h3{color:var(--cult);}
+  .delf{border-left-color:var(--delf); background:var(--delf-bg);} .delf h3{color:var(--delf);}
+  .plain{border-left-color:var(--line); background:#fff;}
+
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:8px 0; font-size:10.5pt; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{ padding:6px 11px; text-align:left; border-bottom:1px solid var(--line);}
+  th{ color:#fff; font-weight:600; font-size:9.6pt; letter-spacing:.3px;}
+  tr:last-child td{ border-bottom:none;}
+  .tg th{background:var(--gram);} .tv th{background:var(--verbe);} .tx th{background:var(--vocab);}
+  .tp th{background:var(--phon);} .tc th{background:var(--cult);}
+  .hl{font-weight:800;} .tg .hl{color:var(--gram);} .tv .hl{color:var(--verbe);} .tx .hl{color:var(--vocab);}
+
+  .read{ font-family:'Lora',serif; font-size:12pt; line-height:1.85; text-align:justify; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:15px 18px; margin:9px 0;}
+  .read p{ margin-bottom:9px;} .read p:last-child{margin-bottom:0;}
+  .read .q{ color:var(--lect); font-weight:700;}
+
+  .fabox{ background:#FAF6EE; border-right:5px solid #D8C6A2; border-radius:8px; padding:10px 14px; margin:9px 0;}
+  .falabel{ font-family:'Vazirmatn'; direction:rtl; text-align:right; font-size:8.3pt; color:#A99C84; margin-bottom:3px;}
+
+  .pill{ display:inline-block; border:1.4px solid currentColor; border-radius:30px; padding:2px 11px; font-size:9.3pt; font-weight:600; margin:3px 4px 3px 0; background:#fff;}
+  .chip{ display:inline-block; border-radius:7px; padding:3px 10px; margin:3px 5px 3px 0; font-size:10pt; font-weight:600; background:#fff; border:1px solid var(--line);}
+  .key{ background:#F6E3B8; border-radius:4px; padding:0 4px; font-weight:800; box-decoration-break:clone;}
+  .tip{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--conseil); border-radius:7px; padding:9px 13px; margin:8px 0; font-size:10.3pt;}
+  .star{color:var(--phon); font-weight:800;}
+  ul.clean{list-style:none;} ul.clean li{position:relative; padding-left:18px; margin:4px 0;}
+  ul.clean li::before{content:"•"; position:absolute; left:0; color:var(--vocab); font-weight:800;}
+  .two{display:flex; gap:13px;} .two>div{flex:1;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .box{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 13px;}
+  .box h4{ font-family:'Poppins'; font-size:10.3pt; font-weight:600; margin-bottom:4px;}
+  .small{ font-size:9.3pt; color:var(--soft);}
+  .dlg{ margin:5px 0;} .dlg b{font-family:'Poppins'; font-weight:600;}
+  .dlg b.A{color:var(--dia);} .dlg b.B{color:var(--gram);}
+  .num{ display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:var(--vocab); color:#fff; font-weight:700; font-size:9pt; margin-right:6px; font-family:'Poppins';}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+
+<!-- ===================== COVER ===================== -->
+<div class="page" style="padding-top:0;">
+  <div style="margin-top:6mm; border:1px solid var(--line); border-radius:13px; overflow:hidden;">
+    <div style="background:linear-gradient(120deg,#8C3B4A 0%,#BE5B36 55%,#A6781C 100%); color:#fff; padding:32px 30px;">
+      <div style="font-family:'Poppins'; font-size:10pt; letter-spacing:3.5px; opacity:.85;">CARNET DE RÉVISION · ÉDITO A1</div>
+      <div style="font-family:'Poppins'; font-weight:700; font-size:36pt; line-height:1.08; margin:9px 0 4px;">Qu'est-ce qu'on mange ?</div>
+      <div style="font-family:'Poppins'; font-size:12.5pt; opacity:.92;">Unité 3 — alimentation · courses · prix &amp; quantités · restaurant</div>
+    </div>
+    <div style="padding:18px 30px; background:#fff;">
+      <div style="font-family:'Poppins'; font-size:9.4pt; letter-spacing:1px; color:var(--soft); margin-bottom:9px;">PARCOURS PROGRESSIF</div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a0); border-radius:8px; padding:11px;">
+          <span class="lvl a0">A0</span><div style="font-weight:700; margin-top:6px;">Découverte</div><div class="small">Aliments, goûts, quantités simples.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--a1); border-radius:8px; padding:11px;">
+          <span class="lvl a1">A1</span><div style="font-weight:700; margin-top:6px;">Consolidation</div><div class="small">Partitifs, négation, prix, dialogue.</div></div>
+        <div style="flex:1; border:1px solid var(--line); border-top:4px solid var(--ap); border-radius:8px; padding:11px;">
+          <span class="lvl ap">A1+</span><div style="font-weight:700; margin-top:6px;">Approfondissement</div><div class="small">Restaurant, recette, textes longs, DELF.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabox" style="border-right-color:#8C3B4A; margin-top:15px;">
+    <div class="falabel">دفترچهٔ مرور — واحد ۳ «چه بخوریم؟»</div>
+    <div class="fa">این جزوه فصل سوم را گام‌به‌گام پوشش می‌دهد: ابتدا A0 (مواد غذایی، سلیقه، مقدارهای ساده)، سپس A1 (حرف‌های partitif، منفی‌سازی، قیمت و دیالوگ) و در پایان A1+ (رستوران، دستور پخت، متن‌های بلند و تمرین DELF). همراه با ترجمهٔ فارسی.</div>
+  </div>
+
+  <div class="card conseil"><h3>Repères de lecture</h3>
+    <div class="grid2" style="font-size:9.6pt;">
+      <div><span class="pill" style="color:var(--vocab)">Vocabulaire</span><span class="pill" style="color:var(--gram)">Grammaire</span></div>
+      <div><span class="pill" style="color:var(--verbe)">Verbes</span><span class="pill" style="color:var(--phon)">Phonétique</span></div>
+      <div><span class="pill" style="color:var(--dia)">Dialogue</span><span class="pill" style="color:var(--lect)">Texte / lecture</span></div>
+      <div><span class="pill" style="color:var(--delf)">DELF A1</span><span class="pill" style="color:var(--cult)">Culture</span></div>
+    </div>
+    <div class="tip" style="margin-top:9px;"><b>Méthode :</b> chaque notion tient dans une boîte encadrée. Les badges <span class="lvl a0">A0</span> <span class="lvl a1">A1</span> <span class="lvl ap">A1+</span> montent en difficulté — avance dans l'ordre, par sessions de 15 min.</div>
+  </div>
+</div>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Plan du chapitre</div>
+    <h1>Le parcours en un coup d'œil</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a0)"><h3 style="color:var(--a0)"><span class="lvl a0">A0</span> &nbsp;Découverte</h3>
+    <ul class="clean"><li>Les aliments (vocabulaire de base)</li><li>Les articles partitifs : <i>du, de la, de l', des</i></li><li>Exprimer ses goûts (1) : <i>j'aime / je n'aime pas</i></li><li>Les quantités simples : <i>un kilo de, un litre de…</i></li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)"><span class="lvl a1">A1</span> &nbsp;Consolidation</h3>
+    <ul class="clean"><li>Partitifs + la négation (<i>du → pas de</i>)</li><li>Les prépositions de lieu</li><li>Exprimer le prix et la quantité</li><li>Vocabulaire : les commerces, les quantités</li><li>Phonétique : le son [y] / [u] · le « e » instable</li><li>Dialogue au marché + texte « Mes courses du samedi »</li></ul></div>
+
+  <div class="card plain" style="border-left-color:var(--ap)"><h3 style="color:var(--ap)"><span class="lvl ap">A1+</span> &nbsp;Approfondissement</h3>
+    <ul class="clean"><li>Demander / commander au restaurant</li><li>Texte long « Le marché de mon quartier »</li><li>Production écrite : écrire une recette</li><li>Production orale : jeu de rôle au restaurant</li><li>DELF A1 — Compréhension des écrits (un menu)</li><li>Culture : les repas en France &amp; ailleurs · bilan</li></ul></div>
+</div>
+
+<!-- ===================== A0 : ALIMENTS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire · Niveau A0</div>
+    <h1>Les aliments <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <table class="tx" style="font-size:10.3pt;"><tr><th>Catégorie</th><th>Exemples</th><th>فارسی</th></tr>
+    <tr><td><b>Fruits</b></td><td>une pomme, une banane, une orange, du raisin</td><td class="fa">سیب، موز، پرتقال، انگور</td></tr>
+    <tr><td><b>Légumes</b></td><td>une tomate, une carotte, une salade, un oignon</td><td class="fa">گوجه، هویج، کاهو، پیاز</td></tr>
+    <tr><td><b>Viande / poisson</b></td><td>le poulet, le bœuf, le poisson, un œuf</td><td class="fa">مرغ، گوشت گاو، ماهی، تخم‌مرغ</td></tr>
+    <tr><td><b>Produits laitiers</b></td><td>le lait, le fromage, le beurre, le yaourt</td><td class="fa">شیر، پنیر، کره، ماست</td></tr>
+    <tr><td><b>Pain / épicerie</b></td><td>le pain, un croissant, le riz, les pâtes, le sucre</td><td class="fa">نان، کروسان، برنج، پاستا، شکر</td></tr>
+    <tr><td><b>Boissons</b></td><td>l'eau, le café, le thé, le jus d'orange</td><td class="fa">آب، قهوه، چای، آب‌پرتقال</td></tr></table>
+
+  <div class="card vocab"><h3>Phrases A0</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Je mange <span class="key">une</span> pomme. (un fruit entier)</li>
+      <li>Je bois <span class="key">de l'</span>eau.</li>
+      <li>J'achète <span class="key">du</span> pain et <span class="key">des</span> fruits.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">مواد غذایی</div>
+    <div class="fa">دسته‌ها: میوه، سبزی، گوشت/ماهی، لبنیات، نان و خواربار، نوشیدنی. مثال: «Je mange une pomme» (یک سیب می‌خورم)، «Je bois de l'eau» (آب می‌نوشم)، «J'achète du pain» (نان می‌خرم).</div></div>
+</div>
+
+<!-- ===================== A0 : PARTITIFS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A0</div>
+    <h1>Les articles partitifs <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Ils veulent dire « <b>une partie de</b> », « un peu de » — pour ce qu'on ne compte pas (l'eau, le pain, le riz…).</p>
+
+  <table class="tg"><tr><th>Partitif</th><th>Avec…</th><th>Exemple</th></tr>
+    <tr><td><span class="hl">du</span></td><td>masculin</td><td>du pain, du riz, du fromage</td></tr>
+    <tr><td><span class="hl">de la</span></td><td>féminin</td><td>de la viande, de la salade</td></tr>
+    <tr><td><span class="hl">de l'</span></td><td>devant voyelle</td><td>de l'eau, de l'huile</td></tr>
+    <tr><td><span class="hl">des</span></td><td>pluriel</td><td>des légumes, des fruits</td></tr></table>
+
+  <div class="card gram"><h3>Ne pas confondre !</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li><b>Goût (général)</b> → défini : <i>J'aime <span class="key">le</span> café.</i></li>
+      <li><b>Quantité (on en prend)</b> → partitif : <i>Je bois <span class="key">du</span> café.</i></li>
+      <li><b>Objet entier (on compte)</b> → indéfini : <i>Je mange <span class="key">une</span> pomme.</i></li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">حرف‌های partitif</div>
+    <div class="fa">partitif یعنی «مقداری از چیزی که قابل‌شمارش نیست»: du (مذکر)، de la (مؤنث)، de l' (پیش از صدادار)، des (جمع). فرق مهم: برای سلیقهٔ کلی le/la (J'aime le café)، برای مقدار du/de la (Je bois du café)، و برای چیز کاملِ شمارش‌پذیر un/une (Je mange une pomme).</div></div>
+</div>
+
+<!-- ===================== A0 : GOÛTS + QUANTITÉS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication + Vocabulaire · Niveau A0</div>
+    <h1>Mes goûts &amp; les quantités <span class="lvl a0">A0</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>L'échelle des goûts</h3>
+    <table style="font-size:10.6pt;"><tr><th style="background:var(--dia)">J'adore</th><th style="background:var(--dia)">J'aime</th><th style="background:var(--dia)">Je n'aime pas</th><th style="background:var(--dia)">Je déteste</th></tr>
+      <tr><td>le chocolat</td><td>les fruits</td><td>le poisson</td><td>les oignons</td></tr></table>
+    <p style="margin-top:6px;"><b>Mini-dialogue :</b> — Tu aimes le fromage ? — Oui, j'adore ! Et toi ? — Moi, je n'aime pas beaucoup le fromage.</p></div>
+
+  <div class="card vocab"><h3>Les quantités (à mémoriser)</h3>
+    <span class="chip">un kilo de یک کیلو</span><span class="chip">un litre de یک لیتر</span>
+    <span class="chip">une bouteille de یک بطری</span><span class="chip">un paquet de یک بسته</span>
+    <span class="chip">une boîte de یک قوطی</span><span class="chip">un peu de کمی</span>
+    <span class="chip">beaucoup de زیاد</span>
+    <div class="tip" style="margin-top:7px;"><span class="star">Règle d'or :</span> après une quantité, toujours <span class="key">de / d'</span> (sans article !) → <i>un kilo <b>de</b> pommes, beaucoup <b>d'</b>eau.</i></div></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">سلیقه و مقدار</div>
+    <div class="fa">سلیقه: J'adore (عاشقشم) ← J'aime (دوست دارم) ← Je n'aime pas (دوست ندارم) ← Je déteste (متنفرم). مقدارها: un kilo de، un litre de، une bouteille de، un peu de، beaucoup de. قانون مهم: بعد از مقدار همیشه «de/d'» می‌آید، بدون حرف تعریف.</div></div>
+</div>
+
+<!-- ===================== A1 : PARTITIFS + NÉGATION ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>La négation : <span class="serif" style="font-style:italic">du → pas de</span> <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card gram"><h3>La règle clé</h3>
+    <p>À la forme négative, <b>du / de la / de l' / des / un / une</b> deviennent tous <span class="key">de</span> (ou <span class="key">d'</span> devant voyelle).</p>
+    <table class="tg" style="margin-top:7px;"><tr><th>Affirmatif</th><th>Négatif</th></tr>
+      <tr><td>Je mange <span class="hl">du</span> pain.</td><td>Je ne mange <span class="hl">pas de</span> pain.</td></tr>
+      <tr><td>Je bois <span class="hl">de la</span> bière.</td><td>Je ne bois <span class="hl">pas de</span> bière.</td></tr>
+      <tr><td>J'ai <span class="hl">des</span> fruits.</td><td>Je n'ai <span class="hl">pas de</span> fruits.</td></tr>
+      <tr><td>J'ai <span class="hl">une</span> tomate.</td><td>Je n'ai <span class="hl">pas de</span> tomate.</td></tr></table></div>
+
+  <div class="card gram"><h3>La structure de la négation</h3>
+    <p style="font-size:11pt;"><b>ne</b> ( + n' devant voyelle ) + <b>verbe</b> + <b>pas</b> :<br>
+    <i>Je <span class="key">ne</span> mange <span class="key">pas</span> de viande. · Il <span class="key">n'</span>aime <span class="key">pas</span> le café.</i></p>
+    <p class="small">⚠️ Avec les goûts (défini), l'article ne change pas : <i>Je n'aime pas <b>le</b> poisson.</i></p></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">منفی‌سازی</div>
+    <div class="fa">ساختار منفی: ne + فعل + pas. نکتهٔ مهم: در جملهٔ منفی، du/de la/des/un/une همگی به «de» تبدیل می‌شوند: «Je mange du pain» ← «Je ne mange pas de pain». اما با سلیقه (le/la) تغییری نمی‌کند: «Je n'aime pas le poisson».</div></div>
+</div>
+
+<!-- ===================== A1 : PRÉPOSITIONS DE LIEU ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Grammaire · Niveau A1</div>
+    <h1>Les prépositions de lieu <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--gram)"></div></div>
+  <p class="small">Pour dire <b>où</b> se trouve une chose — dans la cuisine, au marché…</p>
+
+  <div class="two">
+    <div><table class="tg" style="font-size:10.4pt;"><tr><th>Préposition</th><th>فارسی</th></tr>
+      <tr><td><span class="hl">sur</span> / <span class="hl">sous</span></td><td class="fa">روی / زیر</td></tr>
+      <tr><td><span class="hl">dans</span></td><td class="fa">داخلِ</td></tr>
+      <tr><td><span class="hl">devant</span> / <span class="hl">derrière</span></td><td class="fa">جلوی / پشتِ</td></tr>
+      <tr><td><span class="hl">entre</span></td><td class="fa">بینِ</td></tr></table></div>
+    <div><table class="tg" style="font-size:10.4pt;"><tr><th>Préposition</th><th>فارسی</th></tr>
+      <tr><td><span class="hl">à côté de</span></td><td class="fa">کنارِ</td></tr>
+      <tr><td><span class="hl">près de</span> / <span class="hl">loin de</span></td><td class="fa">نزدیکِ / دور از</td></tr>
+      <tr><td><span class="hl">en face de</span></td><td class="fa">روبه‌رویِ</td></tr>
+      <tr><td><span class="hl">à droite / à gauche</span></td><td class="fa">سمت راست / چپ</td></tr></table></div>
+  </div>
+
+  <div class="card gram"><h3>Exemples « cuisine »</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>Le lait est <span class="key">dans</span> le frigo.</li>
+      <li>Le pain est <span class="key">sur</span> la table.</li>
+      <li>La boulangerie est <span class="key">à côté du</span> marché.</li></ul>
+    <p class="small">de + le = <b>du</b> · de + les = <b>des</b> → à côté <b>du</b> parc, près <b>des</b> magasins.</p></div>
+
+  <div class="fabox" style="border-right-color:var(--gram)"><div class="falabel">حرف اضافهٔ مکان</div>
+    <div class="fa">برای گفتنِ محل چیزها: sur (روی)، sous (زیر)، dans (داخل)، devant/derrière (جلو/پشت)، à côté de (کنار)، près de (نزدیک)، en face de (روبه‌رو)، entre (بین). نکته: de+le=du و de+les=des (à côté du marché).</div></div>
+</div>
+
+<!-- ===================== A1 : VOCAB COMMERCES + PRIX ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Vocabulaire + Communication · Niveau A1</div>
+    <h1>Les commerces &amp; le prix <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+
+  <div class="card vocab"><h3>Où faire les courses ?</h3>
+    <span class="chip">la boulangerie نانوایی</span><span class="chip">la boucherie قصابی</span>
+    <span class="chip">l'épicerie بقالی</span><span class="chip">le marché بازار</span>
+    <span class="chip">le supermarché سوپرمارکت</span><span class="chip">la pâtisserie شیرینی‌فروشی</span></div>
+
+  <div class="card vocab"><h3>Demander le prix et la quantité</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li>— C'est combien ? / Ça coûte combien ?</li>
+      <li>— C'est <span class="key">deux euros le kilo</span>.</li>
+      <li>— Je voudrais <span class="key">un kilo de</span> pommes, s'il vous plaît.</li>
+      <li>— Ça fait combien ? — Ça fait <span class="key">sept euros</span>.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">مغازه‌ها و قیمت</div>
+    <div class="fa">مغازه‌ها: نانوایی، قصابی، بقالی، بازار، سوپرمارکت، شیرینی‌فروشی. برای قیمت: «C'est combien؟» (چند است؟)، «deux euros le kilo» (کیلویی دو یورو)، «Je voudrais un kilo de…» (یک کیلو … می‌خواهم)، «Ça fait sept euros» (می‌شود هفت یورو).</div></div>
+</div>
+
+<!-- ===================== A1 : PHONÉTIQUE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--phon)">Phonie-graphie · Niveau A1</div>
+    <h1>Le son [y] / [u] &amp; le « e » muet <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--phon)"></div></div>
+
+  <div class="card phon"><h3>1. [y] comme <i>du</i> vs [u] comme <i>beaucoup</i></h3>
+    <div class="two"><div><b>[y]</b> (lèvres serrées) : <br><i>du · sucre · jus · une · légume</i></div>
+      <div><b>[u]</b> (lèvres rondes) : <br><i>beaucoup · sous · pour · douze · goût</i></div></div>
+    <p class="small" style="margin-top:5px;">Astuce : pour [y], dis « i » puis avance les lèvres comme pour siffler.</p></div>
+
+  <div class="card phon"><h3>2. Le « e » instable (qui tombe à l'oral)</h3>
+    <p>À l'oral rapide, le <b>e</b> de <i>de</i> disparaît souvent :</p>
+    <ul class="clean" style="margin-top:5px;">
+      <li>un kilo <span class="key">d(e)</span> pommes → [œ̃kilodpɔm]</li>
+      <li>un peu <span class="key">d(e)</span> sel · beaucoup <span class="key">d(e)</span> gens</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--phon)"><div class="falabel">تلفظ</div>
+    <div class="fa">صدای [y] (مثل du، sucre) با لب‌های جمع تلفظ می‌شود؛ صدای [u] (مثل beaucoup، pour) با لب‌های گرد. در گفتارِ سریع، «e»ِ کلمهٔ «de» اغلب حذف می‌شود: un kilo d(e) pommes.</div></div>
+</div>
+
+<!-- ===================== A1 : DIALOGUE MARCHÉ ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Dialogue · Niveau A1</div>
+    <h1>Au marché <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia">
+    <div class="dlg"><b class="A">Vendeur :</b> Bonjour ! Qu'est-ce que vous voulez aujourd'hui ?</div>
+    <div class="dlg"><b class="B">Cliente :</b> Bonjour ! Je voudrais un kilo de tomates, s'il vous plaît.</div>
+    <div class="dlg"><b class="A">Vendeur :</b> Voilà. Et avec ça ?</div>
+    <div class="dlg"><b class="B">Cliente :</b> Je prends aussi de la salade et des pommes. C'est combien, les pommes ?</div>
+    <div class="dlg"><b class="A">Vendeur :</b> Deux euros cinquante le kilo. Vous voulez du raisin ? Il est très bon.</div>
+    <div class="dlg"><b class="B">Cliente :</b> Non merci, je n'aime pas beaucoup le raisin. Ça fait combien en tout ?</div>
+    <div class="dlg"><b class="A">Vendeur :</b> Ça fait six euros, s'il vous plaît. Bonne journée !</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">ترجمهٔ دیالوگ</div>
+    <div class="fa">
+      <b>فروشنده:</b> سلام! امروز چه می‌خواهید؟<br>
+      <b>مشتری:</b> سلام! لطفاً یک کیلو گوجه می‌خواهم.<br>
+      <b>فروشنده:</b> بفرمایید. دیگر چه؟<br>
+      <b>مشتری:</b> کاهو و سیب هم می‌گیرم. سیب‌ها کیلویی چند است؟<br>
+      <b>فروشنده:</b> کیلویی دو یورو و پنجاه. انگور می‌خواهید؟ خیلی خوب است.<br>
+      <b>مشتری:</b> نه ممنون، انگور را زیاد دوست ندارم. روی‌هم چقدر می‌شود؟<br>
+      <b>فروشنده:</b> می‌شود شش یورو، لطفاً. روز خوبی داشته باشید!
+    </div></div>
+</div>
+
+<!-- ===================== A1 : TEXTE SUIVI ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte suivi · Niveau A1</div>
+    <h1>Mes courses du samedi <span class="lvl a1">A1</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Le samedi matin, j'aime aller au marché de mon quartier. J'achète des fruits et des légumes frais : des tomates, des pommes et une belle salade. À la boulangerie, je prends du pain et deux croissants.</p>
+    <p>Ensuite, je vais à la boucherie pour acheter du poulet. Je ne mange pas de porc, alors je choisis souvent du poisson. Au marché, les prix sont raisonnables : les tomates coûtent deux euros le kilo.</p>
+    <p>Le vendeur est très gentil ; il me dit toujours : « Bonjour, qu'est-ce que vous voulez aujourd'hui ? » Avec tous ces bons produits, je prépare un grand déjeuner pour ma famille. <span class="q">Et vous, qu'est-ce que vous achetez au marché ?</span></p>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن</div>
+    <div class="fa">شنبه صبح‌ها دوست دارم به بازارِ محله‌ام بروم. میوه و سبزیِ تازه می‌خرم: گوجه، سیب و یک کاهوی خوب. در نانوایی نان و دو کروسان می‌گیرم. بعد به قصابی می‌روم تا مرغ بخرم. گوشت خوک نمی‌خورم، پس اغلب ماهی انتخاب می‌کنم. در بازار قیمت‌ها مناسب است: گوجه کیلویی دو یورو است. فروشنده خیلی مهربان است؛ همیشه می‌گوید: «سلام، امروز چه می‌خواهید؟» با این همه محصول خوب، یک ناهار بزرگ برای خانواده‌ام درست می‌کنم. شما چه چیزی از بازار می‌خرید؟</div></div>
+</div>
+
+<!-- ===================== A1+ : RESTAURANT ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Communication · Niveau A1+</div>
+    <h1>Commander au restaurant <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Les formules polies</h3>
+    <ul class="clean" style="font-size:10.8pt;">
+      <li><b>Je voudrais</b> le menu du jour, s'il vous plaît.</li>
+      <li><b>Je vais prendre</b> le poulet et, comme dessert, un gâteau.</li>
+      <li><b>Pour moi</b>, une salade, s'il vous plaît.</li>
+      <li><b>Vous pouvez</b> m'apporter de l'eau ? / <b>L'addition</b>, s'il vous plaît.</li></ul></div>
+
+  <div class="card dia"><h3>Dialogue au restaurant</h3>
+    <div class="dlg"><b class="A">Serveur :</b> Bonsoir, vous avez choisi ?</div>
+    <div class="dlg"><b class="B">Client :</b> Oui. Je voudrais le menu à 15 euros. Comme entrée, une soupe de légumes.</div>
+    <div class="dlg"><b class="A">Serveur :</b> Très bien. Et comme plat ?</div>
+    <div class="dlg"><b class="B">Client :</b> Le poisson, s'il vous plaît. Mais je ne veux pas de frites ; je préfère du riz.</div>
+    <div class="dlg"><b class="A">Serveur :</b> Pas de problème. Et comme boisson ?</div>
+    <div class="dlg"><b class="B">Client :</b> De l'eau, merci. Vous pouvez m'apporter du pain aussi ?</div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">سفارش در رستوران</div>
+    <div class="fa">عبارت‌های مؤدبانه: «Je voudrais…» (… می‌خواهم)، «Je vais prendre…» (… می‌گیرم)، «Pour moi…» (برای من…)، «Vous pouvez m'apporter…؟» (می‌توانید … بیاورید؟)، «L'addition, s'il vous plaît» (صورت‌حساب لطفاً). در دیالوگ، مشتری منوی ۱۵ یورویی، سوپ سبزی، ماهی با برنج (نه سیب‌زمینی) و آب سفارش می‌دهد.</div></div>
+</div>
+
+<!-- ===================== A1+ : TEXTE LONG ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--lect)">Texte long · Niveau A1+</div>
+    <h1>Le marché de mon quartier <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--lect)"></div></div>
+
+  <div class="read">
+    <p>Le samedi, le marché de mon quartier est toujours plein de monde. Il y a des fruits de toutes les couleurs, du poisson frais et des fleurs. J'adore l'odeur du pain chaud à côté de la boulangerie. Moi, je n'achète pas beaucoup de viande, parce que je préfère les légumes et le poisson.</p>
+    <p>Ce week-end, j'invite des amis à dîner chez moi. Je vais préparer une salade, du riz et un poulet aux légumes. Comme dessert, je voudrais faire un gâteau au chocolat, mais je n'ai pas assez de sucre : je dois en acheter !</p>
+    <p>En France, le repas est un moment important : on prend le temps de manger, de parler et de partager. Pour moi, cuisiner pour les autres, c'est une façon de dire « je vous aime ». La nourriture raconte aussi une culture — et apprendre une langue, c'est un peu comme goûter un nouveau plat.</p>
+  </div>
+
+  <div class="tip"><span class="star">Connecteurs (A1+) :</span> <i>parce que</i> (cause), <i>mais</i> (opposition), <i>comme</i> (« en tant que / pour »), <i>aussi</i> (ajout), <i>pour</i> (but).</div>
+
+  <div class="fabox" style="border-right-color:var(--lect)"><div class="falabel">ترجمهٔ متن بلند</div>
+    <div class="fa">شنبه‌ها بازارِ محله‌ام همیشه پر از جمعیت است. میوه‌هایی به همهٔ رنگ‌ها، ماهیِ تازه و گل هست. عاشق بوی نان گرم در کنار نانوایی‌ام. من گوشت زیاد نمی‌خرم، چون سبزی و ماهی را ترجیح می‌دهم. این آخر هفته چند دوست را برای شام به خانه‌ام دعوت می‌کنم. می‌خواهم سالاد، برنج و مرغ با سبزیجات درست کنم. برای دسر دلم می‌خواهد کیک شکلاتی بپزم، اما شکر کافی ندارم؛ باید بخرم! در فرانسه، غذا لحظهٔ مهمی است: آدم‌ها برای خوردن، حرف‌زدن و باهم‌بودن وقت می‌گذارند. برای من، آشپزی برای دیگران راهی است برای گفتنِ «دوستتان دارم». غذا یک فرهنگ را هم روایت می‌کند؛ و یادگیریِ یک زبان کمی شبیه چشیدنِ یک غذای تازه است.</div></div>
+</div>
+
+<!-- ===================== A1+ : RECETTE (PROD ÉCRITE) ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--vocab)">Production écrite · Niveau A1+</div>
+    <h1>Écrire une recette <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--vocab)"></div></div>
+  <p class="small">Une recette utilise tout le chapitre : partitifs, quantités, et des verbes à l'infinitif ou à l'impératif.</p>
+
+  <div class="two">
+    <div class="card vocab" style="margin-top:0;"><h3>🥗 Salade de tomates</h3>
+      <b>Ingrédients</b><ul class="clean" style="font-size:10.4pt;">
+        <li>4 tomates</li><li>un oignon</li><li>de l'huile d'olive</li>
+        <li>du sel et du poivre</li><li>un peu de basilic</li></ul></div>
+    <div class="card vocab" style="margin-top:0;"><h3>👩‍🍳 Préparation</h3>
+      <ul class="clean" style="font-size:10.4pt;">
+        <li>Laver les tomates.</li><li>Couper les tomates et l'oignon.</li>
+        <li>Mélanger dans un grand bol.</li><li>Ajouter de l'huile, du sel et du poivre.</li>
+        <li>Servir frais. Bon appétit !</li></ul></div>
+  </div>
+
+  <div class="card gram"><h3>Boîte à verbes (cuisine)</h3>
+    <span class="chip">laver شستن</span><span class="chip">couper بریدن</span><span class="chip">mélanger مخلوط کردن</span>
+    <span class="chip">ajouter اضافه کردن</span><span class="chip">cuire پختن</span><span class="chip">servir سرو کردن</span></div>
+
+  <div class="fabox" style="border-right-color:var(--vocab)"><div class="falabel">ترجمهٔ دستور پخت</div>
+    <div class="fa">سالاد گوجه — مواد لازم: ۴ گوجه، یک پیاز، کمی روغن زیتون، نمک و فلفل، کمی ریحان. طرز تهیه: گوجه‌ها را بشویید؛ گوجه و پیاز را خرد کنید؛ در یک کاسهٔ بزرگ مخلوط کنید؛ روغن، نمک و فلفل اضافه کنید؛ خنک سرو کنید. نوش جان! فعل‌های آشپزی: laver (شستن)، couper (بریدن)، mélanger (مخلوط کردن)، ajouter (اضافه کردن)، cuire (پختن)، servir (سرو کردن).</div></div>
+</div>
+
+<!-- ===================== A1+ : PRODUCTION ORALE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--dia)">Production orale · Niveau A1+</div>
+    <h1>Parler de ce que je mange <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--dia)"></div></div>
+
+  <div class="card dia"><h3>Monologue guidé (1 minute)</h3>
+    <ul class="clean" style="font-size:11pt;">
+      <li><span class="num" style="background:var(--dia)">1</span><b>Le matin / le midi / le soir,</b> qu'est-ce que je mange ?</li>
+      <li><span class="num" style="background:var(--dia)">2</span><b>J'aime / je n'aime pas…</b> + <i>parce que</i>.</li>
+      <li><span class="num" style="background:var(--dia)">3</span><b>Où je fais mes courses</b> et ce que j'achète.</li>
+      <li><span class="num" style="background:var(--dia)">4</span><b>Mon plat préféré</b> et pourquoi.</li></ul></div>
+
+  <div class="card dia"><h3>Jeu de rôle (à deux) — au restaurant</h3>
+    <p>Une personne joue le serveur, l'autre le client. Utilisez :</p>
+    <ul class="clean"><li><b>Serveur :</b> Vous avez choisi ? · Et comme boisson ? · Ce sera tout ?</li>
+      <li><b>Client :</b> Je voudrais… · Pour moi… · Sans oignons, s'il vous plaît. · L'addition !</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--dia)"><div class="falabel">تولید گفتاری</div>
+    <div class="fa">برای یک‌دقیقه صحبت: ۱) صبح/ظهر/شب چه می‌خوری ۲) چه چیزی را دوست داری/نداری و چرا ۳) کجا خرید می‌کنی و چه می‌خری ۴) غذای موردعلاقه‌ات و دلیلش. سپس نقش «پیشخدمت» و «مشتری» را با هم تمرین کنید.</div></div>
+</div>
+
+<!-- ===================== A1+ : DELF ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--delf)">Préparation DELF A1 · Niveau A1+</div>
+    <h1>Compréhension des écrits <span class="lvl ap">A1+</span></h1><div class="rule" style="background:var(--delf)"></div></div>
+
+  <div class="card delf"><h3>Stratégie « menu »</h3>
+    <ul class="clean"><li>Repère d'abord les <b>prix</b>, les <b>plats</b> et les <b>horaires</b>.</li>
+      <li>Lis les questions <b>avant</b> de relire le texte en détail.</li>
+      <li>Cherche les mots-clés : <i>entrée, plat, dessert, boisson comprise.</i></li></ul></div>
+
+  <div class="read" style="font-family:'Nunito'; font-size:11pt;">
+    <p><b>RESTAURANT LE PETIT JARDIN</b> — Menu du jour : <b>12 €</b></p>
+    <p><b>Entrée :</b> salade de tomates ou soupe de légumes<br>
+    <b>Plat :</b> poulet et riz ou poisson et pommes de terre<br>
+    <b>Dessert :</b> gâteau au chocolat ou fruits<br>
+    <b>Boisson comprise :</b> eau ou café<br>
+    Ouvert tous les jours, midi et soir.</p>
+  </div>
+
+  <div class="two">
+    <div class="box" style="border-left:4px solid var(--delf)"><h4 style="color:var(--delf)">Questions</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. Combien coûte le menu ?</li>
+        <li>2. Quel plat avec du poisson ?</li><li>3. Y a-t-il un dessert au chocolat ?</li>
+        <li>4. La boisson est-elle comprise ?</li></ul></div>
+    <div class="box" style="border-left:4px solid var(--verbe)"><h4 style="color:var(--verbe)">Corrigé</h4>
+      <ul class="clean" style="font-size:10pt;"><li>1. 12 euros.</li>
+        <li>2. Poisson et pommes de terre.</li><li>3. Oui (gâteau au chocolat).</li><li>4. Oui (eau ou café).</li></ul></div>
+  </div>
+
+  <div class="fabox" style="border-right-color:var(--delf)"><div class="falabel">آمادگی DELF — درک مطلب</div>
+    <div class="fa">راهبرد: اول قیمت‌ها، غذاها و ساعت‌ها را پیدا کن؛ سؤال‌ها را قبل از مطالعهٔ دقیق بخوان؛ دنبال کلمات کلیدی بگرد (entrée، plat، dessert، boisson comprise). در منوی نمونه: قیمت ۱۲ یورو، غذای ماهی با سیب‌زمینی، دسر شکلاتی هست، و نوشیدنی (آب یا قهوه) شامل می‌شود.</div></div>
+</div>
+
+<!-- ===================== CULTURE ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--cult)">Culture(s)</div>
+    <h1>À table ! Les repas en français</h1><div class="rule" style="background:var(--cult)"></div></div>
+
+  <div class="read" style="font-size:11.4pt;">
+    <p><span class="q">En France,</span> on prend généralement trois repas : le <b>petit-déjeuner</b> le matin (souvent du pain, du beurre et un café), le <b>déjeuner</b> à midi et le <b>dîner</b> le soir. Le repas est un moment de partage : on aime prendre le temps de manger et de parler ensemble. Le marché et la boulangerie font partie de la vie quotidienne.</p>
+    <p>La cuisine francophone est riche et variée : les <b>frites</b> et les <b>gaufres</b> en Belgique, la <b>fondue</b> et le <b>chocolat</b> en Suisse, le <b>couscous</b> au Maghreb, ou le <b>thiéboudienne</b> au Sénégal. Manger, c'est aussi voyager !</p>
+  </div>
+
+  <table class="tc" style="font-size:10.4pt; margin-top:6px;"><tr><th>Pays / région</th><th>Spécialité</th></tr>
+    <tr><td>Belgique</td><td>les frites, les gaufres</td></tr>
+    <tr><td>Suisse</td><td>la fondue, le chocolat</td></tr>
+    <tr><td>Sénégal</td><td>le thiéboudienne (riz au poisson)</td></tr></table>
+
+  <div class="fabox" style="border-right-color:var(--cult)"><div class="falabel">فرهنگ — غذا</div>
+    <div class="fa">در فرانسه معمولاً سه وعده غذا می‌خورند: صبحانه (اغلب نان، کره و قهوه)، ناهار در ظهر و شام در شب. غذا لحظهٔ هم‌نشینی است و مردم برای خوردن و گفتگو وقت می‌گذارند. آشپزیِ فرانسه‌زبان متنوع است: سیب‌زمینی سرخ‌کرده و وافل در بلژیک، فوندو و شکلات در سوئیس، کوسکوس در مغرب، و «تیبوجِن» (برنج با ماهی) در سنگال. خوردن، نوعی سفر هم هست!</div></div>
+</div>
+
+<!-- ===================== CONSEILS ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--conseil)">Conseils pratiques</div>
+    <h1>Progresser de A0 vers A1+</h1><div class="rule" style="background:var(--conseil)"></div></div>
+
+  <div class="card conseil"><h3>Pour PARLER</h3>
+    <ul class="clean"><li>Mémorise des blocs utiles : <i>« Je voudrais… », « C'est combien ? », « Je ne mange pas de… »</i></li>
+      <li>Décris à voix haute ton frigo : <i>« Il y a du lait, des œufs, pas de viande. »</i></li>
+      <li>Joue la scène du marché et du restaurant avec un ami (ou seul).</li></ul></div>
+
+  <div class="card conseil"><h3>Pour ÉCRIRE</h3>
+    <ul class="clean"><li>Choisis le bon article : goût → <i>le/la</i> · quantité → <i>du/de la</i> · négation → <i>pas de</i>.</li>
+      <li>Après une quantité, toujours <i>de</i> : <i>un kilo de…, beaucoup de…</i></li>
+      <li>Réutilise les modèles : recette, dialogue, texte suivi.</li></ul></div>
+
+  <div class="card conseil"><h3>Méthode &amp; concentration</h3>
+    <ul class="clean"><li>Sessions de <b>15 min</b>, un seul badge à la fois.</li>
+      <li>Couleur = type d'info ; encadre tes propres fiches comme ce livret.</li>
+      <li>Coche chaque notion acquise pour voir ta progression.</li></ul></div>
+
+  <div class="fabox" style="border-right-color:var(--conseil)"><div class="falabel">نکته‌های مرور</div>
+    <div class="fa">برای صحبت: «بلوک‌»های آماده را حفظ کن و محتوای یخچالت را بلند توصیف کن. برای نوشتن: حرف تعریف درست را انتخاب کن (سلیقه le/la، مقدار du/de la، منفی pas de) و به‌یاد داشته باش بعد از مقدار همیشه «de» می‌آید. در جلسات ۱۵ دقیقه‌ای و فقط روی یک سطح کار کن.</div></div>
+</div>
+
+<!-- ===================== BILAN ===================== -->
+<div class="page">
+  <div class="phead"><div class="eyebrow" style="color:var(--gram)">Bilan</div>
+    <h1>Auto-évaluation &amp; mini-test</h1><div class="rule" style="background:var(--gram)"></div></div>
+
+  <div class="card plain" style="border-left-color:var(--a1)"><h3 style="color:var(--a1)">Je sais faire… (coche !)</h3>
+    <ul class="clean" style="font-size:10.7pt;">
+      <li>☐ Nommer des aliments et dire mes goûts.</li>
+      <li>☐ Choisir entre <i>le / du / un</i> selon le sens.</li>
+      <li>☐ Mettre une phrase à la négation (<i>pas de</i>).</li>
+      <li>☐ Demander un prix et une quantité.</li>
+      <li>☐ Situer un objet (prépositions de lieu).</li>
+      <li>☐ Commander au restaurant poliment.</li></ul></div>
+
+  <div class="two">
+    <div class="card gram" style="margin-top:0;"><h3>Mini-test</h3>
+      <ul class="clean" style="font-size:10.3pt;"><li>1. <i>du / de la / des</i> : je mange ___ riz, ___ salade, ___ frites.</li>
+        <li>2. Négation : « Je bois du café. » → ?</li>
+        <li>3. Goût ou quantité ? « J'aime ___ chocolat. »</li>
+        <li>4. Quantité : « un kilo ___ pommes ».</li>
+        <li>5. Lieu : « Le lait est ___ le frigo. »</li></ul></div>
+    <div class="card verbe" style="margin-top:0;"><h3>Corrigé</h3>
+      <ul class="clean" style="font-size:10.3pt;"><li>1. du riz · de la salade · des frites</li>
+        <li>2. Je ne bois pas de café.</li>
+        <li>3. le chocolat (goût → défini)</li>
+        <li>4. un kilo de pommes</li>
+        <li>5. dans le frigo</li></ul></div>
+  </div>
+
+  <div style="text-align:center; margin-top:15px; padding:15px; border-radius:12px;
+     background:linear-gradient(120deg,#8C3B4A,#BE5B36); color:#fff;">
+    <div style="font-family:'Poppins'; font-weight:700; font-size:15.5pt;">Unité 3 terminée — Bon appétit ! 🍅</div>
+    <div style="font-size:10.3pt; margin-top:4px;">آفرین! واحد سوم تمام شد — نوش جان!</div>
+  </div>
+</div>
+
+</body>
+</html>
