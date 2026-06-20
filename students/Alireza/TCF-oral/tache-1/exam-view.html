@@ -1,445 +1,368 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tâche 1 — Mode Examen · Ali Reza</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tâche 1 — Mode Examen · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --ink:#1a1614; --paper:#f6f1e8; --soft:#fdfaf3;
-  --red:#c8442a; --green:#1d4d3f; --gold:#d4a437;
-  --blue:#3a4d8f; --muted:#6e6357;
-  --line:rgba(26,22,20,.15);
+  --ink:#1a1614;--paper:#f6f1e8;--soft:#fdfaf3;
+  --red:#c8442a;--green:#1d4d3f;--gold:#d4a437;
+  --blue:#3a4d8f;--muted:#6e6357;--line:rgba(26,22,20,.15);
+  --red2:#8f2a1a;--green2:#0f3028;
 }
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Vazirmatn',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  min-height:100vh;
-  line-height:1.7;
-}
+body{font-family:'Vazirmatn',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;line-height:1.7;}
 
-/* ── TOP BAR ── */
-.topbar{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 24px;
-  background:var(--ink); color:var(--soft);
-  position:sticky; top:0; z-index:200;
-}
-.topbar-left{display:flex;align-items:center;gap:14px;}
-.back-btn{
-  color:rgba(253,250,243,.6); text-decoration:none;
-  font-family:'JetBrains Mono',monospace; font-size:11px;
-  letter-spacing:.1em; padding:6px 12px;
-  border:1px solid rgba(253,250,243,.2); border-radius:2px;
-  transition:.2s;
-}
-.back-btn:hover{background:rgba(253,250,243,.1); color:var(--soft);}
-.topbar-title{
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--gold);
-}
-.topbar-right{display:flex;align-items:center;gap:12px;}
-
-/* ── TIMER ── */
-.timer-wrap{
-  display:flex; align-items:center; gap:10px;
-  background:rgba(253,250,243,.08); padding:8px 16px;
-  border:1px solid rgba(253,250,243,.15);
-}
-.timer-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(253,250,243,.5);text-transform:uppercase;}
-.timer-display{
-  font-family:'JetBrains Mono',monospace;
-  font-size:22px; font-weight:600; color:var(--gold);
-  min-width:52px; text-align:center;
-  transition:color .3s;
-}
-.timer-display.warn{color:#e08020;}
-.timer-display.danger{color:var(--red);}
-.timer-btn{
-  background:none; border:1px solid rgba(253,250,243,.25);
-  color:var(--soft); cursor:pointer; padding:5px 10px;
-  font-family:'JetBrains Mono',monospace; font-size:11px;
-  letter-spacing:.08em; transition:.2s;
-}
+/* ── TOPBAR ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;background:var(--ink);color:var(--soft);position:sticky;top:0;z-index:200;}
+.topbar-left{display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(253,250,243,.6);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;padding:5px 11px;border:1px solid rgba(253,250,243,.2);border-radius:2px;transition:.2s;}
+.back-btn:hover{background:rgba(253,250,243,.1);color:var(--soft);}
+.topbar-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.timer-wrap{display:flex;align-items:center;gap:8px;background:rgba(253,250,243,.07);padding:7px 14px;border:1px solid rgba(253,250,243,.15);}
+.timer-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(253,250,243,.45);text-transform:uppercase;}
+.timer-display{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--gold);min-width:48px;text-align:center;transition:color .3s;}
+.timer-display.warn{color:#e08020;}.timer-display.danger{color:var(--red);}
+.timer-btn{background:none;border:1px solid rgba(253,250,243,.22);color:var(--soft);cursor:pointer;padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;transition:.2s;}
 .timer-btn:hover{background:rgba(253,250,243,.1);}
 
 /* ── HERO ── */
-.hero{
-  background:linear-gradient(135deg, var(--red) 0%, #8f2a1a 100%);
-  padding:40px 32px 36px; text-align:center; position:relative; overflow:hidden;
-}
-.hero::before{content:"🎯";position:absolute;top:20px;right:28px;font-size:52px;opacity:.8;}
-.hero-eyebrow{
-  font-family:'JetBrains Mono',monospace; font-size:10px;
-  letter-spacing:.25em; text-transform:uppercase;
-  color:rgba(253,250,243,.65); margin-bottom:10px;
-}
-.hero h1{
-  font-size:clamp(24px,4vw,36px); font-weight:700;
-  color:var(--soft); margin-bottom:6px; line-height:1.2;
-}
-.hero p{font-size:14px;color:rgba(253,250,243,.75);}
-.hero-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
-.hbadge{
-  background:rgba(253,250,243,.15); color:var(--soft);
-  font-family:'JetBrains Mono',monospace; font-size:10px;
-  letter-spacing:.12em; padding:5px 12px; border:1px solid rgba(253,250,243,.2);
-}
+.hero{background:linear-gradient(135deg,var(--red) 0%,var(--red2) 100%);padding:36px 28px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"🎯";position:absolute;top:18px;right:24px;font-size:46px;opacity:.75;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(253,250,243,.6);margin-bottom:8px;}
+.hero h1{font-size:clamp(20px,4vw,30px);font-weight:700;color:var(--soft);margin-bottom:6px;line-height:1.2;font-family:'Roboto',sans-serif;}
+.hero p{font-size:13px;color:rgba(253,250,243,.75);}
+.hero-badges{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hbadge{background:rgba(253,250,243,.14);color:var(--soft);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 11px;border:1px solid rgba(253,250,243,.18);}
 
-/* ── MAIN LAYOUT ── */
-.main{max-width:860px;margin:0 auto;padding:36px 24px 80px;}
+/* ── MAIN ── */
+.main{max-width:860px;margin:0 auto;padding:28px 20px 80px;}
 
 /* ── INSTRUCTIONS ── */
-.instructions{
-  background:var(--soft); border:2px solid var(--ink);
-  padding:22px 26px; margin-bottom:32px;
-  display:flex; gap:18px; align-items:flex-start;
-}
-.instr-icon{font-size:28px;flex-shrink:0;}
-.instr-text{font-size:14px;line-height:1.8;color:var(--muted);}
+.instructions{background:var(--soft);border:2px solid var(--ink);padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;}
+.instr-icon{font-size:24px;flex-shrink:0;}
+.instr-text{font-size:13px;line-height:1.8;color:var(--muted);}
 .instr-text strong{color:var(--ink);}
-.instr-fa{
-  margin-top:10px; padding-top:10px;
-  border-top:1px dashed var(--line);
-  font-size:13px; direction:rtl; text-align:right;
-  color:var(--muted);
-}
-
-/* ── SKELETON ── */
-.skeleton-header{
-  display:flex; align-items:center; gap:12px; margin-bottom:20px;
-}
-.skeleton-header h2{
-  font-family:'JetBrains Mono',monospace; font-size:12px;
-  letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
-}
-.skeleton-line{flex:1;height:1px;background:var(--line);}
-
-.blocks-grid{
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:14px; margin-bottom:36px;
-}
-
-/* ── BLOCK CARD ── */
-.block{
-  border:2px solid var(--ink); background:var(--soft);
-  padding:0; cursor:pointer; transition:all .2s;
-  position:relative; overflow:hidden;
-}
-.block:hover{box-shadow:4px 4px 0 var(--ink); transform:translate(-2px,-2px);}
-.block.active{
-  background:var(--ink); color:var(--soft);
-  box-shadow:4px 4px 0 var(--gold);
-  transform:translate(-2px,-2px);
-}
-.block.done{opacity:.5;}
-.block.done .block-num{background:var(--green);}
-
-.block-num{
-  display:flex; align-items:center; justify-content:space-between;
-  background:var(--ink); color:var(--soft);
-  padding:8px 14px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px; letter-spacing:.18em; text-transform:uppercase;
-}
-.block.active .block-num{background:var(--gold);color:var(--ink);}
-.block-num-left{display:flex;align-items:center;gap:8px;}
-.block-index{font-weight:700;font-size:11px;}
-.check{font-size:12px;opacity:0;}
-.block.done .check{opacity:1;}
-
-.block-body{padding:14px 16px;}
-.block-title{
-  font-weight:700; font-size:15px; margin-bottom:5px;
-  line-height:1.3;
-}
-.block.active .block-title{color:var(--gold);}
-.block-fa{
-  font-size:12px; color:var(--muted); direction:rtl;
-  text-align:right; margin-bottom:8px;
-}
-.block.active .block-fa{color:rgba(253,250,243,.65);}
-.block-keywords{display:flex;flex-wrap:wrap;gap:4px;}
-.kw{
-  font-family:'JetBrains Mono',monospace; font-size:9px;
-  letter-spacing:.08em; padding:2px 7px;
-  border:1px solid var(--line); color:var(--muted);
-}
-.block.active .kw{border-color:rgba(253,250,243,.3);color:rgba(253,250,243,.6);}
-
-/* ── DETAIL PANEL ── */
-.detail-panel{
-  border:2px solid var(--ink); background:var(--soft);
-  margin-bottom:32px; display:none;
-}
-.detail-panel.show{display:block;}
-.detail-header{
-  background:var(--ink); color:var(--soft);
-  padding:16px 24px;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.detail-header h3{
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--gold);
-}
-.close-btn{
-  background:none; border:1px solid rgba(253,250,243,.2);
-  color:rgba(253,250,243,.7); cursor:pointer; padding:4px 10px;
-  font-size:14px; transition:.2s;
-}
-.close-btn:hover{background:rgba(253,250,243,.1);}
-
-.detail-body{padding:24px 28px;}
-.detail-title{font-size:22px;font-weight:700;margin-bottom:6px;}
-.detail-fa{font-size:15px;direction:rtl;text-align:right;color:var(--muted);margin-bottom:20px;}
-
-.phrases-list{display:flex;flex-direction:column;gap:10px;}
-.phrase-item{
-  display:grid; grid-template-columns:auto 1fr;
-  gap:0; border:1.5px solid var(--ink);
-}
-.phrase-num{
-  background:var(--red); color:var(--soft);
-  width:36px; display:flex; align-items:center; justify-content:center;
-  font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700;
-  flex-shrink:0;
-}
-.phrase-content{padding:12px 16px;}
-.phrase-fr{font-size:14.5px;margin-bottom:5px;line-height:1.6;}
-.phrase-fr .hl{
-  background:linear-gradient(180deg,transparent 55%,rgba(212,164,55,.45) 55%);
-  padding:0 2px; font-weight:700;
-}
-.phrase-fr .hlr{
-  background:linear-gradient(180deg,transparent 55%,rgba(200,68,42,.3) 55%);
-  padding:0 2px; font-weight:600; color:var(--red);
-}
-.phrase-fa{
-  font-size:12px; direction:rtl; text-align:right;
-  color:var(--muted); line-height:1.7;
-}
-
-.mark-done-btn{
-  display:block; width:100%; margin-top:20px;
-  padding:12px; background:var(--green); color:var(--soft);
-  border:2px solid var(--ink); font-family:'Vazirmatn',sans-serif;
-  font-size:14px; font-weight:600; cursor:pointer; transition:.2s;
-  letter-spacing:.02em;
-}
-.mark-done-btn:hover{background:#1a6147;}
-.mark-done-btn.undone{background:var(--muted);}
-
-/* ── FULL TEXT TOGGLE ── */
-.fulltext-toggle{
-  width:100%; margin-bottom:36px;
-  padding:14px; background:var(--soft);
-  border:2px solid var(--ink); cursor:pointer;
-  font-family:'JetBrains Mono',monospace; font-size:11px;
-  letter-spacing:.15em; text-transform:uppercase;
-  display:flex; align-items:center; justify-content:center; gap:10px;
-  transition:.2s;
-}
-.fulltext-toggle:hover{background:var(--paper);}
-.toggle-icon{font-size:14px;transition:transform .3s;}
-.toggle-icon.open{transform:rotate(180deg);}
-
-.fulltext{
-  border:2px solid var(--ink); background:var(--soft);
-  padding:28px 32px; margin-bottom:36px; display:none;
-  font-size:16px; line-height:1.9;
-}
-.fulltext.show{display:block;}
-.fulltext p{margin-bottom:12px;}
-.fulltext .hl{background:linear-gradient(180deg,transparent 55%,rgba(212,164,55,.45) 55%);padding:0 2px;font-weight:700;}
-.fulltext .hlr{background:linear-gradient(180deg,transparent 55%,rgba(200,68,42,.3) 55%);padding:0 2px;font-weight:600;color:var(--red);}
-.fulltext .hlg{background:linear-gradient(180deg,transparent 55%,rgba(29,77,63,.25) 55%);padding:0 2px;font-weight:700;}
+.instr-fa{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:12px;direction:rtl;text-align:right;color:var(--muted);}
 
 /* ── PROGRESS ── */
-.progress-bar{
-  height:4px; background:rgba(26,22,20,.1);
-  margin-bottom:28px;
-}
-.progress-fill{
-  height:100%; background:var(--green);
-  transition:width .4s ease;
-}
+.progress-wrap{margin-bottom:20px;}
+.progress-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:flex;justify-content:space-between;}
+.progress-bar{height:4px;background:rgba(26,22,20,.1);}
+.progress-fill{height:100%;background:var(--green);transition:width .4s ease;}
 
-/* ── FOOTER ── */
-.footer{text-align:center;padding:22px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);}
+/* ── ROADMAP SVG ── */
+.roadmap-wrap{margin-bottom:28px;}
+.roadmap-header{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.roadmap-svg{width:100%;overflow:visible;}
+
+/* ── BLOCKS GRID ── */
+.blocks-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.blocks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+
+.block{border:2px solid var(--ink);background:var(--soft);cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.block:hover{box-shadow:3px 3px 0 var(--ink);transform:translate(-1px,-1px);}
+.block.active{background:var(--ink);color:var(--soft);box-shadow:4px 4px 0 var(--gold);transform:translate(-2px,-2px);}
+.block.done{opacity:.55;}
+.block.done .block-num-bar{background:var(--green);}
+
+.block-num-bar{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:var(--soft);padding:7px 12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;}
+.block.active .block-num-bar{background:var(--gold);color:var(--ink);}
+.b-idx{font-weight:700;font-size:10px;}
+.b-check{opacity:0;}.block.done .b-check{opacity:1;}
+
+.block-inner{padding:11px 14px;}
+.b-title{font-weight:700;font-size:14px;margin-bottom:4px;line-height:1.3;font-family:'Roboto',sans-serif;}
+.block.active .b-title{color:var(--gold);}
+.b-fa{font-size:11px;color:var(--muted);direction:rtl;text-align:right;margin-bottom:7px;}
+.block.active .b-fa{color:rgba(253,250,243,.6);}
+
+/* KEYWORDS */
+.b-keywords{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px;}
+.kw{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em;padding:2px 6px;border:1px solid var(--line);color:var(--muted);}
+.kw.key{border-color:var(--red);color:var(--red);font-weight:600;}
+.kw.struct{border-color:var(--gold);color:var(--gold);}
+.kw.fact{border-color:var(--blue);color:var(--blue);}
+.block.active .kw{border-color:rgba(253,250,243,.25);color:rgba(253,250,243,.55);}
+.block.active .kw.key{border-color:var(--gold);color:var(--gold);}
+.block.active .kw.struct,.block.active .kw.fact{border-color:rgba(253,250,243,.3);color:rgba(253,250,243,.6);}
+
+/* TARGET SCORE */
+.b-target{font-size:9px;color:var(--green);font-weight:700;margin-top:3px;}
+.block.active .b-target{color:rgba(253,250,243,.55);}
+
+/* ── DETAIL PANEL ── */
+.detail-panel{border:2px solid var(--ink);background:var(--soft);margin-bottom:24px;display:none;}
+.detail-panel.show{display:block;}
+.detail-hd{background:var(--ink);color:var(--soft);padding:13px 20px;display:flex;align-items:center;justify-content:space-between;}
+.detail-hd h3{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.close-btn{background:none;border:1px solid rgba(253,250,243,.2);color:rgba(253,250,243,.65);cursor:pointer;padding:3px 9px;font-size:13px;transition:.2s;}
+.close-btn:hover{background:rgba(253,250,243,.1);}
+
+.detail-body{padding:20px 24px;}
+.d-title{font-size:20px;font-weight:700;margin-bottom:4px;font-family:'Roboto',sans-serif;}
+.d-fa{font-size:13px;direction:rtl;text-align:right;color:var(--muted);margin-bottom:16px;}
+
+/* PHRASES */
+.phrases{display:flex;flex-direction:column;gap:8px;}
+.phrase{display:grid;grid-template-columns:32px 1fr;gap:0;border:1.5px solid var(--ink);}
+.ph-num{background:var(--red);color:var(--soft);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;flex-shrink:0;}
+.ph-num.b1{background:var(--green);}
+.ph-num.b2{background:var(--gold);color:var(--ink);}
+.ph-content{padding:10px 14px;}
+.ph-fr{font-size:13.5px;margin-bottom:4px;line-height:1.6;font-family:'Roboto',sans-serif;}
+.ph-fr .hl{background:linear-gradient(180deg,transparent 55%,rgba(212,164,55,.4) 55%);padding:0 2px;font-weight:700;}
+.ph-fr .hlr{background:linear-gradient(180deg,transparent 55%,rgba(200,68,42,.25) 55%);padding:0 2px;font-weight:600;color:var(--red);}
+.ph-fa{font-size:11.5px;direction:rtl;text-align:right;color:var(--muted);line-height:1.6;}
+
+/* MARK DONE */
+.mark-done{display:block;width:100%;margin-top:16px;padding:11px;background:var(--green);color:var(--soft);border:2px solid var(--ink);font-family:'Vazirmatn',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;letter-spacing:.02em;}
+.mark-done:hover{background:var(--green2);}
+.mark-done.undo{background:var(--muted);}
+
+/* ── FULL TEXT ── */
+.ft-toggle{width:100%;margin-bottom:24px;padding:12px;background:var(--soft);border:2px solid var(--ink);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;transition:.2s;}
+.ft-toggle:hover{background:var(--paper);}
+.ft-icon{font-size:13px;transition:transform .3s;}.ft-icon.open{transform:rotate(180deg);}
+.fulltext{border:2px solid var(--ink);background:var(--soft);padding:24px 28px;margin-bottom:24px;display:none;font-size:14.5px;line-height:1.9;font-family:'Roboto',sans-serif;}
+.fulltext.show{display:block;}
+.fulltext p{margin-bottom:10px;}
+.fulltext .hl{background:linear-gradient(180deg,transparent 55%,rgba(212,164,55,.4) 55%);padding:0 2px;font-weight:700;}
+.fulltext .hlr{background:linear-gradient(180deg,transparent 55%,rgba(200,68,42,.25) 55%);padding:0 2px;font-weight:600;color:var(--red);}
+.fulltext .hlg{background:linear-gradient(180deg,transparent 55%,rgba(29,77,63,.2) 55%);padding:0 2px;font-weight:700;}
+
+/* ── LINK ── */
+.link-box{text-align:center;border:2px solid var(--line);padding:16px;background:var(--soft);}
+.link-box a{color:var(--red);text-decoration:none;font-weight:700;font-size:14px;}
+
+.footer{text-align:center;padding:18px;color:var(--muted);font-size:11px;border-top:1px solid var(--line);}
 .footer a{color:var(--red);text-decoration:none;}
 
-/* ── RESPONSIVE ── */
-@media(max-width:640px){
-  .blocks-grid{grid-template-columns:1fr 1fr;}
-  .hero{padding:32px 18px 28px;}
-  .main{padding:24px 16px 60px;}
-}
-@media(max-width:400px){
-  .blocks-grid{grid-template-columns:1fr;}
-}
+@media(max-width:600px){.blocks-grid{grid-template-columns:1fr 1fr;}.timer-wrap{display:none;}}
+@media(max-width:380px){.blocks-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
     <a href="index.html" class="back-btn">← Retour</a>
-    <div class="topbar-title">Tâche 1 · Mode Examen</div>
+    <div class="topbar-title">Tâche 1 · Mode Examen · علیرضا</div>
   </div>
-  <div class="topbar-right">
-    <div class="timer-wrap">
-      <span class="timer-label">Temps</span>
-      <div class="timer-display" id="timer">1:30</div>
-      <button class="timer-btn" id="timerBtn" onclick="toggleTimer()">▶ Start</button>
-      <button class="timer-btn" onclick="resetTimer()">↺</button>
-    </div>
+  <div class="timer-wrap">
+    <span class="timer-label">Temps</span>
+    <div class="timer-display" id="timer">1:30</div>
+    <button class="timer-btn" id="timerBtn" onclick="toggleTimer()">▶ Start</button>
+    <button class="timer-btn" onclick="resetTimer()">↺ Reset</button>
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">TCF Canada · Expression Orale · Ali Reza</div>
+  <div class="hero-eyebrow">TCF Canada · Expression Orale · علیرضا</div>
   <h1>📋 Tâche 1 — Présentation personnelle</h1>
-  <p>ترتیب ایده‌ها · نگه‌داشتن نخ مطلب · ورژن امتحانی</p>
+  <p>نقشه راه · ترتیب ایده‌ها · کلمات کلیدی · ورژن امتحانی</p>
   <div class="hero-badges">
-    <span class="hbadge">⏱ ~1 min 30</span>
+    <span class="hbadge">⏱ 1 min 30</span>
     <span class="hbadge">📍 B2 Target</span>
-    <span class="hbadge">6 blocs</span>
+    <span class="hbadge">6 étapes</span>
     <span class="hbadge">~180 mots</span>
+    <span class="hbadge">Téhéran → 🇨🇦</span>
   </div>
 </div>
 
 <div class="main">
 
-  <!-- INSTRUCTIONS -->
   <div class="instructions">
-    <div class="instr-icon">💡</div>
+    <div class="instr-icon">🗺️</div>
     <div class="instr-text">
-      <strong>Comment utiliser cette page :</strong> قبل از شروع همه بلوک‌ها رو نگاه کن. وقتی تایمر رو می‌زنی روی Start، از روی ترتیب شماره‌ها صحبت کن. روی هر بلوک کلیک کن تا جملات کمکی رو ببینی. وقتی تموم شد، ✓ بزن.
-      <div class="instr-fa">
-        این صفحه نه برای حفظ کردن — بلکه برای <strong>نگه‌داشتن نخ مطلب</strong> است. فقط به شماره‌ها نگاه کن و بگو.
-      </div>
+      <strong>Mode Examen :</strong> نقشه راه را از بالا به پایین دنبال کن. تایمر را شروع کن. روی هر بلوک کلیک کن تا جملات کمکی ببینی. وقتی گفتی ✓ بزن تا بعدی باز شود.
+      <div class="instr-fa">هدف: بدون توقف ۱ دقیقه و ۳۰ ثانیه — فقط به شماره‌ها و کلمات کلیدی نگاه کن.</div>
     </div>
   </div>
 
-  <!-- PROGRESS -->
-  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-
-  <!-- SKELETON HEADER -->
-  <div class="skeleton-header">
-    <h2>ساختار — ۶ بلوک</h2>
-    <div class="skeleton-line"></div>
+  <div class="progress-wrap">
+    <div class="progress-label"><span>پیشرفت</span><span id="progressText">0 / 6</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
   </div>
 
-  <!-- 6 BLOCKS -->
+  <!-- ══ ROADMAP SVG ══ -->
+  <div class="roadmap-wrap">
+    <div class="roadmap-header">🗺️ نقشه راه — ترتیب از بالا به پایین</div>
+    <svg class="roadmap-svg" viewBox="0 0 820 110" xmlns="http://www.w3.org/2000/svg">
+      <!-- Line -->
+      <line x1="50" y1="55" x2="770" y2="55" stroke="#1a1614" stroke-width="2" stroke-dasharray="6,4"/>
+      <!-- Circles + labels -->
+      <g id="rm1">
+        <circle cx="60" cy="55" r="22" fill="#1a1614"/>
+        <text x="60" y="60" text-anchor="middle" fill="#d4a437" font-family="JetBrains Mono" font-size="11" font-weight="700">01</text>
+        <text x="60" y="90" text-anchor="middle" fill="#1a1614" font-family="Vazirmatn" font-size="10">هویت</text>
+        <text x="60" y="105" text-anchor="middle" fill="#6e6357" font-family="JetBrains Mono" font-size="8">Identité</text>
+      </g>
+      <g id="rm2">
+        <circle cx="195" cy="55" r="22" fill="#3a4d8f"/>
+        <text x="195" y="60" text-anchor="middle" fill="white" font-family="JetBrains Mono" font-size="11" font-weight="700">02</text>
+        <text x="195" y="90" text-anchor="middle" fill="#1a1614" font-family="Vazirmatn" font-size="10">کار</text>
+        <text x="195" y="105" text-anchor="middle" fill="#6e6357" font-family="JetBrains Mono" font-size="8">Travail</text>
+      </g>
+      <g id="rm3">
+        <circle cx="330" cy="55" r="22" fill="#1d4d3f"/>
+        <text x="330" y="60" text-anchor="middle" fill="white" font-family="JetBrains Mono" font-size="11" font-weight="700">03</text>
+        <text x="330" y="90" text-anchor="middle" fill="#1a1614" font-family="Vazirmatn" font-size="10">تحصیل</text>
+        <text x="330" y="105" text-anchor="middle" fill="#6e6357" font-family="JetBrains Mono" font-size="8">Formation</text>
+      </g>
+      <g id="rm4">
+        <circle cx="465" cy="55" r="22" fill="#c8442a"/>
+        <text x="465" y="60" text-anchor="middle" fill="white" font-family="JetBrains Mono" font-size="11" font-weight="700">04</text>
+        <text x="465" y="90" text-anchor="middle" fill="#1a1614" font-family="Vazirmatn" font-size="10">زبان+کانادا</text>
+        <text x="465" y="105" text-anchor="middle" fill="#6e6357" font-family="JetBrains Mono" font-size="8">Langues+Projet</text>
+      </g>
+      <g id="rm5">
+        <circle cx="600" cy="55" r="22" fill="#d4a437"/>
+        <text x="600" y="60" text-anchor="middle" fill="#1a1614" font-family="JetBrains Mono" font-size="11" font-weight="700">05</text>
+        <text x="600" y="90" text-anchor="middle" fill="#1a1614" font-family="Vazirmatn" font-size="10">علاقه‌ها</text>
+        <text x="600" y="105" text-anchor="middle" fill="#6e6357" font-family="JetBrains Mono" font-size="8">Passions+Harvard</text>
+      </g>
+      <g id="rm6">
+        <circle cx="755" cy="55" r="22" fill="#6e6357"/>
+        <text x="755" y="60" text-anchor="middle" fill="white" font-family="JetBrains Mono" font-size="11" font-weight="700">06</text>
+        <text x="755" y="90" text-anchor="middle" fill="#1a1614" font-family="Vazirmatn" font-size="10">نتیجه</text>
+        <text x="755" y="105" text-anchor="middle" fill="#6e6357" font-family="JetBrains Mono" font-size="8">Conclusion</text>
+      </g>
+      <!-- Done marks (dynamically set) -->
+      <g id="doneMarks" opacity="0.9">
+        <text id="done1" x="83" y="35" fill="#1d4d3f" font-size="14" opacity="0">✓</text>
+        <text id="done2" x="218" y="35" fill="#1d4d3f" font-size="14" opacity="0">✓</text>
+        <text id="done3" x="353" y="35" fill="#1d4d3f" font-size="14" opacity="0">✓</text>
+        <text id="done4" x="488" y="35" fill="#1d4d3f" font-size="14" opacity="0">✓</text>
+        <text id="done5" x="623" y="35" fill="#1d4d3f" font-size="14" opacity="0">✓</text>
+        <text id="done6" x="778" y="35" fill="#1d4d3f" font-size="14" opacity="0">✓</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- BLOCKS -->
+  <div class="blocks-label">بلوک‌های ارائه — کلیک کن تا باز شود</div>
   <div class="blocks-grid" id="blocksGrid">
 
     <div class="block" id="block-1" onclick="openBlock(1)">
-      <div class="block-num">
-        <div class="block-num-left">
-          <span class="block-index">01</span>
-          <span>Identité</span>
+      <div class="block-num-bar"><div class="b-idx">01 · Identité</div><span class="b-check">✓</span></div>
+      <div class="block-inner">
+        <div class="b-title">هویت · معرفی</div>
+        <div class="b-fa">اسم · سن · شهر · خانواده</div>
+        <div class="b-keywords">
+          <span class="kw key">Ali Reza</span>
+          <span class="kw key">30 ans</span>
+          <span class="kw fact">Téhéran</span>
+          <span class="kw fact">capitale Iran</span>
+          <span class="kw struct">actuellement</span>
+          <span class="kw struct">où j'ai grandi</span>
+          <span class="kw">famille</span>
+          <span class="kw">ville · métropole</span>
         </div>
-        <span class="check">✓</span>
-      </div>
-      <div class="block-body">
-        <div class="block-title">Qui suis-je ?</div>
-        <div class="block-fa">هویت · معرفی اولیه</div>
-        <div class="block-keywords">
-          <span class="kw">nom</span><span class="kw">âge</span><span class="kw">Téhéran</span><span class="kw">famille</span>
-        </div>
+        <div class="b-target">⏱ ~15 ثانیه · 2 جمله</div>
       </div>
     </div>
 
     <div class="block" id="block-2" onclick="openBlock(2)">
-      <div class="block-num">
-        <div class="block-num-left">
-          <span class="block-index">02</span>
-          <span>Travail</span>
+      <div class="block-num-bar"><div class="b-idx">02 · Travail</div><span class="b-check">✓</span></div>
+      <div class="block-inner">
+        <div class="b-title">شغل · سرمایه‌گذاری</div>
+        <div class="b-fa">پست · فاند · ابوظبی · ۳ حوزه</div>
+        <div class="b-keywords">
+          <span class="kw struct">Sur le plan professionnel</span>
+          <span class="kw key">professionnel de l'investissement</span>
+          <span class="kw key">fonds de capital-investissement</span>
+          <span class="kw fact">Abou Dhabi</span>
+          <span class="kw struct">dans la mesure où</span>
+          <span class="kw key">finance</span>
+          <span class="kw key">stratégie</span>
+          <span class="kw key">technologie</span>
+          <span class="kw">stimulant</span>
+          <span class="kw">analyser · identifier · décider</span>
         </div>
-        <span class="check">✓</span>
-      </div>
-      <div class="block-body">
-        <div class="block-title">Plan professionnel</div>
-        <div class="block-fa">شغل · شرکت · ابوظبی</div>
-        <div class="block-keywords">
-          <span class="kw">fonds</span><span class="kw">investissement</span><span class="kw">Abou Dhabi</span><span class="kw">finance</span>
-        </div>
+        <div class="b-target">⏱ ~25 ثانیه · 2 جمله</div>
       </div>
     </div>
 
     <div class="block" id="block-3" onclick="openBlock(3)">
-      <div class="block-num">
-        <div class="block-num-left">
-          <span class="block-index">03</span>
-          <span>Études</span>
+      <div class="block-num-bar"><div class="b-idx">03 · Formation</div><span class="b-check">✓</span></div>
+      <div class="block-inner">
+        <div class="b-title">تحصیلات · دانشگاه</div>
+        <div class="b-fa">شریف + ارشد تهران · دوگانه</div>
+        <div class="b-keywords">
+          <span class="kw struct">Côté formation</span>
+          <span class="kw key">diplômé en ingénierie</span>
+          <span class="kw fact">Université Sharif</span>
+          <span class="kw struct">également</span>
+          <span class="kw key">master · management de la technologie</span>
+          <span class="kw fact">Université de Téhéran</span>
+          <span class="kw struct">double formation</span>
+          <span class="kw">technique + business</span>
+          <span class="kw">approche transversale</span>
         </div>
-        <span class="check">✓</span>
-      </div>
-      <div class="block-body">
-        <div class="block-title">Formation</div>
-        <div class="block-fa">تحصیلات · شریف · تهران</div>
-        <div class="block-keywords">
-          <span class="kw">Sharif</span><span class="kw">master</span><span class="kw">ingénierie</span>
-        </div>
+        <div class="b-target">⏱ ~20 ثانیه · 2 جمله</div>
       </div>
     </div>
 
     <div class="block" id="block-4" onclick="openBlock(4)">
-      <div class="block-num">
-        <div class="block-num-left">
-          <span class="block-index">04</span>
-          <span>Langues & Projet</span>
+      <div class="block-num-bar"><div class="b-idx">04 · Langues & Canada</div><span class="b-check">✓</span></div>
+      <div class="block-inner">
+        <div class="b-title">زبان‌ها → کانادا</div>
+        <div class="b-fa">سه‌زبانه · TCF · مهاجرت</div>
+        <div class="b-keywords">
+          <span class="kw key">trilingue</span>
+          <span class="kw fact">persan · anglais · français</span>
+          <span class="kw struct">Si j'apprends… c'est parce que</span>
+          <span class="kw key">immigration au Canada</span>
+          <span class="kw key">TCF Canada</span>
+          <span class="kw struct">C'est pour cela que</span>
+          <span class="kw">accueillant · multiculturel</span>
+          <span class="kw fact">Montréal · Toronto</span>
+          <span class="kw">qualité de vie · opportunités</span>
         </div>
-        <span class="check">✓</span>
-      </div>
-      <div class="block-body">
-        <div class="block-title">Français → Canada</div>
-        <div class="block-fa">زبان‌ها · TCF · مهاجرت</div>
-        <div class="block-keywords">
-          <span class="kw">persan</span><span class="kw">anglais</span><span class="kw">français</span><span class="kw">TCF</span><span class="kw">Canada</span>
-        </div>
+        <div class="b-target">⏱ ~25 ثانیه · 3 جمله</div>
       </div>
     </div>
 
     <div class="block" id="block-5" onclick="openBlock(5)">
-      <div class="block-num">
-        <div class="block-num-left">
-          <span class="block-index">05</span>
-          <span>Harvard & Intérêts</span>
+      <div class="block-num-bar"><div class="b-idx">05 · Passions & Harvard</div><span class="b-check">✓</span></div>
+      <div class="block-inner">
+        <div class="b-title">هاروارد + علاقه‌ها</div>
+        <div class="b-fa">ورزش · تحلیل · data · هاروارد</div>
+        <div class="b-keywords">
+          <span class="kw struct">J'aimerais mentionner</span>
+          <span class="kw key">admis à Harvard</span>
+          <span class="kw struct">bien plus qu'une étape</span>
+          <span class="kw struct">Au-delà du travail</span>
+          <span class="kw key">histoire · politique · analyse des sociétés</span>
+          <span class="kw key">sport · course à pied · musculation</span>
+          <span class="kw struct">pour garder un bon équilibre</span>
+          <span class="kw key">data science · IA · finance</span>
+          <span class="kw struct">mettre à profit</span>
+          <span class="kw">curiosité · réseau</span>
         </div>
-        <span class="check">✓</span>
-      </div>
-      <div class="block-body">
-        <div class="block-title">Passions & Harvard</div>
-        <div class="block-fa">علاقه‌ها · هاروارد · ورزش</div>
-        <div class="block-keywords">
-          <span class="kw">Harvard</span><span class="kw">histoire</span><span class="kw">sport</span><span class="kw">data science</span>
-        </div>
+        <div class="b-target">⏱ ~25 ثانیه · 3-4 جمله</div>
       </div>
     </div>
 
     <div class="block" id="block-6" onclick="openBlock(6)">
-      <div class="block-num">
-        <div class="block-num-left">
-          <span class="block-index">06</span>
-          <span>Conclusion</span>
+      <div class="block-num-bar"><div class="b-idx">06 · Conclusion</div><span class="b-check">✓</span></div>
+      <div class="block-inner">
+        <div class="b-title">نتیجه‌گیری · شخصیت</div>
+        <div class="b-fa">۳ صفت + phrase de chute</div>
+        <div class="b-keywords">
+          <span class="kw struct">Pour conclure</span>
+          <span class="kw key">curieux</span>
+          <span class="kw key">polyvalent</span>
+          <span class="kw key">méthodique</span>
+          <span class="kw struct">ce qui me permet de</span>
+          <span class="kw key">mener plusieurs projets de front</span>
+          <span class="kw struct">rigueur · ambition</span>
+          <span class="kw struct">réussir au Canada</span>
         </div>
-        <span class="check">✓</span>
-      </div>
-      <div class="block-body">
-        <div class="block-title">Personnalité</div>
-        <div class="block-fa">نتیجه‌گیری · صفات</div>
-        <div class="block-keywords">
-          <span class="kw">curieux</span><span class="kw">polyvalent</span><span class="kw">méthodique</span>
-        </div>
+        <div class="b-target">⏱ ~15 ثانیه · 2 جمله · phrase forte</div>
       </div>
     </div>
 
@@ -447,287 +370,133 @@ body{
 
   <!-- DETAIL PANEL -->
   <div class="detail-panel" id="detailPanel">
-    <div class="detail-header">
-      <h3 id="detailLabel">Bloc 01</h3>
+    <div class="detail-hd">
+      <h3 id="detailLabel"></h3>
       <button class="close-btn" onclick="closeDetail()">✕</button>
     </div>
     <div class="detail-body" id="detailBody"></div>
   </div>
 
-  <!-- FULL TEXT TOGGLE -->
-  <button class="fulltext-toggle" onclick="toggleFullText()">
-    <span class="toggle-icon" id="toggleIcon">▼</span>
-    متن کامل B2 — نگاه اضطراری
-    <span class="toggle-icon" id="toggleIcon2">▼</span>
+  <!-- FULL TEXT -->
+  <button class="ft-toggle" onclick="toggleFT()">
+    <span class="ft-icon" id="ftIcon">▼</span>
+    متن کامل B2 — فقط اضطراری
+    <span class="ft-icon" id="ftIcon2">▼</span>
   </button>
-
   <div class="fulltext" id="fulltext">
     <p>Bonjour ! Je m'appelle <strong>Ali Reza</strong>, j'ai <strong>30 ans</strong> et je vis actuellement à <strong>Téhéran</strong>.</p>
-    <p><span class="hlr">Sur le plan professionnel</span>, j'occupe un poste de <span class="hl">professionnel de l'investissement</span> dans un fonds de <span class="hl">capital-investissement</span> basé à <strong>Abou Dhabi</strong>. C'est un environnement stimulant, <span class="hlr">dans la mesure où</span> il combine trois choses qui me passionnent : la <span class="hlg">finance</span>, la <span class="hlg">stratégie</span> et la <span class="hlg">technologie</span>.</p>
-    <p><span class="hlr">Côté formation</span>, je suis diplômé en <span class="hl">ingénierie</span> de l'Université Sharif, et j'ai <span class="hlr">également</span> obtenu un <span class="hl">master en management de la technologie</span> à l'Université de Téhéran.</p>
-    <p><span class="hlr">Si j'apprends le français de manière sérieuse</span>, c'est avant tout parce que cette langue est essentielle pour mon projet d'<span class="hl">immigration au Canada</span>. <span class="hlr">C'est pour cela que</span> je prépare actuellement le <strong>TCF Canada</strong>. J'aimerais aussi mentionner que j'ai été <span class="hl">admis à Harvard</span>, ce qui représente pour moi une étape vraiment importante.</p>
-    <p><span class="hlr">Au-delà du travail</span>, je m'intéresse beaucoup à l'<span class="hl">histoire</span>, à la <span class="hl">politique</span> et à l'<span class="hl">analyse des sociétés</span>. Je pratique <span class="hlr">également</span> le sport régulièrement — principalement la <span class="hlg">course à pied</span> et la <span class="hlg">musculation</span>.</p>
-    <p><span class="hlr">Pour conclure</span>, je dirais que je suis quelqu'un de <span class="hlg">curieux</span>, <span class="hlg">polyvalent</span> et <span class="hlg">méthodique</span> — <span class="hlr">ce qui m'aide à</span> mener plusieurs projets de front.</p>
+    <p><span class="hlr">Sur le plan professionnel</span>, j'occupe un poste de <span class="hl">professionnel de l'investissement</span> dans un fonds de <span class="hl">capital-investissement</span> basé à <strong>Abou Dhabi</strong>. C'est un environnement <span class="hl">très stimulant</span>, <span class="hlr">dans la mesure où</span> il combine <span class="hlg">finance</span>, <span class="hlg">stratégie</span> et <span class="hlg">technologie</span>.</p>
+    <p><span class="hlr">Côté formation</span>, je suis <span class="hl">diplômé en ingénierie</span> de l'Université <strong>Sharif</strong>, et j'ai <span class="hlr">également</span> obtenu un <span class="hl">master en management de la technologie</span> à l'Université de Téhéran. Cette <span class="hl">double formation</span> — à la fois technique et business — est très utile au quotidien.</p>
+    <p>Je suis <span class="hl">trilingue</span> : <span class="hlg">persan</span>, <span class="hlg">anglais</span> et <span class="hlg">français</span>. <span class="hlr">Si j'apprends le français de manière sérieuse</span>, c'est avant tout parce que j'ai un projet d'<span class="hl">immigration au Canada</span>. <span class="hlr">C'est pour cela que</span> je prépare le <strong>TCF Canada</strong> avec beaucoup de sérieux.</p>
+    <p>J'aimerais mentionner que j'ai été <span class="hl">admis à Harvard</span> — ce qui représente <span class="hl">bien plus qu'une étape académique</span>. <span class="hlr">Au-delà du travail</span>, je suis passionné par l'<span class="hlg">histoire</span>, la <span class="hlg">politique</span> et l'<span class="hlg">analyse des sociétés</span>. Je pratique <span class="hlr">également</span> le sport — <span class="hlg">course à pied</span> et <span class="hlg">musculation</span> — et je travaille sur des projets en <span class="hlg">data science</span> et <span class="hlg">IA</span>.</p>
+    <p><span class="hlr">Pour conclure</span>, je suis quelqu'un de <span class="hlg">curieux</span>, de <span class="hlg">polyvalent</span> et de <span class="hlg">méthodique</span> — <span class="hlr">ce qui me permet de</span> mener plusieurs projets de front avec <span class="hl">rigueur et ambition</span>.</p>
   </div>
 
-  <!-- LINK TO FULL COACHING -->
-  <div style="text-align:center;border:2px solid var(--line);padding:20px;background:var(--soft);">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Document complet</div>
-    <a href="coaching.html" style="color:var(--red);text-decoration:none;font-weight:700;font-size:15px;">
-      📖 Coaching complet — 3 versions A2 · B1 · B2 + analyses →
-    </a>
+  <div class="link-box">
+    <a href="coaching.html">📖 Coaching complet — 3 versions A2 · B1 · B2 avec analyses →</a>
   </div>
 
-</div>
+</div><!-- /main -->
 
-<div class="footer">
-  <a href="index.html">← Tâche 1</a> · Ali Reza · Français avec Hoda © 2025
-</div>
+<div class="footer"><a href="index.html">← Tâche 1</a> · علیرضا · Français avec Hoda © 2025</div>
 
 <script>
-// ── BLOCK DATA ──
 const BLOCKS = {
-  1: {
-    label: "01 — Identité",
-    title: "Qui suis-je ?",
-    fa: "هویت · معرفی اولیه",
-    phrases: [
-      {
-        fr: "Bonjour ! Je m'appelle <span class='hl'>Ali Reza</span>, j'ai <span class='hl'>30 ans</span> et je vis actuellement à <span class='hl'>Téhéran</span>.",
-        fa: "سلام! اسم من علی‌رضاست، ۳۰ سال دارم و در حال حاضر در تهران زندگی می‌کنم."
-      },
-      {
-        fr: "C'est une ville <span class='hl'>où j'ai grandi</span> et où réside encore ma famille.",
-        fa: "شهری که در آن بزرگ شده‌ام و خانواده‌ام هنوز آنجاست."
-      }
-    ]
-  },
-  2: {
-    label: "02 — Travail",
-    title: "Plan professionnel",
-    fa: "شغل · فاند · ابوظبی",
-    phrases: [
-      {
-        fr: "<span class='hlr'>Sur le plan professionnel</span>, j'occupe un poste de <span class='hl'>professionnel de l'investissement</span> dans un fonds de <span class='hl'>capital-investissement</span> basé à <span class='hl'>Abou Dhabi</span>.",
-        fa: "از نظر شغلی، در یک صندوق سرمایه‌گذاری خصوصی در ابوظبی کار می‌کنم."
-      },
-      {
-        fr: "C'est un environnement <span class='hl'>très stimulant</span>, <span class='hlr'>dans la mesure où</span> il combine <span class='hl'>finance</span>, <span class='hl'>stratégie</span> et <span class='hl'>technologie</span>.",
-        fa: "محیطی بسیار محرک است، چون مالی، استراتژی و فناوری را با هم ترکیب می‌کند."
-      }
-    ]
-  },
-  3: {
-    label: "03 — Études",
-    title: "Formation",
-    fa: "تحصیلات",
-    phrases: [
-      {
-        fr: "<span class='hlr'>Côté formation</span>, je suis <span class='hl'>diplômé en ingénierie</span> de l'Université <span class='hl'>Sharif</span>.",
-        fa: "از نظر تحصیلات، مدرک مهندسی از دانشگاه شریف دارم."
-      },
-      {
-        fr: "J'ai <span class='hlr'>également</span> obtenu un <span class='hl'>master en management de la technologie</span> à l'Université de Téhéran.",
-        fa: "همچنین کارشناسی ارشد مدیریت فناوری از دانشگاه تهران گرفتم."
-      },
-      {
-        fr: "Cette <span class='hl'>double formation</span> — à la fois technique et business — est très utile dans mon métier.",
-        fa: "این تحصیلات دوگانه — هم فنی هم تجاری — در کارم بسیار مفید است."
-      }
-    ]
-  },
-  4: {
-    label: "04 — Langues & Projet",
-    title: "Français → Canada",
-    fa: "زبان‌ها · مهاجرت",
-    phrases: [
-      {
-        fr: "Je suis <span class='hl'>trilingue</span> : persan (langue maternelle), anglais (travail quotidien) et maintenant <span class='hl'>français</span>.",
-        fa: "سه‌زبانه هستم: فارسی، انگلیسی و الان فرانسوی."
-      },
-      {
-        fr: "<span class='hlr'>Si j'apprends le français de manière sérieuse</span>, c'est avant tout parce que j'ai un projet d'<span class='hl'>immigration au Canada</span>.",
-        fa: "اگر به طور جدی فرانسوی یاد می‌گیرم، دلیل اصلی‌اش پروژه مهاجرت به کاناداست."
-      },
-      {
-        fr: "<span class='hlr'>C'est pour cela que</span> je prépare actuellement le <span class='hl'>TCF Canada</span> avec beaucoup de sérieux.",
-        fa: "به همین دلیل دارم با جدیت برای TCF Canada آماده می‌شوم."
-      }
-    ]
-  },
-  5: {
-    label: "05 — Harvard & Intérêts",
-    title: "Passions & Harvard",
-    fa: "علاقه‌ها · هاروارد · ورزش",
-    phrases: [
-      {
-        fr: "J'aimerais aussi mentionner que j'ai récemment été <span class='hl'>admis à Harvard</span>, ce qui représente pour moi une étape vraiment importante.",
-        fa: "مایلم اشاره کنم که اخیراً در هاروارد پذیرفته شده‌ام — برایم مرحله بسیار مهمی است."
-      },
-      {
-        fr: "<span class='hlr'>Au-delà du travail</span>, je suis passionné par l'<span class='hl'>histoire</span>, la <span class='hl'>politique</span> et l'<span class='hl'>analyse des sociétés</span>.",
-        fa: "فراتر از کار، شیفته تاریخ، سیاست و تحلیل جوامع هستم."
-      },
-      {
-        fr: "Je pratique <span class='hlr'>régulièrement</span> le sport — la <span class='hl'>course à pied</span> et la <span class='hl'>musculation</span> — pour garder un bon équilibre.",
-        fa: "مرتب ورزش می‌کنم — دو و بدنسازی — برای حفظ تعادل."
-      },
-      {
-        fr: "Je travaille <span class='hlr'>également</span> sur des projets personnels en <span class='hl'>data science</span> et <span class='hl'>intelligence artificielle</span>.",
-        fa: "روی پروژه‌های شخصی در علم داده و هوش مصنوعی هم کار می‌کنم."
-      }
-    ]
-  },
-  6: {
-    label: "06 — Conclusion",
-    title: "Personnalité",
-    fa: "نتیجه‌گیری قوی",
-    phrases: [
-      {
-        fr: "<span class='hlr'>Pour conclure</span>, je dirais que je suis quelqu'un de <span class='hl'>curieux</span>, <span class='hl'>polyvalent</span> et <span class='hl'>méthodique</span>.",
-        fa: "در پایان، می‌توانم بگویم آدمی کنجکاو، چندبُعدی و روشمند هستم."
-      },
-      {
-        fr: "Je fais preuve de beaucoup de <span class='hl'>détermination</span>, <span class='hlr'>ce qui me permet</span> de mener plusieurs projets de front.",
-        fa: "قاطعیت زیادی دارم که به من اجازه می‌دهد چند پروژه را همزمان پیش ببرم."
-      },
-      {
-        fr: "C'est précisément cette combinaison de <span class='hl'>rigueur</span>, de <span class='hl'>curiosité</span> et d'<span class='hl'>ambition</span> qui me donne confiance pour réussir au Canada.",
-        fa: "همین ترکیب دقت، کنجکاوی و جاه‌طلبی به من اعتماد می‌دهد که در کانادا موفق شوم."
-      }
-    ]
-  }
+  1:{label:"01 — Identité · هویت",title:"هویت · معرفی اولیه",fa:"اسم · سن · شهر · خانواده",phrases:[
+    {lvl:"",fr:"Bonjour ! Je m'appelle <span class='hl'>Ali Reza</span>, j'ai <span class='hl'>30 ans</span> et je vis <span class='hlr'>actuellement</span> à <span class='hl'>Téhéran</span>.",fa:"سلام! اسم من علی‌رضاست، ۳۰ سال دارم و در حال حاضر در تهران زندگی می‌کنم."},
+    {lvl:"b1",fr:"C'est une métropole <span class='hlr'>où j'ai grandi</span> et où réside encore ma famille.",fa:"این شهری است که در آن بزرگ شده‌ام و خانواده‌ام هنوز آنجاست."}
+  ]},
+  2:{label:"02 — Travail · شغل",title:"شغل · سرمایه‌گذاری",fa:"فاند · ابوظبی · ترکیب ۳ حوزه",phrases:[
+    {lvl:"",fr:"<span class='hlr'>Sur le plan professionnel</span>, j'occupe un poste de <span class='hl'>professionnel de l'investissement</span> dans un fonds de <span class='hl'>capital-investissement</span> basé à <span class='hl'>Abou Dhabi</span>.",fa:"از نظر شغلی، در یک صندوق سرمایه‌گذاری خصوصی در ابوظبی به عنوان متخصص سرمایه‌گذاری کار می‌کنم."},
+    {lvl:"b2",fr:"C'est un environnement <span class='hl'>très stimulant</span>, <span class='hlr'>dans la mesure où</span> il combine trois choses qui me passionnent : <span class='hl'>la finance</span>, <span class='hl'>la stratégie</span> et <span class='hl'>la technologie</span>.",fa:"محیطی بسیار محرک است، چون سه چیزی که عاشقشانم را ترکیب می‌کند: مالی، استراتژی و فناوری."},
+    {lvl:"b2",fr:"<span class='hlr'>Par ailleurs</span>, ce poste m'offre l'occasion de collaborer avec des équipes <span class='hl'>dans plusieurs pays</span>.",fa:"همچنین این شغل فرصت همکاری با تیم‌ها در چندین کشور را به من می‌دهد."}
+  ]},
+  3:{label:"03 — Formation · تحصیلات",title:"تحصیلات · دانشگاه",fa:"شریف + ارشد + دوگانه فنی-تجاری",phrases:[
+    {lvl:"",fr:"<span class='hlr'>Côté formation</span>, je suis <span class='hl'>diplômé en ingénierie</span> de l'Université <span class='hl'>Sharif</span> — considérée comme l'une des meilleures d'Iran.",fa:"از نظر تحصیلات، مدرک مهندسی از دانشگاه شریف — که یکی از بهترین‌های ایران است — دارم."},
+    {lvl:"b1",fr:"J'ai <span class='hlr'>également</span> obtenu un <span class='hl'>master en management de la technologie</span> à l'Université de Téhéran.",fa:"همچنین کارشناسی ارشد مدیریت فناوری از دانشگاه تهران گرفتم."},
+    {lvl:"b2",fr:"Cette <span class='hl'>double formation</span> — à la fois <span class='hl'>technique et business</span> — me permet d'avoir une <span class='hlr'>approche transversale</span>, très utile dans mon métier.",fa:"این تحصیلات دوگانه — هم فنی هم تجاری — به من رویکرد میان‌رشته‌ای می‌دهد که در کارم بسیار مفید است."}
+  ]},
+  4:{label:"04 — Langues & Canada · زبان+کانادا",title:"زبان‌ها → پروژه کانادا",fa:"سه‌زبانه · TCF · مهاجرت · دلیل",phrases:[
+    {lvl:"",fr:"Je suis <span class='hl'>trilingue</span> : <span class='hl'>persan</span> (langue maternelle), <span class='hl'>anglais</span> (quotidien au travail) et <span class='hl'>français</span> (en cours d'apprentissage).",fa:"سه‌زبانه هستم: فارسی (زبان مادری)، انگلیسی (روزانه در کار) و فرانسوی (در حال یادگیری)."},
+    {lvl:"b2",fr:"<span class='hlr'>Si j'apprends le français de manière sérieuse</span>, c'est avant tout parce que cette langue est <span class='hl'>indispensable</span> pour mon projet d'<span class='hl'>immigration au Canada</span>.",fa:"اگر به طور جدی فرانسوی یاد می‌گیرم، دلیل اصلی‌اش ضرورت این زبان برای پروژه مهاجرت به کانادا است."},
+    {lvl:"b2",fr:"<span class='hlr'>C'est la raison pour laquelle</span> je prépare <span class='hlr'>actuellement</span> le <span class='hl'>TCF Canada</span> avec beaucoup de sérieux.",fa:"به همین دلیل است که الان با جدیت برای TCF Canada آماده می‌شوم."},
+    {lvl:"b1",fr:"J'aimerais m'installer dans une ville <span class='hl'>dynamique</span> comme <span class='hl'>Montréal</span> ou <span class='hl'>Toronto</span>.",fa:"دوست دارم در شهری پویا مثل مونترال یا تورنتو ساکن شوم."}
+  ]},
+  5:{label:"05 — Passions & Harvard · علاقه‌ها",title:"هاروارد + علاقه‌ها",fa:"هاروارد · تحلیل · ورزش · data science",phrases:[
+    {lvl:"b2",fr:"J'aimerais <span class='hlr'>également</span> mentionner que j'ai été <span class='hl'>admis à Harvard</span> — ce qui représente pour moi <span class='hl'>bien plus qu'une étape académique</span> : une confirmation de mon envie d'évoluer dans un cadre international.",fa:"مایلم اشاره کنم که در هاروارد پذیرفته شده‌ام — که برایم خیلی بیشتر از یک مرحله دانشگاهی است: تأییدی بر تمایلم برای حضور در محیط بین‌المللی."},
+    {lvl:"b1",fr:"<span class='hlr'>Au-delà du travail</span>, je suis passionné par l'<span class='hl'>histoire</span>, la <span class='hl'>politique</span> et l'<span class='hl'>analyse des sociétés</span>.",fa:"فراتر از کار، شیفته تاریخ، سیاست و تحلیل جوامع هستم."},
+    {lvl:"b1",fr:"Je pratique <span class='hlr'>régulièrement</span> le sport — la <span class='hl'>course à pied</span> et la <span class='hl'>musculation</span> — pour <span class='hlr'>garder un bon équilibre</span> entre vie pro et vie perso.",fa:"مرتب ورزش می‌کنم — دو و بدنسازی — تا تعادل خوبی بین کار و زندگی شخصی داشته باشم."},
+    {lvl:"b2",fr:"<span class='hlr'>Par ailleurs</span>, je travaille sur des projets personnels en <span class='hl'>data science</span> et <span class='hl'>intelligence artificielle</span>, <span class='hlr'>pour mettre à profit</span> mes compétences en finance et en informatique.",fa:"همچنین روی پروژه‌های شخصی در علم داده و هوش مصنوعی کار می‌کنم تا از مهارت‌های مالی و انفورماتیکی‌ام بهره ببرم."}
+  ]},
+  6:{label:"06 — Conclusion · نتیجه‌گیری",title:"نتیجه‌گیری · شخصیت",fa:"۳ صفت + جمله قوی پایانی",phrases:[
+    {lvl:"b2",fr:"<span class='hlr'>Pour conclure</span>, je dirais que je suis quelqu'un de <span class='hl'>curieux</span>, de <span class='hl'>polyvalent</span> et de <span class='hl'>méthodique</span>.",fa:"در پایان، می‌توانم بگویم آدمی کنجکاو، چندبُعدی و روشمند هستم."},
+    {lvl:"b2",fr:"Je fais preuve de beaucoup de <span class='hl'>détermination</span>, <span class='hlr'>ce qui me permet de</span> <span class='hl'>mener plusieurs projets de front</span>, même lorsque mon emploi du temps est très chargé.",fa:"قاطعیت زیادی دارم که به من اجازه می‌دهد چند پروژه را همزمان پیش ببرم، حتی وقتی برنامه‌ام بسیار فشرده است."},
+    {lvl:"b2",fr:"<span class='hlr'>Au final</span>, c'est cette combinaison de <span class='hl'>rigueur</span>, de <span class='hl'>curiosité</span> et d'<span class='hl'>ambition</span> qui me donne confiance pour réussir cette nouvelle étape au <span class='hl'>Canada</span>.",fa:"در نهایت، این ترکیب دقت، کنجکاوی و جاه‌طلبی است که به من اعتماد می‌دهد تا این مرحله جدید را در کانادا با موفقیت پیش ببرم."}
+  ]}
 };
 
-let doneBlocks = new Set();
-let currentBlock = null;
+let doneBlocks=new Set(),currentBlock=null;
 
-function openBlock(n) {
-  const data = BLOCKS[n];
-  currentBlock = n;
-
-  // Highlight active block
-  document.querySelectorAll('.block').forEach(b => b.classList.remove('active'));
-  document.getElementById('block-' + n).classList.add('active');
-
-  // Build detail content
-  const panel = document.getElementById('detailPanel');
-  document.getElementById('detailLabel').textContent = data.label;
-
-  const phrases = data.phrases.map((p, i) => `
-    <div class="phrase-item">
-      <div class="phrase-num">${i+1}</div>
-      <div class="phrase-content">
-        <div class="phrase-fr">${p.fr}</div>
-        <div class="phrase-fa">${p.fa}</div>
+function openBlock(n){
+  const d=BLOCKS[n];currentBlock=n;
+  document.querySelectorAll('.block').forEach(b=>b.classList.remove('active'));
+  document.getElementById('block-'+n).classList.add('active');
+  document.getElementById('detailLabel').textContent=d.label;
+  const isDone=doneBlocks.has(n);
+  const lvlColors={'':`background:var(--red)`,'b1':`background:var(--green)`,'b2':`background:var(--gold);color:var(--ink)`};
+  const phrases=d.phrases.map((p,i)=>`
+    <div class="phrase">
+      <div class="ph-num ${p.lvl}" style="${lvlColors[p.lvl]||lvlColors['']}">${i+1}</div>
+      <div class="ph-content">
+        <div class="ph-fr">${p.fr}</div>
+        <div class="ph-fa">${p.fa}</div>
       </div>
     </div>`).join('');
-
-  const isDone = doneBlocks.has(n);
-  document.getElementById('detailBody').innerHTML = `
-    <div class="detail-title">${data.title}</div>
-    <div class="detail-fa">${data.fa}</div>
-    <div class="phrases-list">${phrases}</div>
-    <button class="mark-done-btn ${isDone ? 'undone' : ''}" onclick="toggleDone(${n})">
-      ${isDone ? '↩ مجدداً تکرار کن' : '✓ این بخش رو گفتم — بعدی'}
+  document.getElementById('detailBody').innerHTML=`
+    <div class="d-title">${d.title}</div>
+    <div class="d-fa">${d.fa}</div>
+    <div class="phrases">${phrases}</div>
+    <button class="mark-done ${isDone?'undo':''}" onclick="toggleDone(${n})">
+      ${isDone?'↩ مرور دوباره':'✓ گفتم — بعدی'}
     </button>`;
-
-  panel.classList.add('show');
-  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  document.getElementById('detailPanel').classList.add('show');
+  document.getElementById('detailPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function closeDetail() {
+function closeDetail(){
   document.getElementById('detailPanel').classList.remove('show');
-  document.querySelectorAll('.block').forEach(b => b.classList.remove('active'));
-  currentBlock = null;
+  document.querySelectorAll('.block').forEach(b=>b.classList.remove('active'));
+  currentBlock=null;
 }
 
-function toggleDone(n) {
-  if (doneBlocks.has(n)) {
+function toggleDone(n){
+  if(doneBlocks.has(n)){
     doneBlocks.delete(n);
-    document.getElementById('block-' + n).classList.remove('done');
+    document.getElementById('block-'+n).classList.remove('done');
+    document.getElementById('done'+n).setAttribute('opacity','0');
   } else {
     doneBlocks.add(n);
-    document.getElementById('block-' + n).classList.add('done');
-    // Auto-open next
-    if (n < 6) {
-      closeDetail();
-      setTimeout(() => openBlock(n + 1), 300);
-    } else {
-      closeDetail();
-    }
+    document.getElementById('block-'+n).classList.add('done');
+    document.getElementById('done'+n).setAttribute('opacity','1');
+    if(n<6){closeDetail();setTimeout(()=>openBlock(n+1),300);}
+    else closeDetail();
   }
   updateProgress();
 }
 
-function updateProgress() {
-  const pct = (doneBlocks.size / 6) * 100;
-  document.getElementById('progressFill').style.width = pct + '%';
+function updateProgress(){
+  const pct=(doneBlocks.size/6)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressText').textContent=doneBlocks.size+' / 6';
 }
 
-// ── TIMER ──
-let timerInterval = null;
-let timerRunning = false;
-let seconds = 90;
-
-function pad(n) { return n < 10 ? '0' + n : n; }
-
-function updateTimerDisplay() {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  const el = document.getElementById('timer');
-  el.textContent = m + ':' + pad(s);
-  el.className = 'timer-display';
-  if (seconds <= 20) el.classList.add('danger');
-  else if (seconds <= 40) el.classList.add('warn');
-}
-
-function toggleTimer() {
-  if (timerRunning) {
-    clearInterval(timerInterval);
-    timerRunning = false;
-    document.getElementById('timerBtn').textContent = '▶ Start';
-  } else {
-    timerRunning = true;
-    document.getElementById('timerBtn').textContent = '⏸ Pause';
-    timerInterval = setInterval(() => {
-      if (seconds > 0) {
-        seconds--;
-        updateTimerDisplay();
-      } else {
-        clearInterval(timerInterval);
-        timerRunning = false;
-        document.getElementById('timerBtn').textContent = '▶ Start';
-        document.getElementById('timer').textContent = '0:00';
-        document.getElementById('timer').classList.add('danger');
-      }
-    }, 1000);
-  }
-}
-
-function resetTimer() {
-  clearInterval(timerInterval);
-  timerRunning = false;
-  seconds = 90;
-  document.getElementById('timerBtn').textContent = '▶ Start';
-  updateTimerDisplay();
-  // Reset done state
-  doneBlocks.clear();
-  document.querySelectorAll('.block').forEach(b => b.classList.remove('done','active'));
-  document.getElementById('detailPanel').classList.remove('show');
-  updateProgress();
-}
-
-function toggleFullText() {
-  const ft = document.getElementById('fulltext');
-  const icon1 = document.getElementById('toggleIcon');
-  const icon2 = document.getElementById('toggleIcon2');
-  ft.classList.toggle('show');
-  icon1.classList.toggle('open');
-  icon2.classList.toggle('open');
-}
-
-updateTimerDisplay();
+let timerInt=null,timerOn=false,seconds=90;
+function pad(n){return n<10?'0'+n:n;}
+function updateTimer(){const m=Math.floor(seconds/60),s=seconds%60,el=document.getElementById('timer');el.textContent=m+':'+pad(s);el.className='timer-display';if(seconds<=20)el.classList.add('danger');else if(seconds<=40)el.classList.add('warn');}
+function toggleTimer(){if(timerOn){clearInterval(timerInt);timerOn=false;document.getElementById('timerBtn').textContent='▶ Start';}else{timerOn=true;document.getElementById('timerBtn').textContent='⏸ Pause';timerInt=setInterval(()=>{if(seconds>0){seconds--;updateTimer();}else{clearInterval(timerInt);timerOn=false;document.getElementById('timerBtn').textContent='▶ Start';document.getElementById('timer').textContent='0:00';document.getElementById('timer').classList.add('danger');}},1000);}}
+function resetTimer(){clearInterval(timerInt);timerOn=false;seconds=90;document.getElementById('timerBtn').textContent='▶ Start';updateTimer();doneBlocks.clear();document.querySelectorAll('.block').forEach(b=>b.classList.remove('done','active'));document.getElementById('detailPanel').classList.remove('show');for(let i=1;i<=6;i++)document.getElementById('done'+i).setAttribute('opacity','0');updateProgress();}
+function toggleFT(){const ft=document.getElementById('fulltext');ft.classList.toggle('show');document.getElementById('ftIcon').classList.toggle('open');document.getElementById('ftIcon2').classList.toggle('open');}
+updateTimer();
 </script>
 </body>
 </html>
