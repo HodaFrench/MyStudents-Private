@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Que / Qui / Dont — Maîtrise complète · Alireza</title>
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a; --navy-mid:#1b2e45; --navy-soft:#2c4a6e;
+  --blue:#1565c0; --blue-soft:#1976d2; --blue-pale:#e3f2fd; --blue-mist:#f0f7ff;
+  --paper:#f8fafc; --ink:#1a2332; --gray:#64748b; --line:#cbd5e1; --white:#fff;
+  --green:#2e7d32; --green-pale:#e8f5e9; --green-soft:#388e3c;
+  --red:#b71c1c; --red-pale:#ffebee; --red-soft:#c62828;
+  --amber:#e65100; --amber-pale:#fff3e0;
+  --purple:#6a1b9a; --purple-pale:#f3e5f5; --purple-soft:#7b1fa2;
+  --teal:#00695c; --teal-pale:#e0f2f1;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Estedad','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,.02) 39px,rgba(13,27,42,.02) 40px);pointer-events:none;}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;gap:14px;padding:13px 28px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
+.logo{width:40px;height:40px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Roboto',sans-serif;font-size:16px;font-weight:900;color:white;}
+.topbar-info h1{font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:white;}
+.topbar-info .sub{font-size:11px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:12px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:6px;transition:.2s;}
+.back:hover{background:var(--blue);color:white;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-soft) 100%);color:white;padding:48px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.05);border-radius:50%;}
+.hero::after{content:"";position:absolute;bottom:-40px;left:-30px;width:150px;height:150px;background:rgba(255,255,255,.03);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:900;margin-bottom:10px;letter-spacing:-1px;line-height:1.15;}
+.hero h2 .accent{color:#ffd180;}
+.hero .sub{font-size:15px;opacity:.8;max-width:600px;margin:0 auto 20px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.12);color:white;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:5px 14px;border:1px solid rgba(255,255,255,.2);}
+
+/* TABS NAV */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:66px;z-index:99;}
+.tab{padding:13px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+.tab:hover{color:var(--blue);}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+
+/* CONTENT */
+.wrap{max-width:900px;margin:0 auto;padding:36px 24px;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* SECTION */
+.sec{margin-bottom:44px;}
+.sec-title{font-family:'Roboto',sans-serif;font-size:22px;font-weight:900;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.sec-title .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:.15em;font-weight:600;}
+.sec-sub{font-size:13px;color:var(--gray);margin-bottom:20px;direction:rtl;text-align:right;line-height:1.8;}
+
+/* LEVEL TAG */
+.ltag{display:inline-block;padding:2px 9px;border-radius:8px;font-size:10px;font-weight:700;margin-right:6px;vertical-align:middle;font-family:'JetBrains Mono',monospace;letter-spacing:.05em;}
+.ltag.a2{background:var(--green-pale);color:var(--green);}
+.ltag.b1{background:var(--blue-pale);color:var(--blue);}
+.ltag.b2{background:var(--amber-pale);color:var(--amber);}
+.ltag.err{background:var(--red-pale);color:var(--red);}
+.ltag.tip{background:var(--purple-pale);color:var(--purple);}
+
+/* RULE BOX */
+.rule{border-radius:12px;padding:18px 22px;margin:14px 0;}
+.rule.ok{background:var(--green-pale);border-right:5px solid var(--green);}
+.rule.danger{background:var(--red-pale);border-right:5px solid var(--red);}
+.rule.warn{background:var(--amber-pale);border-right:5px solid var(--amber);}
+.rule.info{background:var(--blue-mist);border-right:5px solid var(--blue);}
+.rule.purple{background:var(--purple-pale);border-right:5px solid var(--purple);}
+.rule-t{font-size:13px;font-weight:700;margin-bottom:8px;}
+.rule-t.ok{color:var(--green);}
+.rule-t.danger{color:var(--red);}
+.rule-t.warn{color:var(--amber);}
+.rule-t.info{color:var(--blue);}
+.rule-t.purple{color:var(--purple);}
+
+/* FORMULA */
+.formula{background:var(--blue-mist);border:2px dashed var(--blue-soft);border-radius:12px;padding:18px 22px;text-align:center;margin:16px 0;}
+.formula .big{font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;color:var(--navy);}
+.formula .a{color:var(--red);font-weight:900;}
+.formula .b{color:var(--blue);font-weight:900;}
+.formula .c{color:var(--green);font-weight:900;}
+.formula .note{font-size:13px;color:var(--gray);margin-top:8px;direction:rtl;}
+
+/* EXAMPLE ROW */
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;margin:8px 0;}
+.ex-fr{padding:12px 16px;font-size:14px;line-height:1.7;background:var(--blue-mist);}
+.ex-fa{padding:12px 16px;font-size:13px;line-height:1.7;direction:rtl;text-align:right;color:var(--gray);background:#fafcff;}
+.ex-grid.bad .ex-fr{background:var(--red-pale);}
+.ex-grid.good .ex-fr{background:var(--green-pale);}
+.ex-grid.tcf .ex-fr{background:linear-gradient(90deg,#fff8e1,var(--blue-mist));}
+.hl{background:rgba(21,101,192,.18);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--navy);}
+.hlr{background:rgba(183,28,28,.18);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--red);}
+.hlg{background:rgba(46,125,50,.18);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--green);}
+.hla{background:rgba(230,81,0,.18);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--amber);}
+.hlp{background:rgba(106,27,154,.18);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--purple);}
+
+/* COMPARE BLOCK */
+.compare{border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:14px 0;}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);}
+.compare-row:last-child{border:none;}
+.compare-bad{padding:13px 18px;background:var(--red-pale);border-right:1px solid var(--line);}
+.compare-good{padding:13px 18px;background:var(--green-pale);}
+.compare-bad::before{content:"✗ ";color:var(--red);font-weight:700;}
+.compare-good::before{content:"✓ ";color:var(--green);font-weight:700;}
+.compare-bad,.compare-good{font-size:14px;line-height:1.6;}
+.compare-label{grid-column:1/-1;background:var(--navy);color:white;padding:8px 18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;}
+.compare-fa{grid-column:1/-1;background:#f9fafb;padding:10px 18px;font-size:12px;direction:rtl;text-align:right;color:var(--gray);border-top:1px dashed var(--line);}
+
+/* TABLE */
+table.neat{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;}
+table.neat th{background:var(--navy);color:white;padding:10px 14px;text-align:right;font-size:11px;letter-spacing:.05em;}
+table.neat th:first-child{text-align:left;}
+table.neat td{padding:9px 14px;border-bottom:1px solid var(--line);}
+table.neat tr:nth-child(even){background:var(--blue-mist);}
+table.neat td:first-child{font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--navy);}
+table.neat td.fa-col{direction:rtl;text-align:right;color:var(--gray);font-size:12px;}
+
+/* CARD */
+.card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;box-shadow:0 3px 12px rgba(13,27,42,.06);}
+.card-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:2px solid var(--line);}
+.card-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.card-head h3{font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;color:var(--navy);}
+.card-head .card-fa{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:3px;}
+.card-body{padding:18px 22px;}
+
+/* TRANSFORM BOX */
+.transform{background:linear-gradient(135deg,var(--navy-mid),var(--navy-soft));color:white;border-radius:12px;padding:20px 24px;margin:14px 0;}
+.transform h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:14px;}
+.t-step{display:flex;align-items:flex-start;gap:12px;margin:10px 0;padding:10px 14px;background:rgba(255,255,255,.08);border-radius:8px;}
+.t-step-num{background:var(--amber);color:var(--navy);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.t-step-body{flex:1;}
+.t-step-fr{font-size:14px;margin-bottom:4px;line-height:1.6;}
+.t-step-fa{font-size:12px;direction:rtl;text-align:right;color:rgba(255,255,255,.6);}
+.t-arrow{color:var(--amber);font-size:18px;font-weight:700;margin:6px 0 6px 34px;}
+
+/* UPGRADE BOX */
+.upgrade{background:linear-gradient(135deg,#1b2e45,#2c4a6e);color:white;border-radius:12px;padding:20px 24px;margin:14px 0;}
+.upgrade h4{font-size:12px;font-weight:700;margin-bottom:12px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;}
+
+/* QUIZ */
+.quiz{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:22px;margin:14px 0;}
+.quiz h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.qn{background:var(--blue);color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.qi{margin-bottom:16px;padding-bottom:16px;border-bottom:1px dashed var(--line);}
+.qi:last-child{margin:0;padding:0;border:none;}
+.qt{font-size:14px;color:var(--ink);margin-bottom:4px;line-height:1.6;}
+.qfa{font-size:12px;color:var(--gray);margin-bottom:10px;direction:rtl;text-align:right;}
+.qopts{display:flex;flex-wrap:wrap;gap:8px;}
+.qopt{font-size:13px;font-weight:600;background:white;border:2px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer;transition:all .2s;}
+.qopt:hover:not(.done){border-color:var(--blue);background:var(--blue-mist);}
+.qopt.correct{background:var(--green-pale);border-color:var(--green);color:var(--green);}
+.qopt.wrong{background:var(--red-pale);border-color:var(--red);color:var(--red);}
+.qans{display:none;font-size:13px;background:var(--green-pale);border-right:3px solid var(--green);border-radius:8px;padding:10px 14px;margin-top:8px;line-height:1.8;}
+.qans.show{display:block;}
+.qans b{color:var(--green);}
+.qans .bad{color:var(--red);text-decoration:line-through;font-weight:700;}
+
+/* BLANK */
+.blank{display:inline-block;min-width:100px;padding:2px 8px;border:none;border-bottom:2px solid var(--blue);background:transparent;font-size:14px;color:var(--blue);font-weight:600;font-family:inherit;outline:none;transition:all .2s;}
+.blank.ok{border-bottom-color:var(--green);color:var(--green);background:var(--green-pale);border-radius:4px 4px 0 0;}
+.blank.err{border-bottom-color:var(--red);color:var(--red);background:var(--red-pale);border-radius:4px 4px 0 0;}
+
+/* BUTTON */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:all .2s;}
+.btn-p{background:var(--navy);color:white;}
+.btn-p:hover{background:var(--blue);}
+.btn-s{background:var(--blue-pale);color:var(--blue);}
+.btn-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.score{background:var(--navy);color:white;padding:14px;border-radius:10px;margin-top:12px;display:none;text-align:center;}
+.score.show{display:block;}
+.score .sn{font-size:26px;font-weight:700;}
+.score .sl{font-size:12px;opacity:.8;margin-top:2px;}
+
+/* FOOTER */
+.footer{text-align:center;margin-top:32px;padding:18px;color:var(--gray);font-size:12px;border-top:1px solid var(--line);}
+.footer a{color:var(--blue);text-decoration:none;}
+
+/* SCROLL */
+#scrollBtn{display:none;position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
+#scrollBtn:hover{background:var(--blue);}
+#scrollBtn.show{display:block;}
+
+@media(max-width:640px){
+  .ex-grid,.compare-row{grid-template-columns:1fr;}
+  .ex-fa{border-top:1px solid var(--line);}
+  .compare-bad{border-right:none;border-bottom:1px solid var(--line);}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">A</div>
+  <div class="topbar-info">
+    <h1>Grammaire — Que · Qui · Dont</h1>
+    <div class="sub">Alireza · Maîtrise complète des pronoms relatifs</div>
+  </div>
+  <a class="back" href="../index.html">← Alireza</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">Grammaire · B1→B2 · TCF Canada</div>
+    <h2>Maîtriser <span class="accent">QUE · QUI · DONT</span><br>sans les confondre</h2>
+    <p class="sub">Analyse complète · Erreurs fréquentes · Restructurations B2 · Exemples TCF · Traduction persane</p>
+    <div class="hero-pills">
+      <span class="hpill">QUI vs QUE</span>
+      <span class="hpill">DONT</span>
+      <span class="hpill">j'ai envie QUE / DE</span>
+      <span class="hpill">Restructurer la phrase</span>
+      <span class="hpill">Alternatives B2</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('fondamentaux')">📐 Fondamentaux</div>
+  <div class="tab" onclick="showTab('erreurs')">🚨 Erreurs fréquentes</div>
+  <div class="tab" onclick="showTab('dont')">🔑 DONT — complet</div>
+  <div class="tab" onclick="showTab('restructurer')">✂️ Restructurer</div>
+  <div class="tab" onclick="showTab('alternatives')">⭐ Alternatives B2</div>
+  <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════ TAB 1 — FONDAMENTAUX ══════════ -->
+<div class="panel active" id="panel-fondamentaux">
+
+<div class="sec">
+  <div class="sec-title"><span class="num">01</span> La règle d'or — QUI vs QUE</div>
+  <div class="sec-sub">قانون طلایی — کِی از qui استفاده کنیم و کِی از que</div>
+
+  <div class="formula">
+    <div class="big">
+      <span class="a">QUI</span> = remplace un <span class="a">SUJET</span> (فاعل)
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <span class="b">QUE</span> = remplace un <span class="b">COD</span> (مفعول مستقیم)
+    </div>
+    <div class="note">سؤال کلیدی: کلمه‌ای که جایگزین می‌کنیم فاعل جمله بعدی است یا مفعول؟</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">🔴</div>
+      <div>
+        <h3>QUI — pronom sujet <span class="ltag b1">B1</span></h3>
+        <div class="card-fa">qui = که (وقتی جایگزین فاعل می‌شود)</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule info">
+        <div class="rule-t info">📌 Test : remplace «qui» par le nom → le verbe qui suit s'accorde avec lui</div>
+        <p style="font-size:13px;">آزمون: اگر بتوانی به جای qui اسم را بگذاری و فعل بعدش معنا داشته باشد → <strong>qui</strong></p>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-fr">L'homme <span class="hl">qui parle</span> s'appelle Ali.</div>
+        <div class="ex-fa">مردی که صحبت می‌کند علی نام دارد.<br><span style="font-size:11px;color:var(--green);">✓ «l'homme» parle → qui = sujet</span></div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-fr">C'est une méthode <span class="hl">qui fonctionne</span>.</div>
+        <div class="ex-fa">این روشی است که کار می‌کند.<br><span style="font-size:11px;color:var(--green);">✓ «la méthode» fonctionne → qui = sujet</span></div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr">C'est le facteur <span class="hl">qui explique</span> la majorité des inégalités économiques.</div>
+        <div class="ex-fa">این عاملی است که اکثر نابرابری‌های اقتصادی را توضیح می‌دهد. ← B2 TCF</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--blue-pale);">🔵</div>
+      <div>
+        <h3>QUE — pronom COD <span class="ltag b1">B1</span></h3>
+        <div class="card-fa">que = که / را که (وقتی جایگزین مفعول می‌شود)</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule info">
+        <div class="rule-t info">📌 Test : après «que», il y a toujours un SUJET + VERBE complet</div>
+        <p style="font-size:13px;">بعد از que همیشه فاعل + فعل کامل می‌آید — مفعول جمله قبل است که حذف شده</p>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-fr">Le livre <span class="hl">que tu lis</span> est excellent.</div>
+        <div class="ex-fa">کتابی که می‌خوانی عالی است.<br><span style="font-size:11px;color:var(--blue);">✓ tu lis «le livre» → que = COD</span></div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-fr">La décision <span class="hl">que nous avons prise</span> était correcte.</div>
+        <div class="ex-fa">تصمیمی که گرفتیم درست بود.<br><span style="font-size:11px;color:var(--blue);">✓ nous avons pris «la décision» → que = COD + accord</span></div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr">Les compétences <span class="hl">que j'ai développées</span> au cours de ma carrière me permettent aujourd'hui d'aborder des défis complexes.</div>
+        <div class="ex-fa">مهارت‌هایی که در طول دوران حرفه‌ای‌ام پرورش داده‌ام امروز به من اجازه می‌دهد با چالش‌های پیچیده روبرو شوم. ← B2 TCF Tâche 2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:#fff8e1;">⚡</div>
+      <div>
+        <h3>Tableau récapitulatif — QUI vs QUE</h3>
+        <div class="card-fa">جدول مقایسه‌ای</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="neat">
+        <thead><tr><th>Pronom</th><th>Fonction</th><th>Ce qui suit</th><th>فارسی</th><th>Exemple</th></tr></thead>
+        <tbody>
+          <tr><td>QUI</td><td>sujet</td><td>verbe directement</td><td class="fa-col">فاعل — که</td><td>l'homme <strong>qui travaille</strong></td></tr>
+          <tr><td>QUE / QU'</td><td>COD</td><td>sujet + verbe</td><td class="fa-col">مفعول — که / را که</td><td>le livre <strong>que tu lis</strong></td></tr>
+          <tr><td>DONT</td><td>COI (de)</td><td>sujet + verbe</td><td class="fa-col">که… از آن / که… درباره‌اش</td><td>le sujet <strong>dont je parle</strong></td></tr>
+          <tr><td>OÙ</td><td>lieu/temps</td><td>sujet + verbe</td><td class="fa-col">که در آن / که وقتی</td><td>la ville <strong>où j'habite</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ══════════ TAB 2 — ERREURS ══════════ -->
+<div class="panel" id="panel-erreurs">
+
+<div class="sec">
+  <div class="sec-title"><span class="num">02</span> Les 7 erreurs les plus fréquentes</div>
+  <div class="sec-sub">۷ اشتباه رایج — که اکثر زبان‌آموزان فارسی‌زبان مرتکب می‌شوند</div>
+
+  <!-- ERROR 1 -->
+  <div class="card" style="border-top:4px solid var(--red);">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌1</div>
+      <div>
+        <h3>«J'ai envie que je…» <span class="ltag err">ERREUR CLASSIQUE</span></h3>
+        <div class="card-fa">«دلم می‌خواد که من…» — رایج‌ترین اشتباه فارسی‌زبان‌ها</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule danger">
+        <div class="rule-t danger">❌ Problème : «que» + même sujet = INTERDIT</div>
+        <p style="font-size:13px;line-height:1.8;">در فارسی می‌توییم «دلم می‌خواد که <strong>من</strong> برم» — در فرانسه این ساختار غلط است. وقتی فاعل هر دو جمله یکی است، باید از <strong>infinitif</strong> استفاده کرد.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-label">❌ Faux vs ✓ Correct</div>
+        <div class="compare-bad">J'ai envie <strong>que je parte</strong> en voyage. ✗</div>
+        <div class="compare-good">J'ai envie <strong>de partir</strong> en voyage. ✓</div>
+        <div class="compare-fa">دلم می‌خواد به سفر برم. → envie <strong>de</strong> + infinitif</div>
+
+        <div class="compare-bad">Je veux <strong>que je réussisse</strong>. ✗</div>
+        <div class="compare-good">Je veux <strong>réussir</strong>. ✓</div>
+        <div class="compare-fa">می‌خوام موفق بشم. → vouloir + infinitif (بدون que)</div>
+
+        <div class="compare-bad">J'espère <strong>que je vais</strong> trouver. ✗</div>
+        <div class="compare-good">J'espère <strong>trouver</strong>. ✓</div>
+        <div class="compare-fa">امیدوارم پیدا کنم. → espérer + infinitif</div>
+
+        <div class="compare-bad">Je rêve <strong>que je devienne</strong> médecin. ✗</div>
+        <div class="compare-good">Je rêve <strong>de devenir</strong> médecin. ✓</div>
+        <div class="compare-fa">آرزو دارم پزشک بشم. → rêver <strong>de</strong> + infinitif</div>
+      </div>
+
+      <div class="rule ok">
+        <div class="rule-t ok">✅ Règle : même sujet → infinitif (jamais que + subjonctif)</div>
+        <p style="font-size:13px;direction:rtl;text-align:right;">قانون: وقتی فاعل هر دو جمله یکسان است → infinitif · وقتی فاعل‌ها متفاوتند → que + subjonctif</p>
+      </div>
+
+      <div class="rule warn" style="margin-top:10px;">
+        <div class="rule-t warn">⚠️ Mais avec un sujet DIFFÉRENT → que + subjonctif est correct</div>
+        <div class="ex-grid good" style="margin-top:8px;">
+          <div class="ex-fr">J'ai envie <span class="hlg">que tu viennes</span>. ✓</div>
+          <div class="ex-fa">دلم می‌خواد <strong>تو</strong> بیای. (فاعل متفاوت → que + subjonctif ✓)</div>
+        </div>
+        <div class="ex-grid good">
+          <div class="ex-fr">Je veux <span class="hlg">qu'il réussisse</span>. ✓</div>
+          <div class="ex-fa">می‌خوام <strong>او</strong> موفق بشه. (فاعل متفاوت → que + subjonctif ✓)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR 2 -->
+  <div class="card" style="border-top:4px solid var(--red);margin-top:20px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌2</div>
+      <div>
+        <h3>Confondre QUI et QUE dans la relative <span class="ltag err">ERREUR</span></h3>
+        <div class="card-fa">اشتباه گرفتن qui و que در جمله موصولی</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="compare">
+        <div class="compare-label">Test : sujet ou COD ?</div>
+        <div class="compare-bad">C'est un projet <strong>qu'a beaucoup de potentiel</strong>. ✗</div>
+        <div class="compare-good">C'est un projet <strong>qui a beaucoup de potentiel</strong>. ✓</div>
+        <div class="compare-fa">«le projet» a du potentiel → fاعل → qui ✓</div>
+
+        <div class="compare-bad">C'est une idée <strong>qui j'apprécie beaucoup</strong>. ✗</div>
+        <div class="compare-good">C'est une idée <strong>que j'apprécie beaucoup</strong>. ✓</div>
+        <div class="compare-fa">j'apprécie «l'idée» → مفعول → que ✓</div>
+
+        <div class="compare-bad">Les entreprises <strong>qui j'ai contactées</strong> n'ont pas répondu. ✗</div>
+        <div class="compare-good">Les entreprises <strong>que j'ai contactées</strong> n'ont pas répondu. ✓</div>
+        <div class="compare-fa">j'ai contacté «les entreprises» → COD → que + accord ✓</div>
+      </div>
+
+      <div class="rule info" style="margin-top:12px;">
+        <div class="rule-t info">💡 Astuce infaillible — le test du remplacement</div>
+        <p style="font-size:13px;line-height:1.9;">جای pronome را با اسم عوض کن:<br>
+        «C'est un projet <strong>__</strong> a du potentiel» → «le projet a du potentiel» = فعل بدون فاعل → <strong>qui</strong><br>
+        «C'est une idée <strong>__</strong> j'apprécie» → «j'apprécie l'idée» = فعل دارد فاعل → <strong>que</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR 3 -->
+  <div class="card" style="border-top:4px solid var(--red);margin-top:20px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌3</div>
+      <div>
+        <h3>Oublier l'accord avec QUE <span class="ltag b2">B2</span></h3>
+        <div class="card-fa">فراموش کردن تطابق اسم مفعول با que</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule warn">
+        <div class="rule-t warn">⚠️ Règle : quand «que» est COD d'un verbe avec AVOIR → accord du PP</div>
+        <p style="font-size:13px;direction:rtl;text-align:right;">وقتی que جلوی passé composé با avoir می‌آید، اسم مفعول با مرجع que تطابق می‌گیرد</p>
+      </div>
+      <div class="compare">
+        <div class="compare-bad">Les décisions <strong>que nous avons pris</strong>. ✗</div>
+        <div class="compare-good">Les décisions <strong>que nous avons prise<u>s</u></strong>. ✓</div>
+        <div class="compare-fa">«les décisions» = féminin pluriel → pris<strong>es</strong></div>
+
+        <div class="compare-bad">La méthode <strong>que j'ai utilisé</strong>. ✗</div>
+        <div class="compare-good">La méthode <strong>que j'ai utilisée</strong>. ✓</div>
+        <div class="compare-fa">«la méthode» = féminin singulier → utilisé<strong>e</strong></div>
+
+        <div class="compare-bad">Les compétences <strong>que j'ai développé</strong>. ✗</div>
+        <div class="compare-good">Les compétences <strong>que j'ai développées</strong>. ✓</div>
+        <div class="compare-fa">«les compétences» = féminin pluriel → développé<strong>es</strong> ← TCF Tâche 2</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR 4 -->
+  <div class="card" style="border-top:4px solid var(--red);margin-top:20px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌4</div>
+      <div>
+        <h3>Utiliser QUE à la place de DONT <span class="ltag err">ERREUR FRÉQUENTE</span></h3>
+        <div class="card-fa">استفاده از que به جای dont</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule danger">
+        <div class="rule-t danger">❌ Quand le verbe ou l'adjectif se construit avec «de» → DONT, pas QUE</div>
+        <p style="font-size:13px;direction:rtl;text-align:right;">وقتی فعل یا صفت بعدی با «de» می‌آید → dont استفاده کن، نه que</p>
+      </div>
+      <div class="compare">
+        <div class="compare-bad">C'est un sujet <strong>que je parle</strong> souvent. ✗</div>
+        <div class="compare-good">C'est un sujet <strong>dont je parle</strong> souvent. ✓</div>
+        <div class="compare-fa">parler <strong>de</strong> → dont ✓ (je parle <strong>du</strong> sujet)</div>
+
+        <div class="compare-bad">C'est une compétence <strong>que j'ai besoin</strong>. ✗</div>
+        <div class="compare-good">C'est une compétence <strong>dont j'ai besoin</strong>. ✓</div>
+        <div class="compare-fa">avoir besoin <strong>de</strong> → dont ✓</div>
+
+        <div class="compare-bad">Le poste <strong>que je rêve</strong>. ✗</div>
+        <div class="compare-good">Le poste <strong>dont je rêve</strong>. ✓</div>
+        <div class="compare-fa">rêver <strong>de</strong> → dont ✓</div>
+
+        <div class="compare-bad">La méthode <strong>que je suis fier</strong>. ✗</div>
+        <div class="compare-good">La méthode <strong>dont je suis fier</strong>. ✓</div>
+        <div class="compare-fa">être fier <strong>de</strong> → dont ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR 5 -->
+  <div class="card" style="border-top:4px solid var(--red);margin-top:20px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌5</div>
+      <div>
+        <h3>Abus de QUE — tout enchaîner avec «que» <span class="ltag err">STYLE PAUVRE</span></h3>
+        <div class="card-fa">استفاده بیش از حد از que — که نشانه سطح پایین است</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule warn">
+        <div class="rule-t warn">⚠️ «Que» répété = manque de variété = pénalité de style à l'oral B2</div>
+        <p style="font-size:13px;direction:rtl;text-align:right;">تکرار زیاد que نشان می‌دهد که سطح زبانی پایین است. ارزیاب TCF این را متوجه می‌شود.</p>
+      </div>
+      <div class="compare">
+        <div class="compare-label">❌ Pauvre vs ✓ Riche</div>
+        <div class="compare-bad">Je pense <strong>que</strong> c'est important et <strong>que</strong> ça peut aider et <strong>que</strong> beaucoup de gens en profitent. ✗</div>
+        <div class="compare-good">Je pense <strong>que</strong> c'est important, <strong>dans la mesure où</strong> ça peut aider un grand nombre de personnes. ✓</div>
+        <div class="compare-fa">Remplacer «que» répété par : dans la mesure où · étant donné que · vu que · puisque</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR 6 -->
+  <div class="card" style="border-top:4px solid var(--red);margin-top:20px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌6</div>
+      <div>
+        <h3>«Je crois que» + indicatif vs subjonctif <span class="ltag b2">B2</span></h3>
+        <div class="card-fa">بعد از je crois que چه زمانی می‌آید؟</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="neat">
+        <thead><tr><th>Expression</th><th>Après → mode</th><th>فارسی</th></tr></thead>
+        <tbody>
+          <tr><td>je pense que</td><td>→ <strong>indicatif</strong></td><td class="fa-col">فکر می‌کنم که...</td></tr>
+          <tr><td>je crois que</td><td>→ <strong>indicatif</strong></td><td class="fa-col">باور دارم که...</td></tr>
+          <tr><td>je sais que</td><td>→ <strong>indicatif</strong></td><td class="fa-col">می‌دانم که...</td></tr>
+          <tr><td>je doute que</td><td>→ <strong>subjonctif</strong></td><td class="fa-col">شک دارم که...</td></tr>
+          <tr><td>il faut que</td><td>→ <strong>subjonctif</strong></td><td class="fa-col">لازم است که...</td></tr>
+          <tr><td>bien que / quoique</td><td>→ <strong>subjonctif</strong></td><td class="fa-col">اگرچه / هرچند</td></tr>
+          <tr><td>pour que</td><td>→ <strong>subjonctif</strong></td><td class="fa-col">تا اینکه / برای اینکه</td></tr>
+        </tbody>
+      </table>
+      <div class="ex-grid good" style="margin-top:10px;">
+        <div class="ex-fr">Je <span class="hlg">pense que</span> cette approche <span class="hlg">est</span> efficace. ✓ (indicatif)</div>
+        <div class="ex-fa">فکر می‌کنم این رویکرد مؤثر است.</div>
+      </div>
+      <div class="ex-grid good">
+        <div class="ex-fr">Il faut que tu <span class="hlg">prennes</span> une décision. ✓ (subjonctif)</div>
+        <div class="ex-fa">لازم است تصمیم بگیری.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR 7 -->
+  <div class="card" style="border-top:4px solid var(--red);margin-top:20px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌7</div>
+      <div>
+        <h3>QUE vs CE QUE / CE QUI <span class="ltag b1">B1</span></h3>
+        <div class="card-fa">que vs ce que — اشتباه رایج دیگر</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule info">
+        <div class="rule-t info">📌 CE QUE / CE QUI → quand il n'y a pas d'antécédent défini</div>
+        <p style="font-size:13px;direction:rtl;text-align:right;">وقتی اسم مشخصی قبل از que/qui نباشد → ce que / ce qui استفاده کن</p>
+      </div>
+      <div class="compare">
+        <div class="compare-bad">Je ne sais pas <strong>que</strong> faire. ✗ (غلط رایج)</div>
+        <div class="compare-good">Je ne sais pas <strong>ce que</strong> je dois faire. ✓</div>
+        <div class="compare-fa">نمی‌دانم چه باید بکنم.</div>
+
+        <div class="compare-bad"><strong>Que</strong> m'intéresse, c'est la finance. ✗</div>
+        <div class="compare-good"><strong>Ce qui</strong> m'intéresse, c'est la finance. ✓</div>
+        <div class="compare-fa">آنچه برایم جالب است مالی است. ← ساختار mise en relief B2</div>
+
+        <div class="compare-bad">Il m'a dit <strong>qu'</strong> il veut. ✗ (incomplet)</div>
+        <div class="compare-good">Il m'a dit <strong>ce qu'</strong>il veut. ✓</div>
+        <div class="compare-fa">او به من گفت چه می‌خواهد.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ TAB 3 — DONT ══════════ -->
+<div class="panel" id="panel-dont">
+
+<div class="sec">
+  <div class="sec-title"><span class="num">03</span> DONT — Guide complet</div>
+  <div class="sec-sub">dont = یکی از سخت‌ترین و مهم‌ترین ضمایر — درست استفاده کردن آن سطح B2 را نشان می‌دهد</div>
+
+  <div class="formula">
+    <div class="big"><span class="a">DONT</span> = <span class="b">DE + QUI / DUQUEL / DE LAQUELLE…</span></div>
+    <div class="note">dont جایگزین «de + اسم» می‌شود — هر جا که فعل، صفت یا اسم با «de» می‌آید</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--purple-pale);">🔑</div>
+      <div>
+        <h3>Cas 1 — Verbe + DE <span class="ltag b1">B1</span></h3>
+        <div class="card-fa">فعل‌هایی که با de می‌آیند</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule purple">
+        <div class="rule-t purple">📌 Verbes courants qui se construisent avec DE :</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">parler de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">avoir besoin de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">rêver de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">se souvenir de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">disposer de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">profiter de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">dépendre de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">tenir compte de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">s'occuper de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">être conscient de</span>
+        </div>
+      </div>
+
+      <div class="transform" style="margin-top:14px;">
+        <h4>🔄 Transformation — Comment construire DONT</h4>
+        <div class="t-step">
+          <div class="t-step-num">1</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">Deux phrases : «C'est un sujet. <strong>Je parle de ce sujet</strong>.»</div>
+            <div class="t-step-fa">دو جمله جداگانه: «این موضوعی است. من درباره این موضوع صحبت می‌کنم.»</div>
+          </div>
+        </div>
+        <div class="t-arrow">↓</div>
+        <div class="t-step">
+          <div class="t-step-num">2</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">Identifie le «de» : parler <strong>de ce sujet</strong> → «ce sujet» devient l'antécédent</div>
+            <div class="t-step-fa">«de» را پیدا کن: parler <strong>de ce sujet</strong> → این اسم که با de می‌آید</div>
+          </div>
+        </div>
+        <div class="t-arrow">↓</div>
+        <div class="t-step">
+          <div class="t-step-num">3</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">Résultat : «C'est un sujet <span style="color:#ffd180;font-weight:700;">dont je parle</span> souvent.» ✓</div>
+            <div class="t-step-fa">نتیجه: «این موضوعی است که <strong>درباره‌اش</strong> اغلب صحبت می‌کنم.»</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-grid tcf" style="margin-top:12px;">
+        <div class="ex-fr">L'outil <span class="hlp">dont je dispose</span> me permet de faire des analyses complexes.</div>
+        <div class="ex-fa">ابزاری که در اختیار دارم به من اجازه تحلیل‌های پیچیده می‌دهد. ← B2</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr">C'est un phénomène <span class="hlp">dont les scientifiques parlent</span> depuis plusieurs décennies.</div>
+        <div class="ex-fa">این پدیده‌ای است که دانشمندان چند دهه است درباره‌اش صحبت می‌کنند.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--purple-pale);">🏷️</div>
+      <div>
+        <h3>Cas 2 — Adjectif + DE <span class="ltag b1">B1</span></h3>
+        <div class="card-fa">صفت‌هایی که با de می‌آیند</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule purple">
+        <div class="rule-t purple">📌 Adjectifs courants + DE :</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">fier de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">satisfait de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">conscient de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">responsable de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">capable de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">jaloux de</span>
+          <span style="background:white;border:1.5px solid var(--purple);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--purple);">passionné de</span>
+        </div>
+      </div>
+      <div class="ex-grid tcf" style="margin-top:12px;">
+        <div class="ex-fr">C'est un parcours <span class="hlp">dont je suis fier</span>.</div>
+        <div class="ex-fa">این مسیری است که به آن افتخار می‌کنم. ← TCF Tâche 2</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr">C'est un problème <span class="hlp">dont nous sommes tous conscients</span>, mais <span class="hlp">dont</span> peu de personnes parlent ouvertement.</div>
+        <div class="ex-fa">این مشکلی است که همه از آن آگاهیم، اما کمتر کسی آشکارا درباره‌اش صحبت می‌کند. ← B2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--purple-pale);">📦</div>
+      <div>
+        <h3>Cas 3 — Nom + DE (possession) <span class="ltag b2">B2</span></h3>
+        <div class="card-fa">dont برای نشان دادن مالکیت</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule purple">
+        <div class="rule-t purple">📌 DONT peut exprimer la possession — remplace «son/sa/ses»</div>
+        <p style="font-size:13px;direction:rtl;text-align:right;">dont می‌تواند مالکیت را نشان دهد — جایگزین «son/sa/ses» می‌شود</p>
+      </div>
+      <div class="transform" style="margin-top:12px;">
+        <h4>🔄 Transformation</h4>
+        <div class="t-step">
+          <div class="t-step-num">1</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">«J'ai rencontré un investisseur. <strong>Son réseau</strong> est impressionnant.»</div>
+            <div class="t-step-fa">با یک سرمایه‌گذار آشنا شدم. <strong>شبکه‌اش</strong> تأثیرگذار است.</div>
+          </div>
+        </div>
+        <div class="t-arrow">↓</div>
+        <div class="t-step">
+          <div class="t-step-num">2</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">«J'ai rencontré un investisseur <span style="color:#ffd180;font-weight:700;">dont le réseau</span> est impressionnant.» ✓</div>
+            <div class="t-step-fa">با سرمایه‌گذاری آشنا شدم که شبکه‌اش تأثیرگذار است.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-grid tcf" style="margin-top:12px;">
+        <div class="ex-fr">C'est une entreprise <span class="hlp">dont les valeurs</span> correspondent parfaitement à mes aspirations professionnelles.</div>
+        <div class="ex-fa">این شرکتی است که ارزش‌هایش با آرمان‌های حرفه‌ای من کاملاً مطابقت دارد. ← B2</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr">C'est un secteur <span class="hlp">dont la croissance</span> dépasse régulièrement 15% par an.</div>
+        <div class="ex-fa">این بخشی است که رشدش به‌طور منظم از ۱۵٪ در سال تجاوز می‌کند.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule danger" style="margin-top:16px;">
+    <div class="rule-t danger">⛔ DONT ne s'utilise jamais avec une préposition !</div>
+    <div class="compare" style="margin-top:8px;">
+      <div class="compare-bad">La société <strong>à dont</strong> j'appartiens. ✗</div>
+      <div class="compare-good">La société <strong>à laquelle</strong> j'appartiens. ✓</div>
+      <div class="compare-fa">appartenir <strong>à</strong> → à + laquelle (pas dont) — dont = uniquement pour «de»</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ TAB 4 — RESTRUCTURER ══════════ -->
+<div class="panel" id="panel-restructurer">
+
+<div class="sec">
+  <div class="sec-title"><span class="num">04</span> Traverser la phrase — Restructurer</div>
+  <div class="sec-sub">وقتی جمله سنگین از que/qui است → چطور آن را بازنویسی کنیم تا زیباتر و حرفه‌ای‌تر شود</div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon" style="background:#fff8e1;">✂️</div>
+      <div>
+        <h3>Stratégie 1 — Couper la relative en deux phrases</h3>
+        <div class="card-fa">تقسیم جمله موصولی به دو جمله ساده</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="transform">
+        <h4>Trop lourd → deux phrases courtes</h4>
+        <div class="t-step">
+          <div class="t-step-num">❌</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">«C'est une expérience <strong>que j'ai vécue pendant plusieurs années et qui m'a beaucoup appris et que je recommande</strong>.»</div>
+            <div class="t-step-fa">جمله که با سه بند که/qui گره خورده — خسته‌کننده</div>
+          </div>
+        </div>
+        <div class="t-arrow">↓</div>
+        <div class="t-step">
+          <div class="t-step-num">✓</div>
+          <div class="t-step-body">
+            <div class="t-step-fr">«J'ai vécu cette expérience pendant plusieurs années. <strong>Elle m'a beaucoup appris</strong> et je la recommande vivement.»</div>
+            <div class="t-step-fa">با ضمیر «elle» جمله دوم ادامه پیدا می‌کند — طبیعی‌تر و حرفه‌ای‌تر</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:#fff8e1;">🔄</div>
+      <div>
+        <h3>Stratégie 2 — Remplacer la relative par un participe</h3>
+        <div class="card-fa">جایگزین کردن جمله موصولی با اسم مفعول — ساختار B2</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="compare">
+        <div class="compare-label">QUI + verbe → participe présent ou passé</div>
+        <div class="compare-bad">Les personnes <strong>qui travaillent</strong> dans la finance… ✗ (lourd)</div>
+        <div class="compare-good">Les personnes <strong>travaillant</strong> dans la finance… ✓ (B2)</div>
+        <div class="compare-fa">qui + verbe → participe présent (-ant) → beaucoup plus élégant</div>
+
+        <div class="compare-bad">Les données <strong>qui ont été collectées</strong> montrent que… ✗</div>
+        <div class="compare-good">Les données <strong>collectées</strong> montrent que… ✓</div>
+        <div class="compare-fa">qui a été + PP → PP seul → plus concis</div>
+
+        <div class="compare-bad">La décision <strong>qui a été prise</strong> par le gouvernement… ✗</div>
+        <div class="compare-good">La décision <strong>prise</strong> par le gouvernement… ✓</div>
+        <div class="compare-fa">در TCF écrit این ساختار نشانه B2 است</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:#fff8e1;">💎</div>
+      <div>
+        <h3>Stratégie 3 — CE QUI / CE QUE — mise en relief</h3>
+        <div class="card-fa">تأکید با ce qui / ce que — ساختار بسیار B2</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="formula">
+        <div class="big"><span class="c">CE QUI</span> + verbe / <span class="b">CE QUE</span> + sujet + verbe → <span class="a">c'est…</span></div>
+        <div class="note">ساختار mise en relief — خیلی حرفه‌ای در TCF oral و écrit</div>
+      </div>
+      <div class="compare">
+        <div class="compare-label">❌ Neutre → ✓ Mise en relief</div>
+        <div class="compare-bad">J'aime la finance. ✗ (trop simple)</div>
+        <div class="compare-good"><strong>Ce qui</strong> me passionne, <strong>c'est</strong> la finance. ✓ B2</div>
+        <div class="compare-fa">آنچه مرا شیفته می‌کند مالی است.</div>
+
+        <div class="compare-bad">Je veux apprendre le leadership à Harvard. ✗</div>
+        <div class="compare-good"><strong>Ce que</strong> j'espère développer à Harvard, <strong>c'est</strong> mon sens du leadership. ✓</div>
+        <div class="compare-fa">آنچه امیدوارم در هاروارد پرورش دهم احساس رهبری‌ام است. ← TCF Tâche 2</div>
+
+        <div class="compare-bad">La technologie change le monde. ✗ (banal)</div>
+        <div class="compare-good"><strong>Ce qui</strong> me frappe le plus, <strong>c'est</strong> la vitesse à laquelle la technologie transforme nos sociétés. ✓</div>
+        <div class="compare-fa">آنچه بیشتر از همه تأثیرم می‌گذارد سرعتی است که فناوری جوامع ما را متحول می‌کند. ← B2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:#fff8e1;">🗑️</div>
+      <div>
+        <h3>Stratégie 4 — Éliminer «que» par restructuration totale</h3>
+        <div class="card-fa">حذف کامل que با بازنویسی جمله</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="compare">
+        <div class="compare-label">Remplacer «je pense que» par des nominalisations</div>
+        <div class="compare-bad">Je pense <strong>que</strong> la technologie est importante pour l'économie. ✗</div>
+        <div class="compare-good"><strong>À mon sens</strong>, la technologie joue un rôle crucial dans l'économie. ✓</div>
+        <div class="compare-fa">به نظر من — بدون que</div>
+
+        <div class="compare-bad">Je crois <strong>que</strong> ce projet va marcher. ✗</div>
+        <div class="compare-good">Je suis <strong>convaincu de</strong> la viabilité de ce projet. ✓</div>
+        <div class="compare-fa">قانع شده‌ام از... — nominalisation</div>
+
+        <div class="compare-bad">Il est vrai <strong>que</strong> l'IA change beaucoup de choses. ✗</div>
+        <div class="compare-good"><strong>Force est de constater</strong> l'impact considérable de l'IA sur nos métiers. ✓</div>
+        <div class="compare-fa">ناگزیر باید اذعان کنیم که... ← expression très B2</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ TAB 5 — ALTERNATIVES ══════════ -->
+<div class="panel" id="panel-alternatives">
+
+<div class="sec">
+  <div class="sec-title"><span class="num">05</span> Alternatives riches — Varier pour le B2</div>
+  <div class="sec-sub">جایگزین‌های حرفه‌ای برای que / qui / dont — که گفتارت را واقعاً B2 می‌کند</div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--teal-pale);">🔄</div>
+      <div>
+        <h3>Remplacer «je pense que» répété</h3>
+        <div class="card-fa">جایگزین‌های «فکر می‌کنم که»</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="neat">
+        <thead><tr><th>Au lieu de</th><th>Utilise</th><th>فارسی</th><th>Niveau</th></tr></thead>
+        <tbody>
+          <tr><td>je pense que</td><td>à mon sens / selon moi</td><td class="fa-col">به نظر من</td><td><span class="ltag b1">B1</span></td></tr>
+          <tr><td>je pense que</td><td>il me semble que</td><td class="fa-col">به نظرم می‌رسد که</td><td><span class="ltag b1">B1</span></td></tr>
+          <tr><td>je crois que</td><td>je suis convaincu(e) que</td><td class="fa-col">متقاعد شده‌ام که</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>je pense que</td><td>j'estime que / je considère que</td><td class="fa-col">تخمین می‌زنم / در نظر دارم</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>je pense que c'est vrai</td><td>force est de constater que</td><td class="fa-col">ناگزیر باید پذیرفت که</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>je pense que c'est important</td><td>il va sans dire que</td><td class="fa-col">بدیهی است که</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>je pense que c'est vrai</td><td>il est indéniable que</td><td class="fa-col">انکارناپذیر است که</td><td><span class="ltag b2">B2</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--teal-pale);">🎯</div>
+      <div>
+        <h3>Remplacer «parce que» répété</h3>
+        <div class="card-fa">جایگزین‌های «چون / به خاطر اینکه»</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="neat">
+        <thead><tr><th>Au lieu de</th><th>Utilise</th><th>فارسی</th><th>Niveau</th></tr></thead>
+        <tbody>
+          <tr><td>parce que</td><td>car</td><td class="fa-col">چرا که (کمی رسمی‌تر)</td><td><span class="ltag b1">B1</span></td></tr>
+          <tr><td>parce que</td><td>dans la mesure où</td><td class="fa-col">از آنجا که / تا آنجا که</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>parce que</td><td>étant donné que</td><td class="fa-col">با توجه به اینکه</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>parce que</td><td>vu que / dès lors que</td><td class="fa-col">نظر به اینکه</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>parce que</td><td>c'est la raison pour laquelle</td><td class="fa-col">به همین دلیل است که</td><td><span class="ltag b2">B2</span></td></tr>
+          <tr><td>parce que c'est bon</td><td>en ce qu'il…</td><td class="fa-col">از آن جهت که...</td><td><span class="ltag b2">B2</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="upgrade" style="margin-top:14px;">
+        <h4>⭐ En pratique — TCF Tâche 3</h4>
+        <div class="ex-grid tcf" style="border-color:rgba(255,255,255,.2);">
+          <div class="ex-fr" style="background:rgba(255,255,255,.1);color:white;">Je pense <span class="hla">que</span> les réseaux sociaux posent problème <span class="hlr">parce que</span> beaucoup de jeunes passent trop de temps dessus <span class="hlr">parce que</span> c'est addictif et <span class="hlr">parce que</span> personne ne contrôle.</div>
+          <div class="ex-fa" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);">❌ que + parce que × 3 = niveau A2</div>
+        </div>
+        <div style="text-align:center;color:rgba(255,255,255,.5);margin:10px 0;font-size:20px;">↓</div>
+        <div class="ex-grid good">
+          <div class="ex-fr" style="background:var(--green-pale);">À mon sens, les réseaux sociaux constituent un problème réel, <span class="hlg">dans la mesure où</span> ils créent une dépendance <span class="hlg">étant donné que</span> les algorithmes sont conçus pour maximiser l'engagement. Force est de constater <span class="hlg">que</span> les pouvoirs publics n'ont pas encore trouvé de réponse efficace.</div>
+          <div class="ex-fa">✓ Variété · B2 · TCF niveau max</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--teal-pale);">🌟</div>
+      <div>
+        <h3>Expressions B2 pour éviter QUI/QUE dans une présentation orale</h3>
+        <div class="card-fa">جملات حرفه‌ای برای Tâche 1 و 2 بدون que/qui زیاد</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="ex-grid tcf">
+        <div class="ex-fr"><span class="hlp">Ce qui me distingue</span>, c'est ma capacité à combiner analyse financière et vision stratégique.</div>
+        <div class="ex-fa">آنچه مرا متمایز می‌کند توانایی ترکیب تحلیل مالی و چشم‌انداز استراتژیک است. ← T1</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr"><span class="hlp">C'est ce qui</span> m'a amené à rejoindre un fonds d'investissement à Abou Dhabi.</div>
+        <div class="ex-fa">همین چیز بود که مرا به پیوستن به یک صندوق سرمایه‌گذاری در ابوظبی هدایت کرد. ← T2</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr"><span class="hlp">Fort de</span> cette double formation, j'ai pu aborder les marchés financiers avec une vision transversale.</div>
+        <div class="ex-fa">با بهره‌گیری از این تحصیلات دوگانه، توانستم با دیدگاهی میان‌رشته‌ای به بازارهای مالی نزدیک شوم. ← T2</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr"><span class="hlp">Conscient de</span> l'importance du français pour mon projet canadien, j'y consacre chaque jour du temps.</div>
+        <div class="ex-fa">با آگاهی از اهمیت فرانسوی برای پروژه کانادایی‌ام، هر روز زمانی به آن اختصاص می‌دهم. ← T1</div>
+      </div>
+      <div class="ex-grid tcf">
+        <div class="ex-fr"><span class="hlp">Soucieux de</span> me perfectionner, j'explore continuellement de nouvelles compétences.</div>
+        <div class="ex-fa">با دغدغه تکامل، مداوم مهارت‌های جدیدی را کاوش می‌کنم. ← B2</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ TAB 6 — EXERCICES ══════════ -->
+<div class="panel" id="panel-exercices">
+
+<div class="sec">
+  <div class="sec-title"><span class="num">06</span> Exercices — Mise en pratique</div>
+  <div class="sec-sub">تمرین — تمرکز روی اشتباهات رایج</div>
+
+  <div class="quiz" id="ex1">
+    <h3><span class="qn">1</span> QUI ou QUE ? Choisis le bon pronom</h3>
+    <div class="qi">
+      <div class="qt">C'est une décision ___ nous avons prise ensemble.</div>
+      <div class="qfa">«ما این تصمیم را با هم گرفتیم» — ما تصمیم را گرفتیم → مفعول</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,1)">que</button>
+        <button class="qopt" onclick="qans(this,1,0)">qui</button>
+      </div>
+      <div class="qans"><b>que</b> — «nous avons pris <em>la décision</em>» → que = COD. Attention à l'accord : pris<b>e</b> !</div>
+    </div>
+    <div class="qi">
+      <div class="qt">L'entreprise ___ recrute le plus en ce moment est dans la tech.</div>
+      <div class="qfa">«شرکتی که بیشترین استخدام را دارد» — شرکت استخدام می‌کند → فاعل</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">que</button>
+        <button class="qopt" onclick="qans(this,1,1)">qui</button>
+      </div>
+      <div class="qans"><b>qui</b> — «l'entreprise recrute» → qui = sujet du verbe «recrute»</div>
+    </div>
+    <div class="qi">
+      <div class="qt">C'est un secteur ___ j'étudie depuis plusieurs années.</div>
+      <div class="qfa">«من این بخش را سال‌هاست مطالعه می‌کنم» — مفعول</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,1)">que</button>
+        <button class="qopt" onclick="qans(this,1,0)">qui</button>
+      </div>
+      <div class="qans"><b>que</b> — j'étudie «le secteur» → que = COD</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Les investisseurs ___ ont financé ce projet sont très satisfaits.</div>
+      <div class="qfa">«سرمایه‌گذارانی که این پروژه را تأمین مالی کردند» — فاعل</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">que</button>
+        <button class="qopt" onclick="qans(this,1,1)">qui</button>
+      </div>
+      <div class="qans"><b>qui</b> — «les investisseurs ont financé» → qui = sujet</div>
+    </div>
+  </div>
+
+  <div class="quiz" id="ex2" style="margin-top:16px;">
+    <h3><span class="qn">2</span> QUE, DONT ou restructurer ?</h3>
+    <div class="qi">
+      <div class="qt">C'est une compétence ___ j'ai besoin pour progresser.</div>
+      <div class="qfa">avoir besoin <strong>de</strong> → ...</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">que</button>
+        <button class="qopt" onclick="qans(this,1,1)">dont</button>
+        <button class="qopt" onclick="qans(this,2,0)">qui</button>
+      </div>
+      <div class="qans"><b>dont</b> — «avoir besoin <em>de</em>» → de + cette compétence → <b>dont</b></div>
+    </div>
+    <div class="qi">
+      <div class="qt">C'est un projet ___ je suis très fier.</div>
+      <div class="qfa">être fier <strong>de</strong> → ...</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">que</button>
+        <button class="qopt" onclick="qans(this,1,1)">dont</button>
+        <button class="qopt" onclick="qans(this,2,0)">qui</button>
+      </div>
+      <div class="qans"><b>dont</b> — «être fier <em>de</em>» → de + ce projet → <b>dont</b></div>
+    </div>
+    <div class="qi">
+      <div class="qt">J'ai rencontré un partenaire ___ les idées sont très innovantes.</div>
+      <div class="qfa">ایده‌هایش — مالکیت → ...</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">que</button>
+        <button class="qopt" onclick="qans(this,1,1)">dont</button>
+        <button class="qopt" onclick="qans(this,2,0)">qui</button>
+      </div>
+      <div class="qans"><b>dont</b> — «les idées <em>de ce partenaire</em>» → possession → <b>dont les idées</b></div>
+    </div>
+  </div>
+
+  <div class="quiz" id="ex3" style="margin-top:16px;">
+    <h3><span class="qn">3</span> Corrige l'erreur «J'ai envie que je…»</h3>
+    <div class="qi">
+      <div class="qt">J'ai envie <input class="blank" data-ans="de partir/partir" placeholder="…"> au Canada.</div>
+      <div class="qfa">دلم می‌خواد به کانادا برم. (همان فاعل → infinitif)</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Je rêve <input class="blank" data-ans="de devenir/devenir" placeholder="…"> entrepreneur.</div>
+      <div class="qfa">آرزو دارم کارآفرین بشم.</div>
+    </div>
+    <div class="qi">
+      <div class="qt">J'espère <input class="blank" data-ans="réussir/trouver" placeholder="…"> au TCF Canada.</div>
+      <div class="qfa">امیدوارم در TCF Canada موفق بشم.</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Je cherche <input class="blank" data-ans="à développer" placeholder="…"> mes compétences.</div>
+      <div class="qfa">تلاش می‌کنم مهارت‌هایم را توسعه دهم.</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-p" onclick="chkFill('ex3')">✅ Vérifier</button>
+      <button class="btn btn-s" onclick="rstFill('ex3')">🔄 Reset</button>
+    </div>
+    <div class="score" id="score-ex3"></div>
+  </div>
+
+  <div class="quiz" id="ex4" style="margin-top:16px;">
+    <h3><span class="qn">4</span> CE QUI ou CE QUE ?</h3>
+    <div class="qi">
+      <div class="qt">___ me distingue, c'est ma polyvalence.</div>
+      <div class="qfa">آنچه مرا متمایز می‌کند... (sujet → ...)</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,1)">Ce qui</button>
+        <button class="qopt" onclick="qans(this,1,0)">Ce que</button>
+      </div>
+      <div class="qans"><b>Ce qui</b> — ce pronom est sujet du verbe «distingue»</div>
+    </div>
+    <div class="qi">
+      <div class="qt">___ j'apprécie le plus au Canada, c'est la diversité.</div>
+      <div class="qfa">آنچه را بیشتر از همه در کانادا دوست دارم... (COD → ...)</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">Ce qui</button>
+        <button class="qopt" onclick="qans(this,1,1)">Ce que</button>
+      </div>
+      <div class="qans"><b>Ce que</b> — j'apprécie «ce» → COD → ce que</div>
+    </div>
+    <div class="qi">
+      <div class="qt">___ me frappe dans ce secteur, c'est la vitesse d'innovation.</div>
+      <div class="qfa">آنچه در این بخش تأثیرم می‌گذارد... (sujet)</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,1)">Ce qui</button>
+        <button class="qopt" onclick="qans(this,1,0)">Ce que</button>
+      </div>
+      <div class="qans"><b>Ce qui</b> — «ce» est sujet du verbe «frappe»</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <a href="../index.html">← Alireza</a> · Grammaire QUI / QUE / DONT · Français avec Hoda © 2025
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function qans(el,idx,correct){
+  const item=el.closest('.qi');
+  if(item.dataset.done)return;
+  item.dataset.done="1";
+  item.querySelectorAll('.qopt').forEach((o,i)=>{o.classList.add('done');if(i===correct)o.classList.add('correct');});
+  if(idx!==correct)el.classList.add('wrong');
+  const a=item.querySelector('.qans');
+  if(a)a.classList.add('show');
+}
+function norm(s){return s.trim().toLowerCase().replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').replace(/[îï]/g,'i').replace(/[ùû]/g,'u').replace(/ç/g,'c');}
+function chkFill(id){
+  const b=document.querySelectorAll('#'+id+' .blank');
+  let ok=0;
+  b.forEach(i=>{
+    const ans=i.dataset.ans.split('/').map(a=>norm(a.trim()));
+    if(ans.some(a=>norm(i.value).includes(a))){i.classList.add('ok');i.classList.remove('err');ok++;}
+    else{i.classList.add('err');i.classList.remove('ok');}
+  });
+  const s=document.getElementById('score-'+id);
+  const p=Math.round(ok/b.length*100);
+  s.innerHTML=`<div class="sn">${ok}/${b.length}</div><div class="sl">${p}% · ${p===100?'🎉 Parfait!':p>=70?'👍 Bien!':'💪 Continue!'}</div>`;
+  s.classList.add('show');
+}
+function rstFill(id){
+  document.querySelectorAll('#'+id+' .blank').forEach(i=>{i.value='';i.classList.remove('ok','err');});
+  const s=document.getElementById('score-'+id);
+  if(s)s.classList.remove('show');
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
