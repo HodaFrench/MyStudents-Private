@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Parallélisme syntaxique — علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --red:#b71c1c;--red-pale:#ffebee;
+  --amber:#e65100;--amber-pale:#fff3e0;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Estedad','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,.02) 39px,rgba(13,27,42,.02) 40px);pointer-events:none;}
+
+.topbar{display:flex;align-items:center;gap:14px;padding:13px 28px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
+.logo{width:40px;height:40px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Roboto',sans-serif;font-size:16px;font-weight:900;color:white;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:white;}
+.topbar .sub{font-size:11px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:12px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:6px;transition:.2s;}
+.back:hover{background:var(--blue);color:white;}
+
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:48px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.05);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:900;margin-bottom:10px;letter-spacing:-1px;line-height:1.15;}
+.hero h2 .acc{color:#ffd180;}
+.hero .sub{font-size:14px;opacity:.8;max-width:600px;margin:0 auto 20px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.12);color:white;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;padding:5px 14px;border:1px solid rgba(255,255,255,.2);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:66px;z-index:99;}
+.tab{padding:13px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+.tab:hover{color:var(--blue);}.tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+
+.wrap{max-width:900px;margin:0 auto;padding:36px 24px;}
+.panel{display:none;}.panel.active{display:block;}
+
+.sec{margin-bottom:44px;}
+.sec-title{font-family:'Roboto',sans-serif;font-size:20px;font-weight:900;color:var(--navy);margin-bottom:5px;display:flex;align-items:center;gap:10px;}
+.sec-title .num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:.15em;font-weight:600;}
+.sec-sub{font-size:13px;color:var(--gray);margin-bottom:18px;direction:rtl;text-align:right;line-height:1.9;}
+
+.formula{background:var(--blue-mist);border:2px dashed var(--blue);border-radius:12px;padding:18px 22px;text-align:center;margin:16px 0;}
+.formula .big{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.8;}
+.formula .a{color:var(--red);font-weight:900;}.formula .b{color:var(--blue);font-weight:900;}.formula .c{color:var(--green);font-weight:900;}
+.formula .note{font-size:12px;color:var(--gray);margin-top:8px;direction:rtl;}
+
+.card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;}
+.card-head{display:flex;align-items:center;gap:12px;padding:15px 20px;border-bottom:2px solid var(--line);}
+.card-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.card-head h3{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:var(--navy);}
+.card-head .fa{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:3px;}
+.card-body{padding:18px 22px;}
+
+.ltag{display:inline-block;padding:2px 9px;border-radius:8px;font-size:10px;font-weight:700;margin-right:5px;vertical-align:middle;font-family:'JetBrains Mono',monospace;}
+.ltag.b1{background:var(--blue-pale);color:var(--blue);}.ltag.b2{background:var(--amber-pale);color:var(--amber);}
+.ltag.err{background:var(--red-pale);color:var(--red);}.ltag.tip{background:var(--purple-pale);color:var(--purple);}
+
+.rule{border-radius:10px;padding:15px 20px;margin:12px 0;}
+.rule.ok{background:var(--green-pale);border-right:5px solid var(--green);}
+.rule.danger{background:var(--red-pale);border-right:5px solid var(--red);}
+.rule.warn{background:var(--amber-pale);border-right:5px solid var(--amber);}
+.rule.info{background:var(--blue-mist);border-right:5px solid var(--blue);}
+.rule-t{font-size:13px;font-weight:700;margin-bottom:6px;}
+.rule-t.ok{color:var(--green);}.rule-t.danger{color:var(--red);}.rule-t.warn{color:var(--amber);}.rule-t.info{color:var(--blue);}
+
+/* PARALLEL EXAMPLES */
+.parallel-block{margin:16px 0;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.pb-header{background:var(--navy);color:white;padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
+.pb-header .badge{background:rgba(255,255,255,.15);padding:2px 10px;border-radius:10px;font-size:10px;}
+.pb-body{padding:16px 20px;}
+.pb-struct{font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--gray);margin-bottom:12px;padding:8px 12px;background:var(--paper);border-radius:6px;letter-spacing:.05em;}
+.pb-struct .s{color:var(--blue);font-weight:600;}
+
+.compare-pair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;margin:10px 0;}
+.cp-bad{padding:12px 16px;background:var(--red-pale);border-right:1.5px solid var(--line);}
+.cp-good{padding:12px 16px;background:var(--green-pale);}
+.cp-bad::before{content:"✗ ";color:var(--red);font-weight:700;}
+.cp-good::before{content:"✓ ";color:var(--green);font-weight:700;}
+.cp-bad,.cp-good{font-size:14px;line-height:1.7;}
+.cp-fa{grid-column:1/-1;background:#f9fafb;padding:9px 16px;font-size:12px;direction:rtl;text-align:right;color:var(--gray);border-top:1px dashed var(--line);}
+.cp-why{grid-column:1/-1;background:#fffbf0;padding:9px 16px;font-size:12px;color:var(--amber);border-top:1px dashed var(--line);font-weight:600;}
+
+.hl{background:rgba(21,101,192,.15);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--navy);}
+.hlr{background:rgba(183,28,28,.15);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--red);}
+.hlg{background:rgba(46,125,50,.15);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--green);}
+.hla{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:4px;font-weight:700;color:var(--amber);}
+
+.tcf-ex{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;margin:8px 0;}
+.tcf-fr{padding:12px 16px;font-size:14px;line-height:1.7;background:linear-gradient(90deg,#fff8e1,var(--blue-mist));}
+.tcf-fa{padding:12px 16px;font-size:12px;direction:rtl;text-align:right;color:var(--gray);background:#fafcff;line-height:1.7;}
+
+table.neat{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+table.neat th{background:var(--navy);color:white;padding:9px 14px;text-align:left;font-size:10px;letter-spacing:.08em;}
+table.neat td{padding:9px 14px;border-bottom:1px solid var(--line);}
+table.neat tr:nth-child(even){background:var(--blue-mist);}
+table.neat .fa-col{direction:rtl;text-align:right;color:var(--gray);font-size:12px;}
+
+.quiz{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:20px;margin:12px 0;}
+.quiz h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.qn{background:var(--blue);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.qi{margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--line);}
+.qi:last-child{margin:0;padding:0;border:none;}
+.qt{font-size:13.5px;color:var(--ink);margin-bottom:4px;line-height:1.6;}
+.qfa{font-size:11px;color:var(--gray);margin-bottom:8px;direction:rtl;text-align:right;}
+.qopts{display:flex;flex-wrap:wrap;gap:7px;}
+.qopt{font-size:12px;font-weight:600;background:white;border:2px solid var(--line);border-radius:7px;padding:6px 12px;cursor:pointer;transition:all .2s;}
+.qopt:hover:not(.done){border-color:var(--blue);background:var(--blue-mist);}
+.qopt.correct{background:var(--green-pale);border-color:var(--green);color:var(--green);}
+.qopt.wrong{background:var(--red-pale);border-color:var(--red);color:var(--red);}
+.qans{display:none;font-size:12px;background:var(--green-pale);border-right:3px solid var(--green);border-radius:7px;padding:9px 13px;margin-top:7px;line-height:1.8;}
+.qans.show{display:block;}.qans b{color:var(--green);}.qans .bad{color:var(--red);text-decoration:line-through;}
+
+.blank{display:inline-block;min-width:90px;padding:2px 7px;border:none;border-bottom:2px solid var(--blue);background:transparent;font-size:13px;color:var(--blue);font-weight:600;font-family:inherit;outline:none;}
+.blank.ok{border-bottom-color:var(--green);color:var(--green);background:var(--green-pale);border-radius:4px 4px 0 0;}
+.blank.err{border-bottom-color:var(--red);color:var(--red);background:var(--red-pale);border-radius:4px 4px 0 0;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:all .2s;}
+.btn-p{background:var(--navy);color:white;}.btn-p:hover{background:var(--blue);}
+.btn-s{background:var(--blue-pale);color:var(--blue);}
+.btn-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.score{background:var(--navy);color:white;padding:13px;border-radius:9px;margin-top:10px;display:none;text-align:center;}
+.score.show{display:block;}.score .sn{font-size:24px;font-weight:700;}.score .sl{font-size:11px;opacity:.8;margin-top:2px;}
+
+.footer{text-align:center;margin-top:32px;padding:18px;color:var(--gray);font-size:12px;border-top:1px solid var(--line);}
+.footer a{color:var(--blue);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
+#scrollBtn:hover{background:var(--blue);}.scrollBtn.show,#scrollBtn.show{display:block;}
+@media(max-width:640px){.compare-pair,.tcf-ex{grid-template-columns:1fr;}.cp-bad{border-right:none;border-bottom:1.5px solid var(--line);}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">A</div>
+  <div><h1>Grammaire — Parallélisme syntaxique</h1><div class="sub">علیرضا · هم‌جنسی در ساختار</div></div>
+  <a class="back" href="../../index.html">← پرونده علیرضا</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">Grammaire · B1→B2 · TCF Canada</div>
+    <h2>Parallélisme syntaxique<br><span class="acc">هم‌جنسی در ساختار</span></h2>
+    <p class="sub">قانون طلایی که اکثر فارسی‌زبانان از آن بی‌خبرند — و ارزیاب TCF بلافاصله متوجه نقض آن می‌شود</p>
+    <div class="hero-pills">
+      <span class="hpill">Nom ↔ Nom</span>
+      <span class="hpill">Infinitif ↔ Infinitif</span>
+      <span class="hpill">Adj ↔ Adj</span>
+      <span class="hpill">Pour / De / En + …</span>
+      <span class="hpill">TCF Tâches 1·2·3</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('principe')">📐 Principe</div>
+  <div class="tab" onclick="showTab('structures')">🏗️ Structures</div>
+  <div class="tab" onclick="showTab('erreurs')">🚨 Erreurs</div>
+  <div class="tab" onclick="showTab('tcf')">🎯 TCF</div>
+  <div class="tab" onclick="showTab('exercices')">✏️ Exercices</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ TAB 1 — PRINCIPE ═══ -->
+<div class="panel active" id="panel-principe">
+<div class="sec">
+  <div class="sec-title"><span class="num">01</span> Le principe fondamental</div>
+  <div class="sec-sub">اصل هم‌جنسی — قانونی که فرانسوی‌زبانان ناخودآگاه آن را رعایت می‌کنند</div>
+
+  <div class="formula">
+    <div class="big">
+      Quand on coordonne des éléments avec <span class="a">ET · OU · NI…NI · NON SEULEMENT…MAIS AUSSI</span>,<br>
+      chaque élément doit être de la <span class="b">MÊME NATURE GRAMMATICALE</span>
+    </div>
+    <div class="note">وقتی چند چیز را با «و» یا «یا» به هم وصل می‌کنیم، همه باید از یک جنس دستوری باشند</div>
+  </div>
+
+  <div class="rule info">
+    <div class="rule-t info">📖 Source : Grevisse «Le Bon Usage» §266 + Académie française + DELF/DALF grille B2</div>
+    <p style="font-size:13px;line-height:1.9;">«Le parallélisme syntaxique exige que les éléments coordonnés soient de même nature : noms avec noms, infinitifs avec infinitifs, propositions avec propositions.» — Grammaire Larousse</p>
+  </div>
+
+  <div class="parallel-block">
+    <div class="pb-header">Illustration immédiate <span class="badge">intuitif</span></div>
+    <div class="pb-body">
+      <div class="pb-struct">Structure : A + <span class="s">ET</span> + B → A et B doivent être du même type</div>
+      <div class="compare-pair">
+        <div class="cp-bad">J'aime <span class="hlr">la lecture</span> et <span class="hlr">voyager</span>.</div>
+        <div class="cp-good">J'aime <span class="hlg">la lecture</span> et <span class="hlg">les voyages</span>.</div>
+        <div class="cp-why">⚠️ «la lecture» = NOM · «voyager» = VERBE → mélange interdit</div>
+        <div class="cp-fa">کتاب خواندن و سفر کردن — هر دو باید هم‌جنس باشند</div>
+      </div>
+      <div class="compare-pair">
+        <div class="cp-bad">J'aime <span class="hlr">lire</span> et <span class="hlr">les voyages</span>.</div>
+        <div class="cp-good">J'aime <span class="hlg">lire</span> et <span class="hlg">voyager</span>.</div>
+        <div class="cp-why">⚠️ «lire» = INFINITIF · «les voyages» = NOM → mélange interdit</div>
+        <div class="cp-fa">یا هر دو اسم، یا هر دو مصدر</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ TAB 2 — STRUCTURES ═══ -->
+<div class="panel" id="panel-structures">
+<div class="sec">
+  <div class="sec-title"><span class="num">02</span> Toutes les structures concernées</div>
+  <div class="sec-sub">تمام ساختارهایی که قانون هم‌جنسی در آن‌ها اجباری است</div>
+
+  <!-- STRUCTURE 1 : ET -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--blue-pale);">🔗</div>
+      <div><h3>1. Coordination avec ET / OU / NI <span class="ltag b1">B1</span></h3>
+      <div class="fa">همه عناصر هم‌جنس — رایج‌ترین خطا</div></div>
+    </div>
+    <div class="card-body">
+      <div class="parallel-block">
+        <div class="pb-header">NOM + et + NOM ✓ <span class="badge">le plus fréquent</span></div>
+        <div class="pb-body">
+          <div class="compare-pair">
+            <div class="cp-bad">Mon travail exige <span class="hlr">de la rigueur</span> et <span class="hlr">être créatif</span>. ✗</div>
+            <div class="cp-good">Mon travail exige <span class="hlg">de la rigueur</span> et <span class="hlg">de la créativité</span>. ✓</div>
+            <div class="cp-fa">کارم دقت و خلاقیت می‌طلبد — هر دو اسم</div>
+          </div>
+          <div class="compare-pair">
+            <div class="cp-bad">J'apprécie <span class="hlr">son intelligence</span> et <span class="hlr">qu'il est honnête</span>. ✗</div>
+            <div class="cp-good">J'apprécie <span class="hlg">son intelligence</span> et <span class="hlg">son honnêteté</span>. ✓</div>
+            <div class="cp-fa">هوشش و صادق بودنش را دوست دارم — هر دو اسم</div>
+          </div>
+          <div class="tcf-ex">
+            <div class="tcf-fr">Ce poste requiert <span class="hlg">une solide expertise financière</span> et <span class="hlg">une bonne maîtrise des outils technologiques</span>.</div>
+            <div class="tcf-fa">این شغل تخصص مالی محکم و تسلط خوب بر ابزارهای تکنولوژیکی می‌طلبد. ← TCF Tâche 2 ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="parallel-block" style="margin-top:14px;">
+        <div class="pb-header">INFINITIF + et + INFINITIF ✓</div>
+        <div class="pb-body">
+          <div class="compare-pair">
+            <div class="cp-bad">J'aime <span class="hlr">faire du sport</span> et <span class="hlr">la lecture</span>. ✗</div>
+            <div class="cp-good">J'aime <span class="hlg">faire du sport</span> et <span class="hlg">lire</span>. ✓</div>
+            <div class="cp-fa">ورزش کردن و کتاب خواندن — هر دو مصدر</div>
+          </div>
+          <div class="compare-pair">
+            <div class="cp-bad">Mon objectif est <span class="hlr">d'immigrer</span> et <span class="hlr">une vie stable</span>. ✗</div>
+            <div class="cp-good">Mon objectif est <span class="hlg">d'immigrer</span> et <span class="hlg">de construire une vie stable</span>. ✓</div>
+            <div class="cp-fa">هدفم مهاجرت کردن و ساختن یک زندگی باثبات است — هر دو مصدر</div>
+          </div>
+          <div class="tcf-ex">
+            <div class="tcf-fr">J'ai toujours cherché à <span class="hlg">analyser les marchés</span>, <span class="hlg">identifier les opportunités</span> et <span class="hlg">prendre des décisions éclairées</span>.</div>
+            <div class="tcf-fa">همیشه تلاش کرده‌ام بازارها را تحلیل کنم، فرصت‌ها را شناسایی کنم و تصمیمات آگاهانه بگیرم — سه مصدر ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRUCTURE 2 : POUR -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--amber-pale);">🎯</div>
+      <div><h3>2. POUR + … <span class="ltag b1">B1</span></h3>
+      <div class="fa">«برای» — همه چیز بعدش یا اسم یا مصدر، نه هر دو</div></div>
+    </div>
+    <div class="card-body">
+      <div class="formula">
+        <div class="big">
+          POUR + <span class="b">INFINITIF</span> (but/objectif)<br>
+          — ou —<br>
+          POUR + <span class="c">NOM</span> (raison/cause)
+        </div>
+        <div class="note">یا همه‌اش مصدر، یا همه‌اش اسم — مخلوط ممنوع</div>
+      </div>
+
+      <div class="parallel-block">
+        <div class="pb-header">POUR + INFINITIF + INFINITIF + INFINITIF ✓</div>
+        <div class="pb-body">
+          <div class="compare-pair">
+            <div class="cp-bad">J'apprends le français pour <span class="hlr">immigrer</span>, <span class="hlr">le travail</span> et <span class="hlr">m'intégrer</span>. ✗</div>
+            <div class="cp-good">J'apprends le français pour <span class="hlg">immigrer</span>, <span class="hlg">travailler</span> et <span class="hlg">m'intégrer</span>. ✓</div>
+            <div class="cp-fa">«برای» + مصدر + مصدر + مصدر — سه مصدر هم‌جنس ✓</div>
+          </div>
+          <div class="tcf-ex">
+            <div class="tcf-fr">J'ai choisi le Canada pour <span class="hlg">bénéficier d'un environnement stable</span>, <span class="hlg">développer mon réseau international</span> et <span class="hlg">offrir de meilleures perspectives à ma famille</span>.</div>
+            <div class="tcf-fa">کانادا را برای استفاده از محیط باثبات، توسعه شبکه بین‌المللی و ارائه چشم‌اندازهای بهتر به خانواده‌ام انتخاب کردم. ← TCF Tâche 1 ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="parallel-block" style="margin-top:14px;">
+        <div class="pb-header">POUR + NOM + NOM ✓</div>
+        <div class="pb-body">
+          <div class="compare-pair">
+            <div class="cp-bad">Je pratique le sport pour <span class="hlr">ma santé</span> et <span class="hlr">réduire le stress</span>. ✗</div>
+            <div class="cp-good">Je pratique le sport pour <span class="hlg">ma santé</span> et <span class="hlg">la réduction du stress</span>. ✓</div>
+            <div class="cp-fa">یا هر دو اسم: santé + réduction</div>
+          </div>
+          <div class="compare-pair">
+            <div class="cp-bad">— ou —<br>Je pratique le sport pour <span class="hlr">rester en forme</span> et <span class="hlr">le bien-être mental</span>. ✗</div>
+            <div class="cp-good">Je pratique le sport pour <span class="hlg">rester en forme</span> et <span class="hlg">préserver mon bien-être mental</span>. ✓</div>
+            <div class="cp-fa">یا هر دو مصدر: rester + préserver ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRUCTURE 3 : DE -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--green-pale);">🔑</div>
+      <div><h3>3. Structures avec DE <span class="ltag b1">B1</span></h3>
+      <div class="fa">«Cette opportunité nous permet de…» — همه بعدش مصدر</div></div>
+    </div>
+    <div class="card-body">
+      <table class="neat">
+        <thead><tr><th>Structure</th><th>Après → toujours</th><th>Exemple ✓</th><th>فارسی</th></tr></thead>
+        <tbody>
+          <tr><td>permettre de</td><td>INFINITIF(s)</td><td>Ça permet de <strong>grandir, apprendre</strong> et <strong>évoluer</strong>.</td><td class="fa-col">اجازه می‌دهد رشد کنی، یاد بگیری و پیشرفت کنی</td></tr>
+          <tr><td>aider à</td><td>INFINITIF(s)</td><td>Ça aide à <strong>structurer</strong> et <strong>convaincre</strong>.</td><td class="fa-col">کمک می‌کند ساختار بدهی و متقاعد کنی</td></tr>
+          <tr><td>avoir la possibilité de</td><td>INFINITIF(s)</td><td>J'ai la possibilité de <strong>voyager</strong> et <strong>rencontrer</strong> des experts.</td><td class="fa-col">امکان سفر و ملاقات با متخصصان</td></tr>
+          <tr><td>être capable de</td><td>INFINITIF(s)</td><td>Il est capable d'<strong>analyser</strong>, de <strong>synthétiser</strong> et de <strong>décider</strong>.</td><td class="fa-col">تحلیل، جمع‌بندی و تصمیم‌گیری</td></tr>
+          <tr><td>avoir besoin de</td><td>NOM(s) ou INF(s)</td><td>J'ai besoin de <strong>temps, de soutien</strong> et d'<strong>expérience</strong>.</td><td class="fa-col">نیاز به وقت، حمایت و تجربه</td></tr>
+          <tr><td>il est question de</td><td>NOM(s) ou INF(s)</td><td>Il est question de <strong>rigueur</strong> et d'<strong>efficacité</strong>.</td><td class="fa-col">سخن از دقت و کارایی است</td></tr>
+        </tbody>
+      </table>
+
+      <div class="parallel-block" style="margin-top:12px;">
+        <div class="pb-header">«Cette opportunité me permet de…» ← TCF très fréquent</div>
+        <div class="pb-body">
+          <div class="compare-pair">
+            <div class="cp-bad">Cette expérience me permet de <span class="hlr">la croissance</span>, <span class="hlr">apprendre</span> et <span class="hlr">un meilleur réseau</span>. ✗</div>
+            <div class="cp-good">Cette expérience me permet de <span class="hlg">grandir professionnellement</span>, <span class="hlg">développer mes compétences</span> et <span class="hlg">élargir mon réseau</span>. ✓</div>
+            <div class="cp-fa">بعد از «permet de» → سه مصدر هم‌جنس ← TCF Tâche 2 ✓</div>
+          </div>
+          <div class="tcf-ex">
+            <div class="tcf-fr">Cette double formation m'a permis de <span class="hlg">maîtriser les aspects techniques</span>, de <span class="hlg">comprendre les enjeux stratégiques</span> et de <span class="hlg">communiquer efficacement</span> avec des partenaires internationaux.</div>
+            <div class="tcf-fa">این تحصیلات دوگانه به من اجازه داد جنبه‌های فنی را تسلط یابم، مسائل استراتژیک را درک کنم و با شرکای بین‌المللی ارتباط مؤثر برقرار کنم. ← B2 ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRUCTURE 4 : NON SEULEMENT MAIS AUSSI -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--purple-pale);">⭐</div>
+      <div><h3>4. Non seulement… mais aussi <span class="ltag b2">B2</span></h3>
+      <div class="fa">نه تنها … بلکه همچنین — ساختار B2 که در TCF امتیاز بالا می‌دهد</div></div>
+    </div>
+    <div class="card-body">
+      <div class="formula">
+        <div class="big">
+          Non seulement + <span class="a">X</span> + mais aussi/également + <span class="a">X (même type)</span>
+        </div>
+        <div class="note">هر دو بخش باید دقیقاً هم‌جنس باشند</div>
+      </div>
+      <div class="parallel-block">
+        <div class="pb-header">Exemples TCF ✓</div>
+        <div class="pb-body">
+          <div class="compare-pair">
+            <div class="cp-bad">Ce stage m'a apporté non seulement <span class="hlr">de l'expérience</span> mais aussi <span class="hlr">progresser</span>. ✗</div>
+            <div class="cp-good">Ce stage m'a apporté non seulement <span class="hlg">de l'expérience</span> mais aussi <span class="hlg">de la confiance</span>. ✓</div>
+            <div class="cp-fa">NOM + NOM — تجربه و اعتماد به نفس ✓</div>
+          </div>
+          <div class="tcf-ex">
+            <div class="tcf-fr">Ce programme me permettrait non seulement d'<span class="hlg">améliorer mon niveau de français</span> mais aussi d'<span class="hlg">accéder à un réseau professionnel de haut niveau</span>.</div>
+            <div class="tcf-fa">این برنامه نه تنها سطح فرانسوی‌ام را بهبود می‌دهد، بلکه دسترسی به شبکه حرفه‌ای سطح بالا را هم ممکن می‌سازد. — INF + INF ✓</div>
+          </div>
+          <div class="tcf-ex">
+            <div class="tcf-fr">Harvard représente non seulement <span class="hlg">une opportunité académique exceptionnelle</span> mais aussi <span class="hlg">un réseau mondial inestimable</span>.</div>
+            <div class="tcf-fa">هاروارد نه تنها یک فرصت دانشگاهی استثنائی است، بلکه یک شبکه جهانی بی‌ارزش نیز هست. — NOM + NOM ✓ ← TCF T1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRUCTURE 5 : ADJECTIFS -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--teal-pale);">🎨</div>
+      <div><h3>5. Listes d'adjectifs <span class="ltag b1">B1</span></h3>
+      <div class="fa">وقتی چند صفت ردیف می‌کنی — همه باید صفت باشند</div></div>
+    </div>
+    <div class="card-body">
+      <div class="compare-pair">
+        <div class="cp-bad">Je suis <span class="hlr">rigoureux</span>, <span class="hlr">de la motivation</span> et <span class="hlr">analytique</span>. ✗</div>
+        <div class="cp-good">Je suis <span class="hlg">rigoureux</span>, <span class="hlg">motivé</span> et <span class="hlg">analytique</span>. ✓</div>
+        <div class="cp-fa">سه صفت — دقیق، با انگیزه، تحلیلگر ✓</div>
+      </div>
+      <div class="tcf-ex">
+        <div class="tcf-fr">Je dirais que je suis quelqu'un de <span class="hlg">curieux</span>, de <span class="hlg">polyvalent</span> et de <span class="hlg">méthodique</span>.</div>
+        <div class="tcf-fa">می‌توانم بگویم آدمی کنجکاو، چندبُعدی و روشمند هستم. ← TCF Tâche 1 B2 ✓</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ TAB 3 — ERREURS ═══ -->
+<div class="panel" id="panel-erreurs">
+<div class="sec">
+  <div class="sec-title"><span class="num">03</span> Les erreurs les plus fréquentes</div>
+  <div class="sec-sub">اشتباهاتی که علیرضا ممکن است مرتکب شود — خاص فارسی‌زبانان</div>
+
+  <div class="card" style="border-top:4px solid var(--red);">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌</div>
+      <div><h3>Exemple personnel + et — mélange courant</h3><div class="fa">در معرفی شخصی — مخلوط کردن اسم و مصدر</div></div>
+    </div>
+    <div class="card-body">
+      <div class="compare-pair">
+        <div class="cp-bad">Par exemple, <span class="hlr">la finance</span> et <span class="hlr">analyser les marchés</span>. ✗</div>
+        <div class="cp-good">Par exemple, <span class="hlg">la finance</span> et <span class="hlg">l'analyse des marchés</span>. ✓</div>
+        <div class="cp-fa">مثلاً مالی و تحلیل بازارها — هر دو اسم</div>
+      </div>
+      <div class="compare-pair">
+        <div class="cp-bad">Par exemple, <span class="hlr">analyser les marchés</span> et <span class="hlr">la stratégie</span>. ✗</div>
+        <div class="cp-good">Par exemple, <span class="hlg">analyser les marchés</span> et <span class="hlg">développer des stratégies</span>. ✓</div>
+        <div class="cp-fa">مثلاً تحلیل بازارها و توسعه استراتژی‌ها — هر دو مصدر ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border-top:4px solid var(--red);margin-top:16px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--red-pale);">❌</div>
+      <div><h3>«Cela me donne la possibilité de…» — erreur classique</h3><div class="fa">«این فرصت را به من می‌دهد که…» — اشتباه رایج</div></div>
+    </div>
+    <div class="card-body">
+      <div class="compare-pair">
+        <div class="cp-bad">Cela me donne la possibilité de <span class="hlr">voyager</span>, <span class="hlr">des rencontres</span> et <span class="hlr">apprendre</span>. ✗</div>
+        <div class="cp-good">Cela me donne la possibilité de <span class="hlg">voyager</span>, de <span class="hlg">faire des rencontres</span> et d'<span class="hlg">apprendre</span>. ✓</div>
+        <div class="cp-fa">بعد از «possibilité de» → همیشه سه مصدر، نه اسم در وسط ✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ TAB 4 — TCF ═══ -->
+<div class="panel" id="panel-tcf">
+<div class="sec">
+  <div class="sec-title"><span class="num">04</span> Application TCF — Tâches 1·2·3</div>
+  <div class="sec-sub">کاربرد مستقیم در امتحان — با مثال‌های ویژه علیرضا</div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon" style="background:#e3f2fd;">🗣️</div>
+      <div><h3>Tâche 1 — Présentation personnelle</h3></div>
+    </div>
+    <div class="card-body">
+      <div class="tcf-ex"><div class="tcf-fr">J'aime <span class="hlg">analyser les marchés</span>, <span class="hlg">identifier des tendances</span> et <span class="hlg">proposer des solutions créatives</span>.</div><div class="tcf-fa">دوست دارم بازارها را تحلیل کنم، روندها را شناسایی کنم و راه‌حل‌های خلاقانه پیشنهاد دهم. — INF×3 ✓</div></div>
+      <div class="tcf-ex"><div class="tcf-fr">Je suis quelqu'un de <span class="hlg">rigoureux</span>, de <span class="hlg">curieux</span> et de <span class="hlg">déterminé</span>.</div><div class="tcf-fa">آدمی دقیق، کنجکاو و مصمم هستم. — ADJ×3 ✓</div></div>
+      <div class="tcf-ex"><div class="tcf-fr">J'ai choisi le Canada pour <span class="hlg">ses opportunités professionnelles</span>, <span class="hlg">sa qualité de vie</span> et <span class="hlg">sa diversité culturelle</span>.</div><div class="tcf-fa">کانادا را برای فرصت‌های شغلی، کیفیت زندگی و تنوع فرهنگی‌اش انتخاب کردم. — NOM×3 ✓</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:#e8f5e9;">📝</div>
+      <div><h3>Tâche 2 — Parcours de vie</h3></div>
+    </div>
+    <div class="card-body">
+      <div class="tcf-ex"><div class="tcf-fr">Ma formation m'a permis de <span class="hlg">comprendre les mécanismes financiers</span>, de <span class="hlg">maîtriser les outils quantitatifs</span> et de <span class="hlg">développer un sens aigu de la stratégie</span>.</div><div class="tcf-fa">تحصیلاتم به من اجازه داد مکانیسم‌های مالی را بفهمم، ابزارهای کمی را تسلط یابم و حس تیزی از استراتژی پرورش دهم. — INF×3 ✓</div></div>
+      <div class="tcf-ex"><div class="tcf-fr">Ce parcours m'a enseigné <span class="hlg">la rigueur</span>, <span class="hlg">l'adaptabilité</span> et <span class="hlg">la persévérance</span>.</div><div class="tcf-fa">این مسیر دقت، سازگاری و پشتکار را به من آموخت. — NOM×3 ✓</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px;">
+    <div class="card-head">
+      <div class="card-icon" style="background:#fff3e0;">🎯</div>
+      <div><h3>Tâche 3 — Opinion / Société</h3></div>
+    </div>
+    <div class="card-body">
+      <div class="tcf-ex"><div class="tcf-fr">L'intelligence artificielle permet de <span class="hlg">traiter des volumes massifs de données</span>, d'<span class="hlg">automatiser des tâches répétitives</span> et d'<span class="hlg">améliorer la prise de décision</span>.</div><div class="tcf-fa">هوش مصنوعی امکان پردازش حجم عظیم داده، خودکارسازی وظایف تکراری و بهبود تصمیم‌گیری را فراهم می‌کند. — INF×3 ✓</div></div>
+      <div class="tcf-ex"><div class="tcf-fr">Ce phénomène touche non seulement <span class="hlg">les économies développées</span> mais aussi <span class="hlg">les marchés émergents</span>.</div><div class="tcf-fa">این پدیده نه تنها اقتصادهای توسعه‌یافته بلکه بازارهای نوظهور را هم تحت تأثیر قرار می‌دهد. — NOM×2 ✓</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ TAB 5 — EXERCICES ═══ -->
+<div class="panel" id="panel-exercices">
+<div class="sec">
+  <div class="sec-title"><span class="num">05</span> Exercices</div>
+
+  <div class="quiz" id="ex1">
+    <h3><span class="qn">1</span> Choisis la version correcte (parallélisme)</h3>
+    <div class="qi">
+      <div class="qt">J'aime ___ .</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">lire et les voyages ✗</button>
+        <button class="qopt" onclick="qans(this,1,1)">lire et voyager ✓</button>
+      </div>
+      <div class="qans"><b>lire et voyager</b> — INF + INF ✓ · <span class="bad">«les voyages»</span> = NOM → mélange interdit</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Mon travail me permet de ___.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,1)">analyser, décider et innover ✓</button>
+        <button class="qopt" onclick="qans(this,1,0)">l'analyse, décider et l'innovation ✗</button>
+      </div>
+      <div class="qans"><b>analyser, décider et innover</b> — après «de» → INF × 3 ✓</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Je suis ___.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">rigoureux, de la motivation et analytique ✗</button>
+        <button class="qopt" onclick="qans(this,1,1)">rigoureux, motivé et analytique ✓</button>
+      </div>
+      <div class="qans"><b>rigoureux, motivé et analytique</b> — ADJ × 3 ✓</div>
+    </div>
+    <div class="qi">
+      <div class="qt">J'ai choisi le Canada pour ___.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qans(this,0,0)">immigrer, la qualité de vie et trouver du travail ✗</button>
+        <button class="qopt" onclick="qans(this,1,1)">immigrer, trouver un emploi et offrir un avenir à ma famille ✓</button>
+      </div>
+      <div class="qans"><b>INF × 3</b> — après «pour» → infinitifs uniquement ✓</div>
+    </div>
+  </div>
+
+  <div class="quiz" id="ex2" style="margin-top:14px;">
+    <h3><span class="qn">2</span> Corrige le parallélisme — complète avec le bon type</h3>
+    <div class="qi">
+      <div class="qt">Harvard me permettrait d'<input class="blank" data-ans="apprendre/développer/grandir" placeholder="verbe (inf.)"> et de progresser. (NOM donné : «la croissance»)</div>
+      <div class="qfa">هاروارد به من اجازه می‌داد ... و پیشرفت کنم. (مصدر لازم است)</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Je suis quelqu'un de curieux, de <input class="blank" data-ans="polyvalent/rigoureux/ambitieux/analytique" placeholder="adjectif"> et de déterminé.</div>
+      <div class="qfa">آدمی کنجکاو، ... و مصمم — صفت لازم است</div>
+    </div>
+    <div class="qi">
+      <div class="qt">J'apprécie <input class="blank" data-ans="la rigueur/l'efficacité/l'honnêteté" placeholder="NOM"> et l'efficacité. (verbe donné : «travailler efficacement»)</div>
+      <div class="qfa">... و کارایی را دوست دارم — اسم لازم است</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-p" onclick="chkFill('ex2')">✅ Vérifier</button>
+      <button class="btn btn-s" onclick="rstFill('ex2')">🔄 Reset</button>
+    </div>
+    <div class="score" id="score-ex2"></div>
+  </div>
+</div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="../../index.html">← پرونده علیرضا</a> · Parallélisme syntaxique · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('panel-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function qans(el,idx,correct){const item=el.closest('.qi');if(item.dataset.done)return;item.dataset.done="1";item.querySelectorAll('.qopt').forEach((o,i)=>{o.classList.add('done');if(i===correct)o.classList.add('correct');});if(idx!==correct)el.classList.add('wrong');const a=item.querySelector('.qans');if(a)a.classList.add('show');}
+function norm(s){return s.trim().toLowerCase().replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').replace(/[îï]/g,'i').replace(/[ùû]/g,'u').replace(/ç/g,'c').replace(/'/g,"'");}
+function chkFill(id){const b=document.querySelectorAll('#'+id+' .blank');let ok=0;b.forEach(i=>{const ans=i.dataset.ans.split('/').map(a=>norm(a.trim()));if(ans.some(a=>norm(i.value).includes(norm(a).split(' ')[0]))){i.classList.add('ok');i.classList.remove('err');ok++;}else{i.classList.add('err');i.classList.remove('ok');}});const s=document.getElementById('score-'+id);const p=Math.round(ok/b.length*100);s.innerHTML=`<div class="sn">${ok}/${b.length}</div><div class="sl">${p}% · ${p===100?'🎉 Parfait!':p>=60?'👍 Bien!':'💪 Continue!'}</div>`;s.classList.add('show');}
+function rstFill(id){document.querySelectorAll('#'+id+' .blank').forEach(i=>{i.value='';i.classList.remove('ok','err');});const s=document.getElementById('score-'+id);if(s)s.classList.remove('show');}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
