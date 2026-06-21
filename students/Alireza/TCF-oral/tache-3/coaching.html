@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tâche 3 — Textes modèles B2 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a; --navy-mid:#1b2e45;
+  --blue:#1565c0; --blue-pale:#e3f2fd;
+  --paper:#f8fafc; --ink:#1a2332; --gray:#64748b; --line:#cbd5e1; --white:#fff;
+  --green:#2e7d32; --green-pale:#e8f5e9; --green-deep:#1b5e20;
+  --amber:#e65100; --amber-pale:#fff3e0; --amber-deep:#bf360c;
+  --purple:#6a1b9a; --purple-pale:#f3e5f5;
+  --red:#b71c1c; --red-pale:#ffebee;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,.02) 39px,rgba(13,27,42,.02) 40px);pointer-events:none;}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--amber);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:white;font-family:'Roboto',sans-serif;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--amber);color:white;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--amber-deep),var(--amber));color:white;padding:44px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.07);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:700;margin-bottom:8px;letter-spacing:-1px;}
+.hero .sub{font-size:13px;opacity:.85;}
+.hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hpill{background:rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.2);}
+
+/* NAV */
+.subject-nav{display:flex;overflow-x:auto;gap:0;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:64px;z-index:99;}
+.snav{padding:13px 18px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.snav:hover{color:var(--amber);}.snav.active{color:var(--amber);border-bottom-color:var(--amber);}
+
+/* WRAP */
+.wrap{max-width:860px;margin:0 auto;padding:32px 22px;}
+.section{display:none;}.section.active{display:block;}
+
+/* NOTICE BOX */
+.notice{background:linear-gradient(135deg,var(--amber-pale),#fff8f0);border:2px solid var(--amber);border-radius:12px;padding:18px 22px;margin-bottom:28px;font-size:13.5px;line-height:1.9;}
+.notice strong{color:var(--amber-deep);}
+.notice .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+/* QUESTION CARD */
+.q-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:36px;box-shadow:0 4px 16px rgba(13,27,42,.06);}
+.q-head{background:var(--navy);padding:16px 22px;display:flex;align-items:center;gap:12px;}
+.q-emoji{font-size:28px;}
+.q-title{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.q-fa{font-size:11px;color:rgba(255,255,255,.55);direction:rtl;text-align:right;margin-top:3px;}
+.q-question{background:var(--amber-pale);border-bottom:2px solid var(--line);padding:14px 22px;}
+.q-question .qfr{font-size:15px;font-weight:600;color:var(--amber-deep);margin-bottom:5px;}
+.q-question .qfa{font-size:12px;color:var(--gray);direction:rtl;text-align:right;}
+
+/* TEMPLATE BADGE */
+.template-badge{display:inline-flex;align-items:center;gap:6px;background:var(--amber);color:white;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;padding:4px 12px;margin:12px 22px 0;border-radius:4px;}
+
+/* TCF TEXT */
+.tcf-text{padding:20px 24px;}
+.tcf-text p{font-size:15px;line-height:1.95;margin-bottom:10px;font-family:'Roboto',sans-serif;}
+.tcf-text p:last-child{margin-bottom:0;}
+
+/* PARAGRAPH LABELS */
+.p-intro{border-right:4px solid var(--amber);padding-right:12px;margin-bottom:12px;}
+.p-arg1{border-right:4px solid var(--blue);padding-right:12px;margin-bottom:12px;}
+.p-arg2{border-right:4px solid var(--green);padding-right:12px;margin-bottom:12px;}
+.p-arg3{border-right:4px solid var(--purple);padding-right:12px;margin-bottom:12px;}
+.p-conc{border-right:4px solid var(--amber-deep);padding-right:12px;margin-bottom:0;}
+
+/* PARA LABEL */
+.p-label{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:2px 9px;border-radius:3px;margin-bottom:6px;font-weight:700;}
+.lb-intro{background:var(--amber-pale);color:var(--amber-deep);}
+.lb-arg1{background:var(--blue-pale);color:var(--blue);}
+.lb-arg2{background:var(--green-pale);color:var(--green);}
+.lb-arg3{background:var(--purple-pale);color:var(--purple);}
+.lb-conc{background:rgba(191,54,12,.1);color:var(--amber-deep);}
+
+/* HL WORDS */
+.hl-struct{background:rgba(230,81,0,.13);padding:0 4px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hl-vocab{background:rgba(21,101,192,.12);padding:0 4px;border-radius:3px;font-weight:700;color:var(--blue);}
+.hl-arg{background:rgba(46,125,50,.12);padding:0 4px;border-radius:3px;font-weight:700;color:var(--green);}
+
+/* ANALYSIS GRID */
+.analysis{background:linear-gradient(135deg,var(--navy-mid),var(--navy));color:white;padding:18px 22px;border-top:2px solid var(--line);}
+.analysis h4{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ag-item{background:rgba(255,255,255,.07);border-radius:8px;padding:10px 14px;}
+.ag-label{font-size:9px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px;}
+.ag-content{font-size:12.5px;line-height:1.65;}
+.ag-fa{font-size:11px;direction:rtl;text-align:right;color:rgba(255,255,255,.55);margin-top:4px;font-style:italic;}
+
+/* CHECKLIST */
+.checklist{padding:16px 22px;border-top:2px dashed var(--line);background:#fafbfc;}
+.checklist h4{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em;}
+.cl-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;margin-bottom:7px;line-height:1.55;}
+.cl-item:last-child{margin-bottom:0;}
+.cl-check{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:.2s;margin-top:1px;}
+.cl-check.done{background:var(--green);border-color:var(--green);color:white;}
+
+/* TIMING STRIP */
+.timing-strip{display:flex;background:var(--navy);color:white;border-top:2px solid var(--line);}
+.ts-seg{flex:1;padding:10px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.08);}
+.ts-seg:last-child{border:none;}
+.ts-time{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--amber);}
+.ts-label{font-size:10px;color:rgba(255,255,255,.55);margin-top:2px;}
+.ts-fa{font-size:9px;direction:rtl;text-align:right;color:rgba(255,255,255,.35);margin-top:2px;}
+
+/* FORMAT BOX */
+.format-box{background:white;border:2px solid var(--line);border-radius:12px;padding:20px;margin-bottom:20px;}
+.format-box h3{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.format-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px;}
+.format-row:last-child{border:none;}
+.format-row .step-num{background:var(--amber);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.format-row .step-fr{font-weight:600;color:var(--ink);flex:1;}
+.format-row .step-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--amber);font-weight:700;}
+.format-row .step-fa{font-size:11px;direction:rtl;text-align:right;color:var(--gray);width:160px;}
+
+/* FOOTER */
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:var(--amber);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--amber);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(230,81,0,.3);z-index:999;}
+#scrollBtn.show{display:block;}
+
+@media(max-width:640px){
+  .analysis-grid{grid-template-columns:1fr;}
+  .timing-strip{flex-wrap:wrap;}
+  .ts-seg{min-width:50%;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">T3</div>
+  <div><h1>Tâche 3 — Textes modèles B2</h1><div class="sub">علیرضا · متن‌های نمونه امتحانی</div></div>
+  <a class="back" href="index.html">← داشبورد</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">TCF Canada · Expression Orale · علیرضا</div>
+    <h2>📋 متن‌های نمونه کامل B2</h2>
+    <p class="sub">برای هر موضوع یک متن نمونه کامل — ساختار دقیق آزمون · زبان علیرضا</p>
+    <div class="hero-pills">
+      <span class="hpill">⏱ 4:30</span>
+      <span class="hpill">B2 Level</span>
+      <span class="hpill">Intro + 3 args + Conc.</span>
+      <span class="hpill">3 موضوع</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="subject-nav">
+  <div class="snav active" onclick="showSection('format',this)">📐 فرمت TCF</div>
+  <div class="snav" onclick="showSection('work',this)">💼 کار خارج</div>
+  <div class="snav" onclick="showSection('adapt',this)">🌍 سازگاری</div>
+  <div class="snav" onclick="showSection('tv',this)">📺 تلویزیون</div>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════ FORMAT ══════════ -->
+<div class="section active" id="section-format">
+
+  <div class="notice">
+    <strong>🎯 چطور از این صفحه استفاده کنی:</strong><br>
+    قبل از کلاس، متن موضوع جلسه را یک بار بلند بخوان. ساختارش را در ذهنت نگه‌دار. در کلاس، این متن جلویت است — نه برای خواندن کامل، بلکه برای نگه‌داشتن نخ مطلب.
+    <div class="fa">هر متن دقیقاً همان ساختاری دارد که در آزمون TCF Canada از تو انتظار می‌رود: مقدمه + ۳ استدلال + نتیجه‌گیری.</div>
+  </div>
+
+  <div class="format-box">
+    <h3>📐 ساختار رسمی Tâche 3 — TCF Canada</h3>
+    <div class="format-row">
+      <div class="step-num">1</div>
+      <div class="step-fr">Introduction — sujet + opinion personnelle</div>
+      <div class="step-time">~40s</div>
+      <div class="step-fa">مقدمه + نظر شخصی</div>
+    </div>
+    <div class="format-row">
+      <div class="step-num">2</div>
+      <div class="step-fr">Argument 1 + exemple concret</div>
+      <div class="step-time">~60s</div>
+      <div class="step-fa">استدلال اول + مثال</div>
+    </div>
+    <div class="format-row">
+      <div class="step-num">3</div>
+      <div class="step-fr">Argument 2 + nuance ou exemple</div>
+      <div class="step-time">~60s</div>
+      <div class="step-fa">استدلال دوم + نکته</div>
+    </div>
+    <div class="format-row">
+      <div class="step-num">4</div>
+      <div class="step-fr">Argument 3 (+ concession si possible)</div>
+      <div class="step-time">~60s</div>
+      <div class="step-fa">استدلال سوم + تقابل ممکن</div>
+    </div>
+    <div class="format-row">
+      <div class="step-num">5</div>
+      <div class="step-fr">Conclusion — bilan + ouverture</div>
+      <div class="step-time">~30s</div>
+      <div class="step-fa">نتیجه‌گیری + جمله باز</div>
+    </div>
+  </div>
+
+  <div class="format-box">
+    <h3>🔑 عبارات ضروری برای گذار بین بخش‌ها</h3>
+    <div class="format-row">
+      <div style="font-size:12px;font-family:'JetBrains Mono';color:var(--amber);width:80px;flex-shrink:0;">Intro</div>
+      <div style="font-size:13px;flex:1;">À mon sens… · Je suis d'avis que… · Selon moi, la question mérite d'être nuancée…</div>
+      <div style="font-size:11px;direction:rtl;text-align:right;color:var(--gray);width:140px;">به نظر من · معتقدم که</div>
+    </div>
+    <div class="format-row">
+      <div style="font-size:12px;font-family:'JetBrains Mono';color:var(--blue);width:80px;flex-shrink:0;">Arg 1</div>
+      <div style="font-size:13px;flex:1;">Premièrement… · En premier lieu… · Pour commencer…</div>
+      <div style="font-size:11px;direction:rtl;text-align:right;color:var(--gray);width:140px;">اول از همه</div>
+    </div>
+    <div class="format-row">
+      <div style="font-size:12px;font-family:'JetBrains Mono';color:var(--green);width:80px;flex-shrink:0;">Arg 2</div>
+      <div style="font-size:13px;flex:1;">Ensuite… · Par ailleurs… · À cela s'ajoute…</div>
+      <div style="font-size:11px;direction:rtl;text-align:right;color:var(--gray);width:140px;">علاوه بر این</div>
+    </div>
+    <div class="format-row">
+      <div style="font-size:12px;font-family:'JetBrains Mono';color:var(--purple);width:80px;flex-shrink:0;">Arg 3</div>
+      <div style="font-size:13px;flex:1;">Enfin… · Il convient également de souligner… · On ne peut pas non plus ignorer…</div>
+      <div style="font-size:11px;direction:rtl;text-align:right;color:var(--gray);width:140px;">در نهایت · نباید نادیده گرفت</div>
+    </div>
+    <div class="format-row">
+      <div style="font-size:12px;font-family:'JetBrains Mono';color:var(--amber-deep);width:80px;flex-shrink:0;">Conc.</div>
+      <div style="font-size:13px;flex:1;">En somme… · Pour conclure… · En définitive, je pense que…</div>
+      <div style="font-size:11px;direction:rtl;text-align:right;color:var(--gray);width:140px;">در مجموع</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ SUJET 1 — TRAVAIL ══════════ -->
+<div class="section" id="section-work">
+
+  <div class="notice">
+    <strong>💼 موضوع ۱ — کار کردن در کشوری دیگر</strong><br>
+    این موضوع مستقیماً با تجربه زندگی علیرضا ارتباط دارد: کار در ابوظبی، مهاجرت به کانادا. متن پایین از دیدگاه یک متخصص مالی نوشته شده.
+    <div class="fa">این متن دقیقاً مثل پاسخ یک داوطلب B2 در آزمون است — نه حفظ شود، بلکه ساختارش در ذهن بماند.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head">
+      <div class="q-emoji">💼</div>
+      <div>
+        <div class="q-title">Est-il facile de travailler dans un autre pays ?</div>
+        <div class="q-fa">آیا کار کردن در کشوری دیگر آسان است؟ دلایل خود را توضیح دهید.</div>
+      </div>
+    </div>
+    <div class="q-question">
+      <div class="qfr">Expliquez votre point de vue en vous appuyant sur des arguments précis et des exemples.</div>
+      <div class="qfa">دیدگاه خود را با استدلال‌های دقیق و مثال‌های مشخص توضیح دهید — ۴ دقیقه و ۳۰ ثانیه</div>
+    </div>
+    <div class="template-badge">📋 Texte modèle B2 — نسخه آزمونی</div>
+
+    <div class="tcf-text">
+
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40 ثانیه</div>
+        <p><span class="hl-struct">Aujourd'hui, la mobilité professionnelle internationale est devenue une réalité pour de nombreuses personnes,</span> attirées par de meilleures perspectives économiques ou par le désir d'élargir leurs horizons. <span class="hl-vocab">À mon sens</span>, travailler dans un autre pays est une expérience enrichissante, mais elle est loin d'être simple. <span class="hl-struct">Je suis d'avis que</span> cette démarche exige une préparation sérieuse, car elle soulève des défis réels sur trois plans : la maîtrise de la langue et des codes culturels, la compétition professionnelle dans un marché inconnu, et la construction d'un réseau à partir de zéro.</p>
+      </div>
+
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60 ثانیه</div>
+        <p><span class="hl-struct">Premièrement,</span> la langue représente bien plus qu'un simple outil de communication. <span class="hl-struct">Dans la mesure où</span> le travail ne se limite pas à exécuter des tâches techniques, il faut aussi comprendre les remarques informelles, les silences, les critiques indirectes et l'humour propre à chaque culture. <span class="hl-vocab">J'ai pu observer</span>, dans mon propre parcours professionnel à Abou Dhabi, qu'une même phrase peut être interprétée très différemment selon le contexte culturel. <span class="hl-struct">C'est pourquoi</span> je pense que la compétence linguistique doit toujours s'accompagner d'une véritable intelligence culturelle.</p>
+      </div>
+
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60 ثانیه</div>
+        <p><span class="hl-struct">Ensuite, il convient de souligner</span> la question de la concurrence professionnelle. <span class="hl-struct">Contrairement à ce qu'on pourrait penser,</span> obtenir un poste qualifié à l'étranger ne suffit pas : il faut aussi prouver sa valeur dans un environnement où les règles du jeu sont différentes. <span class="hl-vocab">Par exemple,</span> dans le secteur financier international, les recruteurs évaluent non seulement les compétences techniques, mais aussi la capacité à s'intégrer dans une équipe multiculturelle, à adopter les normes locales et à communiquer avec précision sous pression. <span class="hl-struct">Ce défi est d'autant plus réel</span> que les expatriés doivent souvent fournir un effort supplémentaire pour démontrer leur légitimité.</p>
+      </div>
+
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60 ثانیه</div>
+        <p><span class="hl-struct">Enfin,</span> on ne peut pas ignorer la difficulté de construire un réseau professionnel dans un pays où l'on est inconnu. <span class="hl-struct">Or,</span> dans de nombreux secteurs — notamment la finance, le conseil ou l'entrepreneuriat — les opportunités de carrière dépendent en grande partie des relations que l'on entretient. <span class="hl-vocab">Certes,</span> les outils numériques facilitent aujourd'hui ces connexions, <span class="hl-struct">mais rien ne remplace</span> la confiance qui se construit dans la durée, à travers des interactions humaines directes et authentiques. <span class="hl-struct">Il faut donc accepter</span> que cette construction prend du temps, parfois plusieurs années.</p>
+      </div>
+
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30 ثانیه</div>
+        <p><span class="hl-struct">En définitive,</span> travailler dans un autre pays est une aventure exigeante, mais pas impossible. <span class="hl-struct">Pour ma part,</span> je crois que la clé réside dans la préparation : apprendre la langue, comprendre la culture et investir dans les relations humaines <span class="hl-struct">avant même d'arriver.</span> <span class="hl-vocab">C'est précisément</span> cette conviction qui guide mon projet d'installation au Canada — un projet que je prépare avec soin et détermination.</p>
+      </div>
+
+    </div>
+
+    <div class="timing-strip">
+      <div class="ts-seg"><div class="ts-time">0:00</div><div class="ts-label">Introduction</div><div class="ts-fa">موضوع + نظر</div></div>
+      <div class="ts-seg"><div class="ts-time">0:40</div><div class="ts-label">Argument 1</div><div class="ts-fa">زبان + فرهنگ</div></div>
+      <div class="ts-seg"><div class="ts-time">1:40</div><div class="ts-label">Argument 2</div><div class="ts-fa">رقابت شغلی</div></div>
+      <div class="ts-seg"><div class="ts-time">2:40</div><div class="ts-label">Argument 3</div><div class="ts-fa">شبکه‌سازی</div></div>
+      <div class="ts-seg"><div class="ts-time">3:40</div><div class="ts-label">Conclusion</div><div class="ts-fa">جمع‌بندی</div></div>
+    </div>
+
+    <div class="analysis">
+      <h4>🔍 تحلیل متن</h4>
+      <div class="analysis-grid">
+        <div class="ag-item">
+          <div class="ag-label">ساختارهای B2 کلیدی</div>
+          <div class="ag-content" style="font-size:12px;">Dans la mesure où · Contrairement à ce qu'on pourrait penser · d'autant plus que · rien ne remplace</div>
+          <div class="ag-fa">این‌ها نشانگرهای سطح B2 هستند — ارزیاب توجه می‌کند</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">شخصی‌سازی برای علیرضا</div>
+          <div class="ag-content" style="font-size:12px;">«J'ai pu observer… à Abou Dhabi» · «mon projet d'installation au Canada»</div>
+          <div class="ag-fa">تجربه واقعی = امتیاز بالاتر در TCF</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">واژگان حرفه‌ای</div>
+          <div class="ag-content" style="font-size:12px;">mobilité professionnelle · intelligence culturelle · légitimité · expatriés</div>
+          <div class="ag-fa">واژگان مرتبط با دنیای مالی و بین‌المللی</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">concession (تقابل)</div>
+          <div class="ag-content" style="font-size:12px;">«Certes… mais rien ne remplace» ← این ساختار در B2 ضروری است</div>
+          <div class="ag-fa">نشان‌دهنده تفکر انتقادی و زبان پیشرفته</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <h4>✅ چک‌لیست قبل از ارائه</h4>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>موضوع و موضع‌ام را در مقدمه بیان کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>هر استدلال یک مثال یا دلیل مشخص دارد ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>حداقل یک concession (Certes… mais) استفاده کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>نتیجه‌گیری با نظر شخصی پایان یافت ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>به تجربه شخصی (ابوظبی / کانادا) اشاره کردم ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ SUJET 2 — ADAPTATION ══════════ -->
+<div class="section" id="section-adapt">
+
+  <div class="notice">
+    <strong>🌍 موضوع ۲ — سازگاری با کشور جدید</strong><br>
+    موضوع مستقیماً مربوط به تجربه آینده علیرضا در کانادا. زاویه دید: کسی که در حال آماده‌سازی برای مهاجرت است.
+    <div class="fa">این موضوع در TCF بسیار رایج است — با مثال‌های شخصی قوی‌تر می‌شود.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head">
+      <div class="q-emoji">🌍</div>
+      <div>
+        <div class="q-title">Est-il difficile de s'adapter à la vie dans un autre pays ?</div>
+        <div class="q-fa">آیا سازگاری با زندگی در کشوری دیگر دشوار است؟ دیدگاه خود را بیان کنید.</div>
+      </div>
+    </div>
+    <div class="q-question">
+      <div class="qfr">Donnez votre avis en vous appuyant sur des arguments et des exemples précis.</div>
+      <div class="qfa">نظر خود را با استدلال و مثال‌های دقیق بیان کنید</div>
+    </div>
+    <div class="template-badge">📋 Texte modèle B2 — نسخه آزمونی</div>
+
+    <div class="tcf-text">
+
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40 ثانیه</div>
+        <p><span class="hl-struct">La question de l'adaptation à un nouveau pays</span> concerne aujourd'hui des millions de personnes à travers le monde, qu'il s'agisse d'étudiants, de professionnels ou de familles entières. <span class="hl-vocab">Personnellement,</span> je pense que s'adapter à un nouveau pays est effectivement difficile, mais que cette difficulté est surmontable avec les bonnes ressources et la bonne attitude. <span class="hl-struct">À mon sens,</span> les principaux défis se situent à trois niveaux : le choc culturel et linguistique, la reconstruction d'un réseau social, et la gestion de l'identité dans un contexte nouveau.</p>
+      </div>
+
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60 ثانیه</div>
+        <p><span class="hl-struct">En premier lieu,</span> le choc culturel constitue souvent la première difficulté. <span class="hl-struct">Il ne s'agit pas seulement</span> d'apprendre une nouvelle langue — ce qui est déjà un effort considérable — <span class="hl-struct">mais aussi</span> de comprendre les codes sociaux implicites : comment saluer les gens, comment exprimer un désaccord, comment interpréter un silence. <span class="hl-vocab">Dans ma propre préparation pour le Canada,</span> j'ai réalisé que la culture québécoise, bien que francophone, possède ses propres particularités qui ne correspondent pas toujours à mes références initiales. <span class="hl-struct">Cette prise de conscience est déjà, en soi,</span> un premier pas vers une adaptation réussie.</p>
+      </div>
+
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60 ثانیه</div>
+        <p><span class="hl-struct">Par ailleurs,</span> la reconstruction d'un réseau social représente un défi que l'on sous-estime souvent. <span class="hl-struct">Dans son pays d'origine,</span> on bénéficie de relations construites depuis l'enfance, de repères familiaux et d'une appartenance communautaire qui soutient dans les moments difficiles. <span class="hl-struct">À l'étranger, tout est à recommencer.</span> <span class="hl-vocab">Certes,</span> les réseaux professionnels et les associations de migrants facilitent les premières rencontres, <span class="hl-struct">mais rien ne remplace</span> la profondeur des liens que l'on a tissés sur le long terme. <span class="hl-struct">C'est ce décalage</span> qui provoque parfois un sentiment de solitude, même dans une ville animée et accueillante.</p>
+      </div>
+
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60 ثانیه</div>
+        <p><span class="hl-struct">Enfin, il faut aborder</span> la question de l'identité. S'adapter ne signifie pas effacer ses origines, mais apprendre à naviguer entre deux cultures, deux langues, deux façons de penser. <span class="hl-struct">Cette dualité peut être vécue comme une richesse</span> — et elle l'est souvent à long terme — <span class="hl-struct">mais dans les premières années,</span> elle peut aussi générer une certaine confusion sur ce que l'on est et où l'on appartient. <span class="hl-vocab">À titre personnel,</span> je vois cette double identité non pas comme un obstacle, mais comme un avantage compétitif dans un monde de plus en plus interconnecté.</p>
+      </div>
+
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30 ثانیه</div>
+        <p><span class="hl-struct">En somme,</span> s'adapter à un nouveau pays est sans conteste difficile, mais cette difficulté n'est pas insurmontable. <span class="hl-struct">Je suis convaincu que</span> les personnes qui réussissent cette transition sont celles qui abordent ce défi avec humilité, curiosité et persévérance. <span class="hl-vocab">Pour ma part,</span> c'est avec ces trois valeurs que je m'apprête à construire ma nouvelle vie au Canada.</p>
+      </div>
+
+    </div>
+
+    <div class="timing-strip">
+      <div class="ts-seg"><div class="ts-time">0:00</div><div class="ts-label">Introduction</div><div class="ts-fa">موضوع + موضع</div></div>
+      <div class="ts-seg"><div class="ts-time">0:40</div><div class="ts-label">Argument 1</div><div class="ts-fa">شوک فرهنگی</div></div>
+      <div class="ts-seg"><div class="ts-time">1:40</div><div class="ts-label">Argument 2</div><div class="ts-fa">شبکه اجتماعی</div></div>
+      <div class="ts-seg"><div class="ts-time">2:40</div><div class="ts-label">Argument 3</div><div class="ts-fa">هویت دوگانه</div></div>
+      <div class="ts-seg"><div class="ts-time">3:40</div><div class="ts-label">Conclusion</div><div class="ts-fa">جمع‌بندی</div></div>
+    </div>
+
+    <div class="analysis">
+      <h4>🔍 تحلیل متن</h4>
+      <div class="analysis-grid">
+        <div class="ag-item">
+          <div class="ag-label">ساختارهای B2 کلیدی</div>
+          <div class="ag-content" style="font-size:12px;">Il ne s'agit pas seulement de… mais aussi · Cette prise de conscience est déjà, en soi · C'est ce décalage qui</div>
+          <div class="ag-fa">ساختارهای پیچیده که ارزیاب را تحت تأثیر می‌گذارند</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">concession خوب</div>
+          <div class="ag-content" style="font-size:12px;">«Certes… mais rien ne remplace» · «peut être vécue comme une richesse — mais dans les premières années»</div>
+          <div class="ag-fa">دو concession در یک متن = B2 قوی</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">شخصی‌سازی</div>
+          <div class="ag-content" style="font-size:12px;">«Dans ma propre préparation pour le Canada» · «À titre personnel, je vois cette double identité»</div>
+          <div class="ag-fa">تجربه شخصی = اعتبار + ارتباط احساسی</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">پایان قوی</div>
+          <div class="ag-content" style="font-size:12px;">«humilité, curiosité et persévérance» ← سه صفت موازی = parallélisme ✓</div>
+          <div class="ag-fa">موازی‌بودن ساختار = B2 ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <h4>✅ چک‌لیست قبل از ارائه</h4>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>موضع شخصی را با «À mon sens / Je pense que» بیان کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>از «Il ne s'agit pas seulement de… mais aussi» استفاده کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>به کانادا و تجربه شخصی اشاره کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>پایان با ۳ صفت موازی (parallélisme) ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ SUJET 3 — TÉLÉVISION ══════════ -->
+<div class="section" id="section-tv">
+
+  <div class="notice">
+    <strong>📺 موضوع ۳ — نقش تلویزیون در آموزش کودکان</strong><br>
+    موضوع اجتماعی کلاسیک — در TCF بسیار رایج. زاویه دید: تحلیلگر با نگاه انتقادی و متعادل.
+    <div class="fa">این نوع موضوع نیاز به یک موضع مشخص دارد — نه فقط «از یک طرف… از طرف دیگر» — بلکه یک نظر واضح.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head">
+      <div class="q-emoji">📺</div>
+      <div>
+        <div class="q-title">Quel rôle joue la télévision dans l'éducation des enfants ?</div>
+        <div class="q-fa">تلویزیون چه نقشی در آموزش کودکان دارد؟ نظر خود را بیان کنید.</div>
+      </div>
+    </div>
+    <div class="q-question">
+      <div class="qfr">Donnez votre avis personnel en justifiant votre point de vue avec des arguments et des exemples.</div>
+      <div class="qfa">نظر شخصی خود را با استدلال و مثال توجیه کنید</div>
+    </div>
+    <div class="template-badge">📋 Texte modèle B2 — نسخه آزمونی</div>
+
+    <div class="tcf-text">
+
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40 ثانیه</div>
+        <p><span class="hl-struct">La question du rôle de la télévision dans l'éducation des enfants</span> est au cœur de nombreux débats depuis plusieurs décennies, et elle est aujourd'hui plus complexe que jamais, avec l'essor des plateformes numériques qui ont largement remplacé la télévision traditionnelle. <span class="hl-vocab">Personnellement,</span> je pense que la télévision — ou plus généralement les écrans — peut jouer un rôle éducatif réel, <span class="hl-struct">à condition toutefois</span> qu'elle soit utilisée de manière encadrée et intentionnelle. <span class="hl-struct">Mon analyse s'articule autour de trois points :</span> son potentiel éducatif, les risques d'un usage non contrôlé, et le rôle indispensable des parents.</p>
+      </div>
+
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60 ثانیه</div>
+        <p><span class="hl-struct">D'emblée,</span> il faut reconnaître que la télévision peut constituer un outil pédagogique puissant lorsqu'elle est bien utilisée. <span class="hl-vocab">Certains programmes</span> — documentaires scientifiques, émissions culturelles, dessins animés éducatifs — permettent à l'enfant de découvrir le monde, d'élargir son vocabulaire et de développer sa curiosité intellectuelle. <span class="hl-struct">Il est indéniable que</span> des chaînes comme Arte ou des plateformes dédiées à la jeunesse proposent des contenus de qualité qui complètent utilement l'enseignement scolaire. <span class="hl-struct">En ce sens,</span> la télévision ne doit pas être systématiquement diabolisée — elle peut, au contraire, enrichir l'environnement cognitif de l'enfant.</p>
+      </div>
+
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60 ثانیه</div>
+        <p><span class="hl-struct">Cela étant dit,</span> les risques d'un usage non encadré sont bien réels et documentés. <span class="hl-vocab">De nombreuses études</span> montrent qu'une exposition excessive aux écrans, notamment avant l'âge de trois ans, peut nuire au développement du langage, à la concentration et aux capacités d'attention. <span class="hl-struct">À cela s'ajoute</span> le problème du contenu : la majorité des programmes accessibles aux enfants ne sont ni éducatifs ni adaptés à leur développement, mais simplement conçus pour capter leur attention le plus longtemps possible. <span class="hl-struct">Il faut donc distinguer clairement</span> entre la télévision comme outil éducatif et la télévision comme simple divertissement passif.</p>
+      </div>
+
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60 ثانیه</div>
+        <p><span class="hl-struct">Enfin, et c'est peut-être le point le plus crucial,</span> le rôle des parents est absolument déterminant. <span class="hl-struct">Quelle que soit la qualité du contenu,</span> la télévision ne peut pas remplacer l'interaction humaine, le dialogue et l'accompagnement parental. <span class="hl-vocab">En tant que futur parent,</span> je suis convaincu que ce n'est pas la télévision elle-même qui pose problème, mais la manière dont on l'intègre dans la vie familiale. <span class="hl-struct">Regarder un documentaire avec son enfant, en discutant ensuite des thèmes abordés,</span> transforme une expérience passive en véritable apprentissage actif.</p>
+      </div>
+
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30 ثانیه</div>
+        <p><span class="hl-struct">Pour conclure,</span> je dirais que la télévision est un outil neutre dont la valeur éducative dépend entièrement de l'usage qu'on en fait. <span class="hl-struct">Bien utilisée, avec discernement et accompagnement,</span> elle peut être une fenêtre sur le monde pour les enfants. <span class="hl-struct">Mal utilisée,</span> elle risque au contraire de les isoler et de freiner leur développement. <span class="hl-vocab">La responsabilité appartient donc aux adultes</span> — parents, éducateurs et décideurs — de faire les bons choix.</p>
+      </div>
+
+    </div>
+
+    <div class="timing-strip">
+      <div class="ts-seg"><div class="ts-time">0:00</div><div class="ts-label">Introduction</div><div class="ts-fa">موضوع + موضع</div></div>
+      <div class="ts-seg"><div class="ts-time">0:40</div><div class="ts-label">Argument 1</div><div class="ts-fa">پتانسیل آموزشی</div></div>
+      <div class="ts-seg"><div class="ts-time">1:40</div><div class="ts-label">Argument 2</div><div class="ts-fa">خطرات</div></div>
+      <div class="ts-seg"><div class="ts-time">2:40</div><div class="ts-label">Argument 3</div><div class="ts-fa">نقش والدین</div></div>
+      <div class="ts-seg"><div class="ts-time">3:40</div><div class="ts-label">Conclusion</div><div class="ts-fa">ابزار خنثی</div></div>
+    </div>
+
+    <div class="analysis">
+      <h4>🔍 تحلیل متن</h4>
+      <div class="analysis-grid">
+        <div class="ag-item">
+          <div class="ag-label">ساختارهای B2 کلیدی</div>
+          <div class="ag-content" style="font-size:12px;">à condition toutefois que · Cela étant dit · Quelle que soit la qualité de · Enfin, et c'est peut-être le point le plus crucial</div>
+          <div class="ag-fa">هر کدام از این‌ها نمره B2+ می‌دهند</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">موضع مشخص</div>
+          <div class="ag-content" style="font-size:12px;">نه «له» نه «علیه» — بلکه «شرطی»: à condition que ← این هوشمندانه‌ترین موضع در TCF است</div>
+          <div class="ag-fa">موضع «شرطی» = تفکر انتقادی = B2</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">concession‌ها</div>
+          <div class="ag-content" style="font-size:12px;">«ne doit pas être systématiquement diabolisée» · «Cela étant dit, les risques sont réels»</div>
+          <div class="ag-fa">دو طرف استدلال = ارزیاب را متقاعد می‌کند</div>
+        </div>
+        <div class="ag-item">
+          <div class="ag-label">پایان تأثیرگذار</div>
+          <div class="ag-content" style="font-size:12px;">«Bien utilisée… Mal utilisée» ← antithèse موازی = B2 ✓</div>
+          <div class="ag-fa">تضاد موازی = ساختار ادبی قوی</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <h4>✅ چک‌لیست قبل از ارائه</h4>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>موضع «شرطی» را با «à condition que» بیان کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>از «Cela étant dit» برای گذار به طرف مخالف استفاده کردم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>«Enfin, et c'est peut-être le point le plus crucial» برای استدلال سوم ✓</span></div>
+      <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div><span>پایان با تضاد «Bien utilisée… Mal utilisée» ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showSection(id, el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.snav').forEach(n=>n.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset>300);
+});
+</script>
+</body>
+</html>
