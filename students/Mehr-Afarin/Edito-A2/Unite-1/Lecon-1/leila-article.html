@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Leïla & Tahar — Vocabulaire · Édito A2 U1L1</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#fdf5f8 0%,#f8e1ec 100%);color:#2c3e50;line-height:1.7;min-height:100vh;padding:20px;}
+
+.container{max-width:1000px;margin:0 auto;background:white;border-radius:20px;box-shadow:0 30px 80px rgba(194,24,91,0.12);overflow:hidden;}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#c2185b 0%,#880e4f 100%);color:white;padding:46px 36px;text-align:center;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-50%;right:-10%;width:350px;height:350px;background:rgba(255,255,255,0.07);border-radius:50%;}
+.header::after{content:'';position:absolute;bottom:-30%;left:5%;width:250px;height:250px;background:rgba(255,255,255,0.04);border-radius:50%;}
+.header-content{position:relative;z-index:1;}
+.breadcrumb{font-size:12px;opacity:0.75;letter-spacing:2px;margin-bottom:12px;}
+.breadcrumb a{color:rgba(255,255,255,0.8);text-decoration:none;}
+.header .emoji{font-size:56px;display:block;margin-bottom:12px;}
+.header h1{font-size:clamp(24px,4vw,40px);font-weight:700;margin-bottom:8px;line-height:1.2;}
+.header .sub{font-size:14px;opacity:0.85;margin-bottom:12px;}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.badge{background:rgba(255,255,255,0.18);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:600;}
+
+/* TABS */
+.tabs-wrap{display:flex;overflow-x:auto;border-bottom:3px solid #fce4ec;background:#fff8fb;padding:0 16px;}
+.tab{padding:14px 18px;cursor:pointer;font-size:13px;font-weight:600;color:#9e6b80;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+.tab:hover{color:#c2185b;}.tab.active{color:#c2185b;border-bottom-color:#c2185b;}
+.tab-content{background:white;}
+.panel{display:none;padding:32px;}.panel.active{display:block;}
+
+/* ARTICLE */
+.article-block{margin-bottom:32px;}
+.article-block h2{font-size:19px;font-weight:700;color:#880e4f;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.article-block .h2-fa{font-size:13px;color:#9e6b80;direction:rtl;text-align:right;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #fce4ec;}
+
+.sent-pair{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #f0d9e5;border-radius:10px;overflow:hidden;margin:8px 0;}
+.sent-fr{padding:12px 16px;font-size:14.5px;line-height:1.7;background:#fff8fb;}
+.sent-fa{padding:12px 16px;font-size:13px;line-height:1.7;direction:rtl;text-align:right;color:#6b4c60;background:#fdf5f8;}
+.sent-fr .hl{background:rgba(194,24,91,0.13);padding:1px 5px;border-radius:4px;font-weight:700;color:#880e4f;}
+.sent-fr .hlb{background:rgba(106,27,154,0.12);padding:1px 5px;border-radius:4px;font-weight:700;color:#6a1b9a;}
+.sent-fr .hlg{background:rgba(46,125,50,0.13);padding:1px 5px;border-radius:4px;font-weight:700;color:#2e7d32;}
+.sent-fr .hla{background:rgba(230,81,0,0.13);padding:1px 5px;border-radius:4px;font-weight:700;color:#e65100;}
+
+/* QUOTE */
+.quote-block{background:linear-gradient(135deg,#880e4f,#c2185b);color:white;border-radius:14px;padding:24px 28px;margin:16px 0;position:relative;}
+.quote-block::before{content:'"';font-size:80px;opacity:0.2;position:absolute;top:-10px;right:20px;font-family:Georgia,serif;line-height:1;}
+.quote-text{font-size:16px;font-style:italic;line-height:1.7;margin-bottom:10px;}
+.quote-fa{font-size:13px;opacity:0.8;direction:rtl;text-align:right;line-height:1.8;padding-top:10px;border-top:1px solid rgba(255,255,255,0.25);}
+.quote-attr{font-size:12px;opacity:0.65;margin-top:8px;}
+
+/* VOCAB CARDS */
+.vocab-section-title{font-size:16px;font-weight:700;color:#880e4f;margin:28px 0 14px;padding-bottom:8px;border-bottom:2px solid #fce4ec;display:flex;align-items:center;gap:8px;}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:24px;}
+
+.vcard{background:white;border:2px solid #f0d9e5;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(194,24,91,0.07);transition:all .25s;}
+.vcard:hover{box-shadow:0 8px 24px rgba(194,24,91,0.14);transform:translateY(-2px);}
+.vcard-head{padding:14px 18px;border-bottom:1px solid #fce4ec;}
+.vcard-word{font-size:18px;font-weight:700;color:#880e4f;margin-bottom:3px;}
+.vcard-type{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;margin-right:6px;vertical-align:middle;}
+.type-nm{background:#fce4ec;color:#c2185b;}
+.type-vb{background:#e3f2fd;color:#1565c0;}
+.type-adj{background:#e8f5e9;color:#2e7d32;}
+.type-adv{background:#fff3e0;color:#e65100;}
+.type-expr{background:#f3e5f5;color:#6a1b9a;}
+.type-loc{background:#e0f2f1;color:#00695c;}
+.vcard-fa{font-size:13px;color:#9e6b80;direction:rtl;text-align:right;margin-top:4px;}
+.vcard-body{padding:14px 18px;}
+.vcard-def{font-size:13px;color:#5a4455;margin-bottom:10px;line-height:1.6;padding:8px 12px;background:#fff8fb;border-radius:8px;}
+
+/* EXAMPLES inside vcard */
+.vex{margin:6px 0;}
+.vex-num{display:inline-block;background:#c2185b;color:white;width:20px;height:20px;border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;margin-left:6px;flex-shrink:0;}
+.vex-fr{font-size:13.5px;color:#2c3e50;line-height:1.65;display:flex;align-items:flex-start;gap:6px;margin-bottom:3px;}
+.vex-fa{font-size:12px;color:#9e6b80;direction:rtl;text-align:right;margin-bottom:8px;padding-right:26px;line-height:1.7;}
+.vex .hl{background:rgba(194,24,91,0.13);padding:0 4px;border-radius:3px;font-weight:700;color:#880e4f;}
+
+/* STRUCTURE CARDS */
+.struct-card{background:white;border:2px solid #f0d9e5;border-radius:14px;overflow:hidden;margin-bottom:18px;}
+.struct-head{background:linear-gradient(135deg,#fce4ec,#fff0f5);padding:14px 20px;border-bottom:1px solid #fce4ec;}
+.struct-head h3{font-size:15px;font-weight:700;color:#880e4f;margin-bottom:4px;}
+.struct-head .sh-fa{font-size:12px;color:#9e6b80;direction:rtl;text-align:right;}
+.struct-body{padding:16px 20px;}
+.formula{background:#fff8fb;border:1.5px dashed #f48fb1;border-radius:8px;padding:10px 14px;text-align:center;font-size:14px;font-weight:700;color:#880e4f;margin-bottom:12px;}
+
+/* QUIZ */
+.quiz{background:#fff8fb;border:2px solid #fce4ec;border-radius:14px;padding:22px;margin-bottom:18px;}
+.quiz h3{font-size:15px;font-weight:700;color:#880e4f;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.qn{background:#c2185b;color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.qi{margin-bottom:16px;padding-bottom:16px;border-bottom:1px dashed #fce4ec;}
+.qi:last-child{margin:0;padding:0;border:none;}
+.qt{font-size:14px;color:#2c3e50;margin-bottom:4px;line-height:1.6;}
+.qfa{font-size:12px;color:#9e6b80;margin-bottom:10px;direction:rtl;text-align:right;}
+.qopts{display:flex;flex-wrap:wrap;gap:7px;}
+.qopt{font-size:13px;font-weight:600;background:white;border:2px solid #f0d9e5;border-radius:8px;padding:7px 14px;cursor:pointer;transition:all .2s;}
+.qopt:hover:not(.done){border-color:#c2185b;background:#fce4ec;}
+.qopt.correct{background:#e8f5e9;border-color:#2e7d32;color:#2e7d32;}
+.qopt.wrong{background:#ffebee;border-color:#b71c1c;color:#b71c1c;}
+.qans{display:none;font-size:12.5px;background:#e8f5e9;border-right:3px solid #2e7d32;border-radius:8px;padding:10px 14px;margin-top:8px;line-height:1.8;}
+.qans.show{display:block;}.qans b{color:#2e7d32;}
+
+.footer{text-align:center;padding:22px;border-top:2px solid #fce4ec;color:#9e6b80;font-size:13px;}
+.footer a{color:#c2185b;text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:22px;right:22px;background:linear-gradient(135deg,#c2185b,#880e4f);color:white;border:none;padding:12px 15px;border-radius:50%;cursor:pointer;font-size:18px;box-shadow:0 4px 14px rgba(194,24,91,0.35);z-index:1000;}
+#scrollBtn.show{display:block;}
+
+@media(max-width:640px){
+  .sent-pair,.struct-pair{grid-template-columns:1fr;}
+  .header h1{font-size:24px;}
+  .panel{padding:18px;}
+  .vocab-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-content">
+    <div class="breadcrumb"><a href="../../../../index.html">← مهرآفرین</a> / Édito A2 / Unité 1 / Leçon 1</div>
+    <span class="emoji">🎬</span>
+    <h1>Une histoire d'amour comme au cinéma</h1>
+    <div class="sub">یک داستان عاشقانه مثل فیلم‌های سینمایی · Leïla Bekhti & Tahar Rahim</div>
+    <div class="badges">
+      <span class="badge">📖 متن اصلی</span>
+      <span class="badge">📚 واژگان + مثال</span>
+      <span class="badge">🏗️ ساختارها</span>
+      <span class="badge">✏️ تمرین</span>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tab active" onclick="showTab('texte',this)">📖 Texte</div>
+  <div class="tab" onclick="showTab('vocab',this)">📚 Vocabulaire</div>
+  <div class="tab" onclick="showTab('structures',this)">🏗️ Structures</div>
+  <div class="tab" onclick="showTab('exercices',this)">✏️ Exercices</div>
+</div>
+
+<div class="tab-content">
+
+<!-- ══ TAB 1 — TEXTE ══ -->
+<div class="panel active" id="panel-texte">
+
+  <div class="article-block">
+    <h2>🎬 Introduction</h2>
+    <div class="h2-fa">معرفی</div>
+    <div class="sent-pair">
+      <div class="sent-fr"><span class="hl">Leïla Bekhti</span>, l'actrice de la <span class="hlb">comédie française culte</span> <em>Tout ce qui brille</em>, a <span class="hl">raconté</span> dans un <span class="hla">long entretien</span> avec le magazine <em>Paris Match</em> sa <span class="hlg">rencontre</span> avec son mari, <span class="hl">Tahar Rahim</span>.</div>
+      <div class="sent-fa">لیلا بختی، بازیگر فیلم مشهور فرانسوی «Tout ce qui brille»، در یک مصاحبه مفصل با مجله Paris Match درباره آشنایی خود با همسرش طاهر رحیم صحبت کرده است.</div>
+    </div>
+  </div>
+
+  <div class="article-block">
+    <h2>⚡ Leur coup de foudre</h2>
+    <div class="h2-fa">عشق در نگاه اول آن‌ها</div>
+    <div class="sent-pair">
+      <div class="sent-fr">Les deux acteurs ont <span class="hlg">fait connaissance</span> en 2008 sur le <span class="hl">tournage</span> du film <em>Un Prophète</em>.</div>
+      <div class="sent-fa">این دو بازیگر در سال ۲۰۰۸ در جریان فیلم‌برداری فیلم «Un Prophète» با یکدیگر آشنا شدند.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">Immédiatement, il y a eu une <span class="hl">connexion</span> entre eux, mais ils ont choisi de <span class="hlg">rester professionnels</span> et de <span class="hlb">prendre leur temps</span>.</div>
+      <div class="sent-fa">بلافاصله میان آن‌ها یک ارتباط و کشش شکل گرفت، اما تصمیم گرفتند حرفه‌ای بمانند و عجله نکنند.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">Ils ont <span class="hlg">rejoué ensemble</span> dans la série Netflix <em>The Eddy</em>.</div>
+      <div class="sent-fa">آن‌ها بعداً دوباره در سریال نتفلیکس The Eddy با یکدیگر بازی کردند.</div>
+    </div>
+  </div>
+
+  <div class="article-block">
+    <h2>👨‍👩‍👧‍👦 Leur vie de famille</h2>
+    <div class="h2-fa">زندگی خانوادگی آن‌ها</div>
+    <div class="sent-pair">
+      <div class="sent-fr">Ils <span class="hl">se sont mariés</span> deux ans après leur rencontre.</div>
+      <div class="sent-fa">دو سال پس از آشنایی‌شان ازدواج کردند.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">Et, encore une fois, ils ont <span class="hlb">pris leur temps</span> avant d'<span class="hlg">agrandir la famille</span>.</div>
+      <div class="sent-fa">و یک بار دیگر، قبل از بزرگ‌تر کردن خانواده، عجله نکردند.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">Leur premier enfant Souleymane <span class="hl">est né</span> en 2017.</div>
+      <div class="sent-fa">اولین فرزندشان، سلیمان، در سال ۲۰۱۷ متولد شد.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">Ils ont <span class="hlg">accueilli</span> une petite fille en 2020.</div>
+      <div class="sent-fa">سپس در سال ۲۰۲۰ صاحب یک دختر شدند.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">Ils ont eu leur troisième enfant en 2021, mais ils n'ont pas voulu <span class="hl">dire son prénom</span> aux médias.</div>
+      <div class="sent-fa">آن‌ها در سال ۲۰۲۱ سومین فرزند خود را به دنیا آوردند، اما نخواستند نام او را به رسانه‌ها اعلام کنند.</div>
+    </div>
+    <div class="sent-pair">
+      <div class="sent-fr">C'est un couple de stars <span class="hlb">uni</span> et <span class="hlg">très discret</span>.</div>
+      <div class="sent-fa">آن‌ها زوجی مشهور، متحد و بسیار کم‌حاشیه هستند.</div>
+    </div>
+  </div>
+
+  <div class="article-block">
+    <div class="quote-block">
+      <div class="quote-text">« Je l'aime <span style="text-decoration:underline;font-weight:700;">comme un fou</span>. C'est ma femme, mon amour, ma meilleure amie. »</div>
+      <div class="quote-fa">من دیوانه‌وار دوستش دارم. او همسرم، عشق زندگی‌ام و بهترین دوستم است.</div>
+      <div class="quote-attr">— Tahar Rahim à propos de Leïla Bekhti</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 2 — VOCABULAIRE ══ -->
+<div class="panel" id="panel-vocab">
+
+  <!-- NOMS -->
+  <div class="vocab-section-title">🟣 Noms — اسم‌ها</div>
+  <div class="vocab-grid">
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">un entretien <span class="vcard-type type-nm">n.m.</span></div>
+        <div class="vcard-fa">مصاحبه · گفتگوی مفصل (رسمی‌تر از «interview»)</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Conversation approfondie entre deux personnes, souvent pour un journal ou une émission.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">مکالمه‌ای عمیق بین دو نفر، اغلب برای مجله یا برنامه</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Elle a accordé un long <span class="hl">entretien</span> au journal Le Monde dans lequel elle a parlé de sa carrière, de sa vie privée et de ses projets futurs.</div>
+          <div class="vex-fa">او یک مصاحبه مفصل به روزنامه Le Monde داد که در آن از حرفه، زندگی شخصی و پروژه‌های آینده‌اش صحبت کرد.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Dans cet <span class="hl">entretien</span> exclusif accordé à Paris Match, le couple a révélé des détails touchants sur leur première rencontre et leur vie de famille.</div>
+          <div class="vex-fa">در این مصاحبه انحصاری با Paris Match، این زوج جزئیات دلنشینی از اولین آشنایی و زندگی خانوادگی‌شان فاش کردند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>L'<span class="hl">entretien</span> a duré plus de deux heures, ce qui montre à quel point le réalisateur souhaitait comprendre la personnalité de l'actrice avant de lui proposer le rôle.</div>
+          <div class="vex-fa">مصاحبه بیش از دو ساعت طول کشید، که نشان می‌دهد کارگردان تا چه حد می‌خواست شخصیت بازیگر را قبل از پیشنهاد نقش بشناسد.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">la rencontre <span class="vcard-type type-nm">n.f.</span></div>
+        <div class="vcard-fa">آشنایی · ملاقات · دیدار</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Moment où deux personnes se rencontrent pour la première fois.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">لحظه‌ای که دو نفر برای اولین بار با هم آشنا می‌شوند</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Leur <span class="hl">rencontre</span> sur le tournage d'Un Prophète a changé le cours de leur vie : deux ans plus tard, ils se mariaient.</div>
+          <div class="vex-fa">آشنایی آن‌ها در فیلم‌برداری Un Prophète مسیر زندگی‌شان را تغییر داد: دو سال بعد ازدواج کردند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Cette <span class="hl">rencontre</span> inattendue lors d'un festival de cinéma est devenue, des années plus tard, le point de départ d'une belle histoire d'amour.</div>
+          <div class="vex-fa">این آشنایی غیرمنتظره در جشنواره سینمایی، سال‌ها بعد تبدیل به نقطه آغاز یک داستان عاشقانه زیبا شد.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>La <span class="hl">rencontre</span> entre Leïla et Tahar n'était pas programmée, mais comme on dit en français : « les histoires d'amour commencent souvent par hasard ».</div>
+          <div class="vex-fa">آشنایی لیلا و طاهر برنامه‌ریزی‌شده نبود، اما همان‌طور که به فرانسوی می‌گویند: «داستان‌های عاشقانه اغلب تصادفی شروع می‌شوند».</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">le tournage <span class="vcard-type type-nm">n.m.</span></div>
+        <div class="vcard-fa">فیلم‌برداری · جریان ساخت فیلم</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Période pendant laquelle on filme un film ou une série.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">دوره‌ای که در آن فیلم یا سریال ساخته می‌شود</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Sur le <span class="hl">tournage</span> d'Un Prophète, les deux acteurs passaient de longues heures ensemble à préparer leurs scènes, ce qui a naturellement créé un lien fort entre eux.</div>
+          <div class="vex-fa">در جریان فیلم‌برداری Un Prophète، دو بازیگر ساعت‌های طولانی را با هم برای آماده‌سازی صحنه‌هایشان می‌گذراندند، که به طور طبیعی پیوند محکمی بین آن‌ها ایجاد کرد.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Le <span class="hl">tournage</span> du film a duré six mois à Paris et dans plusieurs régions de France, ce qui était épuisant mais aussi enrichissant pour toute l'équipe.</div>
+          <div class="vex-fa">فیلم‌برداری فیلم شش ماه در پاریس و چندین منطقه فرانسه طول کشید، که هم خسته‌کننده و هم غنی‌بخش برای کل تیم بود.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Beaucoup de grandes amitiés et même des histoires d'amour se créent pendant les <span class="hl">tournages</span>, car les acteurs partagent des moments intenses et émotionnels.</div>
+          <div class="vex-fa">دوستی‌های بزرگ و حتی داستان‌های عاشقانه بسیاری در طول فیلم‌برداری‌ها شکل می‌گیرند، زیرا بازیگران لحظات شدید و احساسی را با هم تقسیم می‌کنند.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">un coup de foudre <span class="vcard-type type-loc">loc.</span></div>
+        <div class="vcard-fa">عشق در نگاه اول · عشق صاعقه‌وار</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Amour immédiat et fort au premier regard. Littéralement: «un éclair».<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">عشق فوری و شدید در نظر اول. به معنای واقعی: «یک رعد و برق»</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>C'était un <span class="hl">coup de foudre</span> immédiat : dès le premier regard, il a su que cette femme allait changer sa vie pour toujours.</div>
+          <div class="vex-fa">عشق در نگاه اول بود: از همان نظر اول فهمید که این زن زندگی‌اش را برای همیشه تغییر خواهد داد.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Leur <span class="hl">coup de foudre</span> s'est produit de manière inattendue sur le tournage, mais malgré cette attirance immédiate, ils ont choisi d'attendre et de mieux se connaître.</div>
+          <div class="vex-fa">عشق در نگاه اول آن‌ها به طور غیرمنتظره‌ای در جریان فیلم‌برداری اتفاق افتاد، اما علی‌رغم این جذابیت فوری، تصمیم گرفتند صبر کنند و یکدیگر را بهتر بشناسند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Le <span class="hl">coup de foudre</span> existe vraiment, selon les psychologues, mais ce qui fait durer une relation, c'est bien la confiance et le respect mutuel.</div>
+          <div class="vex-fa">طبق گفته روانشناسان، عشق در نگاه اول واقعاً وجود دارد، اما آنچه رابطه را ماندگار می‌کند اعتماد و احترام متقابل است.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">une connexion <span class="vcard-type type-nm">n.f.</span></div>
+        <div class="vcard-fa">ارتباط · کشش · پیوند احساسی</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Lien fort et immédiat entre deux personnes, souvent d'ordre émotionnel.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">پیوند قوی و فوری بین دو نفر، اغلب احساسی</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Dès leur première conversation, il y avait une <span class="hl">connexion</span> évidente entre eux : ils partageaient les mêmes valeurs, les mêmes passions et le même sens de l'humour.</div>
+          <div class="vex-fa">از اولین مکالمه‌شان، یک ارتباط آشکار بین آن‌ها وجود داشت: ارزش‌ها، اشتیاق‌ها و حس شوخ‌طبعی یکسانی داشتند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>La <span class="hl">connexion</span> entre les deux comédiens était si forte que même le réalisateur avait remarqué la complicité exceptionnelle qui se dégageait de leurs scènes communes.</div>
+          <div class="vex-fa">ارتباط بین دو بازیگر آن‌قدر قوی بود که حتی کارگردان هم همدلی استثنائی که از صحنه‌های مشترک‌شان احساس می‌شد را متوجه شده بود.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Selon les experts en relations, une vraie <span class="hl">connexion</span> ne se construit pas seulement sur l'attirance physique, mais surtout sur une compréhension profonde de l'autre.</div>
+          <div class="vex-fa">طبق نظر متخصصان روابط، یک ارتباط واقعی نه تنها بر جذابیت فیزیکی بلکه بیشتر بر درک عمیق از دیگری بنا می‌شود.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">le prénom <span class="vcard-type type-nm">n.m.</span></div>
+        <div class="vcard-fa">نام کوچک (≠ nom de famille = نام خانوادگی)</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Le premier nom d'une personne (ex : Leïla, Tahar, Souleymane).<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">اسم اول شخص — فرق با nom = نام خانوادگی</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>En France, on appelle souvent les gens par leur <span class="hl">prénom</span> dans un contexte professionnel détendu, contrairement à des cultures plus formelles.</div>
+          <div class="vex-fa">در فرانسه، اغلب در محیط کاری غیررسمی افراد را با نام کوچک‌شان صدا می‌زنند، برخلاف فرهنگ‌های رسمی‌تر.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Le couple n'a pas voulu révéler le <span class="hl">prénom</span> de leur troisième enfant, souhaitant protéger sa vie privée dès sa naissance.</div>
+          <div class="vex-fa">این زوج نخواستند نام کوچک فرزند سومشان را فاش کنند و از همان ابتدا می‌خواستند حریم خصوصی‌اش را حفظ کنند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Pour remplir un formulaire officiel en France, il faut indiquer le <span class="hl">prénom</span>, le nom de famille, la date de naissance et l'adresse.</div>
+          <div class="vex-fa">برای پر کردن فرم رسمی در فرانسه باید نام کوچک، نام خانوادگی، تاریخ تولد و آدرس ذکر شود.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VERBES -->
+  <div class="vocab-section-title">🔵 Verbes & Expressions verbales — افعال و عبارات فعلی</div>
+  <div class="vocab-grid">
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">faire connaissance <span class="vcard-type type-expr">expr.</span></div>
+        <div class="vcard-fa">آشنا شدن · با کسی آشنایی پیدا کردن</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Se rencontrer pour la première fois et commencer à se connaître.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">برای اولین بار دیدن و شروع به شناختن کردن</span></div>
+        <div class="formula">faire connaissance + avec + quelqu'un</div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Ils ont <span class="hl">fait connaissance</span> lors d'un dîner organisé par des amis communs, et depuis cette soirée, ils ne se sont plus quittés.</div>
+          <div class="vex-fa">آن‌ها در شام سازمان‌یافته‌ای توسط دوستان مشترک آشنا شدند، و از آن شب به بعد دیگر از هم جدا نشدند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>J'ai <span class="hl">fait connaissance</span> avec ma voisine hier : elle s'appelle Nadia, elle est d'origine marocaine et travaille dans le domaine de la santé.</div>
+          <div class="vex-fa">دیروز با همسایه‌ام آشنا شدم: اسمش نادیاست، اصالتاً مراکشی است و در حوزه بهداشت کار می‌کند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Quand on s'installe dans une nouvelle ville, il est important de <span class="hl">faire connaissance</span> avec ses voisins et de créer des liens sociaux progressivement.</div>
+          <div class="vex-fa">وقتی در شهر جدیدی ساکن می‌شویم، مهم است که با همسایه‌هایمان آشنا شویم و به تدریج روابط اجتماعی ایجاد کنیم.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">prendre son temps <span class="vcard-type type-expr">expr.</span></div>
+        <div class="vcard-fa">عجله نکردن · با آرامش پیش رفتن</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Ne pas se précipiter, agir sans se presser.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">شتاب نکردن · بدون عجله عمل کردن</span></div>
+        <div class="formula">prendre son/leur temps + avant de + infinitif</div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Ils ont <span class="hl">pris leur temps</span> avant de se marier, préférant d'abord apprendre à se connaître vraiment, à partager leur quotidien et à construire une solide amitié.</div>
+          <div class="vex-fa">آن‌ها قبل از ازدواج عجله نکردند، ترجیح دادند ابتدا یکدیگر را واقعاً بشناسند، زندگی روزمره را به اشتراک بگذارند و دوستی محکمی بسازند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Pour bien apprendre une langue étrangère, il faut <span class="hl">prendre son temps</span> et accepter que les progrès soient progressifs plutôt que de vouloir tout maîtriser en quelques semaines.</div>
+          <div class="vex-fa">برای یادگیری خوب یک زبان خارجی باید عجله نکنیم و بپذیریم که پیشرفت‌ها تدریجی هستند، به جای اینکه بخواهیم در چند هفته همه چیز را تسلط یابیم.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Elle lui a dit : « <span class="hl">Prends ton temps</span> pour réfléchir à ma proposition, je ne veux pas que tu prennes une décision importante sous pression. »</div>
+          <div class="vex-fa">او به او گفت: «برای فکر کردن به پیشنهادم عجله نکن، نمی‌خواهم تحت فشار تصمیم مهمی بگیری.»</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">agrandir la famille <span class="vcard-type type-expr">expr.</span></div>
+        <div class="vcard-fa">خانواده را بزرگ‌تر کردن · بچه‌دار شدن</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Avoir des enfants, augmenter le nombre de membres de la famille.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">بچه‌دار شدن · اضافه کردن عضو به خانواده</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Après deux ans de mariage, ils ont décidé d'<span class="hl">agrandir la famille</span> en accueillant leur premier enfant, une décision qu'ils avaient longuement mûrie ensemble.</div>
+          <div class="vex-fa">پس از دو سال ازدواج، تصمیم گرفتند با پذیرفتن اولین فرزندشان خانواده را بزرگ‌تر کنند، تصمیمی که مدت زیادی با هم به آن فکر کرده بودند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Ils voulaient attendre d'être bien installés dans leur nouvelle maison et financièrement stables avant d'<span class="hl">agrandir la famille</span>.</div>
+          <div class="vex-fa">می‌خواستند قبل از بزرگ‌تر کردن خانواده، به خوبی در خانه جدیدشان مستقر شوند و از نظر مالی باثبات باشند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>En France, beaucoup de couples choisissent d'<span class="hl">agrandir la famille</span> plus tardivement qu'avant, préférant d'abord consolider leur carrière et leur relation.</div>
+          <div class="vex-fa">در فرانسه، بسیاری از زوج‌ها دیرتر از قبل تصمیم به بزرگ‌تر کردن خانواده می‌گیرند، و ترجیح می‌دهند ابتدا حرفه و رابطه‌شان را محکم کنند.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">accueillir <span class="vcard-type type-vb">v.</span></div>
+        <div class="vcard-fa">پذیرفتن · استقبال کردن · صاحب شدن (فرزند)</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Recevoir quelqu'un avec plaisir; dans ce texte : avoir un enfant.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">استقبال کردن · در اینجا: صاحب فرزند شدن (با محبت)</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Ils ont <span class="hl">accueilli</span> leur petite fille en 2020 avec une joie immense, au milieu d'une période difficile pour le monde entier à cause de la pandémie.</div>
+          <div class="vex-fa">آن‌ها دخترشان را در سال ۲۰۲۰ با شادی فراوان به دنیا آوردند، در میان دوره‌ای دشوار برای کل جهان به دلیل بیماری همه‌گیر.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>La ville de Lyon a <span class="hl">accueilli</span> des milliers de touristes pendant le festival des lumières, organisant de nombreux événements culturels pour les recevoir au mieux.</div>
+          <div class="vex-fa">شهر لیون در طول جشنواره نورها هزاران گردشگر را پذیرفت و رویدادهای فرهنگی فراوانی برای استقبال هرچه بهتر از آن‌ها سازماندهی کرد.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>L'école a décidé d'<span class="hl">accueillir</span> des élèves en situation de handicap dans toutes les classes, pour favoriser leur intégration et l'apprentissage de la différence.</div>
+          <div class="vex-fa">مدرسه تصمیم گرفت دانش‌آموزان دارای معلولیت را در تمام کلاس‌ها بپذیرد تا ادغام آن‌ها و یادگیری تفاوت را تسهیل کند.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">raconter <span class="vcard-type type-vb">v.</span></div>
+        <div class="vcard-fa">تعریف کردن · روایت کردن</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Narrer, dire une histoire à quelqu'un.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">تعریف کردن · نقل کردن · روایت کردن یک داستان</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Dans sa biographie, l'actrice <span class="hl">raconte</span> avec beaucoup d'émotion et d'humour comment elle a vécu ses premières années difficiles à Paris avant de connaître le succès.</div>
+          <div class="vex-fa">در زندگی‌نامه‌اش، بازیگر با احساس و طنز فراوان تعریف می‌کند که چگونه سال‌های اول سخت خود را در پاریس قبل از موفقیت گذراند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Elle lui a <span class="hl">raconté</span> l'histoire de leur rencontre à leurs enfants, et ceux-ci adorent entendre cette belle histoire encore et encore avant de s'endormir.</div>
+          <div class="vex-fa">او داستان آشنایی‌شان را برای بچه‌هایشان تعریف کرد، و آن‌ها عاشق شنیدن این داستان زیبا بارها و بارها قبل از خوابیدن هستند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Le magazine lui a demandé de <span class="hl">raconter</span> sa vie quotidienne en tant que mère de trois enfants et actrice connue, et elle l'a fait avec une sincérité touchante.</div>
+          <div class="vex-fa">مجله از او خواست زندگی روزمره‌اش را به عنوان مادر سه فرزند و بازیگر مشهور تعریف کند، و او با صداقتی دلنشین این کار را کرد.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">aimer comme un fou <span class="vcard-type type-expr">expr.</span></div>
+        <div class="vcard-fa">دیوانه‌وار دوست داشتن · عاشق دیوانه‌وار بودن</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Aimer avec une intensité extrême, sans limites.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">با شدت افراطی و بی‌حد دوست داشتن</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Tahar Rahim a confié à Paris Match : « Je l'<span class="hl">aime comme un fou</span>. Après toutes ces années, je me réveille chaque matin heureux d'être à ses côtés. »</div>
+          <div class="vex-fa">طاهر رحیم به Paris Match اعتراف کرد: «دیوانه‌وار دوستش دارم. بعد از همه این سال‌ها، هر صبح با شادی از کنارش بیدار می‌شوم.»</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Dans les grandes œuvres de la littérature française, les personnages qui <span class="hl">aiment comme des fous</span> finissent souvent par commettre des actes irrationnels au nom de leur passion.</div>
+          <div class="vex-fa">در آثار بزرگ ادبیات فرانسه، شخصیت‌هایی که دیوانه‌وار عاشق هستند اغلب در نهایت به خاطر اشتیاقشان اعمال غیرمنطقی انجام می‌دهند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>On dit qu'on <span class="hl">aime comme un fou</span> quand on ne peut pas imaginer sa vie sans l'autre personne, quand chaque séparation, même courte, semble insupportable.</div>
+          <div class="vex-fa">می‌گویند کسی دیوانه‌وار عاشق است که نمی‌تواند زندگی بدون دیگری را تصور کند، وقتی هر جدایی، حتی کوتاه، غیرقابل تحمل به نظر می‌رسد.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ADJECTIFS -->
+  <div class="vocab-section-title">🟢 Adjectifs — صفت‌ها</div>
+  <div class="vocab-grid">
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">discret / discrète <span class="vcard-type type-adj">adj.</span></div>
+        <div class="vcard-fa">کم‌حاشیه · خلوت‌گزین · محتاط</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Qui ne se montre pas trop en public, qui garde sa vie privée.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">کسی که خیلی خودنمایی نمی‌کند و زندگی خصوصی‌اش را محافظت می‌کند</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Malgré leur célébrité mondiale, Leïla et Tahar restent très <span class="hl">discrets</span> sur leur vie personnelle : on ne les voit presque jamais dans les galas ni sur les tapis rouges.</div>
+          <div class="vex-fa">علی‌رغم شهرت جهانی‌شان، لیلا و طاهر درباره زندگی شخصی‌شان بسیار کم‌حاشیه هستند: تقریباً هرگز آن‌ها را در گالاها یا فرش‌های قرمز نمی‌بینیم.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Il est très <span class="hl">discret</span> par nature : il n'aime pas parler de lui en public et préfère laisser son travail parler à sa place plutôt que de se mettre en avant.</div>
+          <div class="vex-fa">او ذاتاً بسیار کم‌حاشیه است: دوست ندارد در مقابل عموم از خود صحبت کند و ترجیح می‌دهد کارش به جای خودش صحبت کند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Une personne <span class="hl">discrète</span> sait écouter les secrets des autres sans jamais les divulguer et comprend l'importance de la confiance dans une amitié.</div>
+          <div class="vex-fa">یک آدم محتاط می‌داند که به اسرار دیگران گوش دهد بدون اینکه هرگز آن‌ها را فاش کند و اهمیت اعتماد در دوستی را درک می‌کند.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">uni(e) <span class="vcard-type type-adj">adj.</span></div>
+        <div class="vcard-fa">متحد · یکپارچه · باهم قوی</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Qui est lié par des liens forts (famille, couple, groupe).<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">کسی که پیوندهای قوی دارد — خانواده، زوج، گروه</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>C'est une famille très <span class="hl">unie</span> : malgré leurs emplois du temps chargés, ils trouvent toujours le temps de dîner ensemble au moins trois fois par semaine.</div>
+          <div class="vex-fa">این یک خانواده بسیار متحد است: علی‌رغم برنامه‌های شلوغ، همیشه وقت پیدا می‌کنند که حداقل سه بار در هفته با هم شام بخورند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>Les épreuves difficiles rendent souvent les couples plus <span class="hl">unis</span> : faire face ensemble aux obstacles de la vie renforce les liens et approfondit la relation.</div>
+          <div class="vex-fa">دشواری‌های سخت اغلب زوج‌ها را متحدتر می‌کنند: روبرو شدن با موانع زندگی با هم پیوندها را تقویت و رابطه را عمیق‌تر می‌کند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Leurs amis les décrivent comme un couple parfaitement <span class="hl">uni</span> qui se soutient mutuellement dans les bons comme dans les mauvais moments, sans jamais se laisser abattre.</div>
+          <div class="vex-fa">دوستانشان آن‌ها را به عنوان زوجی کاملاً متحد توصیف می‌کنند که در خوب و بد به هم اتکا می‌کنند و هرگز ناامید نمی‌شوند.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard">
+      <div class="vcard-head">
+        <div class="vcard-word">culte <span class="vcard-type type-adj">adj.</span></div>
+        <div class="vcard-fa">کالت · مشهور و محبوب · افسانه‌ای</div>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-def">Qui est vénéré, très célèbre et aimé de génération en génération.<br><span style="font-size:11px;color:#9e6b80;direction:rtl;display:block;text-align:right;margin-top:4px;">که نسل به نسل محبوب و افسانه‌ای است — فیلم یا آلبوم کالت</span></div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">1</span>Le film <em>Tout ce qui brille</em> est devenu un film <span class="hl">culte</span> en France : plus de dix ans après sa sortie, on cite encore ses répliques et les jeunes le découvrent toujours avec la même joie.</div>
+          <div class="vex-fa">فیلم «Tout ce qui brille» در فرانسه تبدیل به فیلمی کالت شده: بیش از ده سال پس از اکران، هنوز دیالوگ‌هایش نقل می‌شود و جوانان همچنان با همان شادی آن را کشف می‌کنند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">2</span>En France, certaines séries télévisées sont devenues <span class="hl">cultes</span> car elles reflètent avec justesse la société française, ses contradictions et ses humours particuliers.</div>
+          <div class="vex-fa">در فرانسه، برخی سریال‌های تلویزیونی کالت شده‌اند زیرا به درستی جامعه فرانسوی، تناقضات و طنز خاص آن را منعکس می‌کنند.</div>
+        </div>
+        <div class="vex">
+          <div class="vex-fr"><span class="vex-num">3</span>Pour une actrice, jouer dans un film <span class="hl">culte</span> est une chance extraordinaire car cela garantit une place permanente dans la mémoire collective du public.</div>
+          <div class="vex-fa">برای یک بازیگر، بازی در یک فیلم کالت شانسی فوق‌العاده است زیرا جایگاهی دائمی در حافظه جمعی مخاطبان تضمین می‌کند.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══ TAB 3 — STRUCTURES ══ -->
+<div class="panel" id="panel-structures">
+
+  <div class="struct-card">
+    <div class="struct-head">
+      <h3>🔑 Encore une fois — یک بار دیگر / دوباره</h3>
+      <div class="sh-fa">برای تکرار یک رفتار — عبارت بسیار رایج در فرانسوی گفتاری و نوشتاری</div>
+    </div>
+    <div class="struct-body">
+      <div class="formula">encore une fois + sujet + verbe</div>
+      <div class="sent-pair">
+        <div class="sent-fr"><span class="hl">Encore une fois</span>, ils ont choisi de prendre leur temps avant d'agrandir leur famille, sans se laisser presser par leur entourage.</div>
+        <div class="sent-fa">یک بار دیگر، انتخاب کردند که قبل از بزرگ‌تر کردن خانواده عجله نکنند، بدون اینکه اطرافیانشان بر آن‌ها فشار بیاورد.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr"><span class="hl">Encore une fois</span>, il a oublié l'anniversaire de sa femme, et cette fois-ci, elle a décidé d'en parler sérieusement avec lui.</div>
+        <div class="sent-fa">یک بار دیگر، تولد همسرش را فراموش کرد، و این بار او تصمیم گرفت جدی با او صحبت کند.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr"><span class="hl">Encore une fois</span>, le film français a remporté la Palme d'Or à Cannes, prouvant la vitalité et la créativité du cinéma hexagonal.</div>
+        <div class="sent-fa">بار دیگر، فیلم فرانسوی نخل طلای کن را برد و سرزندگی و خلاقیت سینمای فرانسه را ثابت کرد.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="struct-card">
+    <div class="struct-head">
+      <h3>🔑 mais ils n'ont pas voulu + infinitif — اما نخواستند</h3>
+      <div class="sh-fa">برای بیان انتخاب آگاهانه در نفی — ساختار مهم و رایج</div>
+    </div>
+    <div class="struct-body">
+      <div class="formula">ne pas vouloir + infinitif = تصمیم به نکردن</div>
+      <div class="sent-pair">
+        <div class="sent-fr">Ils n'ont <span class="hl">pas voulu dire</span> le prénom de leur enfant aux médias, pour protéger sa vie privée dès sa naissance.</div>
+        <div class="sent-fa">نخواستند نام فرزندشان را به رسانه‌ها بگویند تا از همان ابتدا حریم خصوصی‌اش را حفظ کنند.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr">Elle n'a <span class="hl">pas voulu répondre</span> à cette question très personnelle lors de l'entretien, ce que le journaliste a respecté sans insister.</div>
+        <div class="sent-fa">او نخواست در طول مصاحبه به این سؤال بسیار شخصی پاسخ دهد، که روزنامه‌نگار بدون اصرار آن را محترم شمرد.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr">Ils n'ont <span class="hl">pas voulu se précipiter</span> dans cette nouvelle aventure sans être vraiment prêts émotionnellement et matériellement.</div>
+        <div class="sent-fa">نخواستند بدون آمادگی واقعی احساسی و مادی در این ماجرای جدید شتاب کنند.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="struct-card">
+    <div class="struct-head">
+      <h3>🔑 à propos de — درباره / راجع به</h3>
+      <div class="sh-fa">مقدمه نقل قول یا معرفی موضوع — رسمی‌تر از «sur»</div>
+    </div>
+    <div class="struct-body">
+      <div class="formula">à propos de + nom → برای معرفی موضوع یا نقل قول</div>
+      <div class="sent-pair">
+        <div class="sent-fr"><span class="hl">À propos de</span> Leïla Bekhti, Tahar Rahim a déclaré qu'elle était non seulement sa femme, mais aussi sa meilleure amie et son plus grand soutien.</div>
+        <div class="sent-fa">درباره لیلا بختی، طاهر رحیم اعلام کرد که او نه تنها همسرش بلکه بهترین دوست و بزرگ‌ترین حمایتش است.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr"><span class="hl">À propos de</span> son dernier film, la réalisatrice a expliqué qu'elle avait voulu explorer le thème de l'identité et des racines culturelles.</div>
+        <div class="sent-fa">درباره آخرین فیلمش، کارگردان توضیح داد که می‌خواسته موضوع هویت و ریشه‌های فرهنگی را کاوش کند.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr"><span class="hl">À propos de</span> la vie de famille, les deux acteurs sont d'accord sur un point essentiel : la famille passe toujours avant la carrière.</div>
+        <div class="sent-fa">درباره زندگی خانوادگی، دو بازیگر بر یک نکته اساسی توافق دارند: خانواده همیشه قبل از حرفه می‌آید.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="struct-card">
+    <div class="struct-head">
+      <h3>🔑 rester + adjectif — رسمی ماندن · ثابت ماندن در چیزی</h3>
+      <div class="sh-fa">حالت یا صفت را حفظ کردن — فعل copule مهم</div>
+    </div>
+    <div class="struct-body">
+      <div class="formula">rester + adjectif = ماندن در یک حالت · تغییر ندادن</div>
+      <div class="sent-pair">
+        <div class="sent-fr">Malgré leur succès international, ils ont choisi de <span class="hl">rester discrets</span> et de ne pas exposer leur vie de famille sur les réseaux sociaux.</div>
+        <div class="sent-fa">علی‌رغم موفقیت بین‌المللی‌شان، انتخاب کردند کم‌حاشیه بمانند و زندگی خانوادگی‌شان را در شبکه‌های اجتماعی نشان ندهند.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr">Sur le tournage, ils ont fait le choix de <span class="hl">rester professionnels</span>, même si leurs sentiments commençaient déjà à évoluer l'un envers l'autre.</div>
+        <div class="sent-fa">در فیلم‌برداری، انتخاب کردند حرفه‌ای بمانند، حتی اگر احساساتشان نسبت به یکدیگر شروع به تغییر کرده بود.</div>
+      </div>
+      <div class="sent-pair">
+        <div class="sent-fr">Il est difficile de <span class="hl">rester calme</span> face aux critiques injustes, mais c'est une qualité essentielle dans le métier d'acteur exposé au regard du public.</div>
+        <div class="sent-fa">در برابر انتقادات ناعادلانه آرام ماندن دشوار است، اما این یک ویژگی ضروری در حرفه بازیگری است که در معرض دید عموم است.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 4 — EXERCICES ══ -->
+<div class="panel" id="panel-exercices">
+
+  <div class="quiz" id="q1">
+    <h3><span class="qn">1</span> Quel mot correspond à la définition ?</h3>
+    <div class="qi">
+      <div class="qt">Conversation approfondie avec un journaliste ou pour un magazine :</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,1)">un entretien</button>
+        <button class="qopt" onclick="qa(this,1,0)">un tournage</button>
+        <button class="qopt" onclick="qa(this,2,0)">une rencontre</button>
+      </div>
+      <div class="qans"><b>un entretien</b> — مصاحبه مفصل · Le tournage = فیلم‌برداری · La rencontre = آشنایی</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Période pendant laquelle on filme un film :</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,0)">un entretien</button>
+        <button class="qopt" onclick="qa(this,1,1)">le tournage</button>
+        <button class="qopt" onclick="qa(this,2,0)">le prénom</button>
+      </div>
+      <div class="qans"><b>le tournage</b> — دوره فیلم‌برداری · مشتق از «tourner un film»</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Qui garde sa vie privée et ne se montre pas trop en public :</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,1)">discret</button>
+        <button class="qopt" onclick="qa(this,1,0)">uni</button>
+        <button class="qopt" onclick="qa(this,2,0)">culte</button>
+      </div>
+      <div class="qans"><b>discret</b> — کم‌حاشیه · Uni = متحد · Culte = افسانه‌ای</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Amour immédiat et fort dès le premier regard :</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,0)">une connexion</button>
+        <button class="qopt" onclick="qa(this,1,0)">une rencontre</button>
+        <button class="qopt" onclick="qa(this,2,1)">un coup de foudre</button>
+      </div>
+      <div class="qans"><b>un coup de foudre</b> — عشق در نگاه اول · به معنای واقعی «رعد و برق»</div>
+    </div>
+  </div>
+
+  <div class="quiz" id="q2">
+    <h3><span class="qn">2</span> Choisis la bonne expression</h3>
+    <div class="qi">
+      <div class="qt">Ils ___ en 2008 sur le tournage du film.</div>
+      <div class="qfa">در سال ۲۰۰۸ در جریان فیلم‌برداری با هم آشنا شدند.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,1)">ont fait connaissance</button>
+        <button class="qopt" onclick="qa(this,1,0)">ont raconté</button>
+        <button class="qopt" onclick="qa(this,2,0)">ont accueilli</button>
+      </div>
+      <div class="qans"><b>ont fait connaissance</b> — faire connaissance = آشنا شدن · ساختار ثابت</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Avant d'agrandir la famille, ils ont ___ .</div>
+      <div class="qfa">قبل از بزرگ‌تر کردن خانواده عجله نکردند.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,0)">raconté leur histoire</button>
+        <button class="qopt" onclick="qa(this,1,1)">pris leur temps</button>
+        <button class="qopt" onclick="qa(this,2,0)">fait connaissance</button>
+      </div>
+      <div class="qans"><b>pris leur temps</b> — prendre son temps = عجله نکردن · بسیار رایج</div>
+    </div>
+    <div class="qi">
+      <div class="qt">Ils ___ une petite fille en 2020.</div>
+      <div class="qfa">در سال ۲۰۲۰ صاحب یک دختر شدند.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,0)">ont raconté</button>
+        <button class="qopt" onclick="qa(this,1,0)">ont rencontré</button>
+        <button class="qopt" onclick="qa(this,2,1)">ont accueilli</button>
+      </div>
+      <div class="qans"><b>ont accueilli</b> — accueillir un enfant = صاحب فرزند شدن (با محبت)</div>
+    </div>
+    <div class="qi">
+      <div class="qt">___ de Leïla, Tahar a dit qu'il l'aime comme un fou.</div>
+      <div class="qfa">درباره لیلا، طاهر گفت که دیوانه‌وار دوستش دارد.</div>
+      <div class="qopts">
+        <button class="qopt" onclick="qa(this,0,1)">À propos</button>
+        <button class="qopt" onclick="qa(this,1,0)">Encore une fois</button>
+        <button class="qopt" onclick="qa(this,2,0)">Au tournage</button>
+      </div>
+      <div class="qans"><b>À propos</b> de — درباره · برای معرفی موضوع یا نقل قول</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /tab-content -->
+
+<div class="footer">
+  <a href="index.html">← Leçon 1</a> · مهرآفرین · Édito A2 Unité 1 · Français avec Hoda © 2025
+</div>
+</div><!-- /container -->
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id, el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function qa(el,idx,correct){
+  const item=el.closest('.qi');
+  if(item.dataset.done) return;
+  item.dataset.done="1";
+  item.querySelectorAll('.qopt').forEach((o,i)=>{
+    o.classList.add('done');
+    if(i===correct) o.classList.add('correct');
+  });
+  if(idx!==correct) el.classList.add('wrong');
+  const a=item.querySelector('.qans');
+  if(a) a.classList.add('show');
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('show', window.pageYOffset>300);
+});
+</script>
+</body>
+</html>
