@@ -266,33 +266,123 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
     </div>
     <div class="template-badge">📋 Texte modèle B2 — نسخه آزمونی</div>
 
-    <div class="tcf-text">
+    
+    <div class="level-wrap">
+      <div class="level-tabs" id="ltabs-work">
+        <div class="ltab a-orig" onclick="showLevel('work','orig',this)">📋 متن اصلی</div>
+        <div class="ltab" onclick="showLevel('work','b1',this)" style="color:var(--green);">B1 — ساده</div>
+        <div class="ltab" onclick="showLevel('work','b2',this)" style="color:var(--blue);">B2 — پیشرفته</div>
+      </div>
+      <div class="level-block active" id="lb-work-orig"><div class="tcf-text">
 
       <div class="p-intro">
         <div class="p-label lb-intro">Introduction · مقدمه · ~40 ثانیه</div>
         <p><span class="hl-struct">Aujourd'hui, la mobilité professionnelle internationale est devenue une réalité pour de nombreuses personnes,</span> attirées par de meilleures perspectives économiques ou par le désir d'élargir leurs horizons. <span class="hl-vocab">À mon sens</span>, travailler dans un autre pays est une expérience enrichissante, mais elle est loin d'être simple. <span class="hl-struct">Je suis d'avis que</span> cette démarche exige une préparation sérieuse, car elle soulève des défis réels sur trois plans : la maîtrise de la langue et des codes culturels, la compétition professionnelle dans un marché inconnu, et la construction d'un réseau à partir de zéro.</p>
+        <div class="p-trans">امروزه، جابه‌جایی شغلی بین‌المللی برای بسیاری از افراد تبدیل به واقعیت شده. به نظر من، کار در کشوری دیگر تجربه‌ای ارزشمند است، اما ساده نیست. فکر می‌کنم این کار سه چالش اصلی دارد: زبان و فرهنگ، رقابت شغلی، و ساختن شبکه از صفر.</div>
       </div>
 
       <div class="p-arg1">
         <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60 ثانیه</div>
         <p><span class="hl-struct">Premièrement,</span> la langue représente bien plus qu'un simple outil de communication. <span class="hl-struct">Dans la mesure où</span> le travail ne se limite pas à exécuter des tâches techniques, il faut aussi comprendre les remarques informelles, les silences, les critiques indirectes et l'humour propre à chaque culture. <span class="hl-vocab">J'ai pu observer</span>, dans mon propre parcours professionnel à Abou Dhabi, qu'une même phrase peut être interprétée très différemment selon le contexte culturel. <span class="hl-struct">C'est pourquoi</span> je pense que la compétence linguistique doit toujours s'accompagner d'une véritable intelligence culturelle.</p>
+        <div class="p-trans">اول، زبان خیلی بیشتر از یک ابزار ارتباطی است. چون کار فقط انجام وظایف فنی نیست — باید نقدهای غیرمستقیم، شوخی‌ها و سکوت‌های فرهنگی را هم بفهمی. من در ابوظبی دیدم که یک جمله ساده می‌تواند بسته به فرهنگ خیلی متفاوت تعبیر شود. به همین دلیل زبان باید با درک فرهنگی همراه باشد.</div>
       </div>
 
       <div class="p-arg2">
         <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60 ثانیه</div>
         <p><span class="hl-struct">Ensuite, il convient de souligner</span> la question de la concurrence professionnelle. <span class="hl-struct">Contrairement à ce qu'on pourrait penser,</span> obtenir un poste qualifié à l'étranger ne suffit pas : il faut aussi prouver sa valeur dans un environnement où les règles du jeu sont différentes. <span class="hl-vocab">Par exemple,</span> dans le secteur financier international, les recruteurs évaluent non seulement les compétences techniques, mais aussi la capacité à s'intégrer dans une équipe multiculturelle, à adopter les normes locales et à communiquer avec précision sous pression. <span class="hl-struct">Ce défi est d'autant plus réel</span> que les expatriés doivent souvent fournir un effort supplémentaire pour démontrer leur légitimité.</p>
+        <div class="p-trans">بعد، رقابت شغلی در خارج سخت‌تر است. گرفتن یک پست خوب کافی نیست — باید ارزش خود را در محیطی اثبات کنی که قوانین آن برایت ناشناخته است. مثلاً در دنیای مالی، ارزیاب‌ها فقط مهارت فنی را نمی‌بینند — به توانایی کار در تیم چندفرهنگی هم اهمیت می‌دهند. این بار اضافی است که مهاجران حرفه‌ای باید تحمل کنند.</div>
       </div>
 
       <div class="p-arg3">
         <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60 ثانیه</div>
         <p><span class="hl-struct">Enfin,</span> on ne peut pas ignorer la difficulté de construire un réseau professionnel dans un pays où l'on est inconnu. <span class="hl-struct">Or,</span> dans de nombreux secteurs — notamment la finance, le conseil ou l'entrepreneuriat — les opportunités de carrière dépendent en grande partie des relations que l'on entretient. <span class="hl-vocab">Certes,</span> les outils numériques facilitent aujourd'hui ces connexions, <span class="hl-struct">mais rien ne remplace</span> la confiance qui se construit dans la durée, à travers des interactions humaines directes et authentiques. <span class="hl-struct">Il faut donc accepter</span> que cette construction prend du temps, parfois plusieurs années.</p>
+        <div class="p-trans">در نهایت، ساختن شبکه حرفه‌ای در کشوری که کسی تو را نمی‌شناسد خیلی دشوار است. در بسیاری از حوزه‌ها — از جمله مالی — فرصت‌های شغلی به روابط بستگی دارند. البته ابزارهای دیجیتال کمک می‌کنند، اما هیچ‌چیز جای اعتمادی که در طول زمان ساخته می‌شود را نمی‌گیرد. این فرایند سال‌ها طول می‌کشد.</div>
       </div>
 
       <div class="p-conc">
         <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30 ثانیه</div>
         <p><span class="hl-struct">En définitive,</span> travailler dans un autre pays est une aventure exigeante, mais pas impossible. <span class="hl-struct">Pour ma part,</span> je crois que la clé réside dans la préparation : apprendre la langue, comprendre la culture et investir dans les relations humaines <span class="hl-struct">avant même d'arriver.</span> <span class="hl-vocab">C'est précisément</span> cette conviction qui guide mon projet d'installation au Canada — un projet que je prépare avec soin et détermination.</p>
+        <div class="p-trans">در مجموع، کار در کشوری دیگر سخت است اما ناممکن نیست. فکر می‌کنم کلید موفقیت در آمادگی است: یادگیری زبان، شناخت فرهنگ، و سرمایه‌گذاری در روابط انسانی — قبل از ورود. دقیقاً همین باوری است که پروژه من برای کانادا را شکل می‌دهد.</div>
       </div>
 
+    </div>
+      </div>
+      <div class="level-block" id="lb-work-b1">
+  <div class="level-block" id="level-b1-work">
+    <div class="level-header" style="background:#2e7d32;">
+      <div class="level-tag">B1</div>
+      <div>
+        <div class="level-label">متن B1 — ساده و مستقیم</div>
+        <div class="level-sublabel">ساختار واضح · واژگان پایه · مناسب برای تمرین اولیه</div>
+      </div>
+    </div>
+    <div class="tcf-text">
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40s</div>
+        <p dir="ltr">Travailler dans un autre pays est une expérience intéressante, mais ce n'est pas facile. À mon avis, il y a trois raisons principales : la langue, la concurrence professionnelle et le réseau social. Je vais expliquer chacune de ces raisons.</p>
+        <div class="p-trans">کار کردن در کشوری دیگر تجربه جالبی است، اما آسان نیست. به نظر من، سه دلیل اصلی وجود دارد: زبان، رقابت شغلی و شبکه اجتماعی. هر کدام را توضیح می‌دهم.</div>
+      </div>
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60s</div>
+        <p dir="ltr">D'abord, la langue est un grand obstacle. Dans un autre pays, on ne comprend pas toujours les expressions locales, les blagues ou les critiques indirectes. Dans mon travail à Abou Dhabi, j'ai remarqué que la même phrase peut avoir un sens différent selon la culture. Il faut donc apprendre la langue et aussi comprendre la culture.</p>
+        <div class="p-trans">اول، زبان یک مانع بزرگ است. در کشوری دیگر، همیشه اصطلاحات محلی، شوخی‌ها یا انتقادهای غیرمستقیم را نمی‌فهمیم. در کارم در ابوظبی، دیدم که یک جمله یکسان می‌تواند در فرهنگ‌های مختلف معنای متفاوتی داشته باشد. بنابراین باید هم زبان و هم فرهنگ را یاد بگیریم.</div>
+      </div>
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60s</div>
+        <p dir="ltr">Ensuite, la concurrence est plus difficile à l'étranger. Il ne suffit pas d'avoir un bon poste. Il faut aussi prouver que vous êtes compétent dans un environnement différent. Par exemple, dans la finance internationale, les recruteurs regardent aussi si vous pouvez travailler avec des équipes de cultures différentes. Ce n'est pas simple.</p>
+        <div class="p-trans">بعد، رقابت در خارج سخت‌تر است. داشتن یک پست خوب کافی نیست. باید در یک محیط متفاوت هم شایستگی‌ات را اثبات کنی. مثلاً در مالی بین‌المللی، استخدام‌کننده‌ها هم می‌بینند که آیا می‌توانی با تیم‌هایی از فرهنگ‌های مختلف کار کنی. این ساده نیست.</div>
+      </div>
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60s</div>
+        <p dir="ltr">Enfin, construire un réseau dans un nouveau pays est très difficile. Dans beaucoup de secteurs, les opportunités professionnelles dépendent des relations. Les outils numériques aident, mais ils ne remplacent pas la confiance qui se construit avec le temps. Cette confiance prend souvent plusieurs années.</p>
+        <div class="p-trans">در نهایت، ساختن شبکه در کشوری جدید خیلی دشوار است. در بسیاری از حوزه‌ها، فرصت‌های شغلی به روابط بستگی دارند. ابزارهای دیجیتال کمک می‌کنند، اما جای اعتمادی که با گذشت زمان ساخته می‌شود را نمی‌گیرند. این اعتماد اغلب چندین سال طول می‌کشد.</div>
+      </div>
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30s</div>
+        <p dir="ltr">En conclusion, travailler dans un autre pays est difficile, mais c'est possible. Je pense que la clé, c'est de bien se préparer : apprendre la langue, comprendre la culture et créer des relations avant d'arriver. C'est exactement ce que je fais pour mon projet au Canada.</p>
+        <div class="p-trans">در نتیجه، کار کردن در کشوری دیگر دشوار است، اما ممکن است. فکر می‌کنم کلید آن آمادگی خوب است: یادگیری زبان، درک فرهنگ و ایجاد روابط قبل از ورود. دقیقاً همین کاری است که برای پروژه‌ام در کانادا انجام می‌دهم.</div>
+      </div>
+    </div>
+  </div>
+      </div>
+      <div class="level-block" id="lb-work-b2">
+  <div class="level-block" id="level-b2-work">
+    <div class="level-header" style="background:#1565c0;">
+      <div class="level-tag">B2</div>
+      <div>
+        <div class="level-label">متن B2 — ساختارمند و استدلالی</div>
+        <div class="level-sublabel">concession · ساختارهای پیشرفته · تجربه شخصی · antithèse</div>
+      </div>
+    </div>
+    <div class="tcf-text">
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40s</div>
+        <p dir="ltr">Aujourd'hui, la mobilité professionnelle internationale attire de nombreuses personnes en quête de meilleures perspectives. À mon sens, travailler à l'étranger est une chance réelle — mais elle est loin d'être simple. Trois défis me semblent décisifs : maîtriser les codes culturels, s'imposer dans un marché inconnu, et construire un réseau de confiance à partir de zéro.</p>
+        <div class="p-trans">امروزه، جابه‌جایی شغلی بین‌المللی افراد زیادی را جذب می‌کند که دنبال چشم‌اندازهای بهتر هستند. به نظر من، کار در خارج یک فرصت واقعی است — اما ساده نیست. سه چالش برایم تعیین‌کننده به نظر می‌رسند: تسلط بر کدهای فرهنگی، اثبات خود در بازاری ناشناخته، و ساختن شبکه‌ای بر پایه اعتماد از صفر.</div>
+      </div>
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60s</div>
+        <p dir="ltr">D'abord, la langue va bien au-delà du vocabulaire. Dans un environnement professionnel, il faut comprendre les silences, les critiques formulées en douceur, l'humour local — autant de codes que l'on ne trouve dans aucun manuel. J'ai vécu cela concrètement à Abou Dhabi : une même remarque, formulée de façon identique, pouvait être perçue comme un compliment dans un contexte et comme une critique dans un autre. Cette intelligence culturelle s'acquiert avec le temps, pas avec un dictionnaire.</p>
+        <div class="p-trans">اول، زبان خیلی فراتر از لغت است. در محیط شغلی، باید سکوت‌ها، انتقادهای ملایم و طنز محلی را بفهمی — کدهایی که در هیچ کتابی نیستند. این را در ابوظبی خودم تجربه کردم: یک نظر یکسان، با همان لحن، در یک زمینه می‌توانست تعریف باشد و در زمینه‌ای دیگر انتقاد. این هوش فرهنگی با زمان به‌دست می‌آید، نه با فرهنگ‌لغت.</div>
+      </div>
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60s</div>
+        <p dir="ltr">Ensuite vient la question de la légitimité. Contrairement à ce qu'on imagine, décrocher un poste qualifié ne suffit pas : il faut encore se faire accepter comme un égal dans un système dont on ne connaît pas encore les règles implicites. Dans le secteur financier, les équipes multiculturelles demandent une forme d'agilité sociale que les compétences techniques seules ne garantissent pas. Certes, l'expérience internationale est valorisée — mais elle doit d'abord être justifiée, étape par étape.</p>
+        <div class="p-trans">بعد، موضوع مشروعیت مطرح می‌شود. برخلاف تصور، گرفتن یک پست خوب کافی نیست — باید به عنوان یک برابر در سیستمی پذیرفته شوی که هنوز قوانین ضمنی‌اش را نمی‌شناسی. در دنیای مالی، تیم‌های چندفرهنگی نوعی چابکی اجتماعی می‌طلبند که مهارت فنی به تنهایی تضمین نمی‌کند. البته تجربه بین‌المللی ارزشمند است — اما ابتدا باید قدم به قدم اثبات شود.</div>
+      </div>
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60s</div>
+        <p dir="ltr">Enfin, le réseau. Dans beaucoup de secteurs — la finance, l'investissement, le conseil — ce sont les relations qui ouvrent les portes, pas les CV. Or, à l'étranger, tout est à reconstruire. Les plateformes numériques facilitent les premiers contacts, mais rien ne remplace la confiance qui naît d'interactions répétées, dans la durée. Ce paradoxe est réel : les plus qualifiés sont parfois les moins visibles, simplement parce qu'ils arrivent sans réseau.</p>
+        <div class="p-trans">در نهایت، شبکه. در خیلی از حوزه‌ها — مالی، سرمایه‌گذاری، مشاوره — روابط هستند که درها را باز می‌کنند، نه رزومه. اما در خارج، همه چیز باید از نو ساخته شود. پلتفرم‌های دیجیتال اولین تماس‌ها را آسان می‌کنند، اما هیچ‌چیز جای اعتمادی که از تعاملات مکرر در طول زمان به وجود می‌آید را نمی‌گیرد. این تضاد واقعی است: ماهرترین‌ها گاهی کمترین دیده می‌شوند، صرفاً به این دلیل که بدون شبکه وارد می‌شوند.</div>
+      </div>
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30s</div>
+        <p dir="ltr">En définitive, travailler à l'étranger est difficile — mais c'est précisément ce défi qui le rend formateur. Je crois que ceux qui réussissent ne sont pas ceux qui ont eu le moins d'obstacles, mais ceux qui s'y sont préparés le plus sérieusement. C'est dans cet esprit que je construis, pas à pas, mon projet au Canada.</p>
+        <div class="p-trans">در مجموع، کار در خارج دشوار است — اما دقیقاً همین چالش است که آن را سازنده می‌کند. فکر می‌کنم کسانی که موفق می‌شوند نه کسانی هستند که کمترین موانع را داشتند، بلکه کسانی که جدی‌ترین آمادگی را داشتند. با همین روح است که پروژه‌ام را برای کانادا، قدم به قدم، می‌سازم.</div>
+      </div>
+    </div>
+  </div>
+      </div>
     </div>
 
     <div class="timing-strip">
@@ -364,33 +454,123 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
     </div>
     <div class="template-badge">📋 Texte modèle B2 — نسخه آزمونی</div>
 
-    <div class="tcf-text">
+    
+    <div class="level-wrap">
+      <div class="level-tabs" id="ltabs-adapt">
+        <div class="ltab a-orig" onclick="showLevel('adapt','orig',this)">📋 متن اصلی</div>
+        <div class="ltab" onclick="showLevel('adapt','b1',this)" style="color:var(--green);">B1 — ساده</div>
+        <div class="ltab" onclick="showLevel('adapt','b2',this)" style="color:var(--blue);">B2 — پیشرفته</div>
+      </div>
+      <div class="level-block active" id="lb-adapt-orig"><div class="tcf-text">
 
       <div class="p-intro">
         <div class="p-label lb-intro">Introduction · مقدمه · ~40 ثانیه</div>
         <p><span class="hl-struct">La question de l'adaptation à un nouveau pays</span> concerne aujourd'hui des millions de personnes à travers le monde, qu'il s'agisse d'étudiants, de professionnels ou de familles entières. <span class="hl-vocab">Personnellement,</span> je pense que s'adapter à un nouveau pays est effectivement difficile, mais que cette difficulté est surmontable avec les bonnes ressources et la bonne attitude. <span class="hl-struct">À mon sens,</span> les principaux défis se situent à trois niveaux : le choc culturel et linguistique, la reconstruction d'un réseau social, et la gestion de l'identité dans un contexte nouveau.</p>
+        <div class="p-trans">سازگاری با کشوری جدید امروزه برای میلیون‌ها نفر — دانشجویان، حرفه‌ای‌ها، خانواده‌ها — واقعیت است. فکر می‌کنم سازگاری واقعاً دشوار است اما شدنی. سه چالش اصلی می‌بینم: شوک فرهنگی و زبانی، بازسازی شبکه اجتماعی، و مدیریت هویت در زمینه‌ای جدید.</div>
       </div>
 
       <div class="p-arg1">
         <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60 ثانیه</div>
         <p><span class="hl-struct">En premier lieu,</span> le choc culturel constitue souvent la première difficulté. <span class="hl-struct">Il ne s'agit pas seulement</span> d'apprendre une nouvelle langue — ce qui est déjà un effort considérable — <span class="hl-struct">mais aussi</span> de comprendre les codes sociaux implicites : comment saluer les gens, comment exprimer un désaccord, comment interpréter un silence. <span class="hl-vocab">Dans ma propre préparation pour le Canada,</span> j'ai réalisé que la culture québécoise, bien que francophone, possède ses propres particularités qui ne correspondent pas toujours à mes références initiales. <span class="hl-struct">Cette prise de conscience est déjà, en soi,</span> un premier pas vers une adaptation réussie.</p>
+        <div class="p-trans">اول، شوک فرهنگی اولین مانع است. فقط زبان نیست — که خودش تلاش بزرگی است — بلکه باید کدهای اجتماعی ضمنی را هم بفهمی: چطور سلام کنی، چطور مخالفت را بیان کنی، چطور یک سکوت را تفسیر کنی. در آماده‌سازی‌ام برای کانادا، فهمیدم که فرهنگ کبک، با اینکه فرانسوی‌زبان است، ویژگی‌های خاص خودش را دارد. همین آگاهی اولین قدم به سمت سازگاری موفق است.</div>
       </div>
 
       <div class="p-arg2">
         <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60 ثانیه</div>
         <p><span class="hl-struct">Par ailleurs,</span> la reconstruction d'un réseau social représente un défi que l'on sous-estime souvent. <span class="hl-struct">Dans son pays d'origine,</span> on bénéficie de relations construites depuis l'enfance, de repères familiaux et d'une appartenance communautaire qui soutient dans les moments difficiles. <span class="hl-struct">À l'étranger, tout est à recommencer.</span> <span class="hl-vocab">Certes,</span> les réseaux professionnels et les associations de migrants facilitent les premières rencontres, <span class="hl-struct">mais rien ne remplace</span> la profondeur des liens que l'on a tissés sur le long terme. <span class="hl-struct">C'est ce décalage</span> qui provoque parfois un sentiment de solitude, même dans une ville animée et accueillante.</p>
+        <div class="p-trans">علاوه بر این، بازسازی شبکه اجتماعی چالشی است که اغلب دست کم گرفته می‌شود. در کشور خودت از روابطی بهره می‌بری که از کودکی ساخته شده‌اند. در خارج، همه چیز باید از نو شروع شود. البته انجمن‌های مهاجران اولین آشنایی‌ها را آسان می‌کنند، اما هیچ‌چیز جای عمق روابط بلندمدت را نمی‌گیرد. این فاصله است که گاهی احساس تنهایی ایجاد می‌کند.</div>
       </div>
 
       <div class="p-arg3">
         <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60 ثانیه</div>
         <p><span class="hl-struct">Enfin, il faut aborder</span> la question de l'identité. S'adapter ne signifie pas effacer ses origines, mais apprendre à naviguer entre deux cultures, deux langues, deux façons de penser. <span class="hl-struct">Cette dualité peut être vécue comme une richesse</span> — et elle l'est souvent à long terme — <span class="hl-struct">mais dans les premières années,</span> elle peut aussi générer une certaine confusion sur ce que l'on est et où l'on appartient. <span class="hl-vocab">À titre personnel,</span> je vois cette double identité non pas comme un obstacle, mais comme un avantage compétitif dans un monde de plus en plus interconnecté.</p>
+        <div class="p-trans">در نهایت، باید موضوع هویت را مطرح کنم. سازگاری به معنای پاک کردن ریشه‌هایت نیست، بلکه یاد گرفتن حرکت بین دو فرهنگ است. این دوگانگی می‌تواند در بلندمدت غنی باشد، اما در سال‌های اول گاهی سردرگمی ایجاد می‌کند. شخصاً این هویت دوگانه را نه مانع، بلکه مزیت رقابتی می‌بینم.</div>
       </div>
 
       <div class="p-conc">
         <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30 ثانیه</div>
         <p><span class="hl-struct">En somme,</span> s'adapter à un nouveau pays est sans conteste difficile, mais cette difficulté n'est pas insurmontable. <span class="hl-struct">Je suis convaincu que</span> les personnes qui réussissent cette transition sont celles qui abordent ce défi avec humilité, curiosité et persévérance. <span class="hl-vocab">Pour ma part,</span> c'est avec ces trois valeurs que je m'apprête à construire ma nouvelle vie au Canada.</p>
+        <div class="p-trans">در مجموع، سازگاری با کشوری جدید بدون شک دشوار است، اما این دشواری شکست‌ناپذیر نیست. مطمئنم کسانی که از این گذار موفق بیرون می‌آیند با فروتنی، کنجکاوی و پشتکار با آن روبرو می‌شوند. برای من، با همین سه ارزش است که زندگی جدیدم را در کانادا خواهم ساخت.</div>
       </div>
 
+    </div>
+      </div>
+      <div class="level-block" id="lb-adapt-b1">
+  <div class="level-block" id="level-b1-adapt">
+    <div class="level-header" style="background:#2e7d32;">
+      <div class="level-tag">B1</div>
+      <div>
+        <div class="level-label">متن B1 — ساده و مستقیم</div>
+        <div class="level-sublabel">واژگان روزمره · ساختار شفاف · مثال‌های شخصی</div>
+      </div>
+    </div>
+    <div class="tcf-text">
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40s</div>
+        <p dir="ltr">S'adapter à un nouveau pays, c'est difficile. Mais ce n'est pas impossible. À mon avis, il y a trois défis principaux : comprendre la nouvelle culture, reconstruire ses relations sociales, et trouver sa place entre deux identités.</p>
+        <div class="p-trans">سازگاری با کشوری جدید دشوار است. اما غیرممکن نیست. به نظر من، سه چالش اصلی وجود دارد: فهمیدن فرهنگ جدید، بازسازی روابط اجتماعی، و پیدا کردن جایگاهت بین دو هویت.</div>
+      </div>
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60s</div>
+        <p dir="ltr">D'abord, la culture est difficile à comprendre. Ce n'est pas seulement la langue — il faut aussi apprendre comment les gens se saluent, comment ils expriment leurs opinions, et comment ils réagissent dans les situations difficiles. Par exemple, dans ma préparation pour le Canada, j'ai découvert que la culture québécoise est différente de la culture française, même si la langue est la même.</p>
+        <div class="p-trans">اول، فهمیدن فرهنگ سخت است. فقط زبان نیست — باید هم یاد بگیری که چطور مردم سلام می‌کنند، چطور نظرشان را بیان می‌کنند، و چطور در موقعیت‌های سخت واکنش نشان می‌دهند. مثلاً در آماده‌سازی‌ام برای کانادا، کشف کردم که فرهنگ کبک با فرهنگ فرانسوی متفاوت است، حتی اگر زبان یکسان باشد.</div>
+      </div>
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60s</div>
+        <p dir="ltr">Ensuite, reconstruire un réseau social est très difficile. Dans notre pays, nous avons des amis depuis l'enfance, une famille proche, des collègues que nous connaissons bien. Dans un nouveau pays, tout recommence à zéro. Les associations de migrants aident à rencontrer des personnes, mais les amitiés profondes prennent du temps à se construire.</p>
+        <div class="p-trans">بعد، بازسازی شبکه اجتماعی خیلی دشوار است. در کشورمان، از دوران کودکی دوستان داریم، خانواده نزدیک، همکارانی که خوب می‌شناسیم. در کشوری جدید، همه چیز از صفر شروع می‌شود. انجمن‌های مهاجران کمک می‌کنند تا با آدم‌ها آشنا شوی، اما دوستی‌های عمیق زمان می‌برند.</div>
+      </div>
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60s</div>
+        <p dir="ltr">Enfin, il y a la question de l'identité. Vivre dans un autre pays, c'est vivre entre deux cultures. On garde ses habitudes d'origine, mais on adopte aussi de nouvelles habitudes. Ce n'est pas toujours facile. Mais personnellement, je pense que cette double identité est une force, pas un problème.</p>
+        <div class="p-trans">در نهایت، موضوع هویت مطرح است. زندگی در کشوری دیگر یعنی زندگی بین دو فرهنگ. عادت‌های اصلی خود را نگه می‌داری، اما عادت‌های جدیدی هم اتخاذ می‌کنی. همیشه آسان نیست. اما شخصاً فکر می‌کنم این هویت دوگانه یک قدرت است، نه یک مشکل.</div>
+      </div>
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30s</div>
+        <p dir="ltr">Pour conclure, s'adapter à un nouveau pays est difficile, mais c'est une expérience qui rend plus fort. Je crois que les personnes qui réussissent sont celles qui acceptent d'apprendre, sans peur de faire des erreurs. C'est avec cet état d'esprit que je me prépare pour le Canada.</p>
+        <div class="p-trans">در نتیجه، سازگاری با کشوری جدید دشوار است، اما تجربه‌ای است که آدم را قوی‌تر می‌کند. باور دارم کسانی که موفق می‌شوند آن‌هایی هستند که می‌پذیرند یاد بگیرند، بدون ترس از اشتباه کردن. با همین روحیه است که برای کانادا آماده می‌شوم.</div>
+      </div>
+    </div>
+  </div>
+      </div>
+      <div class="level-block" id="lb-adapt-b2">
+  <div class="level-block" id="level-b2-adapt">
+    <div class="level-header" style="background:#1565c0;">
+      <div class="level-tag">B2</div>
+      <div>
+        <div class="level-label">متن B2 — ساختارمند و استدلالی</div>
+        <div class="level-sublabel">antithèse · concession · هویت دوگانه · parallélisme</div>
+      </div>
+    </div>
+    <div class="tcf-text">
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40s</div>
+        <p dir="ltr">S'adapter à un nouveau pays est l'une des expériences les plus exigeantes qu'un individu puisse traverser — non parce que c'est douloureux, mais parce que cela remet en question des certitudes profondément ancrées. À mon sens, ce défi se déploie sur trois plans que j'ai moi-même anticipés dans ma préparation pour le Canada : le choc des codes culturels, la reconstruction des liens sociaux, et la négociation de son identité entre deux appartenances.</p>
+        <div class="p-trans">سازگاری با کشوری جدید یکی از سخت‌ترین تجربه‌هایی است که یک فرد می‌تواند از سر بگذراند — نه به این دلیل که دردناک است، بلکه چون قطعیت‌های عمیقاً ریشه‌دار را زیر سؤال می‌برد. به نظر من، این چالش در سه سطح گسترش می‌یابد که خودم در آماده‌سازی‌ام برای کانادا آن‌ها را پیش‌بینی کرده‌ام: شوک کدهای فرهنگی، بازسازی پیوندهای اجتماعی، و مذاکره هویت بین دو تعلق.</div>
+      </div>
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60s</div>
+        <p dir="ltr">En premier lieu, le choc culturel dépasse largement la question linguistique. Apprendre la langue, c'est nécessaire — mais insuffisant. Ce qui déstabilise vraiment, ce sont les codes implicites : la façon de formuler un refus sans blesser, la distance physique acceptable entre interlocuteurs, le niveau d'humour toléré dans un contexte professionnel. Ces codes varient d'une culture à l'autre, et leur méconnaissance peut créer des malentendus durables, même entre personnes de bonne volonté.</p>
+        <div class="p-trans">اول، شوک فرهنگی خیلی فراتر از موضوع زبانی است. یادگیری زبان ضروری است — اما کافی نیست. آنچه واقعاً بی‌ثبات می‌کند کدهای ضمنی هستند: نحوه رد کردن بدون آزردن، فاصله فیزیکی قابل قبول بین طرفین گفتگو، سطح شوخی مجاز در یک زمینه حرفه‌ای. این کدها از فرهنگی به فرهنگ دیگر متفاوتند، و ندانستن آن‌ها می‌تواند سوءتفاهم‌های ماندگاری ایجاد کند، حتی بین افراد با نیت خوب.</div>
+      </div>
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60s</div>
+        <p dir="ltr">Vient ensuite la question du lien social. Dans son pays, on bénéficie d'un réseau tissé sur des années — famille, amis d'enfance, collègues de longue date. À l'étranger, tout est à reconstruire, et cette reconstruction prend du temps. Certes, les associations de migrants, les réseaux professionnels et les outils numériques facilitent les premiers contacts. Mais une vraie amitié ne naît pas d'une connexion LinkedIn — elle se construit dans la durée, à travers des épreuves partagées et une confiance progressive.</p>
+        <div class="p-trans">بعد، موضوع پیوند اجتماعی مطرح می‌شود. در کشور خودت از شبکه‌ای بهره می‌بری که در طول سال‌ها بافته شده — خانواده، دوستان دوران کودکی، همکاران قدیمی. در خارج، همه چیز باید از نو ساخته شود، و این بازسازی زمان می‌برد. البته انجمن‌های مهاجران، شبکه‌های حرفه‌ای و ابزارهای دیجیتال اولین تماس‌ها را آسان می‌کنند. اما دوستی واقعی از یک اتصال لینکدین به‌وجود نمی‌آید — بلکه در طول زمان، از طریق تجربه‌های مشترک و اعتماد تدریجی ساخته می‌شود.</div>
+      </div>
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60s</div>
+        <p dir="ltr">Enfin, il y a la question de l'identité — et c'est sans doute la plus intime. S'adapter ne signifie pas abandonner ce qu'on est : c'est apprendre à naviguer entre deux cultures, à puiser dans les deux sans se perdre dans aucune. Cette position peut être vécue comme un déchirement dans les premières années — mais avec le temps, elle devient une richesse rare. Personnellement, je n'y vois pas un problème d'appartenance, mais un avantage distinctif : celui qui comprend deux cultures comprend aussi deux manières de penser, de négocier, de résoudre des problèmes.</p>
+        <div class="p-trans">در نهایت، موضوع هویت مطرح است — و بدون شک عمیق‌ترین است. سازگاری یعنی رها کردن آنچه هستی نیست: یعنی یاد گرفتن حرکت بین دو فرهنگ، بهره‌مندی از هر دو بدون گم شدن در هیچ‌کدام. این موقعیت در سال‌های اول می‌تواند به عنوان پارگی احساس شود — اما با گذشت زمان، به ثروتی نادر تبدیل می‌شود. شخصاً آن را نه مشکل تعلق، بلکه مزیت متمایزکننده می‌بینم: کسی که دو فرهنگ را می‌فهمد، دو شیوه تفکر، مذاکره و حل مسئله را هم می‌فهمد.</div>
+      </div>
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30s</div>
+        <p dir="ltr">En somme, s'adapter à un nouveau pays est difficile — mais cette difficulté n'est pas une raison de renoncer. C'est une raison de se préparer. Les obstacles que j'ai évoqués ne m'effraient pas : ils me motivent à arriver au Canada avec la bonne attitude — curieux, humble, et prêt à apprendre autant que je serai prêt à contribuer.</p>
+        <div class="p-trans">در مجموع، سازگاری با کشوری جدید دشوار است — اما این دشواری دلیلی برای تسلیم شدن نیست. دلیلی برای آماده شدن است. موانعی که ذکر کردم مرا نمی‌ترسانند: بلکه انگیزه‌ام می‌دهند که با طرز فکر درستی به کانادا برسم — کنجکاو، فروتن، و آماده یادگیری به همان اندازه که آماده مشارکت هستم.</div>
+      </div>
+    </div>
+  </div>
+      </div>
     </div>
 
     <div class="timing-strip">
@@ -461,33 +641,123 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
     </div>
     <div class="template-badge">📋 Texte modèle B2 — نسخه آزمونی</div>
 
-    <div class="tcf-text">
+    
+    <div class="level-wrap">
+      <div class="level-tabs" id="ltabs-tv">
+        <div class="ltab a-orig" onclick="showLevel('tv','orig',this)">📋 متن اصلی</div>
+        <div class="ltab" onclick="showLevel('tv','b1',this)" style="color:var(--green);">B1 — ساده</div>
+        <div class="ltab" onclick="showLevel('tv','b2',this)" style="color:var(--blue);">B2 — پیشرفته</div>
+      </div>
+      <div class="level-block active" id="lb-tv-orig"><div class="tcf-text">
 
       <div class="p-intro">
         <div class="p-label lb-intro">Introduction · مقدمه · ~40 ثانیه</div>
         <p><span class="hl-struct">La question du rôle de la télévision dans l'éducation des enfants</span> est au cœur de nombreux débats depuis plusieurs décennies, et elle est aujourd'hui plus complexe que jamais, avec l'essor des plateformes numériques qui ont largement remplacé la télévision traditionnelle. <span class="hl-vocab">Personnellement,</span> je pense que la télévision — ou plus généralement les écrans — peut jouer un rôle éducatif réel, <span class="hl-struct">à condition toutefois</span> qu'elle soit utilisée de manière encadrée et intentionnelle. <span class="hl-struct">Mon analyse s'articule autour de trois points :</span> son potentiel éducatif, les risques d'un usage non contrôlé, et le rôle indispensable des parents.</p>
+        <div class="p-trans">موضوع نقش تلویزیون در آموزش کودکان مرکز بحث‌های زیادی بوده. امروزه پلتفرم‌های دیجیتال جای آن را گرفته‌اند اما مسئله یکسان است. فکر می‌کنم تلویزیون می‌تواند نقش آموزشی واقعی داشته باشد، به شرطی که با نظارت و قصد استفاده شود. تحلیل من سه نقطه دارد: پتانسیل آموزشی، خطرات استفاده بی‌کنترل، و نقش غیرقابل جایگزین والدین.</div>
       </div>
 
       <div class="p-arg1">
         <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60 ثانیه</div>
         <p><span class="hl-struct">D'emblée,</span> il faut reconnaître que la télévision peut constituer un outil pédagogique puissant lorsqu'elle est bien utilisée. <span class="hl-vocab">Certains programmes</span> — documentaires scientifiques, émissions culturelles, dessins animés éducatifs — permettent à l'enfant de découvrir le monde, d'élargir son vocabulaire et de développer sa curiosité intellectuelle. <span class="hl-struct">Il est indéniable que</span> des chaînes comme Arte ou des plateformes dédiées à la jeunesse proposent des contenus de qualité qui complètent utilement l'enseignement scolaire. <span class="hl-struct">En ce sens,</span> la télévision ne doit pas être systématiquement diabolisée — elle peut, au contraire, enrichir l'environnement cognitif de l'enfant.</p>
+        <div class="p-trans">اول، باید پذیرفت که تلویزیون وقتی درست استفاده شود می‌تواند ابزار آموزشی قوی باشد. برخی برنامه‌ها — مستندهای علمی، برنامه‌های فرهنگی، کارتون‌های آموزشی — به کودک اجازه می‌دهند دنیا را کشف کند، لغتش را گسترش دهد و کنجکاوی‌اش را پرورش دهد. تلویزیون نباید به طور سیستماتیک شیطانی نشان داده شود — برعکس، می‌تواند محیط شناختی کودک را غنی کند.</div>
       </div>
 
       <div class="p-arg2">
         <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60 ثانیه</div>
         <p><span class="hl-struct">Cela étant dit,</span> les risques d'un usage non encadré sont bien réels et documentés. <span class="hl-vocab">De nombreuses études</span> montrent qu'une exposition excessive aux écrans, notamment avant l'âge de trois ans, peut nuire au développement du langage, à la concentration et aux capacités d'attention. <span class="hl-struct">À cela s'ajoute</span> le problème du contenu : la majorité des programmes accessibles aux enfants ne sont ni éducatifs ni adaptés à leur développement, mais simplement conçus pour capter leur attention le plus longtemps possible. <span class="hl-struct">Il faut donc distinguer clairement</span> entre la télévision comme outil éducatif et la télévision comme simple divertissement passif.</p>
+        <div class="p-trans">این گفته شد، خطرات استفاده بی‌نظارت واقعی و مستند هستند. مطالعات زیادی نشان می‌دهند که قرار گرفتن بیش از حد در معرض صفحه‌ها، مخصوصاً قبل از سه سالگی، می‌تواند به رشد زبانی و توانایی تمرکز آسیب برساند. علاوه بر این، اکثر برنامه‌های در دسترس کودکان نه آموزشی هستند نه متناسب با رشدشان — فقط برای جلب توجه آن‌ها طراحی شده‌اند. پس باید بین تلویزیون به عنوان ابزار آموزشی و سرگرمی غیرفعال تمایز قائل شد.</div>
       </div>
 
       <div class="p-arg3">
         <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60 ثانیه</div>
         <p><span class="hl-struct">Enfin, et c'est peut-être le point le plus crucial,</span> le rôle des parents est absolument déterminant. <span class="hl-struct">Quelle que soit la qualité du contenu,</span> la télévision ne peut pas remplacer l'interaction humaine, le dialogue et l'accompagnement parental. <span class="hl-vocab">En tant que futur parent,</span> je suis convaincu que ce n'est pas la télévision elle-même qui pose problème, mais la manière dont on l'intègre dans la vie familiale. <span class="hl-struct">Regarder un documentaire avec son enfant, en discutant ensuite des thèmes abordés,</span> transforme une expérience passive en véritable apprentissage actif.</p>
+        <div class="p-trans">در نهایت، و شاید مهم‌ترین نقطه، نقش والدین کاملاً تعیین‌کننده است. هر چه کیفیت محتوا باشد، تلویزیون نمی‌تواند جای تعامل انسانی را بگیرد. من مطمئنم مشکل خود تلویزیون نیست، بلکه نحوه ادغامش در زندگی خانوادگی است. تماشای یک مستند با فرزندت و سپس بحث درباره آن، یک تجربه غیرفعال را به یادگیری فعال تبدیل می‌کند.</div>
       </div>
 
       <div class="p-conc">
         <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30 ثانیه</div>
         <p><span class="hl-struct">Pour conclure,</span> je dirais que la télévision est un outil neutre dont la valeur éducative dépend entièrement de l'usage qu'on en fait. <span class="hl-struct">Bien utilisée, avec discernement et accompagnement,</span> elle peut être une fenêtre sur le monde pour les enfants. <span class="hl-struct">Mal utilisée,</span> elle risque au contraire de les isoler et de freiner leur développement. <span class="hl-vocab">La responsabilité appartient donc aux adultes</span> — parents, éducateurs et décideurs — de faire les bons choix.</p>
+        <div class="p-trans">در نتیجه، تلویزیون ابزاری خنثی است که ارزش آموزشی‌اش کاملاً به نحوه استفاده بستگی دارد. درست استفاده شود، با درایت و همراهی، می‌تواند پنجره‌ای به دنیا برای کودکان باشد. بد استفاده شود، برعکس، آن‌ها را منزوی می‌کند. مسئولیت با بزرگسالان است — والدین، مربیان و تصمیم‌گیران.</div>
       </div>
 
+    </div>
+      </div>
+      <div class="level-block" id="lb-tv-b1">
+  <div class="level-block" id="level-b1-tv">
+    <div class="level-header" style="background:#2e7d32;">
+      <div class="level-tag">B1</div>
+      <div>
+        <div class="level-label">متن B1 — ساده و مستقیم</div>
+        <div class="level-sublabel">جملات کوتاه · واژگان رایج · موضع واضح</div>
+      </div>
+    </div>
+    <div class="tcf-text">
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40s</div>
+        <p dir="ltr">La télévision peut être utile pour l'éducation des enfants, mais elle peut aussi être dangereuse. À mon avis, tout dépend de comment on l'utilise. Je vais parler de trois points : ce que la télévision peut apporter, les risques d'une mauvaise utilisation, et le rôle des parents.</p>
+        <div class="p-trans">تلویزیون می‌تواند برای آموزش کودکان مفید باشد، اما می‌تواند خطرناک هم باشد. به نظر من، همه چیز به نحوه استفاده بستگی دارد. درباره سه نقطه صحبت می‌کنم: آنچه تلویزیون می‌تواند بیاورد، خطرات استفاده بد، و نقش والدین.</div>
+      </div>
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60s</div>
+        <p dir="ltr">D'abord, certains programmes télévisés sont vraiment éducatifs. Les documentaires, par exemple, permettent aux enfants de découvrir des sujets comme la nature, l'histoire ou les sciences. Ces programmes développent leur curiosité et leur vocabulaire. Il ne faut donc pas dire que la télévision est toujours mauvaise pour les enfants.</p>
+        <div class="p-trans">اول، برخی برنامه‌های تلویزیونی واقعاً آموزشی هستند. مستندها، مثلاً، به کودکان اجازه می‌دهند موضوعاتی مثل طبیعت، تاریخ یا علم را کشف کنند. این برنامه‌ها کنجکاوی و لغت آن‌ها را پرورش می‌دهند. بنابراین نباید گفت که تلویزیون همیشه برای کودکان بد است.</div>
+      </div>
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60s</div>
+        <p dir="ltr">Mais il y a aussi des risques. Quand les enfants regardent trop la télévision, ils peuvent avoir des problèmes de concentration. Beaucoup de programmes pour enfants ne sont pas éducatifs — ils sont juste faits pour que les enfants continuent à regarder. Il y a donc une grande différence entre un bon programme éducatif et un programme qui n'apporte rien.</p>
+        <div class="p-trans">اما خطراتی هم وجود دارد. وقتی کودکان زیادی تلویزیون می‌بینند، ممکن است مشکل تمرکز داشته باشند. برنامه‌های زیادی برای کودکان آموزشی نیستند — فقط ساخته شده‌اند تا کودکان به تماشا ادامه دهند. پس تفاوت بزرگی بین یک برنامه آموزشی خوب و یک برنامه‌ای که هیچ‌چیز نمی‌آورد وجود دارد.</div>
+      </div>
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60s</div>
+        <p dir="ltr">Enfin, le rôle des parents est très important. Si les parents choisissent les bons programmes et regardent la télévision avec leurs enfants, c'est beaucoup mieux. Par exemple, regarder un documentaire avec son enfant et parler après des sujets vus à la télévision transforme cette expérience en apprentissage. La télévision seule ne peut pas remplacer la conversation familiale.</p>
+        <div class="p-trans">در نهایت، نقش والدین خیلی مهم است. اگر والدین برنامه‌های خوب انتخاب کنند و با فرزندانشان تلویزیون تماشا کنند، خیلی بهتر است. مثلاً، تماشای یک مستند با فرزند و صحبت بعدی درباره موضوعات دیده‌شده این تجربه را به یادگیری تبدیل می‌کند. تلویزیون به تنهایی نمی‌تواند گفتگوی خانوادگی را جایگزین کند.</div>
+      </div>
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30s</div>
+        <p dir="ltr">En conclusion, la télévision peut être bonne ou mauvaise pour l'éducation — cela dépend complètement de comment les adultes l'utilisent avec les enfants. Je pense que la responsabilité appartient aux parents, pas à la technologie elle-même.</p>
+        <div class="p-trans">در نتیجه، تلویزیون می‌تواند برای آموزش خوب یا بد باشد — این کاملاً به نحوه استفاده بزرگسالان با کودکان بستگی دارد. فکر می‌کنم مسئولیت با والدین است، نه با خود فناوری.</div>
+      </div>
+    </div>
+  </div>
+      </div>
+      <div class="level-block" id="lb-tv-b2">
+  <div class="level-block" id="level-b2-tv">
+    <div class="level-header" style="background:#1565c0;">
+      <div class="level-tag">B2</div>
+      <div>
+        <div class="level-label">متن B2 — ساختارمند و استدلالی</div>
+        <div class="level-sublabel">antithèse · موضع شرطی · concession · ساختار ادبی</div>
+      </div>
+    </div>
+    <div class="tcf-text">
+      <div class="p-intro">
+        <div class="p-label lb-intro">Introduction · مقدمه · ~40s</div>
+        <p dir="ltr">La télévision — ou plus généralement les écrans — occupe une place croissante dans la vie des enfants, et les débats sur son impact éducatif ne datent pas d'hier. Mon point de vue est nuancé : je ne pense pas que la télévision soit intrinsèquement bonne ou mauvaise pour l'enfant. Je pense qu'elle est un outil — et comme tout outil, c'est l'usage qu'on en fait qui détermine sa valeur. Trois aspects me semblent essentiels : son potentiel pédagogique réel, les effets mesurés d'un usage excessif, et le rôle irremplaçable de l'adulte.</p>
+        <div class="p-trans">تلویزیون — یا به طور کلی‌تر صفحه‌ها — جایگاه فزاینده‌ای در زندگی کودکان دارد، و بحث‌ها درباره تأثیر آموزشی‌اش قدیمی هستند. دیدگاه من ظریف است: فکر نمی‌کنم تلویزیون ذاتاً برای کودک خوب یا بد باشد. فکر می‌کنم یک ابزار است — و مثل هر ابزاری، استفاده‌ای که از آن می‌شود ارزشش را تعیین می‌کند. سه جنبه برایم اساسی به نظر می‌رسند: پتانسیل آموزشی واقعی‌اش، اثرات اندازه‌گیری‌شده استفاده بیش از حد، و نقش غیرقابل جایگزین بزرگسال.</div>
+      </div>
+      <div class="p-arg1">
+        <div class="p-label lb-arg1">Argument 1 · استدلال اول · ~60s</div>
+        <p dir="ltr">D'abord, il serait malhonnête de nier le potentiel éducatif de certains contenus télévisés. Des programmes de qualité — documentaires scientifiques, émissions culturelles, animations pédagogiques — peuvent élargir le vocabulaire d'un enfant, stimuler sa curiosité et lui ouvrir des horizons qu'il n'aurait pas découverts autrement. Ce potentiel est réel. Le problème n'est pas la télévision en soi, mais la sélection : la majorité des programmes accessibles aux enfants n'ont aucune visée éducative — ils sont conçus pour capter l'attention, pas pour développer l'intelligence.</p>
+        <div class="p-trans">اول، نادیده گرفتن پتانسیل آموزشی برخی محتواهای تلویزیونی غیرصادقانه خواهد بود. برنامه‌های باکیفیت — مستندهای علمی، برنامه‌های فرهنگی، انیمیشن‌های آموزشی — می‌توانند لغت کودک را گسترش دهند، کنجکاوی‌اش را تحریک کنند و افق‌هایی را برایش باز کنند که به شکل دیگری کشف نمی‌کرد. این پتانسیل واقعی است. مشکل خود تلویزیون نیست، بلکه انتخاب است: اکثر برنامه‌های در دسترس کودکان هیچ هدف آموزشی ندارند — برای جلب توجه طراحی شده‌اند، نه برای پرورش هوش.</div>
+      </div>
+      <div class="p-arg2">
+        <div class="p-label lb-arg2">Argument 2 · استدلال دوم · ~60s</div>
+        <p dir="ltr">Cela dit, les effets d'une exposition non contrôlée sont documentés et sérieux. Les études convergent sur un point : avant trois ans, l'exposition aux écrans nuit au développement du langage et de l'attention. Passé cet âge, le risque principal n'est plus neurologique mais comportemental — passivité, difficulté à supporter l'ennui, diminution des interactions sociales réelles. Ce n'est pas la télévision qui abrutit — c'est l'absence de cadre qui transforme un outil potentiellement riche en simple anesthésiant.</p>
+        <div class="p-trans">این گفته شد، اثرات قرار گرفتن بی‌کنترل مستند و جدی هستند. مطالعات بر یک نکته همگرا می‌شوند: قبل از سه سالگی، قرار گرفتن در معرض صفحه‌ها به رشد زبانی و توجه آسیب می‌رساند. بعد از این سن، خطر اصلی دیگر عصبی نیست بلکه رفتاری است — انفعال، دشواری در تحمل بی‌حوصلگی، کاهش تعاملات اجتماعی واقعی. تلویزیون نیست که کند می‌کند — غیاب چارچوب است که یک ابزار بالقوه غنی را به یک بی‌حسی ساده تبدیل می‌کند.</div>
+      </div>
+      <div class="p-arg3">
+        <div class="p-label lb-arg3">Argument 3 · استدلال سوم · ~60s</div>
+        <p dir="ltr">Ce qui m'amène au point central : le rôle de l'adulte. La télévision seule n'éduque pas — elle ne fait que diffuser. Ce qui transforme un contenu en expérience d'apprentissage, c'est le regard porté dessus avec l'enfant, les questions posées après, la conversation qui suit. Un enfant qui regarde seul un documentaire retient des images. Un enfant qui le regarde avec un parent qui s'engage, pose des questions et relie ce qu'il voit à ce qu'il connaît — cet enfant apprend vraiment.</p>
+        <div class="p-trans">این مرا به نقطه محوری می‌رساند: نقش بزرگسال. تلویزیون به تنهایی آموزش نمی‌دهد — فقط پخش می‌کند. آنچه یک محتوا را به تجربه یادگیری تبدیل می‌کند، نگاه مشترک با کودک است، سؤالاتی که بعد مطرح می‌شوند، گفتگویی که دنبال می‌آید. کودکی که تنها مستندی می‌بیند، تصاویر را به خاطر می‌سپارد. کودکی که آن را با والدینی می‌بیند که درگیر می‌شوند، سؤال می‌پرسند و آنچه می‌بیند را به آنچه می‌داند ربط می‌دهند — آن کودک واقعاً یاد می‌گیرد.</div>
+      </div>
+      <div class="p-conc">
+        <div class="p-label lb-conc">Conclusion · نتیجه‌گیری · ~30s</div>
+        <p dir="ltr">En définitive, la question n'est pas « la télévision est-elle bonne ou mauvaise ? » — c'est une mauvaise question. La vraie question est : « qui décide ce que l'enfant regarde, et comment l'accompagne-t-on ? » Bien encadrée, la télévision peut être une fenêtre remarquable sur le monde. Mal utilisée, elle n'est qu'un mur.</p>
+        <div class="p-trans">در مجموع، سؤال این نیست که «تلویزیون خوب است یا بد؟» — این سؤال بدی است. سؤال واقعی این است: «چه کسی تصمیم می‌گیرد کودک چه ببیند، و چطور همراهی می‌شود؟» با نظارت خوب، تلویزیون می‌تواند پنجره‌ای شگفت‌انگیز به دنیا باشد. بد استفاده شود، فقط یک دیوار است.</div>
+      </div>
+    </div>
+  </div>
+      </div>
     </div>
 
     <div class="timing-strip">
@@ -542,6 +812,22 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 <button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
+
+function showLevel(subj, level, el){
+  // Reset tabs
+  document.querySelectorAll('#ltabs-'+subj+' .ltab').forEach(t=>{
+    t.classList.remove('a-orig','a-b1','a-b2');
+  });
+  el.classList.add('a-'+level);
+  // Hide all blocks
+  ['orig','b1','b2'].forEach(l=>{
+    const b=document.getElementById('lb-'+subj+'-'+l);
+    if(b) b.classList.remove('active');
+  });
+  const target=document.getElementById('lb-'+subj+'-'+level);
+  if(target) target.classList.add('active');
+}
+
 function showSection(id, el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.snav').forEach(n=>n.classList.remove('active'));
