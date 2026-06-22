@@ -9,8 +9,8 @@
 :root{
   --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
   --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
-  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
-  --green:#2e7d32;--green-pale:#e8f5e9;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;
+  --green:#2e7d32;--green-pale:#e8f5e9;--green-deep:#1b5e20;
   --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
   --purple:#6a1b9a;--purple-pale:#f3e5f5;
   --red:#b71c1c;--red-pale:#ffebee;
@@ -19,45 +19,37 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
-
-/* TOPBAR */
-.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
-.logo{width:38px;height:38px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--green);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
 .topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
 .topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
 .back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
-.back:hover{background:var(--blue);color:white;}
-
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--navy-mid),var(--navy-soft));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%;}
+.back:hover{background:var(--green);color:white;}
+.hero{background:linear-gradient(135deg,#1b5e20,var(--green));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.07);border-radius:50%;}
 .hero-content{position:relative;z-index:1;}
-.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
-.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(18px,3vw,28px);font-weight:700;margin-bottom:8px;line-height:1.3;}
-.hero .sub{font-size:13px;opacity:.8;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(16px,3vw,26px);font-weight:700;margin-bottom:8px;line-height:1.35;}
+.hero .sub{font-size:13px;opacity:.85;}
 .hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
-.hpill{background:rgba(255,255,255,.13);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.2);}
-
-/* TABS */
+.hpill{background:rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.25);}
 .tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
 .tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
-.tab:hover{color:var(--blue);}.tab.active{color:var(--blue);border-bottom-color:var(--blue);}
-
+.tab:hover{color:var(--green);}.tab.active{color:var(--green);border-bottom-color:var(--green);}
 .wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
 .panel{display:none;}.panel.active{display:block;}
-
-/* QUESTION BOX */
 .q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
 .q-head{background:var(--navy);padding:14px 20px;}
 .q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
 .q-fa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;margin-top:6px;}
-.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--blue-mist);flex-wrap:wrap;}
+.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--green-pale);flex-wrap:wrap;}
 .q-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;}
 .chip-pos{background:var(--green-pale);color:var(--green);}
 .chip-time{background:var(--amber-pale);color:var(--amber-deep);}
 .chip-struct{background:var(--purple-pale);color:var(--purple);}
-
-/* PARAGRAPH CARD */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
 .p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
 .p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
 .p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
@@ -66,88 +58,51 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 .num-arg2{background:var(--green-pale);color:var(--green);}
 .num-arg3{background:var(--purple-pale);color:var(--purple);}
 .num-arg4{background:var(--teal-pale);color:var(--teal);}
-.num-conc{background:rgba(191,54,12,.1);color:var(--amber-deep);}
+.num-conc{background:rgba(27,94,32,.1);color:var(--green-deep);}
 .p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
-
-/* FRENCH TEXT */
 .p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
-
-/* HIGHLIGHTS */
-.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}  /* structure */
-.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}      /* vocab */
-.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}     /* antithèse */
-.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}       /* connecteur */
-
-/* TRANSLATION */
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
 .p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
-
-/* ANALYSIS STRIP */
 .p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
 .an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
 .an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
 .an-v{background:rgba(21,101,192,.3);color:#aaccff;}
 .an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
 .an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
-
-/* GLOBAL ANALYSIS */
-.global-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:24px;}
-.gb-head{background:var(--navy);padding:14px 20px;}
-.gb-head h3{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:white;}
-.gb-body{padding:18px 20px;}
-.gb-row{display:grid;grid-template-columns:auto 1fr 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:start;}
-.gb-row:last-child{border:none;}
-.gb-icon{font-size:16px;padding-top:2px;}
-.gb-fr{font-size:13px;font-family:'Roboto',sans-serif;line-height:1.6;}
-.gb-fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);line-height:1.7;}
-
-/* LEGEND */
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
-.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
-
-/* ────────── PANEL 2 — COURT ────────── */
-.court-intro{background:linear-gradient(135deg,var(--amber-pale),#fff8f0);border:2px solid var(--amber);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
-.court-intro strong{color:var(--amber-deep);}
+.timing-strip{display:flex;background:var(--navy-mid);}
+.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ts:last-child{border:none;}
+.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#86efac;}
+.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+.ts-f{font-size:8px;direction:rtl;color:rgba(255,255,255,.3);margin-top:1px;}
+.court-intro{background:linear-gradient(135deg,var(--green-pale),#f0fff4);border:2px solid var(--green);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:var(--green-deep);}
 .court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
-
-.court-card{margin-bottom:18px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
-.cc-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.court-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;}
 .cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
 .cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
-.cc-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.85;background:white;}
-.cc-fr .hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
-.cc-fr .ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
-.cc-fr .hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
+.cc-fr{padding:13px 18px;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.85;background:white;}
 .cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
-
-/* ────────── PANEL 3 — CADRE ────────── */
-.cadre-intro{background:linear-gradient(135deg,var(--blue-mist),#f0f7ff);border:2px solid var(--blue);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
-.cadre-intro strong{color:var(--blue);}
+.cadre-intro{background:linear-gradient(135deg,var(--green-pale),#f0fff4);border:2px solid var(--green);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:var(--green-deep);}
 .cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
-
-.cadre-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-card{margin-bottom:14px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
 .cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
 .cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
 .cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
 .cadre-body{padding:16px 20px;background:white;}
-.cadre-anchor{display:inline-block;background:var(--amber-pale);border:1.5px solid var(--amber);color:var(--amber-deep);font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:6px;margin:4px 4px 4px 0;}
+.cadre-anchor{display:inline-block;background:var(--green-pale);border:1.5px solid var(--green);color:var(--green-deep);font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;margin:3px 3px 3px 0;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ck{background:var(--green-pale);border:1px solid #86efac;color:var(--green-deep);font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
 .cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
-.cadre-blank{display:inline-block;border-bottom:2px solid var(--gray);min-width:80px;color:transparent;margin:0 3px;font-size:14px;}
-.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.ck{background:var(--blue-mist);border:1px solid #bfdbfe;color:var(--blue);font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
-
-/* TIMING STRIP */
-.timing-strip{display:flex;background:var(--navy-mid);border-top:2px solid rgba(255,255,255,.08);}
-.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
-.ts:last-child{border:none;}
-.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);}
-.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
-
 .footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
-.footer a{color:var(--blue);text-decoration:none;}
-#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
+.footer a{color:var(--green);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--green-deep);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(27,94,32,.3);z-index:999;}
 #scrollBtn.show{display:block;}
-@media(max-width:640px){.gb-row{grid-template-columns:auto 1fr;}.gb-fa{grid-column:2;}}
 </style>
 </head>
 <body>
@@ -161,13 +116,12 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 <div class="hero">
   <div class="hero-content">
     <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
-    <h2>Pensez-vous qu'il soit possible de développer l'économie tout en préservant l'environnement ?</h2>
+    <h2>Pensez-vous qu'il soit possible de développer<br>l'économie tout en préservant l'environnement ?</h2>
     <p class="sub">آیا می‌توان اقتصاد را توسعه داد و در عین حال محیط زیست را حفظ کرد؟</p>
     <div class="hero-pills">
-      <span class="hpill">موضع: OUI — croissance verte possible ←</span>
+      <span class="hpill">موضع: OUI — complémentaires ←</span>
       <span class="hpill">⏱ 4:30</span>
       <span class="hpill">Intro + 4 args + Conc.</span>
-      <span class="hpill">B1/B2</span>
     </div>
   </div>
 </div>
@@ -180,7 +134,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 
 <div class="wrap">
 
-<!-- PANEL 1 — COMPLET -->
+<!-- ═══ PANEL 1 ═══ -->
 <div class="panel active" id="panel-complet">
 
   <div class="q-box">
@@ -189,7 +143,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
       <div class="q-fa">آیا می‌توان اقتصاد را توسعه داد و در عین حال محیط زیست را حفظ کرد؟</div>
     </div>
     <div class="q-meta">
-      <span class="q-chip chip-pos">موضع: OUI — croissance verte possible</span>
+      <span class="q-chip chip-pos">موضع: OUI — antagonistes → complémentaires</span>
       <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
       <span class="q-chip chip-struct">Intro + 4 arguments + Conclusion</span>
     </div>
@@ -202,126 +156,362 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
     <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
   </div>
 
+  <!-- INTRO -->
   <div class="p-card">
-    <div class="p-header" style="background:#fff8e1;"><span class="p-num num-intro">INTRODUCTION</span><span class="p-time">⏱ ~40 ثانیه</span></div>
-    <div class="p-fr"><span class="hc">De nos jours,</span> les sociétés modernes font face à un <span class="hv">double défi</span> : stimuler la <span class="hv">croissance économique</span> tout en protégeant l'environnement face au <span class="hv">réchauffement climatique.</span> <span class="hs">Certes,</span> certains estiment que ces deux objectifs sont <span class="hv">incompatibles,</span> car produire davantage signifie souvent polluer davantage. <span class="hs">Pourtant, je suis convaincu</span> qu'il est possible de les <span class="hv">concilier.</span> Plusieurs pistes existent : les innovations technologiques, les énergies renouvelables, la gestion des ressources et la sensibilisation collective.</div>
-    <div class="p-trans">امروزه جوامع مدرن با یک چالش دوگانه روبرو هستند: تحریک رشد اقتصادی و در عین حال حفاظت از محیط زیست در برابر گرمایش جهانی. البته برخی فکر می‌کنند این دو هدف ناسازگار هستند، چون تولید بیشتر اغلب آلودگی بیشتر است. با این حال، مطمئنم که می‌توان آن‌ها را آشتی داد. چند مسیر وجود دارد: نوآوری‌های فناورانه، انرژی‌های تجدیدپذیر، مدیریت منابع و آگاهی‌بخشی جمعی.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Certes… Pourtant, je suis convaincu ← concession + موضع قوی</span><span class="an-pill an-v">double défi / concilier ← واژگان محوری</span><span class="an-pill an-c">De nos jours ← باز کردن با زمینه</span><span class="an-pill an-s">اعلام ۴ محور در مقدمه = ساختار آزمونی ✓</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--blue-mist);"><span class="p-num num-arg1">ARGUMENT 1 — innovations</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">Tout d'abord,</span> les <span class="hv">innovations technologiques</span> ouvrent de nouvelles perspectives pour une <span class="hv">croissance durable.</span> Les entreprises qui investissent dans des <span class="hv">procédés de production plus propres</span> réduisent leurs émissions tout en améliorant leur <span class="hv">compétitivité.</span> <span class="hc">Par exemple,</span> l'industrie automobile qui développe les <span class="hv">véhicules électriques</span> crée de nouveaux marchés et des emplois, tout en limitant l'usage du pétrole. <span class="ha">En revanche,</span> les entreprises qui ignorent ces innovations risquent de perdre des parts de marché dans un monde de plus en plus soucieux de l'environnement.</div>
-    <div class="p-trans">اول از همه، نوآوری‌های فناورانه چشم‌اندازهای جدیدی برای رشد پایدار باز می‌کنند. شرکت‌هایی که در فرایندهای تولید پاک‌تر سرمایه‌گذاری می‌کنند انتشارات خود را کاهش می‌دهند. مثلاً صنعت خودروسازی که خودروهای برقی توسعه می‌دهد بازارها و مشاغل جدید ایجاد می‌کند. در مقابل، شرکت‌هایی که این نوآوری‌ها را نادیده می‌گیرند در خطر از دست دادن سهم بازار هستند.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Tout d'abord ← استدلال اول</span><span class="an-pill an-a">En revanche ← antithèse تجاری</span><span class="an-pill an-c">Par exemple ← مثال ملموس ضروری</span><span class="an-pill an-v">procédés de production / compétitivité ← واژگان اقتصادی B2</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--green-pale);"><span class="p-num num-arg2">ARGUMENT 2 — énergies renouvelables</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">Ensuite,</span> le recours aux <span class="hv">énergies renouvelables</span> est une voie <span class="hv">incontournable.</span> <span class="ha">Contrairement au charbon ou au gaz,</span> le solaire, l'éolien ou l'hydraulique sont <span class="hv">inépuisables et moins polluants.</span> Leur développement favorise la création d'entreprises spécialisées, attire des <span class="hv">investissements</span> et garantit une <span class="hv">indépendance énergétique.</span> <span class="hc">De plus,</span> dans le secteur financier — qui est le mien — j'observe que les <span class="hv">fonds d'investissement durable</span> (ESG) attirent de plus en plus de capitaux, preuve que rentabilité et responsabilité ne s'opposent pas.</div>
-    <div class="p-trans">بعد، توسل به انرژی‌های تجدیدپذیر مسیری اجتناب‌ناپذیر است. برخلاف زغال‌سنگ یا گاز، خورشیدی، بادی یا آبی تجدیدناپذیر و کمتر آلاینده هستند. در بخش مالی — که حوزه کار من است — می‌بینم که صندوق‌های سرمایه‌گذاری پایدار (ESG) بیشتر و بیشتر سرمایه جذب می‌کنند، اثبات اینکه سودآوری و مسئولیت‌پذیری با هم ناسازگار نیستند.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Ensuite ← استدلال دوم</span><span class="an-pill an-a">Contrairement à ← antithèse کلاسیک B2</span><span class="an-pill an-v">inépuisables / ESG / indépendance énergétique ← واژگان تخصصی</span><span class="an-pill an-s">شخصی‌سازی: «dans le secteur financier — qui est le mien» ← امتیاز بالا</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--purple-pale);"><span class="p-num num-arg3">ARGUMENT 3 — gestion des ressources</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">De plus,</span> une meilleure gestion des ressources naturelles permet de limiter le <span class="hv">gaspillage.</span> Le <span class="hv">recyclage, l'économie circulaire</span> et la réutilisation des matériaux représentent de véritables <span class="hv">opportunités économiques.</span> <span class="hc">Non seulement</span> ces pratiques réduisent les déchets, <span class="hc">mais elles génèrent également</span> de nouveaux métiers liés au tri, à la transformation et à la valorisation des produits. <span class="ha">Loin d'être un frein à la croissance,</span> l'économie verte est un <span class="hv">moteur d'emploi et d'innovation.</span> </div>
-    <div class="p-trans">علاوه بر این، مدیریت بهتر منابع طبیعی امکان محدود کردن هدررفت را فراهم می‌کند. بازیافت، اقتصاد چرخشی و استفاده مجدد از مواد فرصت‌های اقتصادی واقعی هستند. نه تنها این روش‌ها ضایعات را کاهش می‌دهند، بلکه مشاغل جدید هم ایجاد می‌کنند. دور از اینکه مانع رشد باشد، اقتصاد سبز موتور اشتغال و نوآوری است.</div>
-    <div class="p-analysis"><span class="an-pill an-s">De plus ← استدلال سوم</span><span class="an-pill an-a">Loin d'être un frein ← antithèse قوی B2</span><span class="an-pill an-c">Non seulement… mais également ← ساختار تقویتی</span><span class="an-pill an-v">économie circulaire / valorisation ← واژگان محیط زیستی B2</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--teal-pale);"><span class="p-num num-arg4">ARGUMENT 4 — sensibilisation</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">Enfin,</span> la <span class="hv">sensibilisation des citoyens et des entreprises</span> joue un rôle <span class="hv">central.</span> <span class="hc">Lorsque</span> les consommateurs <span class="hv">privilégient les produits respectueux de l'environnement,</span> ils poussent les entreprises à adopter des <span class="hv">pratiques durables.</span> <span class="hc">C'est ainsi que</span> se crée une <span class="hv">croissance verte,</span> où économie et écologie se <span class="hv">renforcent mutuellement.</span> <span class="ha">Sans cette prise de conscience collective,</span> les innovations technologiques et les politiques publiques seules ne suffiront pas à inverser les tendances actuelles.</div>
-    <div class="p-trans">در نهایت، آگاهی‌بخشی به شهروندان و شرکت‌ها نقش مرکزی دارد. وقتی مصرف‌کنندگان محصولات محیط‌زیست‌دوست را ترجیح می‌دهند، شرکت‌ها را به اتخاذ روش‌های پایدار وادار می‌کنند. اینگونه رشد سبز ایجاد می‌شود که اقتصاد و بوم‌شناسی یکدیگر را تقویت می‌کنند. بدون این آگاهی جمعی، نوآوری‌های فناورانه و سیاست‌های عمومی به تنهایی کافی نخواهند بود.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Enfin ← استدلال چهارم</span><span class="an-pill an-a">Sans cette prise de conscience ← antithèse شرطی B2</span><span class="an-pill an-c">Lorsque / C'est ainsi que ← connecteurs logiques</span><span class="an-pill an-v">se renforcent mutuellement ← تقابل مثبت ✓</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:#fff3e0;"><span class="p-num num-conc">CONCLUSION</span><span class="p-time">⏱ ~30 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">En définitive,</span> croissance économique et protection de l'environnement ne sont pas des objectifs <span class="hv">antagonistes,</span> mais <span class="hv">complémentaires.</span> Les exemples le prouvent : <span class="hv">technologie, énergies propres, économie circulaire</span> et mobilisation collective montrent qu'il est possible de <span class="hv">bâtir un avenir à la fois prospère et durable.</span> Le vrai défi n'est pas de choisir entre économie et environnement, mais de <span class="hv">transformer notre modèle de croissance.</span> </div>
-    <div class="p-trans">در مجموع، رشد اقتصادی و حفاظت از محیط زیست اهداف متضاد نیستند، بلکه مکمل هم هستند. مثال‌ها ثابت می‌کنند: فناوری، انرژی‌های پاک، اقتصاد چرخشی و بسیج جمعی نشان می‌دهند که می‌توان آینده‌ای هم مرفه هم پایدار ساخت. چالش واقعی انتخاب بین اقتصاد و محیط زیست نیست، بلکه تحول مدل رشدمان است.</div>
-    <div class="p-analysis"><span class="an-pill an-s">En définitive ← نتیجه قوی‌تر از «En conclusion»</span><span class="an-pill an-a">antagonistes… mais complémentaires ← antithèse پایانی</span><span class="an-pill an-v">prospère et durable / transformer ← جمله پایانی چالش‌برانگیز</span></div>
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
     </div>
+    <div class="p-fr">
+      <span class="hc">De nos jours,</span> les sociétés modernes font face à un <span class="hv">double défi :</span> stimuler la <span class="hv">croissance économique</span> tout en protégeant l'environnement face au <span class="hv">réchauffement climatique.</span> <span class="hs">Certes,</span> certains estiment que ces deux objectifs sont <span class="hv">incompatibles,</span> car produire davantage signifie souvent polluer davantage. <span class="hs">Pourtant, je suis convaincu</span> qu'il est tout à fait possible de les <span class="hv">concilier.</span> Plusieurs leviers existent : les innovations technologiques, les énergies renouvelables, la gestion raisonnée des ressources et la mobilisation collective.
+    </div>
+    <div class="p-trans">
+      امروزه جوامع مدرن با یک چالش دوگانه روبرو هستند: تحریک رشد اقتصادی و در عین حال حفاظت از محیط زیست در برابر گرمایش جهانی. البته برخی فکر می‌کنند این دو هدف ناسازگار هستند، چون تولید بیشتر اغلب آلودگی بیشتر است. اما مطمئنم که کاملاً ممکن است آن‌ها را آشتی داد. چند اهرم وجود دارد: نوآوری‌های فناورانه، انرژی‌های تجدیدپذیر، مدیریت منطقی منابع و بسیج جمعی.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Certes… Pourtant, je suis convaincu ← concession + موضع قوی</span>
+      <span class="an-pill an-s">اعلام ۴ اهرم = ساختار آزمونی ✓</span>
+      <span class="an-pill an-v">double défi / concilier / incompatibles ← واژگان محوری</span>
+      <span class="an-pill an-c">De nos jours ← باز کردن با زمینه</span>
+    </div>
+  </div>
 
-  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;"><div class="timing-strip"><div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div><div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1 · innovations</div></div><div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2 · énergies</div></div><div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3 · ressources</div></div><div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4 · sensibilisation</div></div><div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div></div></div></div>
+  <!-- ARG 1 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — innovations technologiques</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Tout d'abord,</span> les <span class="hv">innovations technologiques</span> ouvrent de nouvelles perspectives pour une <span class="hv">croissance durable.</span> Les entreprises qui investissent dans des <span class="hv">procédés de production plus propres</span> réduisent leurs émissions tout en améliorant leur <span class="hv">compétitivité.</span> <span class="hc">Par exemple,</span> l'industrie automobile qui développe les <span class="hv">véhicules électriques</span> crée de nouveaux marchés et des emplois, tout en limitant l'usage du pétrole. <span class="ha">En revanche,</span> les entreprises qui ignorent ces innovations risquent de perdre des parts de marché dans un monde de plus en plus <span class="hv">soucieux de l'environnement.</span>
+    </div>
+    <div class="p-trans">
+      اول از همه، نوآوری‌های فناورانه چشم‌اندازهای جدیدی برای رشد پایدار باز می‌کنند. شرکت‌هایی که در فرایندهای تولید پاک‌تر سرمایه‌گذاری می‌کنند انتشارات خود را کاهش می‌دهند و رقابت‌پذیری را بهبود می‌بخشند. مثلاً صنعت خودروسازی که خودروهای برقی توسعه می‌دهد بازارها و مشاغل جدید ایجاد می‌کند. در مقابل، شرکت‌هایی که این نوآوری‌ها را نادیده می‌گیرند در خطر از دست دادن سهم بازار در دنیایی هستند که بیشتر و بیشتر به محیط زیست اهمیت می‌دهد.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tout d'abord ← استدلال اول</span>
+      <span class="an-pill an-a">En revanche ← antithèse تجاری: پیشرو ↔ عقب‌مانده</span>
+      <span class="an-pill an-c">Par exemple ← مثال ملموس ضروری</span>
+      <span class="an-pill an-v">procédés / compétitivité / soucieux ← واژگان اقتصادی B2</span>
+    </div>
+  </div>
+
+  <!-- ARG 2 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — énergies renouvelables</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ensuite,</span> le recours aux <span class="hv">énergies renouvelables</span> est une voie <span class="hv">incontournable.</span> <span class="ha">Contrairement au charbon ou au gaz,</span> le solaire, l'éolien ou l'hydraulique sont <span class="hv">inépuisables et moins polluants.</span> Leur développement favorise la création d'entreprises spécialisées, attire des <span class="hv">investissements</span> et garantit une <span class="hv">indépendance énergétique.</span> <span class="hc">De plus,</span> dans le secteur financier — qui est le mien — j'observe que les <span class="hv">fonds d'investissement durables</span> (ESG) attirent de plus en plus de capitaux, preuve que rentabilité et responsabilité ne s'<span class="hv">opposent pas.</span>
+    </div>
+    <div class="p-trans">
+      بعد، توسل به انرژی‌های تجدیدپذیر مسیری اجتناب‌ناپذیر است. برخلاف زغال‌سنگ یا گاز، خورشیدی، بادی یا آبی تجدیدناپذیر و کمتر آلاینده هستند. توسعه‌شان شرکت‌های تخصصی می‌سازد، سرمایه جذب می‌کند و استقلال انرژی تضمین می‌کند. علاوه بر این، در بخش مالی — که حوزه کار من است — می‌بینم که صندوق‌های سرمایه‌گذاری پایدار (ESG) بیشتر و بیشتر سرمایه جذب می‌کنند — اثبات اینکه سودآوری و مسئولیت‌پذیری مخالف هم نیستند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ensuite ← استدلال دوم</span>
+      <span class="an-pill an-a">Contrairement au charbon ← antithèse کلاسیک B2</span>
+      <span class="an-pill an-s">«le secteur financier — qui est le mien» ← شخصی‌سازی علیرضا = امتیاز بالا</span>
+      <span class="an-pill an-v">inépuisables / ESG / indépendance énergétique ← واژگان تخصصی</span>
+    </div>
+  </div>
+
+  <!-- ARG 3 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — économie circulaire</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">De plus,</span> une meilleure gestion des ressources naturelles permet de limiter le <span class="hv">gaspillage.</span> Le <span class="hv">recyclage, l'économie circulaire</span> et la réutilisation des matériaux représentent de véritables <span class="hv">opportunités économiques.</span> <span class="hc">Non seulement</span> ces pratiques réduisent les déchets, <span class="hc">mais elles génèrent également</span> de nouveaux métiers liés au tri et à la <span class="hv">valorisation des produits.</span> <span class="ha">Loin d'être un frein à la croissance,</span> l'économie verte est un véritable <span class="hv">moteur d'emploi et d'innovation.</span>
+    </div>
+    <div class="p-trans">
+      علاوه بر این، مدیریت بهتر منابع طبیعی امکان محدود کردن هدررفت را فراهم می‌کند. بازیافت، اقتصاد چرخشی و استفاده مجدد از مواد فرصت‌های اقتصادی واقعی هستند. نه تنها این روش‌ها ضایعات را کاهش می‌دهند، بلکه مشاغل جدید مرتبط با مرتب‌سازی و ارزش‌افزایی محصولات هم ایجاد می‌کنند. دور از اینکه مانع رشد باشد، اقتصاد سبز موتور واقعی اشتغال و نوآوری است.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">De plus ← استدلال سوم</span>
+      <span class="an-pill an-a">Loin d'être un frein ← antithèse قوی B2</span>
+      <span class="an-pill an-c">Non seulement… mais également ← ساختار تقویتی B2</span>
+      <span class="an-pill an-v">économie circulaire / valorisation / gaspillage ← واژگان محیط‌زیستی</span>
+    </div>
+  </div>
+
+  <!-- ARG 4 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-arg4">ARGUMENT 4 — sensibilisation collective</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Enfin,</span> la <span class="hv">sensibilisation des citoyens et des entreprises</span> joue un rôle <span class="hv">central.</span> <span class="hc">Lorsque</span> les consommateurs <span class="hv">privilégient les produits respectueux de l'environnement,</span> ils poussent les entreprises à adopter des <span class="hv">pratiques durables.</span> <span class="hc">C'est ainsi que</span> se crée une <span class="hv">croissance verte,</span> où économie et écologie se <span class="hv">renforcent mutuellement.</span> <span class="ha">Sans cette prise de conscience collective,</span> les innovations technologiques et les politiques publiques seules ne suffiront pas à inverser les tendances actuelles.
+    </div>
+    <div class="p-trans">
+      در نهایت، آگاهی‌بخشی به شهروندان و شرکت‌ها نقش مرکزی دارد. وقتی مصرف‌کنندگان محصولات محیط‌زیست‌دوست را ترجیح می‌دهند، شرکت‌ها را به اتخاذ روش‌های پایدار وادار می‌کنند. اینگونه رشد سبز شکل می‌گیرد که اقتصاد و بوم‌شناسی یکدیگر را تقویت می‌کنند. بدون این آگاهی جمعی، نوآوری‌های فناورانه و سیاست‌های عمومی به تنهایی کافی نخواهند بود.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Enfin ← استدلال چهارم</span>
+      <span class="an-pill an-a">Sans cette prise de conscience ← antithèse شرطی B2</span>
+      <span class="an-pill an-c">Lorsque / C'est ainsi que ← connecteurs logiques</span>
+      <span class="an-pill an-v">se renforcent mutuellement ← تقابل مثبت — جمله کلیدی</span>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="p-card">
+    <div class="p-header" style="background:#f0fff4;">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En définitive,</span> croissance économique et protection de l'environnement ne sont pas des objectifs <span class="hv">antagonistes,</span> mais <span class="hv">complémentaires.</span> Les exemples le prouvent : technologie, énergies propres, économie circulaire et mobilisation collective montrent qu'il est possible de <span class="hv">bâtir un avenir à la fois prospère et durable.</span> Le vrai défi n'est pas de choisir entre économie et environnement, mais de <span class="hv">transformer notre modèle de croissance.</span>
+    </div>
+    <div class="p-trans">
+      در مجموع، رشد اقتصادی و حفاظت از محیط زیست اهداف متضاد نیستند، بلکه مکمل هم هستند. مثال‌ها ثابت می‌کنند: فناوری، انرژی‌های پاک، اقتصاد چرخشی و بسیج جمعی نشان می‌دهند که می‌توان آینده‌ای هم مرفه هم پایدار ساخت. چالش واقعی انتخاب بین اقتصاد و محیط زیست نیست، بلکه تحول مدل رشدمان است.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En définitive ← قوی‌تر از «En conclusion»</span>
+      <span class="an-pill an-a">antagonistes… mais complémentaires ← antithèse پایانی</span>
+      <span class="an-pill an-v">prospère et durable / transformer ← جمله پایانی چالش‌برانگیز</span>
+    </div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div><div class="ts-f">double défi + ۴ اهرم</div></div>
+      <div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1</div><div class="ts-f">نوآوری</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2</div><div class="ts-f">انرژی تجدیدپذیر</div></div>
+      <div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3</div><div class="ts-f">اقتصاد چرخشی</div></div>
+      <div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4</div><div class="ts-f">آگاهی‌بخشی</div></div>
+      <div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div><div class="ts-f">مکمل نه متضاد</div></div>
+    </div>
+  </div>
 
 </div>
 
-<!-- PANEL 2 — COURT -->
+<!-- ═══ PANEL 2 — COURT ═══ -->
 <div class="panel" id="panel-court">
 
   <div class="court-intro">
     <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
     همان ساختار آزمونی · همان antithèse‌ها — فقط فشرده‌تر.
-    <div class="fa">هدف: گفتن یک Tâche 3 کامل از ابتدا تا انتها بدون توقف.</div>
+    <div class="fa">این نسخه را بلند بخوان — هدف گفتن کامل است، نه کامل گفتن هر ایده.</div>
   </div>
 
-  <div class="court-card"><div class="cc-head" style="background:#fff8e1;"><span class="cc-tag num-intro">INTRO</span><span class="cc-time">⏱ ~25 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">De nos jours,</span> économie et environnement semblent s'opposer. <span class="hs">Certes,</span> certains les croient incompatibles. <span class="hs">Pourtant, je suis convaincu</span> qu'il est possible de les concilier grâce à quatre leviers : innovation, énergies renouvelables, gestion des ressources et sensibilisation.</div>
-    <div class="cc-fa">امروزه اقتصاد و محیط زیست مخالف هم به نظر می‌رسند. البته برخی آن‌ها را ناسازگار می‌دانند. اما مطمئنم می‌توان آن‌ها را با چهار اهرم آشتی داد: نوآوری، انرژی تجدیدپذیر، مدیریت منابع و آگاهی‌بخشی.</div></div><div class="court-card"><div class="cc-head" style="background:var(--blue-mist);"><span class="cc-tag num-arg1">ARG 1 — innovations</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Tout d'abord,</span> les innovations permettent une croissance plus propre. Les véhicules électriques, par exemple, créent des emplois tout en réduisant les émissions. <span class="ha">En revanche,</span> les entreprises qui ignorent ces innovations risquent de perdre leur compétitivité.</div>
-    <div class="cc-fa">اول، نوآوری‌ها رشد پاک‌تر ممکن می‌کنند. خودروهای برقی مثلاً مشاغل ایجاد می‌کنند و انتشارات را کاهش می‌دهند. در مقابل، شرکت‌هایی که نوآوری را نادیده می‌گیرند رقابت‌پذیری خود را از دست می‌دهند.</div></div><div class="court-card"><div class="cc-head" style="background:var(--green-pale);"><span class="cc-tag num-arg2">ARG 2 — énergies renouvelables</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Ensuite,</span> <span class="ha">contrairement aux énergies fossiles,</span> le solaire et l'éolien sont inépuisables et favorisent la création d'emplois. Dans le secteur financier, les fonds ESG prouvent que rentabilité et responsabilité peuvent aller ensemble.</div>
-    <div class="cc-fa">بعد، برخلاف سوخت‌های فسیلی، خورشیدی و بادی تجدیدناپذیر و مشاغل‌ساز هستند. در بخش مالی، صندوق‌های ESG ثابت می‌کنند سودآوری و مسئولیت‌پذیری می‌توانند با هم باشند.</div></div><div class="court-card"><div class="cc-head" style="background:var(--purple-pale);"><span class="cc-tag num-arg3">ARG 3 — économie circulaire</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">De plus,</span> le recyclage et l'économie circulaire réduisent les déchets tout en créant des emplois. <span class="hc">Non seulement</span> ces pratiques sont environnementales, <span class="hc">mais elles sont aussi</span> économiquement rentables. <span class="ha">Loin d'être un frein,</span> l'économie verte est un moteur d'innovation.</div>
-    <div class="cc-fa">علاوه بر این، بازیافت و اقتصاد چرخشی ضایعات را کاهش می‌دهند و مشاغل ایجاد می‌کنند. نه تنها این روش‌ها محیط‌زیستی هستند، بلکه از نظر اقتصادی هم سودآورند. دور از اینکه مانع باشد، اقتصاد سبز موتور نوآوری است.</div></div><div class="court-card"><div class="cc-head" style="background:var(--teal-pale);"><span class="cc-tag num-arg4">ARG 4 — sensibilisation</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Enfin,</span> les consommateurs jouent un rôle clé. Quand ils choisissent des produits durables, ils poussent les entreprises à changer. <span class="ha">Sans cette mobilisation collective,</span> les politiques publiques seules ne suffiront pas.</div>
-    <div class="cc-fa">در نهایت، مصرف‌کنندگان نقش کلیدی دارند. وقتی محصولات پایدار انتخاب می‌کنند، شرکت‌ها را وادار به تغییر می‌کنند. بدون این بسیج جمعی، سیاست‌های عمومی به تنهایی کافی نخواهند بود.</div></div><div class="court-card"><div class="cc-head" style="background:#fff3e0;"><span class="cc-tag num-conc">CONCLUSION</span><span class="cc-time">⏱ ~20 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">En définitive,</span> économie et environnement sont <span class="hv">complémentaires, pas antagonistes.</span> Le défi n'est pas de choisir, mais de transformer notre modèle de croissance pour bâtir un avenir <span class="hv">prospère et durable.</span></div>
-    <div class="cc-fa">در مجموع، اقتصاد و محیط زیست مکمل هم هستند، نه متضاد. چالش انتخاب بین آن‌ها نیست، بلکه تحول مدل رشدمان برای ساختن آینده‌ای مرفه و پایدار است.</div></div>
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;">
+      <span class="cc-tag num-intro">INTRO</span>
+      <span class="cc-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De nos jours,</span> économie et environnement semblent s'opposer. <span class="hs">Certes,</span> certains les croient incompatibles. <span class="hs">Pourtant, je suis convaincu</span> qu'on peut les concilier grâce à quatre leviers : innovation, énergies renouvelables, économie circulaire et sensibilisation.
+    </div>
+    <div class="cc-fa">امروزه اقتصاد و محیط زیست مخالف هم به نظر می‌رسند. البته برخی آن‌ها را ناسازگار می‌دانند. اما مطمئنم می‌توان آن‌ها را با چهار اهرم آشتی داد: نوآوری، انرژی تجدیدپذیر، اقتصاد چرخشی و آگاهی‌بخشی.</div>
+  </div>
 
-  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;"><div class="timing-strip"><div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div><div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div><div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div><div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div><div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div><div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div></div></div>
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);">
+      <span class="cc-tag num-arg1">ARG 1 — innovations</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Tout d'abord,</span> les innovations permettent une croissance plus propre. Les véhicules électriques, par exemple, créent des emplois tout en réduisant les émissions. <span class="ha">En revanche,</span> ignorer ces innovations risque de faire perdre la compétitivité.
+    </div>
+    <div class="cc-fa">اول، نوآوری‌ها رشد پاک‌تر را ممکن می‌کنند. خودروهای برقی مثلاً مشاغل ایجاد می‌کنند و انتشارات را کاهش می‌دهند. در مقابل، نادیده گرفتن نوآوری رقابت‌پذیری را از بین می‌برد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);">
+      <span class="cc-tag num-arg2">ARG 2 — énergies renouvelables</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Ensuite,</span> <span class="ha">contrairement aux fossiles,</span> le solaire et l'éolien sont inépuisables et créent des emplois. Dans le secteur financier, les fonds ESG prouvent que rentabilité et responsabilité peuvent aller de pair.
+    </div>
+    <div class="cc-fa">بعد، برخلاف سوخت‌های فسیلی، خورشیدی و بادی تجدیدناپذیر هستند و مشاغل می‌سازند. در بخش مالی، صندوق‌های ESG ثابت می‌کنند سودآوری و مسئولیت‌پذیری می‌توانند با هم باشند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);">
+      <span class="cc-tag num-arg3">ARG 3 — économie circulaire</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De plus,</span> le recyclage et l'économie circulaire réduisent les déchets tout en créant des emplois. <span class="hc">Non seulement</span> ces pratiques sont environnementales, <span class="hc">mais elles sont aussi</span> économiquement rentables. <span class="ha">Loin d'être un frein,</span> l'économie verte est un moteur d'innovation.
+    </div>
+    <div class="cc-fa">علاوه بر این، بازیافت و اقتصاد چرخشی ضایعات را کاهش می‌دهند و مشاغل می‌سازند. نه تنها محیط‌زیستی هستند، بلکه اقتصادی هم هستند. دور از مانع بودن، اقتصاد سبز موتور نوآوری است.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);">
+      <span class="cc-tag num-arg4">ARG 4 — sensibilisation</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Enfin,</span> quand les consommateurs choisissent des produits durables, ils poussent les entreprises à changer. <span class="hc">C'est ainsi que</span> se crée la croissance verte où économie et écologie se renforcent mutuellement. <span class="ha">Sans cette mobilisation,</span> les politiques publiques seules ne suffiront pas.
+    </div>
+    <div class="cc-fa">در نهایت، وقتی مصرف‌کنندگان محصولات پایدار انتخاب می‌کنند، شرکت‌ها را وادار به تغییر می‌کنند. اینگونه رشد سبز می‌سازند که اقتصاد و بوم‌شناسی یکدیگر را تقویت می‌کنند. بدون این بسیج، سیاست‌های عمومی کافی نخواهند بود.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#f0fff4;">
+      <span class="cc-tag num-conc">CONCLUSION</span>
+      <span class="cc-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">En définitive,</span> économie et environnement sont <span class="hv">complémentaires, pas antagonistes.</span> Le défi n'est pas de choisir, mais de <span class="hv">transformer notre modèle de croissance</span> pour un avenir prospère et durable.
+    </div>
+    <div class="cc-fa">در مجموع، اقتصاد و محیط زیست مکمل هم هستند، نه متضاد. چالش انتخاب بین آن‌ها نیست، بلکه تحول مدل رشدمان برای آینده‌ای مرفه و پایدار است.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div>
+      <div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
 
 </div>
 
-<!-- PANEL 3 — CADRE -->
+<!-- ═══ PANEL 3 — CADRE ═══ -->
 <div class="panel" id="panel-cadre">
 
   <div class="cadre-intro">
     <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
-    کلمات نارنجی را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.
-    <div class="fa">قانون: یک نگاه به کلید — بعد نگاهت را برمی‌داری و می‌گویی.</div>
+    کلمات سبز را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.
+    <div class="fa">قانون: یک نگاه به کلید، بعد نگاه‌ات را بر می‌داری و می‌گویی.</div>
   </div>
 
-  <div class="cadre-card"><div class="cadre-head"><span class="cadre-label">INTRODUCTION</span><span class="cadre-time">⏱ ~25 ثانیه</span></div>
+  <div class="cadre-card">
+    <div class="cadre-head">
+      <span class="cadre-label">INTRODUCTION</span>
+      <span class="cadre-time">⏱ ~25 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">De nos jours, double défi…</span><span class="cadre-anchor">Certes, incompatibles…</span><span class="cadre-anchor">Pourtant, je suis convaincu…</span><span class="cadre-anchor">4 leviers:</span>
-      <div class="cadre-key"><span class="ck">Certes + Pourtant = concession classique</span><span class="ck">اعلام ۴ محور = ساختار آزمونی</span></div>
-      <div class="cadre-hint">concession فوری → موضع قوی → اعلام ۴ محور</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--blue);"><span class="cadre-label">ARG 1 — innovations</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">De nos jours, double défi…</span>
+      <span class="cadre-anchor">Certes, incompatibles…</span>
+      <span class="cadre-anchor">Pourtant, je suis convaincu…</span>
+      <span class="cadre-anchor">4 leviers :</span>
+      <div class="cadre-key">
+        <span class="ck">Certes + Pourtant = concession classique</span>
+        <span class="ck">اعلام ۴ اهرم = ساختار آزمونی</span>
+      </div>
+      <div class="cadre-hint">concession فوری → موضع قوی → ۴ اهرم</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);">
+      <span class="cadre-label">ARG 1 — innovations</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Tout d'abord,</span><span class="cadre-anchor">innovations → croissance propre</span><span class="cadre-anchor">Par exemple, véhicules électriques</span><span class="cadre-anchor">En revanche,</span><span class="cadre-anchor">ignorer → perdre compétitivité</span>
-      <div class="cadre-key"><span class="ck">antithèse: En revanche</span><span class="ck">مثال ملموس: véhicules électriques</span></div>
+      <span class="cadre-anchor">Tout d'abord,</span>
+      <span class="cadre-anchor">procédés propres → compétitivité</span>
+      <span class="cadre-anchor">Par exemple, véhicules électriques</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">ignorer → perdre parts de marché</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: En revanche</span>
+        <span class="ck">مثال ملموس: véhicules électriques</span>
+      </div>
       <div class="cadre-hint">ایده → مثال → «En revanche» + عواقب نادیده گرفتن</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--green);"><span class="cadre-label">ARG 2 — énergies renouvelables</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);">
+      <span class="cadre-label">ARG 2 — énergies renouvelables</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Ensuite,</span><span class="cadre-anchor">Contrairement aux fossiles,</span><span class="cadre-anchor">solaire / éolien → inépuisables</span><span class="cadre-anchor">dans le secteur financier — ESG</span>
-      <div class="cadre-key"><span class="ck">Contrairement à = antithèse directe</span><span class="ck">ESG = شخصی‌سازی علیرضا</span></div>
-      <div class="cadre-hint">«Contrairement» + تضاد → مثال شخصی ESG</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--purple);"><span class="cadre-label">ARG 3 — économie circulaire</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">Ensuite,</span>
+      <span class="cadre-anchor">Contrairement aux fossiles,</span>
+      <span class="cadre-anchor">inépuisables → emplois</span>
+      <span class="cadre-anchor">secteur financier — ESG</span>
+      <span class="cadre-anchor">rentabilité + responsabilité</span>
+      <div class="cadre-key">
+        <span class="ck">Contrairement à = antithèse directe</span>
+        <span class="ck">ESG = شخصی‌سازی علیرضا ✓</span>
+      </div>
+      <div class="cadre-hint">«Contrairement» + تضاد → مثال شخصی از بخش مالی</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);">
+      <span class="cadre-label">ARG 3 — économie circulaire</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">De plus,</span><span class="cadre-anchor">recyclage / économie circulaire</span><span class="cadre-anchor">Non seulement… mais aussi…</span><span class="cadre-anchor">Loin d'être un frein,</span><span class="cadre-anchor">moteur d'innovation</span>
-      <div class="cadre-key"><span class="ck">Non seulement… mais = B2 ✓</span><span class="ck">Loin d'être = antithèse قوی</span></div>
-      <div class="cadre-hint">«Non seulement… mais» → «Loin d'être un frein» = دو ساختار B2 در یک بند</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--teal);"><span class="cadre-label">ARG 4 — sensibilisation</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">De plus,</span>
+      <span class="cadre-anchor">recyclage / gaspillage</span>
+      <span class="cadre-anchor">Non seulement… mais également</span>
+      <span class="cadre-anchor">Loin d'être un frein,</span>
+      <span class="cadre-anchor">moteur d'emploi et d'innovation</span>
+      <div class="cadre-key">
+        <span class="ck">Non seulement… mais = B2 ✓</span>
+        <span class="ck">Loin d'être = antithèse قوی</span>
+      </div>
+      <div class="cadre-hint">دو ساختار B2 در یک بند — اثر قوی روی ارزیاب</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);">
+      <span class="cadre-label">ARG 4 — sensibilisation</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Enfin,</span><span class="cadre-anchor">consommateurs → entreprises</span><span class="cadre-anchor">C'est ainsi que croissance verte</span><span class="cadre-anchor">Sans cette mobilisation,</span><span class="cadre-anchor">ne suffiront pas</span>
-      <div class="cadre-key"><span class="ck">Sans + conditionnel = antithèse شرطی</span><span class="ck">se renforcent mutuellement</span></div>
+      <span class="cadre-anchor">Enfin,</span>
+      <span class="cadre-anchor">consommateurs → entreprises</span>
+      <span class="cadre-anchor">C'est ainsi que croissance verte</span>
+      <span class="cadre-anchor">se renforcent mutuellement</span>
+      <span class="cadre-anchor">Sans cette mobilisation,</span>
+      <span class="cadre-anchor">ne suffiront pas</span>
+      <div class="cadre-key">
+        <span class="ck">Sans + futur = antithèse شرطی</span>
+        <span class="ck">se renforcent mutuellement = جمله کلیدی</span>
+      </div>
       <div class="cadre-hint">مصرف‌کننده → شرکت → «C'est ainsi que» → «Sans cela» + هشدار</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--amber-deep);"><span class="cadre-label">CONCLUSION</span><span class="cadre-time">⏱ ~20 ثانیه</span></div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green-deep);">
+      <span class="cadre-label">CONCLUSION</span>
+      <span class="cadre-time">⏱ ~20 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">En définitive,</span><span class="cadre-anchor">complémentaires, pas antagonistes</span><span class="cadre-anchor">pas choisir — transformer</span><span class="cadre-anchor">prospère et durable</span>
-      <div class="cadre-key"><span class="ck">antagonistes ↔ complémentaires = antithèse پایانی</span><span class="ck">En définitive = قوی‌تر از En conclusion</span></div>
-      <div class="cadre-hint">antithèse پایانی → جمله چالش‌برانگیز با «transformer»</div>
-    </div></div>
+      <span class="cadre-anchor">En définitive,</span>
+      <span class="cadre-anchor">antagonistes → complémentaires</span>
+      <span class="cadre-anchor">pas choisir — transformer</span>
+      <span class="cadre-anchor">prospère et durable</span>
+      <div class="cadre-key">
+        <span class="ck">antagonistes ↔ complémentaires = antithèse پایانی</span>
+        <span class="ck">En définitive = قوی‌تر از En conclusion</span>
+      </div>
+      <div class="cadre-hint">antithèse پایانی → «transformer» = چالش واقعی</div>
+    </div>
+  </div>
 
 </div>
 
-</div>
+</div><!-- /wrap -->
 
 <div class="footer">
   <a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025
 </div>
-
 <button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
 <script>
-function showTab(id, el){
+function showTab(id,el){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('panel-'+id).classList.add('active');
-  if(el) el.classList.add('active');
+  if(el)el.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 window.addEventListener('scroll',()=>{
