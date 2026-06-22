@@ -2,15 +2,15 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Impacts des téléphones & tablettes — Tâche 3 · علیرضا</title>
+<title>Impacts des écrans — Tâche 3 · علیرضا</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
   --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
-  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
-  --green:#2e7d32;--green-pale:#e8f5e9;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;
+  --green:#2e7d32;--green-pale:#e8f5e9;--green-deep:#1b5e20;
   --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
   --purple:#6a1b9a;--purple-pale:#f3e5f5;
   --red:#b71c1c;--red-pale:#ffebee;
@@ -20,7 +20,6 @@ html{scroll-behavior:smooth;}
 body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
 
-/* TOPBAR */
 .topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
 .logo{width:38px;height:38px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
 .topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
@@ -28,17 +27,15 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 .back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
 .back:hover{background:var(--blue);color:white;}
 
-/* HERO */
 .hero{background:linear-gradient(135deg,var(--navy-mid),var(--navy-soft));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%;}
 .hero-content{position:relative;z-index:1;}
 .hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
-.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(18px,3vw,28px);font-weight:700;margin-bottom:8px;line-height:1.3;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(16px,3vw,26px);font-weight:700;margin-bottom:8px;line-height:1.35;}
 .hero .sub{font-size:13px;opacity:.8;}
 .hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
 .hpill{background:rgba(255,255,255,.13);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.2);}
 
-/* TABS */
 .tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
 .tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
 .tab:hover{color:var(--blue);}.tab.active{color:var(--blue);border-bottom-color:var(--blue);}
@@ -46,7 +43,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 .wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
 .panel{display:none;}.panel.active{display:block;}
 
-/* QUESTION BOX */
 .q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
 .q-head{background:var(--navy);padding:14px 20px;}
 .q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
@@ -57,7 +53,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 .chip-time{background:var(--amber-pale);color:var(--amber-deep);}
 .chip-struct{background:var(--purple-pale);color:var(--purple);}
 
-/* PARAGRAPH CARD */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
 .p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
 .p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
 .p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
@@ -69,19 +68,14 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 .num-conc{background:rgba(191,54,12,.1);color:var(--amber-deep);}
 .p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
 
-/* FRENCH TEXT */
 .p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
 
-/* HIGHLIGHTS */
-.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}  /* structure */
-.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}      /* vocab */
-.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}     /* antithèse */
-.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}       /* connecteur */
-
-/* TRANSLATION */
 .p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
 
-/* ANALYSIS STRIP */
 .p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
 .an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
 .an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
@@ -89,85 +83,61 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 .an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
 .an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
 
-/* GLOBAL ANALYSIS */
-.global-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:24px;}
-.gb-head{background:var(--navy);padding:14px 20px;}
-.gb-head h3{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:white;}
-.gb-body{padding:18px 20px;}
-.gb-row{display:grid;grid-template-columns:auto 1fr 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:start;}
-.gb-row:last-child{border:none;}
-.gb-icon{font-size:16px;padding-top:2px;}
-.gb-fr{font-size:13px;font-family:'Roboto',sans-serif;line-height:1.6;}
-.gb-fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);line-height:1.7;}
-
-/* LEGEND */
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
-.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
-
-/* ────────── PANEL 2 — COURT ────────── */
-.court-intro{background:linear-gradient(135deg,var(--amber-pale),#fff8f0);border:2px solid var(--amber);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
-.court-intro strong{color:var(--amber-deep);}
-.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
-
-.court-card{margin-bottom:18px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
-.cc-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
-.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
-.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
-.cc-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.85;background:white;}
-.cc-fr .hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
-.cc-fr .ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
-.cc-fr .hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
-.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
-
-/* ────────── PANEL 3 — CADRE ────────── */
-.cadre-intro{background:linear-gradient(135deg,var(--blue-mist),#f0f7ff);border:2px solid var(--blue);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
-.cadre-intro strong{color:var(--blue);}
-.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
-
-.cadre-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
-.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
-.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
-.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
-.cadre-body{padding:16px 20px;background:white;}
-.cadre-anchor{display:inline-block;background:var(--amber-pale);border:1.5px solid var(--amber);color:var(--amber-deep);font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:6px;margin:4px 4px 4px 0;}
-.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
-.cadre-blank{display:inline-block;border-bottom:2px solid var(--gray);min-width:80px;color:transparent;margin:0 3px;font-size:14px;}
-.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.ck{background:var(--blue-mist);border:1px solid #bfdbfe;color:var(--blue);font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
-
-/* TIMING STRIP */
 .timing-strip{display:flex;background:var(--navy-mid);border-top:2px solid rgba(255,255,255,.08);}
 .ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
 .ts:last-child{border:none;}
 .ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);}
 .ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+.ts-f{font-size:8px;direction:rtl;color:rgba(255,255,255,.3);margin-top:1px;}
+
+.court-intro{background:linear-gradient(135deg,var(--amber-pale),#fff8f0);border:2px solid var(--amber);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:var(--amber-deep);}
+.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.court-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
+.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+.cc-fr{padding:13px 18px;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.85;background:white;}
+.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
+
+.cadre-intro{background:linear-gradient(135deg,var(--blue-mist),#f0f7ff);border:2px solid var(--blue);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:var(--blue);}
+.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.cadre-card{margin-bottom:14px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
+.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
+.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
+.cadre-body{padding:16px 20px;background:white;}
+.cadre-anchor{display:inline-block;background:var(--amber-pale);border:1.5px solid var(--amber);color:var(--amber-deep);font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;margin:3px 3px 3px 0;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ck{background:var(--blue-mist);border:1px solid #bfdbfe;color:var(--blue);font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
+.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
 
 .footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
 .footer a{color:var(--blue);text-decoration:none;}
 #scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
 #scrollBtn.show{display:block;}
-@media(max-width:640px){.gb-row{grid-template-columns:auto 1fr;}.gb-fa{grid-column:2;}}
-</style>
+@media(max-width:640px){.timing-strip{flex-wrap:wrap;}.ts{min-width:33%;}}</style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="logo">T3</div>
-  <div><h1>Impacts des téléphones & tablettes</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
+  <div><h1>Impacts des écrans</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
   <a class="back" href="index.html">← داشبورد</a>
 </div>
 
 <div class="hero">
   <div class="hero-content">
     <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
-    <h2>Quels impacts et quels risques peuvent avoir l'usage régulier des téléphones, des ordinateurs et des tablettes ?</h2>
-    <p class="sub">استفاده منظم از تلفن، کامپیوتر و تبلت چه تأثیرات و خطراتی می‌تواند داشته باشد؟</p>
+    <h2>Quels impacts et quels risques peuvent avoir<br>l'usage régulier des téléphones, ordinateurs et tablettes ?</h2>
+    <p class="sub">استفاده منظم از صفحه‌ها چه تأثیرات و خطراتی دارد؟</p>
     <div class="hero-pills">
-      <span class="hpill">موضع: Risques réels — usage modéré ←</span>
+      <span class="hpill">موضع: Risques réels ←</span>
       <span class="hpill">⏱ 4:30</span>
       <span class="hpill">Intro + 4 args + Conc.</span>
-      <span class="hpill">B1/B2</span>
     </div>
   </div>
 </div>
@@ -180,7 +150,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
 
 <div class="wrap">
 
-<!-- PANEL 1 — COMPLET -->
+<!-- ═══ PANEL 1 — COMPLET ═══ -->
 <div class="panel active" id="panel-complet">
 
   <div class="q-box">
@@ -189,7 +159,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
       <div class="q-fa">استفاده منظم از تلفن، کامپیوتر و تبلت چه تأثیرات و خطراتی می‌تواند داشته باشد؟</div>
     </div>
     <div class="q-meta">
-      <span class="q-chip chip-pos">موضع: Risques réels — usage modéré</span>
+      <span class="q-chip chip-pos">موضع: خطرات واقعی — استفاده متعادل</span>
       <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
       <span class="q-chip chip-struct">Intro + 4 arguments + Conclusion</span>
     </div>
@@ -202,126 +172,365 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repea
     <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
   </div>
 
+  <!-- INTRO -->
   <div class="p-card">
-    <div class="p-header" style="background:#fff8e1;"><span class="p-num num-intro">INTRODUCTION</span><span class="p-time">⏱ ~40 ثانیه</span></div>
-    <div class="p-fr"><span class="hc">Aujourd'hui,</span>, les téléphones, ordinateurs et tablettes occupent une place <span class="hv">centrale</span> dans notre quotidien. <span class="hv">Certes</span>, ils facilitent la communication, le travail et l'éducation. <span class="hs">Cependant,</span> <span class="hs">je suis convaincu que</span> leur usage <span class="hv">excessif</span> comporte des risques qu'on ne peut pas négliger — sur la santé physique, la santé mentale, la vie sociale et la sécurité personnelle.</div>
-    <div class="p-trans">امروزه تلفن، کامپیوتر و تبلت جایگاه مرکزی در زندگی روزمره دارند. البته ارتباط، کار و آموزش را تسهیل می‌کنند. اما مطمئنم که استفاده بیش از حد از آن‌ها خطراتی دارد که نمی‌توان نادیده گرفت — بر سلامت جسمی، سلامت روانی، زندگی اجتماعی و امنیت شخصی.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Cependant + je suis convaincu ← موضع صریح</span><span class="an-pill an-v">certes… cependant ← concession فوری</span><span class="an-pill an-c">Aujourd'hui ← باز کردن زمینه</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--blue-mist);"><span class="p-num num-arg1">ARGUMENT 1 — santé physique</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">Tout d'abord,</span> l'usage <span class="hv">prolongé</span> des écrans a des effets directs sur la santé physique. <span class="hc">En effet,</span> de longues heures devant un écran provoquent des <span class="hv">troubles de la vue, des maux de tête et des douleurs cervicales.</span> <span class="hc">Par ailleurs,</span> la <span class="hv">sédentarité</span> liée à cet usage augmente les risques d'<span class="hv">obésité et de maladies cardiovasculaires.</span> <span class="ha">En revanche,</span> une pratique régulière du sport et des pauses régulières permettent de compenser ces effets.</div>
-    <div class="p-trans">اول از همه، استفاده طولانی از صفحه‌ها تأثیرات مستقیمی بر سلامت جسمی دارد. در واقع، ساعت‌های طولانی پشت صفحه باعث اختلال بینایی، سردرد و دردهای گردنی می‌شود. علاوه بر این، بی‌تحرکی مرتبط با این استفاده خطرات چاقی و بیماری‌های قلبی-عروقی را افزایش می‌دهد. در مقابل، ورزش منظم و استراحت‌های مرتب می‌توانند این اثرات را جبران کنند.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Tout d'abord ← شروع استدلال اول</span><span class="an-pill an-a">En revanche ← antithèse راه‌حل</span><span class="an-pill an-c">En effet / Par ailleurs ← دو connecteur توضیحی</span><span class="an-pill an-v">sédentarité / cervicales / cardiovasculaires ← واژگان پزشکی B2</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--green-pale);"><span class="p-num num-arg2">ARGUMENT 2 — santé mentale</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">Ensuite,</span> ces technologies peuvent sérieusement affecter la santé <span class="hv">mentale et émotionnelle.</span> L'usage excessif des réseaux sociaux ou des jeux vidéo peut générer du <span class="hv">stress, de l'anxiété ou un sentiment de solitude.</span> <span class="hc">De plus,</span> certaines personnes développent une véritable <span class="hv">dépendance</span> qui perturbe leur <span class="hv">concentration, leur sommeil et leur équilibre émotionnel.</span> <span class="ha">Toutefois,</span> utilisées avec discernement, ces mêmes technologies peuvent aussi servir d'outils thérapeutiques ou de soutien psychologique.</div>
-    <div class="p-trans">بعد، این فناوری‌ها می‌توانند جدی‌ترین تأثیر را بر سلامت روانی و احساسی داشته باشند. استفاده بیش از حد از شبکه‌های اجتماعی یا بازی‌های ویدئویی می‌تواند استرس، اضطراب یا احساس تنهایی ایجاد کند. علاوه بر این، برخی افراد وابستگی واقعی پیدا می‌کنند که تمرکز، خواب و تعادل احساسی‌شان را مختل می‌کند. با این حال، با درایت استفاده شوند، همین فناوری‌ها می‌توانند ابزارهای درمانی یا حمایت روانشناختی باشند.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Ensuite ← استدلال دوم</span><span class="an-pill an-a">Toutefois ← concession + antithèse</span><span class="an-pill an-v">dépendance / équilibre émotionnel ← واژگان روان‌شناختی</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--purple-pale);"><span class="p-num num-arg3">ARGUMENT 3 — vie sociale</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">De plus,</span> l'usage régulier des écrans peut <span class="hv">fragiliser les liens sociaux.</span> Les <span class="hv">interactions virtuelles</span> remplacent souvent les échanges <span class="hv">en face à face,</span> ce qui peut affaiblir les liens familiaux et amicaux. Les jeunes, <span class="hc">en particulier,</span> risquent de négliger les <span class="hv">activités collectives</span> et les <span class="hv">moments de partage réel.</span> <span class="ha">À long terme,</span> cela peut limiter le développement de <span class="hv">compétences sociales essentielles</span> comme l'empathie, l'écoute et la gestion des conflits.</div>
-    <div class="p-trans">علاوه بر این، استفاده منظم از صفحه‌ها می‌تواند پیوندهای اجتماعی را شکننده کند. تعاملات مجازی اغلب جای مبادلات رو در رو را می‌گیرند، که می‌تواند روابط خانوادگی و دوستانه را تضعیف کند. به ویژه جوانان در خطر نادیده گرفتن فعالیت‌های گروهی هستند. در بلندمدت، این می‌تواند توسعه مهارت‌های اجتماعی ضروری مثل همدلی، شنیداری و مدیریت تعارض را محدود کند.</div>
-    <div class="p-analysis"><span class="an-pill an-s">De plus ← استدلال سوم</span><span class="an-pill an-a">À long terme ← پیامد بلندمدت = تأثیر قوی</span><span class="an-pill an-c">en particulier ← تخصیص به گروه آسیب‌پذیر</span><span class="an-pill an-v">fragiliser / compétences sociales ← واژگان جامعه‌شناختی</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:var(--teal-pale);"><span class="p-num num-arg4">ARGUMENT 4 — sécurité</span><span class="p-time">⏱ ~55 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">Enfin,</span> il est <span class="hv">primordial</span> de mentionner les risques liés à la <span class="hv">sécurité et à la vie privée.</span> Internet expose les utilisateurs à des <span class="hv">contenus inappropriés, à la désinformation, au piratage de données et au vol d'identité.</span> Les jeunes sont <span class="hv">particulièrement vulnérables</span> aux arnaques en ligne et aux contacts dangereux. <span class="hc">C'est pourquoi</span> il est essentiel d'apprendre à naviguer de manière <span class="hv">sécurisée</span> et de protéger ses informations personnelles avec vigilance.</div>
-    <div class="p-trans">در نهایت، ضروری است که به خطرات مرتبط با امنیت و حریم خصوصی اشاره کنم. اینترنت کاربران را در معرض محتوای نامناسب، اطلاعات غلط، هک داده‌ها و سرقت هویت قرار می‌دهد. جوانان به ویژه در برابر کلاهبرداری‌های آنلاین آسیب‌پذیر هستند. به همین دلیل است که یاد گرفتن گشت‌وگذار امن و حفاظت از اطلاعات شخصی ضروری است.</div>
-    <div class="p-analysis"><span class="an-pill an-s">Enfin + il est primordial ← استدلال چهارم با وزن</span><span class="an-pill an-c">C'est pourquoi ← نتیجه مستقیم</span><span class="an-pill an-v">désinformation / piratage / vol d'identité ← واژگان دیجیتال B2</span></div>
-    </div><div class="p-card">
-    <div class="p-header" style="background:#fff3e0;"><span class="p-num num-conc">CONCLUSION</span><span class="p-time">⏱ ~30 ثانیه</span></div>
-    <div class="p-fr"><span class="hs">En conclusion,</span> les téléphones, ordinateurs et tablettes ont des <span class="hv">avantages indéniables.</span> <span class="hs">Cependant,</span> leur usage <span class="hv">excessif</span> présente des risques réels pour la santé, les relations sociales et la sécurité. La clé réside dans l'utilisation <span class="hv">modérée et vigilante</span> — non pas pour rejeter ces outils, mais pour en <span class="hv">maîtriser les usages</span> et en tirer le meilleur parti.</div>
-    <div class="p-trans">در نتیجه، تلفن، کامپیوتر و تبلت مزایای انکارناپذیری دارند. اما استفاده بیش از حد از آن‌ها خطرات واقعی برای سلامت، روابط اجتماعی و امنیت ایجاد می‌کند. کلید در استفاده متعادل و هوشمندانه است — نه رد کردن این ابزارها، بلکه تسلط بر استفاده از آن‌ها.</div>
-    <div class="p-analysis"><span class="an-pill an-s">En conclusion + Cependant ← بازگشت به موضع</span><span class="an-pill an-v">modérée et vigilante / maîtriser ← جمله پایانی قوی</span><span class="an-pill an-v">avantages indéniables ← concession در نتیجه = B2</span></div>
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
     </div>
+    <div class="p-fr">
+      <span class="hc">Aujourd'hui,</span> les téléphones, les ordinateurs et les tablettes occupent une place <span class="hv">centrale</span> dans notre vie quotidienne. <span class="hv">Certes,</span> ils facilitent la communication, le travail et l'éducation. <span class="hs">Cependant,</span> <span class="hs">je suis convaincu</span> que leur usage <span class="hv">excessif</span> comporte des risques qu'on ne peut pas négliger. <span class="hs">À mon sens,</span> ces risques se situent sur quatre plans essentiels : la santé physique, la santé mentale, la vie sociale, et la sécurité personnelle.
+    </div>
+    <div class="p-trans">
+      امروزه تلفن، کامپیوتر و تبلت جایگاه مرکزی در زندگی روزمره دارند. البته ارتباط، کار و آموزش را تسهیل می‌کنند. اما مطمئنم که استفاده بیش از حد از آن‌ها خطراتی دارد که نمی‌توان نادیده گرفت. به نظرم این خطرات در چهار سطح اساسی هستند: سلامت جسمی، سلامت روانی، زندگی اجتماعی و امنیت شخصی.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Certes… Cependant ← concession فوری</span>
+      <span class="an-pill an-s">je suis convaincu + À mon sens ← موضع مضاعف</span>
+      <span class="an-pill an-s">اعلام ۴ سطح = ساختار آزمونی ✓</span>
+      <span class="an-pill an-v">centrale / excessif / négliger ← واژگان دقیق</span>
+    </div>
+  </div>
 
-  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;"><div class="timing-strip"><div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div><div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1 · santé physique</div></div><div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2 · mental</div></div><div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3 · social</div></div><div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4 · sécurité</div></div><div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div></div></div></div>
+  <!-- ARG 1 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — santé physique</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Tout d'abord,</span> l'usage <span class="hv">prolongé</span> des écrans a des effets directs sur la santé physique. <span class="hc">En effet,</span> passer de longues heures devant un écran provoque fréquemment des <span class="hv">troubles de la vue, des maux de tête et des douleurs cervicales.</span> <span class="hc">Par ailleurs,</span> la <span class="hv">sédentarité</span> liée à cette utilisation augmente les risques d'<span class="hv">obésité et de maladies cardiovasculaires.</span> <span class="ha">En revanche,</span> des pauses régulières, une posture correcte et une activité physique quotidienne permettent de compenser ces effets — à condition d'en prendre conscience tôt.
+    </div>
+    <div class="p-trans">
+      اول از همه، استفاده طولانی از صفحه‌ها تأثیرات مستقیمی بر سلامت جسمی دارد. در واقع، ساعت‌های طولانی پشت صفحه اغلب اختلال بینایی، سردرد و دردهای گردنی ایجاد می‌کند. علاوه بر این، بی‌تحرکی مرتبط با این استفاده خطرات چاقی و بیماری‌های قلبی-عروقی را افزایش می‌دهد. در مقابل، استراحت‌های منظم، وضعیت صحیح بدن و فعالیت فیزیکی روزانه می‌توانند این اثرات را جبران کنند — به شرطی که زودتر از آن آگاه شویم.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tout d'abord ← استدلال اول</span>
+      <span class="an-pill an-a">En revanche ← antithèse: مشکل ↔ راه‌حل</span>
+      <span class="an-pill an-c">En effet / Par ailleurs ← دو connecteur توضیحی</span>
+      <span class="an-pill an-v">sédentarité / cervicales / cardiovasculaires ← واژگان پزشکی B2</span>
+    </div>
+  </div>
+
+  <!-- ARG 2 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — santé mentale</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ensuite,</span> ces technologies peuvent sérieusement affecter la santé <span class="hv">mentale et émotionnelle.</span> L'usage excessif des réseaux sociaux ou des jeux vidéo peut générer du <span class="hv">stress, de l'anxiété,</span> voire un véritable <span class="hv">sentiment de solitude.</span> <span class="hc">De plus,</span> certaines personnes développent une <span class="hv">dépendance</span> qui perturbe leur <span class="hv">concentration, leur sommeil et leur équilibre émotionnel.</span> <span class="ha">Toutefois,</span> utilisées avec <span class="hv">discernement,</span> ces mêmes technologies peuvent aussi offrir un soutien psychologique ou des espaces d'expression bénéfiques.
+    </div>
+    <div class="p-trans">
+      بعد، این فناوری‌ها می‌توانند جدی‌ترین تأثیر را بر سلامت روانی و احساسی داشته باشند. استفاده بیش از حد از شبکه‌های اجتماعی یا بازی‌های ویدئویی می‌تواند استرس، اضطراب، بلکه احساس واقعی تنهایی ایجاد کند. علاوه بر این، برخی افراد وابستگی‌ای ایجاد می‌کنند که تمرکز، خواب و تعادل احساسی‌شان را مختل می‌کند. با این حال، با درایت استفاده شوند، همین فناوری‌ها می‌توانند حمایت روانشناختی یا فضاهای مفید بیان ارائه دهند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ensuite ← استدلال دوم</span>
+      <span class="an-pill an-a">Toutefois ← concession ملایم‌تر از «En revanche»</span>
+      <span class="an-pill an-c">De plus ← تقویت استدلال</span>
+      <span class="an-pill an-v">dépendance / équilibre émotionnel / discernement ← B2</span>
+    </div>
+  </div>
+
+  <!-- ARG 3 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — vie sociale</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">De plus,</span> l'usage régulier des écrans peut <span class="hv">fragiliser les liens sociaux.</span> Les <span class="hv">interactions virtuelles</span> tendent à remplacer les échanges <span class="hv">en face à face,</span> ce qui peut affaiblir les liens familiaux et amicaux. Les jeunes, <span class="hc">en particulier,</span> risquent de négliger les <span class="hv">activités collectives</span> et les moments de <span class="hv">partage réel.</span> <span class="ha">À long terme,</span> cela peut réduire le développement de <span class="hv">compétences sociales essentielles</span> — comme l'empathie, l'écoute active ou la gestion des conflits — qui ne s'apprennent pas derrière un écran.
+    </div>
+    <div class="p-trans">
+      علاوه بر این، استفاده منظم از صفحه‌ها می‌تواند پیوندهای اجتماعی را شکننده کند. تعاملات مجازی تمایل دارند جای مبادلات رو در رو را بگیرند، که می‌تواند روابط خانوادگی و دوستانه را تضعیف کند. به ویژه جوانان در خطر نادیده گرفتن فعالیت‌های گروهی هستند. در بلندمدت، این می‌تواند توسعه مهارت‌های اجتماعی ضروری را کاهش دهد — مثل همدلی، گوش دادن فعال یا مدیریت تعارض — که پشت صفحه یاد گرفته نمی‌شوند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">De plus ← استدلال سوم</span>
+      <span class="an-pill an-a">À long terme ← پیامد بلندمدت = وزن استدلال</span>
+      <span class="an-pill an-c">en particulier ← تخصیص به گروه آسیب‌پذیر</span>
+      <span class="an-pill an-v">fragiliser / compétences sociales / empathie ← واژگان جامعه‌شناختی</span>
+    </div>
+  </div>
+
+  <!-- ARG 4 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-arg4">ARGUMENT 4 — sécurité</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Enfin,</span> il est <span class="hv">primordial</span> de souligner les risques liés à la <span class="hv">sécurité et à la vie privée.</span> Internet expose les utilisateurs à des <span class="hv">contenus inappropriés, à la désinformation, au piratage de données</span> et au <span class="hv">vol d'identité.</span> Les jeunes sont <span class="hv">particulièrement vulnérables</span> aux arnaques en ligne et aux contacts dangereux. <span class="hc">C'est pourquoi</span> il est indispensable d'apprendre à naviguer de manière <span class="hv">sécurisée</span> et à protéger ses informations personnelles — une compétence que l'éducation numérique devrait transmettre dès le plus jeune âge.
+    </div>
+    <div class="p-trans">
+      در نهایت، ضروری است که به خطرات مرتبط با امنیت و حریم خصوصی اشاره کنم. اینترنت کاربران را در معرض محتوای نامناسب، اطلاعات غلط، هک داده‌ها و سرقت هویت قرار می‌دهد. جوانان به ویژه در برابر کلاهبرداری‌های آنلاین آسیب‌پذیرند. به همین دلیل یاد گرفتن گشت‌وگذار امن و حفاظت از اطلاعات شخصی ضروری است — مهارتی که آموزش دیجیتال باید از سنین پایین منتقل کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Enfin + il est primordial ← استدلال چهارم با وزن</span>
+      <span class="an-pill an-c">C'est pourquoi ← نتیجه مستقیم</span>
+      <span class="an-pill an-v">désinformation / piratage / vol d'identité ← واژگان دیجیتال B2</span>
+      <span class="an-pill an-s">جمله پایانی = باز کردن به آینده ← ساختار B2 ✓</span>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff3e0;">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En définitive,</span> les téléphones, ordinateurs et tablettes sont des outils aux <span class="hv">avantages indéniables.</span> <span class="hs">Cependant,</span> leur usage <span class="hv">excessif</span> présente des risques réels pour la santé, les relations et la sécurité. La clé ne réside pas dans leur suppression, mais dans une utilisation <span class="hv">modérée, consciente et vigilante</span> — afin de <span class="hv">maîtriser ces outils</span> plutôt que d'en devenir dépendant.
+    </div>
+    <div class="p-trans">
+      در مجموع، تلفن، کامپیوتر و تبلت ابزارهایی با مزایای انکارناپذیر هستند. اما استفاده بیش از حد خطرات واقعی برای سلامت، روابط و امنیت ایجاد می‌کند. کلید در حذف آن‌ها نیست، بلکه در استفاده متعادل، آگاهانه و هوشمندانه است — تا بر این ابزارها مسلط شویم نه وابسته‌شان.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En définitive ← قوی‌تر از «En conclusion»</span>
+      <span class="an-pill an-s">Cependant ← بازگشت به موضع اصلی</span>
+      <span class="an-pill an-v">modérée · consciente · vigilante ← parallélisme سه‌گانه</span>
+      <span class="an-pill an-a">maîtriser ↔ dépendant ← antithèse پایانی</span>
+    </div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div><div class="ts-f">مقدمه + ۴ سطح</div></div>
+      <div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1</div><div class="ts-f">سلامت جسمی</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2</div><div class="ts-f">سلامت روانی</div></div>
+      <div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3</div><div class="ts-f">زندگی اجتماعی</div></div>
+      <div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4</div><div class="ts-f">امنیت</div></div>
+      <div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div><div class="ts-f">جمع‌بندی</div></div>
+    </div>
+  </div>
 
 </div>
 
-<!-- PANEL 2 — COURT -->
+<!-- ═══ PANEL 2 — COURT ═══ -->
 <div class="panel" id="panel-court">
 
   <div class="court-intro">
     <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
-    همان ساختار آزمونی · همان antithèse‌ها — فقط فشرده‌تر.
-    <div class="fa">هدف: گفتن یک Tâche 3 کامل از ابتدا تا انتها بدون توقف.</div>
+    همان ساختار آزمونی · همان antithèse‌ها — فقط فشرده‌تر.<br>
+    هدف: یک Tâche 3 کامل از ابتدا تا انتها، بدون توقف.
+    <div class="fa">این نسخه را بلند بخوان — هدف گفتن کامل است، نه کامل گفتن هر ایده.</div>
   </div>
 
-  <div class="court-card"><div class="cc-head" style="background:#fff8e1;"><span class="cc-tag num-intro">INTRO</span><span class="cc-time">⏱ ~25 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Aujourd'hui,</span> les écrans facilitent le travail et la communication. <span class="hs">Cependant, je suis convaincu</span> que leur usage excessif comporte des risques réels — pour la santé, la vie sociale et la sécurité.</div>
-    <div class="cc-fa">امروزه صفحه‌ها کار و ارتباط را آسان می‌کنند. اما مطمئنم که استفاده بیش از حد خطرات واقعی دارد — برای سلامت، زندگی اجتماعی و امنیت.</div></div><div class="court-card"><div class="cc-head" style="background:var(--blue-mist);"><span class="cc-tag num-arg1">ARG 1 — santé physique</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Tout d'abord,</span> les écrans affectent la santé physique. De longues heures devant un écran causent des douleurs oculaires et cervicales, et la sédentarité augmente les risques cardiovasculaires. <span class="ha">En revanche,</span> le sport régulier peut compenser ces effets.</div>
-    <div class="cc-fa">اول، صفحه‌ها سلامت جسمی را تحت تأثیر قرار می‌دهند. ساعت‌های طولانی درد چشم و گردن ایجاد می‌کند. در مقابل، ورزش منظم می‌تواند این اثرات را جبران کند.</div></div><div class="court-card"><div class="cc-head" style="background:var(--green-pale);"><span class="cc-tag num-arg2">ARG 2 — santé mentale</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Ensuite,</span> l'usage excessif génère stress et anxiété, et peut créer une dépendance qui perturbe le sommeil et la concentration. <span class="ha">Toutefois,</span> utilisées avec discernement, ces technologies peuvent aussi offrir un soutien psychologique.</div>
-    <div class="cc-fa">بعد، استفاده بیش از حد استرس و اضطراب ایجاد می‌کند و می‌تواند وابستگی‌ای ایجاد کند که خواب و تمرکز را مختل می‌کند. با این حال، با درایت می‌توانند حمایت روانشناختی ارائه دهند.</div></div><div class="court-card"><div class="cc-head" style="background:var(--purple-pale);"><span class="cc-tag num-arg3">ARG 3 — vie sociale</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">De plus,</span> les interactions virtuelles remplacent souvent les échanges réels, ce qui fragilise les liens familiaux. <span class="ha">À long terme,</span> cela limite le développement de compétences sociales essentielles comme l'empathie et l'écoute.</div>
-    <div class="cc-fa">علاوه بر این، تعاملات مجازی اغلب جای مبادلات واقعی را می‌گیرند. در بلندمدت، مهارت‌های اجتماعی ضروری مثل همدلی را محدود می‌کند.</div></div><div class="court-card"><div class="cc-head" style="background:var(--teal-pale);"><span class="cc-tag num-arg4">ARG 4 — sécurité</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">Enfin,</span> Internet expose les utilisateurs à la désinformation, au piratage et au vol d'identité. <span class="hc">C'est pourquoi</span> naviguer de manière sécurisée et protéger ses données personnelles est devenu indispensable.</div>
-    <div class="cc-fa">در نهایت، اینترنت کاربران را در معرض اطلاعات غلط، هک و سرقت هویت قرار می‌دهد. به همین دلیل گشت‌وگذار امن و حفاظت از داده‌های شخصی ضروری شده.</div></div><div class="court-card"><div class="cc-head" style="background:#fff3e0;"><span class="cc-tag num-conc">CONCLUSION</span><span class="cc-time">⏱ ~20 ثانیه</span></div>
-    <div class="cc-fr"><span class="hs">En conclusion,</span> les risques sont réels mais maîtrisables. La clé est une utilisation <span class="hv">modérée et vigilante</span> — pour profiter des avantages sans subir les effets négatifs.</div>
-    <div class="cc-fa">در نتیجه، خطرات واقعی اما قابل کنترل هستند. کلید استفاده متعادل و هوشمندانه است — تا از مزایا بهره‌مند شوی بدون تأثیرات منفی.</div></div>
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;">
+      <span class="cc-tag num-intro">INTRO</span>
+      <span class="cc-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Aujourd'hui,</span> les écrans facilitent notre quotidien. <span class="hs">Cependant, je suis convaincu</span> que leur usage excessif comporte des risques réels. <span class="hs">À mon sens,</span> quatre plans sont concernés : santé physique, mentale, sociale et sécurité.
+    </div>
+    <div class="cc-fa">امروزه صفحه‌ها زندگی روزمره‌مان را آسان می‌کنند. اما مطمئنم که استفاده بیش از حد خطرات واقعی دارد. به نظرم چهار سطح در خطر است: سلامت جسمی، روانی، اجتماعی و امنیت.</div>
+  </div>
 
-  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;"><div class="timing-strip"><div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div><div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div><div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div><div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div><div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div><div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div></div></div>
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);">
+      <span class="cc-tag num-arg1">ARG 1 — santé physique</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Tout d'abord,</span> les longues heures devant un écran causent des troubles de la vue et des douleurs cervicales. <span class="hc">Par ailleurs,</span> la sédentarité augmente les risques cardiovasculaires. <span class="ha">En revanche,</span> le sport et les pauses régulières compensent ces effets.
+    </div>
+    <div class="cc-fa">اول، ساعت‌های طولانی پشت صفحه اختلال بینایی و دردهای گردنی ایجاد می‌کند. علاوه بر این، بی‌تحرکی خطرات قلبی-عروقی را افزایش می‌دهد. در مقابل، ورزش و استراحت‌های منظم این اثرات را جبران می‌کنند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);">
+      <span class="cc-tag num-arg2">ARG 2 — santé mentale</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Ensuite,</span> l'usage excessif génère stress et anxiété, et peut créer une dépendance qui perturbe le sommeil et la concentration. <span class="ha">Toutefois,</span> utilisées avec discernement, ces technologies peuvent aussi offrir un soutien psychologique réel.
+    </div>
+    <div class="cc-fa">بعد، استفاده بیش از حد استرس و اضطراب ایجاد می‌کند و می‌تواند وابستگی‌ای بسازد که خواب و تمرکز را مختل کند. با این حال، با درایت، همین فناوری‌ها می‌توانند حمایت روانشناختی واقعی ارائه دهند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);">
+      <span class="cc-tag num-arg3">ARG 3 — vie sociale</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De plus,</span> les interactions virtuelles remplacent souvent les échanges réels, ce qui fragilise les liens familiaux. <span class="ha">À long terme,</span> cela limite des compétences essentielles comme l'empathie et l'écoute — qui ne s'apprennent pas derrière un écran.
+    </div>
+    <div class="cc-fa">علاوه بر این، تعاملات مجازی اغلب جای مبادلات واقعی را می‌گیرند و پیوندهای خانوادگی را شکننده می‌کنند. در بلندمدت، مهارت‌های ضروری مثل همدلی و گوش دادن را که پشت صفحه یاد نمی‌گیریم محدود می‌کند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);">
+      <span class="cc-tag num-arg4">ARG 4 — sécurité</span>
+      <span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Enfin,</span> Internet expose les utilisateurs à la désinformation, au piratage et au vol d'identité. <span class="hc">C'est pourquoi</span> naviguer de façon sécurisée et protéger ses données personnelles est devenu indispensable.
+    </div>
+    <div class="cc-fa">در نهایت، اینترنت کاربران را در معرض اطلاعات غلط، هک و سرقت هویت قرار می‌دهد. به همین دلیل گشت‌وگذار امن و حفاظت از داده‌های شخصی ضروری شده.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff3e0;">
+      <span class="cc-tag num-conc">CONCLUSION</span>
+      <span class="cc-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">En définitive,</span> ces outils ont des avantages indéniables. <span class="hs">Cependant,</span> la clé est une utilisation <span class="hv">modérée, consciente et vigilante</span> — pour maîtriser ces technologies plutôt qu'en devenir dépendant.
+    </div>
+    <div class="cc-fa">در مجموع، این ابزارها مزایای انکارناپذیری دارند. اما کلید استفاده متعادل، آگاهانه و هوشمندانه است — تا بر این فناوری‌ها مسلط شویم نه وابسته‌شان.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div>
+      <div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
 
 </div>
 
-<!-- PANEL 3 — CADRE -->
+<!-- ═══ PANEL 3 — CADRE ═══ -->
 <div class="panel" id="panel-cadre">
 
   <div class="cadre-intro">
     <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
     کلمات نارنجی را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.
-    <div class="fa">قانون: یک نگاه به کلید — بعد نگاهت را برمی‌داری و می‌گویی.</div>
+    <div class="fa">قانون: یک نگاه به کلید، بعد نگاه‌ات را بر می‌داری و می‌گویی. این تمرین حافظه‌ی آزمونی است.</div>
   </div>
 
-  <div class="cadre-card"><div class="cadre-head"><span class="cadre-label">INTRODUCTION</span><span class="cadre-time">⏱ ~25 ثانیه</span></div>
+  <div class="cadre-card">
+    <div class="cadre-head">
+      <span class="cadre-label">INTRODUCTION</span>
+      <span class="cadre-time">⏱ ~25 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Aujourd'hui,</span><span class="cadre-anchor">facilitent…</span><span class="cadre-anchor">Cependant, je suis convaincu que…</span><span class="cadre-anchor">risques réels</span>
-      <div class="cadre-key"><span class="ck">concession: Certes… Cependant</span><span class="ck">4 domaines: santé / mental / social / sécurité</span></div>
-      <div class="cadre-hint">موضعت را صریح بگو — «je suis convaincu» + ۴ حوزه را اعلام کن</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--blue);"><span class="cadre-label">ARG 1 — santé physique</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">Aujourd'hui,</span>
+      <span class="cadre-anchor">Certes, facilitent…</span>
+      <span class="cadre-anchor">Cependant, je suis convaincu…</span>
+      <span class="cadre-anchor">À mon sens, 4 plans :</span>
+      <div class="cadre-key">
+        <span class="ck">Certes + Cependant = concession</span>
+        <span class="ck">اعلام ۴ سطح = ساختار آزمونی</span>
+      </div>
+      <div class="cadre-hint">concession فوری → موضع → ۴ سطح را فهرست کن</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);">
+      <span class="cadre-label">ARG 1 — santé physique</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Tout d'abord,</span><span class="cadre-anchor">santé physique</span><span class="cadre-anchor">En effet,</span><span class="cadre-anchor">vue / dos / cou</span><span class="cadre-anchor">Par ailleurs,</span><span class="cadre-anchor">sédentarité →</span><span class="cadre-anchor">En revanche,</span><span class="cadre-anchor">sport →</span>
-      <div class="cadre-key"><span class="ck">antithèse: En revanche</span><span class="ck">deux connecteurs: En effet + Par ailleurs</span></div>
-      <div class="cadre-hint">«Tout d'abord» + مشکل → «Par ailleurs» + مشکل دوم → «En revanche» + راه‌حل</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--green);"><span class="cadre-label">ARG 2 — santé mentale</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">Tout d'abord,</span>
+      <span class="cadre-anchor">longues heures → troubles vue / douleurs</span>
+      <span class="cadre-anchor">Par ailleurs,</span>
+      <span class="cadre-anchor">sédentarité → cardiovasculaires</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">sport + pauses →</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: En revanche</span>
+        <span class="ck">En effet + Par ailleurs = دو connecteur</span>
+      </div>
+      <div class="cadre-hint">مشکل اول → مشکل دوم → «En revanche» + راه‌حل</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);">
+      <span class="cadre-label">ARG 2 — santé mentale</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Ensuite,</span><span class="cadre-anchor">stress / anxiété / solitude</span><span class="cadre-anchor">De plus,</span><span class="cadre-anchor">dépendance → sommeil</span><span class="cadre-anchor">Toutefois,</span><span class="cadre-anchor">discernement →</span>
-      <div class="cadre-key"><span class="ck">Toutefois = concession ملایم</span><span class="ck">دپندانس = B2 key word</span></div>
-      <div class="cadre-hint">«Ensuite» + اثرات → «Toutefois» + استثنا مثبت</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--purple);"><span class="cadre-label">ARG 3 — vie sociale</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">Ensuite,</span>
+      <span class="cadre-anchor">stress / anxiété / solitude</span>
+      <span class="cadre-anchor">De plus,</span>
+      <span class="cadre-anchor">dépendance → sommeil / concentration</span>
+      <span class="cadre-anchor">Toutefois,</span>
+      <span class="cadre-anchor">discernement → soutien</span>
+      <div class="cadre-key">
+        <span class="ck">Toutefois = concession ملایم‌تر</span>
+        <span class="ck">dépendance = واژه کلیدی</span>
+      </div>
+      <div class="cadre-hint">اثرات → وابستگی → «Toutefois» + استثنا مثبت</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);">
+      <span class="cadre-label">ARG 3 — vie sociale</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">De plus,</span><span class="cadre-anchor">interactions virtuelles ↔ face à face</span><span class="cadre-anchor">liens familiaux / amicaux</span><span class="cadre-anchor">À long terme,</span><span class="cadre-anchor">compétences sociales</span>
-      <div class="cadre-key"><span class="ck">antithèse: virtuel ↔ réel</span><span class="ck">À long terme = پیامد بلندمدت</span></div>
-      <div class="cadre-hint">«De plus» + جایگزینی → «À long terme» + تأثیر پایدار</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--teal);"><span class="cadre-label">ARG 4 — sécurité</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+      <span class="cadre-anchor">De plus,</span>
+      <span class="cadre-anchor">virtuel ↔ face à face</span>
+      <span class="cadre-anchor">liens familiaux / amicaux</span>
+      <span class="cadre-anchor">À long terme,</span>
+      <span class="cadre-anchor">empathie / écoute / pas derrière écran</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: virtuel ↔ réel</span>
+        <span class="ck">À long terme = وزن استدلال</span>
+      </div>
+      <div class="cadre-hint">جایگزینی مجازی ↔ واقعی → «À long terme» + مهارت‌های گم‌شده</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);">
+      <span class="cadre-label">ARG 4 — sécurité</span>
+      <span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">Enfin,</span><span class="cadre-anchor">sécurité / vie privée</span><span class="cadre-anchor">désinformation / piratage / vol d'identité</span><span class="cadre-anchor">C'est pourquoi</span><span class="cadre-anchor">naviguer sécurisé</span>
-      <div class="cadre-key"><span class="ck">3 risques: désinformation · piratage · vol</span><span class="ck">C'est pourquoi = نتیجه فوری</span></div>
-      <div class="cadre-hint">«Enfin» + خطرات (۳ تا) → «C'est pourquoi» + راه‌حل</div>
-    </div></div><div class="cadre-card"><div class="cadre-head" style="background:var(--amber-deep);"><span class="cadre-label">CONCLUSION</span><span class="cadre-time">⏱ ~20 ثانیه</span></div>
+      <span class="cadre-anchor">Enfin,</span>
+      <span class="cadre-anchor">désinformation / piratage / vol d'identité</span>
+      <span class="cadre-anchor">C'est pourquoi</span>
+      <span class="cadre-anchor">naviguer sécurisé → dès jeune âge</span>
+      <div class="cadre-key">
+        <span class="ck">3 risques concrets</span>
+        <span class="ck">C'est pourquoi = نتیجه فوری</span>
+      </div>
+      <div class="cadre-hint">سه خطر → «C'est pourquoi» → باز کردن به آینده (éducation)</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--amber-deep);">
+      <span class="cadre-label">CONCLUSION</span>
+      <span class="cadre-time">⏱ ~20 ثانیه</span>
+    </div>
     <div class="cadre-body">
-      <span class="cadre-anchor">En conclusion,</span><span class="cadre-anchor">avantages indéniables</span><span class="cadre-anchor">Cependant, risques réels</span><span class="cadre-anchor">modération et vigilance</span><span class="cadre-anchor">maîtriser les usages</span>
-      <div class="cadre-key"><span class="ck">concession در نتیجه = B2</span><span class="ck">modérée · vigilante · maîtriser</span></div>
-      <div class="cadre-hint">«En conclusion» + مزایا → «Cependant» + خطرات → «La clé: modération»</div>
-    </div></div>
+      <span class="cadre-anchor">En définitive,</span>
+      <span class="cadre-anchor">avantages indéniables</span>
+      <span class="cadre-anchor">Cependant,</span>
+      <span class="cadre-anchor">modérée · consciente · vigilante</span>
+      <span class="cadre-anchor">maîtriser ↔ dépendant</span>
+      <div class="cadre-key">
+        <span class="ck">parallélisme × 3 صفت</span>
+        <span class="ck">antithèse پایانی: maîtriser ↔ dépendant</span>
+      </div>
+      <div class="cadre-hint">مزایا → «Cependant» → ۳ صفت موازی → antithèse قوی</div>
+    </div>
+  </div>
 
 </div>
 
-</div>
+</div><!-- /wrap -->
 
 <div class="footer">
   <a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025
 </div>
-
 <button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
 <script>
-function showTab(id, el){
+function showTab(id,el){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('panel-'+id).classList.add('active');
-  if(el) el.classList.add('active');
+  if(el)el.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 window.addEventListener('scroll',()=>{
