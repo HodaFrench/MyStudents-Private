@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bonheur au travail — Tâche 3 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;--green-deep:#1b5e20;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --gold:#f59e0b;--gold-pale:#fffbeb;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--gold);color:white;}
+
+.hero{background:linear-gradient(135deg,#92400e,var(--gold));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.07);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(16px,3vw,26px);font-weight:700;margin-bottom:8px;line-height:1.35;}
+.hero .sub{font-size:13px;opacity:.85;}
+.hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hpill{background:rgba(255,255,255,.18);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.25);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--gold);}.tab.active{color:#92400e;border-bottom-color:var(--gold);}
+
+.wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
+.panel{display:none;}.panel.active{display:block;}
+
+.q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
+.q-head{background:var(--navy);padding:14px 20px;}
+.q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
+.q-fa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;margin-top:6px;}
+.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--gold-pale);flex-wrap:wrap;}
+.q-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;}
+.chip-pos{background:var(--green-pale);color:var(--green);}
+.chip-time{background:var(--amber-pale);color:var(--amber-deep);}
+.chip-struct{background:var(--purple-pale);color:var(--purple);}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+.p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
+.num-intro{background:var(--amber-pale);color:var(--amber-deep);}
+.num-arg1{background:var(--blue-pale);color:var(--blue);}
+.num-arg2{background:var(--green-pale);color:var(--green);}
+.num-arg3{background:var(--purple-pale);color:var(--purple);}
+.num-arg4{background:var(--teal-pale);color:var(--teal);}
+.num-conc{background:var(--gold-pale);color:#92400e;}
+.p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+
+.p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
+
+.p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
+.p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
+.an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
+.an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
+.an-v{background:rgba(21,101,192,.3);color:#aaccff;}
+.an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
+.an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
+
+.timing-strip{display:flex;background:var(--navy-mid);}
+.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ts:last-child{border:none;}
+.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fcd34d;}
+.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+.ts-f{font-size:8px;direction:rtl;color:rgba(255,255,255,.3);margin-top:1px;}
+
+.court-intro{background:linear-gradient(135deg,var(--gold-pale),#fef9c3);border:2px solid var(--gold);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:#92400e;}
+.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.court-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
+.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+.cc-fr{padding:13px 18px;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.85;background:white;}
+.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
+
+.cadre-intro{background:linear-gradient(135deg,var(--gold-pale),#fef9c3);border:2px solid var(--gold);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:#92400e;}
+.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.cadre-card{margin-bottom:14px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
+.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
+.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
+.cadre-body{padding:16px 20px;background:white;}
+.cadre-anchor{display:inline-block;background:var(--gold-pale);border:1.5px solid var(--gold);color:#92400e;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;margin:3px 3px 3px 0;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ck{background:var(--gold-pale);border:1px solid #fcd34d;color:#92400e;font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
+.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
+
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:#92400e;text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:#92400e;color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(146,64,14,.3);z-index:999;}
+#scrollBtn.show{display:block;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">T3</div>
+  <div><h1>Bonheur au travail</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
+  <a class="back" href="index.html">← داشبورد</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
+    <h2>L'essentiel dans la vie est-il de trouver<br>du bonheur au travail ?</h2>
+    <p class="sub">آیا اساسی‌ترین چیز در زندگی پیدا کردن خوشبختی در کار است؟</p>
+    <div class="hero-pills">
+      <span class="hpill">موضع: OUI — fondamental ←</span>
+      <span class="hpill">⏱ 4:30</span>
+      <span class="hpill">Intro + 4 args + Conc.</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('complet',this)">📖 تحلیل کامل</div>
+  <div class="tab" onclick="showTab('court',this)">⚡ نسخه کوتاه</div>
+  <div class="tab" onclick="showTab('cadre',this)">🎯 چارچوب علیرضا</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1 ═══ -->
+<div class="panel active" id="panel-complet">
+
+  <div class="q-box">
+    <div class="q-head">
+      <div class="q-fr">L'essentiel dans la vie est-il de trouver du bonheur au travail ? Qu'en pensez-vous ?</div>
+      <div class="q-fa">آیا اساسی‌ترین چیز در زندگی پیدا کردن خوشبختی در کار است؟ نظر شما چیست؟</div>
+    </div>
+    <div class="q-meta">
+      <span class="q-chip chip-pos">موضع: OUI — ضروری و بنیادین</span>
+      <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
+      <span class="q-chip chip-struct">Intro + 4 arguments + Conclusion</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(230,81,0,.4);"></div> ساختار آزمونی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(21,101,192,.35);"></div> واژگان کلیدی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(106,27,154,.3);"></div> antithèse / تضاد</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      Le travail occupe une place <span class="hv">centrale</span> dans la vie de la plupart des adultes : il représente non seulement une <span class="hv">source de revenus,</span> mais aussi une part essentielle de notre <span class="hv">identité et de notre quotidien.</span> <span class="hs">Cependant,</span> la vraie question n'est pas de savoir si l'on travaille, mais <span class="hv">comment</span> on travaille — et surtout, si ce travail nous rend <span class="hv">heureux.</span> <span class="hs">À mon avis,</span> trouver du bonheur dans ce que l'on fait est <span class="hv">fondamental,</span> car le travail influence directement notre <span class="hv">bien-être, notre santé et notre réalisation personnelle.</span>
+    </div>
+    <div class="p-trans">
+      کار جایگاه مرکزی در زندگی اکثر بزرگسالان دارد: نه تنها منبع درآمد است، بلکه بخش اساسی از هویت و زندگی روزمره‌مان است. اما سؤال واقعی این نیست که آیا کار می‌کنیم، بلکه چطور کار می‌کنیم — و مهم‌تر از همه، آیا این کار ما را خوشبخت می‌کند. به نظرم پیدا کردن خوشبختی در آنچه انجام می‌دهیم بنیادین است، چون کار مستقیماً بر رفاه، سلامت و تحقق شخصی‌مان تأثیر می‌گذارد.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Cependant + À mon avis ← گذار به موضع شخصی</span>
+      <span class="an-pill an-s">سؤال را به «چطور» بازتعریف کردن ← ساختار هوشمندانه B2</span>
+      <span class="an-pill an-v">centrale / identité / réalisation personnelle ← واژگان فلسفی-اجتماعی</span>
+      <span class="an-pill an-v">fondamental ← واژه محوری = قوی‌تر از «important»</span>
+    </div>
+  </div>
+
+  <!-- ARG 1 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — épanouissement & motivation</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Tout d'abord,</span> trouver du bonheur au travail permet de se sentir <span class="hv">épanoui et motivé au quotidien.</span> Une personne qui aime ce qu'elle fait est plus <span class="hv">engagée, productive et créative.</span> <span class="hc">En conséquence,</span> elle aborde ses tâches avec <span class="hv">énergie et enthousiasme,</span> ce qui transforme ce qui pourrait être une simple <span class="hv">obligation</span> en une véritable <span class="hv">source de satisfaction personnelle.</span> <span class="ha">En revanche,</span> une personne contrainte d'exercer un travail qui ne lui convient pas risque de sombrer dans la <span class="hv">démotivation et le désengagement</span> — ce qui nuit autant à elle-même qu'à son entreprise.
+    </div>
+    <div class="p-trans">
+      اول از همه، پیدا کردن خوشبختی در کار این امکان را می‌دهد که روزانه احساس شکوفایی و انگیزه داشته باشیم. کسی که عاشق کارش است، درگیرتر، بهره‌ورتر و خلاق‌تر است. در نتیجه، وظایفش را با انرژی و اشتیاق انجام می‌دهد، که آنچه می‌توانست یک تکلیف ساده باشد را به منبع رضایت شخصی تبدیل می‌کند. در مقابل، کسی که مجبور است کاری را انجام دهد که برایش مناسب نیست، در خطر بی‌انگیزگی و بی‌تفاوتی است — که هم به خودش هم به شرکتش آسیب می‌زند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tout d'abord ← استدلال اول</span>
+      <span class="an-pill an-a">En revanche ← antithèse: عشق به کار ↔ اجبار</span>
+      <span class="an-pill an-c">En conséquence ← نتیجه‌گیری منطقی</span>
+      <span class="an-pill an-v">épanoui / engagement / démotivation ← واژگان روانشناسی کار</span>
+    </div>
+  </div>
+
+  <!-- ARG 2 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — équilibre vie pro/perso</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ensuite,</span> le bonheur au travail favorise un <span class="hv">équilibre harmonieux</span> entre la vie professionnelle et la vie personnelle. Les personnes <span class="hv">satisfaites dans leur emploi</span> parviennent mieux à <span class="hv">gérer leur temps</span> et à organiser leurs activités, ce qui leur permet de profiter pleinement de leurs <span class="hv">loisirs et de leurs relations familiales.</span> <span class="hc">En effet,</span> un environnement professionnel positif <span class="hv">réduit le stress</span> et aide à maintenir un <span class="hv">équilibre essentiel</span> pour le bien-être général. <span class="ha">À l'inverse,</span> un travail subi, pesant et sans sens tend à <span class="hv">déborder sur la vie privée,</span> en générant des tensions qui fragilisent les relations personnelles.
+    </div>
+    <div class="p-trans">
+      بعد، خوشبختی در کار تعادل هماهنگی بین زندگی حرفه‌ای و شخصی را تسهیل می‌کند. کسانی که در کارشان راضی هستند بهتر می‌توانند وقتشان را مدیریت کنند و فعالیت‌هایشان را سازماندهی کنند. در واقع، یک محیط کاری مثبت استرس را کاهش می‌دهد. برعکس، کاری که تحمیلی، سنگین و بی‌معناست تمایل دارد به زندگی خصوصی سرریز شود و تنش‌هایی ایجاد کند که روابط شخصی را شکننده می‌کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ensuite ← استدلال دوم</span>
+      <span class="an-pill an-a">À l'inverse ← antithèse: کار خوب ↔ کار تحمیلی</span>
+      <span class="an-pill an-c">En effet ← تأیید و توضیح</span>
+      <span class="an-pill an-v">équilibre harmonieux / déborder ← واژگان B2 قوی</span>
+    </div>
+  </div>
+
+  <!-- ARG 3 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — santé mentale & physique</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">De plus,</span> être heureux dans son travail contribue directement à la <span class="hv">santé mentale et physique.</span> Le stress, l'insatisfaction ou la pression excessive peuvent provoquer de l'<span class="hv">anxiété, des troubles du sommeil</span> ou des problèmes de santé plus graves. <span class="hc">Or,</span> dans le secteur de l'investissement — où la pression est constante — j'ai pu observer que les personnes qui trouvent du <span class="hv">sens dans leur mission</span> résistent mieux aux chocs et <span class="hv">récupèrent plus vite</span> après les périodes difficiles. <span class="ha">En revanche,</span> un travail <span class="hv">gratifiant et valorisant</span> procure un sentiment de satisfaction qui protège la santé, tant sur le plan physique que psychologique.
+    </div>
+    <div class="p-trans">
+      علاوه بر این، خوشبخت بودن در کار مستقیماً به سلامت روانی و جسمی کمک می‌کند. استرس، نارضایتی یا فشار بیش از حد می‌توانند اضطراب، اختلال خواب یا مشکلات سلامتی جدی‌تر ایجاد کنند. اما در بخش سرمایه‌گذاری — که فشار مداوم است — توانستم ببینم که کسانی که در مأموریت‌شان معنا پیدا می‌کنند بهتر در برابر شوک‌ها مقاومت می‌کنند. در مقابل، کاری که ارزشمند و قدردانی‌شده است احساس رضایتی ایجاد می‌کند که سلامت را محافظت می‌کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">De plus ← استدلال سوم</span>
+      <span class="an-pill an-a">En revanche ← antithèse: کار پر فشار ↔ کار ارزشمند</span>
+      <span class="an-pill an-c">Or ← تضاد منطقی B2</span>
+      <span class="an-pill an-s">«secteur de l'investissement — où je travaille» ← شخصی‌سازی علیرضا ✓</span>
+    </div>
+  </div>
+
+  <!-- ARG 4 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-arg4">ARGUMENT 4 — sens & réalisation</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Enfin,</span> le bonheur au travail permet de donner un <span class="hv">sens profond à sa vie.</span> Exercer un métier que l'on aime, qui correspond à ses <span class="hv">valeurs</span> ou qui a un <span class="hv">impact positif sur la société,</span> procure un sentiment de <span class="hv">fierté et de réalisation personnelle.</span> <span class="hc">C'est précisément</span> ce que je recherche dans mon projet professionnel : non pas seulement la <span class="hv">performance financière,</span> mais la satisfaction de contribuer, à travers l'investissement, à des projets qui <span class="hv">ont du sens.</span> <span class="ha">Sans cette dimension,</span> même un salaire élevé ne suffit pas à compenser le <span class="hv">vide existentiel</span> que provoque un travail dénué de sens.
+    </div>
+    <div class="p-trans">
+      در نهایت، خوشبختی در کار به زندگی معنای عمیقی می‌بخشد. داشتن حرفه‌ای که دوستش داری، با ارزش‌هایت همخوانی دارد یا تأثیر مثبتی بر جامعه دارد، احساس افتخار و تحقق شخصی می‌آورد. دقیقاً همین چیزی است که در پروژه حرفه‌ای‌ام دنبال می‌کنم: نه فقط عملکرد مالی، بلکه رضایت از مشارکت از طریق سرمایه‌گذاری در پروژه‌هایی که معنا دارند. بدون این بعد، حتی حقوق بالا نمی‌تواند خلأ وجودی که کار بی‌معنا ایجاد می‌کند را جبران کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Enfin ← استدلال چهارم</span>
+      <span class="an-pill an-a">Sans cette dimension ← antithèse شرطی B2</span>
+      <span class="an-pill an-c">C'est précisément ← تأکید و شخصی‌سازی</span>
+      <span class="an-pill an-v">vide existentiel / réalisation / sens ← واژگان فلسفی B2</span>
+      <span class="an-pill an-s">«mon projet professionnel» ← علیرضا شخصی‌سازی ✓</span>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--gold-pale);">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En définitive,</span> le bonheur au travail est bien plus qu'un <span class="hv">luxe ou un idéal :</span> c'est une <span class="hv">nécessité profonde.</span> Il renforce la motivation, favorise l'équilibre, protège la santé et donne un sens à la vie. <span class="ha">Certes,</span> le travail ne peut pas être la seule source de bonheur, <span class="hs">mais</span> y trouver de la <span class="hv">satisfaction, du plaisir et de la réalisation</span> est sans doute l'une des clés d'une vie <span class="hv">équilibrée et épanouissante.</span>
+    </div>
+    <div class="p-trans">
+      در مجموع، خوشبختی در کار خیلی بیشتر از یک تجمل یا آرمان است: یک ضرورت عمیق است. انگیزه را تقویت می‌کند، تعادل را تسهیل می‌کند، سلامت را حفاظت می‌کند و به زندگی معنا می‌دهد. البته کار نمی‌تواند تنها منبع خوشبختی باشد، اما پیدا کردن رضایت، لذت و تحقق در آن بدون شک یکی از کلیدهای زندگی متعادل و شکوفاست.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En définitive ← قوی‌تر از «En conclusion»</span>
+      <span class="an-pill an-a">Certes… mais ← concession در نتیجه = B2 پخته</span>
+      <span class="an-pill an-v">nécessité profonde / épanouissante ← واژگان پایانی قوی</span>
+      <span class="an-pill an-s">luxe ↔ nécessité ← antithèse پایانی</span>
+    </div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div><div class="ts-f">سؤال بازتعریف</div></div>
+      <div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1</div><div class="ts-f">شکوفایی</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2</div><div class="ts-f">تعادل</div></div>
+      <div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3</div><div class="ts-f">سلامت</div></div>
+      <div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4</div><div class="ts-f">معنا</div></div>
+      <div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div><div class="ts-f">ضرورت عمیق</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2 — COURT ═══ -->
+<div class="panel" id="panel-court">
+
+  <div class="court-intro">
+    <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
+    همان ساختار آزمونی · همان antithèse‌ها — فقط فشرده‌تر.
+    <div class="fa">این نسخه را بلند بخوان — هدف گفتن کامل است، نه کامل گفتن هر ایده.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;">
+      <span class="cc-tag num-intro">INTRO</span><span class="cc-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      Le travail occupe une place centrale dans notre vie. <span class="hs">Cependant,</span> la vraie question n'est pas de travailler, mais de trouver du bonheur dans ce qu'on fait. <span class="hs">À mon avis,</span> c'est <span class="hv">fondamental</span> — car le travail influence notre bien-être, notre santé et notre réalisation personnelle.
+    </div>
+    <div class="cc-fa">کار جایگاه مرکزی دارد. اما سؤال واقعی این است که آیا در کارمان خوشبخت هستیم. به نظرم این بنیادین است — چون کار بر رفاه، سلامت و تحقق شخصی‌مان تأثیر می‌گذارد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);">
+      <span class="cc-tag num-arg1">ARG 1 — épanouissement</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Tout d'abord,</span> aimer son travail rend plus <span class="hv">engagé, productif et créatif.</span> Le plaisir transforme une obligation en <span class="hv">source de satisfaction.</span> <span class="ha">En revanche,</span> un travail subi mène à la <span class="hv">démotivation</span> — ce qui nuit autant à la personne qu'à l'entreprise.
+    </div>
+    <div class="cc-fa">اول، دوست داشتن کار آدم را درگیرتر، بهره‌ورتر و خلاق‌تر می‌کند. لذت، تکلیف را به منبع رضایت تبدیل می‌کند. در مقابل، کار اجباری به بی‌انگیزگی می‌انجامد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);">
+      <span class="cc-tag num-arg2">ARG 2 — équilibre</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Ensuite,</span> le bonheur au travail favorise un <span class="hv">équilibre harmonieux</span> entre vie pro et vie perso. Un environnement positif réduit le stress. <span class="ha">À l'inverse,</span> un travail pesant <span class="hv">déborde sur la vie privée</span> et fragilise les relations familiales.
+    </div>
+    <div class="cc-fa">بعد، خوشبختی در کار تعادل هماهنگ بین کار و زندگی را تسهیل می‌کند. محیط مثبت استرس را کاهش می‌دهد. برعکس، کار سنگین به زندگی خصوصی سرریز می‌شود.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);">
+      <span class="cc-tag num-arg3">ARG 3 — santé</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De plus,</span> l'insatisfaction au travail provoque de l'<span class="hv">anxiété et des troubles du sommeil.</span> <span class="hc">Or,</span> dans l'investissement, j'observe que ceux qui trouvent du <span class="hv">sens dans leur mission</span> résistent mieux aux périodes difficiles. Un travail <span class="hv">gratifiant</span> protège la santé.
+    </div>
+    <div class="cc-fa">علاوه بر این، نارضایتی در کار اضطراب و اختلال خواب ایجاد می‌کند. اما در سرمایه‌گذاری می‌بینم کسانی که معنا پیدا می‌کنند بهتر مقاومت می‌کنند. کار ارزشمند سلامت را حفاظت می‌کند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);">
+      <span class="cc-tag num-arg4">ARG 4 — sens</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Enfin,</span> un métier aligné avec ses <span class="hv">valeurs</span> procure un sentiment de <span class="hv">fierté et de réalisation.</span> Je cherche moi-même cela : contribuer, via l'investissement, à des projets qui <span class="hv">ont du sens.</span> <span class="ha">Sans cette dimension,</span> même un salaire élevé ne comble pas le <span class="hv">vide existentiel.</span>
+    </div>
+    <div class="cc-fa">در نهایت، حرفه‌ای که با ارزش‌هایت همخوانی دارد احساس افتخار و تحقق می‌آورد. خودم هم این را می‌جویم: مشارکت در پروژه‌های معنادار. بدون این بعد، حتی حقوق بالا خلأ وجودی را پر نمی‌کند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--gold-pale);">
+      <span class="cc-tag num-conc">CONCLUSION</span><span class="cc-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">En définitive,</span> le bonheur au travail est une <span class="hv">nécessité profonde,</span> pas un luxe. <span class="ha">Certes,</span> il n'est pas la seule source de bonheur, <span class="hs">mais</span> y trouver <span class="hv">satisfaction et réalisation</span> est l'une des clés d'une vie <span class="hv">équilibrée et épanouissante.</span>
+    </div>
+    <div class="cc-fa">در مجموع، خوشبختی در کار یک ضرورت عمیق است، نه تجمل. البته تنها منبع خوشبختی نیست، اما پیدا کردن رضایت و تحقق در آن یکی از کلیدهای زندگی متعادل و شکوفاست.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div>
+      <div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 3 — CADRE ═══ -->
+<div class="panel" id="panel-cadre">
+
+  <div class="cadre-intro">
+    <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
+    کلمات طلایی را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.
+    <div class="fa">قانون: یک نگاه به کلید، بعد نگاه‌ات را بر می‌داری و می‌گویی.</div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head">
+      <span class="cadre-label">INTRODUCTION</span><span class="cadre-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">travail → place centrale</span>
+      <span class="cadre-anchor">Cependant, vraie question = comment</span>
+      <span class="cadre-anchor">À mon avis, fondamental</span>
+      <span class="cadre-anchor">bien-être · santé · réalisation</span>
+      <div class="cadre-key">
+        <span class="ck">سؤال را به «چطور» بازتعریف کن</span>
+        <span class="ck">fondamental = قوی‌تر از important</span>
+      </div>
+      <div class="cadre-hint">بازتعریف سؤال → «Cependant» → موضع با «fondamental»</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);">
+      <span class="cadre-label">ARG 1 — épanouissement</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Tout d'abord,</span>
+      <span class="cadre-anchor">épanoui / engagé / créatif</span>
+      <span class="cadre-anchor">En conséquence,</span>
+      <span class="cadre-anchor">obligation → satisfaction</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">travail subi → démotivation</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: En revanche</span>
+        <span class="ck">En conséquence = connecteur B2</span>
+      </div>
+      <div class="cadre-hint">عشق → نتیجه مثبت → «En revanche» + اجبار → نتیجه منفی</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);">
+      <span class="cadre-label">ARG 2 — équilibre</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Ensuite,</span>
+      <span class="cadre-anchor">équilibre harmonieux pro/perso</span>
+      <span class="cadre-anchor">En effet, stress ↓</span>
+      <span class="cadre-anchor">À l'inverse,</span>
+      <span class="cadre-anchor">travail pesant → déborde sur vie privée</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: À l'inverse</span>
+        <span class="ck">déborder = واژه قوی B2</span>
+      </div>
+      <div class="cadre-hint">تعادل → «En effet» → «À l'inverse» + سرریز شدن</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);">
+      <span class="cadre-label">ARG 3 — santé</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">De plus,</span>
+      <span class="cadre-anchor">anxiété / troubles du sommeil</span>
+      <span class="cadre-anchor">Or,</span>
+      <span class="cadre-anchor">secteur investissement → sens → résistance</span>
+      <span class="cadre-anchor">En revanche, gratifiant → protège santé</span>
+      <div class="cadre-key">
+        <span class="ck">Or = تضاد منطقی B2</span>
+        <span class="ck">شخصی‌سازی: secteur investissement ✓</span>
+      </div>
+      <div class="cadre-hint">مشکلات سلامت → «Or» + مثال شخصی علیرضا → «En revanche»</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);">
+      <span class="cadre-label">ARG 4 — sens & réalisation</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Enfin,</span>
+      <span class="cadre-anchor">valeurs / impact / fierté</span>
+      <span class="cadre-anchor">C'est précisément ce que je cherche</span>
+      <span class="cadre-anchor">investissement → projets qui ont du sens</span>
+      <span class="cadre-anchor">Sans cette dimension,</span>
+      <span class="cadre-anchor">vide existentiel</span>
+      <div class="cadre-key">
+        <span class="ck">Sans cette dimension = antithèse شرطی</span>
+        <span class="ck">vide existentiel = واژه فلسفی B2</span>
+      </div>
+      <div class="cadre-hint">معنا + ارزش‌ها → مثال شخصی → «Sans cela» + خلأ وجودی</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:#92400e;">
+      <span class="cadre-label">CONCLUSION</span><span class="cadre-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">En définitive,</span>
+      <span class="cadre-anchor">nécessité profonde ↔ pas un luxe</span>
+      <span class="cadre-anchor">Certes, pas seule source…</span>
+      <span class="cadre-anchor">mais satisfaction + réalisation</span>
+      <span class="cadre-anchor">vie équilibrée et épanouissante</span>
+      <div class="cadre-key">
+        <span class="ck">luxe ↔ nécessité = antithèse پایانی</span>
+        <span class="ck">Certes… mais = concession در نتیجه</span>
+      </div>
+      <div class="cadre-hint">antithèse → concession → جمله پایانی با ۲ صفت موازی</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025
+</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);
+});
+</script>
+</body>
+</html>
