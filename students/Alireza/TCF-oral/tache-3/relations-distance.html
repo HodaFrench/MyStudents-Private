@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Relations à distance — Tâche 3 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --red:#b71c1c;--red-pale:#ffebee;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--blue);color:white;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy-mid),var(--navy-soft));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(18px,3vw,28px);font-weight:700;margin-bottom:8px;line-height:1.3;}
+.hero .sub{font-size:13px;opacity:.8;}
+.hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hpill{background:rgba(255,255,255,.13);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.2);}
+
+/* TABS */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--blue);}.tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+
+.wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* QUESTION BOX */
+.q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
+.q-head{background:var(--navy);padding:14px 20px;}
+.q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
+.q-fa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;margin-top:6px;}
+.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--blue-mist);flex-wrap:wrap;}
+.q-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;}
+.chip-pos{background:var(--green-pale);color:var(--green);}
+.chip-time{background:var(--amber-pale);color:var(--amber-deep);}
+.chip-struct{background:var(--purple-pale);color:var(--purple);}
+
+/* PARAGRAPH CARD */
+.p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
+.num-intro{background:var(--amber-pale);color:var(--amber-deep);}
+.num-arg1{background:var(--blue-pale);color:var(--blue);}
+.num-arg2{background:var(--green-pale);color:var(--green);}
+.num-arg3{background:var(--purple-pale);color:var(--purple);}
+.num-arg4{background:var(--teal-pale);color:var(--teal);}
+.num-conc{background:rgba(191,54,12,.1);color:var(--amber-deep);}
+.p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+
+/* FRENCH TEXT */
+.p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
+
+/* HIGHLIGHTS */
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}  /* structure */
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}      /* vocab */
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}     /* antithèse */
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}       /* connecteur */
+
+/* TRANSLATION */
+.p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
+
+/* ANALYSIS STRIP */
+.p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
+.an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
+.an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
+.an-v{background:rgba(21,101,192,.3);color:#aaccff;}
+.an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
+.an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
+
+/* GLOBAL ANALYSIS */
+.global-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.gb-head{background:var(--navy);padding:14px 20px;}
+.gb-head h3{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:white;}
+.gb-body{padding:18px 20px;}
+.gb-row{display:grid;grid-template-columns:auto 1fr 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:start;}
+.gb-row:last-child{border:none;}
+.gb-icon{font-size:16px;padding-top:2px;}
+.gb-fr{font-size:13px;font-family:'Roboto',sans-serif;line-height:1.6;}
+.gb-fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);line-height:1.7;}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+/* ────────── PANEL 2 — COURT ────────── */
+.court-intro{background:linear-gradient(135deg,var(--amber-pale),#fff8f0);border:2px solid var(--amber);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:var(--amber-deep);}
+.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.court-card{margin-bottom:18px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
+.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+.cc-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.85;background:white;}
+.cc-fr .hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.cc-fr .ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.cc-fr .hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
+.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
+
+/* ────────── PANEL 3 — CADRE ────────── */
+.cadre-intro{background:linear-gradient(135deg,var(--blue-mist),#f0f7ff);border:2px solid var(--blue);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:var(--blue);}
+.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.cadre-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
+.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
+.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
+.cadre-body{padding:16px 20px;background:white;}
+.cadre-anchor{display:inline-block;background:var(--amber-pale);border:1.5px solid var(--amber);color:var(--amber-deep);font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:6px;margin:4px 4px 4px 0;}
+.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
+.cadre-blank{display:inline-block;border-bottom:2px solid var(--gray);min-width:80px;color:transparent;margin:0 3px;font-size:14px;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.ck{background:var(--blue-mist);border:1px solid #bfdbfe;color:var(--blue);font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
+
+/* TIMING STRIP */
+.timing-strip{display:flex;background:var(--navy-mid);border-top:2px solid rgba(255,255,255,.08);}
+.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ts:last-child{border:none;}
+.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);}
+.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:var(--blue);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(13,27,42,.3);z-index:999;}
+#scrollBtn.show{display:block;}
+@media(max-width:640px){.gb-row{grid-template-columns:auto 1fr;}.gb-fa{grid-column:2;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">T3</div>
+  <div><h1>Relations à distance — Tâche 3</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
+  <a class="back" href="coaching.html">← متن‌های نمونه</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
+    <h2>Les relations à distance peuvent-elles<br>être aussi solides que les relations directes ?</h2>
+    <p class="sub">آیا روابط آنلاین می‌توانند به اندازه روابط حضوری محکم باشند؟</p>
+    <div class="hero-pills">
+      <span class="hpill">موضع: NON ←</span>
+      <span class="hpill">⏱ 4:30</span>
+      <span class="hpill">Intro + 4 args + Conc.</span>
+      <span class="hpill">B1/B2</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('complet',this)">📖 تحلیل کامل</div>
+  <div class="tab" onclick="showTab('court',this)">⚡ نسخه کوتاه</div>
+  <div class="tab" onclick="showTab('cadre',this)">🎯 چارچوب علیرضا</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════
+     PANEL 1 — ANALYSE COMPLÈTE
+═══════════════════════════════════ -->
+<div class="panel active" id="panel-complet">
+
+  <div class="q-box">
+    <div class="q-head">
+      <div class="q-fr">De nos jours, grâce à Internet, les relations à distance peuvent-elles être aussi solides que les relations directes ? Partagez-vous cet avis ?</div>
+      <div class="q-fa">آیا امروزه روابط آنلاین می‌توانند به اندازه روابط مستقیم محکم باشند؟ آیا با این نظر موافقید؟</div>
+    </div>
+    <div class="q-meta">
+      <span class="q-chip chip-pos">موضع: مخالف — NON</span>
+      <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
+      <span class="q-chip chip-struct">Intro + 4 arguments + Conclusion</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(230,81,0,.4);"></div> ساختار آزمونی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(21,101,192,.35);"></div> واژگان کلیدی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(106,27,154,.3);"></div> antithèse / تضاد</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
+  </div>
+
+  <!-- ── INTRO ── -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hc">De nos jours,</span> Internet joue un rôle <span class="hv">essentiel</span> dans notre vie quotidienne. <span class="hc">Grâce aux</span> réseaux sociaux, aux appels vidéo et aux applications de messagerie, il est devenu très facile de communiquer avec des personnes qui vivent loin de nous. <span class="hc">Ainsi,</span> certaines personnes pensent que les relations à distance peuvent être aussi solides que les relations directes. <span class="hs">Cependant,</span> même si ces outils facilitent les échanges, <span class="hs">je ne partage pas cet avis.</span> <span class="hs">Selon moi,</span> rien ne peut remplacer le contact réel et la <span class="hv">présence physique</span> dans une relation.
+    </div>
+    <div class="p-trans">
+      امروزه، اینترنت نقش اساسی در زندگی روزمره ما دارد. با شبکه‌های اجتماعی، تماس‌های تصویری و برنامه‌های پیام‌رسانی، ارتباط با کسانی که دور از ما زندگی می‌کنند بسیار آسان شده. بنابراین برخی فکر می‌کنند روابط آنلاین می‌توانند به اندازه روابط مستقیم محکم باشند. اما من این نظر را ندارم. به نظرم هیچ‌چیز نمی‌تواند تماس واقعی و حضور فیزیکی را در یک رابطه جایگزین کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">je ne partage pas cet avis ← موضع مستقیم</span>
+      <span class="an-pill an-s">Cependant + Selon moi ← گذار به نظر شخصی</span>
+      <span class="an-pill an-c">De nos jours / Grâce à / Ainsi ← connecteurs temporels</span>
+      <span class="an-pill an-v">présence physique / essentiel ← واژگان محوری</span>
+    </div>
+  </div>
+
+  <!-- ── ARG 1 ── -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — contact humain</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Tout d'abord,</span> les relations à distance manquent de <span class="hv">contact humain,</span> ce qui est pourtant <span class="hv">essentiel</span> pour créer des liens solides. <span class="hc">En effet,</span> dans une relation directe, on peut voir les <span class="hv">expressions du visage,</span> entendre le ton de la voix et <span class="hv">ressentir les émotions</span> de l'autre personne. Ces éléments permettent de mieux se comprendre et de <span class="hv">renforcer la relation.</span> <span class="ha">En revanche,</span> derrière un écran, ces aspects sont souvent absents ou limités, ce qui rend la relation moins profonde.
+    </div>
+    <div class="p-trans">
+      اول از همه، روابط آنلاین فاقد تماس انسانی هستند، که برای ایجاد پیوندهای محکم ضروری است. در واقع، در یک رابطه مستقیم می‌توانی حالات چهره را ببینی، لحن صدا را بشنوی و احساسات طرف مقابل را حس کنی. این عناصر کمک می‌کنند بهتر یکدیگر را درک کنی و رابطه را تقویت کنی. <span style="font-weight:700;color:var(--purple);">در مقابل،</span> پشت یک صفحه، این جنبه‌ها اغلب غایب یا محدود هستند — که رابطه را کمتر عمیق می‌کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tout d'abord ← شروع استدلال اول</span>
+      <span class="an-pill an-a">En revanche ← antithèse مستقیم / directe ↔ à distance</span>
+      <span class="an-pill an-c">En effet ← توضیح و تبیین</span>
+      <span class="an-pill an-v">expressions du visage / ressentir / renforcer ← واژگان احساسی-اجتماعی</span>
+    </div>
+  </div>
+
+  <!-- ── ARG 2 ── -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — malentendus</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ensuite,</span> la communication à distance peut facilement provoquer des <span class="hv">malentendus.</span> <span class="hc">Par exemple,</span> un simple message peut être <span class="hv">mal interprété,</span> car il n'y a ni <span class="hv">intonation</span> ni <span class="hv">langage corporel</span> pour clarifier le sens. <span class="hc">Par conséquent,</span> cela peut créer des <span class="hv">tensions ou des conflits</span> inutiles entre les personnes. <span class="ha">À l'inverse,</span> dans une discussion en face à face, il est plus facile d'expliquer ses intentions et d'éviter les incompréhensions.
+    </div>
+    <div class="p-trans">
+      بعد، ارتباط آنلاین می‌تواند به راحتی سوءتفاهم ایجاد کند. مثلاً یک پیام ساده می‌تواند بد تعبیر شود، چون نه لحن صدا هست و نه زبان بدن برای روشن کردن معنا. در نتیجه، این می‌تواند تنش یا اختلاف‌های بی‌دلیل بین افراد ایجاد کند. <span style="font-weight:700;color:var(--purple);">برعکس،</span> در یک گفتگوی رو در رو، توضیح دادن قصد خود و جلوگیری از سوءتفاهم‌ها بسیار آسان‌تر است.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ensuite ← استدلال دوم</span>
+      <span class="an-pill an-a">À l'inverse ← antithèse قوی</span>
+      <span class="an-pill an-c">Par exemple / Par conséquent ← مثال + نتیجه</span>
+      <span class="an-pill an-v">malentendus / intonation / langage corporel ← واژگان ارتباطی</span>
+    </div>
+  </div>
+
+  <!-- ── ARG 3 ── -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — moments partagés</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">De plus,</span> la distance empêche de <span class="hv">partager des moments de vie importants.</span> Dans une relation directe, les personnes peuvent se voir régulièrement, sortir ensemble, rire, voyager ou simplement passer du temps ensemble. Ces moments <span class="hv">renforcent la complicité</span> et créent des <span class="hv">souvenirs communs.</span> <span class="ha">En revanche,</span> dans une relation à distance, ces expériences sont <span class="hv">rares, voire impossibles,</span> ce qui peut <span class="hv">affaiblir progressivement</span> le lien.
+    </div>
+    <div class="p-trans">
+      علاوه بر این، فاصله مانع از تقسیم کردن لحظات مهم زندگی می‌شود. در یک رابطه مستقیم، می‌توانی مرتب ببینی، با هم بیرون بروی، بخندی، سفر کنی یا فقط وقت با هم بگذرانی. این لحظات همدلی را تقویت و خاطرات مشترک ایجاد می‌کنند. <span style="font-weight:700;color:var(--purple);">در مقابل،</span> در یک رابطه آنلاین، این تجربه‌ها نادر، بلکه غیرممکن هستند — که می‌تواند به تدریج پیوند را تضعیف کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">De plus ← استدلال سوم با قدرت</span>
+      <span class="an-pill an-a">En revanche ← antithèse directe ↔ distance</span>
+      <span class="an-pill an-v">complicité / souvenirs communs / affaiblir ← واژگان رابطه‌ای</span>
+      <span class="an-pill an-v">rares, voire impossibles ← تقویت نفی با «voire»</span>
+    </div>
+  </div>
+
+  <!-- ── ARG 4 ── -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-arg4">ARGUMENT 4 — efforts & épuisement</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Enfin,</span> il est important de souligner que les relations à distance demandent <span class="hv">beaucoup d'efforts, de patience et de confiance.</span> <span class="hc">En effet,</span> il faut constamment faire des efforts pour <span class="hv">maintenir le contact,</span> organiser des appels et <span class="hv">surmonter le manque de présence.</span> <span class="hc">Avec le temps,</span> cela peut devenir difficile et <span class="hv">fatigant</span> pour certaines personnes. <span class="hc">Ainsi,</span> de nombreuses relations à distance finissent par <span class="hv">se détériorer ou disparaître.</span>
+    </div>
+    <div class="p-trans">
+      در نهایت، مهم است تأکید کنم که روابط آنلاین تلاش، صبر و اعتماد زیادی می‌طلبند. در واقع، باید مداوم تلاش کنی تا تماس را حفظ کنی، تماس‌ها را سازماندهی کنی و بر نبود حضور غلبه کنی. با گذشت زمان، این می‌تواند برای برخی افراد دشوار و خسته‌کننده شود. بنابراین، بسیاری از روابط آنلاین در نهایت خراب می‌شوند یا از بین می‌روند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Enfin + il est important de souligner ← استدلال چهارم با وزن</span>
+      <span class="an-pill an-c">En effet / Avec le temps / Ainsi ← سه connecteur در یک بند</span>
+      <span class="an-pill an-v">efforts · patience · confiance ← parallélisme سه‌گانه</span>
+      <span class="an-pill an-v">se détériorer / disparaître ← فعل‌های قوی برای نتیجه</span>
+    </div>
+  </div>
+
+  <!-- ── CONCLUSION ── -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff3e0;">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En conclusion,</span> même si Internet offre de <span class="hv">nombreuses possibilités</span> pour rester en contact, les relations à distance ne peuvent pas être aussi solides que les relations directes. Le <span class="hv">contact humain,</span> les échanges réels et les <span class="hv">moments partagés</span> restent <span class="hv">indispensables</span> pour construire une relation <span class="hv">sincère, stable et durable.</span>
+    </div>
+    <div class="p-trans">
+      در نتیجه، حتی اگر اینترنت امکانات زیادی برای در تماس ماندن ارائه دهد، روابط آنلاین نمی‌توانند به اندازه روابط مستقیم محکم باشند. تماس انسانی، تبادلات واقعی و لحظات مشترک همچنان برای ساختن یک رابطه صادقانه، باثبات و پایدار ضروری هستند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En conclusion ← باز کردن جمع‌بندی</span>
+      <span class="an-pill an-s">même si… ne peuvent pas ← concession + تأیید موضع</span>
+      <span class="an-pill an-v">sincère · stable · durable ← parallélisme پایانی سه‌گانه</span>
+      <span class="an-pill an-v">indispensable / contact humain ← واژگان محوری بازگشت</span>
+    </div>
+  </div>
+
+  <!-- TIMING STRIP -->
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div></div>
+      <div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1 · contact</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2 · malent.</div></div>
+      <div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3 · moments</div></div>
+      <div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4 · efforts</div></div>
+      <div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════
+     PANEL 2 — VERSION COURTE
+═══════════════════════════════════ -->
+<div class="panel" id="panel-court">
+
+  <div class="court-intro">
+    <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
+    همان ساختار آزمونی · همان مقدمه و نتیجه · همان antithèse‌ها — فقط فشرده‌تر.<br>
+    هدف: یک Tâche 3 کامل از ابتدا تا انتها، بدون توقف.
+    <div class="fa">این نسخه را بلند بخوان — هدف گفتن کامل است، نه کامل گفتن هر ایده.</div>
+  </div>
+
+  <!-- INTRO COURT -->
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;">
+      <span class="cc-tag num-intro">INTRO</span>
+      <span class="cc-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De nos jours,</span> Internet facilite la communication avec les personnes qui vivent loin. <span class="hs">Cependant, je ne pense pas</span> que les relations à distance puissent être aussi solides que les relations directes. <span class="hs">Selon moi,</span> le contact réel reste irremplaçable.
+    </div>
+    <div class="cc-fa">امروزه اینترنت ارتباط با دوردستان را آسان می‌کند. اما فکر نمی‌کنم روابط آنلاین بتوانند به اندازه روابط مستقیم محکم باشند. به نظرم تماس واقعی جایگزین ندارد.</div>
+  </div>
+
+  <!-- ARG 1 COURT -->
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);">
+      <span class="cc-tag num-arg1">ARG 1 — contact humain</span>
+      <span class="cc-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Tout d'abord,</span> une relation à distance manque de contact humain. <span class="hc">En effet,</span> on ne peut pas voir les expressions du visage ni ressentir les émotions de l'autre. <span class="ha">En revanche,</span> en face à face, ces éléments renforcent naturellement le lien.
+    </div>
+    <div class="cc-fa">اول از همه، یک رابطه آنلاین فاقد تماس انسانی است. در واقع، نمی‌توانی حالات چهره ببینی یا احساسات طرف مقابل را حس کنی. در مقابل، در رو در رو، این عناصر به طور طبیعی پیوند را تقویت می‌کنند.</div>
+  </div>
+
+  <!-- ARG 2 COURT -->
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);">
+      <span class="cc-tag num-arg2">ARG 2 — malentendus</span>
+      <span class="cc-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Ensuite,</span> la communication à distance crée facilement des malentendus. <span class="hc">Par exemple,</span> un message écrit peut être mal interprété sans intonation ni langage corporel. <span class="ha">À l'inverse,</span> en face à face, on clarifie ses intentions immédiatement.
+    </div>
+    <div class="cc-fa">بعد، ارتباط آنلاین به راحتی سوءتفاهم ایجاد می‌کند. مثلاً یک پیام نوشتاری می‌تواند بدون لحن یا زبان بدن بد تعبیر شود. برعکس، رو در رو، قصدت را فوری روشن می‌کنی.</div>
+  </div>
+
+  <!-- ARG 3 COURT -->
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);">
+      <span class="cc-tag num-arg3">ARG 3 — moments partagés</span>
+      <span class="cc-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De plus,</span> la distance empêche de partager des moments de vie importants. Ces expériences — sortir ensemble, voyager, rire — créent des souvenirs communs qui renforcent la complicité. <span class="ha">En revanche,</span> à distance, elles sont rares, voire impossibles.
+    </div>
+    <div class="cc-fa">علاوه بر این، فاصله مانع از تقسیم لحظات مهم زندگی می‌شود. این تجربه‌ها — با هم بیرون رفتن، سفر، خندیدن — خاطرات مشترکی می‌سازند که همدلی را تقویت می‌کنند. در مقابل، آنلاین، نادر بلکه غیرممکنند.</div>
+  </div>
+
+  <!-- ARG 4 COURT -->
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);">
+      <span class="cc-tag num-arg4">ARG 4 — épuisement</span>
+      <span class="cc-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Enfin,</span> maintenir une relation à distance demande beaucoup d'efforts et de patience. <span class="hc">Avec le temps,</span> cela devient épuisant. <span class="hc">Ainsi,</span> beaucoup de ces relations finissent par se détériorer ou disparaître.
+    </div>
+    <div class="cc-fa">در نهایت، نگه داشتن یک رابطه آنلاین تلاش و صبر زیادی می‌طلبد. با گذشت زمان خسته‌کننده می‌شود. بنابراین بسیاری از این روابط در نهایت خراب می‌شوند یا از بین می‌روند.</div>
+  </div>
+
+  <!-- CONCLUSION COURT -->
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff3e0;">
+      <span class="cc-tag num-conc">CONCLUSION</span>
+      <span class="cc-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">En conclusion,</span> même si Internet aide à rester en contact, le contact humain, les moments partagés et la présence physique restent indispensables pour une relation sincère et durable.
+    </div>
+    <div class="cc-fa">در نتیجه، حتی اگر اینترنت کمک کند در تماس بمانی، تماس انسانی، لحظات مشترک و حضور فیزیکی برای یک رابطه صادقانه و پایدار همچنان ضروری هستند.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">1:05</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:45</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:25</div><div class="ts-l">Arg 4</div></div>
+      <div class="ts"><div class="ts-t">3:05</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════
+     PANEL 3 — CADRE ALIREZA
+═══════════════════════════════════ -->
+<div class="panel" id="panel-cadre">
+
+  <div class="cadre-intro">
+    <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
+    کلمات نارنجی را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.<br>
+    هدف: گفتن یک Tâche 3 واقعی — ساختارمند، آزمونی، کامل.
+    <div class="fa">قانون: یک نگاه به کلید، بعد نگاه‌ات را بر می‌داری و می‌گویی. این تمرین حافظه‌ی آزمونی است.</div>
+  </div>
+
+  <!-- INTRO CADRE -->
+  <div class="cadre-card">
+    <div class="cadre-head">
+      <span class="cadre-label">INTRODUCTION</span>
+      <span class="cadre-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">De nos jours,</span>
+      <span class="cadre-anchor">Internet facilite…</span>
+      <span class="cadre-anchor">Cependant, je ne pense pas que…</span>
+      <span class="cadre-anchor">Selon moi,</span>
+      <div class="cadre-key">
+        <span class="ck">موضع: NON</span>
+        <span class="ck">contact réel irremplaçable</span>
+      </div>
+      <div class="cadre-hint">موضعت را صریح بگو — «je ne pense pas que» + موضوع را معرفی کن</div>
+    </div>
+  </div>
+
+  <!-- ARG 1 CADRE -->
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);">
+      <span class="cadre-label">ARG 1 — contact humain</span>
+      <span class="cadre-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Tout d'abord,</span>
+      <span class="cadre-anchor">manque de contact humain</span>
+      <span class="cadre-anchor">En effet,</span>
+      <span class="cadre-anchor">expressions / émotions</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">en face à face →</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: En revanche</span>
+        <span class="ck">directe ↔ à distance</span>
+      </div>
+      <div class="cadre-hint">«Tout d'abord» + idée → «En effet» + explication → «En revanche» + contraire</div>
+    </div>
+  </div>
+
+  <!-- ARG 2 CADRE -->
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);">
+      <span class="cadre-label">ARG 2 — malentendus</span>
+      <span class="cadre-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Ensuite,</span>
+      <span class="cadre-anchor">malentendus</span>
+      <span class="cadre-anchor">Par exemple,</span>
+      <span class="cadre-anchor">sans intonation / langage corporel</span>
+      <span class="cadre-anchor">À l'inverse,</span>
+      <span class="cadre-anchor">face à face →</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: À l'inverse</span>
+        <span class="ck">مثال ضروری: Par exemple</span>
+      </div>
+      <div class="cadre-hint">«Ensuite» + مشکل → «Par exemple» + مثال → «À l'inverse» + حل مستقیم</div>
+    </div>
+  </div>
+
+  <!-- ARG 3 CADRE -->
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);">
+      <span class="cadre-label">ARG 3 — moments partagés</span>
+      <span class="cadre-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">De plus,</span>
+      <span class="cadre-anchor">partager des moments</span>
+      <span class="cadre-anchor">souvenirs communs / complicité</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">rares, voire impossibles</span>
+      <div class="cadre-key">
+        <span class="ck">voire ← تقویت نفی</span>
+        <span class="ck">complicité / souvenirs</span>
+      </div>
+      <div class="cadre-hint">«De plus» + ایده → چند مثال سریع (sortir, voyager…) → «En revanche» + نتیجه</div>
+    </div>
+  </div>
+
+  <!-- ARG 4 CADRE -->
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);">
+      <span class="cadre-label">ARG 4 — efforts / épuisement</span>
+      <span class="cadre-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Enfin,</span>
+      <span class="cadre-anchor">efforts · patience · confiance</span>
+      <span class="cadre-anchor">Avec le temps,</span>
+      <span class="cadre-anchor">épuisant</span>
+      <span class="cadre-anchor">Ainsi,</span>
+      <span class="cadre-anchor">se détériorer / disparaître</span>
+      <div class="cadre-key">
+        <span class="ck">parallélisme × 3</span>
+        <span class="ck">Ainsi → نتیجه قوی</span>
+      </div>
+      <div class="cadre-hint">«Enfin» + بار سنگین → «Avec le temps» → «Ainsi» + سرنوشت رابطه</div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION CADRE -->
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--amber-deep);">
+      <span class="cadre-label">CONCLUSION</span>
+      <span class="cadre-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">En conclusion,</span>
+      <span class="cadre-anchor">même si Internet…</span>
+      <span class="cadre-anchor">contact humain / moments partagés</span>
+      <span class="cadre-anchor">indispensables</span>
+      <span class="cadre-anchor">sincère · stable · durable</span>
+      <div class="cadre-key">
+        <span class="ck">même si = concession</span>
+        <span class="ck">parallélisme final × 3</span>
+        <span class="ck">واژگان محوری بازگشت</span>
+      </div>
+      <div class="cadre-hint">«même si» = تصدیق جزئی → «mais» ضمنی → جمله پایانی قوی با ۳ صفت</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <a href="coaching.html">← متن‌های نمونه</a> · <a href="index.html">داشبورد</a> · علیرضا · Français avec Hoda © 2025
+</div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id, el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);
+});
+</script>
+</body>
+</html>
