@@ -16,7 +16,7 @@ const TYPE_INFO = {
   Type_5: { label: "نوع ۵ — ارتقای واژگان C1", desc: "نسخه‌ی سطح‌بالاتر برای تقویت واژگان. کمی سنگین‌تر.", color: "#7a5ba8", badge: "واژگان C1" },
 };
 
-const Q_KEYS = ["work", "adapt", "tv"];
+const Q_KEYS = ["work", "adapt", "tv", "internet"];
 
 // ── داشبورد ──
 function showDashboard() {
