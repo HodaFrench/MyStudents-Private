@@ -66,6 +66,15 @@ function showDashboard() {
     <div class="dash-grid">${cards}</div>
   `;
   window.scrollTo(0, 0);
+  // add coaching link if available
+  var clw = document.getElementById('coaching-link-wrap');
+  if (clw) {
+    if (q.coaching) {
+      clw.innerHTML = '<div style="margin:10px 0 14px;"><a href="' + q.coaching + '" style="display:inline-flex;align-items:center;gap:8px;background:#0d1b2a;color:white;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;font-family:Vazirmatn,Tahoma,sans-serif;border:2px solid #2c4a6e;">📋 تحلیل کامل + نسخه کوتاه + چارچوب ←</a></div>';
+    } else {
+      clw.innerHTML = '';
+    }
+  }
 }
 
 // ── الگوی استاندارد ──
@@ -250,7 +259,7 @@ function showQuestion(key) {
       <div class="types-legend">
         💡 پنج نسخه‌ی جواب. <b>نوع ۴ ⭐</b> نسخه‌ی نهایی امتحان است. پایین‌تر: ساختار پاراگراف‌بندی، تمرین، و نکات گرامری.
       </div>
-      \${q.coaching ? `<div style="margin:10px 0 14px;"><a href="\${q.coaching}" style="display:inline-flex;align-items:center;gap:8px;background:#0d1b2a;color:white;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;font-family:Vazirmatn,Tahoma,sans-serif;border:2px solid #2c4a6e;">📋 تحلیل کامل + نسخه کوتاه + چارچوب ←</a></div>` : ""}
+      <div id="coaching-link-wrap"></div>
       <div class="answers-wrap">${answers}</div>
       ${struct}
       ${practice}
