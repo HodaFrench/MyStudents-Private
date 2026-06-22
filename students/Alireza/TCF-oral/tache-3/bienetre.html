@@ -1,1 +1,528 @@
-/home/claude/bienetre.html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bien-être des salariés — Tâche 3 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;--green-deep:#1b5e20;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--purple);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--purple);color:white;}
+
+.hero{background:linear-gradient(135deg,#4a148c,var(--purple));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(16px,3vw,26px);font-weight:700;margin-bottom:8px;line-height:1.35;}
+.hero .sub{font-size:13px;opacity:.85;}
+.hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hpill{background:rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.25);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--purple);}.tab.active{color:var(--purple);border-bottom-color:var(--purple);}
+
+.wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
+.panel{display:none;}.panel.active{display:block;}
+
+.q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
+.q-head{background:var(--navy);padding:14px 20px;}
+.q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
+.q-fa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;margin-top:6px;}
+.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--purple-pale);flex-wrap:wrap;}
+.q-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;}
+.chip-pos{background:var(--green-pale);color:var(--green);}
+.chip-time{background:var(--amber-pale);color:var(--amber-deep);}
+.chip-struct{background:var(--blue-pale);color:var(--blue);}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+.p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
+.num-intro{background:var(--amber-pale);color:var(--amber-deep);}
+.num-arg1{background:var(--blue-pale);color:var(--blue);}
+.num-arg2{background:var(--green-pale);color:var(--green);}
+.num-arg3{background:var(--purple-pale);color:var(--purple);}
+.num-arg4{background:var(--teal-pale);color:var(--teal);}
+.num-conc{background:rgba(74,20,140,.1);color:#4a148c;}
+.p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+
+.p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
+
+.p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
+
+.p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
+.an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
+.an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
+.an-v{background:rgba(21,101,192,.3);color:#aaccff;}
+.an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
+.an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
+
+.timing-strip{display:flex;background:var(--navy-mid);}
+.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ts:last-child{border:none;}
+.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#d8b4fe;}
+.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+.ts-f{font-size:8px;direction:rtl;color:rgba(255,255,255,.3);margin-top:1px;}
+
+.court-intro{background:linear-gradient(135deg,var(--purple-pale),#fdf4ff);border:2px solid var(--purple);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:#4a148c;}
+.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.court-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
+.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+.cc-fr{padding:13px 18px;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.85;background:white;}
+.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
+
+.cadre-intro{background:linear-gradient(135deg,var(--purple-pale),#fdf4ff);border:2px solid var(--purple);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:#4a148c;}
+.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+.cadre-card{margin-bottom:14px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
+.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
+.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
+.cadre-body{padding:16px 20px;background:white;}
+.cadre-anchor{display:inline-block;background:var(--purple-pale);border:1.5px solid var(--purple);color:#4a148c;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;margin:3px 3px 3px 0;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ck{background:var(--purple-pale);border:1px solid #d8b4fe;color:#4a148c;font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
+.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
+
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:var(--purple);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:#4a148c;color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(74,20,140,.3);z-index:999;}
+#scrollBtn.show{display:block;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">T3</div>
+  <div><h1>Bien-être des salariés</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
+  <a class="back" href="index.html">← داشبورد</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
+    <h2>Selon vous, est-il important qu'une entreprise<br>privilégie le bien-être de ses salariés pour être efficace ?</h2>
+    <p class="sub">آیا مهم است که یک شرکت رفاه کارمندانش را برای کارایی در اولویت قرار دهد؟</p>
+    <div class="hero-pills">
+      <span class="hpill">موضع: OUI — humaniste & stratégique ←</span>
+      <span class="hpill">⏱ 4:30</span>
+      <span class="hpill">Intro + 4 args + Conc.</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('complet',this)">📖 تحلیل کامل</div>
+  <div class="tab" onclick="showTab('court',this)">⚡ نسخه کوتاه</div>
+  <div class="tab" onclick="showTab('cadre',this)">🎯 چارچوب علیرضا</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1 ═══ -->
+<div class="panel active" id="panel-complet">
+
+  <div class="q-box">
+    <div class="q-head">
+      <div class="q-fr">Selon vous, est-il important qu'une entreprise privilégie le bien-être de ses salariés pour être efficace ?</div>
+      <div class="q-fa">به نظر شما، آیا مهم است که یک شرکت رفاه کارمندانش را برای کارایی در اولویت قرار دهد؟</div>
+    </div>
+    <div class="q-meta">
+      <span class="q-chip chip-pos">موضع: OUI — ضروری و استراتژیک</span>
+      <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
+      <span class="q-chip chip-struct">Intro + 4 arguments + Conclusion</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(230,81,0,.4);"></div> ساختار آزمونی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(21,101,192,.35);"></div> واژگان کلیدی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(106,27,154,.3);"></div> antithèse / تضاد</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hc">Dans le monde professionnel actuel,</span> le succès d'une entreprise ne dépend plus seulement de sa <span class="hv">rentabilité</span> ou de ses résultats financiers, mais également de la <span class="hv">qualité de vie de ses employés.</span> <span class="hs">Certes,</span> certains considèrent que le bien-être des salariés est <span class="hv">secondaire</span> par rapport aux objectifs économiques. <span class="hs">Pourtant, je pense exactement le contraire :</span> placer le <span class="hv">bien-être des employés</span> au premier plan est <span class="hv">essentiel</span> pour une entreprise <span class="hv">efficace et durable.</span> Un personnel <span class="hv">heureux et motivé</span> contribue à quatre éléments clés : la productivité, la créativité, la <span class="hv">fidélisation</span> et l'image de l'entreprise.
+    </div>
+    <div class="p-trans">
+      در دنیای حرفه‌ای امروز، موفقیت یک شرکت دیگر فقط به سودآوری یا نتایج مالی بستگی ندارد، بلکه به کیفیت زندگی کارمندانش هم وابسته است. البته برخی فکر می‌کنند رفاه کارمندان در مقابل اهداف اقتصادی ثانوی است. اما من دقیقاً عکس آن را فکر می‌کنم: قرار دادن رفاه کارمندان در اولویت برای یک شرکت کارآمد و پایدار ضروری است. کارمندانی خوشحال و باانگیزه به چهار عنصر کلیدی کمک می‌کنند: بهره‌وری، خلاقیت، وفاداری و تصویر شرکت.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Certes… Pourtant, je pense exactement le contraire ← concession + موضع صریح</span>
+      <span class="an-pill an-s">اعلام ۴ عنصر = ساختار آزمونی ✓</span>
+      <span class="an-pill an-v">rentabilité / fidélisation / qualité de vie ← واژگان مدیریتی B2</span>
+      <span class="an-pill an-c">Dans le monde professionnel actuel ← باز کردن حرفه‌ای</span>
+    </div>
+  </div>
+
+  <!-- ARG 1 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — motivation & productivité</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Tout d'abord,</span> accorder de l'importance au bien-être favorise la <span class="hv">motivation et la productivité.</span> <span class="hc">Lorsqu'</span>ils se sentent <span class="hv">respectés et valorisés,</span> les salariés accomplissent leurs tâches avec plus d'<span class="hv">enthousiasme et d'efficacité.</span> <span class="hc">Par exemple,</span> une <span class="hv">reconnaissance des efforts,</span> des pauses régulières et un environnement de travail confortable permettent de réduire la fatigue et le stress. <span class="ha">En revanche,</span> un salarié qui se sent ignoré ou sous <span class="hv">pression constante</span> verra sa productivité <span class="hv">chuter rapidement</span> — ce qui coûte bien plus cher à l'entreprise que l'investissement dans le bien-être.
+    </div>
+    <div class="p-trans">
+      اول از همه، اهمیت دادن به رفاه، انگیزه و بهره‌وری را تقویت می‌کند. وقتی کارمندان احساس احترام و ارزش‌گذاری کنند، وظایفشان را با اشتیاق و کارایی بیشتری انجام می‌دهند. مثلاً تقدیر از تلاش‌ها، استراحت‌های منظم و محیط کاری راحت خستگی و استرس را کاهش می‌دهند. در مقابل، کارمندی که احساس می‌کند نادیده گرفته شده یا دائماً تحت فشار است، بهره‌وری‌اش به سرعت کاهش می‌یابد — که برای شرکت خیلی گران‌تر از سرمایه‌گذاری در رفاه است.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tout d'abord ← استدلال اول</span>
+      <span class="an-pill an-a">En revanche ← antithèse: ارزش‌گذاری ↔ فشار</span>
+      <span class="an-pill an-c">Lorsque / Par exemple ← توضیح + مثال</span>
+      <span class="an-pill an-v">respectés / valorisés / reconnaissance ← واژگان HR</span>
+    </div>
+  </div>
+
+  <!-- ARG 2 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — créativité & innovation</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ensuite,</span> prendre soin des employés <span class="hv">stimule la créativité et l'innovation.</span> Dans une <span class="hv">atmosphère sereine et collaborative,</span> les salariés osent partager leurs idées et proposer des solutions nouvelles. <span class="hc">En effet,</span> la peur de l'échec ou du jugement — souvent présente dans les environnements sous <span class="hv">pression excessive</span> — inhibe la <span class="hv">prise de risque créative.</span> <span class="ha">À l'inverse,</span> une entreprise qui encourage les <span class="hv">initiatives personnelles</span> bénéficie d'<span class="hv">avantages compétitifs</span> durables. <span class="hc">C'est d'ailleurs</span> ce que j'observe dans le secteur de l'investissement : les équipes les plus innovantes sont celles qui travaillent dans un <span class="hv">climat de confiance.</span>
+    </div>
+    <div class="p-trans">
+      بعد، مراقبت از کارمندان خلاقیت و نوآوری را تحریک می‌کند. در یک فضای آرام و مشارکتی، کارمندان جرأت اشتراک‌گذاری ایده‌ها و پیشنهاد راه‌حل‌های جدید را دارند. در واقع، ترس از شکست یا قضاوت — که اغلب در محیط‌های پر فشار وجود دارد — ریسک‌پذیری خلاقانه را مهار می‌کند. برعکس، شرکتی که ابتکارات شخصی را تشویق می‌کند از مزایای رقابتی پایدار بهره‌مند می‌شود. همچنین همین چیزی است که در بخش سرمایه‌گذاری می‌بینم: نوآورترین تیم‌ها در فضای اعتماد کار می‌کنند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ensuite ← استدلال دوم</span>
+      <span class="an-pill an-a">À l'inverse ← antithèse فضای ترس ↔ فضای اعتماد</span>
+      <span class="an-pill an-s">«secteur de l'investissement» ← شخصی‌سازی علیرضا = امتیاز بالا</span>
+      <span class="an-pill an-c">En effet / C'est d'ailleurs ← توضیح + شخصی‌سازی</span>
+    </div>
+  </div>
+
+  <!-- ARG 3 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — fidélisation</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">De plus,</span> le bien-être des salariés contribue à la <span class="hv">fidélisation du personnel.</span> Une entreprise attentive à la santé physique et mentale de ses employés <span class="hv">diminue le turnover</span> et conserve les <span class="hv">compétences essentielles</span> à son développement. <span class="hc">Or,</span> recruter et former un nouvel employé coûte en moyenne <span class="hv">trois à six fois son salaire mensuel</span> — une dépense que les entreprises négligent souvent de calculer. <span class="ha">En revanche,</span> investir dans le bien-être est nettement moins coûteux et crée un vrai sentiment d'<span class="hv">engagement et de loyauté</span> sur le long terme.
+    </div>
+    <div class="p-trans">
+      علاوه بر این، رفاه کارمندان به وفاداری پرسنل کمک می‌کند. شرکتی که به سلامت جسمی و روانی کارمندانش توجه می‌کند چرخش نیرو را کاهش می‌دهد و شایستگی‌های ضروری را حفظ می‌کند. اما جذب و آموزش یک کارمند جدید به طور متوسط سه تا شش برابر حقوق ماهانه‌اش هزینه دارد — هزینه‌ای که شرکت‌ها اغلب محاسبه نمی‌کنند. در مقابل، سرمایه‌گذاری در رفاه بسیار ارزان‌تر است و احساس تعهد و وفاداری پایداری ایجاد می‌کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">De plus ← استدلال سوم</span>
+      <span class="an-pill an-a">En revanche ← antithèse هزینه جذب ↔ سرمایه‌گذاری در رفاه</span>
+      <span class="an-pill an-c">Or ← تضاد منطقی قوی B2</span>
+      <span class="an-pill an-v">turnover / fidélisation / engagement ← واژگان HR پیشرفته</span>
+    </div>
+  </div>
+
+  <!-- ARG 4 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-arg4">ARGUMENT 4 — image & réputation</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Enfin,</span> le bien-être des employés influence <span class="hv">directement l'image de l'entreprise.</span> Une société reconnue pour ses <span class="hv">bonnes conditions de travail</span> attire non seulement de <span class="hv">nouveaux talents,</span> mais gagne également la confiance des <span class="hv">clients et partenaires.</span> <span class="hc">De nos jours,</span> les candidats consultent systématiquement les avis sur des plateformes comme <span class="hv">Glassdoor</span> avant de postuler. <span class="ha">À l'inverse,</span> une entreprise réputée pour sa <span class="hv">toxicité</span> ou son indifférence peine à recruter les meilleurs profils, <span class="hv">quelle que soit la rémunération</span> proposée.
+    </div>
+    <div class="p-trans">
+      در نهایت، رفاه کارمندان مستقیماً بر تصویر شرکت تأثیر می‌گذارد. شرکتی که به خاطر شرایط کاری خوب شناخته شده نه تنها استعدادهای جدید جذب می‌کند، بلکه اعتماد مشتریان و شرکا را هم کسب می‌کند. امروزه کاندیداها قبل از درخواست کار، نظرات را در پلتفرم‌هایی مثل Glassdoor بررسی می‌کنند. برعکس، شرکتی که به خاطر سمیت معروف است در جذب بهترین نیروها مشکل دارد، هر قدر هم حقوق پیشنهادی باشد.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Enfin ← استدلال چهارم</span>
+      <span class="an-pill an-a">À l'inverse ← antithèse تصویر مثبت ↔ سمیت</span>
+      <span class="an-pill an-c">De nos jours ← مثال ملموس دیجیتال</span>
+      <span class="an-pill an-v">toxicité / Glassdoor / quelle que soit ← واژگان مدرن HR</span>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fdf4ff;">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En définitive,</span> placer le bien-être des salariés au premier plan n'est pas seulement une démarche <span class="hv">humaniste,</span> mais également <span class="hv">stratégique.</span> <span class="ha">Loin d'être un coût,</span> c'est un <span class="hv">investissement rentable</span> qui améliore la motivation, stimule l'innovation, favorise la fidélisation et renforce l'image. Une organisation qui prend soin de ses employés construit un environnement où <span class="hv">performance et épanouissement</span> ne s'opposent pas — ils se <span class="hv">renforcent mutuellement.</span>
+    </div>
+    <div class="p-trans">
+      در مجموع، قرار دادن رفاه کارمندان در اولویت نه تنها یک رویکرد انسانگرایانه است، بلکه استراتژیک هم هست. دور از اینکه هزینه باشد، یک سرمایه‌گذاری سودآور است. سازمانی که از کارمندانش مراقبت می‌کند محیطی می‌سازد که عملکرد و شکوفایی در آن متضاد نیستند — بلکه یکدیگر را تقویت می‌کنند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En définitive ← قوی‌تر از «En conclusion»</span>
+      <span class="an-pill an-a">Loin d'être un coût ← antithèse پایانی B2</span>
+      <span class="an-pill an-v">se renforcent mutuellement ← جمله پایانی قوی</span>
+      <span class="an-pill an-s">humaniste… mais stratégique ← dualité = موضع کامل</span>
+    </div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div><div class="ts-f">۴ عنصر کلیدی</div></div>
+      <div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1</div><div class="ts-f">انگیزه</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2</div><div class="ts-f">خلاقیت</div></div>
+      <div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3</div><div class="ts-f">وفاداری</div></div>
+      <div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4</div><div class="ts-f">تصویر</div></div>
+      <div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div><div class="ts-f">سرمایه‌گذاری</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2 — COURT ═══ -->
+<div class="panel" id="panel-court">
+
+  <div class="court-intro">
+    <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
+    همان ساختار آزمونی · همان antithèse‌ها — فقط فشرده‌تر.
+    <div class="fa">این نسخه را بلند بخوان — هدف گفتن کامل است، نه کامل گفتن هر ایده.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;">
+      <span class="cc-tag num-intro">INTRO</span><span class="cc-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Dans le monde professionnel actuel,</span> le succès dépend aussi de la qualité de vie des employés. <span class="hs">Certes,</span> certains estiment que c'est secondaire. <span class="hs">Pourtant, je pense exactement le contraire :</span> le bien-être est essentiel pour la performance.
+    </div>
+    <div class="cc-fa">در دنیای حرفه‌ای امروز، موفقیت به کیفیت زندگی کارمندان هم بستگی دارد. البته برخی آن را ثانوی می‌دانند. اما من دقیقاً عکس آن را فکر می‌کنم: رفاه برای عملکرد ضروری است.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);">
+      <span class="cc-tag num-arg1">ARG 1 — motivation</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Tout d'abord,</span> un salarié <span class="hv">respecté et valorisé</span> travaille avec plus d'enthousiasme. La reconnaissance des efforts réduit le stress et améliore les performances. <span class="ha">En revanche,</span> un employé sous pression constante verra sa productivité chuter rapidement.
+    </div>
+    <div class="cc-fa">اول، کارمند محترم شمرده‌شده با اشتیاق بیشتری کار می‌کند. تقدیر از تلاش‌ها استرس را کاهش و عملکرد را بهبود می‌دهد. در مقابل، کارمند دائماً تحت فشار، بهره‌وری‌اش به سرعت کاهش می‌یابد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);">
+      <span class="cc-tag num-arg2">ARG 2 — créativité</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Ensuite,</span> dans une <span class="hv">atmosphère sereine,</span> les employés osent proposer des idées. <span class="ha">À l'inverse,</span> la peur du jugement inhibe la créativité. Dans l'investissement, les équipes les plus innovantes travaillent dans un <span class="hv">climat de confiance.</span>
+    </div>
+    <div class="cc-fa">بعد، در فضای آرام، کارمندان جرأت پیشنهاد ایده دارند. برعکس، ترس از قضاوت خلاقیت را مهار می‌کند. در بخش سرمایه‌گذاری، نوآورترین تیم‌ها در فضای اعتماد کار می‌کنند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);">
+      <span class="cc-tag num-arg3">ARG 3 — fidélisation</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">De plus,</span> le bien-être réduit le <span class="hv">turnover.</span> <span class="hc">Or,</span> recruter un nouvel employé coûte trois à six fois son salaire mensuel. <span class="ha">En revanche,</span> investir dans le bien-être est moins coûteux et crée une vraie <span class="hv">loyauté.</span>
+    </div>
+    <div class="cc-fa">علاوه بر این، رفاه چرخش نیرو را کاهش می‌دهد. اما جذب کارمند جدید سه تا شش برابر حقوق ماهانه هزینه دارد. در مقابل، سرمایه‌گذاری در رفاه ارزان‌تر است و وفاداری واقعی ایجاد می‌کند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);">
+      <span class="cc-tag num-arg4">ARG 4 — image</span><span class="cc-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">Enfin,</span> une entreprise reconnue pour ses bonnes conditions attire les <span class="hv">meilleurs talents</span> et la confiance des clients. <span class="ha">À l'inverse,</span> une entreprise réputée pour sa <span class="hv">toxicité</span> peine à recruter, quelle que soit la rémunération.
+    </div>
+    <div class="cc-fa">در نهایت، شرکتی که به خاطر شرایط خوب شناخته شده بهترین استعدادها را جذب می‌کند. برعکس، شرکتی که به خاطر سمیت معروف است در جذب نیرو مشکل دارد، هر قدر هم حقوق بدهد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#fdf4ff;">
+      <span class="cc-tag num-conc">CONCLUSION</span><span class="cc-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cc-fr">
+      <span class="hs">En définitive,</span> le bien-être n'est pas un coût — c'est un <span class="hv">investissement rentable.</span> <span class="ha">Loin d'être seulement humaniste,</span> c'est avant tout <span class="hv">stratégique :</span> performance et épanouissement se <span class="hv">renforcent mutuellement.</span>
+    </div>
+    <div class="cc-fa">در مجموع، رفاه هزینه نیست — یک سرمایه‌گذاری سودآور است. دور از اینکه فقط انسانگرایانه باشد، قبل از همه استراتژیک است: عملکرد و شکوفایی یکدیگر را تقویت می‌کنند.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div>
+      <div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 3 — CADRE ═══ -->
+<div class="panel" id="panel-cadre">
+
+  <div class="cadre-intro">
+    <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
+    کلمات بنفش را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.
+    <div class="fa">قانون: یک نگاه به کلید، بعد نگاه‌ات را بر می‌داری و می‌گویی.</div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head">
+      <span class="cadre-label">INTRODUCTION</span><span class="cadre-time">⏱ ~25 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Dans le monde professionnel actuel,</span>
+      <span class="cadre-anchor">Certes, secondaire…</span>
+      <span class="cadre-anchor">Pourtant, je pense exactement le contraire :</span>
+      <span class="cadre-anchor">4 éléments : productivité · créativité · fidélisation · image</span>
+      <div class="cadre-key">
+        <span class="ck">Certes + Pourtant = concession classique</span>
+        <span class="ck">اعلام ۴ عنصر = ساختار آزمونی</span>
+      </div>
+      <div class="cadre-hint">concession فوری → «exactement le contraire» = موضع قوی → ۴ عنصر</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);">
+      <span class="cadre-label">ARG 1 — motivation</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Tout d'abord,</span>
+      <span class="cadre-anchor">respecté / valorisé → enthousiasme</span>
+      <span class="cadre-anchor">Par exemple, reconnaissance des efforts</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">pression → chute productivité</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: En revanche</span>
+        <span class="ck">Lorsque + Par exemple = توضیح + مثال</span>
+      </div>
+      <div class="cadre-hint">ارزش‌گذاری → مثال → «En revanche» + عواقب فشار</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);">
+      <span class="cadre-label">ARG 2 — créativité</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Ensuite,</span>
+      <span class="cadre-anchor">atmosphère sereine → idées</span>
+      <span class="cadre-anchor">En effet, peur → inhibe</span>
+      <span class="cadre-anchor">À l'inverse,</span>
+      <span class="cadre-anchor">initiatives → avantages compétitifs</span>
+      <span class="cadre-anchor">secteur investissement → confiance</span>
+      <div class="cadre-key">
+        <span class="ck">À l'inverse = antithèse</span>
+        <span class="ck">شخصی‌سازی: secteur d'investissement ✓</span>
+      </div>
+      <div class="cadre-hint">فضای ترس ↔ فضای اعتماد → مثال شخصی علیرضا</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);">
+      <span class="cadre-label">ARG 3 — fidélisation</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">De plus,</span>
+      <span class="cadre-anchor">turnover ↓</span>
+      <span class="cadre-anchor">Or,</span>
+      <span class="cadre-anchor">recruter = 3 à 6 fois salaire</span>
+      <span class="cadre-anchor">En revanche,</span>
+      <span class="cadre-anchor">bien-être → loyauté long terme</span>
+      <div class="cadre-key">
+        <span class="ck">Or = تضاد منطقی B2</span>
+        <span class="ck">عدد واقعی = crédibilité</span>
+      </div>
+      <div class="cadre-hint">«Or» + عدد واقعی → «En revanche» + راه‌حل ارزان‌تر</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);">
+      <span class="cadre-label">ARG 4 — image</span><span class="cadre-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Enfin,</span>
+      <span class="cadre-anchor">bonnes conditions → talents + clients</span>
+      <span class="cadre-anchor">De nos jours, Glassdoor…</span>
+      <span class="cadre-anchor">À l'inverse,</span>
+      <span class="cadre-anchor">toxicité → peine à recruter</span>
+      <div class="cadre-key">
+        <span class="ck">antithèse: réputation + ↔ toxicité</span>
+        <span class="ck">Glassdoor = مثال دیجیتال مدرن</span>
+      </div>
+      <div class="cadre-hint">تصویر مثبت → جذب → «À l'inverse» + سمیت = شکست</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:#4a148c;">
+      <span class="cadre-label">CONCLUSION</span><span class="cadre-time">⏱ ~20 ثانیه</span>
+    </div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">En définitive,</span>
+      <span class="cadre-anchor">Loin d'être un coût,</span>
+      <span class="cadre-anchor">investissement rentable</span>
+      <span class="cadre-anchor">humaniste… mais stratégique</span>
+      <span class="cadre-anchor">performance ↔ épanouissement → se renforcent</span>
+      <div class="cadre-key">
+        <span class="ck">Loin d'être = antithèse B2</span>
+        <span class="ck">se renforcent mutuellement = پایان قوی</span>
+      </div>
+      <div class="cadre-hint">«Loin d'être un coût» → dualité → جمله تقویتی نهایی</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025
+</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);
+});
+</script>
+</body>
+</html>
