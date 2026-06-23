@@ -1,351 +1,522 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Alireza — Français avec Hoda</title>
-<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پرونده علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 :root{
   --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
-  --blue:#1565c0;--blue-soft:#1976d2;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
-  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;--white:#fff;
-  --red:#b71c1c;--red-pale:#ffebee;--green:#2e7d32;--green-pale:#e8f5e9;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;
   --amber:#e65100;--amber-pale:#fff3e0;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --gold:#f59e0b;--gold-pale:#fffbeb;
+  --red:#b71c1c;--red-pale:#ffebee;
 }
 html{scroll-behavior:smooth;}
-body{font-family:'Estedad','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.9;min-height:100vh;}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,0.04) 39px,rgba(13,27,42,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(13,27,42,0.02) 39px,rgba(13,27,42,0.02) 40px);pointer-events:none;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;padding-bottom:60px;}
 
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:var(--navy);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:100;}
-.topbar-left{display:flex;align-items:center;gap:14px;}
-.logo{width:44px;height:44px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;font-family:'Roboto',sans-serif;}
-.topbar h1{font-family:'Roboto',sans-serif;font-size:22px;font-weight:700;color:white;}
-.topbar .sub{font-size:12px;color:rgba(255,255,255,.5);}
-.topbar-right{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase;}
+/* TOPBAR */
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);position:sticky;top:0;z-index:100;}
+.logo-box{width:38px;height:38px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:14px;}
+.topbar-title{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar-sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back-link{margin-right:auto;font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;}
+.back-link:hover{background:var(--blue);color:white;}
 
-.hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:48px 32px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,0.05);border-radius:50%;}
-.hero::after{content:"";position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,0.03);border-radius:50%;}
-.hero-content{position:relative;z-index:1;}
-.hero .tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;}
-.hero h2{font-family:'Roboto',sans-serif;font-size:50px;font-weight:700;letter-spacing:-2px;margin-bottom:10px;}
-.hero .sub-fa{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:6px;}
-.hero .sub-fr{font-family:'Roboto',sans-serif;font-size:20px;color:rgba(255,255,255,.7);font-style:italic;margin-bottom:28px;}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:white;padding:40px 24px;text-align:center;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:14px;opacity:.7;}
 
-.search-box{width:100%;max-width:480px;position:relative;margin-bottom:32px;}
-.search-box input{width:100%;padding:15px 48px 15px 18px;font-size:14px;border:2px solid rgba(255,255,255,.2);border-radius:8px;font-family:inherit;background:rgba(255,255,255,.1);color:white;transition:all .2s;}
-.search-box input::placeholder{color:rgba(255,255,255,.5);}
-.search-box input:focus{outline:none;border-color:var(--blue);background:rgba(255,255,255,.15);}
-.search-box::before{content:"🔍";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:17px;opacity:.5;}
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:32px 20px;}
 
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:580px;width:100%;}
-.cat-chip{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:10px;padding:18px 16px;cursor:pointer;transition:all .25s ease;font-family:inherit;position:relative;overflow:hidden;text-align:right;}
-.cat-chip::after{content:"";position:absolute;top:0;right:0;bottom:0;width:3px;background:var(--c,var(--blue));transition:width .25s;}
-.cat-chip:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);transform:translateY(-3px);}
-.cat-chip:hover::after{width:6px;}
-.cat-chip .chip-icon{width:42px;height:42px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:all .25s;}
-.cat-chip:hover .chip-icon{background:var(--c,var(--blue));}
-.cat-chip .name{font-size:14px;font-weight:600;color:white;line-height:1.3;}
-.cat-chip .num{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
+/* SECTION TITLE */
+.sec-title{font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-title::after{content:"";flex:1;height:1px;background:var(--line);}
 
-.library{max-width:860px;margin:0 auto;padding:0 24px 80px;display:none;}
-.library.active{display:block;}
-.lib-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--line);}
-.lib-back{background:var(--blue-pale);border:none;color:var(--blue);font-size:20px;width:40px;height:40px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit;}
-.lib-back:hover{background:var(--blue);color:white;}
-.lib-title{font-family:'Roboto',sans-serif;font-size:22px;font-weight:700;color:var(--navy);}
-.lib-count{font-size:12px;color:var(--gray);margin-top:2px;}
+/* FOLDER CARDS — Main categories */
+.folders{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:36px;}
+.folder{background:white;border:2px solid var(--line);border-radius:14px;padding:20px;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit;display:block;}
+.folder:hover{border-color:var(--blue);box-shadow:0 6px 20px rgba(13,27,42,.1);transform:translateY(-2px);}
+.folder-icon{font-size:32px;margin-bottom:10px;}
+.folder-name{font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.folder-name-fa{font-size:13px;color:var(--gray);direction:rtl;}
+.folder-count{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
 
-.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;}
-.content-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:all .25s;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(13,27,42,.05);}
-.content-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(13,27,42,.12);border-color:var(--blue);}
-.card-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;}
-.card-level{position:absolute;top:8px;left:8px;background:var(--navy);color:white;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:0.5px;}
-.card-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;text-align:right;}
-.card-cat{font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;}
-.card-title{font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:4px;}
-.card-sub{font-family:'Roboto',sans-serif;font-size:11px;color:var(--gray);font-style:italic;margin-bottom:10px;flex:1;}
-.card-go{font-size:11px;font-weight:700;color:var(--blue);margin-top:auto;padding-top:8px;border-top:1px solid var(--line);}
+/* SUB VIEWS — hidden by default */
+.view{display:none;}
+.view.active{display:block;}
 
-.group-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px;}
-.group-hd{background:var(--navy);padding:14px 18px;display:flex;align-items:center;gap:12px;}
-.group-hd .gi{font-size:22px;}
-.group-hd .gt{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
-.group-hd .gs{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
-.group-items{padding:10px 14px;display:flex;flex-direction:column;gap:8px;}
-.group-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:8px;text-decoration:none;transition:all .2s;}
-.group-item.av{background:var(--blue-mist);border:1px solid #bfdbfe;}
-.group-item.av:hover{background:var(--blue-pale);transform:translateX(-3px);}
-.group-item.lk{background:var(--paper);opacity:.45;cursor:not-allowed;border:1px solid var(--line);}
-.group-item .gi-title{font-size:13px;font-weight:600;color:var(--navy);flex:1;}
-.group-item .gi-arr{color:var(--blue);font-weight:700;font-size:13px;}
+/* SUBFOLDER CARDS */
+.subfolders{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:28px;}
+.subfolder{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit;display:block;}
+.subfolder:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(13,27,42,.08);transform:translateY(-1px);}
+.sf-head{padding:14px 18px;display:flex;align-items:center;gap:12px;}
+.sf-icon{font-size:24px;}
+.sf-title{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:var(--navy);}
+.sf-title-fa{font-size:11px;color:var(--gray);}
+.sf-foot{padding:8px 18px;background:var(--paper);border-top:1px solid var(--line);font-size:11px;color:var(--gray);font-family:'JetBrains Mono',monospace;}
 
-.hero-wrap{display:flex;flex-direction:column;align-items:center;padding:48px 24px;}
-.hero-wrap.shrink{padding:32px 24px 16px;}
-.hero-wrap.hidden{display:none;}
+/* ITEMS LIST */
+.items-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.item-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;align-items:stretch;transition:all .2s;}
+.item-card:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(13,27,42,.08);}
+.item-icon{width:52px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--paper);flex-shrink:0;border-left:1px solid var(--line);}
+.item-body{padding:12px 16px;flex:1;}
+.item-title{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.item-fa{font-size:12px;color:var(--gray);}
+.item-badge{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;margin-top:6px;display:inline-block;}
+.badge-b1{background:var(--blue-pale);color:var(--blue);}
+.badge-b2{background:var(--amber-pale);color:var(--amber);}
+.badge-new{background:var(--green-pale);color:var(--green);}
+.item-arrow{width:36px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:16px;flex-shrink:0;}
 
-.footer{text-align:center;padding:24px;color:var(--gray);font-size:12px;border-top:1px solid var(--line);}
-#scrollBtn{display:none;position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;border:none;padding:12px 15px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 14px rgba(13,27,42,.3);z-index:1000;}
-#scrollBtn:hover{background:var(--blue);}
-#scrollBtn.show{display:block;}
-@media(max-width:640px){.hero h2{font-size:34px;}.cat-grid{grid-template-columns:1fr;max-width:360px;}.topbar{padding:12px 16px;}}
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.bc-part{font-size:13px;color:var(--gray);cursor:pointer;}
+.bc-part:hover{color:var(--blue);text-decoration:underline;}
+.bc-sep{color:var(--line);font-size:12px;}
+.bc-current{font-size:13px;font-weight:600;color:var(--navy);}
+
+/* GRAMMAIRE ITEMS */
+.gram-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:28px;}
+.gram-card{background:white;border:2px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:block;transition:all .2s;}
+.gram-card:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(13,27,42,.08);}
+.gram-icon{font-size:22px;margin-bottom:8px;}
+.gram-title{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.gram-fa{font-size:12px;color:var(--gray);margin-bottom:6px;}
+.gram-level{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;}
+
+/* BACK BUTTON */
+.back-btn{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:white;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Vazirmatn',sans-serif;margin-bottom:22px;transition:.2s;}
+.back-btn:hover{background:var(--blue);}
+
+/* JAZVA */
+.jazva-card{background:linear-gradient(135deg,var(--teal),#00897b);color:white;border-radius:14px;padding:22px;text-decoration:none;display:block;margin-bottom:14px;transition:.2s;}
+.jazva-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,105,92,.25);}
+
+@media(max-width:600px){.folders,.subfolders,.gram-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="topbar-left">
-    <div class="logo">A</div>
-    <div><h1>علیرضا</h1><div class="sub">Espace d'apprentissage · Français avec Hoda</div></div>
+  <div class="logo-box">A</div>
+  <div>
+    <div class="topbar-title">علیرضا</div>
+    <div class="topbar-sub">Français avec Hoda</div>
   </div>
-  <div class="topbar-right">Français avec Hoda</div>
+  <a class="back-link" href="../../index.html">← کتابخانه</a>
 </div>
 
 <div class="hero">
-  <div class="hero-content">
-    <div class="tag">✦ Espace personnel ✦</div>
-    <div class="hero-wrap" id="hero">
-      <h2>پرونده علیرضا</h2>
-      <div class="sub-fa">فضای یادگیری اختصاصی</div>
-      <div class="sub-fr">Construis ton français, pas à pas.</div>
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="جستجو در محتوا..." oninput="handleSearch(this.value)">
+  <div class="hero-tag">✦ Dossier personnel ✦</div>
+  <h1>پرونده علیرضا</h1>
+  <div class="hero-sub">TCF Canada · Grammaire · Vocabulaire</div>
+</div>
+
+<div class="main">
+
+<!-- ══════════ VIEW: HOME ══════════ -->
+<div class="view active" id="view-home">
+
+  <div class="sec-title">بخش‌های اصلی</div>
+
+  <div class="folders">
+
+    <div class="folder" onclick="showView('view-tcf','home')">
+      <div class="folder-icon">🎙️</div>
+      <div class="folder-name">TCF Canada</div>
+      <div class="folder-name-fa">آمادگی آزمون</div>
+      <div class="folder-count">Tâche 1 · Tâche 3 · Expression Écrite · Coach</div>
+    </div>
+
+    <div class="folder" onclick="showView('view-grammaire','home')">
+      <div class="folder-icon">📐</div>
+      <div class="folder-name">Grammaire</div>
+      <div class="folder-name-fa">گرامر</div>
+      <div class="folder-count">PC · Conditionnel · QUE/QUI/DONT · Parallélisme</div>
+    </div>
+
+    <div class="folder" onclick="showView('view-jazva','home')">
+      <div class="folder-icon">📓</div>
+      <div class="folder-name">Jazva · جزوه</div>
+      <div class="folder-name-fa">واژگان و یادداشت‌ها</div>
+      <div class="folder-count">۱۹ ژوئن · واژگان B1/B2</div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══════════ VIEW: TCF ══════════ -->
+<div class="view" id="view-tcf">
+
+  <div class="breadcrumb">
+    <span class="bc-part" onclick="showView('view-home')">خانه</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-current">TCF Canada</span>
+  </div>
+
+  <div class="sec-title">آزمون TCF Canada</div>
+  <div class="subfolders">
+
+    <div class="subfolder" onclick="showView('view-tache1','tcf')">
+      <div class="sf-head">
+        <div class="sf-icon">🗣️</div>
+        <div>
+          <div class="sf-title">Expression Orale — Tâche 1</div>
+          <div class="sf-title-fa">معرفی شخصی · بیان دیدگاه</div>
+        </div>
       </div>
-      <div class="cat-grid" id="catGrid"></div>
+      <div class="sf-foot">coaching · exam-view · mode examen</div>
     </div>
-  </div>
-</div>
 
-<div class="library" id="library">
-  <div class="lib-header">
-    <button class="lib-back" onclick="goHome()">←</button>
-    <div>
-      <div class="lib-title" id="libTitle"></div>
-      <div class="lib-count" id="libCount"></div>
+    <div class="subfolder" style="opacity:.55;cursor:not-allowed;" onclick="return false;">
+      <div class="sf-head">
+        <div class="sf-icon">🗣️</div>
+        <div>
+          <div class="sf-title">Expression Orale — Tâche 2</div>
+          <div class="sf-title-fa">بزودی</div>
+        </div>
+      </div>
+      <div class="sf-foot">در حال آماده‌سازی…</div>
     </div>
+
+    <div class="subfolder" onclick="showView('view-tache3','tcf')">
+      <div class="sf-head">
+        <div class="sf-icon">🎯</div>
+        <div>
+          <div class="sf-title">Expression Orale — Tâche 3</div>
+          <div class="sf-title-fa">بیان دیدگاه · استدلال</div>
+        </div>
+      </div>
+      <div class="sf-foot">۸ موضوع · تمرین · چارچوب</div>
+    </div>
+
+    <a class="subfolder" href="TCF-ecrit/index.html">
+      <div class="sf-head">
+        <div class="sf-icon">✍️</div>
+        <div>
+          <div class="sf-title">Expression Écrite</div>
+          <div class="sf-title-fa">ساختار · پاراگراف‌بندی</div>
+        </div>
+      </div>
+      <div class="sf-foot">B1→B2</div>
+    </a>
+
+    <a class="subfolder" href="TCF-coach/index.html">
+      <div class="sf-head">
+        <div class="sf-icon">🏆</div>
+        <div>
+          <div class="sf-title">Coach TCF B2</div>
+          <div class="sf-title-fa">مسیر کامل · استراتژی</div>
+        </div>
+      </div>
+      <div class="sf-foot">Coaching complet</div>
+    </a>
+
   </div>
-  <div id="contentGrid"></div>
+
 </div>
 
-<div class="footer">
-  <span style="font-weight:700;color:var(--navy);">علیرضا</span> · Français avec Hoda · © 2025
+<!-- ══════════ VIEW: TÂCHE 1 ══════════ -->
+<div class="view" id="view-tache1">
+
+  <div class="breadcrumb">
+    <span class="bc-part" onclick="showView('view-home')">خانه</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-part" onclick="showView('view-tcf','home')">TCF Canada</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-current">Tâche 1</span>
+  </div>
+
+  <div class="sec-title">Expression Orale — Tâche 1</div>
+  <div class="items-list">
+
+    <a class="item-card" href="TCF-oral/tache-1/index.html">
+      <div class="item-icon">🗣️</div>
+      <div class="item-body">
+        <div class="item-title">داشبورد Tâche 1</div>
+        <div class="item-fa">سوالات · ۵ نسخه جواب · تمرین</div>
+        <span class="item-badge badge-b2">B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-1/coaching.html">
+      <div class="item-icon">📖</div>
+      <div class="item-body">
+        <div class="item-title">Coaching complet — 3 versions</div>
+        <div class="item-fa">نسخه A2 · B1 · B2 با آنالیز کامل</div>
+        <span class="item-badge badge-b2">A2→B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-1/exam-view.html">
+      <div class="item-icon">📋</div>
+      <div class="item-body">
+        <div class="item-title">Mode Examen — نقشه راه</div>
+        <div class="item-fa">۶ بلوک · تایمر · کلمات کلیدی · چارچوب</div>
+        <span class="item-badge badge-new">حالت آزمون</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+  </div>
+
 </div>
 
-<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<!-- ══════════ VIEW: TÂCHE 3 ══════════ -->
+<div class="view" id="view-tache3">
+
+  <div class="breadcrumb">
+    <span class="bc-part" onclick="showView('view-home')">خانه</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-part" onclick="showView('view-tcf','home')">TCF Canada</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-current">Tâche 3</span>
+  </div>
+
+  <!-- Sub-sections of T3 -->
+  <div class="sec-title">تمرین برای آزمون</div>
+  <div class="items-list">
+
+    <a class="item-card" href="TCF-oral/tache-3/index.html">
+      <div class="item-icon">🎯</div>
+      <div class="item-body">
+        <div class="item-title">داشبورد — همه موضوعات</div>
+        <div class="item-fa">۸ موضوع · ۵ نوع جواب · انتخاب موضوع</div>
+        <span class="item-badge badge-b2">داشبورد اصلی</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/trainer.html">
+      <div class="item-icon">⏱️</div>
+      <div class="item-body">
+        <div class="item-title">Live Trainer — تمرین زنده</div>
+        <div class="item-fa">تایمر ۴:۳۰ · جملات راهنما · فرمت آزمونی</div>
+        <span class="item-badge badge-new">تمرین واقعی</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+  </div>
+
+  <div class="sec-title">موضوعات — تحلیل + کوتاه + چارچوب</div>
+  <div class="items-list">
+
+    <a class="item-card" href="TCF-oral/tache-3/relations-distance.html">
+      <div class="item-icon">🌐</div>
+      <div class="item-body">
+        <div class="item-title">Relations à distance</div>
+        <div class="item-fa">روابط آنلاین — تحلیل · نسخه کوتاه · چارچوب</div>
+        <span class="item-badge badge-b2">B1→B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/ecrans.html">
+      <div class="item-icon">📱</div>
+      <div class="item-body">
+        <div class="item-title">Impacts des écrans</div>
+        <div class="item-fa">اثرات صفحه‌ها — تحلیل · نسخه کوتاه · چارچوب</div>
+        <span class="item-badge badge-b2">B1→B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/economie.html">
+      <div class="item-icon">🌱</div>
+      <div class="item-body">
+        <div class="item-title">Économie & Environnement</div>
+        <div class="item-fa">اقتصاد و محیط زیست — تحلیل · نسخه کوتاه · چارچوب</div>
+        <span class="item-badge badge-b2">B1→B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/bienetre.html">
+      <div class="item-icon">🤝</div>
+      <div class="item-body">
+        <div class="item-title">Bien-être des salariés</div>
+        <div class="item-fa">رفاه کارمندان — تحلیل · نسخه کوتاه · چارچوب</div>
+        <span class="item-badge badge-b2">B1→B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/bonheur-travail.html">
+      <div class="item-icon">😊</div>
+      <div class="item-body">
+        <div class="item-title">Bonheur au travail</div>
+        <div class="item-fa">خوشبختی در کار — تحلیل · نسخه کوتاه · چارچوب</div>
+        <span class="item-badge badge-b2">B1→B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/coaching.html">
+      <div class="item-icon">📋</div>
+      <div class="item-body">
+        <div class="item-title">کار · سازگاری · تلویزیون</div>
+        <div class="item-fa">۳ موضوع اول — متن‌های نمونه B1 و B2</div>
+        <span class="item-badge badge-b2">B1 · B2</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+  </div>
+
+  <div class="sec-title">اکسل علیرضا — ۵ تیپ جواب</div>
+  <div class="items-list">
+
+    <a class="item-card" href="TCF-oral/tache-3/index.html#type-1">
+      <div class="item-icon" style="background:var(--blue-pale);">1️⃣</div>
+      <div class="item-body">
+        <div class="item-title">نوع ۱ — نزدیک به فکر فارسی</div>
+        <div class="item-fa">ساده · ساخت ایده · پایه</div>
+        <span class="item-badge badge-b1">A2→B1</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/index.html#type-2">
+      <div class="item-icon" style="background:var(--green-pale);">2️⃣</div>
+      <div class="item-body">
+        <div class="item-title">نوع ۲ — طبیعی و کامل</div>
+        <div class="item-fa">روان · مطالعه · B1</div>
+        <span class="item-badge badge-b1">B1</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/index.html#type-3">
+      <div class="item-icon" style="background:var(--amber-pale);">3️⃣</div>
+      <div class="item-body">
+        <div class="item-title">نوع ۳ — ساده و امن</div>
+        <div class="item-fa">ضد استرس · کوتاه · مطمئن</div>
+        <span class="item-badge badge-b1">B1</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/index.html#type-4">
+      <div class="item-icon" style="background:var(--purple-pale);">4️⃣</div>
+      <div class="item-body">
+        <div class="item-title">نوع ۴ ⭐ — نسخه نهایی امتحان</div>
+        <div class="item-fa">توصیه‌شده · کامل · B2</div>
+        <span class="item-badge badge-b2">B2 ⭐</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+    <a class="item-card" href="TCF-oral/tache-3/index.html#type-5">
+      <div class="item-icon" style="background:var(--teal-pale);">5️⃣</div>
+      <div class="item-body">
+        <div class="item-title">نوع ۵ — ارتقای واژگان C1</div>
+        <div class="item-fa">واژگان پیشرفته · اثرگذار</div>
+        <span class="item-badge" style="background:var(--teal-pale);color:var(--teal);">C1</span>
+      </div>
+      <div class="item-arrow">←</div>
+    </a>
+
+  </div>
+
+</div>
+
+<!-- ══════════ VIEW: GRAMMAIRE ══════════ -->
+<div class="view" id="view-grammaire">
+
+  <div class="breadcrumb">
+    <span class="bc-part" onclick="showView('view-home')">خانه</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-current">Grammaire</span>
+  </div>
+
+  <div class="sec-title">گرامر</div>
+  <div class="gram-grid">
+
+    <a class="gram-card" href="Grammaire/passe-compose/index.html">
+      <div class="gram-icon">🔵</div>
+      <div class="gram-title">Passé composé</div>
+      <div class="gram-fa">ساخت · کاربرد · افعال نامنظم</div>
+      <span class="gram-level badge-b2" style="background:var(--amber-pale);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;">A2→B2+</span>
+    </a>
+
+    <a class="gram-card" href="Grammaire/passe-compose/index.html#panel-conditionnel">
+      <div class="gram-icon">💭</div>
+      <div class="gram-title">Conditionnel présent & passé</div>
+      <div class="gram-fa">ادب · فرضیه · پشیمانی</div>
+      <span class="gram-level" style="background:var(--amber-pale);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;">B1→B2</span>
+    </a>
+
+    <a class="gram-card" href="Grammaire/que-qui-dont/index.html">
+      <div class="gram-icon">🔗</div>
+      <div class="gram-title">QUE · QUI · DONT</div>
+      <div class="gram-fa">خطاهای رایج · DONT کامل · B2</div>
+      <span class="gram-level" style="background:var(--blue-pale);color:var(--blue);font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;">B1→B2</span>
+    </a>
+
+    <a class="gram-card" href="Grammaire/parallelisme/index.html">
+      <div class="gram-icon">⚖️</div>
+      <div class="gram-title">Parallélisme syntaxique</div>
+      <div class="gram-fa">هم‌جنسی · pour/de · Non seulement</div>
+      <span class="gram-level" style="background:var(--blue-pale);color:var(--blue);font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;">B1→B2</span>
+    </a>
+
+    <a class="gram-card" href="Grammaire/passe-compose/index.html#panel-tcf">
+      <div class="gram-icon">📐</div>
+      <div class="gram-title">Stratégie TCF</div>
+      <div class="gram-fa">PC و Conditionnel در آزمون</div>
+      <span class="gram-level" style="background:var(--amber-pale);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 8px;border-radius:10px;">B1→B2</span>
+    </a>
+
+  </div>
+
+</div>
+
+<!-- ══════════ VIEW: JAZVA ══════════ -->
+<div class="view" id="view-jazva">
+
+  <div class="breadcrumb">
+    <span class="bc-part" onclick="showView('view-home')">خانه</span>
+    <span class="bc-sep">←</span>
+    <span class="bc-current">Jazva · جزوه</span>
+  </div>
+
+  <div class="sec-title">جزوه‌ها و واژگان</div>
+
+  <a class="jazva-card" href="Jazva/19-juin.html">
+    <div style="font-size:28px;margin-bottom:8px;">📓</div>
+    <div style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;margin-bottom:4px;">Jazva · ۱۹ ژوئن</div>
+    <div style="font-size:13px;opacity:.85;">۱۳ واژه کلیدی B1/B2 · مثال‌های TCF · با ترجمه</div>
+  </a>
+
+</div>
+
+</div><!-- /main -->
 
 <script>
-const CATEGORIES = [
-  { id:"grammaire",    label:"Grammaire",       icon:"§",   color:"#1565c0" },
-  { id:"tcf",          label:"TCF Canada",       icon:"🎙️",  color:"#e65100" },
-  { id:"jazva",        label:"Jazva · جزوه",    icon:"📓",  color:"#00695c" },
-  { id:"vocabulaire",  label:"Vocabulaire",      icon:"📚",  color:"#6a1b9a" },
-  { id:"mes-erreurs",  label:"Mes erreurs",      icon:"🔴",  color:"#b71c1c" },
-];
+let history_stack = [];
 
-const LESSONS = [
-  // ── Grammaire ──
-  {
-    file:"Grammaire/passe-compose/index.html",
-    title:"Passé composé",
-    titleFr:"Formation · Emplois · Verbes TCF · A2→B2+",
-    category:"grammaire", level:"A2→B2+", icon:"⏰",
-    group:"Temps du passé", disabled:false,
-  },
-  {
-    file:"Grammaire/passe-compose/index.html#panel-conditionnel",
-    title:"Conditionnel présent & passé",
-    titleFr:"Politesse · Hypothèse · Regret · B1→B2",
-    category:"grammaire", level:"B1→B2", icon:"💭",
-    group:"Modes", disabled:false,
-  },
-  {
-    file:"Grammaire/que-qui-dont/index.html",
-    title:"QUE · QUI · DONT",
-    titleFr:"Erreurs fréquentes · DONT complet · Restructurer · Alternatives B2",
-    category:"grammaire", level:"B1→B2", icon:"🔗",
-    group:"Pronoms relatifs", disabled:false,
-  },
-  {
-    file:"Grammaire/parallelisme/index.html",
-    title:"Parallélisme syntaxique",
-    titleFr:"هم‌جنسی · pour/de + INF ou NOM · Non seulement…mais aussi",
-    category:"grammaire", level:"B1→B2", icon:"⚖️",
-    group:"Style & Cohérence", disabled:false,
-  },
-  // Tâche 3 — Textes coaching
-  {
-    file:"TCF-oral/tache-3/relations-distance.html",
-    title:"T3 · Relations à distance",
-    titleFr:"تحلیل · نسخه کوتاه · چارچوب — روابط آنلاین",
-    category:"tcf", level:"B1→B2", icon:"🌐",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-oral/tache-3/ecrans.html",
-    title:"T3 · Impacts des écrans",
-    titleFr:"تحلیل · نسخه کوتاه · چارچوب — اثرات صفحه‌ها",
-    category:"tcf", level:"B1→B2", icon:"📱",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-oral/tache-3/economie.html",
-    title:"T3 · Économie & Environnement",
-    titleFr:"تحلیل · نسخه کوتاه · چارچوب — اقتصاد و محیط زیست",
-    category:"tcf", level:"B1→B2", icon:"🌱",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-oral/tache-3/bienetre.html",
-    title:"T3 · Bien-être des salariés",
-    titleFr:"تحلیل · نسخه کوتاه · چارچوب — رفاه کارمندان",
-    category:"tcf", level:"B1→B2", icon:"🤝",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-oral/tache-3/bonheur-travail.html",
-    title:"T3 · Bonheur au travail",
-    titleFr:"تحلیل · نسخه کوتاه · چارچوب — خوشبختی در کار",
-    category:"tcf", level:"B1→B2", icon:"😊",
-    group:"Expression Orale", disabled:false,
-  },
-  // Futures leçons
-  { file:"#", title:"Imparfait", titleFr:"Bientôt disponible", category:"grammaire", level:"B1", icon:"🔒", group:"Temps du passé", disabled:true },
-  { file:"#", title:"Subjonctif", titleFr:"Bientôt disponible", category:"grammaire", level:"B2", icon:"🔒", group:"Modes", disabled:true },
-
-  // ── TCF ──
-  {
-    file:"TCF-oral/tache-1/index.html",
-    title:"Expression Orale — Tâche 1",
-    titleFr:"7 questions · 5 versions · Drill 30 sec",
-    category:"tcf", level:"A2→B2+", icon:"🗣️",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-oral/tache-3/index.html",
-    title:"Expression Orale — Tâche 3",
-    titleFr:"Opinion · Argumentation · Société",
-    category:"tcf", level:"B1→B2", icon:"🎯",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-oral/tache-3/trainer.html",
-    title:"Live Trainer — Tâche 3",
-    titleFr:"Entraînement chronométré avec feedback",
-    category:"tcf", level:"B1→B2", icon:"⏱️",
-    group:"Expression Orale", disabled:false,
-  },
-  {
-    file:"TCF-coach/index.html",
-    title:"Coach TCF B2",
-    titleFr:"مسیر کامل · استراتژی · مرور روزانه",
-    category:"tcf", level:"B2", icon:"🏆",
-    group:"Coaching", disabled:false,
-  },
-  {
-    file:"TCF-ecrit/index.html",
-    title:"Expression Écrite",
-    titleFr:"Structure · Paragraphes · Argumentation",
-    category:"tcf", level:"B1→B2", icon:"✍️",
-    group:"Expression Écrite", disabled:false,
-  },
-  {
-    file:"Grammaire/passe-compose/index.html#panel-tcf",
-    title:"Stratégie TCF — PC & Conditionnel",
-    titleFr:"Exemples Tâches 1·2·3 · Phrases-outils",
-    category:"tcf", level:"B1→B2", icon:"📐",
-    group:"Grammaire TCF", disabled:false,
-  },
-
-  // ── Jazva ──
-  {
-    file:"Jazva/19-juin.html",
-    title:"Jazva · ۱۹ ژوئن",
-    titleFr:"13 mots clés · vocabulaire B1/B2 · avec exemples",
-    category:"jazva", level:"B1/B2", icon:"📓",
-    group:"", disabled:false,
-  },
-
-  // Placeholders
-  { file:"#", title:"Mes erreurs", titleFr:"Bientôt", category:"mes-erreurs", level:"—", icon:"🔴", group:"", disabled:true },
-];
-
-let currentCat=null;
-
-function countCat(id){return LESSONS.filter(l=>l.category===id).length;}
-
-function buildCatGrid(){
-  const grid=document.getElementById('catGrid');
-  grid.innerHTML=CATEGORIES.map(c=>`
-    <button class="cat-chip" style="--c:${c.color}" onclick="openCat('${c.id}')">
-      <div class="chip-icon">${c.icon}</div>
-      <div class="chip-body" style="text-align:right;">
-        <span class="name">${c.label}</span>
-        <span class="num">${countCat(c.id)} contenu${countCat(c.id)>1?'s':''}</span>
-      </div>
-    </button>`).join('');
+function showView(id, from) {
+  // Hide all
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  // Show target
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
 }
-
-function openCat(id){
-  currentCat=id;
-  const cat=CATEGORIES.find(c=>c.id===id);
-  const items=LESSONS.filter(l=>l.category===id);
-  document.getElementById('hero').classList.add('hidden');
-  document.getElementById('library').classList.add('active');
-  document.getElementById('libTitle').textContent=`${cat?.icon} ${cat?.label}`;
-  document.getElementById('libCount').textContent=`${items.length} contenu${items.length>1?'s':''}`;
-
-  if(id==='grammaire'){
-    const groups=[...new Set(items.map(l=>l.group))];
-    document.getElementById('contentGrid').innerHTML=groups.map(g=>{
-      const gItems=items.filter(l=>l.group===g);
-      return `<div class="group-card">
-        <div class="group-hd"><span class="gi">${gItems[0].icon}</span><div><div class="gt">${g}</div><div class="gs">${gItems.length} leçon${gItems.length>1?'s':''}</div></div></div>
-        <div class="group-items">
-          ${gItems.map(l=>l.disabled
-            ?`<div class="group-item lk"><span>🔒</span><span class="gi-title">${l.title} · ${l.titleFr}</span><span style="font-size:11px;color:#94a3b8;">Bientôt</span></div>`
-            :`<a class="group-item av" href="${l.file}"><span>✅</span><span class="gi-title">${l.title} <span style="font-size:11px;font-weight:400;color:#64748b;font-style:italic;">${l.titleFr}</span></span><span class="gi-arr">→</span></a>`
-          ).join('')}
-        </div>
-      </div>`;
-    }).join('');
-  } else {
-    const avail=items.filter(l=>!l.disabled);
-    document.getElementById('contentGrid').innerHTML=`<div class="content-grid">${items.map(l=>{
-      if(l.disabled) return `<div class="content-card" style="opacity:.4;cursor:not-allowed;"><div class="card-thumb" style="background:#f1f5f9;"><span>🔒</span></div><div class="card-body"><div class="card-title">${l.title}</div><div class="card-go">Bientôt ⏳</div></div></div>`;
-      const cat=CATEGORIES.find(c=>c.id===l.category);
-      return `<a class="content-card" href="${l.file}"><div class="card-thumb" style="background:${cat?.color}14;"><span style="font-size:38px;">${l.icon}</span>${l.level?`<span class="card-level">${l.level}</span>`:''}</div><div class="card-body"><div class="card-cat">${cat?.label}</div><div class="card-title">${l.title}</div><div class="card-sub">${l.titleFr}</div><div class="card-go">Ouvrir →</div></div></a>`;
-    }).join('')}</div>`;
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function goHome(){
-  currentCat=null;
-  document.getElementById('hero').classList.remove('hidden');
-  document.getElementById('library').classList.remove('active');
-  document.getElementById('searchInput').value='';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function handleSearch(q){
-  q=q.trim();
-  if(!q){goHome();return;}
-  const ql=q.toLowerCase();
-  const results=LESSONS.filter(l=>l.title.toLowerCase().includes(ql)||l.titleFr?.toLowerCase().includes(ql));
-  document.getElementById('hero').classList.add('hidden');
-  document.getElementById('library').classList.add('active');
-  document.getElementById('libTitle').textContent=`🔍 Résultats pour «${q}»`;
-  document.getElementById('libCount').textContent=`${results.length} résultat${results.length>1?'s':''}`;
-  document.getElementById('contentGrid').innerHTML=`<div class="content-grid">${results.filter(l=>!l.disabled).map(l=>{
-    const cat=CATEGORIES.find(c=>c.id===l.category);
-    return `<a class="content-card" href="${l.file}"><div class="card-thumb" style="background:${cat?.color}14;"><span style="font-size:38px;">${l.icon}</span></div><div class="card-body"><div class="card-cat">${cat?.label}</div><div class="card-title">${l.title}</div><div class="card-sub">${l.titleFr}</div><div class="card-go">Ouvrir →</div></div></a>`;
-  }).join('')}</div>`;
-}
-
-window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
-buildCatGrid();
 </script>
 </body>
 </html>
