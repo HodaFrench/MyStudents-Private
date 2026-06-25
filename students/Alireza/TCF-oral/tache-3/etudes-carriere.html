@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Études & Carrière — Tâche 3 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;--green-deep:#1b5e20;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --indigo:#283593;--indigo-pale:#e8eaf6;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--indigo);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--indigo);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--indigo);color:white;}
+
+.hero{background:linear-gradient(135deg,#1a237e,var(--indigo));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(16px,3vw,26px);font-weight:700;margin-bottom:8px;line-height:1.35;}
+.hero .sub{font-size:13px;opacity:.85;}
+.hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hpill{background:rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.25);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--indigo);}.tab.active{color:var(--indigo);border-bottom-color:var(--indigo);}
+
+.wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
+.panel{display:none;}.panel.active{display:block;}
+
+.q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
+.q-head{background:var(--navy);padding:14px 20px;}
+.q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
+.q-fa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;margin-top:6px;}
+.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--indigo-pale);flex-wrap:wrap;}
+.q-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;}
+.chip-pos{background:var(--green-pale);color:var(--green);}
+.chip-time{background:var(--amber-pale);color:var(--amber-deep);}
+.chip-struct{background:var(--purple-pale);color:var(--purple);}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+.p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
+.num-intro{background:var(--amber-pale);color:var(--amber-deep);}
+.num-arg1{background:var(--blue-pale);color:var(--blue);}
+.num-arg2{background:var(--green-pale);color:var(--green);}
+.num-arg3{background:var(--purple-pale);color:var(--purple);}
+.num-contre{background:var(--teal-pale);color:var(--teal);}
+.num-conc{background:var(--indigo-pale);color:var(--indigo);}
+.p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+
+.p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
+
+.p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
+.p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
+.an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
+.an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
+.an-v{background:rgba(21,101,192,.3);color:#aaccff;}
+.an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
+.an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
+
+/* VOCAB BOX */
+.vocab-box{background:white;border:2px solid var(--indigo-pale);border-radius:12px;overflow:hidden;margin-bottom:20px;}
+.vocab-head{background:var(--indigo);padding:10px 16px;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;color:white;}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.vocab-item{padding:10px 16px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);}
+.vocab-item:nth-child(odd){border-left:none;}
+.vocab-fr{font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;color:var(--indigo);direction:ltr;text-align:left;}
+.vocab-fa{font-size:11px;color:var(--gray);margin-top:2px;}
+.vocab-ex{font-size:11px;color:var(--navy);font-style:italic;direction:ltr;text-align:left;margin-top:3px;}
+
+.timing-strip{display:flex;background:var(--navy-mid);}
+.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ts:last-child{border:none;}
+.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#a5b4fc;}
+.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+.ts-f{font-size:8px;direction:rtl;color:rgba(255,255,255,.3);margin-top:1px;}
+
+.court-intro{background:linear-gradient(135deg,var(--indigo-pale),#eef2ff);border:2px solid var(--indigo);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:#1a237e;}
+.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+.court-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
+.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+.cc-fr{padding:13px 18px;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.85;background:white;}
+.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
+
+.cadre-intro{background:linear-gradient(135deg,var(--indigo-pale),#eef2ff);border:2px solid var(--indigo);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:#1a237e;}
+.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+.cadre-card{margin-bottom:14px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
+.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
+.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
+.cadre-body{padding:16px 20px;background:white;}
+.cadre-anchor{display:inline-block;background:var(--indigo-pale);border:1.5px solid var(--indigo);color:#1a237e;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;margin:3px 3px 3px 0;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ck{background:var(--indigo-pale);border:1px solid #c5cae9;color:#1a237e;font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
+.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
+
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:var(--indigo);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:#1a237e;color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(26,35,126,.3);z-index:999;}
+#scrollBtn.show{display:block;}
+@media(max-width:640px){.vocab-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">T3</div>
+  <div><h1>Études & Réussite professionnelle</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
+  <a class="back" href="index.html">← داشبورد</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
+    <h2>Faire des études permet-il de réussir<br>sa carrière professionnelle ?</h2>
+    <p class="sub">آیا تحصیل کردن موفقیت شغلی را تضمین می‌کند؟</p>
+    <div class="hero-pills">
+      <span class="hpill">موضع: OUI — mais pas seul ←</span>
+      <span class="hpill">⏱ 4:30</span>
+      <span class="hpill">Intro + 3 args + Contre + Conc.</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('complet',this)">📖 تحلیل کامل</div>
+  <div class="tab" onclick="showTab('court',this)">⚡ نسخه کوتاه</div>
+  <div class="tab" onclick="showTab('cadre',this)">🎯 چارچوب علیرضا</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1 ═══ -->
+<div class="panel active" id="panel-complet">
+
+  <div class="q-box">
+    <div class="q-head">
+      <div class="q-fr">Faire des études permet de réussir sa carrière professionnelle. Qu'en pensez-vous ?</div>
+      <div class="q-fa">آیا تحصیل کردن موفقیت شغلی را ممکن می‌کند؟ نظرتان چیست؟</div>
+    </div>
+    <div class="q-meta">
+      <span class="q-chip chip-pos">موضع: OUI — ولی نه به تنهایی</span>
+      <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
+      <span class="q-chip chip-struct">Intro + 3 args + Contre-argument + Conclusion</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(230,81,0,.4);"></div> ساختار آزمونی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(21,101,192,.35);"></div> واژگان کلیدی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(106,27,154,.3);"></div> antithèse / تضاد</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~35 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hc">Avec l'essor de la compétitivité</span> sur le marché du travail, la question de savoir si faire des études permet de réussir sa carrière <span class="hv">suscite de nombreux débats.</span> <span class="hs">Tandis que certains prennent le contrepied,</span> <span class="hs">je suis convaincu</span> que les études jouent un rôle <span class="hv">important</span> dans la réussite professionnelle, <span class="ha">même si elles ne suffisent pas toujours à elles seules.</span>
+    </div>
+    <div class="p-trans">
+      با رشد رقابت در بازار کار، این سؤال که آیا تحصیل کردن موفقیت شغلی را ممکن می‌کند بحث‌های زیادی برانگیخته. در حالی که برخی نظر مخالف دارند، من مطمئنم که تحصیل نقش مهمی در موفقیت حرفه‌ای دارد، اگرچه به تنهایی همیشه کافی نیست.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tandis que certains… je suis convaincu ← concession + موضع صریح</span>
+      <span class="an-pill an-a">même si elles ne suffisent pas seules ← تعدیل موضع از همان ابتدا = B2</span>
+      <span class="an-pill an-c">Avec l'essor de ← باز کردن با زمینه اجتماعی</span>
+      <span class="an-pill an-v">compétitivité / suscite des débats ← واژگان B2</span>
+    </div>
+  </div>
+
+  <!-- ARG 1 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — connaissances & compétences</span>
+      <span class="p-time">⏱ ~50 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">D'emblée,</span> je suis d'avis que faire des études permet d'<span class="hv">acquérir des connaissances solides</span> et des <span class="hv">compétences utiles.</span> <span class="hc">Vu que</span> le monde du travail devient de plus en plus <span class="hv">exigeant,</span> les employeurs recherchent des personnes <span class="hv">bien formées.</span> <span class="hc">Par exemple,</span> dans des domaines comme la médecine ou l'ingénierie, les études sont <span class="hv">indispensables</span> pour exercer un métier. <span class="ha">Ce qui passe avant tout,</span> c'est la qualité de la formation — <span class="ha">car sans connaissances solides,</span> il est difficile de réussir sa carrière.
+    </div>
+    <div class="p-trans">
+      اول از همه، نظرم اینه که تحصیل کردن امکان به دست آوردن دانش محکم و مهارت‌های مفید را می‌دهد. از آنجا که دنیای کار روز به روز مطالبه‌گرتر می‌شود، کارفرمایان دنبال افراد آموزش‌دیده می‌گردند. مثلاً در حوزه‌هایی مثل پزشکی یا مهندسی، تحصیل برای شغل ضروری است. آنچه از همه مهم‌تر است کیفیت آموزش است — چون بدون دانش محکم، موفقیت شغلی دشوار است.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">D'emblée ← شروع قوی B2 — نه «Tout d'abord»</span>
+      <span class="an-pill an-a">Ce qui passe avant tout / car sans ← antithèse شرطی</span>
+      <span class="an-pill an-c">Vu que ← connecteur causal B2</span>
+      <span class="an-pill an-v">acquérir / exigeant / indispensable ← واژگان کلیدی</span>
+    </div>
+  </div>
+
+  <!-- ARG 2 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — meilleures opportunités</span>
+      <span class="p-time">⏱ ~50 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En deuxième lieu,</span> j'estime que les études <span class="hv">favorisent l'accès</span> à de meilleures <span class="hv">opportunités professionnelles.</span> <span class="hc">Par exemple,</span> les personnes <span class="hv">diplômées</span> ont souvent plus de chances de trouver un <span class="hv">emploi stable et bien payé.</span> <span class="hc">Par conséquent,</span> elles peuvent construire une carrière plus <span class="hv">sécurisée.</span> <span class="hc">En étudiant sérieusement tout en</span> développant des compétences pratiques, les étudiants <span class="hv">augmentent leurs chances de réussite.</span> Ils peuvent aussi effectuer des <span class="hv">stages</span> pour acquérir de l'expérience.
+    </div>
+    <div class="p-trans">
+      در مرحله دوم، برآنم که تحصیل دسترسی به فرصت‌های شغلی بهتر را تسهیل می‌کند. مثلاً افراد دارای مدرک اغلب شانس بیشتری برای یافتن شغل باثبات و پردرآمد دارند. در نتیجه می‌توانند مسیر شغلی امن‌تری بسازند. با مطالعه جدی و در عین حال پرورش مهارت‌های عملی، دانشجویان شانس موفقیتشان را افزایش می‌دهند. همچنین می‌توانند کارآموزی کنند تا تجربه کسب کنند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En deuxième lieu ← رسمی‌تر از «Ensuite»</span>
+      <span class="an-pill an-c">tout en + participe ← ساختار B2 مهم</span>
+      <span class="an-pill an-c">Par conséquent ← نتیجه‌گیری منطقی</span>
+      <span class="an-pill an-v">favoriser / diplômés / stages ← واژگان حرفه‌ای</span>
+    </div>
+  </div>
+
+  <!-- ARG 3 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — qualités personnelles</span>
+      <span class="p-time">⏱ ~50 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Dernier point, mais non le moindre,</span> je pense que faire des études permet aussi de développer des <span class="hv">qualités personnelles importantes.</span> <span class="hc">À titre d'exemple,</span> les études apprennent la <span class="hv">discipline, l'organisation</span> et la <span class="hv">capacité de réflexion.</span> <span class="ha">En revanche, malgré ces avantages,</span> il existe aussi des personnes qui réussissent <span class="hv">sans diplôme</span> grâce à leur talent ou leur expérience — ce qui montre que les études ne sont pas le seul chemin vers la réussite.
+    </div>
+    <div class="p-trans">
+      آخرین نکته، اما نه کم‌اهمیت‌ترین، فکر می‌کنم تحصیل همچنین توسعه ویژگی‌های شخصی مهم را ممکن می‌کند. به عنوان مثال، تحصیل نظم، سازماندهی و ظرفیت تفکر را آموزش می‌دهد. در مقابل، با وجود این مزایا، افرادی هم هستند که بدون مدرک با استعداد یا تجربه موفق می‌شوند — که نشان می‌دهد تحصیل تنها مسیر موفقیت نیست.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Dernier point, mais non le moindre ← فرمول رسمی B2 برای آخرین استدلال</span>
+      <span class="an-pill an-a">En revanche, malgré ces avantages ← antithèse با تعدیل</span>
+      <span class="an-pill an-c">À titre d'exemple ← رسمی‌تر از «Par exemple»</span>
+      <span class="an-pill an-v">discipline / réflexion / sans diplôme ← واژگان محوری</span>
+    </div>
+  </div>
+
+  <!-- CONTRE-ARGUMENT -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-contre">CONTRE-ARGUMENT + NUANCE</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ce qui nous met la puce à l'oreille,</span> c'est que beaucoup de jeunes <span class="hv">diplômés</span> ont des difficultés à trouver un emploi à cause du <span class="hv">manque d'expérience.</span> <span class="ha">Si les étudiants avaient fait plus de stages pendant leurs études,</span> ils n'auraient pas eu autant de difficultés à entrer dans le monde du travail. <span class="hc">C'est pour ça que</span> je dirais que les études sont importantes, <span class="hs">mais qu'elles doivent être liées à la pratique.</span>
+    </div>
+    <div class="p-trans">
+      آنچه ما را به فکر وا می‌دارد این است که بسیاری از فارغ‌التحصیلان جوان به خاطر کمبود تجربه برای پیدا کردن کار مشکل دارند. اگر دانشجویان بیشتر کارآموزی می‌کردند، به اندازه‌ای در ورود به دنیای کار مشکل نداشتند. به همین دلیل می‌گویم تحصیل مهم است، اما باید با عمل پیوند داشته باشد.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ce qui nous met la puce à l'oreille ← تعبیر اصطلاحی B2+ — اثر قوی</span>
+      <span class="an-pill an-a">Si… avaient fait… n'auraient pas eu ← conditionnel passé = B2 ✓</span>
+      <span class="an-pill an-c">C'est pour ça que ← نتیجه‌گیری گفتاری طبیعی</span>
+      <span class="an-pill an-v">liées à la pratique ← جمله کلیدی nuance</span>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--indigo-pale);">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Pour conclure,</span> les études jouent un rôle <span class="hv">important</span> dans la réussite professionnelle. <span class="ha">Bien qu'il soit possible</span> de réussir sans diplôme dans certains cas, les études restent un <span class="hv">avantage considérable.</span> <span class="hs">À condition que</span> les étudiants développent aussi des <span class="hv">compétences pratiques,</span> ils peuvent mieux réussir leur <span class="hv">parcours professionnel.</span> Il vaut mieux <span class="hv">combiner les études et l'expérience.</span>
+    </div>
+    <div class="p-trans">
+      در نتیجه، تحصیل نقش مهمی در موفقیت حرفه‌ای دارد. اگرچه در برخی موارد موفقیت بدون مدرک ممکن است، تحصیل مزیت قابل توجهی باقی می‌ماند. به شرطی که دانشجویان مهارت‌های عملی هم پرورش دهند، می‌توانند مسیر حرفه‌ای‌شان را بهتر طی کنند. بهتر است تحصیل و تجربه را ترکیب کرد.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Bien qu'il soit possible ← concession + subjonctif = B2 ✓</span>
+      <span class="an-pill an-s">À condition que ← شرط نهایی = موضع کامل</span>
+      <span class="an-pill an-v">avantage considérable / parcours professionnel ← واژگان پایانی</span>
+      <span class="an-pill an-v">combiner études + expérience ← جمله کلیدی</span>
+    </div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div><div class="ts-f">موضع + تعدیل</div></div>
+      <div class="ts"><div class="ts-t">0:35</div><div class="ts-l">Arg 1</div><div class="ts-f">دانش + مهارت</div></div>
+      <div class="ts"><div class="ts-t">1:25</div><div class="ts-l">Arg 2</div><div class="ts-f">فرصت‌های بهتر</div></div>
+      <div class="ts"><div class="ts-t">2:15</div><div class="ts-l">Arg 3</div><div class="ts-f">ویژگی‌های فردی</div></div>
+      <div class="ts"><div class="ts-t">3:05</div><div class="ts-l">Contre-arg</div><div class="ts-f">تجربه لازم است</div></div>
+      <div class="ts"><div class="ts-t">3:45</div><div class="ts-l">Conclusion</div><div class="ts-f">ترکیب = کلید</div></div>
+    </div>
+  </div>
+
+  <!-- VOCAB -->
+  <div style="margin-top:20px;">
+    <div class="vocab-box">
+      <div class="vocab-head">📚 واژگان کلیدی این متن</div>
+      <div class="vocab-grid">
+        <div class="vocab-item">
+          <div class="vocab-fr">favoriser</div>
+          <div class="vocab-fa">تسهیل کردن · تقویت کردن</div>
+          <div class="vocab-ex">→ réussite / carrière / opportunités</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">contribuer à</div>
+          <div class="vocab-fa">کمک کردن به</div>
+          <div class="vocab-ex">→ développement / réussite professionnelle</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">permettre de</div>
+          <div class="vocab-fa">ممکن کردن</div>
+          <div class="vocab-ex">→ obtenir / acquérir / réussir</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">acquérir</div>
+          <div class="vocab-fa">به دست آوردن · کسب کردن</div>
+          <div class="vocab-ex">→ connaissances / compétences / expérience</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">D'emblée</div>
+          <div class="vocab-fa">از همان ابتدا · فوراً</div>
+          <div class="vocab-ex">↔ Tout d'abord — قوی‌تر و B2</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">susciter des débats</div>
+          <div class="vocab-fa">بحث برانگیختن</div>
+          <div class="vocab-ex">→ برای شروع مقدمه</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">mettre la puce à l'oreille</div>
+          <div class="vocab-fa">به فکر واداشتن · مشکوک کردن</div>
+          <div class="vocab-ex">→ pour introduire le contre-argument</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-fr">tout en + participe</div>
+          <div class="vocab-fa">در حین · همزمان</div>
+          <div class="vocab-ex">→ tout en développant des compétences</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2 — COURT ═══ -->
+<div class="panel" id="panel-court">
+  <div class="court-intro">
+    <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
+    همان ساختار آزمونی · همان nuance‌ها — فقط فشرده‌تر.
+    <div class="fa">هدف: گفتن یک Tâche 3 کامل از ابتدا تا انتها بدون توقف.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;"><span class="cc-tag num-intro">INTRO</span><span class="cc-time">⏱ ~20 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Avec l'essor de la compétitivité,</span> la question des études et de la réussite <span class="hv">suscite de nombreux débats.</span> <span class="hs">Je suis convaincu</span> qu'elles jouent un rôle important, <span class="ha">même si elles ne suffisent pas seules.</span></div>
+    <div class="cc-fa">با رشد رقابت، تحصیل و موفقیت بحث‌های زیادی برمی‌انگیزد. مطمئنم نقش مهمی دارند، اگرچه به تنهایی کافی نیستند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);"><span class="cc-tag num-arg1">ARG 1 — compétences</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">D'emblée,</span> les études permettent d'<span class="hv">acquérir des connaissances solides.</span> Dans des domaines comme la médecine, elles sont <span class="hv">indispensables.</span> <span class="ha">Car sans formation solide,</span> il est difficile de réussir.</div>
+    <div class="cc-fa">اول از همه، تحصیل امکان کسب دانش محکم را می‌دهد. در حوزه‌هایی مثل پزشکی ضروری است. چون بدون آموزش محکم موفقیت دشوار است.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);"><span class="cc-tag num-arg2">ARG 2 — opportunités</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">En deuxième lieu,</span> les <span class="hv">diplômés</span> ont plus de chances de trouver un <span class="hv">emploi stable et bien payé.</span> <span class="hc">Tout en</span> étudiant, ils peuvent aussi faire des <span class="hv">stages</span> pour acquérir de l'expérience pratique.</div>
+    <div class="cc-fa">در مرحله دوم، دارندگان مدرک شانس بیشتری برای شغل باثبات دارند. در حین تحصیل می‌توانند کارآموزی هم بکنند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);"><span class="cc-tag num-arg3">ARG 3 — qualités</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Dernier point, mais non le moindre,</span> les études développent la <span class="hv">discipline et la capacité de réflexion.</span> <span class="ha">En revanche, malgré ces avantages,</span> certains réussissent <span class="hv">sans diplôme</span> grâce à leur talent.</div>
+    <div class="cc-fa">آخرین نکته، تحصیل نظم و تفکر را پرورش می‌دهد. در مقابل، برخی بدون مدرک هم با استعداد موفق می‌شوند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);"><span class="cc-tag num-contre">CONTRE-ARG</span><span class="cc-time">⏱ ~30 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Ce qui nous met la puce à l'oreille,</span> c'est que beaucoup de <span class="hv">diplômés</span> manquent d'expérience. <span class="ha">Si</span> ils avaient fait plus de <span class="hv">stages,</span> ils n'auraient pas eu ces difficultés. Les études doivent être <span class="hv">liées à la pratique.</span></div>
+    <div class="cc-fa">آنچه به فکر وا می‌دارد اینه که فارغ‌التحصیلان زیادی تجربه ندارند. اگر بیشتر کارآموزی می‌کردند مشکل نداشتند. تحصیل باید با عمل پیوند داشته باشد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--indigo-pale);"><span class="cc-tag num-conc">CONCLUSION</span><span class="cc-time">⏱ ~20 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Pour conclure,</span> <span class="ha">bien qu'il soit possible</span> de réussir sans diplôme, les études restent un <span class="hv">avantage considérable.</span> <span class="hs">À condition de</span> combiner études et <span class="hv">expérience pratique,</span> on maximise ses chances.</div>
+    <div class="cc-fa">در نتیجه، اگرچه موفقیت بدون مدرک ممکن است، تحصیل مزیت بزرگی است. به شرط ترکیب تحصیل و تجربه عملی، شانس موفقیت را به حداکثر می‌رسانیم.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:20</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">0:55</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:30</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:05</div><div class="ts-l">Contre</div></div>
+      <div class="ts"><div class="ts-t">2:35</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 3 — CADRE ═══ -->
+<div class="panel" id="panel-cadre">
+  <div class="cadre-intro">
+    <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
+    کلمات بنفش-آبی را می‌بینی و بقیه را خودت کامل می‌کنی.
+    <div class="fa">این متن یک ساختار خاص دارد: ۳ استدلال + ۱ contre-argument + نتیجه. ترتیب را نگه‌دار.</div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head"><span class="cadre-label">INTRODUCTION</span><span class="cadre-time">⏱ ~20 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Avec l'essor de la compétitivité,</span><span class="cadre-anchor">suscite des débats</span><span class="cadre-anchor">Tandis que certains…</span><span class="cadre-anchor">je suis convaincu que</span><span class="cadre-anchor">même si… pas seules</span>
+      <div class="cadre-key"><span class="ck">Tandis que + concession فوری</span><span class="ck">même si = تعدیل از ابتدا = B2</span></div>
+      <div class="cadre-hint">موضع را با تعدیل «même si» بده — نه موضع صد در صد</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);"><span class="cadre-label">ARG 1 — connaissances</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">D'emblée,</span><span class="cadre-anchor">acquérir connaissances solides</span><span class="cadre-anchor">Vu que monde du travail exigeant</span><span class="cadre-anchor">Par exemple, médecine / ingénierie</span><span class="cadre-anchor">Car sans formation solide →</span>
+      <div class="cadre-key"><span class="ck">D'emblée = قوی‌تر از Tout d'abord</span><span class="ck">Vu que = connecteur causal B2</span></div>
+      <div class="cadre-hint">«D'emblée» → «Vu que» + زمینه → مثال → «Car sans» + نتیجه منفی</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);"><span class="cadre-label">ARG 2 — opportunités</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">En deuxième lieu,</span><span class="cadre-anchor">diplômés → emploi stable</span><span class="cadre-anchor">Par conséquent,</span><span class="cadre-anchor">tout en étudiant → stages</span>
+      <div class="cadre-key"><span class="ck">tout en + participe = B2 ✓</span><span class="ck">Par conséquent = نتیجه مستقیم</span></div>
+      <div class="cadre-hint">فرصت‌های بهتر → «Par conséquent» → «tout en» + کارآموزی</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);"><span class="cadre-label">ARG 3 — qualités personnelles</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Dernier point, mais non le moindre,</span><span class="cadre-anchor">discipline / organisation / réflexion</span><span class="cadre-anchor">En revanche, malgré ces avantages,</span><span class="cadre-anchor">sans diplôme → talent</span>
+      <div class="cadre-key"><span class="ck">Dernier point mais non le moindre = فرمول رسمی</span><span class="ck">antithèse با «malgré»</span></div>
+      <div class="cadre-hint">فرمول کامل → ویژگی‌ها × ۳ → «En revanche, malgré» + استثنا</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);"><span class="cadre-label">CONTRE-ARGUMENT</span><span class="cadre-time">⏱ ~30 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Ce qui nous met la puce à l'oreille,</span><span class="cadre-anchor">diplômés → manque d'expérience</span><span class="cadre-anchor">Si… avaient fait stages,</span><span class="cadre-anchor">n'auraient pas eu difficultés</span><span class="cadre-anchor">études liées à la pratique</span>
+      <div class="cadre-key"><span class="ck">puce à l'oreille = اصطلاح B2+</span><span class="ck">conditionnel passé = Si + p.q.p → cond. passé</span></div>
+      <div class="cadre-hint">اصطلاح → مشکل → conditionnel passé → نتیجه‌گیری</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:#1a237e;"><span class="cadre-label">CONCLUSION</span><span class="cadre-time">⏱ ~20 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Pour conclure,</span><span class="cadre-anchor">Bien qu'il soit possible sans diplôme,</span><span class="cadre-anchor">avantage considérable</span><span class="cadre-anchor">À condition que / de</span><span class="cadre-anchor">combiner études + expérience</span>
+      <div class="cadre-key"><span class="ck">Bien que + subjonctif = B2 ✓</span><span class="ck">À condition que = شرط نهایی</span></div>
+      <div class="cadre-hint">concession → مزیت باقی → شرط با «À condition» → جمله کلیدی «combiner»</div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="footer"><a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
