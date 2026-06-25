@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Transports gratuits — Tâche 3 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;--navy-soft:#2c4a6e;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;--green-deep:#1b5e20;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --cyan:#0277bd;--cyan-pale:#e1f5fe;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;padding-bottom:80px;}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(transparent,transparent 39px,rgba(13,27,42,.04) 39px,rgba(13,27,42,.04) 40px);pointer-events:none;}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--cyan);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:'JetBrains Mono',monospace;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--cyan);color:white;}
+
+.hero{background:linear-gradient(135deg,#01579b,var(--cyan));color:white;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,.07);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(16px,3vw,26px);font-weight:700;margin-bottom:8px;line-height:1.35;}
+.hero .sub{font-size:13px;opacity:.85;}
+.hero-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hpill{background:rgba(255,255,255,.18);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;border:1px solid rgba(255,255,255,.25);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--cyan);}.tab.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+
+.wrap{max-width:860px;margin:0 auto;padding:28px 22px;}
+.panel{display:none;}.panel.active{display:block;}
+
+.q-box{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
+.q-head{background:var(--navy);padding:14px 20px;}
+.q-fr{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:white;line-height:1.4;}
+.q-fa{font-size:12px;color:rgba(255,255,255,.6);direction:rtl;text-align:right;margin-top:6px;}
+.q-meta{display:flex;gap:8px;padding:10px 20px;background:var(--cyan-pale);flex-wrap:wrap;}
+.q-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;}
+.chip-pos{background:var(--green-pale);color:var(--green);}
+.chip-time{background:var(--amber-pale);color:var(--amber-deep);}
+.chip-struct{background:var(--purple-pale);color:var(--purple);}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+.p-card{margin-bottom:20px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.p-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.p-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.1em;}
+.num-intro{background:var(--amber-pale);color:var(--amber-deep);}
+.num-arg1{background:var(--blue-pale);color:var(--blue);}
+.num-arg2{background:var(--green-pale);color:var(--green);}
+.num-arg3{background:var(--purple-pale);color:var(--purple);}
+.num-arg4{background:var(--teal-pale);color:var(--teal);}
+.num-conc{background:var(--cyan-pale);color:var(--cyan);}
+.p-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+
+.p-fr{padding:14px 18px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;background:white;}
+.hs{background:rgba(230,81,0,.15);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hv{background:rgba(21,101,192,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--blue);}
+.ha{background:rgba(106,27,154,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hc{background:rgba(46,125,50,.13);padding:1px 5px;border-radius:3px;font-weight:700;color:var(--green);}
+
+.p-trans{padding:12px 18px;font-size:13px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.9;}
+.p-analysis{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);}
+.an-pill{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}
+.an-s{background:rgba(230,81,0,.3);color:#ffccaa;}
+.an-v{background:rgba(21,101,192,.3);color:#aaccff;}
+.an-a{background:rgba(106,27,154,.3);color:#ddaaff;}
+.an-c{background:rgba(46,125,50,.3);color:#aaddaa;}
+
+.timing-strip{display:flex;background:var(--navy-mid);}
+.ts{flex:1;padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ts:last-child{border:none;}
+.ts-t{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#7dd3fc;}
+.ts-l{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px;}
+.ts-f{font-size:8px;direction:rtl;color:rgba(255,255,255,.3);margin-top:1px;}
+
+.court-intro{background:linear-gradient(135deg,var(--cyan-pale),#e0f7fa);border:2px solid var(--cyan);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.court-intro strong{color:#01579b;}
+.court-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+.court-card{margin-bottom:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cc-head{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.08em;}
+.cc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);}
+.cc-fr{padding:13px 18px;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.85;background:white;}
+.cc-fa{padding:10px 18px;font-size:12.5px;direction:rtl;text-align:right;background:#fafbfc;border-top:1px dashed var(--line);color:var(--gray);line-height:1.85;}
+
+.cadre-intro{background:linear-gradient(135deg,var(--cyan-pale),#e0f7fa);border:2px solid var(--cyan);border-radius:12px;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.85;}
+.cadre-intro strong{color:#01579b;}
+.cadre-intro .fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+.cadre-card{margin-bottom:14px;border:2px solid var(--line);border-radius:12px;overflow:hidden;}
+.cadre-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--navy);}
+.cadre-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.1em;}
+.cadre-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);}
+.cadre-body{padding:16px 20px;background:white;}
+.cadre-anchor{display:inline-block;background:var(--cyan-pale);border:1.5px solid var(--cyan);color:#01579b;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;margin:3px 3px 3px 0;}
+.cadre-key{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ck{background:var(--cyan-pale);border:1px solid #7dd3fc;color:#01579b;font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600;}
+.cadre-hint{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8;}
+
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:var(--cyan);text-decoration:none;}
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:#01579b;color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 12px rgba(1,87,155,.3);z-index:999;}
+#scrollBtn.show{display:block;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">T3</div>
+  <div><h1>Transports gratuits</h1><div class="sub">علیرضا · تحلیل · نسخه کوتاه · چارچوب</div></div>
+  <a class="back" href="index.html">← داشبورد</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">TCF Canada · Expression Orale · موضوع جدید</div>
+    <h2>Les transports en commun doivent-ils être<br>accessibles gratuitement à tous ?</h2>
+    <p class="sub">آیا حمل‌ونقل عمومی باید برای همه ساکنان شهرهای بزرگ رایگان باشد؟</p>
+    <div class="hero-pills">
+      <span class="hpill">موضع: OUI ←</span>
+      <span class="hpill">⏱ 4:30</span>
+      <span class="hpill">Intro + 4 args + Conc.</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('complet',this)">📖 تحلیل کامل</div>
+  <div class="tab" onclick="showTab('court',this)">⚡ نسخه کوتاه</div>
+  <div class="tab" onclick="showTab('cadre',this)">🎯 چارچوب علیرضا</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1 ═══ -->
+<div class="panel active" id="panel-complet">
+
+  <div class="q-box">
+    <div class="q-head">
+      <div class="q-fr">Pensez-vous que les transports en commun doivent être accessibles gratuitement à tous les habitants des grandes villes ?</div>
+      <div class="q-fa">آیا حمل‌ونقل عمومی باید برای همه ساکنان شهرهای بزرگ به رایگان در دسترس باشد؟</div>
+    </div>
+    <div class="q-meta">
+      <span class="q-chip chip-pos">موضع: OUI — اجتماعی، زیست‌محیطی، انسانی</span>
+      <span class="q-chip chip-time">⏱ 4 دقیقه ۳۰ ثانیه</span>
+      <span class="q-chip chip-struct">Intro + 4 arguments + Conclusion</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(230,81,0,.4);"></div> ساختار آزمونی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(21,101,192,.35);"></div> واژگان کلیدی</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(106,27,154,.3);"></div> antithèse / تضاد</div>
+    <div class="legend-item"><div class="leg-dot" style="background:rgba(46,125,50,.3);"></div> connecteur</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="p-card">
+    <div class="p-header" style="background:#fff8e1;">
+      <span class="p-num num-intro">INTRODUCTION</span>
+      <span class="p-time">⏱ ~40 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hc">Dans les grandes villes,</span> se déplacer fait partie <span class="hv">intégrante</span> de la vie quotidienne. Des millions de personnes utilisent chaque jour le métro, le bus ou le tramway pour travailler, étudier ou simplement sortir. <span class="hs">Cependant,</span> le coût des transports représente une <span class="hv">dépense importante</span> pour de nombreuses familles, ce qui soulève une question légitime. <span class="hs">À mon avis,</span> rendre les transports en commun <span class="hv">gratuits</span> serait une mesure très positive, car elle favoriserait l'<span class="hv">égalité sociale,</span> protégerait l'<span class="hv">environnement,</span> améliorerait la <span class="hv">mobilité urbaine</span> et rendrait la vie en ville plus <span class="hv">agréable pour tous.</span>
+    </div>
+    <div class="p-trans">
+      در شهرهای بزرگ، جابه‌جایی بخش جدایی‌ناپذیر زندگی روزمره است. میلیون‌ها نفر هر روز از مترو، اتوبوس یا ترامواب برای کار، تحصیل یا بیرون رفتن استفاده می‌کنند. اما هزینه حمل‌ونقل برای خانواده‌های زیادی هزینه مهمی است که یک سؤال مشروع مطرح می‌کند. به نظرم، رایگان کردن حمل‌ونقل عمومی اقدامی بسیار مثبت خواهد بود، چون برابری اجتماعی را تقویت می‌کند، محیط زیست را حفاظت می‌کند، تحرک شهری را بهبود می‌بخشد و زندگی در شهر را برای همه دلپذیرتر می‌کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Cependant + À mon avis ← گذار به موضع</span>
+      <span class="an-pill an-s">اعلام ۴ محور در مقدمه ← ساختار آزمونی ✓</span>
+      <span class="an-pill an-v">intégrante / dépense / mobilité urbaine ← واژگان شهری B2</span>
+      <span class="an-pill an-c">Dans les grandes villes ← باز کردن با زمینه مشخص</span>
+    </div>
+  </div>
+
+  <!-- ARG 1 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--blue-mist);">
+      <span class="p-num num-arg1">ARGUMENT 1 — égalité sociale</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Tout d'abord,</span> la gratuité des transports permettrait de réduire les <span class="hv">inégalités sociales.</span> Dans les grandes villes, beaucoup de personnes à <span class="hv">faibles revenus</span> consacrent une part importante de leur budget aux déplacements. <span class="hc">En supprimant ce coût,</span> tout le monde aurait les mêmes chances d'accéder à un <span class="hv">emploi, à une école ou à des services essentiels,</span> indépendamment de sa situation financière. <span class="ha">En revanche,</span> maintenir un tarif — même réduit — continue d'exclure les plus <span class="hv">vulnérables</span> et fragilise la <span class="hv">cohésion sociale.</span> La gratuité transformerait ainsi le transport en un véritable <span class="hv">droit universel.</span>
+    </div>
+    <div class="p-trans">
+      اول از همه، رایگان کردن حمل‌ونقل نابرابری‌های اجتماعی را کاهش می‌داد. در شهرهای بزرگ، افراد زیادی با درآمد پایین بخش مهمی از بودجه‌شان را به رفت‌وآمد اختصاص می‌دهند. با حذف این هزینه، همه فرصت یکسانی برای دسترسی به شغل، مدرسه یا خدمات ضروری می‌داشتند. در مقابل، حفظ تعرفه — حتی کاهش‌یافته — به حذف آسیب‌پذیرترین‌ها ادامه می‌دهد. رایگان بودن حمل‌ونقل را به یک حق جهانی واقعی تبدیل می‌کند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Tout d'abord ← استدلال اول</span>
+      <span class="an-pill an-a">En revanche ← antithèse: رایگان ↔ تعرفه = حذف آسیب‌پذیران</span>
+      <span class="an-pill an-c">En supprimant ce coût ← گذار منطقی قوی</span>
+      <span class="an-pill an-v">faibles revenus / cohésion sociale / droit universel ← B2</span>
+    </div>
+  </div>
+
+  <!-- ARG 2 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--green-pale);">
+      <span class="p-num num-arg2">ARGUMENT 2 — environnement</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Ensuite,</span> rendre les transports gratuits serait <span class="hv">bénéfique pour l'environnement.</span> De nombreux habitants utilisent encore leur voiture personnelle, souvent par habitude ou parce que les transports leur semblent <span class="hv">trop coûteux.</span> La gratuité encouragerait un <span class="hv">changement de comportement :</span> moins de voitures sur les routes, moins de <span class="hv">pollution et de bruit,</span> une meilleure <span class="hv">qualité de l'air.</span> <span class="hc">En parallèle,</span> cela contribuerait directement à la <span class="hv">lutte contre le réchauffement climatique</span> et à la création de villes plus <span class="hv">vertes et durables.</span> <span class="ha">À l'inverse,</span> tant que la voiture reste financièrement plus attractive que le bus, les comportements ne changeront pas.
+    </div>
+    <div class="p-trans">
+      بعد، رایگان کردن حمل‌ونقل برای محیط زیست مفید خواهد بود. ساکنان زیادی هنوز از خودرو شخصی استفاده می‌کنند، اغلب به خاطر عادت یا چون حمل‌ونقل عمومی خیلی گران به نظرشان می‌رسد. رایگان بودن تغییر رفتار را تشویق می‌کند: خودروهای کمتر، آلودگی و سر و صدای کمتر، کیفیت هوای بهتر. در کنار این، مستقیماً در مبارزه با گرمایش جهانی مشارکت می‌کند. برعکس، تا وقتی خودرو از نظر مالی جذاب‌تر از اتوبوس باشد، رفتارها تغییر نخواهند کرد.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Ensuite ← استدلال دوم</span>
+      <span class="an-pill an-a">À l'inverse ← antithèse شرطی: تا وقتی قیمت هست تغییر نیست</span>
+      <span class="an-pill an-c">En parallèle ← connecteur B2 متنوع</span>
+      <span class="an-pill an-v">changement de comportement / réchauffement climatique / durables ← واژگان محیط‌زیستی</span>
+    </div>
+  </div>
+
+  <!-- ARG 3 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--purple-pale);">
+      <span class="p-num num-arg3">ARGUMENT 3 — mobilité urbaine</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">De plus,</span> une telle mesure améliorerait considérablement la <span class="hv">fluidité de la circulation.</span> <span class="hc">En incitant</span> les habitants à utiliser les transports collectifs, on réduirait les <span class="hv">embouteillages,</span> ce qui permettrait à tous de <span class="hv">gagner du temps.</span> Les rues deviendraient moins <span class="hv">encombrées</span> et plus sûres pour les <span class="hv">piétons et les cyclistes.</span> <span class="ha">Or,</span> dans le contexte actuel où les villes croissent rapidement, cette question de <span class="hv">mobilité durable</span> est devenue <span class="hv">incontournable.</span> Les villes les plus avancées investissent déjà dans des <span class="hv">systèmes intégrés</span> qui combinent gratuité et efficacité.
+    </div>
+    <div class="p-trans">
+      علاوه بر این، چنین اقدامی روانی ترافیک را به طور قابل توجهی بهبود می‌بخشید. با تشویق ساکنان به استفاده از حمل‌ونقل جمعی، ترافیک کاهش می‌یافت و همه وقت بیشتری می‌داشتند. خیابان‌ها کمتر شلوغ و برای عابران پیاده و دوچرخه‌سواران امن‌تر می‌شدند. اما در زمینه فعلی که شهرها به سرعت رشد می‌کنند، موضوع تحرک پایدار اجتناب‌ناپذیر شده. پیشرفته‌ترین شهرها در سیستم‌های یکپارچه‌ای سرمایه‌گذاری می‌کنند که رایگان بودن و کارایی را ترکیب می‌کنند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">De plus ← استدلال سوم</span>
+      <span class="an-pill an-a">Or ← تضاد منطقی B2 — زمینه واقعی را وارد می‌کند</span>
+      <span class="an-pill an-c">En incitant ← participe présent = B2 ✓</span>
+      <span class="an-pill an-v">embouteillages / mobilité durable / incontournable ← واژگان شهری B2</span>
+    </div>
+  </div>
+
+  <!-- ARG 4 -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--teal-pale);">
+      <span class="p-num num-arg4">ARGUMENT 4 — qualité de vie & bien-être</span>
+      <span class="p-time">⏱ ~55 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">Enfin,</span> la gratuité des transports aurait un effet <span class="hv">direct sur la qualité de vie.</span> <span class="hc">En supprimant ce poste de dépense,</span> les familles <span class="hv">économiseraient chaque mois</span> une somme non négligeable, améliorant ainsi leur <span class="hv">pouvoir d'achat.</span> <span class="hc">De surcroît,</span> se déplacer sans <span class="hv">contrainte financière</span> réduirait le <span class="hv">stress quotidien</span> lié aux trajets. Cette mesure renforcerait aussi le <span class="hv">sentiment d'appartenance</span> à une ville plus juste, moderne et <span class="hv">soucieuse du bien-être collectif.</span> <span class="ha">Sans cette dimension humaine,</span> les politiques de transport resteront perçues comme des outils techniques, déconnectés des réalités du quotidien.
+    </div>
+    <div class="p-trans">
+      در نهایت، رایگان بودن حمل‌ونقل تأثیر مستقیمی بر کیفیت زندگی دارد. با حذف این هزینه، خانواده‌ها هر ماه مبلغ قابل توجهی پس‌انداز می‌کنند و قدرت خریدشان بهتر می‌شود. علاوه بر این، جابه‌جایی بدون محدودیت مالی استرس روزانه مربوط به سفر را کاهش می‌دهد. این اقدام همچنین احساس تعلق به شهری عادلانه‌تر، مدرن‌تر و دغدغه‌مند رفاه جمعی را تقویت می‌کند. بدون این بعد انسانی، سیاست‌های حمل‌ونقل ابزارهای فنی دور از واقعیت روزمره باقی می‌مانند.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">Enfin ← استدلال چهارم</span>
+      <span class="an-pill an-a">Sans cette dimension humaine ← antithèse شرطی قوی B2</span>
+      <span class="an-pill an-c">De surcroît ← connecteur B2 خاص = اثر قوی</span>
+      <span class="an-pill an-v">pouvoir d'achat / sentiment d'appartenance / soucieuse ← B2</span>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="p-card">
+    <div class="p-header" style="background:var(--cyan-pale);">
+      <span class="p-num num-conc">CONCLUSION</span>
+      <span class="p-time">⏱ ~30 ثانیه</span>
+    </div>
+    <div class="p-fr">
+      <span class="hs">En définitive,</span> rendre les transports en commun gratuits serait une décision à la fois <span class="hv">sociale, écologique et humaine.</span> <span class="ha">Bien que</span> cette mesure demande une <span class="hv">organisation rigoureuse</span> et un <span class="hv">financement adapté,</span> ses bénéfices à long terme seraient <span class="hv">considérables.</span> La gratuité des transports n'est pas seulement une question <span class="hv">économique :</span> c'est un véritable <span class="hv">projet de société,</span> tourné vers un avenir plus <span class="hv">équitable, durable et solidaire.</span>
+    </div>
+    <div class="p-trans">
+      در مجموع، رایگان کردن حمل‌ونقل عمومی تصمیمی اجتماعی، زیست‌محیطی و انسانی خواهد بود. اگرچه این اقدام سازماندهی دقیق و تأمین مالی متناسب می‌طلبد، مزایای بلندمدتش قابل توجه خواهد بود. رایگان بودن حمل‌ونقل فقط یک موضوع اقتصادی نیست: یک پروژه جامعه واقعی است، رو به آینده‌ای عادلانه‌تر، پایدارتر و همبسته‌تر.
+    </div>
+    <div class="p-analysis">
+      <span class="an-pill an-s">En définitive ← قوی‌تر از «En conclusion»</span>
+      <span class="an-pill an-a">Bien que ← concession + subjonctif = B2 ✓</span>
+      <span class="an-pill an-v">équitable · durable · solidaire ← parallélisme سه‌گانه پایانی</span>
+      <span class="an-pill an-s">projet de société ← بازتعریف موضوع = جمله قوی پایانی</span>
+    </div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Introduction</div><div class="ts-f">۴ محور</div></div>
+      <div class="ts"><div class="ts-t">0:40</div><div class="ts-l">Arg 1</div><div class="ts-f">برابری</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 2</div><div class="ts-f">محیط زیست</div></div>
+      <div class="ts"><div class="ts-t">2:30</div><div class="ts-l">Arg 3</div><div class="ts-f">ترافیک</div></div>
+      <div class="ts"><div class="ts-t">3:25</div><div class="ts-l">Arg 4</div><div class="ts-f">کیفیت زندگی</div></div>
+      <div class="ts"><div class="ts-t">4:20</div><div class="ts-l">Conclusion</div><div class="ts-f">پروژه جامعه</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2 — COURT ═══ -->
+<div class="panel" id="panel-court">
+  <div class="court-intro">
+    <strong>⚡ نسخه کوتاه — ۲ تا ۳ جمله برای هر بخش</strong><br>
+    همان ساختار آزمونی · همان antithèse‌ها — فقط فشرده‌تر.
+    <div class="fa">این نسخه را بلند بخوان — هدف گفتن کامل است، نه کامل گفتن هر ایده.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:#fff8e1;"><span class="cc-tag num-intro">INTRO</span><span class="cc-time">⏱ ~25 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Dans les grandes villes,</span> le transport coûte cher et creuse les inégalités. <span class="hs">À mon avis,</span> rendre les transports <span class="hv">gratuits</span> serait très positif pour quatre raisons : égalité sociale, environnement, mobilité et qualité de vie.</div>
+    <div class="cc-fa">در شهرهای بزرگ، حمل‌ونقل گران است و نابرابری ایجاد می‌کند. به نظرم رایگان کردن آن برای چهار دلیل مثبت است: برابری اجتماعی، محیط زیست، تحرک و کیفیت زندگی.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--blue-mist);"><span class="cc-tag num-arg1">ARG 1 — égalité</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Tout d'abord,</span> la gratuité réduirait les <span class="hv">inégalités sociales.</span> Les personnes à faibles revenus auraient les mêmes chances d'accéder à un emploi ou une école. <span class="ha">En revanche,</span> maintenir un tarif continue d'exclure les plus vulnérables et fragilise la <span class="hv">cohésion sociale.</span></div>
+    <div class="cc-fa">اول، رایگان بودن نابرابری‌های اجتماعی را کاهش می‌دهد. افراد با درآمد پایین فرصت یکسانی برای شغل یا مدرسه می‌داشتند. در مقابل، حفظ تعرفه به حذف آسیب‌پذیرترین‌ها ادامه می‌دهد.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--green-pale);"><span class="cc-tag num-arg2">ARG 2 — environnement</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Ensuite,</span> la gratuité encouragerait un <span class="hv">changement de comportement :</span> moins de voitures, moins de pollution, une meilleure qualité de l'air. <span class="ha">À l'inverse,</span> tant que la voiture reste financièrement plus attractive, les comportements ne changeront pas.</div>
+    <div class="cc-fa">بعد، رایگان بودن تغییر رفتار را تشویق می‌کند: خودروهای کمتر، آلودگی کمتر، هوای بهتر. برعکس، تا وقتی خودرو جذاب‌تر از اتوبوس باشد، رفتارها تغییر نمی‌کنند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--purple-pale);"><span class="cc-tag num-arg3">ARG 3 — mobilité</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">De plus,</span> moins de voitures signifie moins d'<span class="hv">embouteillages</span> et des rues plus sûres pour les piétons. <span class="ha">Or,</span> dans des villes en croissance rapide, la <span class="hv">mobilité durable</span> est devenue <span class="hv">incontournable.</span></div>
+    <div class="cc-fa">علاوه بر این، خودروهای کمتر یعنی ترافیک کمتر و خیابان‌های امن‌تر برای عابران. اما در شهرهایی با رشد سریع، تحرک پایدار اجتناب‌ناپذیر شده.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--teal-pale);"><span class="cc-tag num-arg4">ARG 4 — qualité de vie</span><span class="cc-time">⏱ ~35 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">Enfin,</span> les familles <span class="hv">économiseraient</span> chaque mois et leur <span class="hv">pouvoir d'achat</span> s'améliorerait. <span class="ha">Sans cette dimension humaine,</span> les politiques de transport resteront déconnectées des réalités du quotidien.</div>
+    <div class="cc-fa">در نهایت، خانواده‌ها هر ماه پس‌انداز می‌کنند و قدرت خریدشان بهتر می‌شود. بدون این بعد انسانی، سیاست‌های حمل‌ونقل از واقعیت روزمره دور می‌مانند.</div>
+  </div>
+
+  <div class="court-card">
+    <div class="cc-head" style="background:var(--cyan-pale);"><span class="cc-tag num-conc">CONCLUSION</span><span class="cc-time">⏱ ~20 ثانیه</span></div>
+    <div class="cc-fr"><span class="hs">En définitive,</span> <span class="ha">bien que</span> cette mesure demande un <span class="hv">financement adapté,</span> la gratuité des transports est un véritable <span class="hv">projet de société</span> vers un avenir <span class="hv">équitable, durable et solidaire.</span></div>
+    <div class="cc-fa">در مجموع، اگرچه این اقدام تأمین مالی متناسب می‌طلبد، رایگان بودن حمل‌ونقل یک پروژه جامعه واقعی به سوی آینده‌ای عادلانه‌تر، پایدارتر و همبسته‌تر است.</div>
+  </div>
+
+  <div style="border:2px solid var(--line);border-radius:10px;overflow:hidden;">
+    <div class="timing-strip">
+      <div class="ts"><div class="ts-t">0:00</div><div class="ts-l">Intro</div></div>
+      <div class="ts"><div class="ts-t">0:25</div><div class="ts-l">Arg 1</div></div>
+      <div class="ts"><div class="ts-t">1:00</div><div class="ts-l">Arg 2</div></div>
+      <div class="ts"><div class="ts-t">1:35</div><div class="ts-l">Arg 3</div></div>
+      <div class="ts"><div class="ts-t">2:10</div><div class="ts-l">Arg 4</div></div>
+      <div class="ts"><div class="ts-t">2:45</div><div class="ts-l">Conc.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 3 — CADRE ═══ -->
+<div class="panel" id="panel-cadre">
+  <div class="cadre-intro">
+    <strong>🎯 چارچوب علیرضا — فقط کلیدها هستند</strong><br>
+    کلمات آبی را می‌بینی و بقیه را خودت کامل می‌کنی. هر بند ۲ تا ۳ جمله.
+    <div class="fa">قانون: یک نگاه به کلید، بعد نگاه‌ات را بر می‌داری و می‌گویی.</div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head"><span class="cadre-label">INTRODUCTION</span><span class="cadre-time">⏱ ~25 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Dans les grandes villes,</span><span class="cadre-anchor">Cependant, coût important</span><span class="cadre-anchor">À mon avis, gratuits</span><span class="cadre-anchor">4 raisons :</span>
+      <div class="cadre-key"><span class="ck">اعلام ۴ محور = ساختار آزمونی</span><span class="ck">Cependant = گذار به موضع</span></div>
+      <div class="cadre-hint">زمینه → مشکل → موضع → ۴ محور را فهرست کن</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--blue);"><span class="cadre-label">ARG 1 — égalité sociale</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Tout d'abord,</span><span class="cadre-anchor">faibles revenus → accès emploi/école</span><span class="cadre-anchor">En supprimant ce coût,</span><span class="cadre-anchor">En revanche,</span><span class="cadre-anchor">tarif → exclure vulnérables</span>
+      <div class="cadre-key"><span class="ck">antithèse: En revanche</span><span class="ck">droit universel = جمله قوی</span></div>
+      <div class="cadre-hint">درآمد پایین → فرصت یکسان → «En revanche» + تعرفه = حذف</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--green);"><span class="cadre-label">ARG 2 — environnement</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Ensuite,</span><span class="cadre-anchor">changement de comportement</span><span class="cadre-anchor">moins voitures → pollution ↓ / air ↑</span><span class="cadre-anchor">À l'inverse,</span><span class="cadre-anchor">voiture attractive → comportements stables</span>
+      <div class="cadre-key"><span class="ck">antithèse: À l'inverse</span><span class="ck">réchauffement climatique</span></div>
+      <div class="cadre-hint">تغییر رفتار → کمتر آلودگی → «À l'inverse» + شرط تغییر نکردن</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--purple);"><span class="cadre-label">ARG 3 — mobilité urbaine</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">De plus,</span><span class="cadre-anchor">embouteillages ↓ → temps + sécurité</span><span class="cadre-anchor">Or,</span><span class="cadre-anchor">villes en croissance → mobilité durable incontournable</span>
+      <div class="cadre-key"><span class="ck">Or = تضاد منطقی B2</span><span class="ck">En incitant + participe = B2</span></div>
+      <div class="cadre-hint">ترافیک کمتر → امنیت بیشتر → «Or» + زمینه رشد شهری</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:var(--teal);"><span class="cadre-label">ARG 4 — qualité de vie</span><span class="cadre-time">⏱ ~35 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">Enfin,</span><span class="cadre-anchor">économiser → pouvoir d'achat ↑</span><span class="cadre-anchor">De surcroît,</span><span class="cadre-anchor">stress quotidien ↓</span><span class="cadre-anchor">Sans cette dimension humaine,</span><span class="cadre-anchor">politiques déconnectées</span>
+      <div class="cadre-key"><span class="ck">De surcroît = connecteur B2 نادر</span><span class="ck">antithèse شرطی: Sans</span></div>
+      <div class="cadre-hint">پس‌انداز → کمتر استرس → «Sans cela» + سیاست دور از واقعیت</div>
+    </div>
+  </div>
+
+  <div class="cadre-card">
+    <div class="cadre-head" style="background:#01579b;"><span class="cadre-label">CONCLUSION</span><span class="cadre-time">⏱ ~20 ثانیه</span></div>
+    <div class="cadre-body">
+      <span class="cadre-anchor">En définitive,</span><span class="cadre-anchor">Bien que + financement adapté</span><span class="cadre-anchor">projet de société</span><span class="cadre-anchor">équitable · durable · solidaire</span>
+      <div class="cadre-key"><span class="ck">Bien que + subjonctif = B2 ✓</span><span class="ck">parallélisme × 3 پایانی</span></div>
+      <div class="cadre-hint">«Bien que» + concession → بازتعریف موضوع به عنوان پروژه جامعه</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="footer"><a href="index.html">← داشبورد Tâche 3</a> · علیرضا · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
