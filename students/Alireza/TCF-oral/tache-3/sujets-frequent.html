@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>سوژه‌های پرتکرار — Tâche 3 · علیرضا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;--navy-mid:#1b2e45;
+  --blue:#1565c0;--blue-pale:#e3f2fd;
+  --paper:#f8fafc;--ink:#1a2332;--gray:#64748b;--line:#cbd5e1;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --red:#b71c1c;--red-pale:#ffebee;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Tahoma',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);border-bottom:3px solid var(--amber);position:sticky;top:0;z-index:100;}
+.logo{width:38px;height:38px;border-radius:7px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:16px;color:white;font-weight:700;}
+.topbar h1{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;}
+.topbar .sub{font-size:10px;color:rgba(255,255,255,.5);}
+.back{margin-right:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;background:rgba(255,255,255,.1);padding:5px 12px;border-radius:5px;transition:.2s;}
+.back:hover{background:var(--amber);color:white;}
+
+.hero{background:linear-gradient(135deg,var(--navy-mid),var(--navy));color:white;padding:36px 24px;text-align:center;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.hero h2{font-family:'Roboto',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.7;}
+.hero-stats{display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.stat{background:rgba(255,255,255,.1);padding:8px 16px;border-radius:8px;font-size:12px;}
+.stat strong{display:block;font-size:18px;font-weight:700;color:var(--amber);}
+
+/* FILTER BAR */
+.filter-bar{display:flex;overflow-x:auto;gap:8px;padding:14px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;}
+.filter-btn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.filter-btn:hover{border-color:var(--amber);color:var(--amber);}
+.filter-btn.active{background:var(--amber);border-color:var(--amber);color:white;}
+.filter-btn.done-filter.active{background:var(--green);border-color:var(--green);}
+.filter-btn.idea-filter.active{background:var(--blue);border-color:var(--blue);}
+
+/* PROGRESS BAR */
+.progress-wrap{padding:12px 20px;background:white;border-bottom:1px solid var(--line);}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;}
+.progress-bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--green),#4caf50);border-radius:3px;transition:width .4s;}
+
+/* MAIN */
+.wrap{max-width:860px;margin:0 auto;padding:20px;}
+
+/* CATEGORY SECTION */
+.cat-section{margin-bottom:28px;}
+.cat-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--line);}
+.cat-icon{font-size:20px;}
+.cat-name{font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:var(--navy);}
+.cat-count{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);margin-right:auto;}
+
+/* QUESTION CARD */
+.q-card{background:white;border:2px solid var(--line);border-radius:12px;padding:0;margin-bottom:10px;overflow:hidden;transition:.2s;}
+.q-card:hover{border-color:var(--amber);box-shadow:0 3px 10px rgba(13,27,42,.07);}
+.q-card.hidden{display:none;}
+
+.q-main{display:flex;align-items:stretch;gap:0;}
+
+.q-rank{background:var(--paper);border-left:1px solid var(--line);padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:52px;text-align:center;flex-shrink:0;}
+.q-rank-num{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--navy);}
+.q-rank-x{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray);}
+.q-rank-diff{font-size:9px;margin-top:4px;}
+
+.q-body{padding:12px 16px;flex:1;}
+.q-fr{font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.65;color:var(--navy);direction:ltr;text-align:left;margin-bottom:5px;}
+.q-fa{font-size:12px;color:var(--gray);line-height:1.7;}
+
+.q-actions{display:flex;align-items:center;gap:0;border-top:1px solid var(--line);background:var(--paper);}
+.action-btn{flex:1;padding:9px 8px;border:none;background:none;cursor:pointer;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;color:var(--gray);border-left:1px solid var(--line);transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.action-btn:last-child{border:none;}
+.action-btn:hover{background:var(--paper);}
+.action-btn.active-idea{background:var(--blue-pale);color:var(--blue);}
+.action-btn.active-done{background:var(--green-pale);color:var(--green);}
+.action-check{width:16px;height:16px;border-radius:4px;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+
+/* DIFFICULTY */
+.diff-pip{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--line);margin-right:1px;}
+.diff-pip.filled{background:var(--amber);}
+
+.empty-msg{text-align:center;padding:40px 20px;color:var(--gray);font-size:14px;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;left:20px;background:var(--navy);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;z-index:999;}
+#scrollBtn.show{display:block;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">🎯</div>
+  <div><h1>سوژه‌های پرتکرار</h1><div class="sub">Tâche 3 · TCF Canada</div></div>
+  <a class="back" href="index.html">← داشبورد</a>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">TCF Canada · Expression Orale · Tâche 3</div>
+  <h2>سوژه‌های پرتکرار آزمون</h2>
+  <div class="hero-sub">مرتب شده بر اساس تکرار در آزمون‌های واقعی</div>
+  <div class="hero-stats">
+    <div class="stat"><strong id="total-count">0</strong>سوژه</div>
+    <div class="stat"><strong id="idea-count" style="color:#7dd3fc;">0</strong>ایده‌پردازی</div>
+    <div class="stat"><strong id="done-count" style="color:#86efac;">0</strong>تمرین‌شده</div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter('all',this)">همه</button>
+  <button class="filter-btn idea-filter" onclick="setFilter('idea',this)">💡 ایده‌پردازی شده</button>
+  <button class="filter-btn done-filter" onclick="setFilter('done',this)">✅ تمرین شده</button>
+  <button class="filter-btn" onclick="setFilter('pending',this)">⏳ انجام نشده</button>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>پیشرفت تمرین</span>
+    <span id="progress-text">۰٪</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+</div>
+
+<div class="wrap" id="questions-wrap"></div>
+
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const QUESTIONS = [
+  // ── آموزش و یادگیری ──
+  {cat:"📚 آموزش و یادگیری", freq:43, diff:4,
+   fr:"Faire des études permet de réussir sa carrière professionnelle. Qu'en pensez-vous ?",
+   fa:"آیا تحصیل کردن موفقیت شغلی را تضمین می‌کند؟"},
+  {cat:"📚 آموزش و یادگیری", freq:35, diff:5,
+   fr:"Apprendre la langue du pays où l'on vit est essentiel pour s'intégrer. Êtes-vous d'accord ? Pourquoi ?",
+   fa:"یادگیری زبان کشور محل زندگی برای ادغام ضروری است. موافقید؟"},
+  {cat:"📚 آموزش و یادگیری", freq:13, diff:4,
+   fr:"Il n'y a pas d'âge limite pour apprendre. Êtes-vous d'accord avec cette affirmation ?",
+   fa:"برای یادگیری محدودیت سنی وجود ندارد. موافقید؟"},
+  {cat:"📚 آموزش و یادگیری", freq:11, diff:5,
+   fr:"Quelles matières devraient être enseignées à l'école pour capter davantage l'intérêt des élèves ?",
+   fa:"چه درس‌هایی باید در مدرسه تدریس شوند تا بیشتر جذاب باشند؟"},
+  {cat:"📚 آموزش و یادگیری", freq:7, diff:4,
+   fr:"Internet a un impact positif dans l'éducation des enfants. Qu'en pensez-vous ?",
+   fa:"اینترنت تأثیر مثبتی بر آموزش کودکان دارد. نظرتان؟"},
+  {cat:"📚 آموزش و یادگیری", freq:7, diff:6,
+   fr:"La priorité de l'école, c'est d'enseigner le programme scolaire. Que pensez-vous de cette affirmation ?",
+   fa:"اولویت مدرسه تدریس برنامه درسی است. نظرتان؟"},
+  {cat:"📚 آموزش و یادگیری", freq:6, diff:3,
+   fr:"Apprendre une langue étrangère est difficile. Êtes-vous d'accord avec cette affirmation ?",
+   fa:"یادگیری زبان خارجی دشوار است. موافقید؟"},
+  {cat:"📚 آموزش و یادگیری", freq:6, diff:5,
+   fr:"Pensez-vous que les universités devraient recevoir davantage de financements ? Pourquoi ?",
+   fa:"آیا دانشگاه‌ها باید بودجه بیشتری دریافت کنند؟"},
+  {cat:"📚 آموزش و یادگیری", freq:5, diff:5,
+   fr:"Pour réussir sa vie, faut-il avoir fait de longues études ?",
+   fa:"برای موفقیت در زندگی آیا باید تحصیلات طولانی داشت؟"},
+
+  // ── مهاجرت ──
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:37, diff:3,
+   fr:"D'après vous, vivre à l'étranger a-t-il plus d'avantages ou d'inconvénients ? Pourquoi ?",
+   fa:"به نظر شما، زندگی در خارج بیشتر مزایا دارد یا معایب؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:29, diff:6,
+   fr:"Faut-il s'intégrer dans la culture du pays d'accueil ou préserver sa propre culture ?",
+   fa:"آیا باید در فرهنگ کشور میزبان ادغام شد یا فرهنگ خود را حفظ کرد؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:20, diff:5,
+   fr:"Quel est l'intérêt d'avoir une expérience professionnelle ou universitaire à l'étranger ?",
+   fa:"تجربه شغلی یا دانشگاهی در خارج چه فایده‌ای دارد؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:19, diff:4,
+   fr:"Travailler à l'étranger est facile. Qu'en pensez-vous ?",
+   fa:"کار کردن در خارج آسان است. نظرتان؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:18, diff:6,
+   fr:"Adaptation à l'étranger : Évoquez les facilités et les défis de l'intégration d'un jeune qui déménage à l'étranger.",
+   fa:"سازگاری در خارج: آسانی‌ها و چالش‌های ادغام جوانی که به خارج نقل مکان می‌کند."},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:9, diff:7,
+   fr:"Selon vous, quelles sont les trois questions importantes à se poser avant de commencer des démarches d'immigration au Québec ?",
+   fa:"سه سؤال مهم قبل از شروع مراحل مهاجرت به کبک چیستند؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:8, diff:3,
+   fr:"À votre avis, tout le monde est-il capable de s'adapter dans un pays étranger ? Pourquoi ?",
+   fa:"آیا همه می‌توانند در کشور خارجی سازگار شوند؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:7, diff:6,
+   fr:"D'après vous, à quel âge est-il préférable d'émigrer ? Pourquoi ?",
+   fa:"به نظر شما بهترین سن برای مهاجرت چه سنی است؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:7, diff:6,
+   fr:"Lorsqu'une personne quitte son pays pour vivre ailleurs, c'est souvent une décision imposée. Qu'en pensez-vous ?",
+   fa:"وقتی کسی کشورش را ترک می‌کند، اغلب تصمیمی تحمیلی است. نظرتان؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:6, diff:5,
+   fr:"Selon vous, les immigrés apportent-ils une valeur importante à un pays ? Pourquoi ?",
+   fa:"به نظر شما مهاجران ارزش مهمی به کشور اضافه می‌کنند؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:6, diff:4,
+   fr:"À votre avis, comment un État peut-il faciliter l'intégration des étrangers ?",
+   fa:"یک دولت چطور می‌تواند ادغام خارجی‌ها را تسهیل کند؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:6, diff:5,
+   fr:"Quelles sont les principales motivations qui incitent les gens à immigrer vers d'autres pays ?",
+   fa:"انگیزه‌های اصلی مهاجرت به کشورهای دیگر چیستند؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:6, diff:3,
+   fr:"Prendre la décision de quitter son pays est facile. Qu'en pensez-vous ?",
+   fa:"تصمیم برای ترک کشور آسان است. نظرتان؟"},
+  {cat:"🌍 مهاجرت و زندگی در خارج", freq:5, diff:4,
+   fr:"Parler la langue du pays d'accueil suffit-il pour bien s'intégrer ? Pourquoi ?",
+   fa:"آیا صحبت کردن به زبان کشور میزبان برای ادغام کافی است؟"},
+
+  // ── فناوری ──
+  {cat:"📱 فناوری و رسانه", freq:26, diff:5,
+   fr:"Pensez-vous que l'utilisation d'Internet favorise l'isolement des individus ? Donnez votre avis.",
+   fa:"آیا استفاده از اینترنت انزوای افراد را تقویت می‌کند؟"},
+  {cat:"📱 فناوری و رسانه", freq:26, diff:3,
+   fr:"Aujourd'hui, chaque enfant et adolescent devrait avoir son propre téléphone portable. Êtes-vous d'accord ?",
+   fa:"امروزه هر کودک و نوجوانی باید گوشی داشته باشد. موافقید؟"},
+  {cat:"📱 فناوری و رسانه", freq:20, diff:7,
+   fr:"De nos jours, peut-on se passer de la télévision ? Pourquoi ?",
+   fa:"آیا امروزه می‌توان بدون تلویزیون زندگی کرد؟"},
+  {cat:"📱 فناوری و رسانه", freq:13, diff:2,
+   fr:"De nos jours, il est impossible de vivre sans technologie. Qu'en pensez-vous ?",
+   fa:"امروزه زندگی بدون فناوری غیرممکن است. نظرتان؟"},
+  {cat:"📱 فناوری و رسانه", freq:12, diff:4,
+   fr:"Quels effets et quels risques voyez-vous dans l'usage quotidien des appareils électroniques ?",
+   fa:"چه تأثیرات و خطراتی در استفاده روزانه از وسایل الکترونیکی می‌بینید؟"},
+  {cat:"📱 فناوری و رسانه", freq:11, diff:5,
+   fr:"Certaines personnes refusent de regarder les actualités diffusées à la télévision. Qu'en pensez-vous ?",
+   fa:"برخی از تماشای اخبار تلویزیونی امتناع می‌کنند. نظرتان؟"},
+  {cat:"📱 فناوری و رسانه", freq:11, diff:5,
+   fr:"De nos jours, les gens ne s'envoient presque plus de courrier. Est-ce que c'est regrettable ?",
+   fa:"امروزه مردم تقریباً دیگر نامه نمی‌فرستند. آیا این دریغ‌برانگیز است؟"},
+  {cat:"📱 فناوری و رسانه", freq:10, diff:3,
+   fr:"Le téléphone portable est indispensable. Qu'en pensez-vous ?",
+   fa:"تلفن همراه ضروری است. نظرتان؟"},
+  {cat:"📱 فناوری و رسانه", freq:10, diff:4,
+   fr:"Le téléphone portable personnel devrait être interdit au travail. Qu'en pensez-vous ?",
+   fa:"تلفن همراه شخصی باید در محل کار ممنوع شود. نظرتان؟"},
+  {cat:"📱 فناوری و رسانه", freq:10, diff:3,
+   fr:"Selon vous, les enfants passent-ils trop de temps devant les écrans ? Pourquoi ?",
+   fa:"به نظر شما کودکان وقت زیادی جلوی صفحه‌ها می‌گذرانند؟"},
+  {cat:"📱 فناوری و رسانه", freq:9, diff:6,
+   fr:"Internet a transformé le monde en un village. Qu'en pensez-vous ?",
+   fa:"اینترنت دنیا را به یک دهکده تبدیل کرده. نظرتان؟"},
+  {cat:"📱 فناوری و رسانه", freq:9, diff:4,
+   fr:"D'après vous, Internet a-t-il modifié les comportements au travail ?",
+   fa:"آیا اینترنت رفتارها در محیط کار را تغییر داده؟"},
+  {cat:"📱 فناوری و رسانه", freq:6, diff:4,
+   fr:"Grâce à Internet, on est mieux informé. Qu'en pensez-vous ?",
+   fa:"با اینترنت اطلاعات بهتری داریم. نظرتان؟"},
+  {cat:"📱 فناوری و رسانه", freq:6, diff:3,
+   fr:"Les réseaux sociaux permettent de rencontrer de nouveaux amis plus facilement. Qu'en pensez-vous ?",
+   fa:"شبکه‌های اجتماعی آشنایی با دوستان جدید را آسان‌تر می‌کنند. نظرتان؟"},
+
+  // ── کار و اقتصاد ──
+  {cat:"💼 کار و اقتصاد", freq:26, diff:4,
+   fr:"Travailler jusqu'à l'âge de 70 ans, est-ce une bonne idée ? Qu'en pensez-vous ?",
+   fa:"کار کردن تا ۷۰ سالگی، ایده خوبی است؟"},
+  {cat:"💼 کار و اقتصاد", freq:21, diff:3,
+   fr:"Selon vous, aimer son métier est-il nécessaire pour réussir sa carrière professionnelle ?",
+   fa:"به نظر شما دوست داشتن شغل برای موفقیت ضروری است؟"},
+  {cat:"💼 کار و اقتصاد", freq:16, diff:3,
+   fr:"À votre avis, le salaire est-il la principale source de motivation pour les employés ?",
+   fa:"آیا حقوق مهم‌ترین انگیزه کارمندان است؟"},
+  {cat:"💼 کار و اقتصاد", freq:16, diff:3,
+   fr:"De nos jours, il est possible de changer de métier à tout âge. Qu'en pensez-vous ?",
+   fa:"امروزه می‌توان در هر سنی شغل را تغییر داد. نظرتان؟"},
+  {cat:"💼 کار و اقتصاد", freq:12, diff:5,
+   fr:"Le télétravail permet-il réellement de mieux concilier la vie professionnelle et la vie personnelle ?",
+   fa:"آیا دورکاری واقعاً تعادل بین کار و زندگی را بهتر می‌کند؟"},
+  {cat:"💼 کار و اقتصاد", freq:10, diff:9,
+   fr:"Est-il bon de faire plusieurs métiers dans sa carrière ? Qu'en pensez-vous ?",
+   fa:"آیا داشتن چند شغل در طول دوران کاری خوب است؟"},
+  {cat:"💼 کار و اقتصاد", freq:10, diff:4,
+   fr:"Si vous partez vivre au Canada, pensez-vous pouvoir trouver facilement un emploi ? Pourquoi ?",
+   fa:"اگر به کانادا بروید، فکر می‌کنید به راحتی کار پیدا می‌کنید؟"},
+  {cat:"💼 کار و اقتصاد", freq:9, diff:4,
+   fr:"Les métiers les plus difficiles devraient être les mieux payés. Qu'en pensez-vous ?",
+   fa:"سخت‌ترین شغل‌ها باید بهترین حقوق را داشته باشند. نظرتان؟"},
+  {cat:"💼 کار و اقتصاد", freq:7, diff:3,
+   fr:"Trouver un emploi peut être plus compliqué quand on est jeune. Êtes-vous d'accord ?",
+   fa:"پیدا کردن کار در جوانی دشوارتر است. موافقید؟"},
+
+  // ── محیط زیست ──
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:30, diff:3,
+   fr:"La voiture est indispensable dans notre vie. Êtes vous d'accord avec cette affirmation ?",
+   fa:"خودرو در زندگی ما ضروری است. موافقید؟"},
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:19, diff:4,
+   fr:"Les transports en commun devraient être gratuits pour protéger l'environnement. Qu'en pensez-vous ?",
+   fa:"حمل‌ونقل عمومی باید رایگان باشد تا محیط زیست را حفاظت کند. نظرتان؟"},
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:14, diff:4,
+   fr:"Les menus végétariens sont-ils une alternative saine et durable à l'alimentation traditionnelle ?",
+   fa:"آیا غذاهای گیاهی جایگزین سالم و پایداری برای تغذیه سنتی هستند؟"},
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:10, diff:5,
+   fr:"Les petits gestes du quotidien peuvent-ils vraiment contribuer à la protection de la planète ?",
+   fa:"آیا اقدامات کوچک روزمره واقعاً به حفاظت از کره زمین کمک می‌کنند؟"},
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:9, diff:4,
+   fr:"Les zoos ont-ils une utilité ? Pourquoi ?",
+   fa:"آیا باغ‌وحش مفید است؟"},
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:8, diff:4,
+   fr:"Que pensez-vous du développement de l'agriculture biologique ?",
+   fa:"درباره توسعه کشاورزی ارگانیک چه فکری می‌کنید؟"},
+  {cat:"🌿 محیط‌زیست و محیط زندگی", freq:6, diff:4,
+   fr:"D'après vous, est-il possible de développer l'économie et de respecter l'environnement en même temps ?",
+   fa:"آیا می‌توان اقتصاد را توسعه داد و محیط زیست را هم حفظ کرد؟"},
+
+  // ── خانواده ──
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:26, diff:4,
+   fr:"Les jeux vidéo contribuent-ils au développement de l'enfant ? Qu'en pensez-vous ?",
+   fa:"آیا بازی‌های ویدئویی به رشد کودک کمک می‌کنند؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:25, diff:5,
+   fr:"Pensez-vous que l'autorité soit indispensable dans l'éducation d'un enfant ? Pourquoi ?",
+   fa:"آیا اقتدار در تربیت کودک ضروری است؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:17, diff:2,
+   fr:"Il est plus facile de vivre seul(e) qu'en famille. Qu'en pensez-vous ?",
+   fa:"زندگی تنها از زندگی با خانواده آسان‌تر است. نظرتان؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:15, diff:4,
+   fr:"Pensez-vous qu'il vaut mieux avoir une grande famille ou des amis proches ?",
+   fa:"خانواده بزرگ یا دوستان نزدیک؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:11, diff:5,
+   fr:"Est-il facile de se faire des amis quand on s'installe dans un nouveau pays ?",
+   fa:"آیا در کشوری جدید راحت می‌توان دوست پیدا کرد؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:10, diff:7,
+   fr:"Êtes-vous d'accord avec cette affirmation : les adultes portent un regard pessimiste sur les jeunes ?",
+   fa:"بزرگسالان نگاه بدبینانه‌ای به جوانان دارند. موافقید؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:9, diff:3,
+   fr:"Il n'est pas nécessaire d'avoir des ami(e)s pour être heureux(se). Qu'en pensez-vous ?",
+   fa:"برای خوشبخت بودن داشتن دوست ضروری نیست. نظرتان؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:9, diff:5,
+   fr:"De nombreux jeunes adultes au Canada décident de continuer à vivre chez leurs parents. Que pensez-vous de cette situation ?",
+   fa:"بسیاری از جوانان در کانادا تصمیم می‌گیرند پیش والدینشان بمانند. نظرتان؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:9, diff:3,
+   fr:"Certaines personnes choisissent de ne jamais avoir d'enfants. Qu'en pensez-vous ?",
+   fa:"برخی انتخاب می‌کنند هرگز بچه‌دار نشوند. نظرتان؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:9, diff:4,
+   fr:"Certaines personnes pensent qu'il vaut mieux éviter de travailler avec des amis ou des membres de sa famille.",
+   fa:"برخی فکر می‌کنند بهتر است با دوستان یا اعضای خانواده کار نکرد."},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:7, diff:8,
+   fr:"Les parents doivent contrôler les fréquentations de leurs enfants. Qu'en pensez-vous ?",
+   fa:"والدین باید معاشران فرزندانشان را کنترل کنند. نظرتان؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:7, diff:5,
+   fr:"De nos jours, les jeunes sont de moins en moins polis. Êtes-vous d'accord ?",
+   fa:"امروزه جوانان کمتر و کمتر ادب دارند. موافقید؟"},
+  {cat:"👨‍👩‍👧 خانواده و روابط اجتماعی", freq:6, diff:6,
+   fr:"Vivre avec ses parents après l'âge de 25 ans peut être pratique. Qu'en pensez-vous ?",
+   fa:"زندگی با والدین بعد از ۲۵ سالگی می‌تواند عملی باشد. نظرتان؟"},
+
+  // ── جامعه و شهروندی ──
+  {cat:"⚖️ جامعه و شهروندی", freq:15, diff:5,
+   fr:"Préférez-vous travailler sous la direction d'un homme ou d'une femme ? Pourquoi ?",
+   fa:"ترجیح می‌دهید زیر نظر مرد یا زن کار کنید؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:14, diff:5,
+   fr:"Pour des raisons d'égalité, avoir autant d'hommes que de femmes dans un gouvernement est-il une bonne idée ?",
+   fa:"آیا برابری تعداد مردان و زنان در دولت ایده خوبی است؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:11, diff:5,
+   fr:"D'après vous, le style vestimentaire a-t-il une importance dans la vie quotidienne ?",
+   fa:"آیا سبک پوشش در زندگی روزمره اهمیت دارد؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:11, diff:5,
+   fr:"Selon vous, est-il important de dédier une journée aux droits des femmes ? Pourquoi ?",
+   fa:"آیا اختصاص یک روز به حقوق زنان مهم است؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:10, diff:5,
+   fr:"L'État ne peut pas tout contrôler : êtes-vous d'accord avec cette affirmation ?",
+   fa:"دولت نمی‌تواند همه چیز را کنترل کند. موافقید؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:10, diff:3,
+   fr:"Est-ce que vous pensez que l'État devrait interdire la vente de tabac et d'alcool ?",
+   fa:"آیا دولت باید فروش سیگار و الکل را ممنوع کند؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:9, diff:5,
+   fr:"Dans une entreprise, tout le monde devrait avoir le même salaire. Que pensez-vous de cette affirmation ?",
+   fa:"در یک شرکت همه باید حقوق یکسان داشته باشند. نظرتان؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:7, diff:4,
+   fr:"D'après vous, la liberté d'expression doit-elle avoir des limites ? Pourquoi ?",
+   fa:"آیا آزادی بیان باید محدودیت داشته باشد؟"},
+  {cat:"⚖️ جامعه و شهروندی", freq:6, diff:4,
+   fr:"Les parents doivent-ils éduquer leurs filles et leurs garçons de la même manière ?",
+   fa:"آیا والدین باید دختران و پسران را یکسان تربیت کنند؟"},
+
+  // ── سفر و فرهنگ ──
+  {cat:"✈️ سفر و فرهنگ", freq:20, diff:3,
+   fr:"Certains choisissent de voyager en solitaire. Qu'en pensez-vous ?",
+   fa:"برخی تنها سفر می‌کنند. نظرتان؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:18, diff:4,
+   fr:"Est-il indispensable de vivre dans un pays pour bien connaître sa culture ?",
+   fa:"آیا برای شناخت فرهنگ یک کشور باید در آن زندگی کرد؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:16, diff:6,
+   fr:"Le développement du tourisme peut abîmer certaines régions. Qu'en pensez-vous ?",
+   fa:"توسعه توریسم می‌تواند برخی مناطق را آسیب برساند. نظرتان؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:14, diff:5,
+   fr:"Les loisirs culturels (musées, théâtres, etc.) devraient être gratuits. Qu'en pensez-vous ?",
+   fa:"آیا تفریحات فرهنگی (موزه، تئاتر...) باید رایگان باشند؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:11, diff:5,
+   fr:"En quoi le tourisme contribue-t-il à l'économie et au développement d'un pays ?",
+   fa:"توریسم چگونه به اقتصاد و توسعه یک کشور کمک می‌کند؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:9, diff:3,
+   fr:"Pensez-vous que voyager est vraiment utile ? Pourquoi ?",
+   fa:"آیا سفر کردن واقعاً مفید است؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:9, diff:3,
+   fr:"Le voyage fait de vous une meilleure personne. Êtes-vous d'accord avec cette affirmation ?",
+   fa:"سفر آدم را بهتر می‌کند. موافقید؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:7, diff:6,
+   fr:"La lecture est souvent liée à la culture. Faut-il lire pour être cultivé ?",
+   fa:"خواندن اغلب با فرهنگ مرتبط است. آیا باید خواند تا فرهنگ داشت؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:7, diff:4,
+   fr:"De nos jours, le livre est devenu inutile. Êtes-vous d'accord avec cette affirmation ?",
+   fa:"امروزه کتاب بی‌فایده شده. موافقید؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:6, diff:4,
+   fr:"La cuisine est un excellent moyen pour faire connaître son pays. Êtes-vous d'accord ?",
+   fa:"غذا وسیله عالی برای معرفی کشور است. موافقید؟"},
+  {cat:"✈️ سفر و فرهنگ", freq:9, diff:3,
+   fr:"Les voyages dans l'espace coûtent trop cher et sont inutiles. Qu'en pensez-vous ?",
+   fa:"سفرهای فضایی خیلی گران هستند و بی‌فایده. نظرتان؟"},
+
+  // ── سلامت ──
+  {cat:"🏥 سلامت و تغذیه", freq:12, diff:7,
+   fr:"Le stress est un bon stimulant. Qu'en pensez-vous ?",
+   fa:"استرس محرک خوبی است. نظرتان؟"},
+  {cat:"🏥 سلامت و تغذیه", freq:12, diff:4,
+   fr:"Les habitudes alimentaires évoluent au fil de la vie. Qu'en pensez-vous ?",
+   fa:"عادات غذایی در طول زندگی تغییر می‌کنند. نظرتان؟"},
+  {cat:"🏥 سلامت و تغذیه", freq:9, diff:5,
+   fr:"Chaque année, beaucoup de magazines proposent des régimes pour perdre du poids. Pensez-vous que ces conseils sont utiles ?",
+   fa:"مجلات هر سال رژیم‌های لاغری پیشنهاد می‌دهند. آیا مفیدند؟"},
+  {cat:"🏥 سلامت و تغذیه", freq:9, diff:5,
+   fr:"Il est possible de vivre sans médicaments. Êtes-vous d'accord avec cette affirmation ?",
+   fa:"زندگی بدون دارو ممکن است. موافقید؟"},
+  {cat:"🏥 سلامت و تغذیه", freq:7, diff:6,
+   fr:"Autoriser la sieste au travail est une bonne idée. Qu'en pensez-vous ?",
+   fa:"مجاز کردن چرت زدن در کار ایده خوبی است. نظرتان؟"},
+  {cat:"🏥 سلامت و تغذیه", freq:6, diff:3,
+   fr:"Les soins de santé doivent être gratuits pour tout le monde. Qu'en pensez-vous ?",
+   fa:"مراقبت‌های بهداشتی باید برای همه رایگان باشند. نظرتان؟"},
+  {cat:"🏥 سلامت و تغذیه", freq:5, diff:5,
+   fr:"Consommer des produits bio est réservé aux personnes les plus riches. Êtes vous d'accord ?",
+   fa:"مصرف محصولات ارگانیک فقط برای ثروتمندان است. موافقید؟"},
+
+  // ── ارزش‌ها ──
+  {cat:"💡 ارزش‌ها و تعهد", freq:14, diff:4,
+   fr:"De nos jours, tout le monde veut paraître beau, que pensez-vous de la beauté ?",
+   fa:"امروزه همه می‌خواهند زیبا به نظر برسند. درباره زیبایی چه فکری دارید؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:13, diff:7,
+   fr:"À votre avis, peut-on être épanoui en vivant seul ?",
+   fa:"آیا می‌توان تنها زندگی کرد و شکوفا بود؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:10, diff:6,
+   fr:"À votre avis, parmi les grandes causes actuelles, laquelle devrait être prioritaire dans le monde d'aujourd'hui ?",
+   fa:"کدام یک از بزرگ‌ترین اهداف امروز باید اولویت داشته باشد؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:9, diff:5,
+   fr:"De nos jours, tout le monde veut rester jeune. Qu'en pensez-vous ?",
+   fa:"امروزه همه می‌خواهند جوان بمانند. نظرتان؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:9, diff:5,
+   fr:"Pensez-vous que les journaux télévisés devraient éviter de diffuser des images violentes ?",
+   fa:"آیا اخبار تلویزیونی باید از پخش تصاویر خشونت‌آمیز خودداری کنند؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:8, diff:6,
+   fr:"Quelles sont les actions citoyennes que vous jugez admirables ? Pourquoi ?",
+   fa:"چه اقدامات شهروندی را تحسین‌برانگیز می‌دانید؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:7, diff:6,
+   fr:"Pendant leur temps libre, certaines personnes s'engagent dans des associations pour aider les autres.",
+   fa:"برخی در اوقات فراغت در انجمن‌ها برای کمک به دیگران فعالیت می‌کنند."},
+  {cat:"💡 ارزش‌ها و تعهد", freq:7, diff:6,
+   fr:"Beaucoup de gens ont recours à la chirurgie esthétique pour paraître plus jeunes. Qu'en pensez-vous ?",
+   fa:"بسیاری برای جوان‌تر به نظر رسیدن به جراحی زیبایی متوسل می‌شوند."},
+  {cat:"💡 ارزش‌ها و تعهد", freq:7, diff:6,
+   fr:"La gentillesse aide-t-elle toujours à se faire écouter et respecter ?",
+   fa:"آیا مهربانی همیشه کمک می‌کند شنیده و محترم شماری شوی؟"},
+  {cat:"💡 ارزش‌ها و تعهد", freq:6, diff:6,
+   fr:"Les associations et les ONG sont les seules à pouvoir aider les plus pauvres. Qu'en pensez-vous ?",
+   fa:"انجمن‌ها و NGO ها تنها کسانی هستند که می‌توانند به فقرا کمک کنند."},
+
+  // ── ورزش ──
+  {cat:"⚽ ورزش و تفریح", freq:13, diff:3,
+   fr:"Pour certains, les sportifs professionnels gagnent beaucoup trop d'argent. Êtes-vous d'accord ?",
+   fa:"برخی می‌گویند ورزشکاران حرفه‌ای خیلی زیاد درآمد دارند. موافقید؟"},
+  {cat:"⚽ ورزش و تفریح", freq:6, diff:3,
+   fr:"Selon vous, comment pourrait-on encourager les gens à pratiquer plus de sport ?",
+   fa:"چگونه می‌توان مردم را به ورزش بیشتر تشویق کرد؟"},
+  {cat:"⚽ ورزش و تفریح", freq:6, diff:3,
+   fr:"Pensez-vous qu'il faut obliger les enfants à pratiquer une activité sportive ? Pourquoi ?",
+   fa:"آیا باید کودکان را مجبور به ورزش کرد؟"},
+];
+
+// ── State ──
+const STATE_KEY = 'sujets_state';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(STATE_KEY)||'{}'); } catch{}
+
+function save() { try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch{} updateStats(); }
+
+function getState(idx) { return state[idx] || {idea:false, done:false}; }
+
+function toggleIdea(idx) {
+  const s = getState(idx);
+  s.idea = !s.idea;
+  state[idx] = s;
+  save();
+  renderCard(idx);
+  applyFilter();
+}
+
+function toggleDone(idx) {
+  const s = getState(idx);
+  s.done = !s.done;
+  if (s.done) s.idea = true; // done implies idea
+  state[idx] = s;
+  save();
+  renderCard(idx);
+  applyFilter();
+}
+
+// ── Render ──
+function diffPips(d) {
+  let h = '';
+  for(let i=1;i<=10;i++) h+=`<span class="diff-pip${i<=d?' filled':''}"></span>`;
+  return h;
+}
+
+function renderCard(idx) {
+  const q = QUESTIONS[idx];
+  const s = getState(idx);
+  const el = document.getElementById('qcard-'+idx);
+  if(!el) return;
+  el.querySelector('.action-btn.idea-btn').className = 'action-btn idea-btn' + (s.idea?' active-idea':'');
+  el.querySelector('.action-btn.idea-btn .action-check').textContent = s.idea ? '✓' : '';
+  el.querySelector('.action-btn.done-btn').className = 'action-btn done-btn' + (s.done?' active-done':'');
+  el.querySelector('.action-btn.done-btn .action-check').textContent = s.done ? '✓' : '';
+}
+
+let currentFilter = 'all';
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter();
+}
+
+function applyFilter() {
+  QUESTIONS.forEach((q,i) => {
+    const card = document.getElementById('qcard-'+i);
+    if(!card) return;
+    const s = getState(i);
+    let show = true;
+    if(currentFilter==='idea') show = s.idea;
+    else if(currentFilter==='done') show = s.done;
+    else if(currentFilter==='pending') show = !s.done;
+    card.classList.toggle('hidden', !show);
+  });
+  updateEmptyMsg();
+}
+
+function updateEmptyMsg() {
+  const visible = document.querySelectorAll('.q-card:not(.hidden)').length;
+  let msg = document.getElementById('empty-msg');
+  if(!visible && !msg) {
+    const w = document.getElementById('questions-wrap');
+    w.insertAdjacentHTML('beforeend','<div id="empty-msg" class="empty-msg">هیچ سوژه‌ای در این دسته‌بندی پیدا نشد</div>');
+  } else if(visible && msg) msg.remove();
+}
+
+function updateStats() {
+  const total = QUESTIONS.length;
+  const ideas = QUESTIONS.filter((_,i)=>getState(i).idea).length;
+  const done = QUESTIONS.filter((_,i)=>getState(i).done).length;
+  document.getElementById('total-count').textContent = total;
+  document.getElementById('idea-count').textContent = ideas;
+  document.getElementById('done-count').textContent = done;
+  const pct = Math.round(done/total*100);
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('progress-text').textContent = pct+'٪';
+}
+
+// ── Build DOM ──
+function build() {
+  const wrap = document.getElementById('questions-wrap');
+  const cats = {};
+  QUESTIONS.forEach((q,i) => { if(!cats[q.cat]) cats[q.cat]=[]; cats[q.cat].push(i); });
+
+  for(const [cat, idxs] of Object.entries(cats)) {
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    const parts = cat.split(' ');
+    const icon = parts[0], name = parts.slice(1).join(' ');
+    sec.innerHTML = `<div class="cat-header">
+      <span class="cat-icon">${icon}</span>
+      <span class="cat-name">${name}</span>
+      <span class="cat-count">${idxs.length} سوژه</span>
+    </div>`;
+
+    idxs.forEach(idx => {
+      const q = QUESTIONS[idx];
+      const card = document.createElement('div');
+      card.className = 'q-card';
+      card.id = 'qcard-'+idx;
+      card.innerHTML = `
+        <div class="q-main">
+          <div class="q-body">
+            <div class="q-fr">${q.fr}</div>
+            <div class="q-fa">${q.fa}</div>
+          </div>
+          <div class="q-rank">
+            <div class="q-rank-num">${q.freq}</div>
+            <div class="q-rank-x">بار</div>
+            <div class="q-rank-diff" title="سختی ${q.diff}/10">${diffPips(q.diff)}</div>
+          </div>
+        </div>
+        <div class="q-actions">
+          <button class="action-btn idea-btn" onclick="toggleIdea(${idx})">
+            <span class="action-check"></span> 💡 ایده‌پردازی شده
+          </button>
+          <button class="action-btn done-btn" onclick="toggleDone(${idx})">
+            <span class="action-check"></span> ✅ تمرین شده
+          </button>
+        </div>`;
+      sec.appendChild(card);
+      renderCard(idx);
+    });
+    wrap.appendChild(sec);
+  }
+  updateStats();
+}
+
+build();
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
