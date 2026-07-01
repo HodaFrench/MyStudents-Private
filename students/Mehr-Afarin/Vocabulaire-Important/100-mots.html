@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>100 mots essentiels A2 · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --blue:#1565c0;--blue-pale:#e3f2fd;
+  --amber:#e65100;--amber-pale:#fff3e0;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:16px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+.back:hover{background:var(--pink);}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),var(--pink));color:white;padding:44px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(22px,4vw,36px);font-weight:700;margin-bottom:8px;}
+.hero-sub{font-size:14px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* FILTERS */
+.filter-bar{display:flex;overflow-x:auto;gap:8px;padding:14px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;}
+.filter-btn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.filter-btn:hover{border-color:var(--pink);color:var(--pink);}
+.filter-btn.active{background:var(--pink);border-color:var(--pink);color:white;}
+
+/* PROGRESS */
+.progress-wrap{padding:10px 20px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;}
+.progress-label{font-size:11px;color:var(--gray);white-space:nowrap;}
+.progress-bar{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--green),#4caf50);border-radius:3px;transition:width .4s;}
+
+/* GRID */
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px;}
+.section-title{font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin:28px 0 14px;display:flex;align-items:center;gap:10px;}
+.section-title::after{content:"";flex:1;height:1px;background:var(--line);}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;}
+
+/* CARD */
+.v-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s;}
+.v-card.hidden{display:none;}
+.v-card:hover{border-color:var(--pink);box-shadow:0 4px 16px rgba(194,24,91,.1);}
+.v-card.known{border-color:var(--green);background:#f9fff9;}
+
+.card-top{display:flex;align-items:center;gap:0;}
+.card-num{background:var(--pink);color:white;font-size:11px;font-weight:700;min-width:36px;height:52px;display:flex;align-items:center;justify-content:center;}
+.card-word-wrap{padding:10px 14px;flex:1;}
+.card-word{font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;color:var(--pink-deep);direction:ltr;margin-bottom:2px;}
+.card-meaning{font-size:12px;color:var(--gray);}
+.card-type{font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;white-space:nowrap;margin-left:auto;margin-right:10px;}
+.type-verb{background:var(--blue-pale);color:var(--blue);}
+.type-adj{background:var(--green-pale);color:var(--green);}
+.type-adv{background:var(--amber-pale);color:var(--amber);}
+.type-nom{background:var(--purple-pale);color:var(--purple);}
+.type-exp{background:var(--teal-pale);color:var(--teal);}
+
+.card-examples{padding:0;border-top:1px dashed var(--line);}
+.ex{padding:8px 14px;border-bottom:1px dashed var(--line);font-size:13px;}
+.ex:last-child{border:none;}
+.ex-fr{direction:ltr;text-align:left;color:var(--ink);line-height:1.6;margin-bottom:2px;}
+.ex-fr em{color:var(--pink-deep);font-style:normal;font-weight:700;background:rgba(194,24,91,.1);padding:0 2px;border-radius:2px;}
+.ex-fa{font-size:11px;color:var(--gray);direction:rtl;text-align:right;line-height:1.6;}
+
+.card-action{display:flex;border-top:1px solid var(--line);}
+.know-btn{flex:1;padding:8px;border:none;background:none;cursor:pointer;font-size:11px;font-weight:600;color:var(--gray);font-family:'Vazirmatn',sans-serif;transition:.2s;}
+.know-btn:hover{background:var(--green-pale);color:var(--green);}
+.know-btn.known{background:var(--green-pale);color:var(--green);}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:20px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:600px){.cards-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:22px;">🧠</div>
+  <div><div class="t-title">۱۰۰ واژه ضروری A2</div><div class="t-sub">مهرآفرین · فعل · صفت · قید · اسم · عبارت</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>🧠 ۱۰۰ واژه ضروری</h1>
+    <div class="hero-sub">فعل · صفت · قید · اسم · عبارت — برای حرف زدن راجع به هر موضوعی</div>
+    <div class="hero-pills">
+      <span class="hpill">📖 Niveau A2</span>
+      <span class="hpill">100 mots</span>
+      <span class="hpill">3 exemples chacun</span>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter('all',this)">همه (۱۰۰)</button>
+  <button class="filter-btn" onclick="setFilter('verb',this)">🔵 فعل</button>
+  <button class="filter-btn" onclick="setFilter('adj',this)">🟢 صفت</button>
+  <button class="filter-btn" onclick="setFilter('adv',this)">🟠 قید</button>
+  <button class="filter-btn" onclick="setFilter('nom',this)">🟣 اسم</button>
+  <button class="filter-btn" onclick="setFilter('exp',this)">🩵 عبارت</button>
+  <button class="filter-btn" onclick="setFilter('unknown',this)">⭕ بلد نیستم</button>
+</div>
+
+<div class="progress-wrap">
+  <span class="progress-label">بلدم: <strong id="known-count">0</strong> / 100</span>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <span class="progress-label" id="progress-pct">۰٪</span>
+</div>
+
+<div class="wrap" id="main-wrap">
+
+<script>
+const WORDS = [
+// ── VERBES (فعل) ──
+{n:1,w:"parler",m:"حرف زدن · صحبت کردن",t:"verb",
+ ex:[["Je <em>parle</em> français depuis six mois.","شش ماه است که فرانسه حرف می‌زنم."],
+     ["Elle <em>parle</em> à voix basse pour ne pas réveiller le bébé.","آهسته حرف می‌زند تا بچه را بیدار نکند."],
+     ["On peut en <em>parler</em> plus tard si tu veux.","اگر خواستی می‌توانیم بعداً از آن حرف بزنیم."]]},
+{n:2,w:"écouter",m:"گوش دادن",t:"verb",
+ ex:[["J'<em>écoute</em> de la musique en faisant le ménage.","موقع تمیز کردن موسیقی گوش می‌دهم."],
+     ["Il ne m'<em>écoute</em> pas quand je lui parle.","وقتی باهاش حرف می‌زنم گوش نمی‌دهد."],
+     ["<em>Écoute</em>-moi bien, c'est important.","خوب گوش بده، مهمه."]]},
+{n:3,w:"comprendre",m:"فهمیدن · درک کردن",t:"verb",
+ ex:[["Je ne <em>comprends</em> pas cette phrase.","این جمله را نمی‌فهمم."],
+     ["Il <em>comprend</em> le français mais il ne parle pas encore.","فرانسه می‌فهمد اما هنوز حرف نمی‌زند."],
+     ["Tu <em>comprends</em> pourquoi je suis en colère ?","می‌فهمی چرا عصبانی‌ام؟"]]},
+{n:4,w:"expliquer",m:"توضیح دادن",t:"verb",
+ ex:[["Peux-tu m'<em>expliquer</em> comment ça marche ?","می‌توانی توضیح دهی چطور کار می‌کند؟"],
+     ["Il a <em>expliqué</em> la situation très clairement.","وضعیت را خیلی واضح توضیح داد."],
+     ["Je ne sais pas comment <em>expliquer</em> ce que je ressens.","نمی‌دانم چطور توضیح دهم چه احساسی دارم."]]},
+{n:5,w:"demander",m:"پرسیدن · خواستن",t:"verb",
+ ex:[["Je veux lui <em>demander</em> un conseil.","می‌خواهم از او نظر بپرسم."],
+     ["Elle a <em>demandé</em> de l'aide à ses collègues.","از همکارانش کمک خواست."],
+     ["N'hésite pas à <em>demander</em> si tu as une question.","اگر سؤالی داشتی تردید نکن بپرسی."]]},
+{n:6,w:"répondre",m:"جواب دادن",t:"verb",
+ ex:[["Il n'a pas <em>répondu</em> à mon message.","جواب پیامم را نداد."],
+     ["<em>Réponds</em> honnêtement : tu aimes ce plat ?","صادقانه جواب بده: این غذا را دوست داری؟"],
+     ["Je ne sais pas quoi <em>répondre</em> dans cette situation.","نمی‌دانم در این وضعیت چه جوابی بدهم."]]},
+{n:7,w:"penser",m:"فکر کردن · فکر کردن به",t:"verb",
+ ex:[["Je <em>pense</em> que c'est une bonne idée.","فکر می‌کنم ایده خوبی است."],
+     ["À quoi tu <em>penses</em> en ce moment ?","الان به چی فکر می‌کنی؟"],
+     ["Il <em>pense</em> toujours aux autres avant lui.","همیشه قبل از خودش به دیگران فکر می‌کند."]]},
+{n:8,w:"croire",m:"باور داشتن · فکر کردن",t:"verb",
+ ex:[["Je <em>crois</em> qu'il a raison.","فکر می‌کنم حق با اوست."],
+     ["Elle ne <em>croit</em> pas ce qu'il dit.","حرف‌هایش را باور نمی‌کند."],
+     ["Tu <em>crois</em> vraiment que ça va marcher ?","واقعاً باور داری که کار می‌کند؟"]]},
+{n:9,w:"savoir",m:"دانستن · بلد بودن",t:"verb",
+ ex:[["Je ne <em>sais</em> pas où il habite.","نمی‌دانم کجا زندگی می‌کند."],
+     ["Elle <em>sait</em> parler trois langues.","سه زبان بلد است."],
+     ["<em>Sais</em>-tu cuisiner ?","آشپزی بلدی؟"]]},
+{n:10,w:"vouloir",m:"خواستن",t:"verb",
+ ex:[["Je <em>veux</em> apprendre le français.","می‌خواهم فرانسه یاد بگیرم."],
+     ["Qu'est-ce que tu <em>veux</em> faire ce soir ?","امشب می‌خواهی چیکار کنی؟"],
+     ["Il ne <em>voulait</em> pas partir, mais il le fallait.","نمی‌خواست برود، اما مجبور بود."]]},
+{n:11,w:"pouvoir",m:"توانستن",t:"verb",
+ ex:[["Tu <em>peux</em> m'aider s'il te plaît ?","می‌توانی کمکم کنی لطفاً؟"],
+     ["Je ne <em>peux</em> pas venir demain.","فردا نمی‌توانم بیایم."],
+     ["On <em>peut</em> tout apprendre avec de la patience.","با صبر می‌توان همه چیز یاد گرفت."]]},
+{n:12,w:"devoir",m:"باید · مجبور بودن",t:"verb",
+ ex:[["Je <em>dois</em> finir ce travail avant minuit.","باید قبل از نیمه‌شب این کار را تمام کنم."],
+     ["Tu <em>dois</em> manger quelque chose, tu n'as rien pris depuis ce matin.","باید چیزی بخوری، از صبح هیچی نخورده‌ای."],
+     ["On <em>doit</em> tous faire des efforts.","همه باید تلاش کنیم."]]},
+{n:13,w:"changer",m:"تغییر دادن · تغییر کردن",t:"verb",
+ ex:[["Il a beaucoup <em>changé</em> depuis la dernière fois.","از دفعه آخر خیلی تغییر کرده."],
+     ["Je veux <em>changer</em> de travail.","می‌خواهم کارم را عوض کنم."],
+     ["Rien ne <em>change</em> si on ne fait rien.","اگر کاری نکنیم هیچ چیز تغییر نمی‌کند."]]},
+{n:14,w:"améliorer",m:"بهتر کردن · پیشرفت دادن",t:"verb",
+ ex:[["Je veux <em>améliorer</em> mon niveau de français.","می‌خواهم سطح فرانسه‌ام را بهتر کنم."],
+     ["Travailler ensemble a <em>amélioré</em> nos résultats.","کار با هم نتایجمان را بهتر کرد."],
+     ["Il essaie d'<em>améliorer</em> ses habitudes chaque jour.","هر روز سعی می‌کند عادت‌هایش را بهتر کند."]]},
+{n:15,w:"réussir",m:"موفق شدن",t:"verb",
+ ex:[["Elle a <em>réussi</em> son examen du premier coup.","در اولین بار در امتحانش موفق شد."],
+     ["Je suis sûr que tu vas <em>réussir</em>.","مطمئنم که موفق خواهی شد."],
+     ["Pour <em>réussir</em>, il faut travailler et croire en soi.","برای موفق شدن باید کار کرد و به خود ایمان داشت."]]},
+{n:16,w:"accepter",m:"قبول کردن · پذیرفتن",t:"verb",
+ ex:[["Il a <em>accepté</em> l'invitation sans hésiter.","بدون تردید دعوت را قبول کرد."],
+     ["J'ai du mal à <em>accepter</em> cette décision.","سخت است که این تصمیم را بپذیرم."],
+     ["<em>Accepter</em> ses erreurs, c'est une forme de courage.","قبول کردن اشتباهاتت نوعی شجاعت است."]]},
+{n:17,w:"refuser",m:"رد کردن · قبول نکردن",t:"verb",
+ ex:[["Il a <em>refusé</em> de répondre à la question.","از پاسخ دادن به سؤال سر باز زد."],
+     ["Elle a <em>refusé</em> l'offre sans donner d'explication.","پیشنهاد را بدون توضیح رد کرد."],
+     ["Je ne peux pas <em>refuser</em> quand c'est ma famille.","وقتی خانواده‌ام است نمی‌توانم رد کنم."]]},
+{n:18,w:"choisir",m:"انتخاب کردن",t:"verb",
+ ex:[["Tu as <em>choisi</em> quoi comme dessert ?","چه دسری انتخاب کردی؟"],
+     ["C'est difficile de <em>choisir</em> entre les deux.","انتخاب بین این دو سخت است."],
+     ["Il a <em>choisi</em> de rester plutôt que de partir.","انتخاب کرد که بماند به جای رفتن."]]},
+{n:19,w:"décider",m:"تصمیم گرفتن",t:"verb",
+ ex:[["On a <em>décidé</em> de partir en vacances en juillet.","تصمیم گرفتیم جولای تعطیلات برویم."],
+     ["Il est difficile de <em>décider</em> seul.","تنها تصمیم گرفتن سخت است."],
+     ["J'ai <em>décidé</em> d'apprendre à cuisiner.","تصمیم گرفتم آشپزی یاد بگیرم."]]},
+{n:20,w:"partager",m:"به اشتراک گذاشتن · تقسیم کردن",t:"verb",
+ ex:[["On a <em>partagé</em> la pizza en quatre parts.","پیتزا را به چهار تکه تقسیم کردیم."],
+     ["Elle aime <em>partager</em> ses photos sur les réseaux.","دوست دارد عکس‌هایش را در شبکه‌ها به اشتراک بگذارد."],
+     ["<em>Partager</em> ses émotions avec quelqu'un, ça aide beaucoup.","احساساتت را با کسی در میان گذاشتن خیلی کمک می‌کند."]]},
+{n:21,w:"oublier",m:"فراموش کردن",t:"verb",
+ ex:[["J'ai <em>oublié</em> mon parapluie à la maison.","چترم را خانه جا گذاشتم."],
+     ["N'<em>oublie</em> pas de fermer la porte à clé.","یادت نرود در را قفل کنی."],
+     ["On n'<em>oublie</em> jamais sa première langue.","اولین زبانت را هیچ‌وقت فراموش نمی‌کنی."]]},
+{n:22,w:"rappeler",m:"یادآوری کردن · به یاد آوردن",t:"verb",
+ ex:[["Cette chanson me <em>rappelle</em> mon enfance.","این آهنگ دوران کودکی‌ام را به یادم می‌آورد."],
+     ["Tu peux me <em>rappeler</em> son nom ?","می‌توانی اسمش را یادم بیندازی؟"],
+     ["Je vais te <em>rappeler</em> à dix-neuf heures.","ساعت هفت دوباره زنگ می‌زنم."]]},
+{n:23,w:"aider",m:"کمک کردن",t:"verb",
+ ex:[["Peux-tu m'<em>aider</em> à porter ces sacs ?","می‌توانی کمک کنی این کیسه‌ها را حمل کنم؟"],
+     ["Il <em>aide</em> toujours ses voisins quand ils ont besoin.","همیشه وقتی همسایه‌هایش نیاز داشته باشند کمک می‌کند."],
+     ["Apprendre une langue <em>aide</em> à comprendre une autre culture.","یادگیری یک زبان به درک فرهنگ دیگر کمک می‌کند."]]},
+{n:24,w:"essayer",m:"امتحان کردن · تلاش کردن",t:"verb",
+ ex:[["J'ai <em>essayé</em> ce restaurant hier soir.","دیشب این رستوران را امتحان کردم."],
+     ["Il <em>essaie</em> de parler français tous les jours.","هر روز سعی می‌کند فرانسه صحبت کند."],
+     ["<em>Essaie</em> encore, tu vas y arriver.","دوباره امتحان کن، موفق خواهی شد."]]},
+{n:25,w:"continuer",m:"ادامه دادن",t:"verb",
+ ex:[["<em>Continue</em> comme ça, tu fais du bon travail.","همینطور ادامه بده، کار خوبی می‌کنی."],
+     ["Il a <em>continué</em> ses études malgré les difficultés.","علی‌رغم مشکلات ادامه تحصیل داد."],
+     ["Je ne peux pas <em>continuer</em> sans café le matin.","صبح‌ها بدون قهوه نمی‌توانم ادامه دهم."]]},
+// ── ADJECTIFS (صفت) ──
+{n:26,w:"important / importante",m:"مهم",t:"adj",
+ ex:[["C'est une décision très <em>importante</em>.","این یک تصمیم خیلی مهم است."],
+     ["L'essentiel, c'est de faire les choses <em>importantes</em> en premier.","اساسی اینه که کارهای مهم را اول انجام دهی."],
+     ["Il joue un rôle <em>important</em> dans l'équipe.","نقش مهمی در تیم دارد."]]},
+{n:27,w:"difficile",m:"سخت · دشوار",t:"adj",
+ ex:[["Ce livre est un peu <em>difficile</em> pour mon niveau.","این کتاب برای سطحم کمی سخت است."],
+     ["Les premières semaines sont toujours les plus <em>difficiles</em>.","هفته‌های اول همیشه سخت‌ترین هستند."],
+     ["C'est <em>difficile</em>, mais pas impossible.","سخت است، اما غیرممکن نیست."]]},
+{n:28,w:"facile",m:"آسان · راحت",t:"adj",
+ ex:[["Apprendre les mots nouveaux n'est pas toujours <em>facile</em>.","یادگیری کلمات جدید همیشه آسان نیست."],
+     ["C'est plus <em>facile</em> de comprendre que de parler.","فهمیدن آسان‌تر از حرف زدن است."],
+     ["Il rend tout <em>facile</em> quand il explique.","وقتی توضیح می‌دهد همه چیز را آسان می‌کند."]]},
+{n:29,w:"utile",m:"مفید · کاربردی",t:"adj",
+ ex:[["Ces conseils sont vraiment <em>utiles</em>.","این توصیه‌ها واقعاً مفیدند."],
+     ["Un dictionnaire est très <em>utile</em> quand on apprend une langue.","وقتی زبان یاد می‌گیری دیکشنری خیلی مفید است."],
+     ["Sois <em>utile</em> : aide quelqu'un aujourd'hui.","مفید باش: امروز به کسی کمک کن."]]},
+{n:30,w:"nécessaire",m:"ضروری · لازم",t:"adj",
+ ex:[["Il n'est pas <em>nécessaire</em> de tout comprendre du premier coup.","لازم نیست از اول همه چیز را بفهمی."],
+     ["L'eau est <em>nécessaire</em> à la vie.","آب برای زندگی ضروری است."],
+     ["Fais ce qui est <em>nécessaire</em>, pas plus.","آنچه لازم است انجام بده، نه بیشتر."]]},
+{n:31,w:"possible",m:"ممکن · امکان‌پذیر",t:"adj",
+ ex:[["C'est <em>possible</em> d'apprendre le français en un an.","ممکن است در یک سال فرانسه یاد گرفت."],
+     ["Est-ce qu'il est <em>possible</em> de changer de réservation ?","آیا ممکن است رزرو را تغییر داد؟"],
+     ["Tout est <em>possible</em> si on y croit vraiment.","اگر واقعاً باور داشته باشی همه چیز ممکن است."]]},
+{n:32,w:"différent / différente",m:"متفاوت · مختلف",t:"adj",
+ ex:[["Chaque personne est <em>différente</em>.","هر انسانی متفاوت است."],
+     ["J'ai essayé une approche <em>différente</em> cette fois.","این بار روش متفاوتی امتحان کردم."],
+     ["Les cultures sont <em>différentes</em>, mais on peut toujours se comprendre.","فرهنگ‌ها متفاوتند، اما همیشه می‌توان یکدیگر را درک کرد."]]},
+{n:33,w:"intéressant / intéressante",m:"جالب · جذاب",t:"adj",
+ ex:[["Ce film est vraiment <em>intéressant</em>.","این فیلم واقعاً جالب است."],
+     ["Elle a posé une question très <em>intéressante</em>.","یک سؤال خیلی جالب پرسید."],
+     ["J'ai lu un article <em>intéressant</em> sur ce sujet.","یک مقاله جالب درباره این موضوع خواندم."]]},
+{n:34,w:"agréable",m:"دلپذیر · لذت‌بخش",t:"adj",
+ ex:[["C'est <em>agréable</em> de marcher le soir quand il fait frais.","شب وقتی هوا خنک است پیاده‌روی دلپذیر است."],
+     ["Elle a une voix très <em>agréable</em>.","صدای خیلی دلنشینی دارد."],
+     ["Passer du temps avec eux est toujours <em>agréable</em>.","وقت گذراندن با آن‌ها همیشه لذت‌بخش است."]]},
+{n:35,w:"difficile à croire",m:"باورنکردنی · سخت به باور",t:"adj",
+ ex:[["C'est <em>difficile à croire</em>, mais il parle cinq langues.","باورنکردنیه، ولی پنج زبان حرف می‌زند."],
+     ["Ce qu'il a accompli en si peu de temps est <em>difficile à croire</em>.","آنچه در این مدت کم انجام داده باورنکردنی است."],
+     ["Je sais que c'est <em>difficile à croire</em>, mais c'est la vérité.","می‌دانم سخت است باور کنی، اما حقیقت است."]]},
+{n:36,w:"surprenant / surprenante",m:"شگفت‌انگیز · تعجب‌آور",t:"adj",
+ ex:[["Sa réaction était assez <em>surprenante</em>.","واکنشش نسبتاً تعجب‌آور بود."],
+     ["Le résultat est <em>surprenant</em> : on n'attendait pas ça.","نتیجه تعجب‌آور است: انتظار نداشتیم."],
+     ["C'est <em>surprenant</em> comme les enfants apprennent vite.","شگفت‌انگیز است که بچه‌ها چقدر سریع یاد می‌گیرند."]]},
+{n:37,w:"calme",m:"آرام · ساکت",t:"adj",
+ ex:[["Il reste toujours <em>calme</em> sous pression.","زیر فشار همیشه آرام می‌ماند."],
+     ["Aujourd'hui, la mer est <em>calme</em> et belle.","امروز دریا آرام و زیباست."],
+     ["Je cherche un endroit <em>calme</em> pour travailler.","دنبال جای آرامی برای کار می‌گردم."]]},
+{n:38,w:"courageux / courageuse",m:"شجاع · باجرئت",t:"adj",
+ ex:[["Elle a été très <em>courageuse</em> de parler devant tout le monde.","جلوی همه حرف زد، خیلی شجاع بود."],
+     ["C'est un choix <em>courageux</em> de tout quitter pour voyager.","ترک کردن همه چیز برای سفر انتخاب شجاعانه‌ای است."],
+     ["Il faut être <em>courageux</em> pour changer.","برای تغییر کردن باید شجاع بود."]]},
+{n:39,w:"patient / patiente",m:"صبور · با حوصله",t:"adj",
+ ex:[["Il faut être <em>patient</em> quand on apprend quelque chose de nouveau.","وقتی چیز جدیدی یاد می‌گیری باید صبور بود."],
+     ["Elle est très <em>patiente</em> avec les enfants.","با بچه‌ها خیلی صبور است."],
+     ["Sois <em>patient</em>, les résultats vont venir.","صبور باش، نتایج خواهند آمد."]]},
+{n:40,w:"honnête",m:"صادق · صادقانه",t:"adj",
+ ex:[["Il est toujours <em>honnête</em>, même quand ça fait mal.","همیشه صادق است، حتی وقتی دردناک است."],
+     ["Sois <em>honnête</em> avec moi : tu aimes cette coiffure ?","با من صادق باش: این مدل مو را دوست داری؟"],
+     ["J'apprécie les gens <em>honnêtes</em>.","آدم‌های صادق را ارزش می‌گذارم."]]},
+{n:41,w:"curieux / curieuse",m:"کنجکاو",t:"adj",
+ ex:[["Les enfants sont naturellement <em>curieux</em>.","بچه‌ها طبیعتاً کنجکاوند."],
+     ["Elle est très <em>curieuse</em> : elle pose toujours plein de questions.","خیلی کنجکاو است: همیشه سؤال زیاد می‌پرسد."],
+     ["Reste <em>curieux</em>, c'est la clé pour continuer à apprendre.","کنجکاو بمان، این کلید یادگیری مداوم است."]]},
+{n:42,w:"stressé / stressée",m:"استرس‌دار · نگران",t:"adj",
+ ex:[["Je suis vraiment <em>stressé</em> avant les examens.","قبل از امتحانات واقعاً استرس دارم."],
+     ["Elle a l'air <em>stressée</em> depuis quelques jours.","چند روزی است که به نظر استرس دارد."],
+     ["Pourquoi tu es si <em>stressé</em> ? Explique-moi.","چرا اینقدر استرس داری؟ برایم توضیح بده."]]},
+{n:43,w:"motivé / motivée",m:"با انگیزه",t:"adj",
+ ex:[["Il est très <em>motivé</em> pour apprendre.","برای یادگیری خیلی با انگیزه است."],
+     ["Je me sens <em>motivée</em> quand j'ai un objectif clair.","وقتی هدف روشنی دارم با انگیزه‌ام."],
+     ["Comment rester <em>motivé</em> quand ça ne va pas ?","وقتی اوضاع خوب نیست چطور با انگیزه بمانیم؟"]]},
+{n:44,w:"fatigué / fatiguée",m:"خسته",t:"adj",
+ ex:[["Je suis trop <em>fatiguée</em> pour sortir ce soir.","امشب خیلی خسته‌ام که بیرون بروم."],
+     ["Il a l'air <em>fatigué</em>. Il devrait se reposer.","به نظر خسته می‌آید. باید استراحت کند."],
+     ["On est tous <em>fatigués</em> à la fin d'une longue journée.","همه ما آخر یک روز طولانی خسته هستیم."]]},
+{n:45,w:"libre",m:"آزاد · خالی (وقت)",t:"adj",
+ ex:[["Je suis <em>libre</em> vendredi soir, on peut se voir.","جمعه شب آزادم، می‌توانیم ببینیم."],
+     ["Il est enfin <em>libre</em> de faire ce qu'il veut.","بالاخره آزاد است که هر کاری دوست دارد بکند."],
+     ["Tu as du temps <em>libre</em> ce week-end ?","آخر هفته وقت آزاد داری؟"]]},
+// ── ADVERBES (قید) ──
+{n:46,w:"vraiment",m:"واقعاً · حقیقتاً",t:"adv",
+ ex:[["Je suis <em>vraiment</em> désolé pour ce retard.","واقعاً برای این تأخیر متأسفم."],
+     ["C'est <em>vraiment</em> bon, ce gâteau !","این کیک واقعاً خوشمزه است!"],
+     ["Tu penses <em>vraiment</em> ce que tu dis ?","واقعاً منظورت همین است؟"]]},
+{n:47,w:"souvent",m:"اغلب · زیاد",t:"adv",
+ ex:[["On se voit <em>souvent</em> le week-end.","آخر هفته‌ها اغلب همدیگر را می‌بینیم."],
+     ["Il fait <em>souvent</em> des erreurs de ce genre.","اغلب این نوع اشتباه می‌کند."],
+     ["Est-ce que tu vas <em>souvent</em> au cinéma ?","اغلب سینما می‌روی؟"]]},
+{n:48,w:"parfois",m:"گاهی · بعضی وقت‌ها",t:"adv",
+ ex:[["<em>Parfois</em>, j'ai besoin d'être seul pour réfléchir.","گاهی برای فکر کردن نیاز دارم تنها باشم."],
+     ["La vie est <em>parfois</em> difficile, mais ça passe.","زندگی گاهی سخت است، اما می‌گذرد."],
+     ["Il est <em>parfois</em> un peu trop direct.","گاهی کمی خیلی رک است."]]},
+{n:49,w:"toujours",m:"همیشه",t:"adv",
+ ex:[["Il est <em>toujours</em> à l'heure.","همیشه سر وقت است."],
+     ["Je penserai <em>toujours</em> à ces moments.","همیشه به این لحظات فکر خواهم کرد."],
+     ["Ce n'est pas <em>toujours</em> facile, mais ça vaut la peine.","همیشه آسان نیست، اما ارزشش را دارد."]]},
+{n:50,w:"jamais",m:"هرگز · هیچ‌وقت",t:"adv",
+ ex:[["Je n'ai <em>jamais</em> goûté ce plat.","هیچ‌وقت این غذا را نچشیده‌ام."],
+     ["Il ne se plaint <em>jamais</em>.","هرگز شکایت نمی‌کند."],
+     ["C'est mieux tard que <em>jamais</em>.","دیر بهتر از هیچ‌وقت."]]},
+{n:51,w:"déjà",m:"قبلاً · هنوز (در سؤال)",t:"adv",
+ ex:[["J'ai <em>déjà</em> vu ce film deux fois.","این فیلم را قبلاً دو بار دیده‌ام."],
+     ["Tu es <em>déjà</em> allé au Canada ?","قبلاً به کانادا رفته‌ای؟"],
+     ["C'est <em>déjà</em> un grand progrès.","این خودش پیشرفت بزرگی است."]]},
+{n:52,w:"encore",m:"هنوز · دوباره · بیشتر",t:"adv",
+ ex:[["Je n'ai <em>encore</em> pas fini.","هنوز تمام نکرده‌ام."],
+     ["Tu veux <em>encore</em> du café ?","بیشتر قهوه می‌خواهی؟"],
+     ["Il essaie <em>encore</em> malgré les échecs.","با وجود شکست‌ها دوباره تلاش می‌کند."]]},
+{n:53,w:"ensemble",m:"با هم",t:"adv",
+ ex:[["On peut résoudre ce problème <em>ensemble</em>.","می‌توانیم این مشکل را با هم حل کنیم."],
+     ["Ils ont travaillé <em>ensemble</em> pendant dix ans.","ده سال با هم کار کردند."],
+     ["C'est plus facile et plus agréable de le faire <em>ensemble</em>.","با هم انجام دادنش آسان‌تر و دلپذیرتر است."]]},
+{n:54,w:"surtout",m:"مخصوصاً · بیشتر از همه",t:"adv",
+ ex:[["J'aime tout, <em>surtout</em> les desserts.","همه چیز دوست دارم، مخصوصاً دسرها."],
+     ["<em>Surtout</em> ne dis rien à personne.","مخصوصاً به هیچ‌کس چیزی نگو."],
+     ["Il est doué dans tout, <em>surtout</em> en langues.","در همه چیز استعداد دارد، مخصوصاً در زبان‌ها."]]},
+{n:55,w:"peut-être",m:"شاید",t:"adv",
+ ex:[["<em>Peut-être</em> qu'il viendra, je ne suis pas sûr.","شاید بیاید، مطمئن نیستم."],
+     ["C'est <em>peut-être</em> une bonne idée.","شاید ایده خوبی باشد."],
+     ["<em>Peut-être</em> que je me trompe, mais c'est ce que je pense.","شاید اشتباه می‌کنم، اما این نظرمه."]]},
+{n:56,w:"rapidement",m:"سریعاً · به سرعت",t:"adv",
+ ex:[["Il a <em>rapidement</em> compris la situation.","خیلی سریع وضعیت را فهمید."],
+     ["Parle moins <em>rapidement</em> s'il te plaît.","لطفاً کمی آهسته‌تر حرف بزن."],
+     ["Les choses changent très <em>rapidement</em> de nos jours.","امروزه اوضاع خیلی سریع تغییر می‌کند."]]},
+{n:57,w:"tranquillement",m:"آرام · با آرامش",t:"adv",
+ ex:[["Il lit <em>tranquillement</em> dans son coin.","آرام در گوشه‌ای مطالعه می‌کند."],
+     ["On a dîné <em>tranquillement</em> sans regarder nos téléphones.","بدون نگاه کردن به تلفن‌هایمان آرام شام خوردیم."],
+     ["Prends le temps de vivre <em>tranquillement</em>.","وقت بگذار که آرام زندگی کنی."]]},
+{n:58,w:"clairement",m:"واضحاً · روشن",t:"adv",
+ ex:[["Explique-moi <em>clairement</em> ce que tu veux.","واضح برایم توضیح بده چه می‌خواهی."],
+     ["Il parle <em>clairement</em> et tout le monde comprend.","واضح حرف می‌زند و همه می‌فهمند."],
+     ["J'ai dit <em>clairement</em> que je n'étais pas d'accord.","واضح گفتم که موافق نیستم."]]},
+{n:59,w:"simplement",m:"به سادگی · فقط",t:"adv",
+ ex:[["Je voulais <em>simplement</em> te dire merci.","فقط می‌خواستم ممنون بگویم."],
+     ["C'est <em>simplement</em> une question de pratique.","به سادگی موضوع تمرین است."],
+     ["Habille-toi <em>simplement</em>, c'est une fête décontractée.","ساده لباس بپوش، جشن رسمی نیست."]]},
+{n:60,w:"exactement",m:"دقیقاً",t:"adv",
+ ex:[["C'est <em>exactement</em> ce que je voulais dire.","دقیقاً همان چیزی است که می‌خواستم بگویم."],
+     ["À <em>exactement</em> huit heures, il était là.","دقیقاً ساعت هشت آنجا بود."],
+     ["Je ne sais pas <em>exactement</em> combien ça coûte.","دقیقاً نمی‌دانم چقدر هزینه دارد."]]},
+// ── NOMS (اسم) ──
+{n:61,w:"l'effort (m)",m:"تلاش · زحمت",t:"nom",
+ ex:[["Il a fait de gros <em>efforts</em> pour réussir.","برای موفق شدن تلاش زیادی کرد."],
+     ["Chaque petit <em>effort</em> compte.","هر تلاش کوچکی حساب می‌شود."],
+     ["Sans <em>effort</em>, il n'y a pas de progrès.","بدون تلاش پیشرفتی وجود ندارد."]]},
+{n:62,w:"le progrès",m:"پیشرفت",t:"nom",
+ ex:[["J'ai fait beaucoup de <em>progrès</em> en français.","در فرانسه خیلی پیشرفت کرده‌ام."],
+     ["Le <em>progrès</em> vient avec le temps et la pratique.","پیشرفت با زمان و تمرین می‌آید."],
+     ["Elle est fière de ses <em>progrès</em>.","به پیشرفتش افتخار می‌کند."]]},
+{n:63,w:"la confiance",m:"اعتماد · اطمینان",t:"nom",
+ ex:[["La <em>confiance</em> en soi est importante pour réussir.","اعتماد به نفس برای موفقیت مهم است."],
+     ["Il a perdu la <em>confiance</em> de ses collègues.","اعتماد همکارانش را از دست داد."],
+     ["Cette expérience m'a donné plus de <em>confiance</em>.","این تجربه به من اعتماد بیشتری داد."]]},
+{n:64,w:"la patience",m:"صبر · حوصله",t:"nom",
+ ex:[["Apprendre une langue demande de la <em>patience</em>.","یادگیری زبان صبر می‌خواهد."],
+     ["Il a une <em>patience</em> infinie avec les enfants.","صبر بی‌نهایتی با بچه‌ها دارد."],
+     ["La <em>patience</em> est une qualité rare et précieuse.","صبر یک ویژگی نادر و ارزشمند است."]]},
+{n:65,w:"l'expérience (f)",m:"تجربه",t:"nom",
+ ex:[["C'est une <em>expérience</em> inoubliable.","این یک تجربه فراموش‌نشدنی است."],
+     ["Il a beaucoup d'<em>expérience</em> dans ce domaine.","در این حوزه تجربه زیادی دارد."],
+     ["Chaque erreur est une <em>expérience</em> qui nous fait grandir.","هر اشتباهی یک تجربه است که باعث رشدمان می‌شود."]]},
+{n:66,w:"l'avenir (m)",m:"آینده",t:"nom",
+ ex:[["Je pense souvent à mon <em>avenir</em>.","اغلب به آینده‌ام فکر می‌کنم."],
+     ["L'<em>avenir</em> appartient à ceux qui se préparent.","آینده متعلق به کسانی است که آماده می‌شوند."],
+     ["On ne peut pas savoir ce que l'<em>avenir</em> nous réserve.","نمی‌توان دانست آینده برایمان چه دارد."]]},
+{n:67,w:"le manque",m:"کمبود · فقدان",t:"nom",
+ ex:[["Le <em>manque</em> de sommeil me rend irritable.","کمبود خواب مرا تحریک‌پذیر می‌کند."],
+     ["Il souffre du <em>manque</em> de sa famille.","از نبود خانواده‌اش رنج می‌برد."],
+     ["Le <em>manque</em> de confiance est son principal obstacle.","کمبود اعتماد به نفس بزرگ‌ترین مانعش است."]]},
+{n:68,w:"l'objectif (m)",m:"هدف",t:"nom",
+ ex:[["Mon <em>objectif</em> cette année est de parler couramment.","هدفم امسال حرف زدن روان است."],
+     ["Il a atteint son <em>objectif</em> en six mois.","در شش ماه به هدفش رسید."],
+     ["Sans <em>objectif</em> clair, il est difficile d'avancer.","بدون هدف روشن پیش رفتن سخت است."]]},
+{n:69,w:"la solution",m:"راه‌حل",t:"nom",
+ ex:[["Il y a toujours une <em>solution</em>.","همیشه یک راه‌حل وجود دارد."],
+     ["On a trouvé une <em>solution</em> ensemble.","با هم یک راه‌حل پیدا کردیم."],
+     ["La meilleure <em>solution</em>, c'est souvent la plus simple.","بهترین راه‌حل اغلب ساده‌ترین است."]]},
+{n:70,w:"la réaction",m:"واکنش",t:"nom",
+ ex:[["Sa <em>réaction</em> m'a vraiment surpris.","واکنشش واقعاً غافلگیرم کرد."],
+     ["Quelle est ta <em>réaction</em> face à cette nouvelle ?","واکنشت نسبت به این خبر چیست؟"],
+     ["Une bonne <em>réaction</em> peut tout changer.","یک واکنش خوب می‌تواند همه چیز را تغییر دهد."]]},
+{n:71,w:"l'ambiance (f)",m:"جو · فضا · حال‌وهوا",t:"nom",
+ ex:[["L'<em>ambiance</em> dans ce café est vraiment sympa.","فضای این کافه خیلی صمیمی است."],
+     ["J'aime l'<em>ambiance</em> du marché le dimanche matin.","فضای بازار یکشنبه صبح را دوست دارم."],
+     ["L'<em>ambiance</em> de travail est détendue dans cette entreprise.","جو کاری در این شرکت آرام است."]]},
+{n:72,w:"l'attitude (f)",m:"نگرش · رفتار",t:"nom",
+ ex:[["Son <em>attitude</em> positive m'inspire.","نگرش مثبتش الهام‌بخش من است."],
+     ["Change d'<em>attitude</em> et tout ira mieux.","نگرشت را تغییر بده و همه چیز بهتر می‌شود."],
+     ["Son <em>attitude</em> face aux difficultés est admirable.","نگرشش در برابر مشکلات ستودنی است."]]},
+{n:73,w:"la priorité",m:"اولویت",t:"nom",
+ ex:[["Ma <em>priorité</em> en ce moment, c'est ma santé.","اولویتم الان سلامتیم است."],
+     ["Mets les choses importantes en <em>priorité</em>.","چیزهای مهم را در اولویت بگذار."],
+     ["On n'a pas les mêmes <em>priorités</em> dans la vie.","در زندگی اولویت‌های یکسانی نداریم."]]},
+{n:74,w:"le quotidien",m:"روزمره · زندگی روزانه",t:"nom",
+ ex:[["Le français fait désormais partie de mon <em>quotidien</em>.","فرانسه از این به بعد بخشی از روزمره‌ام است."],
+     ["Dans le <em>quotidien</em>, on oublie parfois l'essentiel.","در روزمرگی گاهی اصل را فراموش می‌کنیم."],
+     ["Les petits plaisirs du <em>quotidien</em> sont les plus précieux.","لذت‌های کوچک روزمره ارزشمندترین هستند."]]},
+{n:75,w:"le lien",m:"پیوند · رابطه · ارتباط",t:"nom",
+ ex:[["Le français est un <em>lien</em> entre de nombreuses cultures.","فرانسه پیوندی بین فرهنگ‌های بسیار است."],
+     ["Il a gardé le <em>lien</em> avec son pays d'origine.","ارتباطش را با کشور اصلی‌اش حفظ کرده."],
+     ["Les voyages créent des <em>liens</em> forts entre les gens.","سفرها پیوندهای قوی بین مردم ایجاد می‌کنند."]]},
+// ── EXPRESSIONS (عبارت) ──
+{n:76,w:"avoir du mal à",m:"سختی داشتن برای · مشکل داشتن در",t:"exp",
+ ex:[["J'<em>ai du mal à</em> me lever le matin.","صبح‌ها بلند شدن برایم سخت است."],
+     ["Il <em>a du mal à</em> exprimer ses émotions.","بیان احساساتش برایش مشکل است."],
+     ["Tu <em>as du mal à</em> comprendre cette règle ?","فهمیدن این قانون برات سخته؟"]]},
+{n:77,w:"être en train de",m:"داشتن انجام می‌دهم (الان)",t:"exp",
+ ex:[["Je suis <em>en train de</em> lire un livre très intéressant.","دارم یک کتاب خیلی جالب می‌خوانم."],
+     ["Il est <em>en train de</em> préparer le dîner.","دارد شام درست می‌کند."],
+     ["Qu'est-ce que tu <em>es en train de</em> faire ?","الان داری چیکار می‌کنی؟"]]},
+{n:78,w:"avoir l'air",m:"به نظر رسیدن · بنظر آمدن",t:"exp",
+ ex:[["Tu <em>as l'air</em> fatigué aujourd'hui.","امروز خسته به نظر می‌رسی."],
+     ["Elle <em>a l'air</em> heureuse depuis quelque temps.","مدتی است که خوشحال به نظر می‌رسد."],
+     ["Ça <em>a l'air</em> bon, ce que tu as cuisiné !","آنچه پخته‌ای خوشمزه به نظر می‌رسد!"]]},
+{n:79,w:"il me semble que",m:"به نظرم می‌رسد که · احساس می‌کنم",t:"exp",
+ ex:[["<em>Il me semble que</em> tu as raison.","به نظرم می‌رسد که حق با توست."],
+     ["<em>Il me semble que</em> je l'ai déjà rencontré quelque part.","احساس می‌کنم قبلاً جایی باهاش برخورد داشتم."],
+     ["<em>Il me semble que</em> c'est la bonne direction.","به نظرم این مسیر درستی است."]]},
+{n:80,w:"avoir besoin de",m:"نیاز داشتن به",t:"exp",
+ ex:[["J'<em>ai besoin de</em> ton aide pour ce projet.","برای این پروژه به کمکت نیاز دارم."],
+     ["On <em>a besoin de</em> temps pour changer.","برای تغییر به وقت نیاز داریم."],
+     ["Tu <em>as besoin de</em> quoi pour commencer ?","برای شروع به چه چیزی نیاز داری؟"]]},
+{n:81,w:"à mon avis",m:"به نظر من",t:"exp",
+ ex:[["<em>À mon avis</em>, c'est la meilleure solution.","به نظر من، این بهترین راه‌حل است."],
+     ["<em>À mon avis</em>, tu devrais lui parler directement.","به نظر من، باید مستقیماً باهاش حرف بزنی."],
+     ["<em>À mon avis</em>, on n'a pas assez de temps.","به نظر من، وقت کافی نداریم."]]},
+{n:82,w:"d'accord",m:"موافق · باشه",t:"exp",
+ ex:[["Tu viens avec nous ? — <em>D'accord</em> !","باما می‌آیی؟ — باشه!"],
+     ["Je ne suis pas <em>d'accord</em> avec cette décision.","با این تصمیم موافق نیستم."],
+     ["On est tous <em>d'accord</em> pour partir à dix heures.","همه موافقیم ساعت ده راه بیفتیم."]]},
+{n:83,w:"par exemple",m:"برای مثال · مثلاً",t:"exp",
+ ex:[["Il y a plusieurs façons de progresser, <em>par exemple</em> lire tous les jours.","روش‌های مختلفی برای پیشرفت وجود دارد، مثلاً هر روز خواندن."],
+     ["<em>Par exemple</em>, en France, on mange le déjeuner entre douze et quatorze heures.","مثلاً در فرانسه ناهار بین دوازده تا چهارده خورده می‌شود."],
+     ["Parle-moi de tes activités, <em>par exemple</em> ce que tu fais le week-end.","از فعالیت‌هایت برایم بگو، مثلاً آخر هفته چه می‌کنی."]]},
+{n:84,w:"c'est-à-dire",m:"یعنی · به عبارت دیگر",t:"exp",
+ ex:[["Il est bilingue, <em>c'est-à-dire</em> qu'il parle deux langues parfaitement.","دوزبانه است، یعنی دو زبان را به طور کامل حرف می‌زند."],
+     ["On part tôt, <em>c'est-à-dire</em> avant sept heures.","زود می‌رویم، یعنی قبل از ساعت هفت."],
+     ["Elle est introvertie, <em>c'est-à-dire</em> qu'elle préfère être seule.","درونگراست، یعنی ترجیح می‌دهد تنها باشد."]]},
+{n:85,w:"en fait",m:"در واقع · اصلاً",t:"exp",
+ ex:[["<em>En fait</em>, j'aime beaucoup la pluie.","در واقع، خیلی باران دوست دارم."],
+     ["Je pensais que c'était difficile, mais <em>en fait</em>, c'est simple.","فکر می‌کردم سخت است، اما در واقع، ساده است."],
+     ["<em>En fait</em>, il n'avait pas vraiment compris la question.","در واقع، سؤال را درست نفهمیده بود."]]},
+{n:86,w:"il vaut mieux",m:"بهتر است · بهتره",t:"exp",
+ ex:[["<em>Il vaut mieux</em> arriver en avance.","بهتر است زودتر برسی."],
+     ["<em>Il vaut mieux</em> ne rien dire que de mentir.","بهتر است چیزی نگویی تا دروغ بگویی."],
+     ["<em>Il vaut mieux</em> prévenir que guérir.","پیشگیری بهتر از درمان است."]]},
+{n:87,w:"au contraire",m:"برعکس · بالعکس",t:"exp",
+ ex:[["Je ne suis pas fatigué. <em>Au contraire</em>, je suis plein d'énergie.","خسته نیستم. برعکس، پر از انرژی‌ام."],
+     ["Ce n'est pas ennuyeux, <em>au contraire</em>, c'est fascinant.","کسل‌کننده نیست، برعکس، جذاب است."],
+     ["Il ne travaille pas moins. <em>Au contraire</em>, il travaille plus qu'avant.","کمتر کار نمی‌کند. برعکس، بیشتر از قبل کار می‌کند."]]},
+{n:88,w:"malgré",m:"با وجود · علی‌رغم",t:"exp",
+ ex:[["<em>Malgré</em> la pluie, on est sortis se promener.","با وجود باران، رفتیم گردش."],
+     ["Elle a réussi <em>malgré</em> les difficultés.","علی‌رغم مشکلات موفق شد."],
+     ["<em>Malgré</em> ses erreurs, il a continué.","با وجود اشتباهاتش، ادامه داد."]]},
+{n:89,w:"grâce à",m:"به خاطر (چیز مثبت) · به لطف",t:"exp",
+ ex:[["J'ai réussi <em>grâce à</em> ton aide.","به لطف کمک تو موفق شدم."],
+     ["<em>Grâce à</em> Internet, on peut apprendre n'importe où.","به لطف اینترنت، می‌توان هر جایی یاد گرفت."],
+     ["Elle a trouvé du travail <em>grâce à</em> un ami.","به خاطر یک دوست کار پیدا کرد."]]},
+{n:90,w:"à cause de",m:"به خاطر (چیز منفی) · به دلیل",t:"exp",
+ ex:[["Le match a été annulé <em>à cause de</em> la pluie.","مسابقه به خاطر باران لغو شد."],
+     ["Il est en retard <em>à cause de</em> la circulation.","به خاطر ترافیک دیر کرده."],
+     ["J'ai raté mon train <em>à cause de</em> mon réveil.","به خاطر ساعت بیداریم قطارم را از دست دادم."]]},
+{n:91,w:"pourtant",m:"با این حال · با اینکه · ولی",t:"exp",
+ ex:[["Il fait froid, <em>pourtant</em> les gens sont dehors.","هوا سرد است، با این حال مردم بیرونند."],
+     ["Je n'avais pas faim, <em>pourtant</em> j'ai tout mangé.","گرسنه نبودم، با این حال همه چیز را خوردم."],
+     ["C'est simple, <em>pourtant</em> peu de gens le font.","ساده است، با این حال خیلی کم کسی انجام می‌دهد."]]},
+{n:92,w:"en revanche",m:"در عوض · از طرف دیگر",t:"exp",
+ ex:[["Il ne parle pas bien espagnol. <em>En revanche</em>, son anglais est parfait.","اسپانیایی خوب حرف نمی‌زند. در عوض، انگلیسی‌اش کامل است."],
+     ["Le matin est difficile pour moi. <em>En revanche</em>, je suis très productif le soir.","صبح برایم سخت است. در عوض، شب خیلی پربازده‌ام."],
+     ["Ce livre est long. <em>En revanche</em>, il est passionnant.","این کتاب طولانی است. در عوض، جذاب است."]]},
+{n:93,w:"c'est pourquoi",m:"به همین دلیل · به همین خاطر",t:"exp",
+ ex:[["J'aime les langues. <em>C'est pourquoi</em> j'apprends le français.","زبان‌ها را دوست دارم. به همین دلیل فرانسه یاد می‌گیرم."],
+     ["Il pleut. <em>C'est pourquoi</em> je reste à la maison.","باران می‌بارد. به همین خاطر خانه می‌مانم."],
+     ["La communication est essentielle. <em>C'est pourquoi</em> on doit pratiquer.","ارتباط ضروری است. به همین دلیل باید تمرین کرد."]]},
+{n:94,w:"tant que",m:"تا وقتی که · مادامی که",t:"exp",
+ ex:[["<em>Tant que</em> tu travailles, tu progresses.","تا وقتی که کار می‌کنی پیشرفت می‌کنی."],
+     ["<em>Tant que</em> je suis ici, je t'aiderai.","مادامی که اینجا هستم، کمکت خواهم کرد."],
+     ["<em>Tant que</em> tu essaies, tu as une chance.","تا وقتی که تلاش می‌کنی، شانسی داری."]]},
+{n:95,w:"au lieu de",m:"به جای",t:"exp",
+ ex:[["<em>Au lieu de</em> te plaindre, trouve une solution.","به جای شکایت، راه‌حل پیدا کن."],
+     ["<em>Au lieu de</em> regarder la télé, il lit.","به جای تلویزیون دیدن، کتاب می‌خواند."],
+     ["Appelle-le <em>au lieu de</em> lui envoyer un message.","به جای پیام فرستادن، زنگ بزن."]]},
+{n:96,w:"à condition que",m:"به شرطی که",t:"exp",
+ ex:[["Je viens, <em>à condition que</em> tu viennes aussi.","می‌آیم، به شرطی که تو هم بیایی."],
+     ["On peut réussir, <em>à condition que</em> l'on travaille vraiment.","می‌توان موفق شد، به شرطی که واقعاً کار کرد."],
+     ["D'accord, <em>à condition que</em> ça reste entre nous.","باشه، به شرطی که بین خودمان بماند."]]},
+{n:97,w:"en ce qui concerne",m:"در مورد · درباره",t:"exp",
+ ex:[["<em>En ce qui concerne</em> ton projet, j'ai quelques idées.","در مورد پروژه‌ات، چند ایده دارم."],
+     ["<em>En ce qui concerne</em> la date, on peut en parler plus tard.","درباره تاریخ، می‌توانیم بعداً صحبت کنیم."],
+     ["<em>En ce qui me concerne</em>, je préfère rester ici.","در مورد من، ترجیح می‌دهم اینجا بمانم."]]},
+{n:98,w:"avoir tendance à",m:"تمایل داشتن به · معمولاً",t:"exp",
+ ex:[["J'<em>ai tendance à</em> trop parler quand je suis nerveux.","وقتی عصبی‌ام تمایل دارم زیاد حرف بزنم."],
+     ["Il <em>a tendance à</em> oublier les rendez-vous.","تمایل دارد قرارها را فراموش کند."],
+     ["On <em>a tendance à</em> faire confiance à ce qu'on voit.","تمایل داریم به آنچه می‌بینیم اعتماد کنیم."]]},
+{n:99,w:"quoi qu'il arrive",m:"هر اتفاقی بیفتد · به هر حال",t:"exp",
+ ex:[["<em>Quoi qu'il arrive</em>, je serai là pour toi.","هر اتفاقی بیفتد، کنارت خواهم بود."],
+     ["<em>Quoi qu'il arrive</em>, ne perds pas espoir.","هر اتفاقی بیفتد، امید را از دست نده."],
+     ["Il réussira, <em>quoi qu'il arrive</em>.","هر اتفاقی بیفتد، موفق خواهد شد."]]},
+{n:100,w:"il s'agit de",m:"موضوع این است · صحبت از",t:"exp",
+ ex:[["<em>Il s'agit de</em> faire un choix difficile.","موضوع این است که یک انتخاب سخت بکنی."],
+     ["Dans ce film, <em>il s'agit d'</em>une famille qui part à l'étranger.","در این فیلم، صحبت از یک خانواده‌ای است که به خارج می‌رود."],
+     ["<em>Il s'agit de</em> savoir ce qu'on veut vraiment.","موضوع اینه که بدانی واقعاً چه می‌خواهی."]]}
+];
+
+const knownSet = new Set(JSON.parse(localStorage.getItem('known100')||'[]'));
+let currentFilter = 'all';
+
+function saveKnown(){
+  try{localStorage.setItem('known100',JSON.stringify([...knownSet]));}catch{}
+  updateProgress();
+}
+
+function updateProgress(){
+  const n = knownSet.size;
+  document.getElementById('known-count').textContent = n;
+  document.getElementById('progress-fill').style.width = n+'%';
+  document.getElementById('progress-pct').textContent = n+'٪';
+}
+
+function toggleKnown(n){
+  if(knownSet.has(n)) knownSet.delete(n);
+  else knownSet.add(n);
+  saveKnown();
+  const card = document.getElementById('c'+n);
+  const btn = card.querySelector('.know-btn');
+  if(knownSet.has(n)){
+    card.classList.add('known');
+    btn.classList.add('known');
+    btn.textContent = '✅ بلدم';
+  }else{
+    card.classList.remove('known');
+    btn.classList.remove('known');
+    btn.textContent = '○ بلد نیستم';
+  }
+  if(currentFilter==='unknown') applyFilter();
+}
+
+function setFilter(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter();
+}
+
+function applyFilter(){
+  document.querySelectorAll('.v-card').forEach(c=>{
+    const t=c.dataset.type;
+    const n=parseInt(c.dataset.n);
+    let show=true;
+    if(currentFilter!=='all'&&currentFilter!=='unknown') show=t===currentFilter;
+    if(currentFilter==='unknown') show=!knownSet.has(n);
+    c.classList.toggle('hidden',!show);
+  });
+}
+
+const TYPE_LABELS = {verb:'🔵 فعل',adj:'🟢 صفت',adv:'🟠 قید',nom:'🟣 اسم',exp:'🩵 عبارت'};
+const TYPE_SECTIONS = {verb:'🔵 فعل — verbes',adj:'🟢 صفت — adjectifs',adv:'🟠 قید — adverbes',nom:'🟣 اسم — noms',exp:'🩵 عبارت — expressions'};
+const wrap = document.getElementById('main-wrap');
+let lastType='';
+
+WORDS.forEach(w=>{
+  if(w.t!==lastType){
+    const h=document.createElement('div');
+    h.className='section-title';
+    h.textContent=TYPE_SECTIONS[w.t];
+    wrap.appendChild(h);
+    const g=document.createElement('div');
+    g.className='cards-grid';
+    g.id='grid-'+w.t;
+    wrap.appendChild(g);
+    lastType=w.t;
+  }
+  const card=document.createElement('div');
+  card.className='v-card'+(knownSet.has(w.n)?' known':'');
+  card.id='c'+w.n;
+  card.dataset.type=w.t;
+  card.dataset.n=w.n;
+  card.innerHTML=`
+    <div class="card-top">
+      <div class="card-num">${w.n}</div>
+      <div class="card-word-wrap">
+        <div class="card-word">${w.w}</div>
+        <div class="card-meaning">${w.m}</div>
+      </div>
+      <div class="card-type type-${w.t}">${TYPE_LABELS[w.t]}</div>
+    </div>
+    <div class="card-examples">
+      ${w.ex.map(e=>`<div class="ex"><div class="ex-fr">${e[0]}</div><div class="ex-fa">${e[1]}</div></div>`).join('')}
+    </div>
+    <div class="card-action">
+      <button class="know-btn${knownSet.has(w.n)?' known':''}" onclick="toggleKnown(${w.n})">${knownSet.has(w.n)?'✅ بلدم':'○ بلد نیستم'}</button>
+    </div>`;
+  document.getElementById('grid-'+w.t).appendChild(card);
+});
+
+updateProgress();
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+
+</div>
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · ۱۰۰ واژه ضروری A2 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</body>
+</html>
