@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reformulation A2 · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --v1:#1565c0;--v1p:#e3f2fd;
+  --v2:#2e7d32;--v2p:#e8f5e9;
+  --v3:#6a1b9a;--v3p:#f3e5f5;
+  --amber:#e65100;--amber-pale:#fff3e0;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:16px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+.back:hover{background:var(--pink);}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),var(--pink));color:white;padding:44px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:700;margin-bottom:8px;}
+.hero-sub{font-size:14px;opacity:.85;margin-bottom:6px;}
+.hero-rule{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:10px 20px;font-size:12px;margin:12px auto;max-width:600px;line-height:1.7;direction:rtl;text-align:right;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* LEGEND */
+.legend{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:14px 20px;background:white;border-bottom:2px solid var(--line);}
+.leg{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;}
+.leg-dot{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+
+/* FILTER */
+.filter-bar{display:flex;overflow-x:auto;gap:8px;padding:12px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;}
+.filter-btn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:var(--pink);border-color:var(--pink);color:white;}
+
+/* MAIN */
+.wrap{max-width:880px;margin:0 auto;padding:24px 20px;}
+
+/* RULE TAG */
+.rule-tag{display:inline-flex;align-items:center;gap:6px;background:var(--amber-pale);border:1.5px solid var(--amber);color:var(--amber);font-size:10px;font-weight:700;padding:3px 10px;border-radius:8px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.05em;}
+
+/* CARD */
+.ref-card{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.ref-card.hidden{display:none;}
+
+.card-head{background:var(--pink-pale);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);}
+.card-n{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--pink-deep);background:white;padding:2px 10px;border-radius:8px;}
+.card-topic{font-size:12px;color:var(--gray);direction:rtl;}
+.card-rule{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);background:var(--amber-pale);padding:2px 10px;border-radius:8px;}
+
+/* VERSION ROWS */
+.v-row{display:flex;border-bottom:1px dashed var(--line);}
+.v-row:last-child{border:none;}
+.v-label{flex-shrink:0;width:36px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;writing-mode:horizontal-tb;}
+.v-label.l1{background:var(--v1);}
+.v-label.l2{background:var(--v2);}
+.v-label.l3{background:var(--v3);}
+.v-content{padding:12px 18px;flex:1;}
+.v-fr{font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.75;color:var(--ink);direction:ltr;text-align:left;margin-bottom:4px;}
+.v-fr em{font-style:normal;font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+.v-fr.e1 em{color:var(--v1);}
+.v-fr.e2 em{color:var(--v2);}
+.v-fr.e3 em{color:var(--v3);}
+.v-tag{display:inline-block;font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:6px;vertical-align:middle;}
+.tag1{background:var(--v1p);color:var(--v1);}
+.tag2{background:var(--v2p);color:var(--v2);}
+.tag3{background:var(--v3p);color:var(--v3);}
+.v-fa{font-size:12px;color:var(--gray);direction:rtl;text-align:right;line-height:1.7;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:600px){.v-label{width:28px;font-size:9px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:22px;">🔄</div>
+  <div><div class="t-title">Reformulation</div><div class="t-sub">مهرآفرین · ۳۰ ایده × ۳ شیوه بیان</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>🔄 Reformulation</h1>
+    <div class="hero-sub">هر ایده را به ۳ شیوه بگو</div>
+    <div class="hero-rule">
+      <strong>قانون طلایی:</strong> ایده یکی است، کلمات فرق می‌کنند.<br>
+      🔵 نسخه اول — ساده و مستقیم &nbsp;|&nbsp; 🟢 نسخه دوم — با ساختار متفاوت &nbsp;|&nbsp; 🟣 نسخه سوم — پیشرفته‌تر یا غیررسمی‌تر
+    </div>
+    <div class="hero-pills">
+      <span class="hpill">📖 Niveau A2</span>
+      <span class="hpill">30 idées</span>
+      <span class="hpill">3 versions chacune</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:var(--v1)"></div> نسخه ۱ — ساده و مستقیم</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--v2)"></div> نسخه ۲ — ساختار متفاوت</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--v3)"></div> نسخه ۳ — پیشرفته‌تر / غیررسمی‌تر</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--amber)"></div> قانون گرامری</div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter('all',this)">همه (۳۰)</button>
+  <button class="filter-btn" onclick="setFilter('emotion',this)">💭 احساس</button>
+  <button class="filter-btn" onclick="setFilter('quotidien',this)">☀️ روزمره</button>
+  <button class="filter-btn" onclick="setFilter('opinion',this)">🗣️ نظر</button>
+  <button class="filter-btn" onclick="setFilter('temps',this)">⏰ زمان</button>
+  <button class="filter-btn" onclick="setFilter('raison',this)">🔗 دلیل و نتیجه</button>
+</div>
+
+<div class="wrap" id="cards-wrap">
+<!-- JS builds cards -->
+</div>
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · Reformulation A2 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Data: {n, topic, cat, rule, v1:{fr,tag,fa}, v2:{fr,tag,fa}, v3:{fr,tag,fa}}
+const DATA = [
+// ── احساس (emotion) ──
+{n:1,topic:"خوشحال بودم",cat:"emotion",rule:"être + adj / se sentir + adj / avoir l'air + adj",
+ v1:{fr:"J'<em>étais</em> très contente.",tag:"être + adj",fa:"خیلی خوشحال بودم."},
+ v2:{fr:"Je me <em>sentais</em> vraiment heureuse.",tag:"se sentir + adj",fa:"واقعاً احساس خوشحالی می‌کردم."},
+ v3:{fr:"J'<em>avais</em> le sourire toute la journée.",tag:"expression",fa:"تمام روز لبخند داشتم."}},
+
+{n:2,topic:"خسته بودم",cat:"emotion",rule:"être / se sentir / avoir besoin de",
+ v1:{fr:"J'<em>étais</em> très fatiguée.",tag:"être + adj",fa:"خیلی خسته بودم."},
+ v2:{fr:"Je <em>me sentais</em> épuisée.",tag:"se sentir",fa:"احساس خستگی شدید می‌کردم."},
+ v3:{fr:"J'<em>avais besoin</em> de dormir.",tag:"avoir besoin de",fa:"نیاز به خواب داشتم."}},
+
+{n:3,topic:"نگران بودم",cat:"emotion",rule:"être inquiet / s'inquiéter / avoir peur",
+ v1:{fr:"J'<em>étais</em> un peu inquiète.",tag:"être + adj",fa:"کمی نگران بودم."},
+ v2:{fr:"Je <em>m'inquiétais</em> beaucoup.",tag:"s'inquiéter",fa:"خیلی نگران می‌شدم."},
+ v3:{fr:"J'<em>avais peur</em> que ça ne marche pas.",tag:"avoir peur que",fa:"می‌ترسیدم که کار نکند."}},
+
+{n:4,topic:"چیزی را دوست نداشتم",cat:"emotion",rule:"ne pas aimer / ne pas apprécier / ça ne me plaisait pas",
+ v1:{fr:"Je n'<em>aimais pas</em> cet endroit.",tag:"ne pas aimer",fa:"آن جا را دوست نداشتم."},
+ v2:{fr:"Je n'<em>appréciais pas</em> vraiment cet endroit.",tag:"ne pas apprécier",fa:"واقعاً آن جا را قدر نمی‌دانستم."},
+ v3:{fr:"Cet endroit ne me <em>plaisait</em> pas du tout.",tag:"plaire à qqn",fa:"آن جا اصلاً برایم جالب نبود."}},
+
+{n:5,topic:"چیزی را دوست داشتم",cat:"emotion",rule:"aimer / adorer / trouver + adj",
+ v1:{fr:"J'<em>aimais</em> beaucoup ce film.",tag:"aimer",fa:"خیلی این فیلم را دوست داشتم."},
+ v2:{fr:"J'<em>adorais</em> ce film.",tag:"adorer",fa:"عاشق این فیلم بودم."},
+ v3:{fr:"Je <em>trouvais</em> ce film vraiment bien.",tag:"trouver + adj",fa:"این فیلم را واقعاً خوب می‌دانستم."}},
+
+// ── روزمره (quotidien) ──
+{n:6,topic:"رفتم دوش گرفتم",cat:"quotidien",rule:"passé composé vs infinitif groupé",
+ v1:{fr:"Je <em>suis allée</em> sous la douche.",tag:"aller + inf",fa:"رفتم زیر دوش."},
+ v2:{fr:"J'<em>ai pris</em> une douche.",tag:"prendre une douche",fa:"دوش گرفتم."},
+ v3:{fr:"Je me <em>suis douchée</em>.",tag:"se doucher (pronominal)",fa:"خودم را شستم."}},
+
+{n:7,topic:"صبحانه خوردم",cat:"quotidien",rule:"prendre / manger / se nourrir",
+ v1:{fr:"J'<em>ai mangé</em> mon petit-déjeuner.",tag:"manger",fa:"صبحانه‌ام را خوردم."},
+ v2:{fr:"J'<em>ai pris</em> mon petit-déjeuner.",tag:"prendre",fa:"صبحانه‌ام را خوردم."},
+ v3:{fr:"J'<em>ai déjeuné</em> le matin.",tag:"déjeuner (registre)",fa:"صبح صبحانه خوردم."}},
+
+{n:8,topic:"به کمک نیاز داشتم",cat:"quotidien",rule:"avoir besoin de / demander de l'aide / ne pas y arriver seul",
+ v1:{fr:"J'<em>avais besoin</em> d'aide.",tag:"avoir besoin de",fa:"به کمک نیاز داشتم."},
+ v2:{fr:"J'<em>ai demandé</em> de l'aide.",tag:"demander de l'aide",fa:"کمک خواستم."},
+ v3:{fr:"Je n'<em>arrivais</em> pas à le faire seule.",tag:"ne pas arriver à",fa:"نمی‌توانستم تنها انجام دهم."}},
+
+{n:9,topic:"زیاد تلفن استفاده می‌کنم",cat:"quotidien",rule:"utiliser souvent / avoir tendance à / passer du temps à",
+ v1:{fr:"J'<em>utilise</em> souvent mon téléphone.",tag:"utiliser + adv",fa:"اغلب از تلفنم استفاده می‌کنم."},
+ v2:{fr:"J'<em>ai tendance à</em> beaucoup regarder mon téléphone.",tag:"avoir tendance à",fa:"تمایل دارم خیلی به تلفنم نگاه کنم."},
+ v3:{fr:"Je <em>passe beaucoup de temps</em> sur mon téléphone.",tag:"passer du temps à / sur",fa:"وقت زیادی روی تلفنم می‌گذرانم."}},
+
+{n:10,topic:"دیر کردم",cat:"quotidien",rule:"être en retard / arriver tard / ne pas être à l'heure",
+ v1:{fr:"J'<em>étais</em> en retard.",tag:"être en retard",fa:"دیر کرده بودم."},
+ v2:{fr:"Je <em>suis arrivée</em> en retard.",tag:"arriver en retard",fa:"دیر رسیدم."},
+ v3:{fr:"Je n'<em>étais pas</em> à l'heure.",tag:"ne pas être à l'heure",fa:"سر وقت نبودم."}},
+
+// ── نظر (opinion) ──
+{n:11,topic:"فکر می‌کنم درست است",cat:"opinion",rule:"penser que / trouver que / être convaincu que",
+ v1:{fr:"Je <em>pense que</em> c'est correct.",tag:"penser que",fa:"فکر می‌کنم درست است."},
+ v2:{fr:"Je <em>trouve que</em> c'est la bonne façon.",tag:"trouver que",fa:"فکر می‌کنم این روش درستی است."},
+ v3:{fr:"Je <em>suis convaincue</em> que c'est vrai.",tag:"être convaincu que",fa:"مطمئنم که درست است."}},
+
+{n:12,topic:"موافق نیستم",cat:"opinion",rule:"ne pas être d'accord / avoir un autre avis / penser le contraire",
+ v1:{fr:"Je ne <em>suis pas d'accord</em>.",tag:"ne pas être d'accord",fa:"موافق نیستم."},
+ v2:{fr:"J'<em>ai un avis différent</em>.",tag:"avoir un avis différent",fa:"نظر متفاوتی دارم."},
+ v3:{fr:"Je <em>pense le contraire</em>.",tag:"penser le contraire",fa:"عکسش را فکر می‌کنم."}},
+
+{n:13,topic:"به نظرم مهم است",cat:"opinion",rule:"à mon avis / il me semble que / je trouve ça",
+ v1:{fr:"<em>À mon avis</em>, c'est important.",tag:"à mon avis",fa:"به نظرم مهم است."},
+ v2:{fr:"<em>Il me semble que</em> c'est quelque chose d'important.",tag:"il me semble que",fa:"به نظرم این چیز مهمی است."},
+ v3:{fr:"Je <em>trouve ça</em> vraiment important.",tag:"trouver ça + adj",fa:"این را واقعاً مهم می‌بینم."}},
+
+{n:14,topic:"این خوب است",cat:"opinion",rule:"c'est bien / c'est une bonne chose / ça me semble bien",
+ v1:{fr:"C'<em>est</em> bien.",tag:"c'est + adj",fa:"خوب است."},
+ v2:{fr:"C'<em>est une bonne chose</em>.",tag:"c'est une bonne chose",fa:"چیز خوبی است."},
+ v3:{fr:"Ça me <em>semble</em> vraiment bien.",tag:"sembler + adj",fa:"واقعاً خوب به نظر می‌رسد."}},
+
+{n:15,topic:"نمی‌دانم چه بگویم",cat:"opinion",rule:"ne pas savoir / ne pas avoir d'idée / être sans mot",
+ v1:{fr:"Je ne <em>sais</em> pas quoi dire.",tag:"ne pas savoir + inf",fa:"نمی‌دانم چه بگویم."},
+ v2:{fr:"Je n'<em>ai</em> aucune idée de ce qu'il faut dire.",tag:"ne pas avoir d'idée",fa:"هیچ ایده‌ای ندارم چه باید گفت."},
+ v3:{fr:"Je <em>reste</em> sans voix.",tag:"rester sans voix",fa:"بی‌کلام می‌مانم."}},
+
+// ── زمان (temps) ──
+{n:16,topic:"عجله داشتم",cat:"temps",rule:"être pressé / ne pas avoir le temps / devoir partir vite",
+ v1:{fr:"J'<em>étais pressée</em>.",tag:"être pressé",fa:"عجله داشتم."},
+ v2:{fr:"Je n'<em>avais pas</em> le temps.",tag:"ne pas avoir le temps",fa:"وقت نداشتم."},
+ v3:{fr:"Je <em>devais partir</em> vite.",tag:"devoir + inf",fa:"باید سریع می‌رفتم."}},
+
+{n:17,topic:"وقت لازم دارم",cat:"temps",rule:"avoir besoin de temps / prendre son temps / il faut du temps",
+ v1:{fr:"J'<em>ai besoin</em> de temps.",tag:"avoir besoin de",fa:"به وقت نیاز دارم."},
+ v2:{fr:"Je <em>dois prendre</em> mon temps.",tag:"devoir + prendre son temps",fa:"باید وقت بگذارم."},
+ v3:{fr:"Il me <em>faut</em> plus de temps.",tag:"il faut + temps",fa:"به وقت بیشتری نیاز دارم."}},
+
+{n:18,topic:"هر روز این کار را می‌کنم",cat:"temps",rule:"faire qqch tous les jours / avoir l'habitude de / en général",
+ v1:{fr:"Je <em>fais</em> ça tous les jours.",tag:"présent + tous les jours",fa:"هر روز این کار را می‌کنم."},
+ v2:{fr:"J'<em>ai l'habitude</em> de le faire chaque jour.",tag:"avoir l'habitude de",fa:"عادت دارم هر روز آن را انجام دهم."},
+ v3:{fr:"<em>En général</em>, je le fais chaque matin.",tag:"en général + présent",fa:"معمولاً هر صبح آن را انجام می‌دهم."}},
+
+{n:19,topic:"این مدت زمانی است که...",cat:"temps",rule:"depuis / ça fait... que / il y a... que",
+ v1:{fr:"J'apprends le français <em>depuis</em> six mois.",tag:"depuis + durée",fa:"شش ماه است که فرانسه یاد می‌گیرم."},
+ v2:{fr:"<em>Ça fait</em> six mois que j'apprends le français.",tag:"ça fait... que",fa:"شش ماه است که فرانسه یاد می‌گیرم."},
+ v3:{fr:"<em>Il y a</em> six mois que j'ai commencé le français.",tag:"il y a... que",fa:"شش ماه پیش شروع به یادگیری فرانسه کردم."}},
+
+{n:20,topic:"هنوز یاد نگرفته‌ام",cat:"temps",rule:"ne pas encore / toujours pas / pas encore réussi à",
+ v1:{fr:"Je n'<em>ai encore</em> pas appris ça.",tag:"ne pas encore",fa:"هنوز این را یاد نگرفته‌ام."},
+ v2:{fr:"Je ne <em>sais toujours pas</em> faire ça.",tag:"toujours pas",fa:"هنوز هم نمی‌دانم چطور این کار را بکنم."},
+ v3:{fr:"Je n'<em>ai pas encore réussi</em> à apprendre ça.",tag:"ne pas encore réussir à",fa:"هنوز موفق نشده‌ام این را یاد بگیرم."}},
+
+// ── دلیل و نتیجه (raison) ──
+{n:21,topic:"به خاطر باران خانه ماندم",cat:"raison",rule:"à cause de / parce que / comme",
+ v1:{fr:"Je suis restée à la maison <em>à cause</em> de la pluie.",tag:"à cause de + nom",fa:"به خاطر باران خانه ماندم."},
+ v2:{fr:"Je suis restée à la maison <em>parce qu'</em>il pleuvait.",tag:"parce que + verbe",fa:"خانه ماندم چون داشت باران می‌بارید."},
+ v3:{fr:"<em>Comme</em> il pleuvait, je suis restée à la maison.",tag:"comme (cause en tête)",fa:"چون باران می‌بارید، خانه ماندم."}},
+
+{n:22,topic:"موفق شدم چون تلاش کردم",cat:"raison",rule:"grâce à / parce que / c'est grâce à... que",
+ v1:{fr:"J'ai réussi <em>parce que</em> j'ai travaillé dur.",tag:"parce que",fa:"موفق شدم چون سخت کار کردم."},
+ v2:{fr:"J'ai réussi <em>grâce à</em> mon travail.",tag:"grâce à + nom",fa:"به لطف کارم موفق شدم."},
+ v3:{fr:"<em>C'est grâce à</em> mes efforts que j'ai réussi.",tag:"c'est grâce à... que",fa:"این به خاطر تلاش‌هایم بود که موفق شدم."}},
+
+{n:23,topic:"پس باید تمرین کنی",cat:"raison",rule:"donc / c'est pourquoi / alors",
+ v1:{fr:"<em>Donc</em>, tu dois pratiquer.",tag:"donc (conséquence)",fa:"پس باید تمرین کنی."},
+ v2:{fr:"<em>C'est pourquoi</em> il faut pratiquer.",tag:"c'est pourquoi",fa:"به همین دلیل باید تمرین کرد."},
+ v3:{fr:"<em>Alors</em>, n'oublie pas de pratiquer.",tag:"alors (registre familier)",fa:"پس یادت نرود تمرین کنی."}},
+
+{n:24,topic:"با وجود مشکلات ادامه دادم",cat:"raison",rule:"malgré / même si / pourtant",
+ v1:{fr:"J'ai continué <em>malgré</em> les difficultés.",tag:"malgré + nom",fa:"با وجود مشکلات ادامه دادم."},
+ v2:{fr:"J'ai continué <em>même si</em> c'était difficile.",tag:"même si + verbe",fa:"ادامه دادم حتی اگر سخت بود."},
+ v3:{fr:"C'était difficile, <em>pourtant</em> j'ai continué.",tag:"pourtant (concession)",fa:"سخت بود، با این حال ادامه دادم."}},
+
+{n:25,topic:"برای اینکه بهتر شوم",cat:"raison",rule:"pour + inf / afin de / dans le but de",
+ v1:{fr:"Je travaille <em>pour</em> m'améliorer.",tag:"pour + infinitif",fa:"کار می‌کنم تا بهتر شوم."},
+ v2:{fr:"Je travaille <em>afin de</em> progresser.",tag:"afin de + infinitif",fa:"کار می‌کنم به منظور پیشرفت."},
+ v3:{fr:"Mon objectif, c'est de m'<em>améliorer</em> chaque jour.",tag:"objectif + de + inf",fa:"هدفم اینه که هر روز بهتر شوم."}},
+
+// ── ترکیبی / موضوعات مختلف ──
+{n:26,topic:"می‌توانم کمک کنم",cat:"quotidien",rule:"pouvoir + inf / proposer de / je suis là pour",
+ v1:{fr:"Je <em>peux</em> t'aider.",tag:"pouvoir + infinitif",fa:"می‌توانم کمکت کنم."},
+ v2:{fr:"Je te <em>propose</em> mon aide.",tag:"proposer + aide",fa:"کمکم را پیشنهاد می‌کنم."},
+ v3:{fr:"Je <em>suis là</em> pour t'aider si tu as besoin.",tag:"être là pour",fa:"اینجام که کمکت کنم اگر لازم داشتی."}},
+
+{n:27,topic:"نمی‌فهمم",cat:"quotidien",rule:"ne pas comprendre / ne pas saisir / avoir du mal à comprendre",
+ v1:{fr:"Je ne <em>comprends</em> pas.",tag:"ne pas comprendre",fa:"نمی‌فهمم."},
+ v2:{fr:"Je ne <em>saisis</em> pas bien ce que tu veux dire.",tag:"ne pas saisir",fa:"خوب نمی‌فهمم منظورت چیست."},
+ v3:{fr:"J'<em>ai du mal à</em> comprendre cette partie.",tag:"avoir du mal à",fa:"درک این بخش برایم سخت است."}},
+
+{n:28,topic:"این برایم جدید است",cat:"emotion",rule:"c'est nouveau pour moi / je n'ai jamais... / c'est la première fois que",
+ v1:{fr:"C'<em>est nouveau</em> pour moi.",tag:"être nouveau pour",fa:"این برایم جدید است."},
+ v2:{fr:"Je n'<em>ai jamais</em> fait ça avant.",tag:"ne jamais + PC",fa:"قبلاً هرگز این کار را نکرده‌ام."},
+ v3:{fr:"C'<em>est la première fois</em> que je fais ça.",tag:"c'est la première fois que",fa:"اولین باری است که این کار را می‌کنم."}},
+
+{n:29,topic:"باید بروم",cat:"temps",rule:"devoir / il faut que / être obligé de",
+ v1:{fr:"Je <em>dois</em> partir.",tag:"devoir + infinitif",fa:"باید بروم."},
+ v2:{fr:"<em>Il faut</em> que je parte.",tag:"il faut que + subjonctif",fa:"باید بروم."},
+ v3:{fr:"Je <em>suis obligée</em> de partir maintenant.",tag:"être obligé de",fa:"مجبورم الان بروم."}},
+
+{n:30,topic:"خوشحالم که اینجام",cat:"emotion",rule:"être content de / avoir de la chance de / se sentir bien",
+ v1:{fr:"Je <em>suis contente</em> d'être ici.",tag:"être content de + inf",fa:"خوشحالم که اینجام."},
+ v2:{fr:"J'<em>ai de la chance</em> d'être ici.",tag:"avoir de la chance de",fa:"خوش‌شانسم که اینجام."},
+ v3:{fr:"Je me <em>sens bien</em> ici.",tag:"se sentir + adj",fa:"اینجا احساس خوبی دارم."}}
+];
+
+function build(){
+  const wrap=document.getElementById('cards-wrap');
+  DATA.forEach(d=>{
+    const card=document.createElement('div');
+    card.className='ref-card';
+    card.dataset.cat=d.cat;
+    card.innerHTML=`
+      <div class="card-head">
+        <span class="card-n">${d.n}/30</span>
+        <span class="card-topic">${d.topic}</span>
+        <span class="card-rule">⚙️ ${d.rule}</span>
+      </div>
+      ${row(1,d.v1,'l1','e1','tag1')}
+      ${row(2,d.v2,'l2','e2','tag2')}
+      ${row(3,d.v3,'l3','e3','tag3')}`;
+    wrap.appendChild(card);
+  });
+}
+
+function row(n,v,lc,ec,tc){
+  return `<div class="v-row">
+    <div class="v-label ${lc}">${n}</div>
+    <div class="v-content">
+      <div class="v-fr ${ec}"><span class="v-tag ${tc}">${v.tag}</span>${v.fr}</div>
+      <div class="v-fa">${v.fa}</div>
+    </div>
+  </div>`;
+}
+
+let currentFilter='all';
+function setFilter(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.ref-card').forEach(c=>{
+    c.classList.toggle('hidden', f!=='all' && c.dataset.cat!==f);
+  });
+}
+
+build();
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
