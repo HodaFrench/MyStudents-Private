@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Vacances en famille — Édito A2 · U1 L1</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --blue:#1565c0;--blue-pale:#e3f2fd;--blue-mist:#f0f7ff;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --navy:#0d1b2a;--navy-mid:#1b2e45;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+/* TOPBAR */
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:40px 24px;text-align:center;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;margin-bottom:10px;display:inline-block;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:700;margin-bottom:5px;}
+.hero-fa{font-size:14px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* TABS */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* ─── PANEL 1: TEXTE ─── */
+.text-block{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.text-head{background:var(--pink-pale);padding:12px 20px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--line);}
+.text-icon{font-size:20px;}
+.text-title{font-size:14px;font-weight:700;color:var(--pink-deep);}
+.text-title-fa{font-size:11px;color:var(--gray);margin-right:auto;}
+.text-body{padding:20px;}
+.sent{display:flex;gap:0;margin-bottom:10px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+.sent:last-child{margin:0;}
+.sent-fr{padding:10px 14px;flex:1;font-family:'Roboto',sans-serif;font-size:14px;line-height:1.7;direction:ltr;text-align:left;background:white;}
+.sent-fa{padding:10px 14px;flex:1;font-size:13px;color:var(--gray);direction:rtl;text-align:right;background:#fafbfc;border-right:1px solid var(--line);line-height:1.7;}
+.sent-fr .hl-verb{background:rgba(21,101,192,.15);padding:0 3px;border-radius:3px;font-weight:700;color:var(--blue);}
+.sent-fr .hl-col{background:rgba(46,125,50,.15);padding:0 3px;border-radius:3px;font-weight:700;color:var(--green);}
+.sent-fr .hl-gram{background:rgba(230,81,0,.15);padding:0 3px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.sent-fr .hl-vocab{background:rgba(106,27,154,.15);padding:0 3px;border-radius:3px;font-weight:700;color:var(--purple);}
+@media(max-width:640px){.sent{flex-direction:column;}.sent-fa{border-right:none;border-top:1px solid var(--line);}}
+
+/* ─── PANEL 2: VOCAB / COLLOC ─── */
+.legend{display:flex;flex-wrap:wrap;gap:8px;padding:14px 20px;background:white;border-bottom:2px solid var(--line);}
+.leg{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;}
+.leg-dot{width:12px;height:12px;border-radius:3px;}
+
+.v-section{margin-bottom:24px;}
+.v-sec-title{font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.v-sec-title::after{content:"";flex:1;height:1px;background:var(--line);}
+
+.v-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.v-head{display:flex;align-items:center;padding:10px 16px;gap:10px;border-bottom:1px solid var(--line);}
+.v-word{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;direction:ltr;}
+.v-word.verb{color:var(--blue);}
+.v-word.col{color:var(--green);}
+.v-word.vocab{color:var(--purple);}
+.v-meaning{font-size:12px;color:var(--gray);}
+.v-type-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 8px;border-radius:6px;margin-right:auto;white-space:nowrap;}
+.badge-verb{background:var(--blue-pale);color:var(--blue);}
+.badge-col{background:var(--green-pale);color:var(--green);}
+.badge-vocab{background:var(--purple-pale);color:var(--purple);}
+.badge-gram{background:var(--amber-pale);color:var(--amber-deep);}
+
+.v-examples{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.v-ex{background:var(--paper);border-radius:8px;padding:10px 14px;border:1px solid var(--line);}
+.v-ex-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--pink);font-weight:700;margin-bottom:4px;}
+.v-ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;direction:ltr;text-align:left;line-height:1.7;color:var(--ink);}
+.v-ex-fr strong{color:var(--pink-deep);}
+.v-ex-fa{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-top:4px;line-height:1.7;}
+.v-note{background:var(--amber-pale);border:1px solid rgba(230,81,0,.3);border-radius:6px;padding:8px 12px;font-size:11px;color:var(--amber-deep);direction:rtl;text-align:right;margin:8px 16px 12px;}
+
+/* ─── PANEL 3: GRAMMAIRE ─── */
+.gram-box{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.gram-head{background:var(--amber-pale);padding:14px 20px;border-bottom:2px solid rgba(230,81,0,.2);}
+.gram-title{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:var(--amber-deep);}
+.gram-title-fa{font-size:12px;color:var(--amber);margin-top:3px;}
+.gram-body{padding:20px;}
+.gram-rule{background:var(--navy);color:white;border-radius:10px;padding:16px 20px;margin-bottom:16px;direction:ltr;text-align:left;}
+.gram-rule code{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#fcd34d;display:block;margin-bottom:8px;}
+.gram-rule p{font-size:13px;color:rgba(255,255,255,.8);line-height:1.7;}
+.gram-explain{font-size:14px;line-height:1.9;margin-bottom:14px;color:var(--ink);}
+.gram-explain strong{color:var(--amber-deep);}
+.gram-explain em{color:var(--blue);font-style:normal;font-weight:700;}
+.gram-fa{font-size:13px;direction:rtl;text-align:right;color:var(--gray);background:var(--paper);padding:10px 14px;border-radius:8px;line-height:1.8;margin-bottom:12px;}
+
+.gram-cases{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.gram-case{border-radius:10px;overflow:hidden;border:2px solid var(--line);}
+.gc-head{padding:8px 16px;font-size:12px;font-weight:700;direction:rtl;text-align:right;}
+.gc-ex{padding:10px 16px;font-family:'Roboto',sans-serif;font-size:14px;direction:ltr;background:white;}
+.gc-ex strong{color:var(--amber-deep);}
+.gc-fa{padding:8px 16px;font-size:12px;color:var(--gray);direction:rtl;text-align:right;border-top:1px dashed var(--line);}
+
+.source-box{background:var(--blue-mist);border:1px solid rgba(21,101,192,.2);border-radius:8px;padding:12px 16px;margin-top:14px;}
+.source-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px;}
+.source-list{font-size:11px;color:var(--blue);direction:ltr;line-height:1.8;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">📘</div>
+  <div><div class="t-title">Édito A2 · Unité 1 · Leçon 1</div><div class="t-sub">مهرآفرین · واژگان · تحلیل · گرامر</div></div>
+  <a class="back" href="index.html">← Unité 1</a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">ÉDITO A2 · UNITÉ 1 · LEÇON 1</div>
+  <h1>Vacances en famille</h1>
+  <div class="hero-fa">تعطیلات خانوادگی</div>
+  <div class="hero-pills">
+    <span class="hpill">📖 Niveau A2</span>
+    <span class="hpill">🏄 Sports &amp; loisirs</span>
+    <span class="hpill">🔵 فعل · 🟢 کالوکیشن · 🟣 واژگان · 🟠 گرامر</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('texte',this)">📄 متن + ترجمه</div>
+  <div class="tab" onclick="showTab('vocab',this)">📚 واژگان و کالوکیشن</div>
+  <div class="tab" onclick="showTab('gram',this)">⚙️ گرامر — à + infinitif</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: TEXTE ═══ -->
+<div class="panel active" id="panel-texte">
+
+  <div style="background:var(--blue-mist);border:1px solid rgba(21,101,192,.2);border-radius:10px;padding:12px 18px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;">
+    🔵 <strong style="color:var(--blue)">فعل مهم</strong> &nbsp;·&nbsp;
+    🟢 <strong style="color:var(--green)">کالوکیشن</strong> &nbsp;·&nbsp;
+    🟠 <strong style="color:var(--amber-deep)">ساختار گرامری</strong> &nbsp;·&nbsp;
+    🟣 <strong style="color:var(--purple)">واژه کلیدی</strong>
+  </div>
+
+  <!-- مقدمه -->
+  <div class="text-block">
+    <div class="text-head"><span class="text-icon">🏖️</span><span class="text-title">Introduction</span><span class="text-title-fa">مقدمه</span></div>
+    <div class="text-body">
+      <div class="sent"><div class="sent-fr">Ça y est, c'est <span class="hl-vocab">les vacances</span> !</div><div class="sent-fa">بالاخره تعطیلات از راه رسید!</div></div>
+      <div class="sent"><div class="sent-fr">Tout <span class="hl-verb">est</span> prêt, vous n'<span class="hl-verb">avez</span> rien <span class="hl-verb">oublié</span> ?</div><div class="sent-fa">همه‌چیز آماده است، چیزی را فراموش نکرده‌اید؟</div></div>
+      <div class="sent"><div class="sent-fr">C'est l'<span class="hl-gram">occasion de faire</span> des <span class="hl-col">sorties</span> et, pourquoi pas, <span class="hl-gram">du sport ensemble</span>.</div><div class="sent-fa">این فرصت خوبی است که به گردش بروید و چرا با هم ورزش نکنید؟</div></div>
+      <div class="sent"><div class="sent-fr">Mais <span class="hl-gram">faire du sport</span> en famille, ce n'est <span class="hl-vocab">jamais simple</span> :</div><div class="sent-fa">اما ورزش کردن با خانواده هیچ‌وقت کار ساده‌ای نیست.</div></div>
+      <div class="sent"><div class="sent-fr">il faut <span class="hl-gram">trouver une activité</span> pour tout le monde.</div><div class="sent-fa">باید فعالیتی پیدا کرد که برای همه مناسب باشد.</div></div>
+      <div class="sent"><div class="sent-fr">Voici quelques <span class="hl-vocab">idées d'activités sportives</span> <span class="hl-gram">à pratiquer</span> en famille cet été.</div><div class="sent-fa">در اینجا چند ایده برای فعالیت‌های ورزشی آورده شده که می‌توانید تابستان امسال همراه خانواده انجام دهید.</div></div>
+    </div>
+  </div>
+
+  <!-- کانو -->
+  <div class="text-block">
+    <div class="text-head"><span class="text-icon">🛶</span><span class="text-title">Le canoë-kayak</span><span class="text-title-fa">قایق‌رانی</span></div>
+    <div class="text-body">
+      <div class="sent"><div class="sent-fr">C'est l'<span class="hl-col">activité familiale idéale</span> quand il <span class="hl-col">fait beau</span>.</div><div class="sent-fa">وقتی هوا خوب است، این یک تفریح خانوادگی ایده‌آل است.</div></div>
+      <div class="sent"><div class="sent-fr">Entre <span class="hl-vocab">loisir nautique</span> et véritable sport,</div><div class="sent-fa">این فعالیت هم یک تفریح آبی است و هم یک ورزش واقعی.</div></div>
+      <div class="sent"><div class="sent-fr">vous pouvez <span class="hl-gram">faire une balade</span> de plusieurs heures</div><div class="sent-fa">می‌توانید چندین ساعت به گشت‌وگذار بپردازید.</div></div>
+      <div class="sent"><div class="sent-fr">sur une rivière ou un fleuve,</div><div class="sent-fa">روی یک رودخانه یا رود بزرگ.</div></div>
+      <div class="sent"><div class="sent-fr"><span class="hl-verb">voir</span> des <span class="hl-vocab">paysages superbes</span></div><div class="sent-fa">و مناظر فوق‌العاده‌ای را تماشا کنید.</div></div>
+      <div class="sent"><div class="sent-fr">et <span class="hl-col">profiter de l'eau</span> fraîche.</div><div class="sent-fa">و از آب خنک لذت ببرید.</div></div>
+    </div>
+  </div>
+
+  <!-- استندآپ پدل -->
+  <div class="text-block">
+    <div class="text-head"><span class="text-icon">🏄</span><span class="text-title">Le stand-up paddle</span><span class="text-title-fa">استندآپ پدل</span></div>
+    <div class="text-body">
+      <div class="sent"><div class="sent-fr">C'est la <span class="hl-vocab">star des sports d'eau</span> en famille.</div><div class="sent-fa">این ورزش، ستاره‌ی ورزش‌های آبی خانوادگی است.</div></div>
+      <div class="sent"><div class="sent-fr">Ce sport <span class="hl-vocab">simple et accessible</span> est très <span class="hl-vocab">agréable</span></div><div class="sent-fa">این ورزش ساده و در دسترس، بسیار لذت‌بخش است.</div></div>
+      <div class="sent"><div class="sent-fr">pour <span class="hl-col">s'amuser tous ensemble</span>.</div><div class="sent-fa">تا همه با هم خوش بگذرانند.</div></div>
+      <div class="sent"><div class="sent-fr">Il faut juste <span class="hl-col">tenir debout</span> sur une <span class="hl-vocab">planche</span></div><div class="sent-fa">فقط کافی است روی یک تخته تعادل خود را حفظ کرده و بایستید.</div></div>
+      <div class="sent"><div class="sent-fr">et <span class="hl-verb">pagayer</span> !</div><div class="sent-fa">و پارو بزنید!</div></div>
+    </div>
+  </div>
+
+  <!-- دوچرخه -->
+  <div class="text-block">
+    <div class="text-head"><span class="text-icon">🚴</span><span class="text-title">Le vélo</span><span class="text-title-fa">دوچرخه‌سواری</span></div>
+    <div class="text-body">
+      <div class="sent"><div class="sent-fr">Si votre famille n'<span class="hl-verb">aime</span> pas trop les <span class="hl-vocab">sports aquatiques</span>,</div><div class="sent-fa">اگر خانواده‌ی شما چندان به ورزش‌های آبی علاقه ندارد،</div></div>
+      <div class="sent"><div class="sent-fr">il y a <span class="hl-vocab">l'option vélo</span> !</div><div class="sent-fa">دوچرخه‌سواری هم یک گزینه است!</div></div>
+      <div class="sent"><div class="sent-fr">En plus d'<span class="hl-col">offrir un moment en plein air</span></div><div class="sent-fa">علاوه بر اینکه زمانی را در فضای باز فراهم می‌کند،</div></div>
+      <div class="sent"><div class="sent-fr">au milieu de <span class="hl-col">beaux paysages</span>,</div><div class="sent-fa">در میان مناظر زیبا،</div></div>
+      <div class="sent"><div class="sent-fr">le vélo est un bon moyen de <span class="hl-col">rester en bonne santé</span>.</div><div class="sent-fa">دوچرخه‌سواری راه بسیار خوبی برای حفظ سلامتی است.</div></div>
+    </div>
+  </div>
+
+  <!-- ویا فراتا -->
+  <div class="text-block">
+    <div class="text-head"><span class="text-icon">🧗</span><span class="text-title">La via ferrata</span><span class="text-title-fa">ویا فراتا</span></div>
+    <div class="text-body">
+      <div class="sent"><div class="sent-fr">C'est l'<span class="hl-col">aventure familiale parfaite</span> !</div><div class="sent-fa">این یک ماجراجویی خانوادگی بی‌نقص است!</div></div>
+      <div class="sent"><div class="sent-fr">Entre <span class="hl-vocab">randonnée</span> et <span class="hl-vocab">escalade</span>,</div><div class="sent-fa">این فعالیت چیزی بین پیاده‌روی در طبیعت و صخره‌نوردی است.</div></div>
+      <div class="sent"><div class="sent-fr">cette activité sportive <span class="hl-verb">permet de</span> <span class="hl-gram">découvrir</span></div><div class="sent-fa">این فعالیت ورزشی به شما امکان می‌دهد</div></div>
+      <div class="sent"><div class="sent-fr">d'une autre manière <span class="hl-col">la montagne et la nature</span>.</div><div class="sent-fa">کوهستان و طبیعت را به شکلی متفاوت کشف کنید.</div></div>
+      <div class="sent"><div class="sent-fr">Du <span class="hl-vocab">matériel de sécurité</span> est présent sur tout le parcours</div><div class="sent-fa">در تمام مسیر، تجهیزات ایمنی نصب شده است.</div></div>
+      <div class="sent"><div class="sent-fr">et <span class="hl-verb">permet</span> aux plus petits de <span class="hl-gram">monter sans problème</span>.</div><div class="sent-fa">و به کوچک‌ترها نیز اجازه می‌دهد بدون مشکل بالا بروند.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2: VOCAB ═══ -->
+<div class="panel" id="panel-vocab">
+
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:var(--blue)"></div> فعل مهم</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--green)"></div> کالوکیشن (collocation)</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--purple)"></div> واژه کلیدی</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--amber-deep)"></div> ساختار گرامری</div>
+  </div>
+
+  <!-- VERBES -->
+  <div class="v-section">
+    <div class="v-sec-title">🔵 فعل‌های مهم — Verbes</div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word verb">faire (du sport / une balade / des sorties)</div>
+        <span class="v-type-badge badge-verb">VERBE CLÉ</span>
+      </div>
+      <div class="v-note">💡 «faire» با اسم‌های بدون مالکیت — ساختار فرانسوی معمول برای فعالیت‌ها</div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">On <strong>fait du sport</strong> ensemble le week-end, donc on se sent mieux et on passe un bon moment en famille.</div><div class="v-ex-fa">آخر هفته با هم ورزش می‌کنیم، پس احساس بهتری داریم و وقت خوبی را با خانواده می‌گذرانیم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Quand il fait beau, on <strong>fait une balade</strong> dans la forêt parce que c'est agréable et gratuit.</div><div class="v-ex-fa">وقتی هوا خوب است، در جنگل گردش می‌کنیم چون لذت‌بخش و رایگان است.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Pendant les vacances, on aime <strong>faire des sorties</strong> en famille, alors on cherche des activités pour tout le monde.</div><div class="v-ex-fa">در تعطیلات دوست داریم با خانواده گردش برویم، پس دنبال فعالیت‌هایی می‌گردیم که برای همه مناسب باشد.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word verb">permettre de + infinitif</div>
+        <span class="v-type-badge badge-verb">VERBE</span>
+      </div>
+      <div class="v-note">💡 «permettre de» + مصدر = امکان دادن برای کاری — ساختار رسمی A2/B1</div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Le vélo <strong>permet de</strong> découvrir la région lentement, donc on voit beaucoup plus de choses que dans une voiture.</div><div class="v-ex-fa">دوچرخه امکان می‌دهد منطقه را آهسته کشف کنید، پس خیلی بیشتر از داخل ماشین چیزها می‌بینید.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Le matériel de sécurité <strong>permet</strong> aux enfants <strong>de</strong> monter sans danger, alors les parents sont moins inquiets.</div><div class="v-ex-fa">تجهیزات ایمنی به بچه‌ها امکان می‌دهد بدون خطر بالا بروند، پس والدین کمتر نگران هستند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Apprendre le français <strong>permet de</strong> comprendre une nouvelle culture, c'est pourquoi c'est si utile.</div><div class="v-ex-fa">یادگیری فرانسه امکان می‌دهد فرهنگ جدیدی را بشناسی، به همین دلیل خیلی مفید است.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word verb">profiter de</div>
+        <span class="v-type-badge badge-verb">VERBE</span>
+      </div>
+      <div class="v-note">💡 «profiter de» = استفاده کردن از / لذت بردن از (چیزی مثبت)</div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Pendant les vacances, on <strong>profite du</strong> beau temps pour sortir tous les jours, donc on rentre toujours fatigués mais heureux.</div><div class="v-ex-fa">در تعطیلات از هوای خوب استفاده می‌کنیم و هر روز بیرون می‌رویم، پس همیشه خسته اما خوشحال برمی‌گردیم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Il faut <strong>profiter de</strong> l'eau fraîche de la rivière parce qu'en été, il fait très chaud.</div><div class="v-ex-fa">باید از آب خنک رودخانه لذت برد چون تابستان هوا خیلی گرم است.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Je <strong>profite de</strong> mes vacances pour apprendre quelque chose de nouveau, alors je me sens utile même en me reposant.</div><div class="v-ex-fa">از تعطیلاتم استفاده می‌کنم تا چیز جدیدی یاد بگیرم، پس حتی در حال استراحت احساس مفید بودن می‌کنم.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word verb">trouver (une activité / une solution)</div>
+        <span class="v-type-badge badge-verb">VERBE</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Il est difficile de <strong>trouver une activité</strong> qui convient à tout le monde, mais si on cherche bien, on y arrive.</div><div class="v-ex-fa">پیدا کردن فعالیتی که برای همه مناسب باشد سخت است، اما اگر خوب بگردیم موفق می‌شویم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">J'ai cherché une heure et enfin j'ai <strong>trouvé</strong> une bonne activité pour nos vacances.</div><div class="v-ex-fa">یک ساعت گشتم و بالاخره یک فعالیت خوب برای تعطیلاتمان پیدا کردم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">On ne <strong>trouve</strong> pas toujours la solution parfaite, donc il faut parfois faire des compromis en famille.</div><div class="v-ex-fa">همیشه راه‌حل کامل پیدا نمی‌کنیم، پس گاهی باید در خانواده سازش کرد.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COLLOCATIONS -->
+  <div class="v-section">
+    <div class="v-sec-title">🟢 کالوکیشن‌ها — Collocations</div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word col">faire beau / il fait beau</div>
+        <span class="v-type-badge badge-col">COLLOCATION</span>
+      </div>
+      <div class="v-note">💡 هوا و آب‌وهوا در فرانسه با «faire» بیان می‌شود — هرگز «être beau» نگویید!</div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Quand <strong>il fait beau</strong>, on sort en famille parce qu'on aime profiter du soleil.</div><div class="v-ex-fa">وقتی هوا خوب است با خانواده بیرون می‌رویم چون دوست داریم از آفتاب لذت ببریم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Ce week-end <strong>il fait beau</strong>, donc on peut faire une balade en vélo dans la forêt.</div><div class="v-ex-fa">این آخر هفته هوا خوب است، پس می‌توانیم در جنگل با دوچرخه گشت بزنیم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">En été, <strong>il fait</strong> souvent très chaud, alors on cherche des activités à l'ombre ou près de l'eau.</div><div class="v-ex-fa">تابستان اغلب هوا خیلی گرم است، پس دنبال فعالیت‌هایی می‌گردیم در سایه یا نزدیک آب.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word col">rester en bonne santé</div>
+        <span class="v-type-badge badge-col">COLLOCATION</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Le vélo est un bon moyen de <strong>rester en bonne santé</strong>, donc beaucoup de gens l'utilisent tous les jours.</div><div class="v-ex-fa">دوچرخه راه خوبی برای حفظ سلامتی است، پس خیلی‌ها هر روز از آن استفاده می‌کنند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Pour <strong>rester en bonne santé</strong>, il faut manger équilibré et faire du sport régulièrement.</div><div class="v-ex-fa">برای حفظ سلامتی باید متعادل غذا خورد و به طور منظم ورزش کرد.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Elle <strong>reste en bonne santé</strong> parce qu'elle marche une heure chaque matin et évite le sucre.</div><div class="v-ex-fa">سلامتش را حفظ می‌کند چون هر صبح یک ساعت پیاده‌روی می‌کند و از شکر پرهیز می‌کند.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word col">s'amuser ensemble / tous ensemble</div>
+        <span class="v-type-badge badge-col">COLLOCATION</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">On aime <strong>s'amuser tous ensemble</strong> pendant les vacances, c'est pourquoi on cherche des activités pour toute la famille.</div><div class="v-ex-fa">دوست داریم همه با هم در تعطیلات خوش بگذرانیم، به همین دلیل دنبال فعالیت برای کل خانواده می‌گردیم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Le stand-up paddle est idéal pour <strong>s'amuser ensemble</strong> parce que même les débutants peuvent y arriver.</div><div class="v-ex-fa">استندآپ پدل ایده‌آل است برای خوش گذراندن با هم چون حتی مبتدی‌ها هم می‌توانند انجامش دهند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">On joue aux cartes le soir pour <strong>s'amuser ensemble</strong>, et c'est un bon moment pour discuter et rigoler.</div><div class="v-ex-fa">شب‌ها ورق بازی می‌کنیم تا همه با هم خوش بگذرانیم، و لحظه خوبی است برای صحبت کردن و خندیدن.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word col">tenir debout / se tenir debout</div>
+        <span class="v-type-badge badge-col">COLLOCATION</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Au stand-up paddle, il faut apprendre à <strong>tenir debout</strong> sur la planche, mais après quelques minutes, ça devient naturel.</div><div class="v-ex-fa">در استندآپ پدل باید یاد گرفت روی تخته ایستاد، اما بعد از چند دقیقه طبیعی می‌شود.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Il était tellement fatigué qu'il pouvait à peine <strong>tenir debout</strong>, donc il est allé se coucher tout de suite.</div><div class="v-ex-fa">آنقدر خسته بود که به زور می‌توانست بایستد، پس بلافاصله رفت خوابید.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Pour <strong>tenir debout</strong> sur la planche, il faut garder les pieds écartés et les genoux légèrement pliés.</div><div class="v-ex-fa">برای ایستادن روی تخته باید پاها را از هم باز نگه داشت و زانوها را کمی خم کرد.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word col">aventure familiale / activité familiale</div>
+        <span class="v-type-badge badge-col">COLLOCATION</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">La via ferrata est une <strong>aventure familiale parfaite</strong> parce qu'elle mélange effort et découverte.</div><div class="v-ex-fa">ویا فراتا یک ماجراجویی خانوادگی بی‌نقص است چون تلاش و کشف را با هم ترکیب می‌کند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">On cherche une <strong>activité familiale</strong> accessible, donc on a choisi le canoë parce que tout le monde peut le faire.</div><div class="v-ex-fa">دنبال یک فعالیت خانوادگی در دسترس می‌گردیم، پس کانو را انتخاب کردیم چون همه می‌توانند انجامش دهند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Pendant les vacances, on fait toujours une <strong>activité familiale</strong> par jour pour passer du temps ensemble.</div><div class="v-ex-fa">در تعطیلات همیشه روزی یک فعالیت خانوادگی انجام می‌دهیم تا با هم وقت بگذرانیم.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word col">beaux paysages / paysages superbes</div>
+        <span class="v-type-badge badge-col">COLLOCATION</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">En vélo, on traverse des <strong>beaux paysages</strong> et on peut s'arrêter quand on veut pour prendre des photos.</div><div class="v-ex-fa">با دوچرخه از مناظر زیبا رد می‌شویم و می‌توانیم هر وقت خواستیم برای عکس گرفتن توقف کنیم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">La rivière traverse des <strong>paysages superbes</strong>, donc le canoë est une excellente façon de les découvrir.</div><div class="v-ex-fa">رودخانه از مناظر فوق‌العاده رد می‌شود، پس کانو روش عالی برای کشف آن‌هاست.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">J'ai adoré cette région parce qu'il y a des <strong>paysages superbes</strong> partout et l'air est très pur.</div><div class="v-ex-fa">این منطقه را خیلی دوست داشتم چون همه جا مناظر فوق‌العاده است و هوا خیلی خالص است.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VOCABULAIRE -->
+  <div class="v-section">
+    <div class="v-sec-title">🟣 واژگان کلیدی — Vocabulaire</div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word vocab">les vacances (f.pl)</div>
+        <span class="v-type-badge badge-vocab">NOM · TOUJOURS PLURIEL</span>
+      </div>
+      <div class="v-note">💡 «vacances» همیشه جمع است در فرانسه — هرگز «la vacance» نگویید!</div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Pendant <strong>les vacances</strong> d'été, on essaie de faire des activités différentes pour ne pas s'ennuyer.</div><div class="v-ex-fa">در تعطیلات تابستان سعی می‌کنیم فعالیت‌های مختلف انجام دهیم تا حوصله‌مان سر نرود.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr"><strong>Les vacances</strong> sont finies, donc il faut reprendre le travail, mais j'ai de beaux souvenirs.</div><div class="v-ex-fa">تعطیلات تمام شد، پس باید دوباره شروع به کار کرد، اما خاطرات خوبی دارم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Vous partez en <strong>vacances</strong> cet été ? Moi, j'ai choisi la montagne parce que j'aime les randonnées.</div><div class="v-ex-fa">امسال تابستان تعطیلات می‌روید؟ من کوهستان را انتخاب کردم چون پیاده‌روی در طبیعت دوست دارم.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word vocab">la randonnée</div>
+        <span class="v-type-badge badge-vocab">NOM</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">On a fait une <strong>randonnée</strong> de trois heures dans les Alpes, et même si c'était fatiguant, le paysage valait la peine.</div><div class="v-ex-fa">یک پیاده‌روی سه ساعته در آلپ کردیم، و با اینکه خسته‌کننده بود، منظره ارزشش را داشت.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">La <strong>randonnée</strong> est idéale pour les familles parce qu'on peut choisir un parcours adapté au niveau de chacun.</div><div class="v-ex-fa">پیاده‌روی برای خانواده‌ها ایده‌آل است چون می‌توان مسیری متناسب با سطح هر کس انتخاب کرد.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Avant une <strong>randonnée</strong>, il faut préparer de l'eau et des chaussures confortables pour éviter les problèmes.</div><div class="v-ex-fa">قبل از پیاده‌روی باید آب و کفش راحت آماده کرد تا از مشکلات جلوگیری شود.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word vocab">accessible</div>
+        <span class="v-type-badge badge-vocab">ADJ</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Le stand-up paddle est <strong>accessible</strong> à tous, donc même les enfants et les grands-parents peuvent y participer.</div><div class="v-ex-fa">استندآپ پدل برای همه در دسترس است، پس حتی بچه‌ها و پدربزرگ‌ها و مادربزرگ‌ها هم می‌توانند شرکت کنند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">On cherche un sport <strong>accessible</strong> et pas trop cher parce qu'on n'a pas beaucoup de budget pour les vacances.</div><div class="v-ex-fa">دنبال یک ورزش در دسترس و نه خیلی گران می‌گردیم چون برای تعطیلات بودجه زیادی نداریم.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Grâce aux nouvelles technologies, l'apprentissage des langues est maintenant <strong>accessible</strong> à tout le monde.</div><div class="v-ex-fa">به لطف فناوری‌های جدید، یادگیری زبان‌ها حالا برای همه در دسترس است.</div></div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-head">
+        <div class="v-word vocab">le matériel de sécurité</div>
+        <span class="v-type-badge badge-vocab">NOM COMPOSÉ</span>
+      </div>
+      <div class="v-examples">
+        <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Sur la via ferrata, il y a du <strong>matériel de sécurité</strong> sur tout le parcours, donc les débutants peuvent y aller sans problème.</div><div class="v-ex-fa">در ویا فراتا در تمام مسیر تجهیزات ایمنی وجود دارد، پس مبتدی‌ها می‌توانند بدون مشکل بروند.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Avant de partir faire du canoë, on nous a donné du <strong>matériel de sécurité</strong> parce que la rivière était rapide.</div><div class="v-ex-fa">قبل از رفتن برای قایق‌رانی تجهیزات ایمنی به ما دادند چون رودخانه تند بود.</div></div>
+        <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Le <strong>matériel de sécurité</strong> est obligatoire pour tous les sports extrêmes, même si ça paraît excessif.</div><div class="v-ex-fa">تجهیزات ایمنی برای همه ورزش‌های اکستریم اجباری است، حتی اگر زیاده‌روی به نظر برسد.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ PANEL 3: GRAMMAIRE ═══ -->
+<div class="panel" id="panel-gram">
+
+  <div class="gram-box">
+    <div class="gram-head">
+      <div class="gram-title">⚙️ Nom/Pronom + à + infinitif</div>
+      <div class="gram-title-fa">اسم + à + مصدر — برای بیان قصد، هدف یا الزام</div>
+    </div>
+    <div class="gram-body">
+
+      <div class="gram-rule">
+        <code>[ NOM ]  +  à  +  [ INFINITIF ]</code>
+        <p>Les tâches <strong>à faire</strong> · Des exercices <strong>à pratiquer</strong> · Une activité <strong>à découvrir</strong></p>
+      </div>
+
+      <div class="gram-explain">
+        ساختار <em>à + infinitif</em> بعد از یک اسم به معنای <strong>«که باید ... شود»</strong> یا <strong>«برای ... کردن»</strong> است.
+        این ساختار یک <strong>ارزش الزامی (valeur obligatoire)</strong> یا <strong>ارزش هدف‌مند (valeur finalisatrice)</strong> دارد.
+      </div>
+      <div class="gram-fa">
+        به زبان ساده: اسم + à + مصدر = یعنی «این اسم، هدفش انجام آن فعل است» یا «این اسم، باید آن فعل روی آن انجام شود»
+      </div>
+
+      <!-- Case 1: Obligation -->
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:700;color:var(--amber-deep);margin-bottom:8px;font-size:13px;">📌 حالت ۱ — الزام: «که باید ... شود»</div>
+        <div class="gram-cases">
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--amber-pale);color:var(--amber-deep);">از متن — les tâches à faire</div>
+            <div class="gc-ex">Voici des idées d'activités <strong>à pratiquer</strong> en famille.</div>
+            <div class="gc-fa">در اینجا ایده‌هایی برای فعالیت‌هایی که باید با خانواده انجام دهید آمده.</div>
+          </div>
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--amber-pale);color:var(--amber-deep);">مثال روزمره</div>
+            <div class="gc-ex">J'ai une liste de choses <strong>à faire</strong> avant de partir en vacances.</div>
+            <div class="gc-fa">یک لیست از کارهایی دارم که قبل از رفتن به تعطیلات باید انجام دهم.</div>
+          </div>
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--amber-pale);color:var(--amber-deep);">مثال یادگیری</div>
+            <div class="gc-ex">Il y a encore des exercices <strong>à pratiquer</strong> avant l'examen.</div>
+            <div class="gc-fa">هنوز تمرین‌هایی هست که باید قبل از امتحان انجام داد.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: Purpose -->
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:700;color:var(--blue);margin-bottom:8px;font-size:13px;">📌 حالت ۲ — هدف: «برای ... کردن»</div>
+        <div class="gram-cases">
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--blue-pale);color:var(--blue);">از متن — l'occasion de faire</div>
+            <div class="gc-ex">C'est une occasion <strong>à ne pas manquer</strong>.</div>
+            <div class="gc-fa">این فرصتی است که نباید از دست داد.</div>
+          </div>
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--blue-pale);color:var(--blue);">مثال ۲</div>
+            <div class="gc-ex">J'ai un livre intéressant <strong>à lire</strong> ce week-end.</div>
+            <div class="gc-fa">یک کتاب جالب دارم که این آخر هفته باید بخوانم.</div>
+          </div>
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--blue-pale);color:var(--blue);">مثال ۳</div>
+            <div class="gc-ex">Ce film est <strong>à voir</strong> absolument, il est excellent.</div>
+            <div class="gc-fa">این فیلم حتماً باید دیده شود، عالی است.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3: il y a / c'est -->
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:700;color:var(--green);margin-bottom:8px;font-size:13px;">📌 حالت ۳ — با «il y a» و «c'est»</div>
+        <div class="gram-cases">
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--green-pale);color:var(--green);">il y a + nom + à + inf</div>
+            <div class="gc-ex">Il y a des paysages superbes <strong>à découvrir</strong> dans cette région.</div>
+            <div class="gc-fa">مناظر فوق‌العاده‌ای هست که باید در این منطقه کشف شوند.</div>
+          </div>
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--green-pale);color:var(--green);">c'est + adj + à + inf</div>
+            <div class="gc-ex">C'est <strong>difficile à croire</strong>, mais il parle cinq langues.</div>
+            <div class="gc-fa">باور کردنی نیست، اما پنج زبان حرف می‌زند.</div>
+          </div>
+          <div class="gram-case">
+            <div class="gc-head" style="background:var(--green-pale);color:var(--green);">quelque chose / rien + à + inf</div>
+            <div class="gc-ex">Tu n'as rien <strong>à faire</strong> ce soir ? On peut sortir ensemble.</div>
+            <div class="gc-fa">امشب کاری نداری؟ می‌توانیم با هم بیرون برویم.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison table -->
+      <div style="background:var(--paper);border:2px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:16px;">
+        <div style="background:var(--navy);padding:10px 16px;font-size:12px;font-weight:700;color:white;">⚖️ تفاوت مهم — à + inf در مقابل de + inf</div>
+        <div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--amber-deep);margin-bottom:6px;">NOM + à + INF</div>
+            <div style="font-size:13px;direction:ltr;margin-bottom:4px;">des idées <strong>à pratiquer</strong></div>
+            <div style="font-size:11px;color:var(--gray);direction:rtl;text-align:right;">ایده‌هایی که باید تمرین شوند (الزام/هدف)</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px;">NOM + de + INF</div>
+            <div style="font-size:13px;direction:ltr;margin-bottom:4px;">l'occasion <strong>de faire</strong></div>
+            <div style="font-size:11px;color:var(--gray);direction:rtl;text-align:right;">فرصتِ انجام دادن (محتوا/توضیح)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Examples in context -->
+      <div style="font-weight:700;color:var(--purple);margin-bottom:10px;font-size:13px;">🔗 مثال‌های مرکب با connectives سطح A2</div>
+      <div class="gram-cases">
+        <div class="gram-case">
+          <div class="gc-head" style="background:var(--purple-pale);color:var(--purple);">avec «donc»</div>
+          <div class="gc-ex">J'ai beaucoup de choses <strong>à faire</strong> ce week-end, donc je ne peux pas venir à la fête.</div>
+          <div class="gc-fa">این آخر هفته کارهای زیادی دارم که باید انجام دهم، پس نمی‌توانم به مهمانی بیایم.</div>
+        </div>
+        <div class="gram-case">
+          <div class="gc-head" style="background:var(--purple-pale);color:var(--purple);">avec «parce que»</div>
+          <div class="gc-ex">Il y a encore des exercices <strong>à pratiquer</strong> parce que l'examen est dans deux jours.</div>
+          <div class="gc-fa">هنوز تمرین‌هایی هست که باید انجام داد چون امتحان دو روز دیگر است.</div>
+        </div>
+        <div class="gram-case">
+          <div class="gc-head" style="background:var(--purple-pale);color:var(--purple);">avec «mais»</div>
+          <div class="gc-ex">C'est facile <strong>à comprendre</strong>, mais difficile <strong>à mettre en pratique</strong>.</div>
+          <div class="gc-fa">فهمیدنش آسان است، اما به کار بردنش سخت است.</div>
+        </div>
+        <div class="gram-case">
+          <div class="gc-head" style="background:var(--purple-pale);color:var(--purple);">avec «si»</div>
+          <div class="gc-ex">Si tu as du temps <strong>à perdre</strong>, viens m'aider dans le jardin !</div>
+          <div class="gc-fa">اگر وقتی داری که هدر بدهی، بیا کمکم کن در باغ!</div>
+        </div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-title">📖 منابع معتبر</div>
+        <div class="source-list">
+          · Grammaire progressive du français (Grégoire &amp; Thiévenaz, CLE International) — Niveau intermédiaire, p. 142<br>
+          · Le Bon Usage (Grevisse &amp; Goosse, De Boeck) — §1107 : adjectif + à + infinitif<br>
+          · Grammaire méthodique du français (Riegel, Pellat, Rioul, PUF) — §16.2.3<br>
+          · Bescherelle La Grammaire pour tous (Hatier) — «Le groupe infinitif à valeur nominale»
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← Unité 1</a> · Édito A2 · U1 L1 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
