@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Vocabulaire important · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;--paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;--white:#fff;}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.topbar-title{font-size:16px;font-weight:700;color:white;}
+.topbar-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+.back:hover{background:var(--pink);}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),var(--pink));color:white;padding:44px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:700;margin-bottom:8px;}
+.hero-sub{font-size:14px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* FILTER */
+.filter-bar{display:flex;overflow-x:auto;gap:8px;padding:14px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;}
+.filter-btn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:var(--pink);border-color:var(--pink);color:white;}
+
+/* MAIN */
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px;}
+
+/* VOCAB CARD */
+.v-card{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:22px;box-shadow:0 3px 12px rgba(194,24,91,.06);}
+.v-card.hidden{display:none;}
+
+.v-header{display:flex;align-items:center;gap:0;}
+.v-num{background:var(--pink);color:white;font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;min-width:48px;height:64px;display:flex;align-items:center;justify-content:center;}
+.v-word-block{padding:12px 20px;flex:1;border-bottom:2px solid var(--line);}
+.v-word{font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--pink-deep);direction:ltr;margin-bottom:3px;}
+.v-meaning{font-size:13px;direction:rtl;text-align:right;color:var(--gray);}
+.v-cat{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;margin-right:auto;white-space:nowrap;}
+
+/* EXAMPLES */
+.v-examples{padding:0;}
+.ex-item{display:flex;flex-direction:column;padding:13px 20px;border-bottom:1px dashed var(--line);}
+.ex-item:last-child{border:none;}
+.ex-item:first-child{background:#fffbfc;}
+.ex-num{font-size:9px;font-weight:700;color:var(--pink);margin-bottom:4px;letter-spacing:.08em;}
+.ex-fr{font-family:'Roboto',sans-serif;font-size:14px;direction:ltr;text-align:left;color:var(--ink);line-height:1.65;margin-bottom:4px;}
+.ex-fr em{color:var(--pink-deep);font-style:normal;font-weight:700;background:rgba(194,24,91,.1);padding:0 3px;border-radius:3px;}
+.ex-fa{font-size:12px;direction:rtl;text-align:right;color:var(--gray);line-height:1.7;}
+
+/* SCROLL */
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 4px 14px rgba(194,24,91,.35);}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:600px){.v-num{min-width:38px;font-size:12px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:22px;">📚</div>
+  <div><div class="topbar-title">واژه‌های مهم</div><div class="topbar-sub">مهرآفرین · Vocabulaire A2</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>📚 واژه‌های مهم</h1>
+    <div class="hero-sub">۲۰ واژه کاربردی A2 با ۶ مثال هر کدام + ترجمه فارسی</div>
+    <div class="hero-pills">
+      <span class="hpill">📖 Niveau A2</span>
+      <span class="hpill">20 mots</span>
+      <span class="hpill">6 exemples chacun</span>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter('all',this)">همه (۲۰)</button>
+  <button class="filter-btn" onclick="setFilter('positif',this)">✨ مثبت</button>
+  <button class="filter-btn" onclick="setFilter('negatif',this)">⚠️ منفی / دشوار</button>
+  <button class="filter-btn" onclick="setFilter('neutre',this)">🔵 خنثی / عمومی</button>
+</div>
+
+<div class="wrap" id="cards-wrap">
+
+<!-- 1 -->
+<div class="v-card" data-cat="positif" id="c1">
+  <div class="v-header">
+    <div class="v-num">1</div>
+    <div class="v-word-block">
+      <div class="v-word">la chance</div>
+      <div class="v-meaning">شانس · بخت · اقبال</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">J'ai raté mon train, mais le suivant partait cinq minutes après. Quelle <em>chance</em> !</div><div class="ex-fa">قطارم را از دست دادم، اما قطار بعدی پنج دقیقه بعد راه می‌افتاد. چه شانسی!</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Il a trouvé un appartement pas cher en plein centre-ville. Il a vraiment de la <em>chance</em>.</div><div class="ex-fa">یک آپارتمان ارزان در مرکز شهر پیدا کرد. واقعاً شانس دارد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Bonne <em>chance</em> pour ton examen demain ! Je pense à toi.</div><div class="ex-fa">فردا در امتحانت موفق باشی! به فکرتم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">C'est sa <em>chance</em> : il est arrivé au bon moment, quand le poste était encore libre.</div><div class="ex-fa">این شانس اوست: در لحظه درستی رسید، وقتی پست هنوز خالی بود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">On a eu de la <em>chance</em> : la pluie a commencé juste après qu'on soit rentrés.</div><div class="ex-fa">شانس آوردیم: باران درست بعد از اینکه وارد شدیم شروع کرد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Elle n'a pas eu de <em>chance</em> cette année. Tout a mal tourné.</div><div class="ex-fa">امسال شانس نداشت. همه چیز بد پیش رفت.</div></div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="v-card" data-cat="positif" id="c2">
+  <div class="v-header">
+    <div class="v-num">2</div>
+    <div class="v-word-block">
+      <div class="v-word">la surprise</div>
+      <div class="v-meaning">غافلگیری · سورپرایز</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Mes amis m'attendaient chez moi avec un gâteau et des cadeaux. Quelle belle <em>surprise</em> !</div><div class="ex-fa">دوستانم با کیک و هدیه منتظرم بودند. چه غافلگیری زیبایی!</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">C'est une <em>surprise</em> : il n'a pas du tout aimé le film qu'on lui a recommandé.</div><div class="ex-fa">غافلگیری بود: فیلمی که توصیه کردیم اصلاً برایش جالب نبود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">On organise une fête <em>surprise</em> pour les 30 ans de Marie. Elle n'est pas au courant.</div><div class="ex-fa">یک جشن سورپرایز برای سی‌سالگی ماری ترتیب می‌دهیم. او خبر ندارد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">À ma grande <em>surprise</em>, il a accepté tout de suite sans poser de questions.</div><div class="ex-fa">خیلی غافلگیر شدم که بلافاصله بدون سؤال قبول کرد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">J'ai ouvert la boîte et quelle <em>surprise</em> : c'était exactement ce que je voulais !</div><div class="ex-fa">جعبه را باز کردم و چه سورپرایزی: دقیقاً همان چیزی بود که می‌خواستم!</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Sa démission a été une vraie <em>surprise</em> pour tout le monde au bureau.</div><div class="ex-fa">استعفایش برای همه در دفتر یک غافلگیری واقعی بود.</div></div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="v-card" data-cat="negatif" id="c3">
+  <div class="v-header">
+    <div class="v-num">3</div>
+    <div class="v-word-block">
+      <div class="v-word">le problème</div>
+      <div class="v-meaning">مشکل · معضل</div>
+    </div>
+    <span class="v-cat" style="background:#ffebee;color:#b71c1c;">⚠️ difficile</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">La voiture ne démarre pas, il pleut, et je suis déjà en retard. Voilà mon <em>problème</em>.</div><div class="ex-fa">ماشین روشن نمی‌شود، باران می‌بارد، و دیرم شده. این است مشکلم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Il a un <em>problème</em> de santé depuis quelques semaines, mais il refuse d'aller chez le médecin.</div><div class="ex-fa">چند هفتی است که مشکل سلامتی دارد، اما از رفتن به دکتر خودداری می‌کند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Le <em>problème</em>, c'est qu'on n'a pas assez d'argent pour partir en vacances cette année.</div><div class="ex-fa">مشکل اینجاست که امسال پول کافی برای تعطیلات نداریم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Tu peux m'aider ? J'ai un petit <em>problème</em> avec mon ordinateur.</div><div class="ex-fa">می‌توانی کمکم کنی؟ یک مشکل کوچک با کامپیوترم دارم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Pas de <em>problème</em> ! Je peux te déposer à la gare en voiture.</div><div class="ex-fa">مشکلی نیست! می‌توانم با ماشین تو را به ایستگاه برسانم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">On va trouver une solution ensemble. Chaque <em>problème</em> a une réponse.</div><div class="ex-fa">با هم راه‌حلی پیدا می‌کنیم. هر مشکلی جوابی دارد.</div></div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="v-card" data-cat="positif" id="c4">
+  <div class="v-header">
+    <div class="v-num">4</div>
+    <div class="v-word-block">
+      <div class="v-word">le rêve</div>
+      <div class="v-meaning">رویا · آرزو</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Une petite maison au bord de la mer, du soleil toute l'année... c'est mon <em>rêve</em>.</div><div class="ex-fa">یک خانه کوچک کنار دریا، آفتاب تمام سال... این رویای من است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Depuis petit, son <em>rêve</em> était de devenir pilote d'avion.</div><div class="ex-fa">از کودکی رویایش این بود که خلبان شود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Elle a réalisé son <em>rêve</em> : elle vit maintenant à Paris et travaille dans la mode.</div><div class="ex-fa">رویایش را تحقق بخشید: حالا در پاریس زندگی می‌کند و در مد کار می‌کند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Cette nuit, j'ai fait un très beau <em>rêve</em>. On était tous ensemble sur une plage.</div><div class="ex-fa">دیشب رویای بسیار زیبایی دیدم. همه با هم روی یک ساحل بودیم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">C'est le travail de mes <em>rêves</em> : créatif, bien payé, et avec une bonne équipe.</div><div class="ex-fa">این کار رویاهایم است: خلاقانه، با حقوق خوب، و با تیم خوب.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Ne laisse pas ton <em>rêve</em> de côté. Travaille dessus, un petit pas à la fois.</div><div class="ex-fa">رویایت را کنار نگذار. روی آن کار کن، یک قدم کوچک در هر بار.</div></div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="v-card" data-cat="negatif" id="c5">
+  <div class="v-header">
+    <div class="v-num">5</div>
+    <div class="v-word-block">
+      <div class="v-word">le cauchemar</div>
+      <div class="v-meaning">کابوس</div>
+    </div>
+    <span class="v-cat" style="background:#ffebee;color:#b71c1c;">⚠️ difficile</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">J'ai perdu mon passeport, mon argent et mon téléphone le même jour. Un vrai <em>cauchemar</em>.</div><div class="ex-fa">پاسپورت، پولم و تلفنم را همان روز گم کردم. یک کابوس واقعی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">J'ai fait un <em>cauchemar</em> cette nuit : j'étais perdue dans une grande ville inconnue.</div><div class="ex-fa">دیشب کابوس دیدم: در یک شهر بزرگ ناشناخته گم شده بودم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Ce déménagement a été un vrai <em>cauchemar</em>. Rien ne s'est passé comme prévu.</div><div class="ex-fa">این引نقل مکان یک کابوس واقعی بود. هیچ چیز طبق برنامه پیش نرفت.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Rater son examen final après des mois de travail, c'est un <em>cauchemar</em>.</div><div class="ex-fa">مردود شدن در امتحان نهایی بعد از ماه‌ها کار، یک کابوس است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Le trajet en voiture a pris cinq heures à cause des embouteillages. Un <em>cauchemar</em>.</div><div class="ex-fa">مسیر با ماشین به خاطر ترافیک پنج ساعت طول کشید. یک کابوس.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Imaginer perdre toutes ses photos de famille... c'est mon pire <em>cauchemar</em>.</div><div class="ex-fa">تصور از دست دادن تمام عکس‌های خانوادگی... این بدترین کابوس من است.</div></div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="v-card" data-cat="negatif" id="c6">
+  <div class="v-header">
+    <div class="v-num">6</div>
+    <div class="v-word-block">
+      <div class="v-word">la catastrophe</div>
+      <div class="v-meaning">فاجعه · بلا</div>
+    </div>
+    <span class="v-cat" style="background:#ffebee;color:#b71c1c;">⚠️ difficile</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Le gâteau est brûlé, les invités arrivent, et il n'y a rien d'autre à manger. La <em>catastrophe</em>.</div><div class="ex-fa">کیک سوخته، مهمانان دارند می‌آیند، و چیز دیگری برای خوردن نیست. فاجعه.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Il a oublié l'anniversaire de sa femme. C'est une vraie <em>catastrophe</em> à la maison.</div><div class="ex-fa">تولد همسرش را فراموش کرد. خانه یک فاجعه واقعی است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Ma présentation s'est très mal passée. C'était une <em>catastrophe</em>.</div><div class="ex-fa">ارائه‌ام خیلی بد پیش رفت. یک فاجعه بود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Ne t'inquiète pas, ce n'est pas une <em>catastrophe</em>. On peut tout arranger.</div><div class="ex-fa">نگران نباش، فاجعه نیست. می‌توانیم همه چیز را درست کنیم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Le match a été une <em>catastrophe</em> pour notre équipe : on a perdu cinq à zéro.</div><div class="ex-fa">بازی برای تیم ما فاجعه بود: پنج بر صفر باختیم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Mon premier jour de travail ? Une <em>catastrophe</em>. J'ai tout mélangé.</div><div class="ex-fa">اولین روز کارم؟ فاجعه. همه چیز را قاطی کردم.</div></div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="v-card" data-cat="negatif" id="c7">
+  <div class="v-header">
+    <div class="v-num">7</div>
+    <div class="v-word-block">
+      <div class="v-word">la galère</div>
+      <div class="v-meaning">دردسر · گرفتاری (خودمانی)</div>
+    </div>
+    <span class="v-cat" style="background:#ffebee;color:#b71c1c;">⚠️ familier</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Pas de métro, pas de taxi, et trois kilomètres à pied sous la pluie. La <em>galère</em>.</div><div class="ex-fa">نه مترو، نه تاکسی، و سه کیلومتر پیاده زیر باران. چه دردسری.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Trouver un logement à Paris sans garant, c'est vraiment la <em>galère</em>.</div><div class="ex-fa">پیدا کردن مسکن در پاریس بدون ضامن واقعاً دردسر است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Quelle <em>galère</em> ! Mon vol a été annulé et le prochain est dans douze heures.</div><div class="ex-fa">چه گرفتاری‌ای! پروازم لغو شد و بعدی دوازده ساعت دیگر است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Faire la queue deux heures pour acheter un billet ? C'est la <em>galère</em>.</div><div class="ex-fa">دو ساعت صبر کردن برای خرید بلیط؟ این دردسر است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Il est en <em>galère</em> depuis qu'il a perdu son travail. Rien ne marche pour lui.</div><div class="ex-fa">از وقتی کارش را از دست داد گرفتاری دارد. هیچ چیز برایش درست نمی‌شود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Réparer cette vieille voiture, c'est une vraie <em>galère</em>. Les pièces sont introuvables.</div><div class="ex-fa">تعمیر این ماشین قدیمی واقعاً دردسر است. قطعاتش پیدا نمی‌شود.</div></div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="v-card" data-cat="neutre" id="c8">
+  <div class="v-header">
+    <div class="v-num">8</div>
+    <div class="v-word-block">
+      <div class="v-word">le défi</div>
+      <div class="v-meaning">چالش · هدف سخت</div>
+    </div>
+    <span class="v-cat" style="background:#e3f2fd;color:#1565c0;">🔵 neutre</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Apprendre le français en six mois, tout en travaillant à plein temps : voilà mon <em>défi</em>.</div><div class="ex-fa">یادگیری فرانسه در شش ماه، در حالی که تمام وقت کار می‌کنم: این است چالش من.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Ce projet est un vrai <em>défi</em>, mais je suis sûr qu'on peut y arriver ensemble.</div><div class="ex-fa">این پروژه یک چالش واقعی است، اما مطمئنم که با هم می‌توانیم به آن برسیم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Elle a accepté le <em>défi</em> : courir un marathon à quarante ans sans entraînement.</div><div class="ex-fa">چالش را پذیرفت: دویدن ماراتن در چهل سالگی بدون تمرین.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Je me suis lancé un <em>défi</em> : ne pas regarder mon téléphone pendant une semaine.</div><div class="ex-fa">یک چالش برای خودم گذاشتم: یک هفته به تلفنم نگاه نکنم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Le vrai <em>défi</em>, c'est de rester motivé quand les résultats tardent à venir.</div><div class="ex-fa">چالش واقعی ماندن باانگیزه است وقتی نتایج دیر می‌آیند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">J'aime les <em>défis</em>. Ils me poussent à devenir meilleur chaque jour.</div><div class="ex-fa">چالش‌ها را دوست دارم. آن‌ها مرا وادار می‌کنند هر روز بهتر شوم.</div></div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="v-card" data-cat="negatif" id="c9">
+  <div class="v-header">
+    <div class="v-num">9</div>
+    <div class="v-word-block">
+      <div class="v-word">l'erreur</div>
+      <div class="v-meaning">اشتباه · خطا</div>
+    </div>
+    <span class="v-cat" style="background:#ffebee;color:#b71c1c;">⚠️ difficile</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">J'ai répondu sans réfléchir et j'ai blessé mon ami. C'était une <em>erreur</em>.</div><div class="ex-fa">بدون فکر جواب دادم و دوستم را ناراحت کردم. اشتباه بود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Il a fait une <em>erreur</em> dans ses calculs. Le résultat final est complètement faux.</div><div class="ex-fa">در محاسباتش اشتباه کرد. نتیجه نهایی کاملاً غلط است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Tout le monde fait des <em>erreurs</em>. L'important, c'est d'apprendre et de ne pas recommencer.</div><div class="ex-fa">همه اشتباه می‌کنند. مهم این است که یاد بگیری و دوباره تکرار نکنی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">J'ai eu une <em>erreur</em> de date : j'ai réservé l'hôtel pour le mauvais week-end.</div><div class="ex-fa">در تاریخ اشتباه کردم: هتل را برای آخر هفته اشتباه رزرو کردم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">C'est une <em>erreur</em> courante chez les débutants. Ne t'en fais pas.</div><div class="ex-fa">این یک اشتباه رایج در بین مبتدی‌ها است. نگرانش نباش.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Reconnaître ses <em>erreurs</em>, c'est le signe d'une personne mature et honnête.</div><div class="ex-fa">پذیرفتن اشتباهاتت نشانه یک فرد بالغ و صادق است.</div></div>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="v-card" data-cat="positif" id="c10">
+  <div class="v-header">
+    <div class="v-num">10</div>
+    <div class="v-word-block">
+      <div class="v-word">le miracle</div>
+      <div class="v-meaning">معجزه · شگفتی</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Il est tombé du troisième étage et il n'a rien eu. Un vrai <em>miracle</em>.</div><div class="ex-fa">از طبقه سوم افتاد و هیچ آسیبی ندید. یک معجزه واقعی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Elle a guéri d'une maladie très grave. Les médecins parlent d'un <em>miracle</em>.</div><div class="ex-fa">از یک بیماری خیلی جدی بهبود یافت. پزشکان از معجزه صحبت می‌کنند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Trouver une place de parking en plein centre un samedi matin : un vrai <em>miracle</em>.</div><div class="ex-fa">پیدا کردن جای پارک در مرکز شهر یک صبح شنبه: یک معجزه واقعی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Ce n'est pas un <em>miracle</em>, c'est le résultat d'un travail sérieux et régulier.</div><div class="ex-fa">این معجزه نیست، این نتیجه کار جدی و منظم است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Il a réussi à finir son mémoire en trois jours. Un vrai petit <em>miracle</em>.</div><div class="ex-fa">پایان‌نامه‌اش را در سه روز تمام کرد. یک معجزه کوچک واقعی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Ce livre a changé ma vie. Pour moi, c'est un petit <em>miracle</em> dans un emballage de papier.</div><div class="ex-fa">این کتاب زندگی‌ام را عوض کرد. برای من، معجزه‌ای کوچک در بسته‌بندی کاغذی است.</div></div>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="v-card" data-cat="neutre" id="c11">
+  <div class="v-header">
+    <div class="v-num">11</div>
+    <div class="v-word-block">
+      <div class="v-word">l'habitude</div>
+      <div class="v-meaning">عادت · رسم</div>
+    </div>
+    <span class="v-cat" style="background:#e3f2fd;color:#1565c0;">🔵 neutre</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Chaque matin, il boit son café en lisant le journal. C'est son <em>habitude</em>.</div><div class="ex-fa">هر صبح قهوه‌اش را در حال خواندن روزنامه می‌نوشد. این عادتش است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">J'ai pris l'<em>habitude</em> de marcher trente minutes chaque soir après le dîner.</div><div class="ex-fa">عادت کرده‌ام هر شب بعد از شام سی دقیقه پیاده‌روی کنم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">C'est une mauvaise <em>habitude</em> : il regarde son téléphone dès qu'il se réveille.</div><div class="ex-fa">این یک عادت بد است: همین که بیدار می‌شود تلفنش را نگاه می‌کند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Avec le temps, on s'adapte. Les nouvelles choses deviennent des <em>habitudes</em>.</div><div class="ex-fa">با گذشت زمان آدم سازگار می‌شود. چیزهای جدید تبدیل به عادت می‌شوند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Il a perdu ses bonnes <em>habitudes</em> pendant les vacances et a du mal à les retrouver.</div><div class="ex-fa">در تعطیلات عادت‌های خوبش را از دست داد و برگرداندنشان سخت است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Les <em>habitudes</em> alimentaires changent beaucoup quand on vit à l'étranger.</div><div class="ex-fa">عادت‌های غذایی وقتی در خارج زندگی می‌کنی خیلی تغییر می‌کنند.</div></div>
+  </div>
+</div>
+
+<!-- 12 -->
+<div class="v-card" data-cat="positif" id="c12">
+  <div class="v-header">
+    <div class="v-num">12</div>
+    <div class="v-word-block">
+      <div class="v-word">la passion</div>
+      <div class="v-meaning">اشتیاق · علاقه شدید</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Il joue, il écoute, il parle de musique du matin au soir. C'est sa <em>passion</em>.</div><div class="ex-fa">از صبح تا شب می‌نوازد، گوش می‌دهد، درباره موسیقی حرف می‌زند. این اشتیاق اوست.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Ma <em>passion</em>, c'est la photographie. Je passe des heures à prendre des photos.</div><div class="ex-fa">اشتیاق من عکاسی است. ساعت‌ها وقت می‌گذارم تا عکس بگیرم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Elle parle de cuisine avec une telle <em>passion</em> qu'on a tous envie de goûter ses plats.</div><div class="ex-fa">با چنان اشتیاقی از آشپزی حرف می‌زند که همه دلمان می‌خواهد غذاهایش را بچشیم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Quand on fait quelque chose avec <em>passion</em>, ça se voit. Le résultat est toujours meilleur.</div><div class="ex-fa">وقتی کاری را با اشتیاق می‌کنی معلوم است. نتیجه همیشه بهتر است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Il a transformé sa <em>passion</em> pour le dessin en vrai métier.</div><div class="ex-fa">اشتیاقش به نقاشی را تبدیل به شغل واقعی کرد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">La <em>passion</em> donne de l'énergie. Quand on aime ce qu'on fait, on ne se fatigue pas.</div><div class="ex-fa">اشتیاق انرژی می‌دهد. وقتی کاری را که می‌کنی دوست داری خسته نمی‌شوی.</div></div>
+  </div>
+</div>
+
+<!-- 13 -->
+<div class="v-card" data-cat="positif" id="c13">
+  <div class="v-header">
+    <div class="v-num">13</div>
+    <div class="v-word-block">
+      <div class="v-word">le plaisir</div>
+      <div class="v-meaning">لذت · خوشی</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Lire au lit un dimanche, sans réveil et sans obligation... quel <em>plaisir</em>.</div><div class="ex-fa">خواندن در رختخواب یک یکشنبه، بدون زنگ ساعت و تعهد... چه لذتی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">J'ai le <em>plaisir</em> de vous annoncer que vous avez été sélectionné pour le poste.</div><div class="ex-fa">با خوشحالی اعلام می‌کنم که شما برای این پست انتخاب شدید.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Le <em>plaisir</em> simple de manger une bonne pizza entre amis, ça n'a pas de prix.</div><div class="ex-fa">لذت ساده خوردن پیتزای خوب بین دوستان، بی‌بهاست.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Avec <em>plaisir</em> ! Je serai là à dix-neuf heures, c'est promis.</div><div class="ex-fa">با کمال میل! ساعت هفت آنجا خواهم بود، قول می‌دهم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Il prend beaucoup de <em>plaisir</em> à jardiner le week-end. C'est son moment à lui.</div><div class="ex-fa">آخر هفته خیلی لذت می‌برد که باغبانی کند. این لحظه خودش است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Le <em>plaisir</em> de retrouver sa famille après un long voyage ne se décrit pas.</div><div class="ex-fa">لذت پیدا کردن خانواده‌ات بعد از یک سفر طولانی توصیف نمی‌شود.</div></div>
+  </div>
+</div>
+
+<!-- 14 -->
+<div class="v-card" data-cat="neutre" id="c14">
+  <div class="v-header">
+    <div class="v-num">14</div>
+    <div class="v-word-block">
+      <div class="v-word">le choix</div>
+      <div class="v-meaning">انتخاب · گزینه</div>
+    </div>
+    <span class="v-cat" style="background:#e3f2fd;color:#1565c0;">🔵 neutre</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Rester ici avec sa famille ou partir travailler à l'étranger. C'est son <em>choix</em>.</div><div class="ex-fa">ماندن اینجا با خانواده یا رفتن برای کار به خارج. این انتخاب اوست.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Tu as fait le bon <em>choix</em>. Ce travail te correspond parfaitement.</div><div class="ex-fa">انتخاب درستی کردی. این کار کاملاً برازنده توست.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Je n'ai pas le <em>choix</em> : je dois finir ce rapport avant demain matin.</div><div class="ex-fa">انتخابی ندارم: باید این گزارش را قبل از فردا صبح تمام کنم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Il y a tellement de <em>choix</em> au menu que je ne sais pas quoi prendre.</div><div class="ex-fa">در منو آنقدر انتخاب هست که نمی‌دانم چه بردارم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Le <em>choix</em> d'une carrière est une décision importante qu'on ne prend pas à la légère.</div><div class="ex-fa">انتخاب یک حرفه تصمیم مهمی است که به سادگی گرفته نمی‌شود.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">C'est ton <em>choix</em>, je le respecte. Mais réfléchis encore avant de décider.</div><div class="ex-fa">این انتخاب توست، احترامش را می‌گذارم. اما قبل از تصمیم بیشتر فکر کن.</div></div>
+  </div>
+</div>
+
+<!-- 15 -->
+<div class="v-card" data-cat="neutre" id="c15">
+  <div class="v-header">
+    <div class="v-num">15</div>
+    <div class="v-word-block">
+      <div class="v-word">le risque</div>
+      <div class="v-meaning">ریسک · خطر</div>
+    </div>
+    <span class="v-cat" style="background:#e3f2fd;color:#1565c0;">🔵 neutre</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Quitter un emploi stable pour ouvrir un restaurant... c'est un gros <em>risque</em>.</div><div class="ex-fa">ترک کردن یک شغل ثابت برای باز کردن رستوران... این یک ریسک بزرگ است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Il faut prendre des <em>risques</em> dans la vie. Rien de grand ne s'obtient sans effort.</div><div class="ex-fa">باید در زندگی ریسک کرد. هیچ چیز بزرگی بدون تلاش به دست نمی‌آید.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Je ne veux pas prendre le <em>risque</em> de rater mon avion. Je pars deux heures avant.</div><div class="ex-fa">نمی‌خواهم ریسک از دست دادن هواپیمایم را بکنم. دو ساعت زودتر می‌روم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">C'est un <em>risque</em> calculé : il a tout analysé avant de se lancer.</div><div class="ex-fa">این یک ریسک حساب‌شده است: همه چیز را قبل از شروع تحلیل کرد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Il n'y a pas de <em>risque</em> à lui demander. Le pire qu'elle puisse dire, c'est non.</div><div class="ex-fa">خطری ندارد که از او بخواهی. بدترین چیزی که می‌تواند بگوید نه است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Au <em>risque</em> de me tromper, je pense que c'est la bonne décision.</div><div class="ex-fa">با اینکه ممکن است اشتباه کنم، فکر می‌کنم این تصمیم درستی است.</div></div>
+  </div>
+</div>
+
+<!-- 16 -->
+<div class="v-card" data-cat="neutre" id="c16">
+  <div class="v-header">
+    <div class="v-num">16</div>
+    <div class="v-word-block">
+      <div class="v-word">le secret</div>
+      <div class="v-meaning">راز · سر</div>
+    </div>
+    <span class="v-cat" style="background:#e3f2fd;color:#1565c0;">🔵 neutre</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Elle prépare une fête pour son mari, mais il ne doit rien savoir. C'est un <em>secret</em>.</div><div class="ex-fa">دارد برای شوهرش جشن می‌گیرد، اما او نباید چیزی بداند. این یک راز است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Le <em>secret</em> de sa réussite, c'est simple : il travaille plus que tout le monde.</div><div class="ex-fa">راز موفقیتش ساده است: بیشتر از همه کار می‌کند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Je te dis un <em>secret</em>, mais tu ne le répètes à personne, d'accord ?</div><div class="ex-fa">یک راز برایت می‌گویم، اما به کسی نمی‌گویی، باشه؟</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Garder un <em>secret</em> est parfois très difficile, surtout quand c'est une bonne nouvelle.</div><div class="ex-fa">نگه داشتن یک راز گاهی خیلی سخت است، مخصوصاً وقتی خبر خوبی است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Ce restaurant n'est pas dans les guides, c'est un <em>secret</em> entre habitués.</div><div class="ex-fa">این رستوران در راهنماها نیست، رازی بین مشتریان دائمی است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Entre nous, <em>secret</em> pour <em>secret</em> : je pars en voyage la semaine prochaine.</div><div class="ex-fa">بین ما بماند: هفته دیگر سفر می‌روم.</div></div>
+  </div>
+</div>
+
+<!-- 17 -->
+<div class="v-card" data-cat="positif" id="c17">
+  <div class="v-header">
+    <div class="v-num">17</div>
+    <div class="v-word-block">
+      <div class="v-word">l'idée</div>
+      <div class="v-meaning">ایده · فکر · نظر</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Faire les courses le soir pour éviter la foule du week-end : bonne <em>idée</em> !</div><div class="ex-fa">شب خرید کردن برای فرار از شلوغی آخر هفته: ایده خوبی!</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">J'ai eu une <em>idée</em> : on pourrait faire une sortie en montagne le week-end prochain.</div><div class="ex-fa">یک ایده داشتم: می‌توانیم آخر هفته بعد به کوه برویم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">C'est une bonne <em>idée</em> de commencer à apprendre une langue avant de partir.</div><div class="ex-fa">این ایده خوبی است که قبل از رفتن شروع به یادگیری زبان کنی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Elle est pleine d'<em>idées</em>. Chaque semaine, elle propose quelque chose de nouveau.</div><div class="ex-fa">پر از ایده است. هر هفته چیز جدیدی پیشنهاد می‌دهد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Je n'ai aucune <em>idée</em> de ce qu'il veut faire après ses études.</div><div class="ex-fa">هیچ ایده‌ای ندارم که بعد از تحصیل چه می‌خواهد بکند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">L'<em>idée</em>, c'est simple : travailler moins mais mieux. La qualité avant la quantité.</div><div class="ex-fa">ایده ساده است: کمتر اما بهتر کار کن. کیفیت قبل از کمیت.</div></div>
+  </div>
+</div>
+
+<!-- 18 -->
+<div class="v-card" data-cat="positif" id="c18">
+  <div class="v-header">
+    <div class="v-num">18</div>
+    <div class="v-word-block">
+      <div class="v-word">l'occasion</div>
+      <div class="v-meaning">فرصت · موقعیت</div>
+    </div>
+    <span class="v-cat" style="background:#e8f5e9;color:#2e7d32;">✨ positif</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Un billet d'avion à moitié prix pour le Japon en été : une <em>occasion</em> à ne pas manquer.</div><div class="ex-fa">بلیط هواپیما با نصف قیمت به ژاپن در تابستان: فرصتی که نباید از دست داد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">C'est l'<em>occasion</em> rêvée de montrer ce dont tu es capable. Ne la laisse pas passer.</div><div class="ex-fa">این فرصت رویایی است که نشان دهی از چه توانایی‌هایی برخورداری. از دستش نده.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">J'ai profité de l'<em>occasion</em> pour lui parler de mon projet. Elle a adoré l'idée.</div><div class="ex-fa">از فرصت استفاده کردم تا درباره پروژه‌ام با او صحبت کنم. ایده را دوست داشت.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">À l'<em>occasion</em> de son mariage, toute la famille s'est réunie après des années.</div><div class="ex-fa">به مناسبت عروسیش، همه خانواده بعد از سال‌ها دور هم جمع شدند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Cette conférence est une belle <em>occasion</em> de rencontrer des professionnels du secteur.</div><div class="ex-fa">این کنفرانس فرصت خوبی برای آشنایی با متخصصان حوزه است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Il ne faut pas attendre l'<em>occasion</em> parfaite. Il faut créer ses propres <em>occasions</em>.</div><div class="ex-fa">نباید منتظر فرصت کامل ماند. باید فرصت‌های خودت را بسازی.</div></div>
+  </div>
+</div>
+
+<!-- 19 -->
+<div class="v-card" data-cat="negatif" id="c19">
+  <div class="v-header">
+    <div class="v-num">19</div>
+    <div class="v-word-block">
+      <div class="v-word">le souci</div>
+      <div class="v-meaning">نگرانی · دغدغه</div>
+    </div>
+    <span class="v-cat" style="background:#ffebee;color:#b71c1c;">⚠️ difficile</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">Il ne dort plus, il ne mange plus, il pense sans cesse à cet examen. C'est son seul <em>souci</em>.</div><div class="ex-fa">دیگر نه می‌خوابد نه می‌خورد، دائم به این امتحان فکر می‌کند. این تنها نگرانی‌اش است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Ne te fais pas de <em>souci</em> ! Tout va bien se passer, j'en suis sûr.</div><div class="ex-fa">نگران نباش! همه چیز خوب پیش می‌رود، مطمئنم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Elle a beaucoup de <em>soucis</em> en ce moment : travail, famille, santé... c'est trop.</div><div class="ex-fa">الان نگرانی‌های زیادی دارد: کار، خانواده، سلامتی... خیلی زیاد است.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Mon seul <em>souci</em>, c'est de ne pas arriver à temps pour la réunion de ce matin.</div><div class="ex-fa">تنها نگرانی‌ام اینه که به موقع به جلسه امروز صبح نرسم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Pas de <em>souci</em>, je peux t'aider à préparer ta valise si tu veux.</div><div class="ex-fa">نگران نباش، اگر خواستی می‌توانم کمکت کنم چمدانت را آماده کنی.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">Le <em>souci</em>, c'est qu'on n'a pas encore eu de réponse de l'université.</div><div class="ex-fa">نگرانی اینجاست که هنوز جوابی از دانشگاه نگرفته‌ایم.</div></div>
+  </div>
+</div>
+
+<!-- 20 -->
+<div class="v-card" data-cat="neutre" id="c20">
+  <div class="v-header">
+    <div class="v-num">20</div>
+    <div class="v-word-block">
+      <div class="v-word">le hasard</div>
+      <div class="v-meaning">اتفاق · تصادف · شانس</div>
+    </div>
+    <span class="v-cat" style="background:#e3f2fd;color:#1565c0;">🔵 neutre</span>
+  </div>
+  <div class="v-examples">
+    <div class="ex-item"><div class="ex-num">✦ مثال اصلی</div><div class="ex-fr">On ne s'était pas vus depuis dix ans, et on s'est croisés dans la même rue. Quel <em>hasard</em> !</div><div class="ex-fa">ده سال ندیده بودیم همدیگر را، و همان روز توی یک خیابان با هم تصادفی روبرو شدیم. چه اتفاقی!</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۲</div><div class="ex-fr">Par <em>hasard</em>, j'ai trouvé exactement ce que je cherchais dans la première boutique.</div><div class="ex-fa">تصادفاً همان چیزی که دنبالش بودم را در اولین فروشگاه پیدا کردم.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۳</div><div class="ex-fr">Ce n'est pas le <em>hasard</em>. Il a travaillé dur pour arriver là où il est.</div><div class="ex-fa">این تصادف نیست. سخت کار کرد تا به اینجا برسد.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۴</div><div class="ex-fr">Est-ce que tu passerais par <em>hasard</em> devant la boulangerie ? Tu peux me prendre du pain ?</div><div class="ex-fa">شاید تصادفاً از کنار نانوایی رد شوی؟ می‌توانی نان بگیری؟</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۵</div><div class="ex-fr">Le <em>hasard</em> fait bien les choses : ils se sont rencontrés dans un avion et sont maintenant mariés.</div><div class="ex-fa">تصادف خوب عمل می‌کند: در یک هواپیما آشنا شدند و حالا ازدواج کرده‌اند.</div></div>
+    <div class="ex-item"><div class="ex-num">مثال ۶</div><div class="ex-fr">J'ai choisi ce métier par <em>hasard</em>, mais maintenant je ne l'échangerais pour rien au monde.</div><div class="ex-fa">این حرفه را تصادفاً انتخاب کردم، اما حالا آن را با هیچ چیزی عوض نمی‌کنم.</div></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · واژه‌های مهم A2 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function setFilter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.v-card').forEach(c=>{
+    if(cat==='all') c.classList.remove('hidden');
+    else c.classList.toggle('hidden', c.dataset.cat !== cat);
+  });
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
