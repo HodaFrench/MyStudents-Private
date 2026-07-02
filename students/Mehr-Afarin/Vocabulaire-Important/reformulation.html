@@ -81,13 +81,22 @@ body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper
 .footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
 .footer a{color:var(--pink);text-decoration:none;}
 @media(max-width:600px){.v-label{width:28px;font-size:9px;}}
+
+/* B2 ZONE */
+.b2-zone{background:linear-gradient(135deg,#faf5ff,#f3e5f5);border-top:2px solid #d8b4e8;padding:12px 18px;}
+.b2-head{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--v3);direction:rtl;margin-bottom:9px;}
+.b2-badge{background:var(--v3);color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:2px 9px;border-radius:6px;letter-spacing:.05em;}
+.b2-item{background:#fff;border:1px solid #e5d0f0;border-radius:10px;padding:10px 13px;margin-bottom:8px;}
+.b2-item:last-child{margin-bottom:0;}
+.b2-fr{font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.85;color:#3a2547;direction:ltr;text-align:left;margin-bottom:5px;font-weight:500;}
+.b2-fa{font-size:12px;color:var(--gray);direction:rtl;text-align:right;line-height:1.8;}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div style="font-size:22px;">🔄</div>
-  <div><div class="t-title">Reformulation</div><div class="t-sub">مهرآفرین · ۳۰ ایده × ۳ شیوه بیان</div></div>
+  <div><div class="t-title">Reformulation</div><div class="t-sub">مهرآفرین · ۳۰ ایده × ۳ نسخه + مثال‌های B2</div></div>
   <a class="back" href="../index.html">← پرونده مهرآفرین</a>
 </div>
 
@@ -97,12 +106,12 @@ body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper
     <div class="hero-sub">هر ایده را به ۳ شیوه بگو</div>
     <div class="hero-rule">
       <strong>قانون طلایی:</strong> ایده یکی است، کلمات فرق می‌کنند.<br>
-      🔵 نسخه اول — ساده و مستقیم &nbsp;|&nbsp; 🟢 نسخه دوم — با ساختار متفاوت &nbsp;|&nbsp; 🟣 نسخه سوم — پیشرفته‌تر یا غیررسمی‌تر
+      🔵 ساده &nbsp;|&nbsp; 🟢 ساختار متفاوت &nbsp;|&nbsp; 🟣 پیشرفته‌تر<br>➕ و حالا: <strong>۲ مثال B2 حرفه‌ای، استدلالی و مرکب</strong> پایینِ هر کارت
     </div>
     <div class="hero-pills">
       <span class="hpill">📖 Niveau A2</span>
       <span class="hpill">30 idées</span>
-      <span class="hpill">3 versions chacune</span>
+      <span class="hpill">3 versions + 2 exemples B2</span>
     </div>
   </div>
 </div>
@@ -112,6 +121,7 @@ body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper
   <div class="leg"><div class="leg-dot" style="background:var(--v2)"></div> نسخه ۲ — ساختار متفاوت</div>
   <div class="leg"><div class="leg-dot" style="background:var(--v3)"></div> نسخه ۳ — پیشرفته‌تر / غیررسمی‌تر</div>
   <div class="leg"><div class="leg-dot" style="background:var(--amber)"></div> قانون گرامری</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--v3)"></div> 🎓 مثال‌های B2</div>
 </div>
 
 <div class="filter-bar">
@@ -137,157 +147,157 @@ const DATA = [
 {n:1,topic:"خوشحال بودم",cat:"emotion",rule:"être + adj / se sentir + adj / avoir l'air + adj",
  v1:{fr:"J'<em>étais</em> très contente.",tag:"être + adj",fa:"خیلی خوشحال بودم."},
  v2:{fr:"Je me <em>sentais</em> vraiment heureuse.",tag:"se sentir + adj",fa:"واقعاً احساس خوشحالی می‌کردم."},
- v3:{fr:"J'<em>avais</em> le sourire toute la journée.",tag:"expression",fa:"تمام روز لبخند داشتم."}},
+ v3:{fr:"J'<em>avais</em> le sourire toute la journée.",tag:"expression",fa:"تمام روز لبخند داشتم."},b2:[{fr:"Bien que je m'efforce de rester lucide, je dois avouer qu'une joie profonde m'a envahi lorsque la nouvelle est tombée.",fa:"با اینکه می‌کوشم منطقی بمانم، باید اعتراف کنم که وقتی خبر رسید شادیِ عمیقی وجودم را فراگرفت."},{fr:"Ce n'est pas tant l'événement en lui-même qui m'a réjoui, mais plutôt tout ce qu'il laissait entrevoir pour l'avenir.",fa:"آنچه مرا شاد کرد نه خودِ رویداد، بلکه همه‌ی چیزی بود که برای آینده نوید می‌داد."}]},
 
 {n:2,topic:"خسته بودم",cat:"emotion",rule:"être / se sentir / avoir besoin de",
  v1:{fr:"J'<em>étais</em> très fatiguée.",tag:"être + adj",fa:"خیلی خسته بودم."},
  v2:{fr:"Je <em>me sentais</em> épuisée.",tag:"se sentir",fa:"احساس خستگی شدید می‌کردم."},
- v3:{fr:"J'<em>avais besoin</em> de dormir.",tag:"avoir besoin de",fa:"نیاز به خواب داشتم."}},
+ v3:{fr:"J'<em>avais besoin</em> de dormir.",tag:"avoir besoin de",fa:"نیاز به خواب داشتم."},b2:[{fr:"Étant donné la charge de travail que j'avais accumulée, il n'est guère surprenant que je me sois senti totalement épuisé.",fa:"با توجه به حجمِ کاری که روی هم انباشته بودم، چندان عجیب نیست که کاملاً از پا افتاده بودم."},{fr:"J'étais si fatigué que, même après une longue nuit de sommeil, j'avais du mal à retrouver mes esprits.",fa:"چنان خسته بودم که حتی پس از یک شبِ طولانیِ خواب، به‌سختی سرِ حال می‌آمدم."}]},
 
 {n:3,topic:"نگران بودم",cat:"emotion",rule:"être inquiet / s'inquiéter / avoir peur",
  v1:{fr:"J'<em>étais</em> un peu inquiète.",tag:"être + adj",fa:"کمی نگران بودم."},
  v2:{fr:"Je <em>m'inquiétais</em> beaucoup.",tag:"s'inquiéter",fa:"خیلی نگران می‌شدم."},
- v3:{fr:"J'<em>avais peur</em> que ça ne marche pas.",tag:"avoir peur que",fa:"می‌ترسیدم که کار نکند."}},
+ v3:{fr:"J'<em>avais peur</em> que ça ne marche pas.",tag:"avoir peur que",fa:"می‌ترسیدم که کار نکند."},b2:[{fr:"Bien que rien ne laissât présager un échec, une inquiétude sourde ne cessait de me gagner à mesure que l'heure approchait.",fa:"با اینکه هیچ نشانه‌ای از شکست نبود، هرچه زمان نزدیک‌تر می‌شد نگرانیِ مبهمی امانم را می‌برید."},{fr:"Ce qui m'angoissait, ce n'était pas tant l'issue elle-même que l'incertitude dans laquelle je me trouvais plongé.",fa:"آنچه مضطربم می‌کرد نه خودِ نتیجه، بلکه بلاتکلیفی‌ای بود که در آن غرق شده بودم."}]},
 
 {n:4,topic:"چیزی را دوست نداشتم",cat:"emotion",rule:"ne pas aimer / ne pas apprécier / ça ne me plaisait pas",
  v1:{fr:"Je n'<em>aimais pas</em> cet endroit.",tag:"ne pas aimer",fa:"آن جا را دوست نداشتم."},
  v2:{fr:"Je n'<em>appréciais pas</em> vraiment cet endroit.",tag:"ne pas apprécier",fa:"واقعاً آن جا را قدر نمی‌دانستم."},
- v3:{fr:"Cet endroit ne me <em>plaisait</em> pas du tout.",tag:"plaire à qqn",fa:"آن جا اصلاً برایم جالب نبود."}},
+ v3:{fr:"Cet endroit ne me <em>plaisait</em> pas du tout.",tag:"plaire à qqn",fa:"آن جا اصلاً برایم جالب نبود."},b2:[{fr:"Autant je reconnais les qualités de cet endroit, autant je dois admettre qu'il ne correspondait absolument pas à mes attentes.",fa:"هرچقدر ویژگی‌های خوبِ آن‌جا را قبول دارم، همان‌قدر باید بپذیرم که اصلاً با انتظاراتم جور نبود."},{fr:"Ce n'est pas que l'endroit fût désagréable en soi ; simplement, l'atmosphère qui y régnait ne me convenait guère.",fa:"این‌طور نبود که آن‌جا فی‌نفسه ناخوشایند باشد؛ فقط فضایی که در آن حاکم بود چندان به من نمی‌ساخت."}]},
 
 {n:5,topic:"چیزی را دوست داشتم",cat:"emotion",rule:"aimer / adorer / trouver + adj",
  v1:{fr:"J'<em>aimais</em> beaucoup ce film.",tag:"aimer",fa:"خیلی این فیلم را دوست داشتم."},
  v2:{fr:"J'<em>adorais</em> ce film.",tag:"adorer",fa:"عاشق این فیلم بودم."},
- v3:{fr:"Je <em>trouvais</em> ce film vraiment bien.",tag:"trouver + adj",fa:"این فیلم را واقعاً خوب می‌دانستم."}},
+ v3:{fr:"Je <em>trouvais</em> ce film vraiment bien.",tag:"trouver + adj",fa:"این فیلم را واقعاً خوب می‌دانستم."},b2:[{fr:"Bien que ce film ne fasse pas l'unanimité, j'avoue avoir été profondément touché par la finesse de sa mise en scène.",fa:"با اینکه این فیلم موردِ اتفاقِ‌نظرِ همه نیست، اعتراف می‌کنم که ظرافتِ کارگردانی‌اش عمیقاً تحتِ‌تأثیرم قرار داد."},{fr:"Ce qui m'a séduit dans ce film, c'est moins l'intrigue que la manière dont elle est racontée.",fa:"آنچه در این فیلم مرا مجذوب کرد، نه داستان بلکه شیوه‌ی روایتِ آن بود."}]},
 
 // ── روزمره (quotidien) ──
 {n:6,topic:"رفتم دوش گرفتم",cat:"quotidien",rule:"passé composé vs infinitif groupé",
  v1:{fr:"Je <em>suis allée</em> sous la douche.",tag:"aller + inf",fa:"رفتم زیر دوش."},
  v2:{fr:"J'<em>ai pris</em> une douche.",tag:"prendre une douche",fa:"دوش گرفتم."},
- v3:{fr:"Je me <em>suis douchée</em>.",tag:"se doucher (pronominal)",fa:"خودم را شستم."}},
+ v3:{fr:"Je me <em>suis douchée</em>.",tag:"se doucher (pronominal)",fa:"خودم را شستم."},b2:[{fr:"Après une journée aussi éprouvante, prendre une douche n'était pas un simple geste d'hygiène, mais un véritable moment de détente.",fa:"پس از روزی چنین خسته‌کننده، دوش‌گرفتن نه یک کارِ بهداشتیِ ساده، بلکه لحظه‌ای واقعی برای آرام‌شدن بود."},{fr:"À peine étais-je rentré que je me suis douché, tant j'éprouvais le besoin de me débarrasser de la fatigue accumulée.",fa:"تازه به خانه رسیده بودم که دوش گرفتم، آن‌قدر نیاز داشتم خستگیِ انباشته را از تن بیرون کنم."}]},
 
 {n:7,topic:"صبحانه خوردم",cat:"quotidien",rule:"prendre / manger / se nourrir",
  v1:{fr:"J'<em>ai mangé</em> mon petit-déjeuner.",tag:"manger",fa:"صبحانه‌ام را خوردم."},
  v2:{fr:"J'<em>ai pris</em> mon petit-déjeuner.",tag:"prendre",fa:"صبحانه‌ام را خوردم."},
- v3:{fr:"J'<em>ai déjeuné</em> le matin.",tag:"déjeuner (registre)",fa:"صبح صبحانه خوردم."}},
+ v3:{fr:"J'<em>ai déjeuné</em> le matin.",tag:"déjeuner (registre)",fa:"صبح صبحانه خوردم."},b2:[{fr:"Contrairement à ce que l'on pourrait croire, prendre un petit-déjeuner copieux ne me pèse pas ; au contraire, cela me donne de l'énergie pour la journée.",fa:"برخلافِ آنچه ممکن است تصور شود، خوردنِ یک صبحانه‌ی مفصل برایم سنگین نیست؛ برعکس، برای تمامِ روز انرژی می‌دهد."},{fr:"Étant donné que je saute rarement ce repas, je considère le petit-déjeuner comme le moment le plus important de ma matinée.",fa:"از آنجا که به‌ندرت این وعده را حذف می‌کنم، صبحانه را مهم‌ترین لحظه‌ی صبحم می‌دانم."}]},
 
 {n:8,topic:"به کمک نیاز داشتم",cat:"quotidien",rule:"avoir besoin de / demander de l'aide / ne pas y arriver seul",
  v1:{fr:"J'<em>avais besoin</em> d'aide.",tag:"avoir besoin de",fa:"به کمک نیاز داشتم."},
  v2:{fr:"J'<em>ai demandé</em> de l'aide.",tag:"demander de l'aide",fa:"کمک خواستم."},
- v3:{fr:"Je n'<em>arrivais</em> pas à le faire seule.",tag:"ne pas arriver à",fa:"نمی‌توانستم تنها انجام دهم."}},
+ v3:{fr:"Je n'<em>arrivais</em> pas à le faire seule.",tag:"ne pas arriver à",fa:"نمی‌توانستم تنها انجام دهم."},b2:[{fr:"Bien que je préfère habituellement me débrouiller seul, j'ai fini par admettre que, cette fois, une aide extérieure était indispensable.",fa:"با اینکه معمولاً ترجیح می‌دهم خودم از پسِ کارها برآیم، سرانجام پذیرفتم که این‌بار کمکِ بیرونی ضروری بود."},{fr:"Ce n'était pas par manque de volonté, mais parce que la tâche dépassait mes compétences, que j'ai dû demander de l'aide.",fa:"نه از سرِ بی‌اراده‌بودن، بلکه چون کار از توانم فراتر بود، مجبور شدم کمک بخواهم."}]},
 
 {n:9,topic:"زیاد تلفن استفاده می‌کنم",cat:"quotidien",rule:"utiliser souvent / avoir tendance à / passer du temps à",
  v1:{fr:"J'<em>utilise</em> souvent mon téléphone.",tag:"utiliser + adv",fa:"اغلب از تلفنم استفاده می‌کنم."},
  v2:{fr:"J'<em>ai tendance à</em> beaucoup regarder mon téléphone.",tag:"avoir tendance à",fa:"تمایل دارم خیلی به تلفنم نگاه کنم."},
- v3:{fr:"Je <em>passe beaucoup de temps</em> sur mon téléphone.",tag:"passer du temps à / sur",fa:"وقت زیادی روی تلفنم می‌گذرانم."}},
+ v3:{fr:"Je <em>passe beaucoup de temps</em> sur mon téléphone.",tag:"passer du temps à / sur",fa:"وقت زیادی روی تلفنم می‌گذرانم."},b2:[{fr:"Bien que je sois conscient des effets néfastes des écrans, je constate que j'ai tendance à passer bien trop de temps sur mon téléphone.",fa:"با اینکه به اثراتِ زیان‌بارِ صفحه‌نمایش‌ها آگاهم، می‌بینم که تمایل دارم وقتِ بسیار زیادی روی تلفنم بگذرانم."},{fr:"Ce n'est pas tant l'usage du téléphone qui me préoccupe que la difficulté que j'éprouve à m'en détacher.",fa:"آنچه نگرانم می‌کند نه استفاده از تلفن، بلکه دشواری‌ای است که در جداشدن از آن حس می‌کنم."}]},
 
 {n:10,topic:"دیر کردم",cat:"quotidien",rule:"être en retard / arriver tard / ne pas être à l'heure",
  v1:{fr:"J'<em>étais</em> en retard.",tag:"être en retard",fa:"دیر کرده بودم."},
  v2:{fr:"Je <em>suis arrivée</em> en retard.",tag:"arriver en retard",fa:"دیر رسیدم."},
- v3:{fr:"Je n'<em>étais pas</em> à l'heure.",tag:"ne pas être à l'heure",fa:"سر وقت نبودم."}},
+ v3:{fr:"Je n'<em>étais pas</em> à l'heure.",tag:"ne pas être à l'heure",fa:"سر وقت نبودم."},b2:[{fr:"Étant donné les imprévus qui se sont accumulés ce matin-là, il était presque inévitable que j'arrive en retard.",fa:"با توجه به اتفاقاتِ غیرمنتظره‌ای که آن صبح روی هم انباشته شد، دیر رسیدنم تقریباً اجتناب‌ناپذیر بود."},{fr:"Bien que j'aie fait tout mon possible pour être ponctuel, les circonstances en ont décidé autrement.",fa:"با اینکه هر کاری کردم که سرِ وقت باشم، شرایط جورِ دیگری رقم خورد."}]},
 
 // ── نظر (opinion) ──
 {n:11,topic:"فکر می‌کنم درست است",cat:"opinion",rule:"penser que / trouver que / être convaincu que",
  v1:{fr:"Je <em>pense que</em> c'est correct.",tag:"penser que",fa:"فکر می‌کنم درست است."},
  v2:{fr:"Je <em>trouve que</em> c'est la bonne façon.",tag:"trouver que",fa:"فکر می‌کنم این روش درستی است."},
- v3:{fr:"Je <em>suis convaincue</em> que c'est vrai.",tag:"être convaincu que",fa:"مطمئنم که درست است."}},
+ v3:{fr:"Je <em>suis convaincue</em> que c'est vrai.",tag:"être convaincu que",fa:"مطمئنم که درست است."},b2:[{fr:"Bien que je respecte les avis contraires, je demeure convaincu que c'est là l'approche la plus judicieuse.",fa:"با اینکه به نظرهای مخالف احترام می‌گذارم، همچنان معتقدم که این عاقلانه‌ترین رویکرد است."},{fr:"Tout porte à croire que cette solution est la bonne, d'autant plus qu'elle a déjà fait ses preuves ailleurs.",fa:"همه‌چیز نشان می‌دهد که این راه‌حل درست است، به‌ویژه که پیش‌تر جای دیگر هم کارآمدی‌اش را ثابت کرده."}]},
 
 {n:12,topic:"موافق نیستم",cat:"opinion",rule:"ne pas être d'accord / avoir un autre avis / penser le contraire",
  v1:{fr:"Je ne <em>suis pas d'accord</em>.",tag:"ne pas être d'accord",fa:"موافق نیستم."},
  v2:{fr:"J'<em>ai un avis différent</em>.",tag:"avoir un avis différent",fa:"نظر متفاوتی دارم."},
- v3:{fr:"Je <em>pense le contraire</em>.",tag:"penser le contraire",fa:"عکسش را فکر می‌کنم."}},
+ v3:{fr:"Je <em>pense le contraire</em>.",tag:"penser le contraire",fa:"عکسش را فکر می‌کنم."},b2:[{fr:"Bien que je comprenne votre point de vue, je ne saurais y adhérer, car il me semble reposer sur une prémisse discutable.",fa:"با اینکه دیدگاهتان را می‌فهمم، نمی‌توانم با آن همراه شوم، چون به‌نظرم بر فرضی محلِ‌تردید استوار است."},{fr:"Ce n'est pas que votre raisonnement soit dénué de fondement, mais il néglige, à mon sens, un aspect essentiel.",fa:"این‌طور نیست که استدلالتان بی‌پایه باشد، اما به‌گمانم جنبه‌ای اساسی را نادیده می‌گیرد."}]},
 
 {n:13,topic:"به نظرم مهم است",cat:"opinion",rule:"à mon avis / il me semble que / je trouve ça",
  v1:{fr:"<em>À mon avis</em>, c'est important.",tag:"à mon avis",fa:"به نظرم مهم است."},
  v2:{fr:"<em>Il me semble que</em> c'est quelque chose d'important.",tag:"il me semble que",fa:"به نظرم این چیز مهمی است."},
- v3:{fr:"Je <em>trouve ça</em> vraiment important.",tag:"trouver ça + adj",fa:"این را واقعاً مهم می‌بینم."}},
+ v3:{fr:"Je <em>trouve ça</em> vraiment important.",tag:"trouver ça + adj",fa:"این را واقعاً مهم می‌بینم."},b2:[{fr:"À mon sens, cette question revêt une importance capitale, dans la mesure où elle conditionne tout le reste.",fa:"به‌نظرِ من، این مسئله اهمیتی بنیادین دارد، از آن جهت که همه‌ی چیزهای دیگر را تعیین می‌کند."},{fr:"Il me semble d'autant plus important d'y réfléchir que ses conséquences se feront sentir à long terme.",fa:"به‌نظرم تأمل درباره‌ی آن از این جهت مهم‌تر است که پیامدهایش در درازمدت حس خواهد شد."}]},
 
 {n:14,topic:"این خوب است",cat:"opinion",rule:"c'est bien / c'est une bonne chose / ça me semble bien",
  v1:{fr:"C'<em>est</em> bien.",tag:"c'est + adj",fa:"خوب است."},
  v2:{fr:"C'<em>est une bonne chose</em>.",tag:"c'est une bonne chose",fa:"چیز خوبی است."},
- v3:{fr:"Ça me <em>semble</em> vraiment bien.",tag:"sembler + adj",fa:"واقعاً خوب به نظر می‌رسد."}},
+ v3:{fr:"Ça me <em>semble</em> vraiment bien.",tag:"sembler + adj",fa:"واقعاً خوب به نظر می‌رسد."},b2:[{fr:"Bien que cette initiative comporte quelques limites, elle constitue à mon avis un pas dans la bonne direction.",fa:"با اینکه این اقدام محدودیت‌هایی دارد، به‌نظرم گامی در جهتِ درست است."},{fr:"C'est une bonne chose, non seulement parce qu'elle est utile, mais aussi parce qu'elle ouvre de nouvelles perspectives.",fa:"چیزِ خوبی است، نه‌فقط چون سودمند است، بلکه چون افق‌های تازه‌ای می‌گشاید."}]},
 
 {n:15,topic:"نمی‌دانم چه بگویم",cat:"opinion",rule:"ne pas savoir / ne pas avoir d'idée / être sans mot",
  v1:{fr:"Je ne <em>sais</em> pas quoi dire.",tag:"ne pas savoir + inf",fa:"نمی‌دانم چه بگویم."},
  v2:{fr:"Je n'<em>ai</em> aucune idée de ce qu'il faut dire.",tag:"ne pas avoir d'idée",fa:"هیچ ایده‌ای ندارم چه باید گفت."},
- v3:{fr:"Je <em>reste</em> sans voix.",tag:"rester sans voix",fa:"بی‌کلام می‌مانم."}},
+ v3:{fr:"Je <em>reste</em> sans voix.",tag:"rester sans voix",fa:"بی‌کلام می‌مانم."},b2:[{fr:"Face à une situation aussi inattendue, j'avoue être resté sans voix, tant les mots me faisaient défaut.",fa:"در برابرِ چنین وضعیتِ غیرمنتظره‌ای، اعتراف می‌کنم که بی‌کلام ماندم، آن‌قدر که کلمات یاری‌ام نمی‌کردند."},{fr:"Ce n'est pas que je n'aie rien à dire, mais la complexité du sujet me laisse momentanément sans réponse.",fa:"این‌طور نیست که حرفی برای گفتن نداشته باشم، اما پیچیدگیِ موضوع لحظه‌ای بی‌پاسخم می‌گذارد."}]},
 
 // ── زمان (temps) ──
 {n:16,topic:"عجله داشتم",cat:"temps",rule:"être pressé / ne pas avoir le temps / devoir partir vite",
  v1:{fr:"J'<em>étais pressée</em>.",tag:"être pressé",fa:"عجله داشتم."},
  v2:{fr:"Je n'<em>avais pas</em> le temps.",tag:"ne pas avoir le temps",fa:"وقت نداشتم."},
- v3:{fr:"Je <em>devais partir</em> vite.",tag:"devoir + inf",fa:"باید سریع می‌رفتم."}},
+ v3:{fr:"Je <em>devais partir</em> vite.",tag:"devoir + inf",fa:"باید سریع می‌رفتم."},b2:[{fr:"Étant donné le peu de temps dont je disposais, je me voyais contraint de partir sans même achever ce que j'avais entrepris.",fa:"با توجه به زمانِ اندکی که داشتم، ناچار بودم بروم بی‌آنکه حتی کاری را که آغاز کرده بودم تمام کنم."},{fr:"Ce n'était pas par négligence, mais par manque de temps, que j'ai dû écourter notre rencontre.",fa:"نه از سرِ بی‌توجهی، بلکه به‌خاطرِ کمبودِ وقت مجبور شدم دیدارمان را کوتاه کنم."}]},
 
 {n:17,topic:"وقت لازم دارم",cat:"temps",rule:"avoir besoin de temps / prendre son temps / il faut du temps",
  v1:{fr:"J'<em>ai besoin</em> de temps.",tag:"avoir besoin de",fa:"به وقت نیاز دارم."},
  v2:{fr:"Je <em>dois prendre</em> mon temps.",tag:"devoir + prendre son temps",fa:"باید وقت بگذارم."},
- v3:{fr:"Il me <em>faut</em> plus de temps.",tag:"il faut + temps",fa:"به وقت بیشتری نیاز دارم."}},
+ v3:{fr:"Il me <em>faut</em> plus de temps.",tag:"il faut + temps",fa:"به وقت بیشتری نیاز دارم."},b2:[{fr:"Bien que je sois pressé d'aboutir, je suis conscient qu'un travail de qualité exige nécessairement du temps.",fa:"با اینکه برای رسیدن به نتیجه عجله دارم، آگاهم که کاری باکیفیت ناگزیر به زمان نیاز دارد."},{fr:"Ce n'est pas que je tarde volontairement, mais la nature même de la tâche réclame davantage de temps.",fa:"این‌طور نیست که عمداً تعلل کنم، بلکه ماهیتِ خودِ کار زمانِ بیشتری می‌طلبد."}]},
 
 {n:18,topic:"هر روز این کار را می‌کنم",cat:"temps",rule:"faire qqch tous les jours / avoir l'habitude de / en général",
  v1:{fr:"Je <em>fais</em> ça tous les jours.",tag:"présent + tous les jours",fa:"هر روز این کار را می‌کنم."},
  v2:{fr:"J'<em>ai l'habitude</em> de le faire chaque jour.",tag:"avoir l'habitude de",fa:"عادت دارم هر روز آن را انجام دهم."},
- v3:{fr:"<em>En général</em>, je le fais chaque matin.",tag:"en général + présent",fa:"معمولاً هر صبح آن را انجام می‌دهم."}},
+ v3:{fr:"<em>En général</em>, je le fais chaque matin.",tag:"en général + présent",fa:"معمولاً هر صبح آن را انجام می‌دهم."},b2:[{fr:"Bien que cela puisse paraître répétitif, c'est précisément cette régularité quotidienne qui me permet de progresser.",fa:"با اینکه ممکن است تکراری به‌نظر برسد، دقیقاً همین نظمِ روزانه است که به من امکانِ پیشرفت می‌دهد."},{fr:"J'ai pris l'habitude de le faire chaque jour, car je suis convaincu que la constance prime sur l'intensité.",fa:"عادت کرده‌ام هر روز آن را انجام دهم، چون معتقدم پیوستگی بر شدت مقدم است."}]},
 
 {n:19,topic:"این مدت زمانی است که...",cat:"temps",rule:"depuis / ça fait... que / il y a... que",
  v1:{fr:"J'apprends le français <em>depuis</em> six mois.",tag:"depuis + durée",fa:"شش ماه است که فرانسه یاد می‌گیرم."},
  v2:{fr:"<em>Ça fait</em> six mois que j'apprends le français.",tag:"ça fait... que",fa:"شش ماه است که فرانسه یاد می‌گیرم."},
- v3:{fr:"<em>Il y a</em> six mois que j'ai commencé le français.",tag:"il y a... que",fa:"شش ماه پیش شروع به یادگیری فرانسه کردم."}},
+ v3:{fr:"<em>Il y a</em> six mois que j'ai commencé le français.",tag:"il y a... que",fa:"شش ماه پیش شروع به یادگیری فرانسه کردم."},b2:[{fr:"Cela fait maintenant plusieurs mois que je m'y consacre, et je constate avec plaisir combien j'ai évolué.",fa:"اکنون چند ماه است که به آن می‌پردازم، و با خوشحالی می‌بینم چقدر پیشرفت کرده‌ام."},{fr:"Bien que j'aie commencé il y a peu, les progrès accomplis depuis me confortent dans mes efforts.",fa:"با اینکه به‌تازگی شروع کرده‌ام، پیشرفت‌هایی که از آن زمان حاصل شده مرا در تلاش‌هایم دلگرم می‌کند."}]},
 
 {n:20,topic:"هنوز یاد نگرفته‌ام",cat:"temps",rule:"ne pas encore / toujours pas / pas encore réussi à",
  v1:{fr:"Je n'<em>ai encore</em> pas appris ça.",tag:"ne pas encore",fa:"هنوز این را یاد نگرفته‌ام."},
  v2:{fr:"Je ne <em>sais toujours pas</em> faire ça.",tag:"toujours pas",fa:"هنوز هم نمی‌دانم چطور این کار را بکنم."},
- v3:{fr:"Je n'<em>ai pas encore réussi</em> à apprendre ça.",tag:"ne pas encore réussir à",fa:"هنوز موفق نشده‌ام این را یاد بگیرم."}},
+ v3:{fr:"Je n'<em>ai pas encore réussi</em> à apprendre ça.",tag:"ne pas encore réussir à",fa:"هنوز موفق نشده‌ام این را یاد بگیرم."},b2:[{fr:"Bien que je n'aie pas encore maîtrisé cette notion, je ne me décourage pas, car chaque tentative me rapproche du but.",fa:"با اینکه هنوز بر این مفهوم مسلط نشده‌ام، دلسرد نمی‌شوم، چون هر تلاش مرا به هدف نزدیک‌تر می‌کند."},{fr:"Ce n'est pas faute d'avoir essayé, mais cette compétence exige, semble-t-il, davantage de pratique.",fa:"نه اینکه تلاش نکرده باشم، اما این مهارت ظاهراً به تمرینِ بیشتری نیاز دارد."}]},
 
 // ── دلیل و نتیجه (raison) ──
 {n:21,topic:"به خاطر باران خانه ماندم",cat:"raison",rule:"à cause de / parce que / comme",
  v1:{fr:"Je suis restée à la maison <em>à cause</em> de la pluie.",tag:"à cause de + nom",fa:"به خاطر باران خانه ماندم."},
  v2:{fr:"Je suis restée à la maison <em>parce qu'</em>il pleuvait.",tag:"parce que + verbe",fa:"خانه ماندم چون داشت باران می‌بارید."},
- v3:{fr:"<em>Comme</em> il pleuvait, je suis restée à la maison.",tag:"comme (cause en tête)",fa:"چون باران می‌بارید، خانه ماندم."}},
+ v3:{fr:"<em>Comme</em> il pleuvait, je suis restée à la maison.",tag:"comme (cause en tête)",fa:"چون باران می‌بارید، خانه ماندم."},b2:[{fr:"Étant donné les conditions météorologiques déplorables, il m'a semblé plus sage de renoncer à sortir.",fa:"با توجه به شرایطِ اسفناکِ جوی، عاقلانه‌تر دیدم که از بیرون‌رفتن صرف‌نظر کنم."},{fr:"Comme la pluie ne cessait de redoubler, rester chez moi s'est imposé comme la seule option raisonnable.",fa:"چون باران پیوسته شدیدتر می‌شد، ماندن در خانه تنها گزینه‌ی معقول بود."}]},
 
 {n:22,topic:"موفق شدم چون تلاش کردم",cat:"raison",rule:"grâce à / parce que / c'est grâce à... que",
  v1:{fr:"J'ai réussi <em>parce que</em> j'ai travaillé dur.",tag:"parce que",fa:"موفق شدم چون سخت کار کردم."},
  v2:{fr:"J'ai réussi <em>grâce à</em> mon travail.",tag:"grâce à + nom",fa:"به لطف کارم موفق شدم."},
- v3:{fr:"<em>C'est grâce à</em> mes efforts que j'ai réussi.",tag:"c'est grâce à... que",fa:"این به خاطر تلاش‌هایم بود که موفق شدم."}},
+ v3:{fr:"<em>C'est grâce à</em> mes efforts que j'ai réussi.",tag:"c'est grâce à... que",fa:"این به خاطر تلاش‌هایم بود که موفق شدم."},b2:[{fr:"Si j'ai fini par réussir, c'est avant tout grâce à une persévérance que rien n'a pu ébranler.",fa:"اگر سرانجام موفق شدم، بیش از همه به‌خاطرِ پشتکاری بود که هیچ‌چیز نتوانست متزلزلش کند."},{fr:"Ce succès, je ne le dois pas au hasard, mais bien aux efforts constants que j'ai consentis.",fa:"این موفقیت را نه مدیونِ شانس، بلکه مدیونِ تلاش‌های پیوسته‌ای هستم که به خرج دادم."}]},
 
 {n:23,topic:"پس باید تمرین کنی",cat:"raison",rule:"donc / c'est pourquoi / alors",
  v1:{fr:"<em>Donc</em>, tu dois pratiquer.",tag:"donc (conséquence)",fa:"پس باید تمرین کنی."},
  v2:{fr:"<em>C'est pourquoi</em> il faut pratiquer.",tag:"c'est pourquoi",fa:"به همین دلیل باید تمرین کرد."},
- v3:{fr:"<em>Alors</em>, n'oublie pas de pratiquer.",tag:"alors (registre familier)",fa:"پس یادت نرود تمرین کنی."}},
+ v3:{fr:"<em>Alors</em>, n'oublie pas de pratiquer.",tag:"alors (registre familier)",fa:"پس یادت نرود تمرین کنی."},b2:[{fr:"Étant donné l'importance de la régularité, il est donc essentiel de pratiquer sans relâche.",fa:"با توجه به اهمیتِ نظم، پس ضروری است که بی‌وقفه تمرین کنی."},{fr:"C'est précisément pour cette raison qu'un entraînement quotidien s'avère indispensable au progrès.",fa:"دقیقاً به همین دلیل است که تمرینِ روزانه برای پیشرفت ضروری از آب درمی‌آید."}]},
 
 {n:24,topic:"با وجود مشکلات ادامه دادم",cat:"raison",rule:"malgré / même si / pourtant",
  v1:{fr:"J'ai continué <em>malgré</em> les difficultés.",tag:"malgré + nom",fa:"با وجود مشکلات ادامه دادم."},
  v2:{fr:"J'ai continué <em>même si</em> c'était difficile.",tag:"même si + verbe",fa:"ادامه دادم حتی اگر سخت بود."},
- v3:{fr:"C'était difficile, <em>pourtant</em> j'ai continué.",tag:"pourtant (concession)",fa:"سخت بود، با این حال ادامه دادم."}},
+ v3:{fr:"C'était difficile, <em>pourtant</em> j'ai continué.",tag:"pourtant (concession)",fa:"سخت بود، با این حال ادامه دادم."},b2:[{fr:"Bien que les obstacles se soient multipliés, j'ai tenu bon, convaincu que l'abandon aurait été la pire des solutions.",fa:"با اینکه موانع پی‌درپی زیاد شدند، پایداری کردم، با این باور که رهاکردن بدترین راه‌حل بود."},{fr:"Les difficultés étaient réelles ; néanmoins, loin de me décourager, elles ont renforcé ma détermination.",fa:"دشواری‌ها واقعی بودند؛ با این حال، به‌جای دلسردکردنم، عزمم را استوارتر کردند."}]},
 
 {n:25,topic:"برای اینکه بهتر شوم",cat:"raison",rule:"pour + inf / afin de / dans le but de",
  v1:{fr:"Je travaille <em>pour</em> m'améliorer.",tag:"pour + infinitif",fa:"کار می‌کنم تا بهتر شوم."},
  v2:{fr:"Je travaille <em>afin de</em> progresser.",tag:"afin de + infinitif",fa:"کار می‌کنم به منظور پیشرفت."},
- v3:{fr:"Mon objectif, c'est de m'<em>améliorer</em> chaque jour.",tag:"objectif + de + inf",fa:"هدفم اینه که هر روز بهتر شوم."}},
+ v3:{fr:"Mon objectif, c'est de m'<em>améliorer</em> chaque jour.",tag:"objectif + de + inf",fa:"هدفم اینه که هر روز بهتر شوم."},b2:[{fr:"C'est dans le but de progresser durablement que je m'astreins à un travail quotidien, aussi exigeant soit-il.",fa:"با هدفِ پیشرفتِ پایدار است که خود را به کارِ روزانه وامی‌دارم، هرچقدر هم دشوار باشد."},{fr:"Je fournis ces efforts non pour obtenir un résultat immédiat, mais afin de m'améliorer sur le long terme.",fa:"این تلاش‌ها را نه برای نتیجه‌ی فوری، بلکه به‌منظورِ بهترشدن در درازمدت به کار می‌بندم."}]},
 
 // ── ترکیبی / موضوعات مختلف ──
 {n:26,topic:"می‌توانم کمک کنم",cat:"quotidien",rule:"pouvoir + inf / proposer de / je suis là pour",
  v1:{fr:"Je <em>peux</em> t'aider.",tag:"pouvoir + infinitif",fa:"می‌توانم کمکت کنم."},
  v2:{fr:"Je te <em>propose</em> mon aide.",tag:"proposer + aide",fa:"کمکم را پیشنهاد می‌کنم."},
- v3:{fr:"Je <em>suis là</em> pour t'aider si tu as besoin.",tag:"être là pour",fa:"اینجام که کمکت کنم اگر لازم داشتی."}},
+ v3:{fr:"Je <em>suis là</em> pour t'aider si tu as besoin.",tag:"être là pour",fa:"اینجام که کمکت کنم اگر لازم داشتی."},b2:[{fr:"Si tu venais à rencontrer la moindre difficulté, sache que je reste à ta disposition pour t'épauler.",fa:"اگر با کوچک‌ترین دشواری‌ای روبه‌رو شدی، بدان که من در خدمتت هستم تا یاری‌ات کنم."},{fr:"Loin de vouloir m'imposer, je te propose simplement mon aide, dans la mesure où elle pourrait t'être utile.",fa:"به‌دور از اینکه بخواهم خودم را تحمیل کنم، فقط کمکم را پیشنهاد می‌کنم، تا آنجا که به کارت بیاید."}]},
 
 {n:27,topic:"نمی‌فهمم",cat:"quotidien",rule:"ne pas comprendre / ne pas saisir / avoir du mal à comprendre",
  v1:{fr:"Je ne <em>comprends</em> pas.",tag:"ne pas comprendre",fa:"نمی‌فهمم."},
  v2:{fr:"Je ne <em>saisis</em> pas bien ce que tu veux dire.",tag:"ne pas saisir",fa:"خوب نمی‌فهمم منظورت چیست."},
- v3:{fr:"J'<em>ai du mal à</em> comprendre cette partie.",tag:"avoir du mal à",fa:"درک این بخش برایم سخت است."}},
+ v3:{fr:"J'<em>ai du mal à</em> comprendre cette partie.",tag:"avoir du mal à",fa:"درک این بخش برایم سخت است."},b2:[{fr:"Bien que je fasse de mon mieux pour suivre, j'avoue avoir du mal à saisir la subtilité de ce raisonnement.",fa:"با اینکه تمامِ تلاشم را می‌کنم که دنبال کنم، اعتراف می‌کنم که درکِ ظرافتِ این استدلال برایم دشوار است."},{fr:"Ce n'est pas que vos propos manquent de clarté, mais la complexité du sujet m'échappe en partie.",fa:"این‌طور نیست که سخنانتان روشن نباشد، اما پیچیدگیِ موضوع تا حدی از دستم درمی‌رود."}]},
 
 {n:28,topic:"این برایم جدید است",cat:"emotion",rule:"c'est nouveau pour moi / je n'ai jamais... / c'est la première fois que",
  v1:{fr:"C'<em>est nouveau</em> pour moi.",tag:"être nouveau pour",fa:"این برایم جدید است."},
  v2:{fr:"Je n'<em>ai jamais</em> fait ça avant.",tag:"ne jamais + PC",fa:"قبلاً هرگز این کار را نکرده‌ام."},
- v3:{fr:"C'<em>est la première fois</em> que je fais ça.",tag:"c'est la première fois que",fa:"اولین باری است که این کار را می‌کنم."}},
+ v3:{fr:"C'<em>est la première fois</em> que je fais ça.",tag:"c'est la première fois que",fa:"اولین باری است که این کار را می‌کنم."},b2:[{fr:"Bien que ce domaine me soit encore totalement étranger, c'est précisément cette nouveauté qui m'enthousiasme.",fa:"با اینکه این حوزه هنوز کاملاً برایم ناآشناست، دقیقاً همین تازگی است که به وجدم می‌آورد."},{fr:"N'ayant jamais été confronté à une telle situation, je l'aborde avec autant de curiosité que de prudence.",fa:"از آنجا که هرگز با چنین وضعیتی روبه‌رو نشده‌ام، با کنجکاوی‌ای به‌اندازه‌ی احتیاطم به آن نزدیک می‌شوم."}]},
 
 {n:29,topic:"باید بروم",cat:"temps",rule:"devoir / il faut que / être obligé de",
  v1:{fr:"Je <em>dois</em> partir.",tag:"devoir + infinitif",fa:"باید بروم."},
  v2:{fr:"<em>Il faut</em> que je parte.",tag:"il faut que + subjonctif",fa:"باید بروم."},
- v3:{fr:"Je <em>suis obligée</em> de partir maintenant.",tag:"être obligé de",fa:"مجبورم الان بروم."}},
+ v3:{fr:"Je <em>suis obligée</em> de partir maintenant.",tag:"être obligé de",fa:"مجبورم الان بروم."},b2:[{fr:"Bien que je regrette d'écourter ce moment, les circonstances m'obligent à prendre congé sans plus tarder.",fa:"با اینکه از کوتاه‌کردنِ این لحظه افسوس می‌خورم، شرایط مرا وامی‌دارد که بی‌درنگ خداحافظی کنم."},{fr:"Ce n'est pas de gaieté de cœur que je pars, mais un impératif que je ne puis remettre m'y contraint.",fa:"با میلِ قلبی نمی‌روم، بلکه ضرورتی که نمی‌توانم به تعویق بیندازم ناچارم می‌کند."}]},
 
 {n:30,topic:"خوشحالم که اینجام",cat:"emotion",rule:"être content de / avoir de la chance de / se sentir bien",
  v1:{fr:"Je <em>suis contente</em> d'être ici.",tag:"être content de + inf",fa:"خوشحالم که اینجام."},
  v2:{fr:"J'<em>ai de la chance</em> d'être ici.",tag:"avoir de la chance de",fa:"خوش‌شانسم که اینجام."},
- v3:{fr:"Je me <em>sens bien</em> ici.",tag:"se sentir + adj",fa:"اینجا احساس خوبی دارم."}}
+ v3:{fr:"Je me <em>sens bien</em> ici.",tag:"se sentir + adj",fa:"اینجا احساس خوبی دارم."},b2:[{fr:"Bien que le trajet ait été long et éprouvant, je mesure aujourd'hui la chance qui m'est offerte d'être parmi vous.",fa:"با اینکه مسیر طولانی و خسته‌کننده بود، امروز قدرِ فرصتی را که برای بودن در جمعِ شما نصیبم شده می‌دانم."},{fr:"Si je me réjouis autant d'être ici, c'est parce que cet instant représente pour moi bien plus qu'une simple présence.",fa:"اگر این‌قدر از بودن اینجا خوشحالم، به این خاطر است که این لحظه برایم چیزی بسیار فراتر از یک حضورِ ساده است."}]}
 ];
 
 function build(){
@@ -304,7 +314,8 @@ function build(){
       </div>
       ${row(1,d.v1,'l1','e1','tag1')}
       ${row(2,d.v2,'l2','e2','tag2')}
-      ${row(3,d.v3,'l3','e3','tag3')}`;
+      ${row(3,d.v3,'l3','e3','tag3')}
+      ${d.b2 ? b2block(d.b2) : ''}`;
     wrap.appendChild(card);
   });
 }
@@ -317,6 +328,13 @@ function row(n,v,lc,ec,tc){
       <div class="v-fa">${v.fa}</div>
     </div>
   </div>`;
+}
+
+function b2block(arr){
+  let items = arr.map(function(x){
+    return '<div class="b2-item"><div class="b2-fr">'+x.fr+'</div><div class="b2-fa">'+x.fa+'</div></div>';
+  }).join('');
+  return '<div class="b2-zone"><div class="b2-head"><span class="b2-badge">B2</span> نسخه‌ی حرفه‌ای · استدلالی و مرکب</div>'+items+'</div>';
 }
 
 let currentFilter='all';
