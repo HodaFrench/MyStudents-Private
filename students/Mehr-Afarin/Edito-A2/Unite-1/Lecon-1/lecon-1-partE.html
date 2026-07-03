@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Partie E — Nos activités du week-end · Édito A2 U1L1</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --blue:#1565c0;--blue-pale:#e3f2fd;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --navy:#0d1b2a;--navy-mid:#1b2e45;
+  --lucie:#1565c0;--lucie-pale:#e3f2fd;
+  --chris:#2e7d32;--chris-pale:#e8f5e9;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;flex-wrap:wrap;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:42px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(19px,3.5vw,30px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* TABS */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* IMAGE SECTION */
+.img-desc{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.img-head{background:var(--pink-pale);padding:12px 20px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--line);}
+.img-icon{font-size:20px;}
+.img-title{font-size:14px;font-weight:700;color:var(--pink-deep);}
+.img-title-fa{font-size:11px;color:var(--gray);margin-right:auto;}
+.img-body{padding:20px;}
+
+/* VOCAB TABLE */
+.vocab-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+.vocab-table th{background:var(--navy);color:white;padding:10px 14px;font-weight:700;font-size:11px;text-align:left;}
+.vocab-table th:last-child{direction:rtl;text-align:right;}
+.vocab-table td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+.vocab-table tr:last-child td{border:none;}
+.vocab-table tr:nth-child(even){background:var(--paper);}
+.v-fr{font-family:'Roboto',sans-serif;font-weight:700;color:var(--pink-deep);direction:ltr;}
+.v-def{font-size:12px;color:var(--gray);direction:ltr;}
+.v-fa{direction:rtl;text-align:right;color:var(--ink);}
+.v-ex{font-family:'Roboto',sans-serif;font-size:12px;color:var(--blue);direction:ltr;font-style:italic;}
+.v-ex-fa{font-size:11px;color:var(--gray);direction:rtl;text-align:right;}
+
+/* DIALOGUE */
+.scene-box{background:var(--amber-pale);border:1.5px solid rgba(230,81,0,.3);border-radius:10px;padding:12px 18px;margin-bottom:18px;font-size:13px;direction:rtl;text-align:right;line-height:1.8;}
+.scene-box strong{color:var(--amber-deep);}
+
+.dialogue-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+.line{border-radius:12px;overflow:hidden;border:2px solid var(--line);}
+.line-head{display:flex;align-items:center;gap:10px;padding:9px 16px;}
+.speaker{font-weight:700;font-size:13px;font-family:'Roboto',sans-serif;}
+.speaker.lucie{color:var(--lucie);}
+.speaker.chris{color:var(--chris);}
+.line-fr{padding:10px 16px;font-family:'Roboto',sans-serif;font-size:14px;direction:ltr;text-align:left;line-height:1.75;background:white;}
+.line-fr.lucie-line{border-right:4px solid var(--lucie);}
+.line-fr.chris-line{border-right:4px solid var(--chris);}
+.line-fr em{font-style:normal;font-weight:700;}
+.hl-pc{background:rgba(230,81,0,.15);padding:0 3px;border-radius:3px;font-weight:700;color:var(--amber-deep);}
+.hl-neg{background:rgba(106,27,154,.15);padding:0 3px;border-radius:3px;font-weight:700;color:var(--purple);}
+.hl-vocab{background:rgba(21,101,192,.13);padding:0 3px;border-radius:3px;font-weight:700;color:var(--blue);}
+.line-fa{padding:9px 16px;font-size:12.5px;direction:rtl;text-align:right;color:var(--gray);background:#fafbfc;border-top:1px dashed var(--line);line-height:1.75;}
+
+/* ANALYSIS */
+.analysis-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px;}
+.ac-head{padding:10px 16px;background:var(--navy);display:flex;align-items:center;gap:10px;}
+.ac-title{font-size:12px;font-weight:700;color:white;}
+.ac-fa{font-size:11px;color:rgba(255,255,255,.6);direction:rtl;}
+.ac-body{padding:14px 18px;}
+.ac-ex{font-family:'Roboto',sans-serif;font-size:13.5px;direction:ltr;text-align:left;color:var(--ink);margin-bottom:4px;line-height:1.7;}
+.ac-ex strong{color:var(--purple);}
+.ac-tr{font-size:12px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:10px;line-height:1.7;}
+.ac-ex:last-child,.ac-tr:last-child{margin:0;}
+.rule-tag{display:inline-block;background:var(--amber-pale);border:1px solid rgba(230,81,0,.3);color:var(--amber-deep);font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 8px;border-radius:5px;margin-bottom:8px;}
+
+/* VOCAB DEEP */
+.vd-card{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px;}
+.vd-head{display:flex;align-items:center;gap:0;}
+.vd-num{background:var(--pink);color:white;min-width:42px;height:52px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:'JetBrains Mono',monospace;}
+.vd-info{padding:10px 16px;border-bottom:1px solid var(--line);flex:1;}
+.vd-word{font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;color:var(--pink-deep);direction:ltr;}
+.vd-fa{font-size:12px;color:var(--gray);}
+.vd-def{font-size:12px;color:var(--blue);margin-top:3px;direction:ltr;}
+.vd-examples{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.vd-ex{background:var(--paper);border-radius:8px;padding:10px 14px;border:1px solid var(--line);}
+.vd-ex-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--pink);font-weight:700;margin-bottom:4px;}
+.vd-ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;direction:ltr;text-align:left;line-height:1.65;color:var(--ink);}
+.vd-ex-fr strong{color:var(--pink-deep);}
+.vd-ex-fa{font-size:11px;color:var(--gray);direction:rtl;text-align:right;margin-top:4px;line-height:1.65;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:640px){.vocab-table th:nth-child(2),.vocab-table td:nth-child(2){display:none;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">📸</div>
+  <div><div class="t-title">Partie E — Nos activités du week-end</div><div class="t-sub">Édito A2 · Unité 1 · Leçon 1</div></div>
+  <a class="back" href="index.html">← Leçon 1</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">ÉDITO A2 · U1 · L1 · PARTIE E</div>
+    <h1>📸 Nos activités du week-end</h1>
+    <div class="hero-sub">فعالیت‌های آخر هفته ما — تصویر · دیالوگ · واژگان</div>
+    <div class="hero-pills">
+      <span class="hpill">🟠 تصویر + واژگان</span>
+      <span class="hpill">💬 دیالوگ + ترجمه</span>
+      <span class="hpill">📚 تحلیل واژگان</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('image',this)">📸 تصویر + واژگان</div>
+  <div class="tab" onclick="showTab('dialogue',this)">💬 دیالوگ</div>
+  <div class="tab" onclick="showTab('vocab',this)">📚 تحلیل واژگان</div>
+  <div class="tab" onclick="showTab('analyse',this)">🔍 تحلیل گرامری</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: IMAGE ═══ -->
+<div class="panel active" id="panel-image">
+
+  <div class="img-desc">
+    <div class="img-head"><span class="img-icon">🌲</span><span class="img-title">L'accrobranche</span><span class="img-title-fa">پارک طناب‌ها بین درخت‌ها</span></div>
+    <div class="img-body">
+      <div style="background:var(--teal-pale);border:1.5px solid var(--teal);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13px;direction:rtl;text-align:right;line-height:1.8;">
+        <strong style="color:var(--teal);">📸 توضیح تصویر:</strong><br>
+        یک مرد و کودک در پارک اکروبرانش (Accrobranche) هستند — فعالیت و بازی در بین درختان با طناب‌ها.
+        هر دو نفر کلاه ایمنی (casque) پوشیده‌اند و از تجهیزات ایمنی استفاده می‌کنند.
+      </div>
+
+      <table class="vocab-table">
+        <thead>
+          <tr>
+            <th>Mot</th>
+            <th>Définition</th>
+            <th>ترجمه</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="v-fr">L'accrobranche</div></td>
+            <td><div class="v-def">بازی در بین درختان با طناب‌ها</div></td>
+            <td><div class="v-fa">پارک طناب‌ها</div></td>
+            <td><div class="v-ex">Les enfants adorent l'accrobranche !</div><div class="v-ex-fa">بچه‌ها اکروبرانش را دوست دارند!</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">L'arbre (m)</div></td>
+            <td><div class="v-def">un grand végétal</div></td>
+            <td><div class="v-fa">درخت</div></td>
+            <td><div class="v-ex">L'arbre est très grand et vert.</div><div class="v-ex-fa">درخت خیلی بزرگ و سبز است.</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">Les cordes (f.pl)</div></td>
+            <td><div class="v-def">fils épais pour grimper</div></td>
+            <td><div class="v-fa">طناب‌ها</div></td>
+            <td><div class="v-ex">Les cordes sont solides et sûres.</div><div class="v-ex-fa">طناب‌ها محکم و ایمن هستند.</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">Le casque (m)</div></td>
+            <td><div class="v-def">protection pour la tête</div></td>
+            <td><div class="v-fa">کلاه ایمنی</div></td>
+            <td><div class="v-ex">Il porte un casque pour la sécurité.</div><div class="v-ex-fa">کلاه ایمنی برای حفاظت می‌پوشد.</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">S'amuser</div></td>
+            <td><div class="v-def">prendre du plaisir</div></td>
+            <td><div class="v-fa">سرگرم شدن · لذت بردن</div></td>
+            <td><div class="v-ex">Nous nous sommes bien amusés !</div><div class="v-ex-fa">ما خیلی خوب سرگرم شدیم!</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">L'équilibre (m)</div></td>
+            <td><div class="v-def">stabilité, ne pas tomber</div></td>
+            <td><div class="v-fa">تعادل</div></td>
+            <td><div class="v-ex">L'équilibre est difficile sur les cordes.</div><div class="v-ex-fa">تعادل بر روی طناب‌ها سخت است.</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">La nature (f)</div></td>
+            <td><div class="v-def">environnement naturel</div></td>
+            <td><div class="v-fa">طبیعت</div></td>
+            <td><div class="v-ex">La nature est belle et verte.</div><div class="v-ex-fa">طبیعت زیبا و سبز است.</div></td>
+          </tr>
+          <tr>
+            <td><div class="v-fr">La sécurité (f)</div></td>
+            <td><div class="v-def">absence de danger</div></td>
+            <td><div class="v-fa">ایمنی</div></td>
+            <td><div class="v-ex">La sécurité est importante à l'accrobranche.</div><div class="v-ex-fa">ایمنی در اکروبرانش مهم است.</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2: DIALOGUE ═══ -->
+<div class="panel" id="panel-dialogue">
+
+  <div style="background:var(--blue-pale);border:1px solid rgba(21,101,192,.2);border-radius:10px;padding:12px 18px;margin-bottom:18px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;">
+    🔵 <strong style="color:var(--blue);">Lucie</strong> &nbsp;·&nbsp;
+    🟢 <strong style="color:var(--green);">Christophe</strong> &nbsp;·&nbsp;
+    🟠 <span style="color:var(--amber-deep);">passé composé</span> &nbsp;·&nbsp;
+    🟣 <span style="color:var(--purple);">négation</span> &nbsp;·&nbsp;
+    🔷 <span style="color:var(--blue);">vocabulaire clé</span>
+  </div>
+
+  <div class="scene-box">
+    <strong>📞 Contexte:</strong> دو دوست — لوسی و کریستف — درباره آخر هفته‌شان صحبت می‌کنند.
+  </div>
+
+  <div class="dialogue-wrap">
+
+    <div class="line">
+      <div class="line-head" style="background:var(--lucie-pale);"><span class="speaker lucie">🔵 Lucie</span></div>
+      <div class="line-fr lucie-line">Salut Christophe, ça va ? Tu <span class="hl-pc">as passé</span> un bon week-end ?</div>
+      <div class="line-fa">سلام کریستف، خوبی؟ آخر هفته خوبی داشتی؟</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--chris-pale);"><span class="speaker chris">🟢 Christophe</span></div>
+      <div class="line-fr chris-line">Salut Lucie ! Oui, ça va, je <span class="hl-neg">n'</span><span class="hl-pc">ai</span> <span class="hl-neg">rien fait</span> de spécial, je <span class="hl-pc">suis resté</span> à la maison en famille.</div>
+      <div class="line-fa">سلام لوسی! بله خوبم، کار خاصی نکردم، خانه با خانواده ماندم.</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--lucie-pale);"><span class="speaker lucie">🔵 Lucie</span></div>
+      <div class="line-fr lucie-line">Et qu'est-ce que vous <span class="hl-pc">avez fait</span> ?</div>
+      <div class="line-fa">و شما چه کار کردید؟</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--chris-pale);"><span class="speaker chris">🟢 Christophe</span></div>
+      <div class="line-fr chris-line"><span class="hl-pc">J'ai fait</span> du <span class="hl-vocab">bricolage</span> et du <span class="hl-vocab">jardinage</span>, les enfants <span class="hl-pc">ont joué</span> aux jeux vidéo et Élodie <span class="hl-pc">a fait</span> de la <span class="hl-vocab">peinture</span>. Elle <span class="hl-pc">a commencé</span> un nouveau tableau.</div>
+      <div class="line-fa">من کار دستی و باغبانی کردم، بچه‌ها بازی ویدیویی بازی کردند و الودی نقاشی کرد. یک تابلو جدید شروع کرد.</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--lucie-pale);"><span class="speaker lucie">🔵 Lucie</span></div>
+      <div class="line-fr lucie-line">Ah, super ! Et samedi soir, vous <span class="hl-pc">êtes sortis</span> ?</div>
+      <div class="line-fa">آه، عالی! و شنبه شب، بیرون رفتید؟</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--chris-pale);"><span class="speaker chris">🟢 Christophe</span></div>
+      <div class="line-fr chris-line">Non, on <span class="hl-pc">a regardé</span> un <span class="hl-vocab">match de foot</span>. Et toi ?</div>
+      <div class="line-fa">نه، یک بازی فوتبال تماشا کردیم. و تو؟</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--lucie-pale);"><span class="speaker lucie">🔵 Lucie</span></div>
+      <div class="line-fr lucie-line">Alors, samedi on <span class="hl-pc">a accompagné</span> les enfants à leur <span class="hl-vocab">compétition de judo</span>. Et le soir nous <span class="hl-pc">sommes allés</span> au <span class="hl-vocab">festival Jazz à Vienne</span>.</div>
+      <div class="line-fa">خب، شنبه بچه‌ها را به مسابقه جودوشان همراهی کردیم. و شب به جشنواره جاز در وین رفتیم.</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--chris-pale);"><span class="speaker chris">🟢 Christophe</span></div>
+      <div class="line-fr chris-line">Ah, je <span class="hl-neg">ne suis jamais allé</span> à ce festival. Vous <span class="hl-pc">avez aimé</span> ?</div>
+      <div class="line-fa">آه، من هرگز به این جشنواره نرفته‌ام. دوست داشتید؟</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--lucie-pale);"><span class="speaker lucie">🔵 Lucie</span></div>
+      <div class="line-fr lucie-line">Oui, moi j'<span class="hl-pc">ai adoré</span> le concert, mais mes enfants <span class="hl-neg">ne sont pas</span> <span class="hl-vocab">fans</span> de jazz. Et dimanche, nous <span class="hl-pc">sommes allés</span> à l'<span class="hl-vocab">accrobranche</span>. Nous nous <span class="hl-pc">sommes bien amusés</span> !</div>
+      <div class="line-fa">بله، من کنسرت را خیلی دوست داشتم، اما بچه‌هایم طرفدار جاز نیستند. و یکشنبه به اکروبرانش رفتیم. خیلی خوش گذشت!</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--chris-pale);"><span class="speaker chris">🟢 Christophe</span></div>
+      <div class="line-fr chris-line">Ah, moi aussi j'aime bien sortir, mais <span class="hl-neg">pas</span> mes enfants, c'est <span class="hl-neg">pas du tout</span> leur <span class="hl-vocab">truc</span>. Ils <span class="hl-neg">ne</span> veulent <span class="hl-neg">rien</span> faire le week-end. Ils <span class="hl-neg">ne</span> voient <span class="hl-neg">personne</span> et ils <span class="hl-neg">ne</span> veulent <span class="hl-neg">plus</span> jouer à des <span class="hl-vocab">jeux de société</span>, ni aller au ciné en famille. Leur <span class="hl-vocab">passion</span>, c'est les jeux vidéo.</div>
+      <div class="line-fa">آه، من هم دوست دارم بیرون بروم، اما نه بچه‌هایم — اصلاً کار آن‌ها نیست. نمی‌خواهند آخر هفته کاری کنند. کسی را نمی‌بینند و دیگر نمی‌خواهند بازی‌های جمعی بازی کنند، و نه به سینما با خانواده بروند. علاقه‌شان بازی‌های ویدیویی است.</div>
+    </div>
+
+    <div class="line">
+      <div class="line-head" style="background:var(--lucie-pale);"><span class="speaker lucie">🔵 Lucie</span></div>
+      <div class="line-fr lucie-line">Ah oui, c'est normal, ce sont des <span class="hl-vocab">ados</span> maintenant.</div>
+      <div class="line-fa">آه بله، طبیعی است، آن‌ها حالا نوجوان هستند.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ PANEL 3: VOCAB ═══ -->
+<div class="panel" id="panel-vocab">
+
+  <div style="background:var(--blue-pale);border:1px solid rgba(21,101,192,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.7;">
+    هر واژه از دیالوگ با تعریف + ۳ مثال مرکب سطح A2
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">1</div><div class="vd-info"><div class="vd-word">le bricolage</div><div class="vd-fa">کار دستی · تعمیرات خانگی</div><div class="vd-def">travaux manuels faits à la maison (réparer, construire, peindre...)</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">Je fais du <strong>bricolage</strong> chaque week-end parce que j'aime réparer les choses à la maison.</div><div class="vd-ex-fa">هر آخر هفته کار دستی می‌کنم چون دوست دارم چیزهای خانه را تعمیر کنم.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">Mon père aime le <strong>bricolage</strong>, donc il a construit lui-même une étagère pour le salon.</div><div class="vd-ex-fa">پدرم کار دستی دوست دارد، پس خودش یک قفسه برای سالن ساخت.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">J'ai cassé mon marteau pendant le <strong>bricolage</strong>, alors j'ai dû acheter un nouveau outil.</div><div class="vd-ex-fa">حین کار دستی چکشم شکست، پس مجبور شدم ابزار جدید بخرم.</div></div>
+    </div>
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">2</div><div class="vd-info"><div class="vd-word">le jardinage</div><div class="vd-fa">باغبانی</div><div class="vd-def">s'occuper d'un jardin : planter, arroser, couper...</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">Elle fait du <strong>jardinage</strong> chaque dimanche matin parce que son jardin est très grand.</div><div class="vd-ex-fa">هر یکشنبه صبح باغبانی می‌کند چون باغش خیلی بزرگ است.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">Le <strong>jardinage</strong> est relaxant, donc beaucoup de personnes le font pour se détendre après le travail.</div><div class="vd-ex-fa">باغبانی آرامش‌بخش است، پس خیلی‌ها بعد از کار برای آرامش آن را انجام می‌دهند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">J'ai planté des fleurs pendant le <strong>jardinage</strong> et maintenant le jardin est magnifique.</div><div class="vd-ex-fa">حین باغبانی گل کاشتم و حالا باغ زیباست.</div></div>
+    </div>
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">3</div><div class="vd-info"><div class="vd-word">faire de la peinture</div><div class="vd-fa">نقاشی کردن (هنری)</div><div class="vd-def">créer des tableaux avec des couleurs — COLLOCATION avec «faire»</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">Élodie <strong>fait de la peinture</strong> depuis dix ans et elle a déjà exposé ses tableaux dans une galerie.</div><div class="vd-ex-fa">الودی ده سال است نقاشی می‌کند و تابلوهایش را در یک گالری به نمایش گذاشته.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">Je <strong>fais de la peinture</strong> le soir pour me relaxer parce que c'est créatif et calme.</div><div class="vd-ex-fa">شب‌ها برای آرامش نقاشی می‌کنم چون خلاقانه و آرام است.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">Ma fille veut <strong>faire de la peinture</strong>, donc on va lui acheter des pinceaux et des couleurs.</div><div class="vd-ex-fa">دخترم می‌خواهد نقاشی کند، پس قلم‌مو و رنگ برایش می‌خریم.</div></div>
+    </div>
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">4</div><div class="vd-info"><div class="vd-word">accompagner (qqn à qqch)</div><div class="vd-fa">همراهی کردن · بردن</div><div class="vd-def">aller avec quelqu'un quelque part</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">On a <strong>accompagné</strong> les enfants à leur compétition de judo parce qu'ils ne peuvent pas y aller seuls.</div><div class="vd-ex-fa">بچه‌ها را به مسابقه جودوشان بردیم چون نمی‌توانند تنها بروند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">Il <strong>accompagne</strong> toujours sa femme au marché parce qu'ils aiment faire les courses ensemble.</div><div class="vd-ex-fa">همیشه همسرش را به بازار همراهی می‌کند چون دوست دارند با هم خرید کنند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">Tu peux m'<strong>accompagner</strong> à la gare ? Mon train part dans une heure et j'ai beaucoup de bagages.</div><div class="vd-ex-fa">می‌توانی مرا به ایستگاه همراهی کنی؟ قطارم یک ساعت دیگر می‌رود و چمدان زیادی دارم.</div></div>
+    </div>
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">5</div><div class="vd-info"><div class="vd-word">les jeux de société</div><div class="vd-fa">بازی‌های جمعی (مثل بازی رومیزی)</div><div class="vd-def">jeux joués en groupe : Monopoly, Scrabble, cartes...</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">Les enfants ne veulent plus jouer aux <strong>jeux de société</strong> parce qu'ils préfèrent les jeux vidéo.</div><div class="vd-ex-fa">بچه‌ها دیگر نمی‌خواهند بازی‌های جمعی بازی کنند چون بازی‌های ویدیویی را ترجیح می‌دهند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">Le soir, on joue aux <strong>jeux de société</strong> en famille et c'est un bon moment pour rire ensemble.</div><div class="vd-ex-fa">شب‌ها با خانواده بازی‌های جمعی بازی می‌کنیم و لحظه خوبی برای خندیدن با هم است.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">J'adore les <strong>jeux de société</strong>, donc j'en ai une grande collection chez moi.</div><div class="vd-ex-fa">بازی‌های جمعی را خیلی دوست دارم، پس مجموعه بزرگی از آن‌ها خانه دارم.</div></div>
+    </div>
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">6</div><div class="vd-info"><div class="vd-word">c'est pas du tout leur truc</div><div class="vd-fa">اصلاً کار آن‌ها نیست · اصلاً علاقه‌ای ندارند</div><div class="vd-def">expression familière — «leur truc» = ce qu'ils aiment faire</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">La danse, <strong>c'est pas du tout mon truc</strong>, mais j'aime beaucoup le cinéma et la musique.</div><div class="vd-ex-fa">رقصیدن اصلاً کار من نیست، اما سینما و موسیقی را خیلی دوست دارم.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">La cuisine, <strong>c'est son truc</strong> : elle cuisine chaque jour et essaie toujours de nouvelles recettes.</div><div class="vd-ex-fa">آشپزی کار اوست: هر روز آشپزی می‌کند و همیشه دستور پخت‌های جدید امتحان می‌کند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">Les sports aquatiques, <strong>c'est pas leur truc</strong>, donc ils ont choisi la via ferrata pour les vacances.</div><div class="vd-ex-fa">ورزش‌های آبی کار آن‌ها نیست، پس برای تعطیلات ویا فراتا را انتخاب کردند.</div></div>
+    </div>
+  </div>
+
+  <div class="vd-card">
+    <div class="vd-head"><div class="vd-num">7</div><div class="vd-info"><div class="vd-word">les ados (= adolescents)</div><div class="vd-fa">نوجوانان (مخفف محاوره‌ای)</div><div class="vd-def">forme abrégée et familière de «adolescents» (12–18 ans)</div></div></div>
+    <div class="vd-examples">
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۱</div><div class="vd-ex-fr">Les <strong>ados</strong> passent beaucoup de temps sur leur téléphone, donc les parents s'inquiètent parfois.</div><div class="vd-ex-fa">نوجوانان وقت زیادی روی تلفنشان می‌گذرانند، پس والدین گاهی نگران می‌شوند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۲</div><div class="vd-ex-fr">C'est normal, ce sont des <strong>ados</strong> maintenant — ils veulent plus d'indépendance.</div><div class="vd-ex-fa">طبیعی است، آن‌ها حالا نوجوان هستند — استقلال بیشتری می‌خواهند.</div></div>
+      <div class="vd-ex"><div class="vd-ex-n">مثال ۳</div><div class="vd-ex-fr">Quand j'étais <strong>ado</strong>, je n'aimais pas sortir avec mes parents non plus.</div><div class="vd-ex-fa">وقتی نوجوان بودم، من هم دوست نداشتم با والدینم بیرون بروم.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 4: ANALYSE GRAMMATICALE ═══ -->
+<div class="panel" id="panel-analyse">
+
+  <div style="background:var(--amber-pale);border:1.5px solid rgba(230,81,0,.3);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;direction:rtl;text-align:right;line-height:1.8;">
+    <strong style="color:var(--amber-deep);">دو نکته گرامری اصلی این دیالوگ:</strong><br>
+    ① <strong>Passé composé</strong> — فعل‌های گذشته مرکب (ماهیت اصلی این درس)<br>
+    ② <strong>Négation totale</strong> — انواع نفی: ne…rien / ne…jamais / ne…personne / ne…plus
+  </div>
+
+  <!-- PASSÉ COMPOSÉ -->
+  <div style="margin-bottom:8px;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;color:var(--amber-deep);letter-spacing:.05em;">🟠 PASSÉ COMPOSÉ در دیالوگ</div>
+
+  <div class="analysis-card">
+    <div class="ac-head"><div class="ac-title">avoir + participe passé</div><div class="ac-fa">کمکی avoir + اسم مفعول</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">AVOIR + P.P.</div>
+      <div class="ac-ex">J'<strong>ai fait</strong> du bricolage et du jardinage.</div><div class="ac-tr">من کار دستی و باغبانی کردم.</div>
+      <div class="ac-ex">Les enfants <strong>ont joué</strong> aux jeux vidéo.</div><div class="ac-tr">بچه‌ها بازی ویدیویی بازی کردند.</div>
+      <div class="ac-ex">Élodie <strong>a commencé</strong> un nouveau tableau.</div><div class="ac-tr">الودی یک تابلو جدید شروع کرد.</div>
+      <div class="ac-ex">On <strong>a regardé</strong> un match de foot.</div><div class="ac-tr">یک بازی فوتبال تماشا کردیم.</div>
+      <div class="ac-ex">On <strong>a accompagné</strong> les enfants à leur compétition.</div><div class="ac-tr">بچه‌ها را به مسابقه‌شان بردیم.</div>
+      <div class="ac-ex">J'<strong>ai adoré</strong> le concert.</div><div class="ac-tr">کنسرت را خیلی دوست داشتم.</div>
+    </div>
+  </div>
+
+  <div class="analysis-card">
+    <div class="ac-head"><div class="ac-title">être + participe passé</div><div class="ac-fa">کمکی être + اسم مفعول — فعل‌های حرکتی</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">ÊTRE + P.P. · accord avec sujet</div>
+      <div class="ac-ex">Je <strong>suis resté</strong> à la maison en famille.</div><div class="ac-tr">خانه با خانواده ماندم.</div>
+      <div class="ac-ex">Vous <strong>êtes sortis</strong> ?</div><div class="ac-tr">بیرون رفتید؟</div>
+      <div class="ac-ex">Nous <strong>sommes allés</strong> au festival Jazz à Vienne.</div><div class="ac-tr">به جشنواره جاز رفتیم.</div>
+      <div class="ac-ex">Je ne <strong>suis jamais allé</strong> à ce festival.</div><div class="ac-tr">هرگز به این جشنواره نرفته‌ام.</div>
+      <div class="ac-ex">Nous <strong>sommes allés</strong> à l'accrobranche.</div><div class="ac-tr">به اکروبرانش رفتیم.</div>
+      <div class="ac-ex">Nous nous <strong>sommes bien amusés</strong> !</div><div class="ac-tr">خیلی خوش گذشت! (فعل ضمیری)</div>
+    </div>
+  </div>
+
+  <!-- NÉGATION -->
+  <div style="margin:20px 0 8px;font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;color:var(--purple);letter-spacing:.05em;">🟣 NÉGATION TOTALE — انواع نفی</div>
+
+  <div class="analysis-card">
+    <div class="ac-head" style="background:var(--purple);"><div class="ac-title">ne… rien — هیچ چیز</div><div class="ac-fa">کاملاً منفی</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">ne + verbe + rien</div>
+      <div class="ac-ex">Je n'ai <strong>rien</strong> fait de spécial.</div><div class="ac-tr">کار خاصی نکردم. (rien = مفعول مستقیم)</div>
+      <div class="ac-ex">Ils ne veulent <strong>rien</strong> faire le week-end.</div><div class="ac-tr">نمی‌خواهند آخر هفته هیچ کاری کنند.</div>
+    </div>
+  </div>
+
+  <div class="analysis-card">
+    <div class="ac-head" style="background:var(--purple);"><div class="ac-title">ne… jamais — هرگز</div><div class="ac-fa">نفی در زمان</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">ne + verbe + jamais</div>
+      <div class="ac-ex">Je ne suis <strong>jamais</strong> allé à ce festival.</div><div class="ac-tr">هرگز به این جشنواره نرفته‌ام.</div>
+    </div>
+  </div>
+
+  <div class="analysis-card">
+    <div class="ac-head" style="background:var(--purple);"><div class="ac-title">ne… personne — هیچ‌کس</div><div class="ac-fa">نفی برای اشخاص</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">ne + verbe + personne</div>
+      <div class="ac-ex">Ils ne voient <strong>personne</strong>.</div><div class="ac-tr">کسی را نمی‌بینند.</div>
+    </div>
+  </div>
+
+  <div class="analysis-card">
+    <div class="ac-head" style="background:var(--purple);"><div class="ac-title">ne… plus — دیگر نه</div><div class="ac-fa">نفی در مقایسه با گذشته</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">ne + verbe + plus</div>
+      <div class="ac-ex">Ils ne veulent <strong>plus</strong> jouer à des jeux de société.</div><div class="ac-tr">دیگر نمی‌خواهند بازی‌های جمعی بازی کنند. (قبلاً می‌کردند)</div>
+    </div>
+  </div>
+
+  <div class="analysis-card">
+    <div class="ac-head" style="background:var(--purple);"><div class="ac-title">ne… pas du tout — اصلاً</div><div class="ac-fa">تأکید بر نفی کامل</div></div>
+    <div class="ac-body">
+      <div class="rule-tag">ne + verbe + pas du tout</div>
+      <div class="ac-ex">C'est <strong>pas du tout</strong> leur truc.</div><div class="ac-tr">اصلاً کار آن‌ها نیست. (تأکید بر منفی بودن)</div>
+    </div>
+  </div>
+
+  <!-- Summary table -->
+  <div style="background:var(--navy);border-radius:12px;overflow:hidden;margin-top:20px;">
+    <div style="padding:12px 20px;font-weight:700;font-size:13px;color:#fcd34d;border-bottom:1px solid rgba(255,255,255,.1);">📊 جدول خلاصه نفی</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+          <td style="padding:10px 16px;font-family:'JetBrains Mono',monospace;color:#c4b5fd;font-weight:700;">ne…rien</td>
+          <td style="padding:10px 16px;color:rgba(255,255,255,.8);">هیچ چیز</td>
+          <td style="padding:10px 16px;font-family:'Roboto',sans-serif;font-style:italic;color:rgba(255,255,255,.6);">Je ne vois <em>rien</em>.</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+          <td style="padding:10px 16px;font-family:'JetBrains Mono',monospace;color:#c4b5fd;font-weight:700;">ne…jamais</td>
+          <td style="padding:10px 16px;color:rgba(255,255,255,.8);">هرگز</td>
+          <td style="padding:10px 16px;font-family:'Roboto',sans-serif;font-style:italic;color:rgba(255,255,255,.6);">Elle ne vient <em>jamais</em>.</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+          <td style="padding:10px 16px;font-family:'JetBrains Mono',monospace;color:#c4b5fd;font-weight:700;">ne…personne</td>
+          <td style="padding:10px 16px;color:rgba(255,255,255,.8);">هیچ‌کس</td>
+          <td style="padding:10px 16px;font-family:'Roboto',sans-serif;font-style:italic;color:rgba(255,255,255,.6);">Il ne connaît <em>personne</em>.</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+          <td style="padding:10px 16px;font-family:'JetBrains Mono',monospace;color:#c4b5fd;font-weight:700;">ne…plus</td>
+          <td style="padding:10px 16px;color:rgba(255,255,255,.8);">دیگر نه</td>
+          <td style="padding:10px 16px;font-family:'Roboto',sans-serif;font-style:italic;color:rgba(255,255,255,.6);">On ne sort <em>plus</em>.</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;font-family:'JetBrains Mono',monospace;color:#c4b5fd;font-weight:700;">ne…pas du tout</td>
+          <td style="padding:10px 16px;color:rgba(255,255,255,.8);">اصلاً</td>
+          <td style="padding:10px 16px;font-family:'Roboto',sans-serif;font-style:italic;color:rgba(255,255,255,.6);">Ce n'est <em>pas du tout</em> vrai.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← Leçon 1</a> · Édito A2 · U1 L1 · Partie E · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
