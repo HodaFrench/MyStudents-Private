@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Les Adverbes A2–B1 · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --c1:#1565c0;--c1p:#e3f2fd; /* manière */
+  --c2:#2e7d32;--c2p:#e8f5e9; /* temps */
+  --c3:#6a1b9a;--c3p:#f3e5f5; /* fréquence */
+  --c4:#e65100;--c4p:#fff3e0; /* intensité */
+  --c5:#00695c;--c5p:#e0f2f1; /* lieu */
+  --c6:#c62828;--c6p:#ffebee; /* liaison */
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+/* TOPBAR */
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:42px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* FILTER BAR */
+.filter-bar{display:flex;overflow-x:auto;gap:8px;padding:13px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;}
+.fbtn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.fbtn:hover,.fbtn.active{background:var(--pink);border-color:var(--pink);color:white;}
+
+/* MAIN */
+.wrap{max-width:960px;margin:0 auto;padding:24px 20px;}
+.sec-head{font-family:'Roboto',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin:28px 0 14px;display:flex;align-items:center;gap:10px;}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line);}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+
+/* ADV CARD */
+.adv-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s;}
+.adv-card.hidden{display:none;}
+.adv-card:hover{box-shadow:0 4px 18px rgba(194,24,91,.1);border-color:var(--pink);}
+
+.card-top{display:flex;align-items:stretch;}
+.card-num{min-width:42px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:white;}
+.card-info{padding:12px 14px;border-bottom:1px solid var(--line);flex:1;}
+.card-word{font-family:'Roboto',sans-serif;font-size:19px;font-weight:700;direction:ltr;margin-bottom:3px;}
+.card-fa{font-size:12px;color:var(--gray);margin-bottom:4px;}
+.card-alt{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:6px;display:inline-block;margin-top:2px;}
+.cat-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:3px 9px;border-radius:8px;white-space:nowrap;margin-left:auto;margin-top:6px;margin-right:8px;align-self:center;}
+
+/* EXAMPLES */
+.card-exs{padding:0;}
+.ex{padding:10px 14px;border-bottom:1px dashed var(--line);}
+.ex:last-child{border:none;}
+.ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;direction:ltr;text-align:left;line-height:1.7;color:var(--ink);margin-bottom:3px;}
+.ex-fr strong{text-decoration:underline;text-underline-offset:3px;}
+.ex-fa{font-size:11.5px;color:var(--gray);direction:rtl;text-align:right;line-height:1.65;}
+
+/* UPGRADE NOTE */
+.upgrade{display:flex;align-items:center;gap:6px;padding:8px 14px;background:var(--paper);border-top:1px solid var(--line);font-size:11px;color:var(--gray);direction:rtl;}
+.upgrade strong{color:var(--pink-deep);}
+
+/* COLORS per category */
+.c1 .card-num{background:var(--c1);} .c1 .card-word{color:var(--c1);}
+.c1 .card-alt{background:var(--c1p);color:var(--c1);}
+.c1 .cat-badge{background:var(--c1p);color:var(--c1);}
+
+.c2 .card-num{background:var(--c2);} .c2 .card-word{color:var(--c2);}
+.c2 .card-alt{background:var(--c2p);color:var(--c2);}
+.c2 .cat-badge{background:var(--c2p);color:var(--c2);}
+
+.c3 .card-num{background:var(--c3);} .c3 .card-word{color:var(--c3);}
+.c3 .card-alt{background:var(--c3p);color:var(--c3);}
+.c3 .cat-badge{background:var(--c3p);color:var(--c3);}
+
+.c4 .card-num{background:var(--c4);} .c4 .card-word{color:var(--c4);}
+.c4 .card-alt{background:var(--c4p);color:var(--c4);}
+.c4 .cat-badge{background:var(--c4p);color:var(--c4);}
+
+.c5 .card-num{background:var(--c5);} .c5 .card-word{color:var(--c5);}
+.c5 .card-alt{background:var(--c5p);color:var(--c5);}
+.c5 .cat-badge{background:var(--c5p);color:var(--c5);}
+
+.c6 .card-num{background:var(--c6);} .c6 .card-word{color:var(--c6);}
+.c6 .card-alt{background:var(--c6p);color:var(--c6);}
+.c6 .cat-badge{background:var(--c6p);color:var(--c6);}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:600px){.cards-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">🔶</div>
+  <div><div class="t-title">Les Adverbes — قیدها</div><div class="t-sub">مهرآفرین · A2–B1 · ۳۰ قید کاربردی</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">GRAMMAIRE A2–B1 · ADVERBES</div>
+    <h1>🔶 Les Adverbes</h1>
+    <div class="hero-sub">۳۰ قید کاربردی — جایگزین‌های beaucoup و très · قیدهای زمان · حالت · شدت</div>
+    <div class="hero-pills">
+      <span class="hpill" style="background:rgba(21,101,192,.3);">🔵 حالت</span>
+      <span class="hpill" style="background:rgba(46,125,50,.3);">🟢 زمان</span>
+      <span class="hpill" style="background:rgba(106,27,154,.3);">🟣 تکرار</span>
+      <span class="hpill" style="background:rgba(230,81,0,.3);">🟠 شدت</span>
+      <span class="hpill" style="background:rgba(0,105,92,.3);">🩵 مکان</span>
+      <span class="hpill" style="background:rgba(198,40,40,.3);">🔴 ربط</span>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="fbtn active" onclick="setFilter('all',this)">همه (۳۰)</button>
+  <button class="fbtn" onclick="setFilter('c1',this)">🔵 حالت</button>
+  <button class="fbtn" onclick="setFilter('c2',this)">🟢 زمان</button>
+  <button class="fbtn" onclick="setFilter('c3',this)">🟣 تکرار</button>
+  <button class="fbtn" onclick="setFilter('c4',this)">🟠 شدت / مقدار</button>
+  <button class="fbtn" onclick="setFilter('c5',this)">🩵 مکان</button>
+  <button class="fbtn" onclick="setFilter('c6',this)">🔴 ربط / نتیجه</button>
+</div>
+
+<div class="wrap" id="cards-wrap"><!-- built by JS --></div>
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · قیدها · A2–B1 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const CAT_LABELS = {
+  c1:'🔵 قید حالت',c2:'🟢 قید زمان',c3:'🟣 قید تکرار',
+  c4:'🟠 قید شدت / مقدار',c5:'🩵 قید مکان',c6:'🔴 قید ربط / نتیجه'
+};
+const CAT_TITLES = {
+  c1:'قیدهای حالت — Comment ?',
+  c2:'قیدهای زمان — Quand ?',
+  c3:'قیدهای تکرار / تناوب — Combien de fois ?',
+  c4:'قیدهای شدت و مقدار — جایگزین‌های beaucoup / très',
+  c5:'قیدهای مکان — Où ?',
+  c6:'قیدهای ربط و نتیجه — Pourquoi ? Alors ?'
+};
+
+const DATA = [
+
+/* ── C1: MANIÈRE ── */
+{n:1,cat:'c1',word:'tranquillement',fa:'به آرامی · آرام آرام',
+ alt:'≠ vite, précipitamment',
+ upgrade:'جایگزین خوب برای «doucement» که خیلی تکراری است',
+ ex:[
+  {fr:'Il lit son journal <strong>tranquillement</strong> le matin, sans regarder son téléphone.',fa:'صبح‌ها روزنامه‌اش را آرام می‌خواند، بدون نگاه کردن به تلفنش.'},
+  {fr:'Mange <strong>tranquillement</strong>, on n\'est pas pressés, on a tout notre temps.',fa:'آرام بخور، عجله نداریم، وقت کافی داریم.'},
+  {fr:'Elle avance <strong>tranquillement</strong> dans ses études parce qu\'elle travaille chaque jour sans stress.',fa:'آرام در تحصیلاتش پیش می‌رود چون هر روز بدون استرس کار می‌کند.'}
+ ]},
+
+{n:2,cat:'c1',word:'clairement',fa:'به وضوح · واضح',
+ alt:'≠ confusément, vaguement',
+ upgrade:'برای توضیح دادن — به جای «bien» خیلی حرفه‌ای‌تر است',
+ ex:[
+  {fr:'Tu peux m\'expliquer <strong>clairement</strong> ce que tu veux ? Je ne comprends pas très bien.',fa:'می‌توانی واضح توضیح دهی چه می‌خواهی؟ خوب نمی‌فهمم.'},
+  {fr:'Il parle <strong>clairement</strong> et lentement, donc tout le monde le comprend facilement.',fa:'واضح و آهسته حرف می‌زند، پس همه راحت می‌فهمند.'},
+  {fr:'Dis-moi <strong>clairement</strong> : tu viens ou tu ne viens pas ? J\'ai besoin de savoir.',fa:'واضح بگو: می‌آیی یا نمی‌آیی؟ باید بدانم.'}
+ ]},
+
+{n:3,cat:'c1',word:'doucement',fa:'به نرمی · آهسته · ملایم',
+ alt:'≠ brutalement, brusquement',
+ upgrade:'برای آهنگ صدا یا رفتار — «parler doucement» خیلی رایج',
+ ex:[
+  {fr:'Parle <strong>doucement</strong> s\'il te plaît, le bébé dort dans la pièce à côté.',fa:'لطفاً آهسته حرف بزن، بچه در اتاق کناری خوابیده.'},
+  {fr:'Elle a refusé <strong>doucement</strong> mais fermement — elle ne voulait pas blesser son ami.',fa:'ملایم اما محکم رد کرد — نمی‌خواست دوستش را ناراحت کند.'},
+  {fr:'La pluie tombe <strong>doucement</strong> ce soir, c\'est une belle ambiance pour lire.',fa:'باران امشب به آرامی می‌بارد، فضای زیبایی برای خواندن است.'}
+ ]},
+
+{n:4,cat:'c1',word:'honnêtement',fa:'صادقانه · رک بگویم',
+ alt:'= franchement / sincèrement',
+ upgrade:'در ابتدای جمله = «رک بگویم» — خیلی کاربردی در محاوره',
+ ex:[
+  {fr:'<strong>Honnêtement</strong>, je ne sais pas si c\'est une bonne idée d\'accepter cette offre.',fa:'صادقانه بگویم، نمی‌دانم قبول کردن این پیشنهاد ایده خوبی است.'},
+  {fr:'Dis-moi <strong>honnêtement</strong> ce que tu penses de mon projet. J\'ai besoin d\'un vrai avis.',fa:'صادقانه بگو درباره پروژه‌ام چه فکری می‌کنی. به نظر واقعی نیاز دارم.'},
+  {fr:'<strong>Honnêtement</strong> ? Je trouve ce film un peu long, mais la fin était très bien.',fa:'صادقانه؟ این فیلم را کمی طولانی می‌یابم، اما آخرش خیلی خوب بود.'}
+ ]},
+
+{n:5,cat:'c1',word:'rapidement',fa:'سریعاً · به سرعت',
+ alt:'≠ lentement · = vite (plus familier)',
+ upgrade:'«rapidement» رسمی‌تر از «vite» — در نوشتار و گفتار رسمی',
+ ex:[
+  {fr:'Il a <strong>rapidement</strong> compris la situation et a pris la bonne décision.',fa:'سریعاً وضعیت را فهمید و تصمیم درستی گرفت.'},
+  {fr:'J\'ai <strong>rapidement</strong> mangé mon déjeuner parce que j\'avais une réunion à 14h.',fa:'سریعاً ناهار خوردم چون ساعت ۱۴ جلسه داشتم.'},
+  {fr:'Le temps passe <strong>rapidement</strong> quand on fait quelque chose qu\'on aime vraiment.',fa:'وقتی کاری می‌کنی که واقعاً دوست داری، وقت سریع می‌گذرد.'}
+ ]},
+
+/* ── C2: TEMPS ── */
+{n:6,cat:'c2',word:'désormais',fa:'از این پس · از حالا به بعد',
+ alt:'= dorénavant / à partir de maintenant',
+ upgrade:'جایگزین زیبای «maintenant» برای تغییر دائمی — سطح B1',
+ ex:[
+  {fr:'<strong>Désormais</strong>, elle ne boit plus de café le soir pour mieux dormir.',fa:'از این پس، دیگر شب قهوه نمی‌نوشد تا بهتر بخوابد.'},
+  {fr:'<strong>Désormais</strong>, les réunions se font en ligne — plus besoin de voyager.',fa:'از این پس جلسات آنلاین برگزار می‌شوند — دیگر نیازی به سفر نیست.'},
+  {fr:'Il a changé ses habitudes alimentaires et <strong>désormais</strong> il mange équilibré chaque jour.',fa:'عادت‌های غذایی‌اش را تغییر داد و از این پس هر روز متعادل غذا می‌خورد.'}
+ ]},
+
+{n:7,cat:'c2',word:'aussitôt',fa:'بلافاصله · همان لحظه',
+ alt:'= immédiatement / tout de suite',
+ upgrade:'«aussitôt» کمی ادبی‌تر — خوب برای روایت داستان',
+ ex:[
+  {fr:'Il a vu l\'annonce et <strong>aussitôt</strong> il a appelé pour avoir plus d\'informations.',fa:'آگهی را دید و بلافاصله زنگ زد تا اطلاعات بیشتری بگیرد.'},
+  {fr:'Elle est rentrée et <strong>aussitôt</strong> elle a senti l\'odeur du café dans la cuisine.',fa:'وارد شد و بلافاصله بوی قهوه را در آشپزخانه حس کرد.'},
+  {fr:'<strong>Aussitôt</strong> dit, aussitôt fait ! Il a promis d\'appeler et il a appelé dans la minute.',fa:'همان لحظه گفت، همان لحظه عمل کرد! قول داد زنگ بزند و در همان دقیقه زنگ زد.'}
+ ]},
+
+{n:8,cat:'c2',word:'dorénavant',fa:'از این لحظه به بعد · از حالا',
+ alt:'= désormais (synonyme parfait)',
+ upgrade:'کمی رسمی‌تر از désormais — خوب برای نامه یا تصمیم رسمی',
+ ex:[
+  {fr:'<strong>Dorénavant</strong>, je vais noter toutes mes dépenses pour mieux gérer mon budget.',fa:'از این به بعد، همه هزینه‌هایم را یادداشت می‌کنم تا بهتر بودجه‌ام را مدیریت کنم.'},
+  {fr:'<strong>Dorénavant</strong>, les cours auront lieu le mardi et le jeudi, pas le lundi.',fa:'از این به بعد، کلاس‌ها سه‌شنبه و پنجشنبه خواهند بود، نه دوشنبه.'},
+  {fr:'Il a compris son erreur et <strong>dorénavant</strong> il écoute vraiment avant de répondre.',fa:'اشتباهش را فهمید و از این به بعد واقعاً گوش می‌دهد قبل از جواب دادن.'}
+ ]},
+
+{n:9,cat:'c2',word:'récemment',fa:'اخیراً · به تازگی',
+ alt:'≠ autrefois, jadis',
+ upgrade:'جایگزین «dernièrement» — برای رویدادهای اخیر',
+ ex:[
+  {fr:'J\'ai <strong>récemment</strong> découvert un podcast français fantastique sur l\'histoire.',fa:'اخیراً یک پادکست فرانسوی فوق‌العاده درباره تاریخ کشف کردم.'},
+  {fr:'Il a <strong>récemment</strong> changé de travail et il est beaucoup plus heureux maintenant.',fa:'اخیراً کارش را عوض کرده و حالا خیلی خوشحال‌تر است.'},
+  {fr:'<strong>Récemment</strong>, les prix des vêtements ont beaucoup augmenté dans tous les magasins.',fa:'اخیراً قیمت لباس‌ها در همه فروشگاه‌ها خیلی بالا رفته.'}
+ ]},
+
+{n:10,cat:'c2',word:'progressivement',fa:'به تدریج · کم‌کم',
+ alt:'= petit à petit / peu à peu',
+ upgrade:'«progressivement» رسمی‌تر — برای تغییر آهسته',
+ ex:[
+  {fr:'Elle <strong>progressivement</strong> améliore son français en pratiquant chaque jour.',fa:'به تدریج فرانسه‌اش را با تمرین روزانه بهتر می‌کند.'},
+  {fr:'<strong>Progressivement</strong>, la situation s\'est améliorée et tout le monde était soulagé.',fa:'به تدریج وضعیت بهتر شد و همه آسوده خاطر شدند.'},
+  {fr:'Il a <strong>progressivement</strong> réduit sa consommation de sucre pour rester en bonne santé.',fa:'به تدریج مصرف قندش را کاهش داد تا سلامت بماند.'}
+ ]},
+
+/* ── C3: FRÉQUENCE ── */
+{n:11,cat:'c3',word:'régulièrement',fa:'به طور منظم · مرتب',
+ alt:'≠ rarement, irrégulièrement',
+ upgrade:'جایگزین «souvent» با معنی «منظم» — نشان می‌دهد هابیت است',
+ ex:[
+  {fr:'Elle pratique le français <strong>régulièrement</strong> — vingt minutes chaque matin sans exception.',fa:'به طور منظم فرانسه تمرین می‌کند — بیست دقیقه هر صبح بدون استثنا.'},
+  {fr:'Pour rester en bonne santé, il faut faire du sport <strong>régulièrement</strong>, pas seulement le week-end.',fa:'برای سلامت ماندن باید به طور منظم ورزش کرد، نه فقط آخر هفته.'},
+  {fr:'Je lis <strong>régulièrement</strong> des articles en français pour élargir mon vocabulaire.',fa:'به طور منظم مقالات فرانسوی می‌خوانم تا واژگانم را گسترش دهم.'}
+ ]},
+
+{n:12,cat:'c3',word:'rarement',fa:'به ندرت · کمتر',
+ alt:'≠ souvent, fréquemment',
+ upgrade:'نقطه دقیق بین «jamais» و «parfois» — خیلی کاربردی',
+ ex:[
+  {fr:'Je vais <strong>rarement</strong> au cinéma seul(e) — je préfère y aller avec des amis.',fa:'به ندرت تنها به سینما می‌روم — ترجیح می‌دهم با دوستان بروم.'},
+  {fr:'Il se plaint <strong>rarement</strong>, même quand les choses vont mal. C\'est quelqu\'un de fort.',fa:'به ندرت شکایت می‌کند، حتی وقتی اوضاع بد است. آدم قوی‌ای است.'},
+  {fr:'On mange <strong>rarement</strong> des plats préparés parce que ma mère aime cuisiner.',fa:'به ندرت غذاهای آماده می‌خوریم چون مادرم آشپزی را دوست دارد.'}
+ ]},
+
+{n:13,cat:'c3',word:'fréquemment',fa:'مکرراً · اغلب اوقات',
+ alt:'= souvent — mais plus soutenu',
+ upgrade:'رسمی‌تر از «souvent» — برای نوشتار یا گفتار مؤدبانه',
+ ex:[
+  {fr:'Les jeunes consultent <strong>fréquemment</strong> leur téléphone — en moyenne cent fois par jour.',fa:'جوانان مکرراً تلفنشان را چک می‌کنند — به طور متوسط صد بار در روز.'},
+  {fr:'Elle voyage <strong>fréquemment</strong> pour son travail et passe beaucoup de temps dans les avions.',fa:'مکرراً برای کارش سفر می‌کند و وقت زیادی در هواپیما می‌گذراند.'},
+  {fr:'Ce problème arrive <strong>fréquemment</strong> dans cette situation — ce n\'est pas exceptionnel.',fa:'این مشکل در این وضعیت مکرراً پیش می‌آید — استثنایی نیست.'}
+ ]},
+
+{n:14,cat:'c3',word:'occasionnellement',fa:'گاه‌گاه · گاهی اوقات',
+ alt:'= de temps en temps / parfois',
+ upgrade:'بین «parfois» و «rarement» — برای چیزی که نه زیاد نه کم است',
+ ex:[
+  {fr:'Je mange <strong>occasionnellement</strong> de la viande, mais je préfère les légumes en général.',fa:'گاه‌گاه گوشت می‌خورم، اما به طور کلی سبزیجات را ترجیح می‌دهم.'},
+  {fr:'Elle sort <strong>occasionnellement</strong> le soir — peut-être deux ou trois fois par mois.',fa:'گاه‌گاه شب بیرون می‌رود — شاید دو یا سه بار در ماه.'},
+  {fr:'Il téléphone <strong>occasionnellement</strong> à ses parents, mais il envoie des messages tous les jours.',fa:'گاه‌گاه به والدینش زنگ می‌زند، اما هر روز پیام می‌فرستد.'}
+ ]},
+
+/* ── C4: INTENSITÉ ── */
+{n:15,cat:'c4',word:'énormément',fa:'به شدت · خیلی زیاد',
+ alt:'> beaucoup > un peu',
+ upgrade:'جایگزین قوی‌تر برای «beaucoup» — احساس را قوی‌تر می‌کند',
+ ex:[
+  {fr:'Ce voyage m\'a <strong>énormément</strong> apporté — j\'ai changé ma façon de voir le monde.',fa:'این سفر به شدت به من داد — طرز دیدنم نسبت به دنیا تغییر کرد.'},
+  {fr:'Elle aime <strong>énormément</strong> le jazz, elle va à tous les festivals chaque été.',fa:'به شدت جاز دوست دارد، هر تابستان به همه جشنواره‌ها می‌رود.'},
+  {fr:'Il a <strong>énormément</strong> progressé en français — il ne fait presque plus de fautes.',fa:'در فرانسه به شدت پیشرفت کرده — تقریباً دیگر اشتباه نمی‌کند.'}
+ ]},
+
+{n:16,cat:'c4',word:'particulièrement',fa:'به طور خاص · مخصوصاً',
+ alt:'= surtout / spécialement',
+ upgrade:'نشان می‌دهد یک چیز از بقیه برجسته‌تر است — خیلی کاربردی',
+ ex:[
+  {fr:'J\'aime toute la cuisine française, mais <strong>particulièrement</strong> les desserts et les fromages.',fa:'همه غذاهای فرانسوی را دوست دارم، اما مخصوصاً دسرها و پنیرها.'},
+  {fr:'Ce chapitre est <strong>particulièrement</strong> difficile — il faut le lire plusieurs fois.',fa:'این فصل به طور خاص سخت است — باید چندین بار خواند.'},
+  {fr:'Il est <strong>particulièrement</strong> doué pour les langues — il apprend vite et retient tout.',fa:'به طور خاص در زبان‌ها استعداد دارد — سریع یاد می‌گیرد و همه چیز را نگه می‌دارد.'}
+ ]},
+
+{n:17,cat:'c4',word:'absolument',fa:'کاملاً · صد در صد · قطعاً',
+ alt:'= tout à fait / complètement',
+ upgrade:'برای تأیید قوی یا نفی قوی — «absolument pas» = اصلاً نه',
+ ex:[
+  {fr:'— Tu es d\'accord ? — <strong>Absolument</strong> ! C\'est exactement ce qu\'il faut faire.',fa:'— موافقی؟ — کاملاً! دقیقاً همین کاری است که باید کرد.'},
+  {fr:'C\'est <strong>absolument</strong> nécessaire de réviser avant l\'examen, sinon tu risques d\'échouer.',fa:'کاملاً ضروری است قبل از امتحان مرور کنی، وگرنه ممکن است رد شوی.'},
+  {fr:'Je ne suis <strong>absolument</strong> pas d\'accord avec cette décision — c\'est une erreur.',fa:'اصلاً با این تصمیم موافق نیستم — اشتباه است.'}
+ ]},
+
+{n:18,cat:'c4',word:'nettement',fa:'به وضوح · به صراحت · مشخصاً',
+ alt:'= clairement — mais pour comparaison',
+ upgrade:'برای مقایسه — «nettement mieux» = خیلی بهتر، واضح‌تر',
+ ex:[
+  {fr:'Son niveau de français est <strong>nettement</strong> meilleur qu\'il y a six mois.',fa:'سطح فرانسه‌اش به وضوح از شش ماه پیش بهتر است.'},
+  {fr:'Cet appartement est <strong>nettement</strong> plus grand que le précédent — on a beaucoup plus de place.',fa:'این آپارتمان به وضوح از قبلی بزرگ‌تر است — جای خیلی بیشتری داریم.'},
+  {fr:'Elle préfère <strong>nettement</strong> travailler le matin parce qu\'elle est plus concentrée.',fa:'به وضوح ترجیح می‌دهد صبح کار کند چون تمرکز بیشتری دارد.'}
+ ]},
+
+{n:19,cat:'c4',word:'légèrement',fa:'کمی · اندکی · به سختی',
+ alt:'≠ beaucoup, énormément',
+ upgrade:'برای تغییر کوچک یا مشکل کوچک — ظریف‌تر از «un peu»',
+ ex:[
+  {fr:'La sauce est <strong>légèrement</strong> trop salée, mais c\'est quand même très bon.',fa:'سس اندکی خیلی نمکی است، اما با این حال خیلی خوشمزه است.'},
+  {fr:'Il est <strong>légèrement</strong> en retard — il arrive dans cinq minutes, ne t\'inquiète pas.',fa:'اندکی دیر کرده — پنج دقیقه دیگر می‌رسد، نگران نباش.'},
+  {fr:'Son accent en français est <strong>légèrement</strong> marqué, mais on le comprend très bien.',fa:'لهجه‌اش در فرانسوی اندکی مشخص است، اما خیلی خوب می‌شود فهمید.'}
+ ]},
+
+{n:20,cat:'c4',word:'davantage',fa:'بیشتر (از این)',
+ alt:'= plus — mais sans comparaison directe',
+ upgrade:'جایگزین ظریف «plus» — بدون نیاز به «que» — سطح B1',
+ ex:[
+  {fr:'Tu devrais pratiquer <strong>davantage</strong> si tu veux progresser rapidement.',fa:'اگر می‌خواهی سریع پیشرفت کنی، باید بیشتر تمرین کنی.'},
+  {fr:'J\'aurais aimé <strong>davantage</strong> de temps pour visiter cette ville magnifique.',fa:'دوست داشتم وقت بیشتری داشتم برای بازدید از این شهر زیبا.'},
+  {fr:'On sort <strong>davantage</strong> depuis le printemps parce que le temps est bien meilleur.',fa:'از بهار بیشتر بیرون می‌رویم چون هوا خیلی بهتر است.'}
+ ]},
+
+/* ── C5: LIEU ── */
+{n:21,cat:'c5',word:'ailleurs',fa:'جای دیگر · جای دیگری',
+ alt:'≠ ici',
+ upgrade:'خیلی رایج در محاوره — «chercher ailleurs» = جای دیگر گشتن',
+ ex:[
+  {fr:'Ce restaurant est complet ce soir — on doit aller dîner <strong>ailleurs</strong>.',fa:'این رستوران امشب پر است — باید جای دیگری برویم شام بخوریم.'},
+  {fr:'Si cette solution ne marche pas, on cherchera <strong>ailleurs</strong> — il y a d\'autres options.',fa:'اگر این راه‌حل کار نکرد، جای دیگری می‌گردیم — گزینه‌های دیگری هست.'},
+  {fr:'Il est parti travailler <strong>ailleurs</strong> parce qu\'il ne trouvait pas de poste dans sa ville.',fa:'رفت جای دیگری کار کند چون در شهرش کاری پیدا نمی‌کرد.'}
+ ]},
+
+{n:22,cat:'c5',word:'partout',fa:'همه جا',
+ alt:'≠ nulle part',
+ upgrade:'= «everywhere» — خیلی رایج و کاربردی',
+ ex:[
+  {fr:'Il y a de la musique <strong>partout</strong> dans ce festival — dans les rues, les cafés, les parcs.',fa:'در این جشنواره همه جا موسیقی هست — در خیابان‌ها، کافه‌ها، پارک‌ها.'},
+  {fr:'J\'ai cherché mes clés <strong>partout</strong> et finalement je les ai trouvées dans ma veste.',fa:'همه جا دنبال کلیدهایم گشتم و بالاخره در جیب کتم پیداشان کردم.'},
+  {fr:'La fast fashion, on en voit les effets <strong>partout</strong> — dans les rivières, les forêts, les villes.',fa:'اثرات فست‌فشن را همه جا می‌بینیم — در رودخانه‌ها، جنگل‌ها، شهرها.'}
+ ]},
+
+{n:23,cat:'c5',word:'nulle part',fa:'هیچ جا · هیچ‌کجا',
+ alt:'≠ partout',
+ upgrade:'نفی مکان — «je ne vais nulle part» = هیچ‌جا نمی‌روم',
+ ex:[
+  {fr:'J\'ai cherché ce livre <strong>nulle part</strong> — il n\'est ni à la librairie ni en ligne.',fa:'این کتاب را هیچ‌جا پیدا نکردم — نه در کتاب‌فروشی است نه آنلاین.'},
+  {fr:'Il ne veut aller <strong>nulle part</strong> ce week-end — il préfère rester à la maison.',fa:'این آخر هفته هیچ‌جا نمی‌خواهد برود — ترجیح می‌دهد خانه بماند.'},
+  {fr:'On ne trouve ce fromage <strong>nulle part</strong> en dehors de cette petite région de France.',fa:'این پنیر را هیچ‌جا خارج از این منطقه کوچک فرانسه پیدا نمی‌کنی.'}
+ ]},
+
+/* ── C6: LIAISON ── */
+{n:24,cat:'c6',word:'pourtant',fa:'با این حال · با وجود این',
+ alt:'= cependant — mais plus oral',
+ upgrade:'برای تضاد غیرمنتظره — خیلی محاوره‌ای و رایج',
+ ex:[
+  {fr:'Il fait froid dehors, <strong>pourtant</strong> les gens font la queue depuis deux heures.',fa:'بیرون هوا سرد است، با این حال مردم دو ساعت است در صف ایستاده‌اند.'},
+  {fr:'J\'avais très peu dormi, <strong>pourtant</strong> je me sentais plein(e) d\'énergie toute la journée.',fa:'خیلی کم خوابیده بودم، با این حال تمام روز احساس انرژی پری داشتم.'},
+  {fr:'Ce plat semblait simple, <strong>pourtant</strong> il m\'a fallu trois heures pour le préparer.',fa:'این غذا ساده به نظر می‌رسید، با این حال سه ساعت طول کشید آماده کنم.'}
+ ]},
+
+{n:25,cat:'c6',word:'en revanche',fa:'در عوض · از طرف دیگر',
+ alt:'= par contre — plus soutenu',
+ upgrade:'برای contrast ظریف — رسمی‌تر از «mais» — سطح B1',
+ ex:[
+  {fr:'Je n\'aime pas le foot. <strong>En revanche</strong>, je suis vraiment fan de tennis.',fa:'فوتبال دوست ندارم. در عوض، واقعاً طرفدار تنیس هستم.'},
+  {fr:'Ce restaurant est un peu cher. <strong>En revanche</strong>, la qualité des plats est exceptionnelle.',fa:'این رستوران کمی گران است. در عوض، کیفیت غذاها استثنایی است.'},
+  {fr:'Elle ne parle pas espagnol. <strong>En revanche</strong>, son anglais est absolument parfait.',fa:'اسپانیایی حرف نمی‌زند. در عوض، انگلیسی‌اش کاملاً بی‌نقص است.'}
+ ]},
+
+{n:26,cat:'c6',word:'effectivement',fa:'در واقع · واقعاً (تأیید)',
+ alt:'= en effet / c\'est vrai',
+ upgrade:'برای تأیید کردن — «effectivement» یعنی «بله، درست است»',
+ ex:[
+  {fr:'— Tu as l\'air fatigué. — <strong>Effectivement</strong>, je n\'ai dormi que quatre heures cette nuit.',fa:'— خسته به نظر می‌رسی. — در واقع، فقط چهار ساعت این شب خوابیدم.'},
+  {fr:'<strong>Effectivement</strong>, ce problème est plus complexe qu\'il n\'y paraît au premier abord.',fa:'در واقع، این مشکل پیچیده‌تر از چیزی است که در نگاه اول به نظر می‌رسد.'},
+  {fr:'— La réunion est annulée ? — <strong>Effectivement</strong>, le directeur est malade.',fa:'— جلسه لغو شده؟ — در واقع، مدیر مریض است.'}
+ ]},
+
+{n:27,cat:'c6',word:'néanmoins',fa:'با این همه · با این وجود',
+ alt:'= quand même / malgré tout',
+ upgrade:'رسمی‌تر از «quand même» — سطح B1 و بالاتر',
+ ex:[
+  {fr:'La situation est difficile. <strong>Néanmoins</strong>, je reste optimiste parce que les choses changent.',fa:'وضعیت سخت است. با این همه، خوش‌بین می‌مانم چون اوضاع تغییر می‌کند.'},
+  {fr:'Il y avait beaucoup de monde. <strong>Néanmoins</strong>, on a réussi à trouver une bonne place.',fa:'جمعیت زیادی بود. با این همه، موفق شدیم جای خوبی پیدا کنیم.'},
+  {fr:'Ce n\'était pas parfait. <strong>Néanmoins</strong>, le résultat final était très satisfaisant.',fa:'کامل نبود. با این همه، نتیجه نهایی خیلی رضایت‌بخش بود.'}
+ ]},
+
+{n:28,cat:'c6',word:'finalement',fa:'در نهایت · بالاخره',
+ alt:'= au final / en fin de compte',
+ upgrade:'برای نتیجه‌گیری یا پایان داستان — جایگزین زیبای «à la fin»',
+ ex:[
+  {fr:'On a hésité longtemps et <strong>finalement</strong> on a décidé de partir en vacances en montagne.',fa:'مدت طولانی تردید کردیم و در نهایت تصمیم گرفتیم به تعطیلات کوهستان برویم.'},
+  {fr:'<strong>Finalement</strong>, c\'est Lina qui a eu le poste — elle méritait vraiment cette opportunité.',fa:'در نهایت، لینا بود که این پست را گرفت — واقعاً لایق این فرصت بود.'},
+  {fr:'J\'ai cherché partout et <strong>finalement</strong> j\'ai trouvé exactement ce que je voulais.',fa:'همه جا گشتم و در نهایت دقیقاً آنچه می‌خواستم پیدا کردم.'}
+ ]},
+
+{n:29,cat:'c6',word:'ainsi',fa:'بنابراین · این‌گونه · پس',
+ alt:'= donc / c\'est pourquoi',
+ upgrade:'رسمی‌تر از «donc» — برای نوشتار یا توضیح منطقی',
+ ex:[
+  {fr:'Il pleuvait beaucoup et <strong>ainsi</strong> on a décidé d\'annuler le pique-nique.',fa:'باران زیادی می‌بارید و بنابراین تصمیم گرفتیم پیک‌نیک را لغو کنیم.'},
+  {fr:'Elle a travaillé dur pendant des années et <strong>ainsi</strong> elle a pu réaliser son rêve.',fa:'سال‌ها سخت کار کرد و بنابراین توانست رویایش را تحقق بخشد.'},
+  {fr:'Les prix ont augmenté et <strong>ainsi</strong> de nombreuses personnes ont changé leurs habitudes.',fa:'قیمت‌ها بالا رفتند و بنابراین افراد زیادی عادت‌هایشان را تغییر دادند.'}
+ ]},
+
+{n:30,cat:'c6',word:'d\'ailleurs',fa:'ضمناً · به علاوه · از قضا',
+ alt:'= de plus / en plus — mais ajoute une info bonus',
+ upgrade:'اضافه کردن اطلاعات فرعی جالب — خیلی محاوره‌ای',
+ ex:[
+  {fr:'Ce café est très bon. <strong>D\'ailleurs</strong>, c\'est celui que j\'achète chaque semaine.',fa:'این قهوه خیلی خوب است. ضمناً، این همانی است که هر هفته می‌خرم.'},
+  {fr:'La via ferrata est accessible à tous. <strong>D\'ailleurs</strong>, des enfants de six ans l\'ont faite.',fa:'ویا فراتا برای همه در دسترس است. ضمناً، بچه‌های شش ساله هم آن را انجام داده‌اند.'},
+  {fr:'Je connais bien Paris. <strong>D\'ailleurs</strong>, j\'y ai vécu pendant trois ans avant de rentrer.',fa:'پاریس را خوب می‌شناسم. ضمناً، سه سال آنجا زندگی کردم قبل از برگشتن.'}
+ ]}
+
+];
+
+// Build cards
+const wrap = document.getElementById('cards-wrap');
+let lastCat = '';
+
+DATA.forEach(d => {
+  if(d.cat !== lastCat) {
+    const sh = document.createElement('div');
+    sh.className = 'sec-head';
+    sh.dataset.cat = d.cat;
+    sh.textContent = CAT_TITLES[d.cat];
+    wrap.appendChild(sh);
+
+    const grid = document.createElement('div');
+    grid.className = 'cards-grid';
+    grid.id = 'grid-'+d.cat;
+    wrap.appendChild(grid);
+    lastCat = d.cat;
+  }
+
+  const card = document.createElement('div');
+  card.className = `adv-card ${d.cat}`;
+  card.dataset.cat = d.cat;
+
+  card.innerHTML = `
+    <div class="card-top">
+      <div class="card-num">${d.n}</div>
+      <div class="card-info">
+        <div class="card-word">${d.word}</div>
+        <div class="card-fa">${d.fa}</div>
+        <div class="card-alt">${d.alt}</div>
+      </div>
+      <div class="cat-badge">${CAT_LABELS[d.cat]}</div>
+    </div>
+    <div class="card-exs">
+      ${d.ex.map(e=>`
+        <div class="ex">
+          <div class="ex-fr">${e.fr}</div>
+          <div class="ex-fa">${e.fa}</div>
+        </div>`).join('')}
+    </div>
+    <div class="upgrade">💡 <strong>${d.word}</strong> — ${d.upgrade}</div>`;
+
+  document.getElementById('grid-'+d.cat).appendChild(card);
+});
+
+// Filter
+let cur = 'all';
+function setFilter(f, btn) {
+  cur = f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.adv-card').forEach(c=>{
+    c.classList.toggle('hidden', f!=='all' && c.dataset.cat!==f);
+  });
+  document.querySelectorAll('.sec-head,.cards-grid').forEach(el=>{
+    if(el.dataset.cat || el.id.startsWith('grid-')) {
+      const cat = el.dataset.cat || el.id.replace('grid-','');
+      el.style.display = (f==='all' || f===cat) ? '' : 'none';
+    }
+  });
+}
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
