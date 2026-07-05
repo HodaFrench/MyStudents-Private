@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>La Négation — منفی‌کننده‌ها · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --plus:#1565c0;--plus-pale:#e3f2fd;      /* ne…plus */
+  --jamais:#6a1b9a;--jamais-pale:#f3e5f5;  /* ne…jamais */
+  --rien:#e65100;--rien-pale:#fff3e0;      /* ne…rien */
+  --personne:#00695c;--personne-pale:#e0f2f1; /* ne…personne */
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:42px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* RULE TABLE */
+.rule-section{max-width:900px;margin:0 auto;padding:24px 20px 0;}
+.rule-table{width:100%;border-collapse:collapse;background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px;}
+.rule-table th{background:var(--navy);color:white;padding:11px 14px;font-weight:700;font-size:11px;text-align:left;}
+.rule-table th:last-child{direction:rtl;text-align:right;}
+.rule-table td{padding:11px 14px;border-bottom:1px solid var(--line);}
+.rule-table tr:last-child td{border:none;}
+.rule-form{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;}
+.rule-mean{direction:rtl;text-align:right;color:var(--gray);}
+.rule-ex{font-family:'Roboto',sans-serif;font-size:12px;color:var(--ink);direction:ltr;font-style:italic;}
+
+/* FILTER */
+.filter-bar{display:flex;overflow-x:auto;gap:8px;padding:14px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;max-width:900px;margin:20px auto 0;border-radius:12px 12px 0 0;}
+.fbtn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.fbtn:hover,.fbtn.active{background:var(--pink);border-color:var(--pink);color:white;}
+
+/* MAIN */
+.wrap{max-width:900px;margin:0 auto;padding:20px;}
+
+/* CARD */
+.neg-card{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.neg-card.hidden{display:none;}
+
+.neg-head{padding:14px 20px;display:flex;align-items:center;gap:12px;}
+.neg-n{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:white;background:rgba(255,255,255,.25);width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.neg-type{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:white;}
+.neg-topic{font-size:12px;color:rgba(255,255,255,.85);direction:rtl;margin-right:auto;}
+
+.neg-body{padding:20px 22px;}
+.neg-fr{font-family:'Roboto',sans-serif;font-size:15px;line-height:2.05;direction:ltr;text-align:left;color:var(--ink);margin-bottom:16px;}
+.neg-fa{font-size:13px;direction:rtl;text-align:right;color:var(--gray);line-height:2;background:var(--paper);padding:14px 16px;border-radius:10px;border:1px solid var(--line);}
+
+/* HIGHLIGHT — la négation */
+.hl{padding:1px 5px;border-radius:4px;font-weight:700;white-space:nowrap;}
+.hl-plus{background:var(--plus-pale);color:var(--plus);border-bottom:2px solid var(--plus);}
+.hl-jamais{background:var(--jamais-pale);color:var(--jamais);border-bottom:2px solid var(--jamais);}
+.hl-rien{background:var(--rien-pale);color:var(--rien);border-bottom:2px solid var(--rien);}
+.hl-personne{background:var(--personne-pale);color:var(--personne);border-bottom:2px solid var(--personne);}
+
+/* colors per type */
+.t-plus .neg-head{background:linear-gradient(135deg,var(--plus),#1976d2);}
+.t-jamais .neg-head{background:linear-gradient(135deg,var(--jamais),#8e24aa);}
+.t-rien .neg-head{background:linear-gradient(135deg,var(--rien),#f57c00);}
+.t-personne .neg-head{background:linear-gradient(135deg,var(--personne),#00897b);}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">🚫</div>
+  <div><div class="t-title">La Négation — منفی‌کننده‌ها</div><div class="t-sub">مهرآفرین · Grammaire · ۱۰ متن با هایلایت</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">GRAMMAIRE A2 · LA NÉGATION</div>
+    <h1>🚫 Les négations</h1>
+    <div class="hero-sub">۱۰ متن با موضوعات مختلف — منفی‌کننده‌ها هایلایت شده</div>
+    <div class="hero-pills">
+      <span class="hpill" style="background:rgba(21,101,192,.3);">🔵 ne…plus</span>
+      <span class="hpill" style="background:rgba(106,27,154,.3);">🟣 ne…jamais</span>
+      <span class="hpill" style="background:rgba(230,81,0,.3);">🟠 ne…rien</span>
+      <span class="hpill" style="background:rgba(0,105,92,.3);">🩵 ne…personne</span>
+    </div>
+  </div>
+</div>
+
+<!-- RULES -->
+<div class="rule-section">
+  <table class="rule-table">
+    <thead><tr><th>Forme</th><th>معنی</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="rule-form" style="color:var(--plus);">ne … plus</td>
+        <td class="rule-mean">دیگر نه (قبلاً بود، حالا نه)</td>
+        <td class="rule-ex">Je ne fume plus.</td>
+      </tr>
+      <tr>
+        <td class="rule-form" style="color:var(--jamais);">ne … jamais</td>
+        <td class="rule-mean">هرگز · هیچ‌وقت</td>
+        <td class="rule-ex">Il ne ment jamais.</td>
+      </tr>
+      <tr>
+        <td class="rule-form" style="color:var(--rien);">ne … rien</td>
+        <td class="rule-mean">هیچ چیز</td>
+        <td class="rule-ex">Je ne vois rien.</td>
+      </tr>
+      <tr>
+        <td class="rule-form" style="color:var(--personne);">ne … personne</td>
+        <td class="rule-mean">هیچ‌کس</td>
+        <td class="rule-ex">Je ne connais personne.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="fbtn active" onclick="setFilter('all',this)">همه (۱۰)</button>
+  <button class="fbtn" onclick="setFilter('t-plus',this)">🔵 ne…plus</button>
+  <button class="fbtn" onclick="setFilter('t-jamais',this)">🟣 ne…jamais</button>
+  <button class="fbtn" onclick="setFilter('t-rien',this)">🟠 ne…rien</button>
+  <button class="fbtn" onclick="setFilter('t-personne',this)">🩵 ne…personne</button>
+</div>
+
+<div class="wrap" id="cards-wrap"><!-- built by JS --></div>
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · La Négation · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const TYPE_LABELS = {
+  't-plus':'ne … plus','t-jamais':'ne … jamais',
+  't-rien':'ne … rien','t-personne':'ne … personne'
+};
+
+const DATA = [
+{n:1,type:'t-plus',topic:'تغییر روش مطالعه',
+ fr:`Avant, je passais beaucoup de temps à étudier seulement la grammaire, mais maintenant je <span class="hl hl-plus">ne</span> me concentre <span class="hl hl-plus">plus</span> uniquement sur la grammaire. Chaque jour, j'essaie de parler et d'écouter des podcasts, parce que je pense que cette méthode est plus efficace.`,
+ fa:`قبلاً ساعت‌های زیادی فقط گرامر می‌خواندم، اما حالا دیگر فقط روی گرامر تمرکز نمی‌کنم. هر روز سعی می‌کنم صحبت کنم و به پادکست گوش بدهم، چون فکر می‌کنم این روش مؤثرتر است.`},
+
+{n:2,type:'t-jamais',topic:'آینده شغلی',
+ fr:`Je <span class="hl hl-jamais">ne</span> prends <span class="hl hl-jamais">jamais</span> de décision concernant mon avenir sans réfléchir. Avant chaque décision, je cherche des informations et je parle avec des personnes expérimentées. À mon avis, c'est la meilleure façon de faire un bon choix.`,
+ fa:`من هیچ‌وقت بدون برنامه درباره آینده‌ام تصمیم نمی‌گیرم. قبل از هر تصمیم، اطلاعات جمع می‌کنم و با افراد باتجربه صحبت می‌کنم. به نظر من، این بهترین راه برای انتخاب درست است.`},
+
+{n:3,type:'t-rien',topic:'کلاس دانشگاه',
+ fr:`Si je <span class="hl hl-rien">ne</span> pose pas de questions en cours, je <span class="hl hl-rien">n'</span>apprends <span class="hl hl-rien">rien</span> de nouveau. C'est pourquoi j'essaie d'être actif(ve) et de poser des questions quand je ne comprends pas quelque chose.`,
+ fa:`اگر در کلاس سؤال نپرسم، هیچ چیز جدیدی یاد نمی‌گیرم. به همین دلیل سعی می‌کنم فعال باشم و وقتی چیزی را نمی‌فهمم، سؤال بپرسم.`},
+
+{n:4,type:'t-personne',topic:'مهاجرت',
+ fr:`Quand on arrive dans un nouveau pays, on <span class="hl hl-personne">ne</span> connaît <span class="hl hl-personne">personne</span>. Au début, c'est un peu difficile, mais petit à petit, on peut rencontrer de nouvelles personnes et se sentir plus à l'aise.`,
+ fa:`وقتی به یک کشور جدید می‌رسیم، ممکن است هیچ‌کس را نشناسیم. در ابتدا این موضوع کمی سخت است، اما کم‌کم می‌توانیم با افراد جدید آشنا شویم و احساس راحتی کنیم.`},
+
+{n:5,type:'t-plus',topic:'اعتمادبه‌نفس',
+ fr:`Avant, j'avais peur de parler français, mais maintenant je <span class="hl hl-plus">n'</span>ai <span class="hl hl-plus">plus</span> cette peur. Plus je m'entraîne, plus j'ai confiance en moi.`,
+ fa:`قبلاً از صحبت کردن به زبان فرانسه می‌ترسیدم، اما حالا دیگر آن ترس را ندارم. هرچه بیشتر تمرین می‌کنم، اعتمادبه‌نفسم هم بیشتر می‌شود.`},
+
+{n:6,type:'t-jamais',topic:'وکالت',
+ fr:`Une bonne avocate <span class="hl hl-jamais">ne</span> fait <span class="hl hl-jamais">jamais</span> confiance à une seule opinion. Elle vérifie toujours les preuves et essaie de comprendre tous les aspects d'une affaire.`,
+ fa:`یک وکیل خوب هیچ‌وقت فقط به یک نظر اعتماد نمی‌کند. او همیشه مدارک را بررسی می‌کند و سعی می‌کند همه جوانب یک پرونده را درک کند.`},
+
+{n:7,type:'t-rien',topic:'هوش مصنوعی',
+ fr:`Si nous utilisons seulement l'intelligence artificielle sans réfléchir, nous <span class="hl hl-rien">n'</span>apprenons <span class="hl hl-rien">rien</span> de vraiment utile. Cet outil peut nous aider, mais il ne remplace pas le travail personnel.`,
+ fa:`اگر فقط از هوش مصنوعی استفاده کنیم و خودمان فکر نکنیم، چیز زیادی یاد نمی‌گیریم. این ابزار می‌تواند کمک کند، اما جای مطالعه و تمرین را نمی‌گیرد.`},
+
+{n:8,type:'t-personne',topic:'خوابگاه',
+ fr:`Quand je suis arrivé(e) à la résidence universitaire, je <span class="hl hl-personne">ne</span> connaissais <span class="hl hl-personne">personne</span> et j'étais un peu inquiet(ète). Après quelques semaines, je me suis fait de nouveaux amis et j'ai eu l'impression d'être chez moi.`,
+ fa:`وقتی وارد خوابگاه شدم، هیچ‌کس را نمی‌شناختم و کمی نگران بودم. اما بعد از چند هفته، دوستان جدیدی پیدا کردم و احساس کردم که آنجا خانه دوم من است.`},
+
+{n:9,type:'t-plus',topic:'مدیریت زمان',
+ fr:`Avant, je passais beaucoup de temps sur les réseaux sociaux, mais maintenant je <span class="hl hl-plus">n'</span>ai <span class="hl hl-plus">plus</span> cette habitude. À la place, je consacre ce temps à mes études et à l'apprentissage des langues.`,
+ fa:`قبلاً زمان زیادی را در شبکه‌های اجتماعی می‌گذراندم، اما حالا دیگر این عادت را ندارم. در عوض، آن زمان را صرف مطالعه و یادگیری زبان می‌کنم.`},
+
+{n:10,type:'t-jamais',topic:'انگیزه',
+ fr:`Je <span class="hl hl-jamais">n'</span>oublie <span class="hl hl-jamais">jamais</span> pourquoi j'ai commencé à apprendre le français. Même quand je suis fatigué(e), je pense à mon objectif, et cela me donne la motivation de continuer.`,
+ fa:`من هیچ‌وقت فراموش نمی‌کنم که چرا یادگیری زبان فرانسه را شروع کردم. حتی وقتی خسته هستم، به هدفم فکر می‌کنم و این موضوع به من انگیزه می‌دهد که ادامه بدهم.`}
+];
+
+const wrap = document.getElementById('cards-wrap');
+DATA.forEach(d=>{
+  const card = document.createElement('div');
+  card.className = `neg-card ${d.type}`;
+  card.dataset.type = d.type;
+  card.innerHTML = `
+    <div class="neg-head">
+      <div class="neg-n">${d.n}</div>
+      <div class="neg-type">${TYPE_LABELS[d.type]}</div>
+      <div class="neg-topic">${d.topic}</div>
+    </div>
+    <div class="neg-body">
+      <div class="neg-fr">${d.fr}</div>
+      <div class="neg-fa">${d.fa}</div>
+    </div>`;
+  wrap.appendChild(card);
+});
+
+let cur='all';
+function setFilter(f,btn){
+  cur=f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.neg-card').forEach(c=>{
+    c.classList.toggle('hidden', f!=='all' && c.dataset.type!==f);
+  });
+}
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
