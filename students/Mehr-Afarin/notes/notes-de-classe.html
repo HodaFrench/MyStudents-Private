@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Notes de classe · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --blue:#1565c0;--blue-pale:#e3f2fd;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;--amber-deep:#bf360c;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --teal:#00695c;--teal-pale:#e0f2f1;
+  --red:#c62828;--red-pale:#ffebee;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:42px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* TABS */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:11px 15px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:900px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* NOTE CARD */
+.note-card{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:22px;}
+.note-head{padding:15px 22px;display:flex;align-items:center;gap:12px;}
+.note-icon{font-size:24px;}
+.note-title{font-family:'Roboto',sans-serif;font-size:17px;font-weight:700;color:white;direction:ltr;}
+.note-title-fa{font-size:12px;color:rgba(255,255,255,.75);direction:rtl;margin-top:2px;}
+.note-body{padding:20px 22px;}
+
+/* INTRO BOX */
+.intro-box{border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:13px;direction:rtl;text-align:right;line-height:1.85;}
+
+/* CONJUGATION TABLE */
+.conj-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+.conj-table th{background:var(--navy);color:white;padding:9px 14px;font-weight:700;font-size:11px;text-align:left;}
+.conj-table th:last-child{direction:rtl;text-align:right;}
+.conj-table td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:middle;}
+.conj-table tr:last-child td{border:none;}
+.conj-table tr:nth-child(even){background:var(--paper);}
+.conj-pron{font-family:'Roboto',sans-serif;font-weight:700;color:var(--purple);direction:ltr;}
+.conj-form{font-family:'Roboto',sans-serif;font-weight:700;color:var(--blue);direction:ltr;font-size:14px;}
+.conj-fa{direction:rtl;text-align:right;color:var(--gray);font-size:12px;}
+
+/* EXAMPLE */
+.ex-item{background:var(--paper);border-radius:10px;padding:13px 16px;margin-bottom:10px;border:1px solid var(--line);}
+.ex-item:last-child{margin:0;}
+.ex-tag{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:7px;}
+.ex-fr{font-family:'Roboto',sans-serif;font-size:14px;line-height:1.8;direction:ltr;text-align:left;color:var(--ink);margin-bottom:5px;}
+.ex-fr strong{color:var(--pink-deep);font-weight:700;}
+.ex-fr em{font-style:normal;font-weight:700;text-decoration:underline;text-underline-offset:3px;color:var(--blue);}
+.ex-fa{font-size:12.5px;direction:rtl;text-align:right;color:var(--gray);line-height:1.8;}
+
+/* SUB-SECTION */
+.subsec{font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--gray);margin:18px 0 12px;display:flex;align-items:center;gap:8px;text-transform:uppercase;}
+.subsec::after{content:"";flex:1;height:1px;background:var(--line);}
+
+/* VARIANT ROW (for synonymes) */
+.var-item{border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.var-head{padding:9px 16px;font-family:'Roboto',sans-serif;font-weight:700;font-size:14px;direction:ltr;display:flex;align-items:center;gap:8px;}
+.var-fa-inline{font-size:11px;color:var(--gray);direction:rtl;margin-right:auto;}
+.var-body{padding:12px 16px;}
+
+/* USAGE / WARNING */
+.usage{border-radius:8px;padding:10px 14px;margin-top:14px;font-size:12px;direction:rtl;text-align:right;line-height:1.75;}
+.usage-info{background:var(--blue-pale);border:1px solid rgba(21,101,192,.2);color:var(--blue);}
+.usage-warn{background:var(--amber-pale);border:1px solid rgba(230,81,0,.3);color:var(--amber-deep);}
+
+/* KEY PHRASE */
+.key-phrase{background:var(--navy);color:white;border-radius:10px;padding:14px 18px;margin:14px 0;direction:ltr;text-align:left;}
+.key-phrase code{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#fcd34d;}
+.key-phrase-fa{font-size:12px;color:rgba(255,255,255,.75);direction:rtl;text-align:right;margin-top:6px;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:600px){.conj-table th:nth-child(3),.conj-table td:nth-child(3){display:none;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">📝</div>
+  <div><div class="t-title">Notes de classe — نکته‌های کلاسی</div><div class="t-sub">مهرآفرین · نکته‌های مهم کلاس</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">NOTES DE CLASSE · نکته‌های کلاسی</div>
+    <h1>📝 Notes de classe</h1>
+    <div class="hero-sub">نکته‌های مهمی که در کلاس کار کردیم</div>
+    <div class="hero-pills">
+      <span class="hpill">🔄 فعل‌های نوع plaire</span>
+      <span class="hpill">💬 عبارت‌های کلیدی</span>
+      <span class="hpill">🎯 aider à / permettre de</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('plaire',this)">🔄 فعل plaire و مشابه</div>
+  <div class="tab" onclick="showTab('compte',this)">💎 ce qui compte</div>
+  <div class="tab" onclick="showTab('tasse',this)">🍵 tasse de thé</div>
+  <div class="tab" onclick="showTab('desormais',this)">⏭️ désormais</div>
+  <div class="tab" onclick="showTab('aider',this)">🎯 aider à / permettre de</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: PLAIRE ═══ -->
+<div class="panel active" id="panel-plaire">
+
+  <div class="note-card">
+    <div class="note-head" style="background:linear-gradient(135deg,var(--purple),#8e24aa);">
+      <span class="note-icon">🔄</span>
+      <div><div class="note-title">Le verbe PLAIRE (et similaires)</div><div class="note-title-fa">فعل plaire و فعل‌های مشابه — ساختار برعکس!</div></div>
+    </div>
+    <div class="note-body">
+
+      <div class="intro-box" style="background:var(--purple-pale);border:1.5px solid rgba(106,27,154,.2);color:var(--purple);">
+        <strong>نکته کلیدی:</strong> فعل <strong>plaire</strong> برعکس فارسی کار می‌کند!<br>
+        در فارسی: «من این را دوست دارم» — فاعل = من<br>
+        در فرانسه با plaire: «این به من خوش می‌آید» (ça me plaît) — فاعل = این چیز!
+      </div>
+
+      <div class="key-phrase">
+        <code>Qqch + PLAÎT + à qqn</code>
+        <div class="key-phrase-fa">چیزی + خوش می‌آید + به کسی &nbsp;←&nbsp; یعنی «کسی آن چیز را دوست دارد»</div>
+      </div>
+
+      <div class="subsec">صرف فعل PLAIRE در زمان حال</div>
+      <table class="conj-table">
+        <thead><tr><th>Sujet (chose)</th><th>Forme</th><th>معنی</th></tr></thead>
+        <tbody>
+          <tr><td class="conj-pron">ça / il / elle</td><td class="conj-form">plaît</td><td class="conj-fa">خوش می‌آید (مفرد)</td></tr>
+          <tr><td class="conj-pron">ils / elles / ces choses</td><td class="conj-form">plaisent</td><td class="conj-fa">خوش می‌آیند (جمع)</td></tr>
+        </tbody>
+      </table>
+      <div class="usage usage-warn">
+        ⚠️ معمولاً فقط سوم‌شخص استفاده می‌شود چون فاعل «یک چیز» است، نه شخص. ضمیر مفعولی (me/te/lui/nous/vous/leur) نشان می‌دهد «به چه کسی».
+      </div>
+
+      <div class="subsec">مثال‌های plaire</div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--purple-pale);color:var(--purple);">SINGULIER</span>
+        <div class="ex-fr">Ce concert me <em>plaît</em> énormément, la musique est vraiment magnifique.</div>
+        <div class="ex-fa">این کنسرت خیلی به من خوش می‌آید (خیلی دوستش دارم)، موسیقی واقعاً زیباست.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--purple-pale);color:var(--purple);">PLURIEL</span>
+        <div class="ex-fr">Ces chaussures te <em>plaisent</em> ? Elles sont en solde cette semaine.</div>
+        <div class="ex-fa">این کفش‌ها به تو خوش می‌آیند؟ (دوستشان داری؟) این هفته حراج هستند.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--purple-pale);color:var(--purple);">à + PERSONNE</span>
+        <div class="ex-fr">Ce cadeau <em>plaît</em> beaucoup à ma mère, elle l'adore vraiment.</div>
+        <div class="ex-fa">این هدیه خیلی به مادرم خوش می‌آید، واقعاً عاشقش است.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--purple-pale);color:var(--purple);">PASSÉ COMPOSÉ</span>
+        <div class="ex-fr">Le film m'a beaucoup <em>plu</em> hier soir — je le recommande vraiment.</div>
+        <div class="ex-fa">فیلم دیشب خیلی به من خوش آمد (خیلی دوستش داشتم) — واقعاً پیشنهادش می‌کنم. (شکل سوم: plu)</div>
+      </div>
+
+      <div class="subsec">فعل‌های دیگر با همین ساختار برعکس</div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--blue-pale);color:var(--blue);">manquer à qqn <span class="var-fa-inline">دلتنگ شدن — کسی را کم داشتن</span></div>
+        <div class="var-body">
+          <div class="usage usage-info" style="margin-top:0;margin-bottom:10px;">⚠️ برعکس انگلیسی/فارسی! «Tu me manques» = تو برای من کم هستی = «دلم برایت تنگ شده»</div>
+          <div class="ex-item">
+            <div class="ex-fr">Tu me <em>manques</em> beaucoup depuis que tu es parti(e) à l'étranger.</div>
+            <div class="ex-fa">از وقتی به خارج رفتی خیلی دلم برایت تنگ شده.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Ma famille me <em>manque</em> énormément quand je voyage loin.</div>
+            <div class="ex-fa">وقتی دور سفر می‌کنم خیلی دلم برای خانواده‌ام تنگ می‌شود.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--green-pale);color:var(--green);">manquer de qqch <span class="var-fa-inline">کمبود داشتن — نداشتن به اندازه کافی</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Il <em>manque de</em> confiance en lui, mais il progresse chaque jour.</div>
+            <div class="ex-fa">به خودش اعتماد کافی ندارد، اما هر روز پیشرفت می‌کند.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">On <em>manque de</em> temps ce matin, donc on doit se dépêcher.</div>
+            <div class="ex-fa">امروز صبح وقت کم داریم، پس باید عجله کنیم.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--amber-pale);color:var(--amber-deep);">rester à qqn <span class="var-fa-inline">باقی ماندن برای کسی</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Il me <em>reste</em> dix euros jusqu'à la fin du mois.</div>
+            <div class="ex-fa">تا آخر ماه ده یورو برایم باقی مانده.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Il nous <em>reste</em> encore beaucoup de choses à faire avant le voyage.</div>
+            <div class="ex-fa">هنوز خیلی کارها برایمان باقی مانده قبل از سفر.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--teal-pale);color:var(--teal);">suffire à qqn <span class="var-fa-inline">کافی بودن برای کسی</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Un café le matin me <em>suffit</em> pour être en forme toute la journée.</div>
+            <div class="ex-fa">یک قهوه صبح برایم کافی است تا تمام روز سرحال باشم.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Ça te <em>suffit</em> ou tu veux encore un peu de soupe ?</div>
+            <div class="ex-fa">برایت کافی است یا کمی سوپ دیگر می‌خواهی؟</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--red-pale);color:var(--red);">arriver à qqn <span class="var-fa-inline">اتفاق افتادن برای کسی</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Qu'est-ce qui t'<em>arrive</em> ? Tu as l'air inquiet aujourd'hui.</div>
+            <div class="ex-fa">چه اتفاقی برایت افتاده؟ امروز نگران به نظر می‌رسی.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Il m'<em>arrive</em> parfois d'oublier mes clés, c'est normal.</div>
+            <div class="ex-fa">گاهی پیش می‌آید که کلیدهایم را فراموش کنم، طبیعی است.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 2: CE QUI COMPTE ═══ -->
+<div class="panel" id="panel-compte">
+
+  <div class="note-card">
+    <div class="note-head" style="background:linear-gradient(135deg,var(--blue),#1976d2);">
+      <span class="note-icon">💎</span>
+      <div><div class="note-title">Ce qui compte, c'est…</div><div class="note-title-fa">آنچه مهم است، این است که… — عبارت تأکیدی</div></div>
+    </div>
+    <div class="note-body">
+
+      <div class="intro-box" style="background:var(--blue-pale);border:1.5px solid rgba(21,101,192,.2);color:var(--blue);">
+        <strong>کاربرد:</strong> این عبارت برای <strong>تأکید روی چیزی مهم</strong> استفاده می‌شود. یعنی «مهم‌ترین چیز این است که…». خیلی شیک و کاربردی در صحبت کردن.
+      </div>
+
+      <div class="key-phrase">
+        <code>Ce qui compte, c'est + [nom / de + infinitif / que + phrase]</code>
+        <div class="key-phrase-fa">آنچه اهمیت دارد، عبارت است از… / مهم این است که…</div>
+      </div>
+
+      <div class="subsec">حالت ۱ — ce qui compte + اسم</div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--blue-pale);color:var(--blue);">+ NOM</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est</strong> la santé. Le reste est secondaire.</div>
+        <div class="ex-fa">آنچه مهم است، سلامتی است. بقیه در درجه دوم قرار دارند.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--blue-pale);color:var(--blue);">+ NOM</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est</strong> l'effort, pas seulement le résultat final.</div>
+        <div class="ex-fa">آنچه مهم است، تلاش است، نه فقط نتیجه نهایی.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--blue-pale);color:var(--blue);">+ NOM</span>
+        <div class="ex-fr">Pour moi, <strong>ce qui compte, c'est</strong> la famille et les amis proches.</div>
+        <div class="ex-fa">برای من، آنچه مهم است، خانواده و دوستان نزدیک است.</div>
+      </div>
+
+      <div class="subsec">حالت ۲ — ce qui compte + de + مصدر</div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--green-pale);color:var(--green);">+ DE + INF</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est de</strong> pratiquer un peu chaque jour, pas beaucoup d'un coup.</div>
+        <div class="ex-fa">آنچه مهم است، این است که هر روز کمی تمرین کنی، نه یک‌باره زیاد.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--green-pale);color:var(--green);">+ DE + INF</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est de</strong> ne jamais abandonner, même quand c'est difficile.</div>
+        <div class="ex-fa">آنچه مهم است، این است که هرگز تسلیم نشوی، حتی وقتی سخت است.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--green-pale);color:var(--green);">+ DE + INF</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est de</strong> se sentir bien dans ce qu'on fait.</div>
+        <div class="ex-fa">آنچه مهم است، این است که در کاری که می‌کنی احساس خوبی داشته باشی.</div>
+      </div>
+
+      <div class="subsec">حالت ۳ — ce qui compte + que + جمله (subjonctif)</div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--purple-pale);color:var(--purple);">+ QUE + SUBJ</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est que</strong> tu <em>sois</em> heureux(se), le reste n'a pas d'importance.</div>
+        <div class="ex-fa">آنچه مهم است، این است که تو خوشحال باشی، بقیه اهمیتی ندارد.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--purple-pale);color:var(--purple);">+ QUE + SUBJ</span>
+        <div class="ex-fr"><strong>Ce qui compte, c'est que</strong> tout le monde <em>puisse</em> participer.</div>
+        <div class="ex-fa">آنچه مهم است، این است که همه بتوانند شرکت کنند.</div>
+      </div>
+
+      <div class="subsec">عبارت‌های مشابه</div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--amber-pale);color:var(--amber-deep);">L'important, c'est… <span class="var-fa-inline">مهم این است که…</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr"><strong>L'important, c'est</strong> de participer, pas de gagner.</div>
+            <div class="ex-fa">مهم این است که شرکت کنی، نه اینکه ببری.</div>
+          </div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--teal-pale);color:var(--teal);">Le plus important, c'est… <span class="var-fa-inline">مهم‌ترین چیز این است که…</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr"><strong>Le plus important, c'est</strong> de rester en bonne santé.</div>
+            <div class="ex-fa">مهم‌ترین چیز این است که سلامت بمانی.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 3: TASSE DE THÉ ═══ -->
+<div class="panel" id="panel-tasse">
+
+  <div class="note-card">
+    <div class="note-head" style="background:linear-gradient(135deg,var(--teal),#00897b);">
+      <span class="note-icon">🍵</span>
+      <div><div class="note-title">Ce n'est pas ma tasse de thé</div><div class="note-title-fa">اصطلاح: کار من نیست / سلیقه من نیست</div></div>
+    </div>
+    <div class="note-body">
+
+      <div class="intro-box" style="background:var(--teal-pale);border:1.5px solid rgba(0,105,92,.2);color:var(--teal);">
+        <strong>اصطلاح (expression idiomatique):</strong> «ce n'est pas ma tasse de thé» یعنی «این چیزی نیست که من دوست داشته باشم» یا «سلیقه من نیست». معادل فارسی: «کار من نیست / باب میل من نیست».<br>
+        📌 این اصطلاح از انگلیسی «not my cup of tea» وارد فرانسه شده و خیلی رایج است.
+      </div>
+
+      <div class="key-phrase">
+        <code>Ce n'est pas ma / ta / sa tasse de thé</code>
+        <div class="key-phrase-fa">باب میل من / تو / او نیست — به سلیقه‌ام نمی‌خورد</div>
+      </div>
+
+      <div class="subsec">مثال‌ها در زمینه‌های مختلف</div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--teal-pale);color:var(--teal);">🎵 موسیقی</span>
+        <div class="ex-fr">Le rap, ce n'est vraiment pas <strong>ma tasse de thé</strong>. Je préfère le jazz et la musique classique.</div>
+        <div class="ex-fa">رپ واقعاً باب میل من نیست. جاز و موسیقی کلاسیک را ترجیح می‌دهم.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--teal-pale);color:var(--teal);">🏋️ ورزش</span>
+        <div class="ex-fr">Les sports extrêmes, ce n'est pas <strong>sa tasse de thé</strong> — il préfère les activités calmes.</div>
+        <div class="ex-fa">ورزش‌های اکستریم باب میل او نیست — فعالیت‌های آرام را ترجیح می‌دهد.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--teal-pale);color:var(--teal);">🎬 فیلم</span>
+        <div class="ex-fr">Les films d'horreur, ce n'est pas <strong>ta tasse de thé</strong> ? On peut regarder une comédie à la place.</div>
+        <div class="ex-fa">فیلم‌های ترسناک باب میلت نیست؟ می‌توانیم به جایش یک کمدی ببینیم.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--teal-pale);color:var(--teal);">🍽️ غذا</span>
+        <div class="ex-fr">La cuisine très épicée, ce n'est pas vraiment <strong>ma tasse de thé</strong>, mais j'essaie parfois.</div>
+        <div class="ex-fa">غذای خیلی تند واقعاً باب میل من نیست، اما گاهی امتحان می‌کنم.</div>
+      </div>
+
+      <div class="subsec">اصطلاح‌های مشابه (همان معنی)</div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--pink-pale);color:var(--pink-deep);">Ce n'est pas mon truc <span class="var-fa-inline">کار من نیست (خودمانی‌تر)</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Danser en public, ce n'est pas <strong>mon truc</strong> — je suis trop timide.</div>
+            <div class="ex-fa">رقصیدن در جمع کار من نیست — خیلی خجالتی هستم.</div>
+          </div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--blue-pale);color:var(--blue);">Ce n'est pas mon style <span class="var-fa-inline">سبک من نیست</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Ce genre de vêtements, ce n'est pas <strong>mon style</strong>, je préfère quelque chose de simple.</div>
+            <div class="ex-fa">این نوع لباس‌ها سبک من نیست، چیزی ساده‌تر را ترجیح می‌دهم.</div>
+          </div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--green-pale);color:var(--green);">Ça ne me correspond pas <span class="var-fa-inline">با من جور نیست</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Ce travail ne <strong>me correspond pas</strong> — je cherche quelque chose de plus créatif.</div>
+            <div class="ex-fa">این کار با من جور نیست — دنبال چیزی خلاقانه‌تر می‌گردم.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 4: DÉSORMAIS ═══ -->
+<div class="panel" id="panel-desormais">
+
+  <div class="note-card">
+    <div class="note-head" style="background:linear-gradient(135deg,var(--amber),#f57c00);">
+      <span class="note-icon">⏭️</span>
+      <div><div class="note-title">Désormais</div><div class="note-title-fa">از این پس · از حالا به بعد — قید زمان</div></div>
+    </div>
+    <div class="note-body">
+
+      <div class="intro-box" style="background:var(--amber-pale);border:1.5px solid rgba(230,81,0,.3);color:var(--amber-deep);">
+        <strong>معنی:</strong> «désormais» یعنی <strong>«از این لحظه به بعد»</strong> — برای بیان یک تغییر دائمی که از حالا شروع می‌شود و ادامه دارد.<br>
+        📌 معمولاً <strong>ابتدای جمله</strong> می‌آید. سطح B1 — خیلی شیک‌تر از «maintenant».
+      </div>
+
+      <div class="key-phrase">
+        <code>Désormais, + [phrase au présent / futur]</code>
+        <div class="key-phrase-fa">از این پس، … — تغییری که از حالا دائمی می‌شود</div>
+      </div>
+
+      <div class="subsec">مثال‌ها در زمینه‌های مختلف</div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--amber-pale);color:var(--amber-deep);">🏃 عادت جدید</span>
+        <div class="ex-fr"><strong>Désormais</strong>, je fais du sport tous les matins avant d'aller au travail.</div>
+        <div class="ex-fa">از این پس، هر صبح قبل از رفتن به سر کار ورزش می‌کنم.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--amber-pale);color:var(--amber-deep);">☕ تصمیم</span>
+        <div class="ex-fr"><strong>Désormais</strong>, elle ne boit plus de café après midi pour mieux dormir.</div>
+        <div class="ex-fa">از این پس، دیگر بعدازظهر قهوه نمی‌نوشد تا بهتر بخوابد.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--amber-pale);color:var(--amber-deep);">💼 تغییر رسمی</span>
+        <div class="ex-fr"><strong>Désormais</strong>, les réunions auront lieu en ligne, plus besoin de se déplacer.</div>
+        <div class="ex-fa">از این پس، جلسات آنلاین برگزار خواهند شد، دیگر نیازی به رفت‌وآمد نیست.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--amber-pale);color:var(--amber-deep);">🌍 محیط زیست</span>
+        <div class="ex-fr">Après avoir lu cet article, <strong>désormais</strong> j'achète mes vêtements en seconde main.</div>
+        <div class="ex-fa">بعد از خواندن این مقاله، از این پس لباس‌هایم را دست‌دوم می‌خرم.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--amber-pale);color:var(--amber-deep);">📚 یادگیری</span>
+        <div class="ex-fr">J'ai compris mon erreur. <strong>Désormais</strong>, je révise chaque leçon le soir même.</div>
+        <div class="ex-fa">اشتباهم را فهمیدم. از این پس، هر درس را همان شب مرور می‌کنم.</div>
+      </div>
+
+      <div class="subsec">مترادف‌های désormais</div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--green-pale);color:var(--green);">Dorénavant <span class="var-fa-inline">از این به بعد (رسمی‌تر)</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr"><strong>Dorénavant</strong>, je vais noter toutes mes dépenses dans un carnet.</div>
+            <div class="ex-fa">از این به بعد، همه هزینه‌هایم را در یک دفترچه یادداشت می‌کنم.</div>
+          </div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--blue-pale);color:var(--blue);">À partir de maintenant <span class="var-fa-inline">از حالا به بعد (ساده‌تر)</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr"><strong>À partir de maintenant</strong>, on mange plus sainement à la maison.</div>
+            <div class="ex-fa">از حالا به بعد، در خانه سالم‌تر غذا می‌خوریم.</div>
+          </div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-head" style="background:var(--purple-pale);color:var(--purple);">Dès maintenant <span class="var-fa-inline">از همین حالا</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr"><strong>Dès maintenant</strong>, tu peux commencer à pratiquer un peu chaque jour.</div>
+            <div class="ex-fa">از همین حالا، می‌توانی شروع کنی هر روز کمی تمرین کنی.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="usage usage-warn">
+        ⚠️ فرق مهم: <strong>désormais</strong> = برای آینده (از حالا به بعد). اما <strong>autrefois</strong> = برعکس آن، «در گذشته / قدیم‌ها».
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 5: AIDER À / PERMETTRE DE ═══ -->
+<div class="panel" id="panel-aider">
+
+  <div class="note-card">
+    <div class="note-head" style="background:linear-gradient(135deg,var(--pink),var(--pink-deep));">
+      <span class="note-icon">🎯</span>
+      <div><div class="note-title">Aider à &amp; Permettre de</div><div class="note-title-fa">کمک کردن به · امکان دادن برای — و مترادف‌هایشان</div></div>
+    </div>
+    <div class="note-body">
+
+      <div class="intro-box" style="background:var(--pink-pale);border:1.5px solid var(--line);color:var(--pink-deep);">
+        این دو ساختار برای بیان <strong>«فایده و نتیجه»</strong> استفاده می‌شوند. خیلی کاربردی برای توضیح دادن که چیزی چطور کمک می‌کند یا چه امکانی می‌دهد.
+      </div>
+
+      <!-- AIDER À -->
+      <div class="subsec">۱. AIDER à + مصدر</div>
+      <div class="key-phrase">
+        <code>Qqch / Qqn + AIDE + (qqn) + à + INFINITIF</code>
+        <div class="key-phrase-fa">چیزی/کسی + کمک می‌کند + (به کسی) + برای انجام کاری</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--pink-pale);color:var(--pink-deep);">CHOSE + aider à</span>
+        <div class="ex-fr">Écouter des podcasts <strong>aide à</strong> améliorer la compréhension orale.</div>
+        <div class="ex-fa">گوش دادن به پادکست‌ها کمک می‌کند درک شنیداری بهتر شود.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--pink-pale);color:var(--pink-deep);">aider qqn à</span>
+        <div class="ex-fr">Le sport m'<strong>aide à</strong> me détendre après une longue journée de travail.</div>
+        <div class="ex-fa">ورزش به من کمک می‌کند بعد از یک روز کاری طولانی آرام شوم.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--pink-pale);color:var(--pink-deep);">aider qqn à</span>
+        <div class="ex-fr">Ma professeure m'<strong>aide à</strong> progresser en français chaque semaine.</div>
+        <div class="ex-fa">معلمم هر هفته به من کمک می‌کند در فرانسه پیشرفت کنم.</div>
+      </div>
+
+      <!-- PERMETTRE DE -->
+      <div class="subsec">۲. PERMETTRE de + مصدر</div>
+      <div class="key-phrase">
+        <code>Qqch + PERMET + (à qqn) + de + INFINITIF</code>
+        <div class="key-phrase-fa">چیزی + امکان می‌دهد + (به کسی) + که کاری کند</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--blue-pale);color:var(--blue);">CHOSE + permettre de</span>
+        <div class="ex-fr">Le vélo <strong>permet de</strong> rester en forme tout en respectant l'environnement.</div>
+        <div class="ex-fa">دوچرخه امکان می‌دهد سرحال بمانی و در عین حال به محیط زیست احترام بگذاری.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--blue-pale);color:var(--blue);">permettre à qqn de</span>
+        <div class="ex-fr">Internet <strong>permet aux</strong> gens <strong>de</strong> travailler à distance facilement.</div>
+        <div class="ex-fa">اینترنت به مردم امکان می‌دهد راحت از راه دور کار کنند.</div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-tag" style="background:var(--blue-pale);color:var(--blue);">permettre de</span>
+        <div class="ex-fr">Apprendre une langue <strong>permet de</strong> découvrir une nouvelle culture.</div>
+        <div class="ex-fa">یادگیری یک زبان امکان می‌دهد فرهنگ جدیدی را کشف کنی.</div>
+      </div>
+
+      <div class="usage usage-warn">
+        ⚠️ نکته مهم — حرف اضافه فرق می‌کند!<br>
+        • <strong>aider</strong> <span style="color:var(--pink-deep)">à</span> + infinitif (با à)<br>
+        • <strong>permettre</strong> <span style="color:var(--blue)">de</span> + infinitif (با de)
+      </div>
+
+      <!-- SYNONYMES -->
+      <div class="subsec">۳. مترادف‌ها و ساختارهای مشابه</div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--green-pale);color:var(--green);">contribuer à + inf <span class="var-fa-inline">کمک کردن / سهیم بودن در</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Une bonne alimentation <strong>contribue à</strong> rester en bonne santé.</div>
+            <div class="ex-fa">تغذیه خوب به سلامت ماندن کمک می‌کند.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Chacun peut <strong>contribuer à</strong> protéger la planète avec de petits gestes.</div>
+            <div class="ex-fa">هر کس می‌تواند با کارهای کوچک به حفاظت از سیاره کمک کند.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--purple-pale);color:var(--purple);">favoriser + nom <span class="var-fa-inline">تسهیل کردن / کمک کردن به</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Le calme <strong>favorise</strong> la concentration pendant les études.</div>
+            <div class="ex-fa">آرامش تمرکز را حین درس خواندن تسهیل می‌کند.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Lire chaque jour <strong>favorise</strong> l'apprentissage du vocabulaire.</div>
+            <div class="ex-fa">خواندن هر روز یادگیری واژگان را تسهیل می‌کند.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--amber-pale);color:var(--amber-deep);">donner la possibilité de <span class="var-fa-inline">امکان دادن (رسمی‌تر)</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Ce cours me <strong>donne la possibilité de</strong> parler avec des natifs.</div>
+            <div class="ex-fa">این کلاس به من امکان می‌دهد با افراد بومی صحبت کنم.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">Voyager <strong>donne la possibilité de</strong> rencontrer des gens différents.</div>
+            <div class="ex-fa">سفر کردن امکان می‌دهد با آدم‌های متفاوت آشنا شوی.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="var-item">
+        <div class="var-head" style="background:var(--teal-pale);color:var(--teal);">servir à + inf <span class="var-fa-inline">به درد خوردن برای / استفاده شدن برای</span></div>
+        <div class="var-body">
+          <div class="ex-item">
+            <div class="ex-fr">Cette application <strong>sert à</strong> apprendre de nouveaux mots facilement.</div>
+            <div class="ex-fa">این اپلیکیشن به درد یاد گرفتن کلمات جدید به راحتی می‌خورد.</div>
+          </div>
+          <div class="ex-item">
+            <div class="ex-fr">À quoi <strong>sert</strong> ce bouton ? Je ne comprends pas son utilité.</div>
+            <div class="ex-fa">این دکمه به چه دردی می‌خورد؟ کاربردش را نمی‌فهمم.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison -->
+      <div style="background:var(--navy);border-radius:12px;overflow:hidden;margin-top:18px;">
+        <div style="padding:12px 18px;font-weight:700;font-size:13px;color:#fcd34d;border-bottom:1px solid rgba(255,255,255,.1);">📊 جدول جمع‌بندی حرف اضافه</div>
+        <div style="padding:4px 0;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.08);">
+            <div style="padding:9px 16px;color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">aider <strong style="color:#fcd34d;">à</strong> + inf</div>
+            <div style="padding:9px 16px;color:rgba(255,255,255,.7);font-size:12px;direction:rtl;text-align:right;">کمک می‌کند به</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.08);">
+            <div style="padding:9px 16px;color:#7dd3fc;font-family:'Roboto',sans-serif;font-size:13px;">permettre <strong style="color:#fcd34d;">de</strong> + inf</div>
+            <div style="padding:9px 16px;color:rgba(255,255,255,.7);font-size:12px;direction:rtl;text-align:right;">امکان می‌دهد که</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.08);">
+            <div style="padding:9px 16px;color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">contribuer <strong style="color:#fcd34d;">à</strong> + inf</div>
+            <div style="padding:9px 16px;color:rgba(255,255,255,.7);font-size:12px;direction:rtl;text-align:right;">سهیم بودن در</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;">
+            <div style="padding:9px 16px;color:#c4b5fd;font-family:'Roboto',sans-serif;font-size:13px;">servir <strong style="color:#fcd34d;">à</strong> + inf</div>
+            <div style="padding:9px 16px;color:rgba(255,255,255,.7);font-size:12px;direction:rtl;text-align:right;">به درد خوردن برای</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · Notes de classe · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
