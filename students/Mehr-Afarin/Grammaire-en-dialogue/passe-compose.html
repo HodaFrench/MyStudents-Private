@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Passé Composé — Textes et exercices · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --avoir:#1565c0;--avoir-pale:#e3f2fd;
+  --etre:#2e7d32;--etre-pale:#e8f5e9;
+  --irreg:#e65100;--irreg-pale:#fff3e0;
+  --purple:#6a1b9a;--purple-pale:#f3e5f5;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:42px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px;background:white;border-bottom:2px solid var(--line);justify-content:center;}
+.leg{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;}
+.leg-avoir{background:var(--avoir-pale);color:var(--avoir);}
+.leg-etre{background:var(--etre-pale);color:var(--etre);}
+.leg-irreg{background:var(--irreg-pale);color:var(--irreg);}
+.leg-note{background:var(--purple-pale);color:var(--purple);}
+
+/* TABS */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:11px 15px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* TEXT BLOCK */
+.text-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:22px;}
+.text-card-head{background:var(--navy);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.text-card-title{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:white;}
+.text-card-sub{font-size:11px;color:rgba(255,255,255,.6);direction:rtl;}
+.diff-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 10px;border-radius:8px;}
+.diff-1{background:#fff3e0;color:#e65100;}
+.diff-2{background:#e3f2fd;color:#1565c0;}
+.diff-3{background:#f3e5f5;color:#6a1b9a;}
+.text-body{padding:20px;}
+.para{font-family:'Roboto',sans-serif;font-size:15px;line-height:2;direction:ltr;text-align:left;margin-bottom:14px;color:var(--ink);}
+.para:last-child{margin:0;}
+
+/* HIGHLIGHT SPANS */
+.av{background:rgba(21,101,192,.14);padding:0 3px;border-radius:3px;font-weight:700;color:var(--avoir);}
+.et{background:rgba(46,125,50,.14);padding:0 3px;border-radius:3px;font-weight:700;color:var(--etre);}
+.ir{background:rgba(230,81,0,.14);padding:0 3px;border-radius:3px;font-weight:700;color:var(--irreg);text-decoration:underline;text-underline-offset:3px;}
+
+/* TRANSLATION */
+.transl{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:12.5px;direction:rtl;text-align:right;color:var(--gray);line-height:1.9;}
+
+/* PP TABLE */
+.pp-note{background:var(--purple-pale);border:1.5px solid rgba(106,27,154,.2);border-radius:10px;padding:10px 16px;margin-top:12px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;color:var(--purple);}
+.pp-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:12.5px;}
+.pp-table th{background:var(--navy);color:white;padding:8px 14px;font-weight:700;text-align:left;font-size:11px;}
+.pp-table td{padding:8px 14px;border-bottom:1px solid var(--line);font-family:'Roboto',sans-serif;}
+.pp-table tr:last-child td{border:none;}
+.pp-table tr:nth-child(even){background:var(--paper);}
+.pp-inf{color:var(--gray);font-size:11px;}
+.pp-form{font-weight:700;color:var(--irreg);}
+
+/* EXERCISE */
+.ex-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.ex-head{background:var(--pink-pale);padding:12px 18px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--line);}
+.ex-num{background:var(--pink);color:white;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ex-title{font-size:13px;font-weight:700;color:var(--pink-deep);}
+.ex-instr{font-size:11px;color:var(--gray);direction:rtl;margin-right:auto;}
+.ex-body{padding:18px;}
+.ex-sent{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;font-family:'Roboto',sans-serif;font-size:14px;direction:ltr;}
+.ex-sent:last-child{margin:0;}
+.ex-n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);min-width:22px;}
+.blank{border:none;border-bottom:2px solid var(--pink);background:transparent;width:130px;font-family:'Roboto',sans-serif;font-size:14px;color:var(--ink);padding:0 4px;outline:none;transition:.2s;}
+.blank:focus{border-bottom-color:var(--blue);background:var(--avoir-pale);}
+.blank.correct{border-bottom-color:var(--etre);color:var(--etre);}
+.blank.wrong{border-bottom-color:var(--irreg);color:var(--irreg);}
+.hint{font-size:11px;color:var(--gray);font-style:italic;margin-right:4px;}
+.ex-fa{font-size:11px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:12px;padding-right:30px;}
+.check-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;}
+.btn{padding:9px 22px;border-radius:10px;border:none;font-family:'Vazirmatn',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:.2s;}
+.btn-check{background:var(--pink);color:white;}
+.btn-check:hover{background:var(--pink-deep);}
+.btn-reset{background:var(--paper);color:var(--gray);border:2px solid var(--line);}
+.score-box{text-align:center;margin-top:12px;font-size:13px;font-weight:700;padding:8px;border-radius:8px;display:none;}
+
+/* KEY */
+.key-row{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;font-family:'Roboto',sans-serif;font-size:13.5px;direction:ltr;}
+.key-n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);min-width:22px;}
+.key-ans{font-weight:700;color:var(--etre);background:var(--etre-pale);padding:1px 8px;border-radius:5px;}
+.key-note{font-size:11px;color:var(--irreg);font-family:'JetBrains Mono',monospace;margin-right:6px;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">📗</div>
+  <div><div class="t-title">Passé Composé — Textes et exercices</div><div class="t-sub">مهرآفرین · Grammaire en dialogue</div></div>
+  <a class="back" href="../index.html">← پرونده مهرآفرین</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">GRAMMAIRE A2 · PASSÉ COMPOSÉ</div>
+    <h1>📗 Le Passé Composé</h1>
+    <div class="hero-sub">متن‌های تمرینی درباره موضوعات آشنا + تمرین شکل سوم</div>
+    <div class="hero-pills">
+      <span class="hpill">🔵 avoir + p.p.</span>
+      <span class="hpill">🟢 être + p.p.</span>
+      <span class="hpill">🟠 p.p. irréguliers</span>
+      <span class="hpill">✏️ exercices</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="leg leg-avoir">🔵 avoir + participe passé</div>
+  <div class="leg leg-etre">🟢 être + participe passé</div>
+  <div class="leg leg-irreg">🟠 participe passé irrégulier</div>
+  <div class="leg leg-note">🟣 accord du p.p.</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('textes',this)">📖 متن‌های تمرینی</div>
+  <div class="tab" onclick="showTab('irreguliers',this)">🟠 شکل‌های سوم نامنظم</div>
+  <div class="tab" onclick="showTab('exercices',this)">✏️ تمرین</div>
+  <div class="tab" onclick="showTab('cle',this)">🔑 جواب‌ها</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: TEXTES ═══ -->
+<div class="panel active" id="panel-textes">
+
+<div style="background:var(--avoir-pale);border:1px solid rgba(21,101,192,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;">
+  🔵 <strong style="color:var(--avoir)">کمکی avoir</strong> &nbsp;·&nbsp;
+  🟢 <strong style="color:var(--etre)">کمکی être</strong> &nbsp;·&nbsp;
+  🟠 <strong style="color:var(--irreg)">شکل سوم نامنظم (زیر خط‌دار)</strong>
+</div>
+
+<!-- TEXT 1 -->
+<div class="text-card">
+  <div class="text-card-head">
+    <div>
+      <div class="text-card-title">🎙️ Le week-end de Mehrafarin</div>
+      <div class="text-card-sub">درباره آخر هفته — موضوع Édito A2 Partie E</div>
+    </div>
+    <span class="diff-badge diff-1">⭐ Niveau 1</span>
+  </div>
+  <div class="text-body">
+    <p class="para">
+      Ce week-end, Mehrafarin <span class="av">a passé</span> du temps en famille. Le samedi matin, elle <span class="av">a fait</span> du jardinage avec sa mère. Elles <span class="av">ont planté</span> des fleurs et <span class="av">ont arrosé</span> les plantes. Ensuite, Mehrafarin <span class="av">a préparé</span> le déjeuner pour toute la famille.
+    </p>
+    <p class="para">
+      L'après-midi, ses enfants <span class="av">ont joué</span> aux jeux de société. Ils <span class="av">ont joué</span> au Monopoly et ils <span class="av">ont bien ri</span>. Son mari <span class="av">a fait</span> du bricolage dans le garage. Il <span class="av">a réparé</span> la voiture et il <span class="av">a construit</span> une nouvelle étagère.
+    </p>
+    <p class="para">
+      Le soir, toute la famille <span class="av">a regardé</span> un film. Ils <span class="av">ont choisi</span> une comédie française. Ils <span class="av">ont adoré</span> le film. Mehrafarin <span class="av">a beaucoup ri</span> et elle <span class="av">a pris</span> des photos pour garder ce souvenir.
+    </p>
+    <p class="para">
+      Le dimanche, ils <span class="et">sont allés</span> à l'accrobranche. Les enfants <span class="et">sont montés</span> très haut dans les arbres. Ils <span class="av">ont traversé</span> des ponts de corde et ils <span class="av">ont sauté</span> sur des plateformes. Mehrafarin <span class="av">a eu</span> un peu peur au début, mais elle <span class="av">a adoré</span> l'expérience. Ils <span class="et">sont rentrés</span> fatigués mais heureux.
+    </p>
+    <div class="transl">
+      این آخر هفته، مهرآفرین وقتش را با خانواده گذراند. شنبه صبح با مادرش باغبانی کرد. گل کاشتند و گیاهان را آب دادند. بعد مهرآفرین ناهار برای کل خانواده آماده کرد.<br><br>
+      بعدازظهر، بچه‌هایش بازی‌های جمعی بازی کردند. مونوپولی بازی کردند و خیلی خندیدند. شوهرش در گاراژ کار دستی کرد. ماشین را تعمیر کرد و یک قفسه جدید ساخت.<br><br>
+      شب، کل خانواده یک فیلم تماشا کردند. یک کمدی فرانسوی انتخاب کردند. فیلم را خیلی دوست داشتند. مهرآفرین خیلی خندید و عکس گرفت تا این خاطره را نگه دارد.<br><br>
+      یکشنبه به اکروبرانش رفتند. بچه‌ها خیلی بالا در درخت‌ها رفتند. از پل‌های طنابی گذشتند و روی سکوها پریدند. مهرآفرین اول کمی ترسید، اما تجربه را خیلی دوست داشت. خسته اما خوشحال برگشتند.
+    </div>
+    <div class="pp-note">
+      📌 شکل‌های سوم نامنظم در این متن: <strong>ri</strong> ← rire · <strong>construit</strong> ← construire · <strong>choisi</strong> ← choisir · <strong>pris</strong> ← prendre · <strong>eu</strong> ← avoir
+    </div>
+  </div>
+</div>
+
+<!-- TEXT 2 -->
+<div class="text-card">
+  <div class="text-card-head">
+    <div>
+      <div class="text-card-title">☕ La journée du café</div>
+      <div class="text-card-sub">درباره قهوه — موضوع Podcast 4</div>
+    </div>
+    <span class="diff-badge diff-2">⭐⭐ Niveau 2</span>
+  </div>
+  <div class="text-body">
+    <p class="para">
+      Hier matin, Thomas <span class="et">s'est réveillé</span> tôt. Il <span class="av">a bu</span> son premier café debout dans la cuisine. Il <span class="av">a senti</span> l'odeur du café dans toute la maison et il <span class="av">a souri</span>. Ensuite, il <span class="av">a lu</span> son journal pendant vingt minutes.
+    </p>
+    <p class="para">
+      À neuf heures, il <span class="et">est sorti</span> pour aller au travail. En chemin, il <span class="et">est passé</span> devant son café préféré. Il <span class="et">s'est assis</span> à la terrasse et il <span class="av">a commandé</span> un espresso. Il <span class="av">a discuté</span> avec le barista et il <span class="av">a appris</span> que le café venait d'Éthiopie.
+    </p>
+    <p class="para">
+      L'après-midi, Thomas <span class="av">a eu</span> une réunion importante. Il <span class="av">a pris</span> un deuxième café pour rester concentré. Après la réunion, ses collègues et lui <span class="et">sont allés</span> dans un nouveau salon de thé. Ils <span class="av">ont essayé</span> trois types de café différents et ils <span class="av">ont découvert</span> le café turc. Thomas <span class="av">a trouvé</span> le café turc trop fort, mais il <span class="av">a quand même fini</span> sa tasse.
+    </p>
+    <p class="para">
+      Le soir, il <span class="et">est rentré</span> chez lui et il <span class="av">a écrit</span> dans son journal : « Aujourd'hui, j'<span class="av">ai vécu</span> pour le café. » Sa femme <span class="av">a lu</span> ce message et elle <span class="av">a ri</span>.
+    </p>
+    <div class="transl">
+      دیروز صبح، توماس زود بیدار شد. اول قهوه‌اش را ایستاده در آشپزخانه نوشید. بوی قهوه را در کل خانه حس کرد و لبخند زد. سپس بیست دقیقه روزنامه‌اش را خواند.<br><br>
+      ساعت نه، بیرون رفت تا به سر کار برود. در راه، از جلوی کافه مورد علاقه‌اش رد شد. روی تراس نشست و یک اسپرسو سفارش داد. با بریستا صحبت کرد و یاد گرفت که قهوه از اتیوپی می‌آید.<br><br>
+      بعدازظهر، توماس یک جلسه مهم داشت. یک قهوه دیگر گرفت تا متمرکز بماند. بعد از جلسه، با همکارانش به یک سالن چای جدید رفتند. سه نوع قهوه مختلف امتحان کردند و قهوه ترکی را کشف کردند. توماس قهوه ترکی را خیلی غلیظ یافت، اما با این حال فنجانش را تمام کرد.<br><br>
+      شب، به خانه برگشت و در دفترچه‌اش نوشت: «امروز برای قهوه زیستم.» همسرش این پیام را خواند و خندید.
+    </div>
+    <div class="pp-note">
+      📌 شکل‌های سوم نامنظم: <strong>bu</strong> ← boire · <strong>senti</strong> ← sentir · <strong>souri</strong> ← sourire · <strong>lu</strong> ← lire · <strong>appris</strong> ← apprendre · <strong>eu</strong> ← avoir · <strong>pris</strong> ← prendre · <strong>écrit</strong> ← écrire · <strong>vécu</strong> ← vivre · <strong>ri</strong> ← rire
+    </div>
+  </div>
+</div>
+
+<!-- TEXT 3 -->
+<div class="text-card">
+  <div class="text-card-head">
+    <div>
+      <div class="text-card-title">✈️ La première semaine dans le nouveau pays</div>
+      <div class="text-card-sub">درباره مهاجرت — موضوع Podcast 5</div>
+    </div>
+    <span class="diff-badge diff-2">⭐⭐ Niveau 2</span>
+  </div>
+  <div class="text-body">
+    <p class="para">
+      Lina <span class="et">est arrivée</span> au Canada il y a six mois. Sa première semaine <span class="av">a été</span> difficile mais passionnante. Elle <span class="av">a dû</span> tout apprendre seule. Elle <span class="et">est allée</span> à la banque, elle <span class="av">a ouvert</span> un compte et elle <span class="av">a obtenu</span> une carte de crédit.
+    </p>
+    <p class="para">
+      Le deuxième jour, elle <span class="et">s'est perdue</span> dans le métro. Elle <span class="av">a demandé</span> de l'aide à une femme et celle-ci l'<span class="av">a accompagnée</span> jusqu'à sa station. Lina <span class="av">a remercié</span> la femme et elle <span class="et">s'est sentie</span> moins seule.
+    </p>
+    <p class="para">
+      Elle <span class="av">a trouvé</span> un appartement le troisième jour. Elle <span class="av">a signé</span> le contrat et elle <span class="av">a payé</span> le premier mois. Elle <span class="av">a fait</span> les courses et elle <span class="av">a acheté</span> tout ce qu'il fallait pour sa nouvelle vie. Elle <span class="av">a mis</span> beaucoup de temps à tout ranger.
+    </p>
+    <p class="para">
+      La première semaine, Lina <span class="av">a parlé</span> français tous les jours. Elle <span class="av">a fait</span> des erreurs, mais elle <span class="av">a appris</span> de chaque conversation. Elle <span class="et">s'est couchée</span> chaque soir fatiguée mais fière. Elle <span class="av">a compris</span> que la patience <span class="av">était</span> sa meilleure alliée.
+    </p>
+    <div class="transl">
+      لینا شش ماه پیش به کانادا رسید. هفته اول سخت اما هیجان‌انگیز بود. مجبور شد همه چیز را تنها یاد بگیرد. به بانک رفت، حساب باز کرد و کارت اعتباری گرفت.<br><br>
+      روز دوم، در مترو گم شد. از یک خانم کمک خواست و آن خانم تا ایستگاهش همراهیش کرد. لینا تشکر کرد و احساس کرد کمتر تنهاست.<br><br>
+      روز سوم یک آپارتمان پیدا کرد. قرارداد امضا کرد و ماه اول را پرداخت. خرید کرد و همه چیزی که برای زندگی جدیدش لازم بود خرید. وقت زیادی برای مرتب کردن همه چیز گذاشت.<br><br>
+      هفته اول، لینا هر روز فرانسه صحبت کرد. اشتباه کرد، اما از هر مکالمه یاد گرفت. هر شب خسته اما سربلند خوابید. فهمید که صبر بهترین متحدش است.
+    </div>
+    <div class="pp-note">
+      📌 شکل‌های سوم نامنظم: <strong>été</strong> ← être · <strong>dû</strong> ← devoir · <strong>ouvert</strong> ← ouvrir · <strong>obtenu</strong> ← obtenir · <strong>mis</strong> ← mettre · <strong>appris</strong> ← apprendre · <strong>compris</strong> ← comprendre
+    </div>
+  </div>
+</div>
+
+<!-- TEXT 4 -->
+<div class="text-card">
+  <div class="text-card-head">
+    <div>
+      <div class="text-card-title">👗 Emma et la fast fashion</div>
+      <div class="text-card-sub">درباره فست‌فشن — موضوع Podcast 6</div>
+    </div>
+    <span class="diff-badge diff-3">⭐⭐⭐ Niveau 3</span>
+  </div>
+  <div class="text-body">
+    <p class="para">
+      Emma <span class="av">a lu</span> un article sur la fast fashion et ça l'<span class="av">a vraiment choquée</span>. Elle <span class="av">a appris</span> qu'un jean nécessite des milliers de litres d'eau pour être produit. Cette information l'<span class="av">a fait</span> réfléchir.
+    </p>
+    <p class="para">
+      Le lendemain, elle <span class="et">est allée</span> dans ses armoires et elle <span class="av">a compté</span> ses vêtements. Elle <span class="av">a trouvé</span> quarante t-shirts qu'elle ne <span class="av">portait</span> plus. Elle <span class="av">a pris</span> une décision importante : elle <span class="av">a mis</span> tous ces vêtements dans des sacs et elle <span class="et">est allée</span> les donner à une association.
+    </p>
+    <p class="para">
+      Depuis ce jour, Emma <span class="av">a changé</span> ses habitudes. Elle <span class="et">est allée</span> dans une friperie et elle <span class="av">a acheté</span> trois robes magnifiques pour vingt euros. Elle <span class="av">a découvert</span> le plaisir des vêtements de seconde main. Elle <span class="av">a recousu</span> un vieux manteau et elle <span class="av">a redonné</span> une nouvelle vie à ses vieilles chaussures.
+    </p>
+    <p class="para">
+      Elle <span class="av">a parlé</span> de tout ça à ses amies. Deux d'entre elles <span class="av">ont suivi</span> son exemple et <span class="et">sont venues</span> avec elle à la friperie. Ensemble, elles <span class="av">ont ri</span>, elles <span class="av">ont essayé</span> des dizaines de vêtements et elles <span class="av">ont dépensé</span> très peu. Emma <span class="et">est rentrée</span> chez elle heureuse et fière.
+    </p>
+    <div class="transl">
+      اما یک مقاله درباره فست‌فشن خواند و واقعاً شوکه شد. یاد گرفت که برای تولید یک جین هزاران لیتر آب لازم است. این اطلاعات او را به فکر واداشت.<br><br>
+      روز بعد، رفت سراغ کمدهایش و لباس‌هایش را شمرد. چهل تی‌شرت پیدا کرد که دیگر نمی‌پوشید. یک تصمیم مهم گرفت: همه این لباس‌ها را در کیسه گذاشت و رفت آن‌ها را به یک انجمن داد.<br><br>
+      از آن روز، اما عادت‌هایش را تغییر داد. به یک فروشگاه دست‌دوم رفت و سه پیراهن زیبا با بیست یورو خرید. لذت لباس‌های دست‌دوم را کشف کرد. یک پالتوی قدیمی را دوخت و به کفش‌های قدیمی‌اش زندگی جدیدی بخشید.<br><br>
+      همه این‌ها را به دوستانش گفت. دو نفر از آن‌ها از مثالش پیروی کردند و با او به فروشگاه دست‌دوم آمدند. با هم خندیدند، ده‌ها لباس امتحان کردند و خیلی کم خرج کردند. اما خوشحال و سربلند به خانه برگشت.
+    </div>
+    <div class="pp-note">
+      📌 شکل‌های سوم نامنظم: <strong>lu</strong> ← lire · <strong>appris</strong> ← apprendre · <strong>fait</strong> ← faire · <strong>pris</strong> ← prendre · <strong>mis</strong> ← mettre · <strong>découvert</strong> ← découvrir · <strong>recousu</strong> ← recoudre · <strong>suivi</strong> ← suivre · <strong>ri</strong> ← rire
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══ PANEL 2: IRRÉGULIERS ═══ -->
+<div class="panel" id="panel-irreguliers">
+
+<div style="background:var(--irreg-pale);border:1.5px solid rgba(230,81,0,.3);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;direction:rtl;text-align:right;line-height:1.8;">
+  <strong style="color:var(--irreg);">شکل‌های سوم نامنظم (participes passés irréguliers)</strong> — این‌ها را باید حفظ کرد!<br>
+  هر فعلی که با <strong>-é</strong> تمام نشود احتمالاً نامنظم است.
+</div>
+
+<table class="pp-table">
+  <thead><tr><th>Infinitif</th><th>Participe passé</th><th>ترجمه</th><th>Auxiliaire</th><th>مثال</th></tr></thead>
+  <tbody>
+    <tr><td>avoir</td><td class="pp-form">eu</td><td>داشتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai eu peur.</td></tr>
+    <tr><td>être</td><td class="pp-form">été</td><td>بودن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai été fatigué.</td></tr>
+    <tr><td>faire</td><td class="pp-form">fait</td><td>کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai fait du sport.</td></tr>
+    <tr><td>prendre</td><td class="pp-form">pris</td><td>گرفتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai pris un café.</td></tr>
+    <tr><td>comprendre</td><td class="pp-form">compris</td><td>فهمیدن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai compris la règle.</td></tr>
+    <tr><td>apprendre</td><td class="pp-form">appris</td><td>یاد گرفتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai appris le français.</td></tr>
+    <tr><td>mettre</td><td class="pp-form">mis</td><td>گذاشتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai mis la table.</td></tr>
+    <tr><td>lire</td><td class="pp-form">lu</td><td>خواندن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai lu un livre.</td></tr>
+    <tr><td>écrire</td><td class="pp-form">écrit</td><td>نوشتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai écrit une lettre.</td></tr>
+    <tr><td>dire</td><td class="pp-form">dit</td><td>گفتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai dit la vérité.</td></tr>
+    <tr><td>voir</td><td class="pp-form">vu</td><td>دیدن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai vu ce film.</td></tr>
+    <tr><td>savoir</td><td class="pp-form">su</td><td>دانستن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">Je n'ai pas su quoi dire.</td></tr>
+    <tr><td>pouvoir</td><td class="pp-form">pu</td><td>توانستن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">Je n'ai pas pu venir.</td></tr>
+    <tr><td>vouloir</td><td class="pp-form">voulu</td><td>خواستن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai voulu partir.</td></tr>
+    <tr><td>devoir</td><td class="pp-form">dû</td><td>باید بودن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai dû rester.</td></tr>
+    <tr><td>boire</td><td class="pp-form">bu</td><td>نوشیدن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai bu du café.</td></tr>
+    <tr><td>recevoir</td><td class="pp-form">reçu</td><td>دریافت کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai reçu un message.</td></tr>
+    <tr><td>vivre</td><td class="pp-form">vécu</td><td>زیستن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai vécu à Paris.</td></tr>
+    <tr><td>suivre</td><td class="pp-form">suivi</td><td>دنبال کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai suivi un cours.</td></tr>
+    <tr><td>rire</td><td class="pp-form">ri</td><td>خندیدن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">On a beaucoup ri.</td></tr>
+    <tr><td>sourire</td><td class="pp-form">souri</td><td>لبخند زدن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">Elle a souri.</td></tr>
+    <tr><td>ouvrir</td><td class="pp-form">ouvert</td><td>باز کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai ouvert la porte.</td></tr>
+    <tr><td>découvrir</td><td class="pp-form">découvert</td><td>کشف کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai découvert ce café.</td></tr>
+    <tr><td>obtenir</td><td class="pp-form">obtenu</td><td>به دست آوردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai obtenu mon visa.</td></tr>
+    <tr><td>construire</td><td class="pp-form">construit</td><td>ساختن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">Il a construit une maison.</td></tr>
+    <tr><td>traduire</td><td class="pp-form">traduit</td><td>ترجمه کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai traduit le texte.</td></tr>
+    <tr><td>peindre</td><td class="pp-form">peint</td><td>نقاشی کردن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">Elle a peint un tableau.</td></tr>
+    <tr><td>naître</td><td class="pp-form">né(e)</td><td>به دنیا آمدن</td><td style="color:var(--etre);font-weight:700;">être</td><td class="pp-inf">Je suis née en 1990.</td></tr>
+    <tr><td>mourir</td><td class="pp-form">mort(e)</td><td>مردن</td><td style="color:var(--etre);font-weight:700;">être</td><td class="pp-inf">Il est mort jeune.</td></tr>
+    <tr><td>venir</td><td class="pp-form">venu(e)</td><td>آمدن</td><td style="color:var(--etre);font-weight:700;">être</td><td class="pp-inf">Elle est venue hier.</td></tr>
+    <tr><td>tenir</td><td class="pp-form">tenu</td><td>نگه داشتن</td><td style="color:var(--avoir);font-weight:700;">avoir</td><td class="pp-inf">J'ai tenu la porte.</td></tr>
+  </tbody>
+</table>
+
+<div style="background:var(--navy);border-radius:12px;padding:18px 22px;margin-top:20px;">
+  <div style="font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;color:#fcd34d;margin-bottom:12px;">💡 قانون طلایی برای شکل سوم</div>
+  <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:rgba(255,255,255,.85);direction:rtl;text-align:right;line-height:1.8;">
+    <div>🟠 فعل‌های منتهی به <strong style="color:#fcd34d">-dre</strong> ← معمولاً <strong style="color:#fcd34d">-t</strong> می‌شوند: prendre→<strong>pris</strong> · mettre→<strong>mis</strong> · peindre→<strong>peint</strong></div>
+    <div>🟠 فعل‌های منتهی به <strong style="color:#fcd34d">-ire</strong> ← معمولاً <strong style="color:#fcd34d">-it</strong> می‌شوند: écrire→<strong>écrit</strong> · dire→<strong>dit</strong> · construire→<strong>construit</strong></div>
+    <div>🟠 فعل‌های منتهی به <strong style="color:#fcd34d">-oir</strong> ← معمولاً <strong style="color:#fcd34d">-u</strong> می‌شوند: voir→<strong>vu</strong> · savoir→<strong>su</strong> · pouvoir→<strong>pu</strong></div>
+    <div>🟠 خانواده <strong style="color:#fcd34d">-vrir, -frir</strong> ← پسوند <strong style="color:#fcd34d">-ert</strong>: ouvrir→<strong>ouvert</strong> · découvrir→<strong>découvert</strong></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══ PANEL 3: EXERCICES ═══ -->
+<div class="panel" id="panel-exercices">
+
+<div style="background:var(--pink-pale);border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;">
+  در هر جمله شکل درست passé composé را بنویس. مصدر داخل پرانتز است.
+</div>
+
+<!-- EX 1 — avoir réguliers -->
+<div class="ex-card">
+  <div class="ex-head">
+    <div class="ex-num">A</div>
+    <div class="ex-title">Avoir + p.p. régulier</div>
+    <div class="ex-instr">فقط avoir — شکل سوم منظم (-é/-i/-u)</div>
+  </div>
+  <div class="ex-body" id="ex-a">
+    <div class="ex-sent"><span class="ex-n">1.</span> Ce week-end, on <input class="blank" data-answer="a regardé" placeholder="regarder"> un film ensemble. <span class="hint">(regarder)</span></div>
+    <div class="ex-fa">این آخر هفته، با هم یک فیلم تماشا کردیم.</div>
+    <div class="ex-sent"><span class="ex-n">2.</span> Les enfants <input class="blank" data-answer="ont joué" placeholder="jouer"> aux jeux de société. <span class="hint">(jouer)</span></div>
+    <div class="ex-fa">بچه‌ها بازی‌های جمعی بازی کردند.</div>
+    <div class="ex-sent"><span class="ex-n">3.</span> J' <input class="blank" data-answer="ai acheté" placeholder="acheter"> des vêtements de seconde main. <span class="hint">(acheter)</span></div>
+    <div class="ex-fa">لباس‌های دست‌دوم خریدم.</div>
+    <div class="ex-sent"><span class="ex-n">4.</span> Elle <input class="blank" data-answer="a choisi" placeholder="choisir"> une robe magnifique à la friperie. <span class="hint">(choisir)</span></div>
+    <div class="ex-fa">یک پیراهن زیبا در فروشگاه دست‌دوم انتخاب کرد.</div>
+    <div class="ex-sent"><span class="ex-n">5.</span> Tu <input class="blank" data-answer="as fini" placeholder="finir"> ton café ? <span class="hint">(finir)</span></div>
+    <div class="ex-fa">قهوه‌ات را تمام کردی؟</div>
+    <div class="ex-sent"><span class="ex-n">6.</span> Nous <input class="blank" data-answer="avons passé" placeholder="passer"> un bon week-end en famille. <span class="hint">(passer)</span></div>
+    <div class="ex-fa">آخر هفته خوبی با خانواده گذراندیم.</div>
+    <div class="check-btn">
+      <button class="btn btn-check" onclick="checkEx('ex-a','score-a')">✓ تصحیح</button>
+      <button class="btn btn-reset" onclick="resetEx('ex-a','score-a')">↺ دوباره</button>
+    </div>
+    <div class="score-box" id="score-a"></div>
+  </div>
+</div>
+
+<!-- EX 2 — être -->
+<div class="ex-card">
+  <div class="ex-head">
+    <div class="ex-num">B</div>
+    <div class="ex-title">Être + p.p. (accord !)</div>
+    <div class="ex-instr">⚠️ مطابقت با فاعل — e / s / es اضافه می‌شود</div>
+  </div>
+  <div class="ex-body" id="ex-b">
+    <div class="ex-sent"><span class="ex-n">1.</span> Lina <input class="blank" data-answer="est arrivée" placeholder="arriver"> au Canada en janvier. <span class="hint">(arriver — fém.)</span></div>
+    <div class="ex-fa">لینا در ژانویه به کانادا رسید.</div>
+    <div class="ex-sent"><span class="ex-n">2.</span> Les enfants <input class="blank" data-answer="sont montés" placeholder="monter"> très haut dans les arbres. <span class="hint">(monter — masc.pl.)</span></div>
+    <div class="ex-fa">بچه‌ها خیلی بالا در درخت‌ها رفتند.</div>
+    <div class="ex-sent"><span class="ex-n">3.</span> Nous <input class="blank" data-answer="sommes allés" placeholder="aller"> à l'accrobranche dimanche. <span class="hint">(aller — masc.pl.)</span></div>
+    <div class="ex-fa">یکشنبه به اکروبرانش رفتیم.</div>
+    <div class="ex-sent"><span class="ex-n">4.</span> Elle <input class="blank" data-answer="est rentrée" placeholder="rentrer"> fatiguée mais heureuse. <span class="hint">(rentrer — fém.)</span></div>
+    <div class="ex-fa">خسته اما خوشحال برگشت.</div>
+    <div class="ex-sent"><span class="ex-n">5.</span> Je me <input class="blank" data-answer="suis bien amusé" placeholder="s'amuser"> à la friperie avec mes amies. <span class="hint">(s'amuser — masc.)</span></div>
+    <div class="ex-fa">در فروشگاه دست‌دوم با دوستانم خوش گذشت.</div>
+    <div class="ex-sent"><span class="ex-n">6.</span> Il <input class="blank" data-answer="est passé" placeholder="passer"> devant son café préféré. <span class="hint">(passer — masc.)</span></div>
+    <div class="ex-fa">از جلوی کافه مورد علاقه‌اش رد شد.</div>
+    <div class="check-btn">
+      <button class="btn btn-check" onclick="checkEx('ex-b','score-b')">✓ تصحیح</button>
+      <button class="btn btn-reset" onclick="resetEx('ex-b','score-b')">↺ دوباره</button>
+    </div>
+    <div class="score-box" id="score-b"></div>
+  </div>
+</div>
+
+<!-- EX 3 — irréguliers -->
+<div class="ex-card">
+  <div class="ex-head">
+    <div class="ex-num">C</div>
+    <div class="ex-title">Participes passés irréguliers 🟠</div>
+    <div class="ex-instr">اینجا شکل سوم نامنظم لازم داری — کلید حروف اول داده شده</div>
+  </div>
+  <div class="ex-body" id="ex-c">
+    <div class="ex-sent"><span class="ex-n">1.</span> Elle a <input class="blank" data-answer="lu" placeholder="l…"> un article sur la fast fashion. <span class="hint">(lire)</span></div>
+    <div class="ex-fa">یک مقاله درباره فست‌فشن خواند.</div>
+    <div class="ex-sent"><span class="ex-n">2.</span> J'ai <input class="blank" data-answer="pris" placeholder="pr…"> un deuxième café pour rester concentré. <span class="hint">(prendre)</span></div>
+    <div class="ex-fa">یک قهوه دیگر گرفتم تا متمرکز بمانم.</div>
+    <div class="ex-sent"><span class="ex-n">3.</span> Ils ont <input class="blank" data-answer="appris" placeholder="app…"> que le café venait d'Éthiopie. <span class="hint">(apprendre)</span></div>
+    <div class="ex-fa">یاد گرفتند که قهوه از اتیوپی می‌آید.</div>
+    <div class="ex-sent"><span class="ex-n">4.</span> Il a <input class="blank" data-answer="mis" placeholder="m…"> tous ses vêtements dans des sacs. <span class="hint">(mettre)</span></div>
+    <div class="ex-fa">همه لباس‌هایش را در کیسه گذاشت.</div>
+    <div class="ex-sent"><span class="ex-n">5.</span> On a <input class="blank" data-answer="découvert" placeholder="déc…"> le plaisir des vêtements de seconde main. <span class="hint">(découvrir)</span></div>
+    <div class="ex-fa">لذت لباس‌های دست‌دوم را کشف کردیم.</div>
+    <div class="ex-sent"><span class="ex-n">6.</span> Elle a <input class="blank" data-answer="écrit" placeholder="écr…"> dans son journal chaque soir. <span class="hint">(écrire)</span></div>
+    <div class="ex-fa">هر شب در دفترچه‌اش نوشت.</div>
+    <div class="ex-sent"><span class="ex-n">7.</span> Nous avons <input class="blank" data-answer="bu" placeholder="b…"> trois types de café différents. <span class="hint">(boire)</span></div>
+    <div class="ex-fa">سه نوع قهوه مختلف نوشیدیم.</div>
+    <div class="ex-sent"><span class="ex-n">8.</span> J'ai <input class="blank" data-answer="dû" placeholder="d…"> tout apprendre seule. <span class="hint">(devoir)</span></div>
+    <div class="ex-fa">مجبور شدم همه چیز را تنها یاد بگیرم.</div>
+    <div class="ex-sent"><span class="ex-n">9.</span> Elles ont <input class="blank" data-answer="suivi" placeholder="su…"> mon exemple et sont venues à la friperie. <span class="hint">(suivre)</span></div>
+    <div class="ex-fa">از مثال من پیروی کردند و به فروشگاه دست‌دوم آمدند.</div>
+    <div class="ex-sent"><span class="ex-n">10.</span> J'ai <input class="blank" data-answer="compris" placeholder="comp…"> que la patience était essentielle. <span class="hint">(comprendre)</span></div>
+    <div class="ex-fa">فهمیدم که صبر ضروری است.</div>
+    <div class="check-btn">
+      <button class="btn btn-check" onclick="checkEx('ex-c','score-c')">✓ تصحیح</button>
+      <button class="btn btn-reset" onclick="resetEx('ex-c','score-c')">↺ دوباره</button>
+    </div>
+    <div class="score-box" id="score-c"></div>
+  </div>
+</div>
+
+<!-- EX 4 — mixed -->
+<div class="ex-card">
+  <div class="ex-head">
+    <div class="ex-num">D</div>
+    <div class="ex-title">Mixte — avoir / être / irrégulier</div>
+    <div class="ex-instr">⚠️ باید تشخیص دهی: avoir یا être؟ شکل سوم چیست؟</div>
+  </div>
+  <div class="ex-body" id="ex-d">
+    <div class="ex-sent"><span class="ex-n">1.</span> Le week-end, ils <input class="blank" data-answer="ont fait" placeholder="faire"> du bricolage et du jardinage.</div>
+    <div class="ex-fa">آخر هفته کار دستی و باغبانی کردند.</div>
+    <div class="ex-sent"><span class="ex-n">2.</span> Ma mère <input class="blank" data-answer="a ouvert" placeholder="ouvrir"> un compte bancaire quand elle est arrivée.</div>
+    <div class="ex-fa">مادرم وقتی رسید یک حساب بانکی باز کرد.</div>
+    <div class="ex-sent"><span class="ex-n">3.</span> Nous <input class="blank" data-answer="sommes venus" placeholder="venir"> à pied parce qu'il faisait beau.</div>
+    <div class="ex-fa">پیاده آمدیم چون هوا خوب بود.</div>
+    <div class="ex-sent"><span class="ex-n">4.</span> Tu <input class="blank" data-answer="as vu" placeholder="voir"> ce film sur la fast fashion ?</div>
+    <div class="ex-fa">این فیلم درباره فست‌فشن را دیده‌ای؟</div>
+    <div class="ex-sent"><span class="ex-n">5.</span> Les amies <input class="blank" data-answer="ont ri" placeholder="rire"> en essayant des dizaines de vêtements.</div>
+    <div class="ex-fa">دوستان حین امتحان کردن ده‌ها لباس خندیدند.</div>
+    <div class="ex-sent"><span class="ex-n">6.</span> Je <input class="blank" data-answer="suis né" placeholder="naître"> en Iran et j'<input class="blank" data-answer="ai vécu" placeholder="vivre"> cinq ans à Paris. <span class="hint">(masc.)</span></div>
+    <div class="ex-fa">در ایران به دنیا آمدم و پنج سال در پاریس زیستم.</div>
+    <div class="ex-sent"><span class="ex-n">7.</span> Vous <input class="blank" data-answer="avez obtenu" placeholder="obtenir"> votre visa facilement ?</div>
+    <div class="ex-fa">آیا به راحتی ویزا گرفتید؟</div>
+    <div class="ex-sent"><span class="ex-n">8.</span> Elle <input class="blank" data-answer="a peint" placeholder="peindre"> un nouveau tableau ce week-end.</div>
+    <div class="ex-fa">این آخر هفته یک تابلو جدید نقاشی کرد.</div>
+    <div class="check-btn">
+      <button class="btn btn-check" onclick="checkEx('ex-d','score-d')">✓ تصحیح</button>
+      <button class="btn btn-reset" onclick="resetEx('ex-d','score-d')">↺ دوباره</button>
+    </div>
+    <div class="score-box" id="score-d"></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══ PANEL 4: CLÉ ═══ -->
+<div class="panel" id="panel-cle">
+
+<div style="background:var(--etre-pale);border:1.5px solid rgba(46,125,50,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;color:var(--etre);">
+  ✅ جواب‌های درست تمام تمرین‌ها
+</div>
+
+<div style="background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;">
+  <div style="background:var(--navy);padding:10px 18px;font-weight:700;font-size:13px;color:white;">✏️ تمرین A — avoir + p.p. منظم</div>
+  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px;">
+    <div class="key-row"><span class="key-n">1.</span> on <span class="key-ans">a regardé</span> <span class="key-note">regarder→regardé</span></div>
+    <div class="key-row"><span class="key-n">2.</span> ils <span class="key-ans">ont joué</span> <span class="key-note">jouer→joué</span></div>
+    <div class="key-row"><span class="key-n">3.</span> j' <span class="key-ans">ai acheté</span> <span class="key-note">acheter→acheté</span></div>
+    <div class="key-row"><span class="key-n">4.</span> elle <span class="key-ans">a choisi</span> <span class="key-note">choisir→choisi</span></div>
+    <div class="key-row"><span class="key-n">5.</span> tu <span class="key-ans">as fini</span> <span class="key-note">finir→fini</span></div>
+    <div class="key-row"><span class="key-n">6.</span> nous <span class="key-ans">avons passé</span> <span class="key-note">passer→passé</span></div>
+  </div>
+</div>
+
+<div style="background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;">
+  <div style="background:var(--navy);padding:10px 18px;font-weight:700;font-size:13px;color:white;">✏️ تمرین B — être + accord</div>
+  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px;">
+    <div class="key-row"><span class="key-n">1.</span> Lina <span class="key-ans">est arrivée</span> <span class="key-note">fém. → arrivée</span></div>
+    <div class="key-row"><span class="key-n">2.</span> Les enfants <span class="key-ans">sont montés</span> <span class="key-note">masc.pl. → montés</span></div>
+    <div class="key-row"><span class="key-n">3.</span> nous <span class="key-ans">sommes allés</span> <span class="key-note">masc.pl. → allés</span></div>
+    <div class="key-row"><span class="key-n">4.</span> elle <span class="key-ans">est rentrée</span> <span class="key-note">fém. → rentrée</span></div>
+    <div class="key-row"><span class="key-n">5.</span> je me <span class="key-ans">suis bien amusé</span> <span class="key-note">pronominal + être</span></div>
+    <div class="key-row"><span class="key-n">6.</span> il <span class="key-ans">est passé</span> <span class="key-note">passer devant = être!</span></div>
+  </div>
+</div>
+
+<div style="background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;">
+  <div style="background:var(--navy);padding:10px 18px;font-weight:700;font-size:13px;color:white;">✏️ تمرین C — شکل‌های سوم نامنظم 🟠</div>
+  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px;">
+    <div class="key-row"><span class="key-n">1.</span> <span class="key-ans">lu</span> <span class="key-note">lire→lu</span></div>
+    <div class="key-row"><span class="key-n">2.</span> <span class="key-ans">pris</span> <span class="key-note">prendre→pris</span></div>
+    <div class="key-row"><span class="key-n">3.</span> <span class="key-ans">appris</span> <span class="key-note">apprendre→appris</span></div>
+    <div class="key-row"><span class="key-n">4.</span> <span class="key-ans">mis</span> <span class="key-note">mettre→mis</span></div>
+    <div class="key-row"><span class="key-n">5.</span> <span class="key-ans">découvert</span> <span class="key-note">découvrir→découvert</span></div>
+    <div class="key-row"><span class="key-n">6.</span> <span class="key-ans">écrit</span> <span class="key-note">écrire→écrit</span></div>
+    <div class="key-row"><span class="key-n">7.</span> <span class="key-ans">bu</span> <span class="key-note">boire→bu</span></div>
+    <div class="key-row"><span class="key-n">8.</span> <span class="key-ans">dû</span> <span class="key-note">devoir→dû</span></div>
+    <div class="key-row"><span class="key-n">9.</span> <span class="key-ans">suivi</span> <span class="key-note">suivre→suivi</span></div>
+    <div class="key-row"><span class="key-n">10.</span> <span class="key-ans">compris</span> <span class="key-note">comprendre→compris</span></div>
+  </div>
+</div>
+
+<div style="background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;">
+  <div style="background:var(--navy);padding:10px 18px;font-weight:700;font-size:13px;color:white;">✏️ تمرین D — مخلوط</div>
+  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px;">
+    <div class="key-row"><span class="key-n">1.</span> <span class="key-ans">ont fait</span> <span class="key-note">faire→fait · avoir</span></div>
+    <div class="key-row"><span class="key-n">2.</span> <span class="key-ans">a ouvert</span> <span class="key-note">ouvrir→ouvert · avoir</span></div>
+    <div class="key-row"><span class="key-n">3.</span> <span class="key-ans">sommes venus</span> <span class="key-note">venir→venu · être · masc.pl.</span></div>
+    <div class="key-row"><span class="key-n">4.</span> <span class="key-ans">as vu</span> <span class="key-note">voir→vu · avoir</span></div>
+    <div class="key-row"><span class="key-n">5.</span> <span class="key-ans">ont ri</span> <span class="key-note">rire→ri · avoir</span></div>
+    <div class="key-row"><span class="key-n">6.</span> <span class="key-ans">suis né</span> + <span class="key-ans">ai vécu</span> <span class="key-note">naître=être · vivre→vécu=avoir</span></div>
+    <div class="key-row"><span class="key-n">7.</span> <span class="key-ans">avez obtenu</span> <span class="key-note">obtenir→obtenu · avoir</span></div>
+    <div class="key-row"><span class="key-n">8.</span> <span class="key-ans">a peint</span> <span class="key-note">peindre→peint · avoir</span></div>
+  </div>
+</div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="../index.html">← پرونده مهرآفرین</a> · Grammaire en dialogue · Passé Composé · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function checkEx(exId, scoreId){
+  const container = document.getElementById(exId);
+  const blanks = container.querySelectorAll('.blank');
+  let correct = 0;
+  blanks.forEach(b=>{
+    const ans = b.dataset.answer.trim().toLowerCase();
+    const val = b.value.trim().toLowerCase();
+    if(val === ans){b.classList.add('correct');b.classList.remove('wrong');correct++;}
+    else{b.classList.add('wrong');b.classList.remove('correct');}
+  });
+  const box = document.getElementById(scoreId);
+  const pct = Math.round(correct/blanks.length*100);
+  box.style.display='block';
+  if(pct===100){box.style.background='#e8f5e9';box.style.color='#2e7d32';box.textContent=`✅ ${correct}/${blanks.length} — آفرین! همه درست!`;}
+  else if(pct>=60){box.style.background='#fff3e0';box.style.color='#e65100';box.textContent=`⚡ ${correct}/${blanks.length} (${pct}%) — خوب بود، ادامه بده!`;}
+  else{box.style.background='#fce4ec';box.style.color='#c2185b';box.textContent=`📖 ${correct}/${blanks.length} (${pct}%) — جواب‌ها را چک کن و دوباره امتحان کن.`;}
+}
+
+function resetEx(exId, scoreId){
+  const container = document.getElementById(exId);
+  container.querySelectorAll('.blank').forEach(b=>{b.value='';b.classList.remove('correct','wrong');});
+  const box = document.getElementById(scoreId);
+  box.style.display='none';box.textContent='';
+}
+
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
