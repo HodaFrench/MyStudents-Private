@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Expressions — Page 18 · Édito A2 U1L1</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --syn:#1565c0;--syn-pale:#e3f2fd;
+  --ant:#c62828;--ant-pale:#ffebee;
+  --ex:#2e7d32;--ex-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:42px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(19px,3.5vw,30px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px;background:white;border-bottom:2px solid var(--line);justify-content:center;}
+.leg{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;}
+
+/* MAIN */
+.wrap{max-width:900px;margin:0 auto;padding:26px 20px;}
+
+/* EXPRESSION CARD */
+.exp-card{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:28px;}
+
+.exp-header{background:var(--navy);padding:16px 22px;}
+.exp-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px;}
+.exp-phrase{font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:white;direction:ltr;margin-bottom:4px;}
+.exp-fa{font-size:13px;color:rgba(255,255,255,.7);direction:rtl;text-align:right;}
+
+/* SYN / ANT ROW */
+.sa-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid var(--line);}
+.sa-col{padding:14px 18px;}
+.sa-col:first-child{border-left:1px solid var(--line);}
+.sa-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.sa-items{display:flex;flex-direction:column;gap:6px;}
+.sa-item{display:flex;flex-direction:column;gap:2px;}
+.sa-fr{font-family:'Roboto',sans-serif;font-size:13px;font-weight:700;direction:ltr;}
+.sa-fa{font-size:11px;color:var(--gray);}
+.sa-note{font-size:10px;font-style:italic;color:var(--gray);font-family:'Roboto',sans-serif;}
+
+/* EXAMPLES */
+.ex-section{padding:18px 22px;}
+.ex-title{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:.1em;margin-bottom:12px;direction:rtl;text-align:right;}
+.ex-item{background:var(--paper);border-radius:10px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--line);}
+.ex-item:last-child{margin:0;}
+.ex-context{display:inline-flex;align-items:center;gap:5px;background:var(--amber-pale);border:1px solid rgba(230,81,0,.2);color:var(--amber);font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:6px;margin-bottom:7px;}
+.ex-fr{font-family:'Roboto',sans-serif;font-size:14px;line-height:1.8;direction:ltr;text-align:left;color:var(--ink);margin-bottom:6px;}
+.ex-fr strong{color:var(--pink-deep);font-weight:700;}
+.ex-fa{font-size:12.5px;direction:rtl;text-align:right;color:var(--gray);line-height:1.8;}
+
+/* USAGE NOTE */
+.usage-note{background:var(--syn-pale);border:1px solid rgba(21,101,192,.2);border-radius:8px;padding:10px 14px;margin:0 22px 16px;font-size:12px;direction:rtl;text-align:right;color:var(--syn);line-height:1.7;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:600px){.sa-row{grid-template-columns:1fr;}.sa-col:first-child{border-left:none;border-bottom:1px solid var(--line);}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">💬</div>
+  <div><div class="t-title">Expressions — صفحه ۱۸</div><div class="t-sub">Édito A2 · U1 L1 · مترادف · متضاد · مثال</div></div>
+  <a class="back" href="index.html">← Leçon 1</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">ÉDITO A2 · U1 · L1 · PAGE 18</div>
+    <h1>💬 Expressions clés</h1>
+    <div class="hero-sub">مترادف · متضاد · ۳ مثال در زمینه‌های مختلف</div>
+    <div class="hero-pills">
+      <span class="hpill">🔵 مترادف (synonymes)</span>
+      <span class="hpill">🔴 متضاد (antonymes)</span>
+      <span class="hpill">🟢 ۳ مثال A2</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="leg" style="background:var(--syn-pale);color:var(--syn);">🔵 مترادف — synonyme</div>
+  <div class="leg" style="background:var(--ant-pale);color:var(--ant);">🔴 متضاد — antonyme</div>
+  <div class="leg" style="background:var(--amber-pale);color:var(--amber);">🏷️ زمینه مثال</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ 1. J'adore ce concert ═══ -->
+<div class="exp-card">
+  <div class="exp-header">
+    <div class="exp-num">01 / 06</div>
+    <div class="exp-phrase">J'adore ce concert.</div>
+    <div class="exp-fa">این کنسرت را خیلی دوست دارم — عاشقم.</div>
+  </div>
+
+  <div class="sa-row">
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--syn);">🔵 SYNONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Je trouve ce concert magnifique.</div>
+          <div class="sa-fa">این کنسرت را زیبا می‌یابم.</div>
+          <div class="sa-note">trouver + adj → نظر دادن با فعل trouver</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Ce concert me plaît énormément.</div>
+          <div class="sa-fa">این کنسرت خیلی برایم جالب است.</div>
+          <div class="sa-note">plaire à qqn → با فاعل برعکس</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Je suis vraiment fan de ce concert.</div>
+          <div class="sa-fa">واقعاً طرفدار این کنسرت هستم.</div>
+          <div class="sa-note">être fan de → محاوره‌ای و رایج</div>
+        </div>
+      </div>
+    </div>
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--ant);">🔴 ANTONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je n'aime pas du tout ce concert.</div>
+          <div class="sa-fa">اصلاً این کنسرت را دوست ندارم.</div>
+          <div class="sa-note">ne…pas du tout → نفی تأکیدی</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Ce concert me déçoit vraiment.</div>
+          <div class="sa-fa">این کنسرت واقعاً ناامیدم می‌کند.</div>
+          <div class="sa-note">décevoir → ناامید کردن</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je trouve ce concert vraiment ennuyeux.</div>
+          <div class="sa-fa">این کنسرت را واقعاً کسل‌کننده می‌یابم.</div>
+          <div class="sa-note">ennuyeux → کسل‌کننده</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    💡 <strong>adorer</strong> از <strong>aimer</strong> قوی‌تر است — مثل «عاشق بودن» نه فقط «دوست داشتن». در محاوره خیلی رایج است.
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-title">🟢 ۳ مثال در زمینه‌های مختلف</div>
+
+    <div class="ex-item">
+      <div class="ex-context">🎵 موسیقی</div>
+      <div class="ex-fr">J'<strong>adore</strong> ce concert de jazz parce que la musique est douce et les musiciens sont vraiment talentueux. Je me sens bien à chaque note.</div>
+      <div class="ex-fa">این کنسرت جاز را عاشقم چون موسیقی ملایم است و نوازندگان واقعاً با استعدادند. با هر نتی احساس خوبی دارم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🎬 سینما</div>
+      <div class="ex-fr">J'<strong>adore</strong> ce film, il est tellement bien réalisé que je l'ai regardé deux fois cette semaine et je veux le revoir encore.</div>
+      <div class="ex-fa">این فیلم را عاشقم، آنقدر خوب کارگردانی شده که این هفته دو بار دیدمش و می‌خواهم دوباره ببینم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🍕 غذا</div>
+      <div class="ex-fr">J'<strong>adore</strong> ce restaurant ! Les plats sont délicieux, l'ambiance est chaleureuse et le service est parfait. On y retourne vendredi ?</div>
+      <div class="ex-fa">عاشق این رستوران هستم! غذاها خوشمزه، فضا گرم و سرویس عالی است. جمعه برمی‌گردیم؟</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 2. Je (ne) suis (pas) fan de jazz ═══ -->
+<div class="exp-card">
+  <div class="exp-header">
+    <div class="exp-num">02 / 06</div>
+    <div class="exp-phrase">Je (ne) suis (pas) fan de jazz.</div>
+    <div class="exp-fa">(طرفدار / نه طرفدار) جاز هستم — من فن جاز (نیستم)</div>
+  </div>
+
+  <div class="sa-row">
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--syn);">🔵 SYNONYMES (positif)</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Je raffole du jazz.</div>
+          <div class="sa-fa">دیوانه جاز هستم.</div>
+          <div class="sa-note">raffoler de → خیلی قوی‌تر از adorer</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Le jazz, c'est ma passion.</div>
+          <div class="sa-fa">جاز اشتیاق من است.</div>
+          <div class="sa-note">ساختار: c'est ma passion ← خیلی رایج</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">J'ai un vrai coup de cœur pour le jazz.</div>
+          <div class="sa-fa">واقعاً دلباخته جاز هستم.</div>
+          <div class="sa-note">avoir un coup de cœur pour → عاشق شدن از اول</div>
+        </div>
+      </div>
+    </div>
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--ant);">🔴 ANTONYMES (négatif)</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Le jazz ne m'intéresse pas vraiment.</div>
+          <div class="sa-fa">جاز واقعاً برایم جالب نیست.</div>
+          <div class="sa-note">intéresser qqn → جالب بودن برای کسی</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je ne suis pas du tout fan de jazz.</div>
+          <div class="sa-fa">اصلاً طرفدار جاز نیستم.</div>
+          <div class="sa-note">pas du tout → تأکید روی نفی</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Le jazz me laisse indifférent(e).</div>
+          <div class="sa-fa">جاز مرا بی‌تفاوت می‌گذارد.</div>
+          <div class="sa-note">laisser indifférent → نه خوشم می‌آید نه بدم</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    💡 <strong>être fan de</strong> = محاوره‌ای و رایج در A2/B1. مترادف رسمی‌تر: <strong>être passionné de</strong> · <strong>apprécier</strong> · <strong>être amateur de</strong>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-title">🟢 ۳ مثال در زمینه‌های مختلف</div>
+
+    <div class="ex-item">
+      <div class="ex-context">🎵 موسیقی</div>
+      <div class="ex-fr">Moi, je <strong>suis vraiment fan de jazz</strong> parce que cette musique me permet de me détendre après une longue journée de travail. J'écoute Miles Davis tous les soirs.</div>
+      <div class="ex-fa">من واقعاً طرفدار جاز هستم چون این موسیقی به من امکان می‌دهد بعد از یک روز کاری طولانی آرام بگیرم. هر شب Miles Davis گوش می‌دهم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">⚽ ورزش</div>
+      <div class="ex-fr">Ma sœur <strong>n'est pas du tout fan de</strong> football, mais elle regarde quand même les matchs avec nous parce qu'elle aime l'ambiance et les moments en famille.</div>
+      <div class="ex-fa">خواهرم اصلاً طرفدار فوتبال نیست، اما با این حال بازی‌ها را با ما تماشا می‌کند چون فضا و لحظات خانوادگی را دوست دارد.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">📚 کتاب</div>
+      <div class="ex-fr">Je <strong>suis fan de</strong> romans policiers depuis que j'ai lu mon premier Agatha Christie à quinze ans. Depuis, j'en lis au moins un par mois.</div>
+      <div class="ex-fa">از وقتی که در ۱۵ سالگی اولین کتاب آگاتا کریستی‌ام را خواندم، طرفدار رمان‌های پلیسی هستم. از آن موقع حداقل یکی در ماه می‌خوانم.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 3. J'aime bien sortir ═══ -->
+<div class="exp-card">
+  <div class="exp-header">
+    <div class="exp-num">03 / 06</div>
+    <div class="exp-phrase">J'aime bien sortir.</div>
+    <div class="exp-fa">دوست دارم بیرون بروم — از بیرون رفتن خوشم می‌آید.</div>
+  </div>
+
+  <div class="sa-row">
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--syn);">🔵 SYNONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">J'apprécie de sortir.</div>
+          <div class="sa-fa">از بیرون رفتن لذت می‌برم.</div>
+          <div class="sa-note">apprécier de + inf → رسمی‌تر از aimer</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">J'aime me changer les idées en sortant.</div>
+          <div class="sa-fa">دوست دارم با بیرون رفتن ذهنم را عوض کنم.</div>
+          <div class="sa-note">se changer les idées → ذهن را تغییر دادن</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Sortir, c'est une chose que j'adore faire.</div>
+          <div class="sa-fa">بیرون رفتن چیزی است که عاشقش هستم.</div>
+          <div class="sa-note">c'est une chose que → ساختار تأکید</div>
+        </div>
+      </div>
+    </div>
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--ant);">🔴 ANTONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je préfère rester à la maison.</div>
+          <div class="sa-fa">ترجیح می‌دهم خانه بمانم.</div>
+          <div class="sa-note">préférer + inf → ترجیح دادن</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je n'aime pas trop sortir le soir.</div>
+          <div class="sa-fa">زیاد دوست ندارم شب بیرون بروم.</div>
+          <div class="sa-note">ne pas trop → کمی منفی، ملایم</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Sortir souvent, ce n'est pas vraiment mon style.</div>
+          <div class="sa-fa">زیاد بیرون رفتن واقعاً سبک من نیست.</div>
+          <div class="sa-note">ce n'est pas mon style → خودمانی‌تر از truc</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    💡 <strong>aimer bien</strong> از <strong>adorer</strong> ضعیف‌تر است — «خوشم می‌آید» نه «عاشقم». در انگلیسی معادل «I quite like» است نه «I love».
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-title">🟢 ۳ مثال در زمینه‌های مختلف</div>
+
+    <div class="ex-item">
+      <div class="ex-context">👨‍👩‍👧 خانواده</div>
+      <div class="ex-fr">Moi, <strong>j'aime bien sortir</strong> avec ma famille le week-end, mais mes enfants sont adolescents maintenant et ils préfèrent rester à la maison avec leurs téléphones.</div>
+      <div class="ex-fa">من دوست دارم آخر هفته با خانواده‌ام بیرون بروم، اما بچه‌هایم حالا نوجوان هستند و ترجیح می‌دهند با تلفن‌هایشان خانه بمانند.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">😌 تنش‌زدایی</div>
+      <div class="ex-fr">Après une semaine de travail intense, <strong>j'aime bien sortir</strong> me promener dans le parc ou aller au marché du dimanche pour me détendre et voir des gens.</div>
+      <div class="ex-fa">بعد از یک هفته کار سنگین، دوست دارم بیرون بروم در پارک قدم بزنم یا به بازار یکشنبه بروم تا آرام بگیرم و مردم ببینم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🌞 فصل تابستان</div>
+      <div class="ex-fr">En été, <strong>j'aime bien sortir</strong> le soir parce qu'il fait encore chaud et l'ambiance dans les rues est très agréable. On rencontre des amis et on parle longtemps.</div>
+      <div class="ex-fa">تابستان دوست دارم شب بیرون بروم چون هوا هنوز گرم است و فضای خیابان‌ها خیلی دلپذیر است. با دوستان روبرو می‌شویم و مدت طولانی صحبت می‌کنیم.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 4. Je n'aime pas trop les sports aquatiques ═══ -->
+<div class="exp-card">
+  <div class="exp-header">
+    <div class="exp-num">04 / 06</div>
+    <div class="exp-phrase">Je n'aime pas trop les sports aquatiques.</div>
+    <div class="exp-fa">زیاد ورزش‌های آبی دوست ندارم — چندان علاقه‌ای ندارم.</div>
+  </div>
+
+  <div class="sa-row">
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--syn);">🔵 SYNONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Les sports aquatiques ne me plaisent pas vraiment.</div>
+          <div class="sa-fa">ورزش‌های آبی چندان برایم جالب نیستند.</div>
+          <div class="sa-note">ne pas plaire → با فاعل برعکس</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Je ne suis pas très attiré(e) par les sports aquatiques.</div>
+          <div class="sa-fa">خیلی جذب ورزش‌های آبی نمی‌شوم.</div>
+          <div class="sa-note">être attiré par → جذب شدن توسط</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Les sports aquatiques m'intéressent assez peu.</div>
+          <div class="sa-fa">ورزش‌های آبی خیلی کم برایم جالب هستند.</div>
+          <div class="sa-note">assez peu → «نسبتاً کم» — ملایم‌تر از pas du tout</div>
+        </div>
+      </div>
+    </div>
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--ant);">🔴 ANTONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">J'adore les sports aquatiques, je vis pour ça !</div>
+          <div class="sa-fa">عاشق ورزش‌های آبی هستم، برای این زندگی می‌کنم!</div>
+          <div class="sa-note">vivre pour qqch → تأکید خیلی قوی</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je suis passionné(e) de natation et de surf.</div>
+          <div class="sa-fa">به شنا و سرفینگ اشتیاق دارم.</div>
+          <div class="sa-note">être passionné de → رسمی‌تر از fan</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">L'eau, c'est mon élément naturel !</div>
+          <div class="sa-fa">آب عنصر طبیعی من است!</div>
+          <div class="sa-note">expression imagée — تصویری و رایج</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    💡 <strong>ne pas trop</strong> = نفی ملایم — یعنی «چندان نه» نه «اصلاً نه». از <strong>ne pas du tout</strong> مؤدبانه‌تر است. در محاوره خیلی رایج است.
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-title">🟢 ۳ مثال در زمینه‌های مختلف</div>
+
+    <div class="ex-item">
+      <div class="ex-context">🏊 ورزش</div>
+      <div class="ex-fr">Personnellement, <strong>je n'aime pas trop les sports aquatiques</strong> parce que j'ai un peu peur de l'eau profonde. Je préfère les sports en plein air comme le vélo ou la randonnée.</div>
+      <div class="ex-fa">شخصاً چندان ورزش‌های آبی دوست ندارم چون کمی از آب عمیق می‌ترسم. ورزش‌های فضای باز مثل دوچرخه یا پیاده‌روی را ترجیح می‌دهم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🍽️ غذا</div>
+      <div class="ex-fr">Je <strong>n'aime pas trop</strong> la cuisine épicée parce que ça me fait mal à l'estomac. Mais je fais des efforts pour essayer de nouveaux plats quand je suis invité(e).</div>
+      <div class="ex-fa">چندان غذای تند دوست ندارم چون معده‌ام درد می‌گیرد. اما وقتی مهمان هستم تلاش می‌کنم غذاهای جدید امتحان کنم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">📺 سرگرمی</div>
+      <div class="ex-fr">Ma mère <strong>n'aime pas trop</strong> regarder les séries policières parce qu'elle les trouve trop stressantes. Elle préfère les documentaires sur la nature ou la cuisine.</div>
+      <div class="ex-fa">مادرم چندان سریال‌های پلیسی دوست ندارد چون خیلی پر از استرس می‌یابدشان. مستندهای طبیعت یا آشپزی را ترجیح می‌دهد.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 5. C'est pas du tout mon truc ═══ -->
+<div class="exp-card">
+  <div class="exp-header">
+    <div class="exp-num">05 / 06</div>
+    <div class="exp-phrase">C'est pas du tout mon truc.</div>
+    <div class="exp-fa">اصلاً کار من نیست — اصلاً از آن خوشم نمی‌آید (خیلی خودمانی)</div>
+  </div>
+
+  <div class="sa-row">
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--syn);">🔵 SYNONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Ce n'est pas du tout mon style.</div>
+          <div class="sa-fa">اصلاً سبک من نیست.</div>
+          <div class="sa-note">style → کمی رسمی‌تر از truc</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Ça ne me correspond pas du tout.</div>
+          <div class="sa-fa">اصلاً با من جور نیست / برازنده‌ام نیست.</div>
+          <div class="sa-note">correspondre → مطابق بودن</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Franchement, ça ne m'attire pas.</div>
+          <div class="sa-fa">صادقانه بگویم، جذبم نمی‌کند.</div>
+          <div class="sa-note">attirer → جذب کردن</div>
+        </div>
+      </div>
+    </div>
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--ant);">🔴 ANTONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">C'est vraiment mon truc !</div>
+          <div class="sa-fa">واقعاً کار من است! / دقیقاً برای من است!</div>
+          <div class="sa-note">همان ساختار با مثبت</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">C'est exactement ce que j'aime faire.</div>
+          <div class="sa-fa">دقیقاً چیزی است که دوست دارم انجام دهم.</div>
+          <div class="sa-note">exactement → تأکید مثبت</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Ça me correspond parfaitement.</div>
+          <div class="sa-fa">کاملاً با من جور است.</div>
+          <div class="sa-note">parfaitement → مقابل مستقیم</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    💡 <strong>truc</strong> = کلمه محاوره‌ای بسیار رایج برای «چیز، کار». معادل رسمی: <strong>chose</strong>. در نوشتار رسمی استفاده نمی‌شود. <br>
+    ⚠️ «C'est <em>pas</em>» در محاوره رایج است اما در نوشتار باید «Ce n'est <em>pas</em>» بنویسی.
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-title">🟢 ۳ مثال در زمینه‌های مختلف</div>
+
+    <div class="ex-item">
+      <div class="ex-context">🎮 سرگرمی</div>
+      <div class="ex-fr">Les jeux vidéo, <strong>c'est pas du tout mon truc</strong>. Je ne comprends pas les règles et je perds à chaque fois. Je préfère lire un bon livre ou jouer à des jeux de société.</div>
+      <div class="ex-fa">بازی‌های ویدیویی اصلاً کار من نیست. قوانین را نمی‌فهمم و هر بار می‌بازم. ترجیح می‌دهم کتاب خوبی بخوانم یا بازی‌های جمعی بازی کنم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🏔️ ورزش</div>
+      <div class="ex-fr">L'escalade, <strong>c'est pas du tout mon truc</strong>. J'ai le vertige dès que je monte trop haut. Mais ma sœur adore ça, alors elle fait de la via ferrata tous les week-ends.</div>
+      <div class="ex-fa">صخره‌نوردی اصلاً کار من نیست. همین که خیلی بالا می‌روم سرم می‌گردد. اما خواهرم این را دوست دارد، پس هر آخر هفته ویا فراتا می‌رود.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🛍️ خرید</div>
+      <div class="ex-fr">Faire du shopping pendant des heures, <strong>c'est pas du tout mon truc</strong>. Je préfère acheter vite et bien : je sais ce que je veux avant d'entrer dans le magasin.</div>
+      <div class="ex-fa">ساعت‌ها خرید کردن اصلاً کار من نیست. ترجیح می‌دهم سریع و درست بخرم: قبل از وارد شدن به مغازه می‌دانم چه می‌خواهم.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 6. Ma passion, c'est les jeux vidéo ═══ -->
+<div class="exp-card">
+  <div class="exp-header">
+    <div class="exp-num">06 / 06</div>
+    <div class="exp-phrase">Ma passion, c'est les jeux vidéo.</div>
+    <div class="exp-fa">اشتیاقم بازی‌های ویدیویی است — چیزی که عاشقش هستم.</div>
+  </div>
+
+  <div class="sa-row">
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--syn);">🔵 SYNONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Je suis passionné(e) de jeux vidéo.</div>
+          <div class="sa-fa">به بازی‌های ویدیویی اشتیاق دارم.</div>
+          <div class="sa-note">être passionné de → رسمی‌تر</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Les jeux vidéo, c'est vraiment mon truc.</div>
+          <div class="sa-fa">بازی‌های ویدیویی واقعاً کار من است.</div>
+          <div class="sa-note">mon truc → مثبت — از Expression 5</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--syn);">Je raffole des jeux vidéo depuis toujours.</div>
+          <div class="sa-fa">همیشه دیوانه بازی‌های ویدیویی بوده‌ام.</div>
+          <div class="sa-note">raffoler de + depuis → مدت زمان اضافه</div>
+        </div>
+      </div>
+    </div>
+    <div class="sa-col">
+      <div class="sa-label" style="color:var(--ant);">🔴 ANTONYMES</div>
+      <div class="sa-items">
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je n'ai aucun intérêt pour les jeux vidéo.</div>
+          <div class="sa-fa">هیچ علاقه‌ای به بازی‌های ویدیویی ندارم.</div>
+          <div class="sa-note">n'avoir aucun intérêt → مستقیم و قوی</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Les jeux vidéo ne m'attirent pas du tout.</div>
+          <div class="sa-fa">بازی‌های ویدیویی اصلاً جذبم نمی‌کنند.</div>
+          <div class="sa-note">attirer → جذب کردن</div>
+        </div>
+        <div class="sa-item">
+          <div class="sa-fr" style="color:var(--ant);">Je suis indifférent(e) aux jeux vidéo.</div>
+          <div class="sa-fa">نسبت به بازی‌های ویدیویی بی‌تفاوتم.</div>
+          <div class="sa-note">être indifférent à → بی‌تفاوت بودن نسبت به</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    💡 ساختار <strong>Ma passion, c'est…</strong> خیلی رایج و طبیعی است. توجه کن: «passion» مفرد است اما بعدش جمع می‌آید — این در فرانسه عادی است.<br>
+    ساختارهای مشابه: <strong>Mon sport préféré, c'est…</strong> · <strong>Ma série préférée, c'est…</strong> · <strong>Mon truc, c'est…</strong>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-title">🟢 ۳ مثال در زمینه‌های مختلف</div>
+
+    <div class="ex-item">
+      <div class="ex-context">👦 نوجوانان</div>
+      <div class="ex-fr"><strong>Ma passion, c'est les jeux vidéo</strong>. Je joue tous les soirs après les devoirs pendant une heure. Mes parents acceptent parce que je travaille bien à l'école.</div>
+      <div class="ex-fa">اشتیاقم بازی‌های ویدیویی است. هر شب بعد از تکالیف یک ساعت بازی می‌کنم. والدینم قبول می‌کنند چون در مدرسه خوب درس می‌خوانم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">☕ هویت شخصی</div>
+      <div class="ex-fr"><strong>Ma passion, c'est le café</strong>. J'en bois trois tasses par jour, je connais toutes les variétés et je passe mes vacances à visiter des plantations de café en Amérique du Sud.</div>
+      <div class="ex-fa">اشتیاقم قهوه است. روزی سه فنجان می‌نوشم، همه انواعش را می‌شناسم و تعطیلاتم را به بازدید از مزارع قهوه در آمریکای جنوبی می‌گذرانم.</div>
+    </div>
+
+    <div class="ex-item">
+      <div class="ex-context">🎨 هنر</div>
+      <div class="ex-fr"><strong>Ma passion, c'est la peinture</strong>. Chaque week-end, j'achète de nouvelles couleurs et je peins pendant des heures. C'est mon moment à moi, loin du stress du travail.</div>
+      <div class="ex-fa">اشتیاقم نقاشی است. هر آخر هفته رنگ‌های جدید می‌خرم و ساعت‌ها نقاشی می‌کنم. این لحظه خودم است، دور از استرس کار.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← Leçon 1</a> · Expressions Page 18 · Édito A2 U1L1 · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('scrollBtn').classList.toggle('show',window.pageYOffset>300);});
+</script>
+</body>
+</html>
