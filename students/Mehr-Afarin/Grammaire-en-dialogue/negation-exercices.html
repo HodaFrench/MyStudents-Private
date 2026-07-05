@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Négation — ۵۰ جمله مثبت ↔ منفی · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --pos:#2e7d32;--pos-pale:#e8f5e9;
+  --neg:#c62828;--neg-pale:#ffebee;
+  --plus:#1565c0;--jamais:#6a1b9a;--rien:#e65100;--personne:#00695c;--pasenc:#ad1457;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:40px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* CONTROL BAR */
+.ctrl-bar{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px;background:white;border-bottom:2px solid var(--line);position:sticky;top:62px;z-index:99;align-items:center;justify-content:center;}
+.ctrl-btn{padding:7px 16px;border-radius:20px;border:2px solid var(--line);background:white;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:.2s;font-family:'Vazirmatn',sans-serif;}
+.ctrl-btn:hover,.ctrl-btn.active{background:var(--pink);border-color:var(--pink);color:white;}
+.ctrl-sep{width:1px;height:24px;background:var(--line);}
+
+/* MAIN */
+.wrap{max-width:1000px;margin:0 auto;padding:20px;}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:18px;}
+.leg{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:3px 10px;border-radius:12px;}
+
+/* TABLE HEADER */
+.table-head{display:grid;grid-template-columns:36px 1fr 1fr;gap:0;background:var(--navy);border-radius:12px 12px 0 0;overflow:hidden;position:sticky;top:130px;z-index:50;}
+.th-cell{padding:11px 16px;font-family:'Roboto',sans-serif;font-size:12px;font-weight:700;color:white;}
+.th-num{text-align:center;padding:11px 6px;font-size:11px;}
+.th-pos{background:rgba(46,125,50,.4);}
+.th-neg{background:rgba(198,40,40,.4);}
+
+/* ROW */
+.row{display:grid;grid-template-columns:36px 1fr 1fr;gap:0;border-left:2px solid var(--line);border-right:2px solid var(--line);border-bottom:1px solid var(--line);background:white;}
+.row.hidden{display:none;}
+.row:last-child{border-radius:0 0 12px 12px;border-bottom:2px solid var(--line);}
+.row:hover{background:var(--paper);}
+
+.cell-num{display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--pink);background:var(--pink-pale);}
+.cell{padding:12px 16px;font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.7;direction:ltr;}
+.cell-pos{border-left:3px solid var(--pos);background:linear-gradient(to right,var(--pos-pale) 0%,transparent 12%);}
+.cell-neg{border-left:1px dashed var(--line);}
+.cell-fa{font-size:11px;color:var(--gray);direction:rtl;text-align:right;margin-top:5px;line-height:1.6;}
+
+/* highlight negation */
+.hl{padding:0 4px;border-radius:4px;font-weight:700;white-space:nowrap;}
+.hl-plus{background:#e3f2fd;color:var(--plus);}
+.hl-jamais{background:#f3e5f5;color:var(--jamais);}
+.hl-rien{background:#fff3e0;color:var(--rien);}
+.hl-personne{background:#e0f2f1;color:var(--personne);}
+.hl-pas{background:#fce4ec;color:var(--pasenc);}
+.hl-pasenc{background:#fce4ec;color:var(--pasenc);}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;padding:1px 6px;border-radius:5px;margin-top:6px;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+@media(max-width:720px){
+  .table-head,.row{grid-template-columns:30px 1fr;}
+  .th-neg,.cell-neg{grid-column:2;border-top:1px dashed var(--line);}
+  .cell-num{grid-row:span 2;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">⚖️</div>
+  <div><div class="t-title">۵۰ جمله — مثبت ↔ منفی</div><div class="t-sub">مهرآفرین · La Négation · تمرین</div></div>
+  <a class="back" href="negation.html">← منفی‌کننده‌ها</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">GRAMMAIRE A2 · POSITIF ↔ NÉGATIF</div>
+    <h1>⚖️ ۵۰ جمله مثبت و منفی</h1>
+    <div class="hero-sub">هر جمله مثبت + شکل منفی‌اش روبرویش — منفی‌کننده‌ها هایلایت شده</div>
+    <div class="hero-pills">
+      <span class="hpill">🟢 مثبت</span>
+      <span class="hpill">🔴 منفی</span>
+      <span class="hpill">۵۰ جفت جمله</span>
+    </div>
+  </div>
+</div>
+
+<div class="ctrl-bar">
+  <button class="ctrl-btn active" onclick="setFilter('all',this)">همه (۵۰)</button>
+  <button class="ctrl-btn" onclick="setFilter('pas',this)">ne…pas</button>
+  <button class="ctrl-btn" onclick="setFilter('plus',this)">🔵 ne…plus</button>
+  <button class="ctrl-btn" onclick="setFilter('jamais',this)">🟣 ne…jamais</button>
+  <button class="ctrl-btn" onclick="setFilter('rien',this)">🟠 ne…rien</button>
+  <button class="ctrl-btn" onclick="setFilter('personne',this)">🩵 ne…personne</button>
+  <button class="ctrl-btn" onclick="setFilter('pasenc',this)">⏳ ne…pas encore</button>
+</div>
+
+<div class="wrap">
+
+  <div class="legend">
+    <div class="leg" style="background:#fce4ec;color:var(--pasenc);">ne…pas / pas encore</div>
+    <div class="leg" style="background:#e3f2fd;color:var(--plus);">ne…plus</div>
+    <div class="leg" style="background:#f3e5f5;color:var(--jamais);">ne…jamais</div>
+    <div class="leg" style="background:#fff3e0;color:var(--rien);">ne…rien</div>
+    <div class="leg" style="background:#e0f2f1;color:var(--personne);">ne…personne</div>
+  </div>
+
+  <div class="table-head">
+    <div class="th-cell th-num">#</div>
+    <div class="th-cell th-pos">🟢 Phrase affirmative — مثبت</div>
+    <div class="th-cell th-neg">🔴 Phrase négative — منفی</div>
+  </div>
+
+  <div id="rows-wrap"><!-- built by JS --></div>
+
+</div>
+
+<div class="footer"><a href="negation.html">← منفی‌کننده‌ها</a> · ۵۰ جمله مثبت و منفی · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// type: pas | plus | jamais | rien | personne | pasenc
+const DATA = [
+// ── ne…pas (basic) ──
+{n:1,type:'pas',pos:'Je parle français.',neg:'Je <span class="hl hl-pas">ne</span> parle <span class="hl hl-pas">pas</span> français.',fa:'فرانسه حرف می‌زنم ← فرانسه حرف نمی‌زنم.'},
+{n:2,type:'pas',pos:'Elle aime le café.',neg:'Elle <span class="hl hl-pas">n\'</span>aime <span class="hl hl-pas">pas</span> le café.',fa:'او قهوه دوست دارد ← او قهوه دوست ندارد.'},
+{n:3,type:'pas',pos:'Nous habitons à Paris.',neg:'Nous <span class="hl hl-pas">n\'</span>habitons <span class="hl hl-pas">pas</span> à Paris.',fa:'ما در پاریس زندگی می‌کنیم ← در پاریس زندگی نمی‌کنیم.'},
+{n:4,type:'pas',pos:'Tu comprends la leçon.',neg:'Tu <span class="hl hl-pas">ne</span> comprends <span class="hl hl-pas">pas</span> la leçon.',fa:'درس را می‌فهمی ← درس را نمی‌فهمی.'},
+{n:5,type:'pas',pos:'Il travaille le week-end.',neg:'Il <span class="hl hl-pas">ne</span> travaille <span class="hl hl-pas">pas</span> le week-end.',fa:'آخر هفته کار می‌کند ← آخر هفته کار نمی‌کند.'},
+{n:6,type:'pas',pos:'J\'ai un chien.',neg:'Je <span class="hl hl-pas">n\'</span>ai <span class="hl hl-pas">pas</span> de chien.',fa:'یک سگ دارم ← سگ ندارم. (un→de در منفی!)'},
+{n:7,type:'pas',pos:'Elle mange de la viande.',neg:'Elle <span class="hl hl-pas">ne</span> mange <span class="hl hl-pas">pas</span> de viande.',fa:'گوشت می‌خورد ← گوشت نمی‌خورد. (de la→de)'},
+{n:8,type:'pas',pos:'Nous avons le temps.',neg:'Nous <span class="hl hl-pas">n\'</span>avons <span class="hl hl-pas">pas</span> le temps.',fa:'وقت داریم ← وقت نداریم.'},
+
+// ── ne…pas au passé composé ──
+{n:9,type:'pas',pos:'J\'ai fini mes devoirs.',neg:'Je <span class="hl hl-pas">n\'</span>ai <span class="hl hl-pas">pas</span> fini mes devoirs.',fa:'تکالیفم را تمام کردم ← تمام نکردم. (pas بین avoir و p.p.)'},
+{n:10,type:'pas',pos:'Elle est venue hier.',neg:'Elle <span class="hl hl-pas">n\'</span>est <span class="hl hl-pas">pas</span> venue hier.',fa:'دیروز آمد ← دیروز نیامد.'},
+{n:11,type:'pas',pos:'Ils ont compris.',neg:'Ils <span class="hl hl-pas">n\'</span>ont <span class="hl hl-pas">pas</span> compris.',fa:'فهمیدند ← نفهمیدند.'},
+
+// ── ne…plus ──
+{n:12,type:'plus',pos:'Je fume encore.',neg:'Je <span class="hl hl-plus">ne</span> fume <span class="hl hl-plus">plus</span>.',fa:'هنوز سیگار می‌کشم ← دیگر سیگار نمی‌کشم.'},
+{n:13,type:'plus',pos:'Elle habite encore ici.',neg:'Elle <span class="hl hl-plus">n\'</span>habite <span class="hl hl-plus">plus</span> ici.',fa:'هنوز اینجا زندگی می‌کند ← دیگر اینجا زندگی نمی‌کند.'},
+{n:14,type:'plus',pos:'Nous jouons encore aux jeux vidéo.',neg:'Nous <span class="hl hl-plus">ne</span> jouons <span class="hl hl-plus">plus</span> aux jeux vidéo.',fa:'هنوز بازی ویدیویی می‌کنیم ← دیگر بازی نمی‌کنیم.'},
+{n:15,type:'plus',pos:'Il a encore peur.',neg:'Il <span class="hl hl-plus">n\'</span>a <span class="hl hl-plus">plus</span> peur.',fa:'هنوز می‌ترسد ← دیگر نمی‌ترسد.'},
+{n:16,type:'plus',pos:'Je bois encore du café le soir.',neg:'Je <span class="hl hl-plus">ne</span> bois <span class="hl hl-plus">plus</span> de café le soir.',fa:'هنوز شب قهوه می‌نوشم ← دیگر شب قهوه نمی‌نوشم.'},
+{n:17,type:'plus',pos:'Elle veut encore sortir.',neg:'Elle <span class="hl hl-plus">ne</span> veut <span class="hl hl-plus">plus</span> sortir.',fa:'هنوز می‌خواهد بیرون برود ← دیگر نمی‌خواهد بیرون برود.'},
+{n:18,type:'plus',pos:'Tu manges encore de la viande.',neg:'Tu <span class="hl hl-plus">ne</span> manges <span class="hl hl-plus">plus</span> de viande.',fa:'هنوز گوشت می‌خوری ← دیگر گوشت نمی‌خوری.'},
+{n:19,type:'plus',pos:'Ils se voient encore.',neg:'Ils <span class="hl hl-plus">ne</span> se voient <span class="hl hl-plus">plus</span>.',fa:'هنوز همدیگر را می‌بینند ← دیگر همدیگر را نمی‌بینند.'},
+
+// ── ne…jamais ──
+{n:20,type:'jamais',pos:'Je suis toujours en retard.',neg:'Je <span class="hl hl-jamais">ne</span> suis <span class="hl hl-jamais">jamais</span> en retard.',fa:'همیشه دیر می‌کنم ← هرگز دیر نمی‌کنم.'},
+{n:21,type:'jamais',pos:'Elle ment toujours.',neg:'Elle <span class="hl hl-jamais">ne</span> ment <span class="hl hl-jamais">jamais</span>.',fa:'همیشه دروغ می‌گوید ← هرگز دروغ نمی‌گوید.'},
+{n:22,type:'jamais',pos:'Il oublie toujours son objectif.',neg:'Il <span class="hl hl-jamais">n\'</span>oublie <span class="hl hl-jamais">jamais</span> son objectif.',fa:'همیشه هدفش را فراموش می‌کند ← هرگز هدفش را فراموش نمی‌کند.'},
+{n:23,type:'jamais',pos:'Nous prenons souvent des décisions rapides.',neg:'Nous <span class="hl hl-jamais">ne</span> prenons <span class="hl hl-jamais">jamais</span> de décisions rapides.',fa:'اغلب تصمیم‌های سریع می‌گیریم ← هرگز تصمیم سریع نمی‌گیریم.'},
+{n:24,type:'jamais',pos:'Je vais souvent au cinéma seul.',neg:'Je <span class="hl hl-jamais">ne</span> vais <span class="hl hl-jamais">jamais</span> au cinéma seul.',fa:'اغلب تنها سینما می‌روم ← هرگز تنها سینما نمی‌روم.'},
+{n:25,type:'jamais',pos:'Elle a déjà voyagé en Asie.',neg:'Elle <span class="hl hl-jamais">n\'</span>a <span class="hl hl-jamais">jamais</span> voyagé en Asie.',fa:'قبلاً به آسیا سفر کرده ← هرگز به آسیا سفر نکرده.'},
+{n:26,type:'jamais',pos:'Il fait toujours confiance aux autres.',neg:'Il <span class="hl hl-jamais">ne</span> fait <span class="hl hl-jamais">jamais</span> confiance aux autres.',fa:'همیشه به دیگران اعتماد می‌کند ← هرگز به دیگران اعتماد نمی‌کند.'},
+{n:27,type:'jamais',pos:'Je bois parfois de l\'alcool.',neg:'Je <span class="hl hl-jamais">ne</span> bois <span class="hl hl-jamais">jamais</span> d\'alcool.',fa:'گاهی الکل می‌نوشم ← هرگز الکل نمی‌نوشم.'},
+
+// ── ne…rien ──
+{n:28,type:'rien',pos:'Je vois quelque chose.',neg:'Je <span class="hl hl-rien">ne</span> vois <span class="hl hl-rien">rien</span>.',fa:'چیزی می‌بینم ← هیچ چیز نمی‌بینم.'},
+{n:29,type:'rien',pos:'Elle comprend quelque chose.',neg:'Elle <span class="hl hl-rien">ne</span> comprend <span class="hl hl-rien">rien</span>.',fa:'چیزی می‌فهمد ← هیچ چیز نمی‌فهمد.'},
+{n:30,type:'rien',pos:'J\'ai tout appris en cours.',neg:'Je <span class="hl hl-rien">n\'</span>ai <span class="hl hl-rien">rien</span> appris en cours.',fa:'همه چیز را در کلاس یاد گرفتم ← هیچ چیز یاد نگرفتم.'},
+{n:31,type:'rien',pos:'Ils veulent tout faire le week-end.',neg:'Ils <span class="hl hl-rien">ne</span> veulent <span class="hl hl-rien">rien</span> faire le week-end.',fa:'می‌خواهند آخر هفته همه کار کنند ← هیچ کاری نمی‌خواهند بکنند.'},
+{n:32,type:'rien',pos:'Nous avons tout compris.',neg:'Nous <span class="hl hl-rien">n\'</span>avons <span class="hl hl-rien">rien</span> compris.',fa:'همه چیز را فهمیدیم ← هیچ چیز نفهمیدیم.'},
+{n:33,type:'rien',pos:'Elle dit quelque chose d\'intéressant.',neg:'Elle <span class="hl hl-rien">ne</span> dit <span class="hl hl-rien">rien</span> d\'intéressant.',fa:'چیز جالبی می‌گوید ← هیچ چیز جالبی نمی‌گوید.'},
+{n:34,type:'rien',pos:'J\'entends quelque chose.',neg:'Je <span class="hl hl-rien">n\'</span>entends <span class="hl hl-rien">rien</span>.',fa:'چیزی می‌شنوم ← هیچ چیز نمی‌شنوم.'},
+{n:35,type:'rien',pos:'Il achète quelque chose au marché.',neg:'Il <span class="hl hl-rien">n\'</span>achète <span class="hl hl-rien">rien</span> au marché.',fa:'چیزی در بازار می‌خرد ← هیچ چیز نمی‌خرد.'},
+
+// ── ne…personne ──
+{n:36,type:'personne',pos:'Je connais quelqu\'un ici.',neg:'Je <span class="hl hl-personne">ne</span> connais <span class="hl hl-personne">personne</span> ici.',fa:'کسی را اینجا می‌شناسم ← هیچ‌کس را اینجا نمی‌شناسم.'},
+{n:37,type:'personne',pos:'Elle voit quelqu\'un dans la rue.',neg:'Elle <span class="hl hl-personne">ne</span> voit <span class="hl hl-personne">personne</span> dans la rue.',fa:'کسی را در خیابان می‌بیند ← هیچ‌کس را نمی‌بیند.'},
+{n:38,type:'personne',pos:'Il y a quelqu\'un à la maison.',neg:'Il <span class="hl hl-personne">n\'</span>y a <span class="hl hl-personne">personne</span> à la maison.',fa:'کسی خانه هست ← هیچ‌کس خانه نیست.'},
+{n:39,type:'personne',pos:'Nous attendons quelqu\'un.',neg:'Nous <span class="hl hl-personne">n\'</span>attendons <span class="hl hl-personne">personne</span>.',fa:'منتظر کسی هستیم ← منتظر هیچ‌کس نیستیم.'},
+{n:40,type:'personne',pos:'J\'ai rencontré quelqu\'un d\'intéressant.',neg:'Je <span class="hl hl-personne">n\'</span>ai rencontré <span class="hl hl-personne">personne</span> d\'intéressant.',fa:'کسی جالب را ملاقات کردم ← هیچ‌کس جالبی را ملاقات نکردم. (personne بعد از p.p.!)'},
+{n:41,type:'personne',pos:'Elle parle à quelqu\'un.',neg:'Elle <span class="hl hl-personne">ne</span> parle à <span class="hl hl-personne">personne</span>.',fa:'با کسی حرف می‌زند ← با هیچ‌کس حرف نمی‌زند.'},
+{n:42,type:'personne',pos:'Tout le monde est venu à la fête.',neg:'<span class="hl hl-personne">Personne</span> <span class="hl hl-personne">n\'</span>est venu à la fête.',fa:'همه به مهمانی آمدند ← هیچ‌کس نیامد. (personne اول جمله!)'},
+
+// ── ne…pas encore ──
+{n:43,type:'pasenc',pos:'J\'ai déjà mangé.',neg:'Je <span class="hl hl-pasenc">n\'</span>ai <span class="hl hl-pasenc">pas encore</span> mangé.',fa:'قبلاً غذا خورده‌ام ← هنوز غذا نخورده‌ام.'},
+{n:44,type:'pasenc',pos:'Elle est déjà arrivée.',neg:'Elle <span class="hl hl-pasenc">n\'</span>est <span class="hl hl-pasenc">pas encore</span> arrivée.',fa:'قبلاً رسیده ← هنوز نرسیده.'},
+{n:45,type:'pasenc',pos:'Ils ont déjà fini le projet.',neg:'Ils <span class="hl hl-pasenc">n\'</span>ont <span class="hl hl-pasenc">pas encore</span> fini le projet.',fa:'قبلاً پروژه را تمام کرده‌اند ← هنوز تمام نکرده‌اند.'},
+{n:46,type:'pasenc',pos:'Je sais déjà conduire.',neg:'Je <span class="hl hl-pasenc">ne</span> sais <span class="hl hl-pasenc">pas encore</span> conduire.',fa:'قبلاً رانندگی بلدم ← هنوز رانندگی بلد نیستم.'},
+{n:47,type:'pasenc',pos:'Elle a déjà trouvé un appartement.',neg:'Elle <span class="hl hl-pasenc">n\'</span>a <span class="hl hl-pasenc">pas encore</span> trouvé d\'appartement.',fa:'قبلاً آپارتمان پیدا کرده ← هنوز آپارتمان پیدا نکرده.'},
+
+// ── mix pour finir ──
+{n:48,type:'jamais',pos:'Je regrette toujours mes choix.',neg:'Je <span class="hl hl-jamais">ne</span> regrette <span class="hl hl-jamais">jamais</span> mes choix.',fa:'همیشه از انتخاب‌هایم پشیمانم ← هرگز پشیمان نمی‌شوم.'},
+{n:49,type:'plus',pos:'On se dispute encore souvent.',neg:'On <span class="hl hl-plus">ne</span> se dispute <span class="hl hl-plus">plus</span>.',fa:'هنوز اغلب دعوا می‌کنیم ← دیگر دعوا نمی‌کنیم.'},
+{n:50,type:'rien',pos:'Il reste encore quelque chose à faire.',neg:'Il <span class="hl hl-rien">ne</span> reste <span class="hl hl-rien">rien</span> à faire.',fa:'هنوز چیزی برای انجام باقی مانده ← هیچ چیز برای انجام باقی نمانده.'}
+];
+
+const wrap = document.getElementById('rows-wrap');
+DATA.forEach(d=>{
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.dataset.type = d.type;
+  row.innerHTML = `
+    <div class="cell-num">${d.n}</div>
+    <div class="cell cell-pos">${d.pos}<div class="cell-fa">${d.fa.split('←')[0].trim()}</div></div>
+    <div class="cell cell-neg">${d.neg}<div class="cell-fa">${d.fa.split('←')[1]?d.fa.split('←')[1].trim():''}</div></div>`;
+  wrap.appendChild(row);
+});
+
+let cur='all';
+function setFilter(f,btn){
+  cur=f;
+  document.querySelectorAll('.ctrl-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.row').forEach(r=>{
+    r.classList.toggle('hidden', f!=='all' && r.dataset.type!==f);
+  });
+}
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
