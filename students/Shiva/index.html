@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,18 +95,22 @@
       letter-spacing: 4px; text-transform: uppercase;
     }
     .hero h2 {
-      font-size: 48px; font-weight: 700;
-      margin-bottom: 10px; color: var(--navy); line-height: 1.4;
+      font-family: 'Roboto', sans-serif;
+      font-size: 52px; font-weight: 700;
+      margin-bottom: 14px; line-height: 1.3;
+      background: linear-gradient(120deg, var(--pink-deep), var(--pink-soft));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .hero .sub {
-      font-size: 18px; color: var(--ink);
-      font-weight: 500; margin: 0 auto 10px; max-width: 540px;
+      font-size: 15px; color: var(--gray);
+      font-weight: 400; margin: 0 auto 28px; max-width: 500px;
     }
     .hero .sub-fr {
-      font-family: 'Roboto', serif;
-      font-size: 26px; color: var(--pink-deep);
-      font-weight: 700; letter-spacing: 0.5px;
-      margin: 0 auto 28px; font-style: italic;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px; color: var(--ink);
+      font-weight: 500; letter-spacing: 0.2px;
+      margin: 0 auto 8px; max-width: 560px;
     }
 
     /* ─── جستجو ─── */
@@ -281,24 +285,23 @@
 
 <!-- ─── TOPBAR ─── -->
 <div class="topbar">
-  <div class="logo">💗</div>
+  <div class="logo">🎀</div>
   <div class="tag">
     <h1>Shiva</h1>
-    <span class="name-fa">شیوا</span>
-    <span class="role-fa">Français avec Hoda — فضای یادگیری اختصاصی</span>
+    <span class="role-fr">Français avec Hoda · Espace d'apprentissage</span>
   </div>
 </div>
 
 <!-- ─── HERO ─── -->
 <div class="hero" id="hero">
-  <div class="welcome">✦ کتابخانه‌ی اختصاصی تو ✦</div>
-  <h2>سلام شیوا 👋</h2>
-  <p class="sub">همه‌ی فایل‌ها، تمرین‌ها و درس‌هایت اینجاست</p>
-  <p class="sub-fr">Bienvenue dans ta bibliothèque !</p>
+  <div class="welcome">✦ Ton espace personnel ✦</div>
+  <h2>Bonjour Shiva</h2>
+  <p class="sub-fr">Bienvenue dans ta bibliothèque de français</p>
+  <p class="sub">Tous tes cours, exercices et ressources sont ici</p>
 
   <!-- جستجو -->
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="جستجو در محتوا..." oninput="handleSearch(this.value)">
+    <input type="text" id="searchInput" placeholder="Rechercher un cours, un thème…" oninput="handleSearch(this.value)">
   </div>
 
   <!-- دسته‌بندی‌ها -->
@@ -485,7 +488,7 @@ function buildCard(lesson) {
         <div class="card-cat">${lesson.unite || cat?.label}</div>
         <div class="card-title">${lesson.title}</div>
         <div class="card-title-fr">${lesson.titleFr || ''}</div>
-        <div class="card-go">${locked ? 'بزودی… ⏳' : 'باز کردن ←'}</div>
+        <div class="card-go">${locked ? 'Bientôt… ⏳' : 'Ouvrir →'}</div>
       </div>
     </${tag}>
   `;
@@ -503,7 +506,7 @@ function openCat(id) {
 
   const available = items.filter(l => !l.disabled).length;
   document.getElementById('libCount').textContent =
-    `${items.length} leçon — ${available} آماده`;
+    `${items.length} leçon(s) · ${available} disponible(s)`;
 
   // اگر Édito A2: گروه‌بندی بر اساس unité
   if (id === 'edito-a2') {
@@ -547,7 +550,7 @@ function openCat(id) {
   } else {
     document.getElementById('contentGrid').innerHTML = items.length
       ? items.map(buildCard).join('')
-      : `<p style="color:var(--gray);padding:40px;text-align:center;font-style:italic">محتوایی هنوز اضافه نشده.</p>`;
+      : `<p style="color:var(--gray);padding:40px;text-align:center;font-style:italic">Contenu bientôt disponible.</p>`;
   }
 
   window.scrollTo({top:0,behavior:'smooth'});
@@ -589,7 +592,7 @@ function handleSearch(q) {
   hero.classList.remove('hidden');
   sr.classList.add('active');
   document.getElementById('searchResultsTitle').textContent =
-    results.length ? `${results.length} نتیجه برای «${q}»` : `نتیجه‌ای برای «${q}» یافت نشد`;
+    results.length ? `${results.length} résultat(s) pour « ${q} »` : `Aucun résultat pour « ${q} »`;
   document.getElementById('searchGrid').innerHTML = results.map(buildCard).join('');
 }
 
