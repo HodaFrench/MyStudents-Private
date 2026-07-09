@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Partie F — Les Journées du Patrimoine · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --cirque:#6a1b9a;--cirque-pale:#f3e5f5;
+  --pantheon:#1565c0;--pantheon-pale:#e3f2fd;
+  --chateau:#e65100;--chateau-pale:#fff3e0;
+  --verb:#2e7d32;--verb-pale:#e8f5e9;
+  --col:#00695c;--col-pale:#e0f2f1;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:40px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(19px,3.5vw,29px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+/* TABS */
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:11px 15px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* CONTEXT */
+.context-box{background:var(--pantheon-pale);border:1.5px solid rgba(21,101,192,.25);border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.9;direction:rtl;text-align:right;margin-bottom:22px;}
+.context-box strong{color:var(--pantheon);}
+.context-title{font-weight:700;color:var(--pantheon);margin-bottom:6px;font-size:14px;}
+
+/* TEXT SECTIONS */
+.text-block{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.tb-head{padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.tb-icon{font-size:22px;}
+.tb-title{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;color:white;direction:ltr;}
+.tb-title-fa{font-size:12px;color:rgba(255,255,255,.8);direction:rtl;margin-top:1px;}
+
+.tb-body{padding:8px 0;}
+.line{padding:10px 18px;border-bottom:1px dashed var(--line);}
+.line:last-child{border:none;}
+.line-fr{font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.7;direction:ltr;text-align:left;color:var(--ink);margin-bottom:4px;}
+.line-fa{font-size:13px;direction:rtl;text-align:right;line-height:1.8;color:var(--gray);}
+.line-note{font-size:11px;color:var(--pink);font-style:italic;direction:rtl;text-align:right;margin-top:4px;}
+
+/* colors per monument */
+.cirque .tb-head{background:linear-gradient(135deg,var(--cirque),#8e24aa);}
+.pantheon .tb-head{background:linear-gradient(135deg,var(--pantheon),#1976d2);}
+.chateau .tb-head{background:linear-gradient(135deg,var(--chateau),#f57c00);}
+
+/* FULL TEXT (continuous) */
+.fulltext{background:white;border:2px solid var(--line);border-radius:14px;padding:22px;margin-bottom:20px;}
+.fulltext h3{font-family:'Roboto',sans-serif;font-size:14px;color:var(--pink-deep);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--line);}
+.ft-para{font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.9;direction:ltr;text-align:left;color:var(--ink);margin-bottom:14px;}
+.ft-para:last-child{margin:0;}
+
+/* VOCAB CARD */
+.v-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.v-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.v-word{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;direction:ltr;}
+.v-type{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 9px;border-radius:8px;margin-right:auto;}
+.v-fa{font-size:12px;color:var(--gray);direction:rtl;margin-top:2px;}
+.v-note{background:var(--col-pale);border-bottom:1px solid var(--line);padding:8px 16px;font-size:11.5px;color:var(--col);direction:rtl;text-align:right;line-height:1.7;}
+.v-examples{padding:6px 0;}
+.v-ex{padding:9px 16px;border-bottom:1px dashed var(--line);}
+.v-ex:last-child{border:none;}
+.v-ex-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:3px;}
+.v-ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.7;direction:ltr;color:var(--ink);margin-bottom:3px;}
+.v-ex-fr strong{color:var(--pink-deep);}
+.v-ex-fa{font-size:11.5px;color:var(--gray);direction:rtl;text-align:right;line-height:1.6;}
+
+/* colors */
+.tc-verb .v-word{color:var(--verb);} .tc-verb .v-type{background:var(--verb-pale);color:var(--verb);}
+.tc-col .v-word{color:var(--col);} .tc-col .v-type{background:var(--col-pale);color:var(--col);}
+.tc-noun .v-word{color:var(--pantheon);} .tc-noun .v-type{background:var(--pantheon-pale);color:var(--pantheon);}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">🏛️</div>
+  <div><div class="t-title">Partie F — Les Journées du Patrimoine</div><div class="t-sub">مهرآفرین · Édito A2 · U1 · L1</div></div>
+  <a class="back" href="index.html">← Leçon 1</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">ÉDITO A2 · U1 · L1 · PARTIE F</div>
+    <h1>🏛️ Les Journées du Patrimoine</h1>
+    <div class="hero-sub">روزهای میراث فرهنگی — متن، ترجمه، واژگان و کالوکیشن</div>
+    <div class="hero-pills">
+      <span class="hpill">📖 متن کامل + ترجمه</span>
+      <span class="hpill">🔤 تحلیل واژگان</span>
+      <span class="hpill">🔗 کالوکیشن‌ها</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('texte',this)">📖 متن و ترجمه</div>
+  <div class="tab" onclick="showTab('complet',this)">📄 متن کامل</div>
+  <div class="tab" onclick="showTab('vocab',this)">🔤 واژگان و کالوکیشن</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: TEXTE LIGNE PAR LIGNE ═══ -->
+<div class="panel active" id="panel-texte">
+
+  <div class="context-box">
+    <div class="context-title">🎧 Contexte — زمینه</div>
+    <strong>Les Journées du Patrimoine</strong> (روزهای میراث فرهنگی) یک رویداد سالانه در فرانسه است که در آن بناهای تاریخی، کاخ‌ها و موزه‌ها درهای خود را رایگان به روی عموم باز می‌کنند. این متن سه مکان معروف را معرفی می‌کند که در دورهٔ ۲۰۲۱ شرکت کردند.
+  </div>
+
+  <!-- CIRQUE -->
+  <div class="text-block cirque">
+    <div class="tb-head">
+      <span class="tb-icon">🎪</span>
+      <div><div class="tb-title">Le Cirque d'hiver Bouglione</div><div class="tb-title-fa">سیرک زمستانی بوگلیون</div></div>
+    </div>
+    <div class="tb-body">
+      <div class="line">
+        <div class="line-fr">Pour la 38e édition des Journées du Patrimoine, les amateurs de spectacles se donnent rendez-vous au Cirque d'hiver Bouglione.</div>
+        <div class="line-fa">برای سی‌وهشتمین دورهٔ «روزهای میراث فرهنگی»، علاقه‌مندان به نمایش‌ها در سیرک زمستانی بوگلیون با یکدیگر قرار ملاقات می‌گذارند.</div>
+        <div class="line-note">💡 se donner rendez-vous = همه در آنجا جمع می‌شوند</div>
+      </div>
+      <div class="line">
+        <div class="line-fr">C'est le plus ancien cirque en activité du monde.</div>
+        <div class="line-fa">این قدیمی‌ترین سیرک فعال جهان است.</div>
+      </div>
+      <div class="line">
+        <div class="line-fr">Au programme : une visite guidée inédite pour découvrir les coulisses du cirque !</div>
+        <div class="line-fa">در برنامه: یک بازدیدِ راهنمایی‌شدهٔ منحصربه‌فرد برای کشف پشت‌صحنهٔ سیرک!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTHÉON -->
+  <div class="text-block pantheon">
+    <div class="tb-head">
+      <span class="tb-icon">🏛️</span>
+      <div><div class="tb-title">Le Panthéon</div><div class="tb-title-fa">پانتئون</div></div>
+    </div>
+    <div class="tb-body">
+      <div class="line">
+        <div class="line-fr">Le Panthéon participe aux Journées du Patrimoine 2021 et ouvre ses portes.</div>
+        <div class="line-fa">پانتئون نیز در «روزهای میراث فرهنگی ۲۰۲۱» شرکت می‌کند و درهای خود را به روی عموم باز می‌کند.</div>
+      </div>
+      <div class="line">
+        <div class="line-fr">En plus de la visite gratuite de ce monument destiné aux Grands Hommes, une projection en plein air vous attend sur les façades du Panthéon.</div>
+        <div class="line-fa">علاوه بر بازدید رایگان از این بنای یادبود که به شخصیت‌های بزرگ فرانسه اختصاص یافته است، یک نمایش (ویدئویی) در فضای باز که بر روی نمای بیرونی ساختمان پانتئون نمایش داده می‌شود، در انتظار شماست.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHÂTEAU -->
+  <div class="text-block chateau">
+    <div class="tb-head">
+      <span class="tb-icon">🏰</span>
+      <div><div class="tb-title">Le château de Fontainebleau</div><div class="tb-title-fa">کاخ فونتنبلو</div></div>
+    </div>
+    <div class="tb-body">
+      <div class="line">
+        <div class="line-fr">Le château de Fontainebleau participe bien aux Journées du Patrimoine.</div>
+        <div class="line-fa">کاخ فونتنبلو نیز در روزهای میراث فرهنگی شرکت می‌کند.</div>
+      </div>
+      <div class="line">
+        <div class="line-fr">Cette année, en plus de la visite des grands appartements du Château, on peut apprendre le jeu de paume et rencontrer les artisans qui s'occupent du lieu !</div>
+        <div class="line-fa">امسال، علاوه بر بازدید از تالارها و آپارتمان‌های بزرگ کاخ، می‌توان بازی تاریخی «ژو دو پوم» را یاد گرفت و با صنعتگران و استادکارانی که از این مکان نگهداری می‌کنند، ملاقات کرد.</div>
+        <div class="line-note">💡 le jeu de paume = جدّ تنیس امروزی</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PANEL 2: TEXTE COMPLET ═══ -->
+<div class="panel" id="panel-complet">
+  <div class="fulltext">
+    <h3>📄 Le Cirque d'hiver Bouglione</h3>
+    <p class="ft-para">Pour la 38e édition des Journées du Patrimoine, les amateurs de spectacles se donnent rendez-vous au Cirque d'hiver Bouglione. C'est le plus ancien cirque en activité du monde. Au programme : une visite guidée inédite pour découvrir les coulisses du cirque !</p>
+  </div>
+  <div class="fulltext">
+    <h3>📄 Le Panthéon</h3>
+    <p class="ft-para">Le Panthéon participe aux Journées du Patrimoine 2021 et ouvre ses portes. En plus de la visite gratuite de ce monument destiné aux Grands Hommes, une projection en plein air vous attend sur les façades du Panthéon.</p>
+  </div>
+  <div class="fulltext">
+    <h3>📄 Le château de Fontainebleau</h3>
+    <p class="ft-para">Le château de Fontainebleau participe bien aux Journées du Patrimoine. Cette année, en plus de la visite des grands appartements du Château, on peut apprendre le jeu de paume et rencontrer les artisans qui s'occupent du lieu !</p>
+  </div>
+</div>
+
+<!-- ═══ PANEL 3: VOCABULAIRE & COLLOCATIONS ═══ -->
+<div class="panel" id="panel-vocab">
+
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.8;color:var(--col);">
+    🔗 <strong>کالوکیشن‌ها (collocations)</strong> ترکیب‌هایی هستند که فرانسوی‌ها به صورت طبیعی با هم به کار می‌برند. یادگیری این‌ها برای TCF بسیار ارزشمند است.
+  </div>
+
+  <!-- se donner rendez-vous -->
+  <div class="v-card tc-col">
+    <div class="v-head">
+      <div><div class="v-word">se donner rendez-vous</div><div class="v-fa">با هم قرار گذاشتن · جمع شدن</div></div>
+      <span class="v-type">EXPRESSION</span>
+    </div>
+    <div class="v-note">💡 معنی تحت‌اللفظی «به هم قرار دادن» اما در عمل یعنی «همه در یک جا جمع می‌شوند»</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Chaque année, les fans <strong>se donnent rendez-vous</strong> au festival de musique.</div><div class="v-ex-fa">هر سال، طرفداران در جشنواره موسیقی جمع می‌شوند.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">On <strong>se donne rendez-vous</strong> devant le cinéma à 20 heures ?</div><div class="v-ex-fa">ساعت ۲۰ جلوی سینما قرار بگذاریم؟</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Les amateurs d'art <strong>se donnent rendez-vous</strong> au musée pour l'exposition.</div><div class="v-ex-fa">علاقه‌مندان هنر برای نمایشگاه در موزه جمع می‌شوند.</div></div>
+    </div>
+  </div>
+
+  <!-- les amateurs de -->
+  <div class="v-card tc-noun">
+    <div class="v-head">
+      <div><div class="v-word">les amateurs de</div><div class="v-fa">علاقه‌مندان به · دوستدارانِ</div></div>
+      <span class="v-type">NOM + DE</span>
+    </div>
+    <div class="v-note">💡 amateur = کسی که چیزی را دوست دارد (نه لزوماً حرفه‌ای). برعکس: professionnel</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Les <strong>amateurs de</strong> jazz adorent ce petit club au centre-ville.</div><div class="v-ex-fa">علاقه‌مندان جاز عاشق این کلوب کوچک در مرکز شهر هستند.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">C'est un événement parfait pour les <strong>amateurs de</strong> spectacles vivants.</div><div class="v-ex-fa">این یک رویداد عالی برای علاقه‌مندان به نمایش‌های زنده است.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Les <strong>amateurs d'</strong>art moderne visiteront cette exposition avec plaisir.</div><div class="v-ex-fa">علاقه‌مندان هنر مدرن با لذت این نمایشگاه را بازدید خواهند کرد.</div></div>
+    </div>
+  </div>
+
+  <!-- une visite guidée -->
+  <div class="v-card tc-col">
+    <div class="v-head">
+      <div><div class="v-word">une visite guidée</div><div class="v-fa">بازدید با راهنما · تور راهنمایی‌شده</div></div>
+      <span class="v-type">COLLOCATION</span>
+    </div>
+    <div class="v-note">💡 guidée از فعل guider (راهنمایی کردن). کالوکیشن‌های مرتبط: faire une visite / une visite gratuite</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Nous avons fait <strong>une visite guidée</strong> du château avec un guide passionnant.</div><div class="v-ex-fa">با یک راهنمای جذاب یک بازدید راهنمایی‌شده از کاخ انجام دادیم.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr"><strong>Une visite guidée</strong> permet de mieux comprendre l'histoire du monument.</div><div class="v-ex-fa">یک بازدید راهنمایی‌شده امکان می‌دهد تاریخ بنا را بهتر درک کنی.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Je recommande <strong>une visite guidée</strong> plutôt qu'une visite libre.</div><div class="v-ex-fa">من یک بازدید راهنمایی‌شده را به بازدید آزاد ترجیح می‌دهم.</div></div>
+    </div>
+  </div>
+
+  <!-- inédit -->
+  <div class="v-card tc-noun">
+    <div class="v-head">
+      <div><div class="v-word">inédit(e)</div><div class="v-fa">منحصربه‌فرد · بی‌سابقه · تازه</div></div>
+      <span class="v-type">ADJECTIF</span>
+    </div>
+    <div class="v-note">💡 چیزی که قبلاً هرگز دیده یا منتشر نشده. مترادف: nouveau, original, exceptionnel</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Le musée propose une exposition <strong>inédite</strong> jamais présentée auparavant.</div><div class="v-ex-fa">موزه یک نمایشگاه بی‌سابقه ارائه می‌دهد که قبلاً هرگز نمایش داده نشده.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">C'est une expérience <strong>inédite</strong> : on peut visiter les coulisses !</div><div class="v-ex-fa">این یک تجربه منحصربه‌فرد است: می‌توان از پشت‌صحنه بازدید کرد!</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">L'artiste a présenté des chansons <strong>inédites</strong> lors du concert.</div><div class="v-ex-fa">هنرمند در کنسرت آهنگ‌های تازه‌ای ارائه داد.</div></div>
+    </div>
+  </div>
+
+  <!-- les coulisses -->
+  <div class="v-card tc-noun">
+    <div class="v-head">
+      <div><div class="v-word">les coulisses</div><div class="v-fa">پشت‌صحنه · پشت پرده</div></div>
+      <span class="v-type">NOM (f. pl.)</span>
+    </div>
+    <div class="v-note">💡 همیشه جمع. کالوکیشن: découvrir les coulisses / dans les coulisses</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Cette visite permet de découvrir <strong>les coulisses</strong> du théâtre.</div><div class="v-ex-fa">این بازدید امکان می‌دهد پشت‌صحنه تئاتر را کشف کنی.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Dans <strong>les coulisses</strong>, les acteurs se préparent avant le spectacle.</div><div class="v-ex-fa">در پشت‌صحنه، بازیگران قبل از نمایش آماده می‌شوند.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Le documentaire montre <strong>les coulisses</strong> d'un grand festival.</div><div class="v-ex-fa">این مستند پشت‌صحنه یک جشنواره بزرگ را نشان می‌دهد.</div></div>
+    </div>
+  </div>
+
+  <!-- ouvrir ses portes -->
+  <div class="v-card tc-col">
+    <div class="v-head">
+      <div><div class="v-word">ouvrir ses portes</div><div class="v-fa">درها را باز کردن · پذیرای عموم شدن</div></div>
+      <span class="v-type">EXPRESSION</span>
+    </div>
+    <div class="v-note">💡 معنی مجازی: یک مکان به روی بازدیدکنندگان باز می‌شود</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Le musée <strong>ouvre ses portes</strong> gratuitement ce week-end.</div><div class="v-ex-fa">موزه این آخر هفته درهایش را رایگان باز می‌کند.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">La nouvelle bibliothèque <strong>ouvrira ses portes</strong> le mois prochain.</div><div class="v-ex-fa">کتابخانه جدید ماه آینده درهایش را باز خواهد کرد.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Chaque année, ces monuments <strong>ouvrent leurs portes</strong> au public.</div><div class="v-ex-fa">هر سال، این بناها درهایشان را به روی عموم باز می‌کنند.</div></div>
+    </div>
+  </div>
+
+  <!-- en plus de -->
+  <div class="v-card tc-col">
+    <div class="v-head">
+      <div><div class="v-word">en plus de</div><div class="v-fa">علاوه بر · به‌علاوهٔ</div></div>
+      <span class="v-type">CONNECTEUR</span>
+    </div>
+    <div class="v-note">💡 برای اضافه کردن اطلاعات. مترادف: outre, à part</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr"><strong>En plus de</strong> la visite, il y a une projection en plein air.</div><div class="v-ex-fa">علاوه بر بازدید، یک نمایش در فضای باز هم هست.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr"><strong>En plus d'</strong>être gratuit, l'événement est ouvert à tous.</div><div class="v-ex-fa">علاوه بر رایگان بودن، این رویداد برای همه باز است.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr"><strong>En plus du</strong> concert, on peut rencontrer les artistes.</div><div class="v-ex-fa">علاوه بر کنسرت، می‌توان با هنرمندان ملاقات کرد.</div></div>
+    </div>
+  </div>
+
+  <!-- une projection en plein air -->
+  <div class="v-card tc-col">
+    <div class="v-head">
+      <div><div class="v-word">une projection en plein air</div><div class="v-fa">نمایش (فیلم) در فضای باز</div></div>
+      <span class="v-type">COLLOCATION</span>
+    </div>
+    <div class="v-note">💡 en plein air = در فضای باز (کالوکیشن پرکاربرد). projection = نمایش تصویری</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">En été, il y a souvent <strong>une projection en plein air</strong> dans le parc.</div><div class="v-ex-fa">تابستان اغلب یک نمایش فیلم در فضای باز در پارک هست.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">La <strong>projection en plein air</strong> du film a attiré beaucoup de monde.</div><div class="v-ex-fa">نمایش فیلم در فضای باز جمعیت زیادی را جذب کرد.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">On adore les concerts et les activités <strong>en plein air</strong> l'été.</div><div class="v-ex-fa">تابستان عاشق کنسرت‌ها و فعالیت‌های فضای باز هستیم.</div></div>
+    </div>
+  </div>
+
+  <!-- s'occuper de -->
+  <div class="v-card tc-verb">
+    <div class="v-head">
+      <div><div class="v-word">s'occuper de</div><div class="v-fa">رسیدگی کردن به · نگهداری کردن از</div></div>
+      <span class="v-type">VERBE PRONOMINAL</span>
+    </div>
+    <div class="v-note">💡 فعل انعکاسی با de. معنی: مسئولیت چیزی را بر عهده گرفتن</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Les artisans <strong>s'occupent du</strong> château depuis des générations.</div><div class="v-ex-fa">صنعتگران نسل‌هاست از کاخ نگهداری می‌کنند.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Qui <strong>s'occupe des</strong> réservations pour la visite ?</div><div class="v-ex-fa">چه کسی رزروهای بازدید را انجام می‌دهد؟</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Elle <strong>s'occupe de</strong> l'organisation du festival chaque année.</div><div class="v-ex-fa">او هر سال سازماندهی جشنواره را بر عهده دارد.</div></div>
+    </div>
+  </div>
+
+  <!-- rencontrer les artisans -->
+  <div class="v-card tc-verb">
+    <div class="v-head">
+      <div><div class="v-word">rencontrer les artisans</div><div class="v-fa">ملاقات با صنعتگران</div></div>
+      <span class="v-type">VERBE + NOM</span>
+    </div>
+    <div class="v-note">💡 un artisan = استادکار/صنعتگر (کسی که با دست کار هنری/فنی می‌سازد)</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">On peut <strong>rencontrer les artisans</strong> qui fabriquent ces objets à la main.</div><div class="v-ex-fa">می‌توان با صنعتگرانی که این اشیا را با دست می‌سازند ملاقات کرد.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Le marché permet de <strong>rencontrer des artisans</strong> locaux talentueux.</div><div class="v-ex-fa">بازار امکان می‌دهد با صنعتگران محلی بااستعداد آشنا شوی.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Pendant la visite, nous avons pu <strong>rencontrer les artisans</strong> du lieu.</div><div class="v-ex-fa">در طول بازدید، توانستیم با صنعتگران آنجا ملاقات کنیم.</div></div>
+    </div>
+  </div>
+
+  <!-- être destiné à -->
+  <div class="v-card tc-verb">
+    <div class="v-head">
+      <div><div class="v-word">être destiné(e) à</div><div class="v-fa">اختصاص یافتن به · در نظر گرفته شدن برای</div></div>
+      <span class="v-type">VERBE + À</span>
+    </div>
+    <div class="v-note">💡 در متن: monument destiné aux Grands Hommes (بنایی که به بزرگان اختصاص دارد)</div>
+    <div class="v-examples">
+      <div class="v-ex"><div class="v-ex-n">مثال ۱</div><div class="v-ex-fr">Ce monument <strong>est destiné aux</strong> Grands Hommes de la nation.</div><div class="v-ex-fa">این بنا به بزرگان ملت اختصاص یافته است.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۲</div><div class="v-ex-fr">Cette activité <strong>est destinée aux</strong> enfants de moins de dix ans.</div><div class="v-ex-fa">این فعالیت برای بچه‌های زیر ده سال در نظر گرفته شده.</div></div>
+      <div class="v-ex"><div class="v-ex-n">مثال ۳</div><div class="v-ex-fr">Ce livre <strong>est destiné à</strong> tous les amateurs d'histoire.</div><div class="v-ex-fa">این کتاب برای همه علاقه‌مندان تاریخ در نظر گرفته شده.</div></div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← Leçon 1</a> · Partie F · Les Journées du Patrimoine · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
