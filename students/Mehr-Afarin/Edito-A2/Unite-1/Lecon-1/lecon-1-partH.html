@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Partie H — Les Jeux de la Francophonie · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --intro:#6a1b9a;--intro-pale:#f3e5f5;
+  --q:#1565c0;--q-pale:#e3f2fd;
+  --r:#e65100;--r-pale:#fff3e0;
+  --verb:#2e7d32;--verb-pale:#e8f5e9;
+  --col:#00695c;--col-pale:#e0f2f1;
+  --noun:#1565c0;--noun-pale:#e3f2fd;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:40px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(19px,3.5vw,29px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:11px 15px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* CONTEXT */
+.context-box{background:var(--intro-pale);border:1.5px solid rgba(106,27,154,.25);border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.9;direction:rtl;text-align:right;margin-bottom:22px;}
+.context-box strong{color:var(--intro);}
+.context-title{font-weight:700;color:var(--intro);margin-bottom:6px;font-size:14px;}
+
+/* LEGEND */
+.legend{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;}
+.leg{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;}
+
+/* DIALOGUE */
+.line{margin-bottom:14px;border-radius:14px;overflow:hidden;border:2px solid var(--line);}
+.line-head{display:flex;align-items:center;gap:8px;padding:9px 16px;}
+.speaker{font-family:'Roboto',sans-serif;font-weight:700;font-size:13px;}
+.line-body{display:flex;flex-direction:column;}
+.line-fr{padding:12px 16px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.75;direction:ltr;text-align:left;background:white;}
+.line-fa{padding:11px 16px;font-size:13px;direction:rtl;text-align:right;line-height:1.85;color:var(--ink);background:var(--paper);border-top:1px dashed var(--line);}
+.line-note{padding:8px 16px;font-size:11px;color:var(--pink);direction:rtl;text-align:right;background:var(--pink-pale);border-top:1px dashed var(--line);}
+
+.sp-intro .line-head{background:var(--intro-pale);}.sp-intro .speaker{color:var(--intro);}.sp-intro .line-fr{border-right:4px solid var(--intro);}
+.sp-q .line-head{background:var(--q-pale);}.sp-q .speaker{color:var(--q);}.sp-q .line-fr{border-right:4px solid var(--q);}
+.sp-r .line-head{background:var(--r-pale);}.sp-r .speaker{color:var(--r);}.sp-r .line-fr{border-right:4px solid var(--r);}
+.q-badge{margin-right:auto;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--q);background:white;padding:2px 8px;border-radius:6px;}
+
+/* FULL TEXT */
+.fulltext{background:white;border:2px solid var(--line);border-radius:14px;padding:22px;}
+.ft-para{font-family:'Roboto',sans-serif;font-size:14.5px;line-height:2;direction:ltr;text-align:left;color:var(--ink);margin-bottom:12px;}
+
+/* VOCAB CARDS */
+.v-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.v-card.tc-col{}
+.v-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.v-word{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;direction:ltr;color:var(--col);}
+.v-type{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 9px;border-radius:8px;margin-right:auto;background:var(--col-pale);color:var(--col);}
+.v-fa{font-size:12px;color:var(--gray);direction:rtl;margin-top:2px;}
+.v-note{background:var(--col-pale);border-bottom:1px solid var(--line);padding:8px 16px;font-size:11.5px;color:var(--col);direction:rtl;text-align:right;line-height:1.7;}
+.v-examples{padding:6px 0;}
+.v-ex{padding:9px 16px;border-bottom:1px dashed var(--line);}
+.v-ex:last-child{border:none;}
+.v-ex-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:3px;}
+.v-ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.7;direction:ltr;color:var(--ink);margin-bottom:3px;}
+.v-ex-fr strong{color:var(--pink-deep);}
+.v-ex-fa{font-size:11.5px;color:var(--gray);direction:rtl;text-align:right;line-height:1.6;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">🏅</div>
+  <div><div class="t-title">Partie H — Les Jeux de la Francophonie</div><div class="t-sub">مهرآفرین · Édito A2 · U1 · L1</div></div>
+  <a class="back" href="index.html">← Leçon 1</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">ÉDITO A2 · U1 · L1 · PARTIE H</div>
+    <h1>🏅 Les Jeux de la Francophonie</h1>
+    <div class="hero-sub">مصاحبه با Pascale Stöcklin — متن، ترجمه و تحلیل واژگان</div>
+    <div class="hero-pills">
+      <span class="hpill">🎤 Interview</span>
+      <span class="hpill">📖 خط‌به‌خط</span>
+      <span class="hpill">🔤 ۲۱ واژه و عبارت</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('texte',this)">📖 متن و ترجمه</div>
+  <div class="tab" onclick="showTab('complet',this)">📄 متن کامل</div>
+  <div class="tab" onclick="showTab('vocab',this)">🔤 تحلیل واژگان</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: TEXTE ═══ -->
+<div class="panel active" id="panel-texte">
+
+  <div class="context-box">
+    <div class="context-title">🎧 Contexte — زمینه</div>
+    <strong>Les Jeux de la Francophonie</strong> (بازی‌های کشورهای فرانکوفون) یک رویداد ورزشی و فرهنگی است که هر چهار سال بین کشورهای فرانسه‌زبان برگزار می‌شود. این مصاحبه با <strong>Pascale Stöcklin</strong>، ورزشکار سوئیسی و برنده مدال طلای پرش با نیزه در سال ۲۰۱۷ (آبیجان، ساحل عاج) است.
+  </div>
+
+  <div class="legend">
+    <div class="leg" style="background:var(--intro-pale);color:var(--intro);">🎙️ معرفی</div>
+    <div class="leg" style="background:var(--q-pale);color:var(--q);">🔵 سؤال مجری</div>
+    <div class="leg" style="background:var(--r-pale);color:var(--r);">🥇 پاسخ Pascale</div>
+  </div>
+
+  <div class="line sp-intro">
+    <div class="line-head"><span class="speaker">🎙️ Introduction</span></div>
+    <div class="line-body">
+      <div class="line-fr">J'ai participé aux Jeux de la Francophonie.</div>
+      <div class="line-fa">من در بازی‌های کشورهای فرانکوفون شرکت کردم.</div>
+      
+    </div>
+  </div>
+  <div class="line sp-intro">
+    <div class="line-head"><span class="speaker">🎙️ Introduction</span></div>
+    <div class="line-body">
+      <div class="line-fr">La parole à Pascale Stöcklin (Suisse) : médaille d'or en athlétisme féminin (saut à la perche) en 2017, aux VIIIe Jeux de la Francophonie, à Abidjan, en Côte d'Ivoire.</div>
+      <div class="line-fa">گفت‌وگو با پاسکال اشتوکلین (سوئیس): برندهٔ مدال طلای دوومیدانی بانوان (پرش با نیزه) در سال ۲۰۱۷، در هشتمین دورهٔ بازی‌های کشورهای فرانکوفون که در آبیجانِ ساحل عاج برگزار شد.</div>
+      <div class="line-note">💡 VIIIe = هشتمین (عدد رومی)</div>
+    </div>
+  </div>
+  <div class="line sp-q">
+    <div class="line-head"><span class="speaker">🔵 Question 1</span><span class="q-badge">Q1</span></div>
+    <div class="line-body">
+      <div class="line-fr">Présentez-vous.</div>
+      <div class="line-fa">لطفاً خودتان را معرفی کنید.</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">J'ai 22 ans et j'habite dans une jolie ville qui s'appelle Bâle au nord de la Suisse.</div>
+      <div class="line-fa">۲۲ سال دارم و در شهر زیبایی به نام بازل، در شمال سوئیس زندگی می‌کنم.</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Ces dernières années, le saut à la perche est devenu indispensable pour moi dans ma vie.</div>
+      <div class="line-fa">در سال‌های اخیر، پرش با نیزه به بخش جدایی‌ناپذیر زندگی من تبدیل شده است.</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">J'ai fait ma première compétition il y a onze ans.</div>
+      <div class="line-fa">یازده سال پیش در اولین مسابقه‌ام شرکت کردم.</div>
+      <div class="line-note">💡 il y a + مدت = ... پیش</div>
+    </div>
+  </div>
+  <div class="line sp-q">
+    <div class="line-head"><span class="speaker">🔵 Question 2</span><span class="q-badge">Q2</span></div>
+    <div class="line-body">
+      <div class="line-fr">Que représentent les Jeux de la Francophonie, selon vous ?</div>
+      <div class="line-fa">به نظر شما، بازی‌های کشورهای فرانکوفون چه مفهومی دارند؟</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Pour moi, les jeux représentent la collectivité.</div>
+      <div class="line-fa">به نظر من، این بازی‌ها نماد همبستگی و روح جمعی هستند.</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Tout le monde parle la même langue, même si nous venons tous de pays différents.</div>
+      <div class="line-fa">همه به یک زبان صحبت می‌کنند، با اینکه همه از کشورهای مختلف آمده‌ایم.</div>
+      <div class="line-note">💡 même si = با اینکه / حتی اگر</div>
+    </div>
+  </div>
+  <div class="line sp-q">
+    <div class="line-head"><span class="speaker">🔵 Question 3</span><span class="q-badge">Q3</span></div>
+    <div class="line-body">
+      <div class="line-fr">Pourquoi vous avez décidé de participer aux Jeux de la Francophonie ?</div>
+      <div class="line-fa">چرا تصمیم گرفتید در بازی‌های کشورهای فرانکوفون شرکت کنید؟</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">J'ai décidé de participer aux Jeux de la Francophonie pour faire des expériences nouvelles, dans un autre pays, avec une autre culture.</div>
+      <div class="line-fa">تصمیم گرفتم در بازی‌های کشورهای فرانکوفون شرکت کنم تا تجربه‌های جدیدی کسب کنم، در یک کشور دیگر، و با فرهنگی متفاوت آشنا شوم.</div>
+      <div class="line-note">💡 pour + مصدر = برای اینکه</div>
+    </div>
+  </div>
+  <div class="line sp-q">
+    <div class="line-head"><span class="speaker">🔵 Question 4</span><span class="q-badge">Q4</span></div>
+    <div class="line-body">
+      <div class="line-fr">Avez-vous échangé avec des personnes venues d'autres États et gouvernements ?</div>
+      <div class="line-fa">آیا با افرادی که از کشورهای دیگر آمده بودند، تبادل نظر یا گفت‌وگو داشتید؟</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Oui, pendant deux semaines j'ai fait la connaissance de beaucoup d'athlètes de divers pays.</div>
+      <div class="line-fa">بله، در طول دو هفته با ورزشکاران زیادی از کشورهای مختلف آشنا شدم.</div>
+      <div class="line-note">💡 faire la connaissance de = آشنا شدن با</div>
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Ils sont tous très ouverts.</div>
+      <div class="line-fa">همهٔ آن‌ها بسیار خون‌گرم و پذیرا بودند.</div>
+      <div class="line-note">💡 ouvert = (اینجا) خون‌گرم، پذیرا</div>
+    </div>
+  </div>
+  <div class="line sp-q">
+    <div class="line-head"><span class="speaker">🔵 Question 5</span><span class="q-badge">Q5</span></div>
+    <div class="line-body">
+      <div class="line-fr">Quels conseils donnez-vous aux prochains participants aux Jeux ?</div>
+      <div class="line-fa">چه توصیه‌ای به شرکت‌کنندگان آیندهٔ این مسابقات دارید؟</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Entraînez-vous bien, restez ouverts et faites des expériences uniques.</div>
+      <div class="line-fa">به‌خوبی تمرین کنید، ذهنی باز داشته باشید، و تجربه‌های منحصربه‌فردی به دست آورید.</div>
+      <div class="line-note">💡 امری (impératif): entraînez-vous / restez / faites</div>
+    </div>
+  </div>
+  <div class="line sp-q">
+    <div class="line-head"><span class="speaker">🔵 Question 6</span><span class="q-badge">Q6</span></div>
+    <div class="line-body">
+      <div class="line-fr">Un mot à la jeunesse francophone ?</div>
+      <div class="line-fa">یک جمله برای جوانان فرانکوفون؟</div>
+      
+    </div>
+  </div>
+  <div class="line sp-r">
+    <div class="line-head"><span class="speaker">🥇 Pascale Stöcklin</span></div>
+    <div class="line-body">
+      <div class="line-fr">Si on ne rêve pas, on n'avance pas.</div>
+      <div class="line-fa">اگر رؤیا نداشته باشیم، پیشرفت هم نمی‌کنیم. — کسی که رؤیا نداشته باشد، پیشرفت نخواهد کرد.</div>
+      <div class="line-note">💡 Si + حال، حال = جمله شرطی نوع اول</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--gray);font-family:'JetBrains Mono',monospace;">— Les Jeux de la Francophonie · Pascale Stöcklin (Suisse) —</div>
+
+</div>
+
+<!-- ═══ PANEL 2: TEXTE COMPLET ═══ -->
+<div class="panel" id="panel-complet">
+  <div class="fulltext">
+    <p class="ft-para">J'ai participé aux Jeux de la Francophonie. La parole à Pascale Stöcklin (Suisse) : médaille d'or en athlétisme féminin (saut à la perche) en 2017, aux VIIIe Jeux de la Francophonie, à Abidjan, en Côte d'Ivoire.</p>
+    <p class="ft-para"><strong>— Présentez-vous.</strong><br>J'ai 22 ans et j'habite dans une jolie ville qui s'appelle Bâle au nord de la Suisse. Ces dernières années, le saut à la perche est devenu indispensable pour moi dans ma vie. J'ai fait ma première compétition il y a onze ans.</p>
+    <p class="ft-para"><strong>— Que représentent les Jeux de la Francophonie, selon vous ?</strong><br>Pour moi, les jeux représentent la collectivité. Tout le monde parle la même langue, même si nous venons tous de pays différents.</p>
+    <p class="ft-para"><strong>— Pourquoi vous avez décidé de participer aux Jeux de la Francophonie ?</strong><br>J'ai décidé de participer aux Jeux de la Francophonie pour faire des expériences nouvelles, dans un autre pays, avec une autre culture.</p>
+    <p class="ft-para"><strong>— Avez-vous échangé avec des personnes venues d'autres États et gouvernements ?</strong><br>Oui, pendant deux semaines j'ai fait la connaissance de beaucoup d'athlètes de divers pays. Ils sont tous très ouverts.</p>
+    <p class="ft-para"><strong>— Quels conseils donnez-vous aux prochains participants aux Jeux ?</strong><br>Entraînez-vous bien, restez ouverts et faites des expériences uniques.</p>
+    <p class="ft-para"><strong>— Un mot à la jeunesse francophone ?</strong><br>Si on ne rêve pas, on n'avance pas.</p>
+  </div>
+</div>
+
+<!-- ═══ PANEL 3: VOCAB ═══ -->
+<div class="panel" id="panel-vocab">
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--col);">
+    🔤 <strong>۲۱ واژه و عبارت</strong> از متن، هر کدام با نوع، معنی، مترادف/متضاد و ۳ مثال با ترجمه.
+  </div>
+  <div id="vocab-wrap"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← Leçon 1</a> · Partie H · Les Jeux de la Francophonie · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const VOCAB_DATA = [
+{w:'participer à',t:'VERBE+À',fa:'شرکت کردن در',note:'کالوکیشن: participer à un événement / une compétition / un concours',ex:[{fr:'J\'ai <strong>participé aux</strong> Jeux de la Francophonie l\'année dernière.',fa:'پارسال در بازی‌های فرانکوفونی شرکت کردم.'},{fr:'Beaucoup d\'athlètes <strong>participent à</strong> cette compétition internationale.',fa:'ورزشکاران زیادی در این مسابقه بین‌المللی شرکت می‌کنند.'},{fr:'Elle veut <strong>participer à</strong> un atelier de théâtre cet été.',fa:'او می‌خواهد تابستان در یک کارگاه تئاتر شرکت کند.'}]},
+{w:'la médaille d\'or',t:'NOM',fa:'مدال طلا',note:'مرتبط: médaille d\'argent (نقره) · médaille de bronze (برنز) · gagner/remporter une médaille',ex:[{fr:'Elle a gagné la <strong>médaille d\'or</strong> en saut à la perche en 2017.',fa:'او در سال ۲۰۱۷ مدال طلای پرش با نیزه را برد.'},{fr:'Remporter une <strong>médaille d\'or</strong> aux Jeux est un rêve pour tout athlète.',fa:'بردن مدال طلا در بازی‌ها رؤیای هر ورزشکاری است.'},{fr:'Le pays a obtenu trois <strong>médailles d\'or</strong> cette année.',fa:'این کشور امسال سه مدال طلا به دست آورد.'}]},
+{w:'l\'athlétisme',t:'NOM (m.)',fa:'دوومیدانی',note:'مرتبط: un(e) athlète (ورزشکار دوومیدانی) · faire de l\'athlétisme',ex:[{fr:'Elle pratique l\'<strong>athlétisme</strong> depuis l\'âge de onze ans.',fa:'او از یازده‌سالگی دوومیدانی کار می‌کند.'},{fr:'L\'<strong>athlétisme</strong> comprend la course, le saut et le lancer.',fa:'دوومیدانی شامل دو، پرش و پرتاب است.'},{fr:'Mon frère fait de l\'<strong>athlétisme</strong> au club de la ville.',fa:'برادرم در باشگاه شهر دوومیدانی کار می‌کند.'}]},
+{w:'le saut à la perche',t:'NOM',fa:'پرش با نیزه',note:'مرتبط: le saut en hauteur (پرش ارتفاع) · le saut en longueur (پرش طول)',ex:[{fr:'Le <strong>saut à la perche</strong> est un sport très technique et spectaculaire.',fa:'پرش با نیزه ورزشی بسیار فنی و تماشایی است.'},{fr:'Elle s\'entraîne au <strong>saut à la perche</strong> tous les jours.',fa:'او هر روز پرش با نیزه تمرین می‌کند.'},{fr:'Le <strong>saut à la perche</strong> est devenu indispensable dans sa vie.',fa:'پرش با نیزه در زندگی‌اش جدایی‌ناپذیر شده است.'}]},
+{w:'indispensable',t:'ADJECTIF',fa:'ضروری · جدایی‌ناپذیر',note:'مترادف: essentiel, nécessaire, vital · متضاد: inutile, superflu',ex:[{fr:'Le sport est devenu <strong>indispensable</strong> pour mon équilibre.',fa:'ورزش برای تعادلم ضروری شده است.'},{fr:'Un bon dictionnaire est <strong>indispensable</strong> pour apprendre une langue.',fa:'یک فرهنگ لغت خوب برای یادگیری زبان ضروری است.'},{fr:'L\'eau est <strong>indispensable</strong> à la vie.',fa:'آب برای زندگی جدایی‌ناپذیر است.'}]},
+{w:'faire sa première compétition',t:'EXPRESSION',fa:'در اولین مسابقه شرکت کردن',note:'مرتبط: une compétition (مسابقه) · faire une compétition · gagner une compétition',ex:[{fr:'J\'ai <strong>fait ma première compétition</strong> il y a onze ans.',fa:'یازده سال پیش در اولین مسابقه‌ام شرکت کردم.'},{fr:'Les jeunes athlètes <strong>font leur première compétition</strong> avec beaucoup d\'émotion.',fa:'ورزشکاران جوان با هیجان زیادی در اولین مسابقه‌شان شرکت می‌کنند.'},{fr:'Elle a gagné dès sa première <strong>compétition</strong>.',fa:'او از همان اولین مسابقه‌اش برنده شد.'}]},
+{w:'représenter',t:'VERBE',fa:'نماد بودن · نمایندگی کردن',note:'معنی: symboliser, incarner · aussi: représenter son pays (نمایندگی کشور)',ex:[{fr:'Pour moi, les jeux <strong>représentent</strong> la collectivité.',fa:'به نظر من، بازی‌ها نماد همبستگی هستند.'},{fr:'Cet athlète <strong>représente</strong> son pays aux Jeux olympiques.',fa:'این ورزشکار در بازی‌های المپیک نماینده کشورش است.'},{fr:'La colombe <strong>représente</strong> la paix dans le monde entier.',fa:'کبوتر در سراسر جهان نماد صلح است.'}]},
+{w:'la collectivité',t:'NOM (f.)',fa:'همبستگی · روح جمعی · اجتماع',note:'مرتبط: collectif (جمعی) · la communauté (جامعه)',ex:[{fr:'Les jeux favorisent la <strong>collectivité</strong> entre les participants.',fa:'بازی‌ها همبستگی میان شرکت‌کنندگان را تقویت می‌کنند.'},{fr:'Dans ce village, l\'esprit de <strong>collectivité</strong> est très fort.',fa:'در این روستا روح جمعی بسیار قوی است.'},{fr:'Le sport développe le sens de la <strong>collectivité</strong>.',fa:'ورزش حس همبستگی را رشد می‌دهد.'}]},
+{w:'venir de',t:'VERBE',fa:'اهل ... بودن · آمدن از',note:'کالوکیشن: venir de France / d\'un pays · aussi: venir de + inf = تازه انجام دادن',ex:[{fr:'Nous <strong>venons</strong> tous <strong>de</strong> pays différents.',fa:'همه ما از کشورهای مختلف می‌آییم.'},{fr:'Elle <strong>vient de</strong> Suisse mais elle habite en France.',fa:'او اهل سوئیس است اما در فرانسه زندگی می‌کند.'},{fr:'Ces athlètes <strong>viennent de</strong> partout dans le monde.',fa:'این ورزشکاران از سراسر جهان می‌آیند.'}]},
+{w:'décider de',t:'VERBE+DE',fa:'تصمیم گرفتن به',note:'کالوکیشن: décider de + مصدر · prendre une décision (تصمیم گرفتن)',ex:[{fr:'J\'ai <strong>décidé de</strong> participer aux Jeux de la Francophonie.',fa:'تصمیم گرفتم در بازی‌های فرانکوفونی شرکت کنم.'},{fr:'Ils ont <strong>décidé de</strong> voyager ensemble cet été.',fa:'تصمیم گرفتند تابستان با هم سفر کنند.'},{fr:'Elle a <strong>décidé de</strong> changer de travail.',fa:'او تصمیم گرفت کارش را عوض کند.'}]},
+{w:'faire des expériences',t:'EXPRESSION',fa:'تجربه کسب کردن',note:'کالوکیشن: faire une expérience nouvelle / unique · une expérience (تجربه)',ex:[{fr:'Je veux <strong>faire des expériences</strong> nouvelles dans un autre pays.',fa:'می‌خواهم در کشوری دیگر تجربه‌های جدید کسب کنم.'},{fr:'Voyager permet de <strong>faire des expériences</strong> uniques.',fa:'سفر امکان می‌دهد تجربه‌های منحصربه‌فرد کسب کنی.'},{fr:'Ces <strong>expériences</strong> l\'ont beaucoup enrichie.',fa:'این تجربه‌ها او را خیلی غنی کردند.'}]},
+{w:'échanger avec',t:'VERBE',fa:'تبادل نظر کردن با · گفت‌وگو کردن',note:'مرتبط: un échange (تبادل) · échanger des idées (تبادل نظر)',ex:[{fr:'J\'ai <strong>échangé avec</strong> des athlètes de divers pays.',fa:'با ورزشکارانی از کشورهای مختلف تبادل نظر کردم.'},{fr:'Il aime <strong>échanger avec</strong> des personnes de cultures différentes.',fa:'او دوست دارد با افرادی از فرهنگ‌های مختلف گفت‌وگو کند.'},{fr:'Les élèves <strong>échangent</strong> leurs idées pendant le cours.',fa:'دانش‌آموزان در طول کلاس نظراتشان را رد و بدل می‌کنند.'}]},
+{w:'faire la connaissance de',t:'EXPRESSION',fa:'آشنا شدن با',note:'مترادف: rencontrer · faire connaissance (آشنا شدن)',ex:[{fr:'J\'ai <strong>fait la connaissance de</strong> beaucoup d\'athlètes.',fa:'با ورزشکاران زیادی آشنا شدم.'},{fr:'Pendant le voyage, nous avons <strong>fait la connaissance de</strong> gens formidables.',fa:'در طول سفر با آدم‌های فوق‌العاده‌ای آشنا شدیم.'},{fr:'Je suis contente d\'avoir <strong>fait ta connaissance</strong>.',fa:'خوشحالم که با تو آشنا شدم.'}]},
+{w:'divers / diverses',t:'ADJECTIF',fa:'مختلف · گوناگون',note:'مترادف: différents, variés · قبل از اسم می‌آید',ex:[{fr:'J\'ai rencontré des athlètes de <strong>divers</strong> pays.',fa:'با ورزشکارانی از کشورهای مختلف آشنا شدم.'},{fr:'Le musée propose <strong>diverses</strong> activités pour les enfants.',fa:'موزه فعالیت‌های گوناگونی برای کودکان ارائه می‌دهد.'},{fr:'Il y a <strong>diverses</strong> façons d\'apprendre une langue.',fa:'راه‌های مختلفی برای یادگیری زبان وجود دارد.'}]},
+{w:'ouvert(e)',t:'ADJECTIF',fa:'خون‌گرم · پذیرا · باز',note:'معنی مجازی: خون‌گرم، اهل معاشرت · متضاد: fermé, timide',ex:[{fr:'Les athlètes sont tous très <strong>ouverts</strong> et sympathiques.',fa:'ورزشکاران همه بسیار خون‌گرم و مهربان‌اند.'},{fr:'Il faut rester <strong>ouvert</strong> aux autres cultures.',fa:'باید نسبت به فرهنگ‌های دیگر پذیرا ماند.'},{fr:'Elle a un esprit <strong>ouvert</strong> et curieux.',fa:'او ذهنی باز و کنجکاو دارد.'}]},
+{w:'s\'entraîner',t:'VERBE PRONOMINAL',fa:'تمرین کردن',note:'مرتبط: un entraînement (تمرین) · un entraîneur (مربی)',ex:[{fr:'<strong>Entraînez-vous</strong> bien avant la compétition !',fa:'قبل از مسابقه خوب تمرین کنید!'},{fr:'Elle <strong>s\'entraîne</strong> tous les jours pour progresser.',fa:'او هر روز تمرین می‌کند تا پیشرفت کند.'},{fr:'Les sportifs <strong>s\'entraînent</strong> plusieurs heures par jour.',fa:'ورزشکاران روزانه چند ساعت تمرین می‌کنند.'}]},
+{w:'un conseil',t:'NOM',fa:'توصیه · نصیحت',note:'کالوکیشن: donner un conseil · suivre un conseil · demander conseil',ex:[{fr:'Quels <strong>conseils</strong> donnez-vous aux prochains participants ?',fa:'چه توصیه‌ای به شرکت‌کنندگان بعدی می‌دهید؟'},{fr:'Elle m\'a donné un bon <strong>conseil</strong> pour l\'examen.',fa:'او یک توصیه خوب برای امتحان به من داد.'},{fr:'Il faut suivre les <strong>conseils</strong> de son entraîneur.',fa:'باید به توصیه‌های مربی‌ات عمل کنی.'}]},
+{w:'unique',t:'ADJECTIF',fa:'منحصربه‌فرد · یگانه',note:'مترادف: exceptionnel, rare, incomparable · متضاد: ordinaire, banal',ex:[{fr:'Faites des expériences <strong>uniques</strong> pendant votre voyage !',fa:'در طول سفرتان تجربه‌های منحصربه‌فرد کسب کنید!'},{fr:'Chaque personne est <strong>unique</strong> et différente.',fa:'هر شخص منحصربه‌فرد و متفاوت است.'},{fr:'C\'était un moment <strong>unique</strong> dans ma vie.',fa:'آن لحظه‌ای یگانه در زندگی‌ام بود.'}]},
+{w:'la jeunesse',t:'NOM (f.)',fa:'جوانان · دوران جوانی',note:'مرتبط: jeune (جوان) · les jeunes (جوان‌ها)',ex:[{fr:'Un mot à la <strong>jeunesse</strong> francophone ?',fa:'یک جمله برای جوانان فرانکوفون؟'},{fr:'La <strong>jeunesse</strong> d\'aujourd\'hui est très connectée.',fa:'جوانان امروز بسیار متصل (به فضای مجازی) هستند.'},{fr:'Il a passé sa <strong>jeunesse</strong> à la campagne.',fa:'او دوران جوانی‌اش را در روستا گذراند.'}]},
+{w:'rêver',t:'VERBE',fa:'رؤیا دیدن · آرزو داشتن',note:'مرتبط: un rêve (رؤیا) · rêver de + مصدر (آرزوی انجام کاری)',ex:[{fr:'Si on ne <strong>rêve</strong> pas, on n\'avance pas.',fa:'اگر رؤیا نداشته باشیم، پیشرفت نمی‌کنیم.'},{fr:'Elle <strong>rêve de</strong> participer aux Jeux olympiques.',fa:'او آرزو دارد در بازی‌های المپیک شرکت کند.'},{fr:'Il faut <strong>rêver</strong> grand pour réussir.',fa:'باید بزرگ رؤیا دید تا موفق شد.'}]},
+{w:'avancer',t:'VERBE',fa:'پیشرفت کردن · جلو رفتن',note:'معنی: progresser, aller de l\'avant · متضاد: reculer (عقب رفتن)',ex:[{fr:'Si on ne rêve pas, on n\'<strong>avance</strong> pas.',fa:'اگر رؤیا نداشته باشیم، پیشرفت نمی‌کنیم.'},{fr:'Elle <strong>avance</strong> bien dans ses études de français.',fa:'او در درس‌های فرانسه‌اش خوب پیش می‌رود.'},{fr:'Pour <strong>avancer</strong>, il faut travailler chaque jour.',fa:'برای پیشرفت، باید هر روز کار کرد.'}]}
+];
+(function(){
+  const wrap = document.getElementById('vocab-wrap');
+  VOCAB_DATA.forEach(d=>{
+    const card = document.createElement('div');
+    card.className = 'v-card tc-col';
+    const exHtml = d.ex.map((e,i)=>`
+      <div class="v-ex">
+        <div class="v-ex-n">مثال ${i+1}</div>
+        <div class="v-ex-fr">${e.fr}</div>
+        <div class="v-ex-fa">${e.fa}</div>
+      </div>`).join('');
+    card.innerHTML = `
+      <div class="v-head">
+        <div><div class="v-word">${d.w}</div><div class="v-fa">${d.fa}</div></div>
+        <span class="v-type">${d.t}</span>
+      </div>
+      ${d.note?`<div class="v-note">💡 ${d.note}</div>`:''}
+      <div class="v-examples">${exHtml}</div>`;
+    wrap.appendChild(card);
+  });
+})();
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
