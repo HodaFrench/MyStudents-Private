@@ -122,6 +122,7 @@ body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color
   <div class="tab active" onclick="showTab('texte',this)">📖 متن و ترجمه</div>
   <div class="tab" onclick="showTab('complet',this)">📄 متن کامل</div>
   <div class="tab" onclick="showTab('vocab',this)">🔤 واژگان و کالوکیشن</div>
+  <div class="tab" onclick="showTab('collocations',this)">🔗 کالوکیشن‌های بیشتر</div>
 </div>
 
 <div class="wrap">
@@ -375,6 +376,35 @@ body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color
 
 </div>
 
+
+<!-- ═══ PANEL 4: PLUS DE COLLOCATIONS ═══ -->
+<div class="panel" id="panel-collocations">
+
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--col);">
+    🔗 <strong>۲۵ کالوکیشن و واژه‌ی بیشتر</strong> از متن Les Journées du Patrimoine — هر کدام با کالوکیشن‌های مرتبط و یک مثال طبیعی A2. برای TCF/DELF بسیار ارزشمند!
+  </div>
+
+  <div id="colloc-wrap"></div>
+
+  <!-- GOLDEN COLLOCATIONS -->
+  <div style="background:var(--navy);border-radius:14px;padding:20px 22px;margin-top:24px;">
+    <div style="font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;color:#fcd34d;margin-bottom:14px;">⭐ ۱۰ کالوکیشن طلایی این متن</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ ouvrir ses portes</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ avoir lieu</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ accueillir les visiteurs</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ attirer beaucoup de monde</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ découvrir les coulisses</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ faire une visite guidée</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ proposer une animation</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ conserver le patrimoine</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ restaurer un monument</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:12.5px;padding:5px 0;">✦ garder un souvenir</div>
+    </div>
+  </div>
+
+</div>
+
 </div><!-- /wrap -->
 
 <div class="footer"><a href="index.html">← Leçon 1</a> · Partie F · Les Journées du Patrimoine · Français avec Hoda © 2025</div>
@@ -389,5 +419,63 @@ function showTab(id,el){
 }
 window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
 </script>
+
+<script>
+const COLLOC_DATA = [
+{w:'proposer une animation',t:'VERBE+NOM',fa:'برنامه/فعالیتی برگزار کردن',cols:["proposer une animation","proposer une activité","proposer un atelier","proposer une démonstration"],exfr:'Le musée <strong>propose une animation</strong> pour les enfants afin qu\'ils découvrent l\'histoire en s\'amusant.',exfa:'موزه برنامه‌ای برای کودکان برگزار می‌کند تا تاریخ را در حین سرگرمی کشف کنند.',note:''},
+{w:'suivre une visite guidée',t:'VERBE+NOM',fa:'در بازدید راهنما شرکت کردن',cols:["suivre une visite guidée","réserver une visite guidée","organiser une visite guidée","participer à une visite guidée"],exfr:'Nous avons <strong>suivi une visite guidée</strong> parce que nous voulions mieux comprendre ce monument.',exfa:'در یک بازدید همراه راهنما شرکت کردیم، چون می‌خواستیم این بنا را بهتر بشناسیم.',note:''},
+{w:'être amateur de',t:'EXPRESSION',fa:'علاقه‌مند بودن به',cols:["être amateur de photographie","être amateur d'art","être amateur de sport","être amateur de musique"],exfr:'Mon père <strong>est amateur de</strong> photographie, donc il prend toujours beaucoup de photos pendant les voyages.',exfa:'پدرم به عکاسی علاقه دارد، بنابراین همیشه در سفر عکس‌های زیادی می‌گیرد.',note:''},
+{w:'trouver son bonheur',t:'EXPRESSION',fa:'چیزی مطابق سلیقه پیدا کردن',cols:["chacun trouve son bonheur","tout le monde trouve son bonheur","tu trouveras ton bonheur"],exfr:'Dans cette médiathèque, chacun <strong>trouve son bonheur</strong> puisqu\'il y a des livres pour tous les âges.',exfa:'در این کتابخانه هر کسی چیزی مطابق سلیقه خود پیدا می‌کند، زیرا برای همه سنین کتاب وجود دارد.',note:'یکی از طبیعی‌ترین اصطلاحات فرانسه'},
+{w:'être incontournable',t:'EXPRESSION',fa:'نباید از دست داد · ضروری',cols:["un musée incontournable","une visite incontournable","un monument incontournable","une adresse incontournable"],exfr:'Le Mont-Saint-Michel est un lieu <strong>incontournable</strong>, alors beaucoup de touristes le visitent chaque année.',exfa:'مون سن میشل مکانی است که نباید از دست داد، بنابراین هر سال گردشگران زیادی از آن بازدید می‌کنند.',note:''},
+{w:'participer à',t:'VERBE+À',fa:'شرکت کردن در',cols:["participer à un concours","participer à une activité","participer à une réunion","participer à un événement"],exfr:'Les élèves <strong>participent à</strong> un atelier parce qu\'ils veulent apprendre quelque chose de nouveau.',exfa:'دانش‌آموزان در یک کارگاه شرکت می‌کنند، چون می‌خواهند چیز جدیدی یاد بگیرند.',note:''},
+{w:'un monument',t:'NOM',fa:'بنای تاریخی',cols:["visiter un monument","protéger un monument","monument historique","monument célèbre"],exfr:'Nous avons visité un <strong>monument</strong> historique parce que notre professeur nous l\'avait conseillé.',exfa:'از یک بنای تاریخی بازدید کردیم، چون استادمان آن را به ما پیشنهاد کرده بود.',note:''},
+{w:'un musée',t:'NOM',fa:'موزه',cols:["visiter un musée","entrer dans un musée","musée d'art","musée national"],exfr:'Le dimanche, nous visitons souvent un <strong>musée</strong> afin d\'apprendre de nouvelles choses.',exfa:'یکشنبه‌ها اغلب از موزه بازدید می‌کنیم تا چیزهای جدید یاد بگیریم.',note:''},
+{w:'un château',t:'NOM',fa:'قصر · کاخ',cols:["visiter un château","château royal","ancien château","château célèbre"],exfr:'Le <strong>château</strong> est très ancien, mais il est encore magnifique aujourd\'hui.',exfa:'این کاخ بسیار قدیمی است، اما هنوز هم باشکوه است.',note:''},
+{w:'un théâtre',t:'NOM',fa:'تئاتر',cols:["aller au théâtre","spectacle au théâtre","salle de théâtre"],exfr:'Nous allons au <strong>théâtre</strong> parce que nous aimons les spectacles vivants.',exfa:'به تئاتر می‌رویم، چون نمایش‌های زنده را دوست داریم.',note:''},
+{w:'gratuitement',t:'ADVERBE',fa:'رایگان',cols:["visiter gratuitement","entrer gratuitement","offrir gratuitement"],exfr:'Les enfants peuvent entrer <strong>gratuitement</strong>, donc leurs parents économisent de l\'argent.',exfa:'کودکان می‌توانند رایگان وارد شوند، بنابراین والدینشان در هزینه صرفه‌جویی می‌کنند.',note:''},
+{w:'accueillir des visiteurs',t:'VERBE+NOM',fa:'از بازدیدکنندگان استقبال کردن',cols:["accueillir les visiteurs","accueillir le public","accueillir les touristes"],exfr:'Le musée <strong>accueille des visiteurs</strong> toute l\'année parce qu\'il est très populaire.',exfa:'این موزه تمام سال از بازدیدکنندگان استقبال می‌کند، زیرا بسیار محبوب است.',note:''},
+{w:'le public',t:'NOM',fa:'عموم مردم',cols:["ouvrir au public","accueillir le public","attirer le public"],exfr:'Le monument est ouvert au <strong>public</strong> pendant tout le week-end.',exfa:'این بنای تاریخی تمام آخر هفته برای عموم باز است.',note:''},
+{w:'attirer les touristes',t:'VERBE+NOM',fa:'گردشگران را جذب کردن',cols:["attirer les visiteurs","attirer les touristes","attirer beaucoup de monde"],exfr:'Cette exposition <strong>attire beaucoup de touristes</strong> parce qu\'elle est très célèbre.',exfa:'این نمایشگاه گردشگران زیادی را جذب می‌کند، چون بسیار معروف است.',note:''},
+{w:'beaucoup de monde',t:'EXPRESSION',fa:'جمعیت زیاد',cols:["il y a beaucoup de monde","attirer beaucoup de monde"],exfr:'Il y avait <strong>beaucoup de monde</strong>, alors nous avons attendu quelques minutes.',exfa:'جمعیت زیاد بود، بنابراین چند دقیقه صبر کردیم.',note:''},
+{w:'avoir lieu',t:'VERBE',fa:'برگزار شدن',cols:["avoir lieu à Paris","avoir lieu demain","avoir lieu chaque année"],exfr:'Les Journées du Patrimoine <strong>ont lieu</strong> chaque année au mois de septembre.',exfa:'روزهای میراث فرهنگی هر سال در ماه سپتامبر برگزار می‌شود.',note:'یکی از مهم‌ترین افعال رسمی فرانسه'},
+{w:'un événement culturel',t:'NOM',fa:'رویداد فرهنگی',cols:["participer à un événement culturel","organiser un événement culturel"],exfr:'Cet <strong>événement culturel</strong> attire des visiteurs de toute la France.',exfa:'این رویداد فرهنگی بازدیدکنندگانی از سراسر فرانسه جذب می‌کند.',note:''},
+{w:'admirer',t:'VERBE',fa:'تحسین کردن',cols:["admirer un monument","admirer un paysage","admirer une œuvre"],exfr:'Nous <strong>admirons</strong> cette église parce qu\'elle est très ancienne.',exfa:'این کلیسا را تحسین می‌کنیم، چون بسیار قدیمی است.',note:''},
+{w:'conserver',t:'VERBE',fa:'حفظ کردن',cols:["conserver le patrimoine","conserver un monument","conserver une tradition"],exfr:'Il faut <strong>conserver</strong> ces monuments afin que les générations futures puissent les visiter.',exfa:'باید این بناها را حفظ کرد تا نسل‌های آینده بتوانند از آن‌ها بازدید کنند.',note:''},
+{w:'restaurer',t:'VERBE',fa:'مرمت کردن',cols:["restaurer un château","restaurer un monument","restaurer une église"],exfr:'La ville <strong>restaure</strong> ce château parce qu\'il est très ancien.',exfa:'شهر این کاخ را مرمت می‌کند، چون بسیار قدیمی است.',note:''},
+{w:'historique',t:'ADJECTIF',fa:'تاریخی',cols:["monument historique","bâtiment historique","centre historique"],exfr:'Nous avons visité un quartier <strong>historique</strong> qui était très calme.',exfa:'از یک محله تاریخی بازدید کردیم که بسیار آرام بود.',note:''},
+{w:'une façade',t:'NOM',fa:'نمای ساختمان',cols:["la façade d'un musée","la façade d'une église","admirer la façade"],exfr:'Les touristes prennent des photos de la <strong>façade</strong> parce qu\'elle est magnifique.',exfa:'گردشگران از نمای ساختمان عکس می‌گیرند، چون بسیار زیباست.',note:''},
+{w:'un bâtiment',t:'NOM',fa:'ساختمان',cols:["bâtiment ancien","bâtiment public","grand bâtiment"],exfr:'Ce <strong>bâtiment</strong> est très ancien, mais il est toujours utilisé aujourd\'hui.',exfa:'این ساختمان بسیار قدیمی است، اما هنوز هم مورد استفاده قرار می‌گیرد.',note:''},
+{w:'un visiteur',t:'NOM',fa:'بازدیدکننده',cols:["accueillir des visiteurs","recevoir des visiteurs"],exfr:'Les <strong>visiteurs</strong> prennent des photos afin de garder un souvenir de leur visite.',exfa:'بازدیدکنندگان عکس می‌گیرند تا یادگاری از بازدید خود داشته باشند.',note:''},
+{w:'une œuvre d\'art',t:'NOM',fa:'اثر هنری',cols:["admirer une œuvre d'art","exposer une œuvre d'art"],exfr:'Cette <strong>œuvre d\'art</strong> est très célèbre, donc beaucoup de personnes viennent la voir.',exfa:'این اثر هنری بسیار مشهور است، بنابراین افراد زیادی برای دیدن آن می‌آیند.',note:''},
+{w:'garder un souvenir',t:'VERBE+NOM',fa:'یادگاری نگه داشتن',cols:["garder un souvenir","prendre une photo en souvenir"],exfr:'Je prends beaucoup de photos afin de <strong>garder un souvenir</strong> de mon voyage.',exfa:'عکس‌های زیادی می‌گیرم تا یادگاری از سفرم داشته باشم.',note:''}
+];
+(function(){
+  const wrap = document.getElementById('colloc-wrap');
+  if(!wrap) return;
+  COLLOC_DATA.forEach(d=>{
+    const card = document.createElement('div');
+    card.className = 'v-card tc-col';
+    const colsHtml = d.cols.map(c=>`<span style="display:inline-block;background:var(--col-pale);color:var(--col);font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:6px;margin:2px;">${c}</span>`).join('');
+    card.innerHTML = `
+      <div class="v-head">
+        <div><div class="v-word">${d.w}</div><div class="v-fa">${d.fa}</div></div>
+        <span class="v-type">${d.t}</span>
+      </div>
+      ${d.note?`<div class="v-note">💡 ${d.note}</div>`:''}
+      <div style="padding:10px 16px;border-bottom:1px dashed var(--line);">
+        <div style="font-size:10px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:6px;">🔗 کالوکیشن‌ها:</div>
+        ${colsHtml}
+      </div>
+      <div class="v-examples">
+        <div class="v-ex">
+          <div class="v-ex-fr">${d.exfr}</div>
+          <div class="v-ex-fa">${d.exfa}</div>
+        </div>
+      </div>`;
+    wrap.appendChild(card);
+  });
+})();
+</script>
+
 </body>
 </html>
