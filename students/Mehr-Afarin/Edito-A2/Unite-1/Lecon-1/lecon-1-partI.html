@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Partie I — Les Francofolies · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --julie:#6a1b9a;--julie-pale:#f3e5f5;
+  --sarah:#1565c0;--sarah-pale:#e3f2fd;
+  --col:#00695c;--col-pale:#e0f2f1;
+  --green:#2e7d32;--green-pale:#e8f5e9;
+  --amber:#e65100;--amber-pale:#fff3e0;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:40px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(19px,3.5vw,29px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:11px 15px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* CONTEXT */
+.context-box{background:var(--julie-pale);border:1.5px solid rgba(106,27,154,.25);border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.9;direction:rtl;text-align:right;margin-bottom:20px;}
+.context-box strong{color:var(--julie);}
+.context-title{font-weight:700;color:var(--julie);margin-bottom:6px;font-size:14px;}
+
+.legend{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;}
+.leg{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;}
+
+/* DIALOGUE */
+.line{margin-bottom:14px;border-radius:14px;overflow:hidden;border:2px solid var(--line);}
+.line-head{display:flex;align-items:center;gap:8px;padding:9px 16px;}
+.speaker{font-family:'Roboto',sans-serif;font-weight:700;font-size:13px;}
+.line-body{display:flex;flex-direction:column;}
+.line-fr{padding:12px 16px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.75;direction:ltr;text-align:left;background:white;}
+.line-fa{padding:11px 16px;font-size:13px;direction:rtl;text-align:right;line-height:1.85;color:var(--ink);background:var(--paper);border-top:1px dashed var(--line);}
+.line-note{padding:8px 16px;font-size:11px;color:var(--pink);direction:rtl;text-align:right;background:var(--pink-pale);border-top:1px dashed var(--line);}
+.sp-julie .line-head{background:var(--julie-pale);}.sp-julie .speaker{color:var(--julie);}.sp-julie .line-fr{border-right:4px solid var(--julie);}
+.sp-sarah .line-head{background:var(--sarah-pale);}.sp-sarah .speaker{color:var(--sarah);}.sp-sarah .line-fr{border-right:4px solid var(--sarah);}
+
+/* VOCAB */
+.v-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px;}
+.v-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.v-word{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;direction:ltr;color:var(--col);}
+.v-type{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 9px;border-radius:8px;margin-right:auto;background:var(--col-pale);color:var(--col);}
+.v-fa{font-size:12px;color:var(--gray);direction:rtl;margin-top:2px;}
+.v-note{background:var(--amber-pale);border-bottom:1px solid var(--line);padding:8px 16px;font-size:11.5px;color:var(--amber);direction:rtl;text-align:right;line-height:1.7;}
+.v-cols{padding:10px 16px;border-bottom:1px dashed var(--line);}
+.v-cols-label{font-size:10px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:6px;}
+.v-examples{padding:6px 0;}
+.v-ex{padding:9px 16px;}
+.v-ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.7;direction:ltr;color:var(--ink);margin-bottom:3px;}
+.v-ex-fr strong{color:var(--pink-deep);}
+.v-ex-fa{font-size:11.5px;color:var(--gray);direction:rtl;text-align:right;line-height:1.6;}
+
+/* SUMMARY */
+.sum-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px;}
+.sum-head{padding:14px 18px;color:white;font-family:'Roboto',sans-serif;font-weight:700;display:flex;align-items:center;gap:10px;}
+.sum-head .n{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.sum-head-fa{font-size:11px;opacity:.85;direction:rtl;margin-top:2px;}
+.sum-body{padding:18px;}
+.sum-fr{font-family:'Roboto',sans-serif;font-size:14px;line-height:2;direction:ltr;text-align:left;color:var(--ink);margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--line);}
+.sum-fr strong{color:var(--pink-deep);}
+.sum-fa{font-size:13px;line-height:2;direction:rtl;text-align:right;color:var(--gray);}
+.sum-fa strong{color:var(--pink);}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">🎵</div>
+  <div><div class="t-title">Partie I — Les Francofolies</div><div class="t-sub">مهرآفرین · Édito A2 · U1 · L1</div></div>
+  <a class="back" href="index.html">← Leçon 1</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">ÉDITO A2 · U1 · L1 · PARTIE I</div>
+    <h1>🎵 Prendre rendez-vous</h1>
+    <div class="hero-sub">قرار گذاشتن — دیالوگ Julie و Sarah برای جشنواره Francofolies</div>
+    <div class="hero-pills">
+      <span class="hpill">💬 Dialogue</span>
+      <span class="hpill">🔤 ۲۰ اصطلاح</span>
+      <span class="hpill">📝 ۳ خلاصه A2</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('dialogue',this)">💬 دیالوگ و ترجمه</div>
+  <div class="tab" onclick="showTab('vocab',this)">🔤 تحلیل اصطلاحات</div>
+  <div class="tab" onclick="showTab('golden',this)">⭐ کالوکیشن طلایی</div>
+  <div class="tab" onclick="showTab('resume',this)">📝 ۳ خلاصه A2</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ PANEL 1: DIALOGUE ═══ -->
+<div class="panel active" id="panel-dialogue">
+  <div class="context-box">
+    <div class="context-title">🎧 Contexte — زمینه</div>
+    <strong>Les Francofolies</strong> یک جشنواره‌ی موسیقی معروف در شهر La Rochelle فرانسه است. در این دیالوگ، <strong>Julie</strong> و <strong>Sarah</strong> می‌خواهند با هم به این جشنواره بروند و در حال <strong>قرار گذاشتن</strong> (زمان و مکان ملاقات) هستند.
+  </div>
+  <div class="legend">
+    <div class="leg" style="background:var(--julie-pale);color:var(--julie);">🟣 Julie</div>
+    <div class="leg" style="background:var(--sarah-pale);color:var(--sarah);">🔵 Sarah</div>
+  </div>
+
+  <div class="line sp-julie">
+    <div class="line-head"><span class="speaker">🟣 Julie</span></div>
+    <div class="line-body">
+      <div class="line-fr">T'as vu, les places pour les Francofolies sont en vente depuis hier. Ça te dit ?</div>
+      <div class="line-fa">دیدی؟ بلیت‌های جشنوارهٔ Francofolies از دیروز برای فروش گذاشته شده‌اند. دوست داری برویم؟</div>
+      <div class="line-note">💡 Ça te dit ? = نظرت چیه؟ / دوست داری؟ / مایلی؟</div>
+    </div>
+  </div>
+  <div class="line sp-sarah">
+    <div class="line-head"><span class="speaker">🔵 Sarah</span></div>
+    <div class="line-body">
+      <div class="line-fr">Ah oui, avec plaisir ! Tu veux y aller quand ?</div>
+      <div class="line-fa">آره، با کمال میل! کی می‌خواهی برویم؟</div>
+      
+    </div>
+  </div>
+  <div class="line sp-julie">
+    <div class="line-head"><span class="speaker">🟣 Julie</span></div>
+    <div class="line-body">
+      <div class="line-fr">Tu es libre le 9 juillet ? Il y a plein de concerts sympas.</div>
+      <div class="line-fa">۹ ژوئیه آزادی؟ کنسرت‌های خیلی خوبی برگزار می‌شود.</div>
+      <div class="line-note">💡 plein de = پر از / خیلی زیاد (محاوره‌ای)</div>
+    </div>
+  </div>
+  <div class="line sp-sarah">
+    <div class="line-head"><span class="speaker">🔵 Sarah</span></div>
+    <div class="line-body">
+      <div class="line-fr">Je suis désolée, ce n'est pas possible, j'ai un rendez-vous de travail. Mais le 10 juillet la programmation est cool aussi. Ça te va ?</div>
+      <div class="line-fa">متأسفم، امکانش نیست، یک قرار کاری دارم. اما برنامهٔ روز ۱۰ ژوئیه هم خوب است. با آن موافقی؟</div>
+      <div class="line-note">💡 Ça te va ? = موافقی؟ / برایت مناسب است؟</div>
+    </div>
+  </div>
+  <div class="line sp-julie">
+    <div class="line-head"><span class="speaker">🟣 Julie</span></div>
+    <div class="line-body">
+      <div class="line-fr">OK, ça me va ! On se retrouve chez moi ce soir pour réserver nos places ? À 19 h, c'est bon pour toi ?</div>
+      <div class="line-fa">باشه، برای من هم خوبه! امشب خانهٔ من همدیگر را ببینیم تا بلیت‌هایمان را رزرو کنیم؟ ساعت ۷ عصر برایت مناسب است؟</div>
+      <div class="line-note">💡 se retrouver = همدیگر را دیدن · c'est bon pour toi ? = برایت خوب است؟</div>
+    </div>
+  </div>
+  <div class="line sp-sarah">
+    <div class="line-head"><span class="speaker">🔵 Sarah</span></div>
+    <div class="line-body">
+      <div class="line-fr">Je m'excuse, mais je ne peux pas. Je sors du travail à 19 h 30. À 20 h, c'est possible ?</div>
+      <div class="line-fa">ببخشید، اما نمی‌توانم. ساعت ۷:۳۰ از سر کار بیرون می‌آیم. ساعت ۸ ممکن است؟</div>
+      <div class="line-note">💡 Je m'excuse = عذر می‌خواهم (رسمی‌تر از désolé)</div>
+    </div>
+  </div>
+  <div class="line sp-julie">
+    <div class="line-head"><span class="speaker">🟣 Julie</span></div>
+    <div class="line-body">
+      <div class="line-fr">D'accord, ça marche. À ce soir !</div>
+      <div class="line-fa">باشه، موافقم. تا امشب!</div>
+      <div class="line-note">💡 Ça marche ! = باشه! قبوله! · À ce soir ! = تا امشب!</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--gray);font-family:'JetBrains Mono',monospace;">— Édito A2 · Prendre rendez-vous —</div>
+</div>
+
+<!-- ═══ PANEL 2: VOCAB ═══ -->
+<div class="panel" id="panel-vocab">
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--col);">
+    🔤 <strong>۲۰ اصطلاح و عبارت</strong> از دیالوگ — تقریباً همه‌ی این‌ها را فرانسوی‌ها هر روز در مکالمه استفاده می‌کنند. برای DELF A2، TCF و TEF بسیار مهم!
+  </div>
+  <div id="vocab-wrap"></div>
+</div>
+
+<!-- ═══ PANEL 3: GOLDEN ═══ -->
+<div class="panel" id="panel-golden">
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--col);">
+    ⭐ این کالوکیشن‌ها را اگر حفظ کنی، تقریباً می‌توانی یک <strong>قرار دوستانه</strong> را کاملاً طبیعی مدیریت کنی. این‌ها طبیعی‌ترین «blocs lexicaux» مکالمه‌ی روزمره‌ی فرانسوی‌اند.
+  </div>
+  <div style="background:var(--navy);border-radius:14px;padding:22px;">
+    <div style="font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:#fcd34d;margin-bottom:16px;">⭐ مهم‌ترین کالوکیشن‌های این درس</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ être en vente</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ depuis hier</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ Ça te dit ?</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ avec plaisir</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ être libre</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ avoir un rendez-vous</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ Ça te va ?</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ Ça me va.</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ se retrouver chez quelqu'un</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ réserver une place</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ sortir du travail</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ Ça marche !</div>
+      <div style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;padding:6px 0;">✦ À ce soir !</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 4: RÉSUMÉS A2 ═══ -->
+<div class="panel" id="panel-resume">
+  <div style="background:var(--green-pale);border:1px solid rgba(46,125,50,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--green);">
+    📝 <strong>۳ خلاصه‌ی سطح A2</strong> از دیالوگ — با جزئیات و ترجمه‌ی فارسی. هر خلاصه با زاویه‌ی متفاوتی نوشته شده تا مهارت بازگویی (raconter) را تقویت کند.
+  </div>
+
+  <div class="sum-card">
+    <div class="sum-head" style="background:linear-gradient(135deg,var(--julie),#8e24aa);">
+      <span class="n">1</span>
+      <div><div>Résumé simple — خلاصه‌ی ساده</div><div class="sum-head-fa">روایت پایه با زمان حال</div></div>
+    </div>
+    <div class="sum-body">
+      <div class="sum-fr">Julie voit que les places pour les Francofolies sont <strong>en vente depuis hier</strong>. Elle demande à Sarah si <strong>ça lui dit</strong> d'y aller. Sarah accepte <strong>avec plaisir</strong>. Julie propose le 9 juillet, mais Sarah n'est pas libre parce qu'elle a <strong>un rendez-vous de travail</strong>. Elles choisissent donc le 10 juillet. Le soir, elles vont <strong>se retrouver chez</strong> Julie pour <strong>réserver</strong> leurs places. Sarah sort du travail à 19 h 30, alors elles décident de se voir à 20 h. Julie dit : « <strong>Ça marche ! À ce soir !</strong> »</div>
+      <div class="sum-fa">ژولی می‌بیند که بلیت‌های Francofolies از دیروز <strong>برای فروش</strong> هستند. از سارا می‌پرسد که آیا <strong>دوست دارد</strong> برود. سارا <strong>با کمال میل</strong> قبول می‌کند. ژولی ۹ ژوئیه را پیشنهاد می‌دهد، اما سارا آزاد نیست چون یک <strong>قرار کاری</strong> دارد. پس ۱۰ ژوئیه را انتخاب می‌کنند. عصر، قرار می‌شود <strong>خانه‌ی ژولی</strong> همدیگر را ببینند تا بلیت‌هایشان را <strong>رزرو</strong> کنند. سارا ساعت ۷:۳۰ از سر کار بیرون می‌آید، پس تصمیم می‌گیرند ساعت ۸ همدیگر را ببینند. ژولی می‌گوید: «<strong>باشه! تا امشب!</strong>»</div>
+    </div>
+  </div>
+
+  <div class="sum-card">
+    <div class="sum-head" style="background:linear-gradient(135deg,var(--sarah),#1976d2);">
+      <span class="n">2</span>
+      <div><div>Résumé — point de vue de Sarah</div><div class="sum-head-fa">از زبان سارا (اول‌شخص)</div></div>
+    </div>
+    <div class="sum-body">
+      <div class="sum-fr">Aujourd'hui, mon amie Julie m'a proposé d'aller aux <strong>Francofolies</strong>. J'ai dit oui <strong>avec plaisir</strong> parce que j'adore les concerts. Elle voulait y aller le 9 juillet, mais <strong>ce n'était pas possible</strong> pour moi : j'avais déjà <strong>un rendez-vous de travail</strong>. Je lui ai proposé le 10 juillet et <strong>ça lui allait</strong>. Le soir, nous devons nous <strong>retrouver chez elle</strong> pour <strong>réserver nos places</strong>. Comme je <strong>sors du travail</strong> à 19 h 30, je lui ai demandé si 20 h était possible. Elle a accepté. Je suis très contente !</div>
+      <div class="sum-fa">امروز، دوستم ژولی به من پیشنهاد داد که به <strong>Francofolies</strong> برویم. <strong>با کمال میل</strong> قبول کردم چون عاشق کنسرت هستم. او می‌خواست ۹ ژوئیه برویم، اما برای من <strong>امکانش نبود</strong>: از قبل یک <strong>قرار کاری</strong> داشتم. من ۱۰ ژوئیه را پیشنهاد دادم و <strong>برایش مناسب بود</strong>. عصر، باید <strong>خانه‌ی او</strong> همدیگر را ببینیم تا <strong>بلیت‌هایمان را رزرو کنیم</strong>. چون ساعت ۷:۳۰ <strong>از سر کار بیرون می‌آیم</strong>، از او پرسیدم آیا ساعت ۸ ممکن است. او قبول کرد. خیلی خوشحالم!</div>
+    </div>
+  </div>
+
+  <div class="sum-card">
+    <div class="sum-head" style="background:linear-gradient(135deg,var(--amber),#f57c00);">
+      <span class="n">3</span>
+      <div><div>Résumé détaillé — خلاصه‌ی مفصل</div><div class="sum-head-fa">با جزئیات و توضیح موقعیت</div></div>
+    </div>
+    <div class="sum-body">
+      <div class="sum-fr">Deux amies, Julie et Sarah, veulent aller à un festival de musique, <strong>les Francofolies</strong>. Julie remarque que les billets <strong>sont en vente depuis hier</strong> et demande à Sarah <strong>si ça lui dit</strong> d'y aller ensemble. Sarah est très enthousiaste et répond <strong>avec plaisir</strong>. Le problème, c'est la date : Julie propose le 9 juillet, mais Sarah <strong>n'est pas libre</strong> ce jour-là car elle a <strong>un rendez-vous de travail</strong>. Heureusement, <strong>la programmation</strong> du 10 juillet est aussi intéressante, et les deux amies <strong>se mettent d'accord</strong> sur cette date. Ensuite, elles organisent leur rencontre : elles vont <strong>se retrouver chez</strong> Julie le soir même pour <strong>réserver leurs places</strong>, parce qu'il reste peu de billets. Julie propose 19 h, mais Sarah <strong>sort du travail</strong> à 19 h 30, donc elles choisissent finalement 20 h. À la fin, Julie conclut avec deux expressions très typiques : « <strong>Ça marche ! À ce soir !</strong> »</div>
+      <div class="sum-fa">دو دوست، ژولی و سارا، می‌خواهند به یک جشنواره‌ی موسیقی به نام <strong>Francofolies</strong> بروند. ژولی متوجه می‌شود که بلیت‌ها <strong>از دیروز برای فروش</strong> هستند و از سارا می‌پرسد <strong>آیا دوست دارد</strong> با هم بروند. سارا خیلی مشتاق است و <strong>با کمال میل</strong> جواب می‌دهد. مشکل، تاریخ است: ژولی ۹ ژوئیه را پیشنهاد می‌دهد، اما سارا آن روز <strong>آزاد نیست</strong> چون یک <strong>قرار کاری</strong> دارد. خوشبختانه، <strong>برنامه‌ی</strong> روز ۱۰ ژوئیه هم جالب است، و دو دوست روی این تاریخ <strong>به توافق می‌رسند</strong>. سپس، ملاقاتشان را برنامه‌ریزی می‌کنند: قرار می‌شود همان عصر <strong>خانه‌ی ژولی</strong> همدیگر را ببینند تا <strong>بلیت‌هایشان را رزرو کنند</strong>، چون بلیت کمی باقی مانده. ژولی ساعت ۷ را پیشنهاد می‌دهد، اما سارا ساعت ۷:۳۰ <strong>از سر کار بیرون می‌آید</strong>، پس در نهایت ساعت ۸ را انتخاب می‌کنند. در پایان، ژولی با دو اصطلاح بسیار رایج جمع‌بندی می‌کند: «<strong>باشه! تا امشب!</strong>»</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← Leçon 1</a> · Partie I · Les Francofolies · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const VOCAB_DATA = [
+{w:'être en vente',t:'EXPRESSION',fa:'برای فروش بودن',cols:["être en vente","mettre en vente","billet en vente","maison en vente"],exfr:'Les billets sont <strong>en vente</strong> depuis lundi, donc nous allons les acheter aujourd\'hui.',exfa:'بلیت‌ها از دوشنبه برای فروش هستند، بنابراین امروز آن‌ها را می‌خریم.',note:''},
+{w:'depuis',t:'PRÉPOSITION',fa:'از... (تا الان)',cols:[],exfr:'J\'habite en France <strong>depuis</strong> deux ans, donc je parle un peu mieux français.',exfa:'دو سال است در فرانسه زندگی می‌کنم، بنابراین کمی بهتر فرانسوی صحبت می‌کنم.',note:'یکی از مهم‌ترین حروف اضافه A2'},
+{w:'Ça te dit ?',t:'EXPRESSION',fa:'دوست داری؟ · نظرت چیه؟ · مایلی؟',cols:["Ça te dit ?","Ça vous dit ?","Ça lui dit ?"],exfr:'<strong>Ça te dit d\'</strong>aller au cinéma ce soir parce qu\'il y a un nouveau film ?',exfa:'دوست داری امشب سینما برویم چون یک فیلم جدید اکران شده است؟',note:'یکی از طبیعی‌ترین اصطلاحات فرانسه'},
+{w:'avec plaisir',t:'EXPRESSION',fa:'با کمال میل',cols:[],exfr:'Je peux t\'aider <strong>avec plaisir</strong> si tu as besoin de moi.',exfa:'اگر به من احتیاج داشته باشی، با کمال میل کمکت می‌کنم.',note:''},
+{w:'Tu es libre ?',t:'EXPRESSION',fa:'آزادی؟',cols:["être libre demain","être libre ce soir","être libre ce week-end"],exfr:'<strong>Tu es libre</strong> samedi ? Si oui, nous pouvons visiter une exposition.',exfa:'شنبه آزادی؟ اگر بله، می‌توانیم از یک نمایشگاه دیدن کنیم.',note:''},
+{w:'Il y a plein de...',t:'EXPRESSION',fa:'پر از... · خیلی زیاد...',cols:["plein de concerts","plein de monde","plein d'idées","plein d'activités"],exfr:'<strong>Il y a plein d\'</strong>activités, alors chacun peut choisir ce qu\'il préfère.',exfa:'فعالیت‌های زیادی وجود دارد، بنابراین هر کسی می‌تواند چیزی را که دوست دارد انتخاب کند.',note:'کاملاً محاوره‌ای'},
+{w:'sympa',t:'ADJECTIF',fa:'جالب · باحال · خوب · دوست‌داشتنی',cols:[],exfr:'Ce café est très <strong>sympa</strong> parce qu\'il est calme et pas cher.',exfa:'این کافه خیلی خوب است، چون آرام و ارزان است.',note:'کوتاه‌شده‌ی sympathique'},
+{w:'Je suis désolé(e)',t:'EXPRESSION',fa:'متأسفم',cols:[],exfr:'<strong>Je suis désolé</strong>, mais je ne peux pas venir parce que je travaille.',exfa:'متأسفم، اما نمی‌توانم بیایم، چون سر کار هستم.',note:''},
+{w:'Ce n\'est pas possible.',t:'EXPRESSION',fa:'امکان ندارد.',cols:[],exfr:'Aujourd\'hui, <strong>ce n\'est pas possible</strong> car j\'ai beaucoup de travail.',exfa:'امروز امکانش نیست، چون کار زیادی دارم.',note:''},
+{w:'avoir un rendez-vous',t:'EXPRESSION',fa:'قرار داشتن',cols:["rendez-vous médical","rendez-vous de travail","rendez-vous amoureux"],exfr:'Je ne peux pas sortir parce que j\'<strong>ai un rendez-vous</strong> médical.',exfa:'نمی‌توانم بیرون بروم، چون قرار پزشک دارم.',note:''},
+{w:'la programmation',t:'NOM',fa:'برنامه‌ی رویدادها',cols:[],exfr:'<strong>La programmation</strong> est très intéressante, donc nous voulons assister à plusieurs concerts.',exfa:'برنامه‌ی اجراها خیلی جالب است، بنابراین می‌خواهیم در چند کنسرت شرکت کنیم.',note:''},
+{w:'Ça te va ?',t:'EXPRESSION',fa:'موافقی؟ · برایت مناسب است؟',cols:["Ça te va ?","Ça vous va ?","Ça lui va ?"],exfr:'On peut se retrouver à 18 heures. <strong>Ça te va ?</strong>',exfa:'می‌توانیم ساعت ۶ همدیگر را ببینیم. موافقی؟',note:'⚠️ دو معنی: مناسب بودن زمان/برنامه · اندازه بودن لباس'},
+{w:'Ça me va.',t:'EXPRESSION',fa:'برای من خوب است. · موافقم.',cols:[],exfr:'Vendredi soir ? <strong>Ça me va</strong>, puisque je suis libre.',exfa:'جمعه شب؟ برای من خوب است، چون آزادم.',note:''},
+{w:'se retrouver',t:'VERBE PRONOMINAL',fa:'همدیگر را ملاقات کردن',cols:["se retrouver devant","se retrouver chez quelqu'un","se retrouver au café"],exfr:'Nous nous <strong>retrouvons</strong> devant le cinéma afin d\'acheter les billets ensemble.',exfa:'جلوی سینما همدیگر را می‌بینیم تا با هم بلیت بخریم.',note:''},
+{w:'réserver',t:'VERBE',fa:'رزرو کردن',cols:["réserver une place","réserver un hôtel","réserver une table","réserver un billet"],exfr:'Nous <strong>réservons</strong> nos places aujourd\'hui parce qu\'il reste peu de billets.',exfa:'امروز بلیت‌هایمان را رزرو می‌کنیم، چون بلیت کمی باقی مانده است.',note:''},
+{w:'C\'est bon pour toi ?',t:'EXPRESSION',fa:'برایت مناسب است؟',cols:[],exfr:'À 20 heures, <strong>c\'est bon pour toi</strong> ou tu préfères plus tard ?',exfa:'ساعت ۸ برایت مناسب است یا دیرتر را ترجیح می‌دهی؟',note:''},
+{w:'Je m\'excuse',t:'EXPRESSION',fa:'عذر می‌خواهم.',cols:[],exfr:'<strong>Je m\'excuse</strong>, mais je serai un peu en retard parce qu\'il y a des embouteillages.',exfa:'ببخشید، اما کمی دیر می‌رسم، چون ترافیک وجود دارد.',note:'رسمی‌تر از désolé'},
+{w:'sortir du travail',t:'EXPRESSION',fa:'از محل کار بیرون آمدن',cols:[],exfr:'Je <strong>sors du travail</strong> à 18 heures, alors je peux te rejoindre après.',exfa:'ساعت ۶ از محل کار بیرون می‌آیم، بنابراین بعد از آن می‌توانم به تو ملحق شوم.',note:''},
+{w:'Ça marche !',t:'EXPRESSION',fa:'باشه! · قبوله! · اوکی!',cols:[],exfr:'On se retrouve devant la gare à 19 heures ? <strong>Ça marche !</strong>',exfa:'ساعت ۷ جلوی ایستگاه همدیگر را ببینیم؟ باشه!',note:'یکی از پرکاربردترین اصطلاحات محاوره‌ای فرانسه'},
+{w:'À ce soir !',t:'EXPRESSION',fa:'تا امشب!',cols:[],exfr:'Merci pour ton message. <strong>À ce soir !</strong>',exfa:'ممنون از پیامت. تا امشب!',note:''}
+];
+(function(){
+  const wrap = document.getElementById('vocab-wrap');
+  VOCAB_DATA.forEach(d=>{
+    const card = document.createElement('div');
+    card.className = 'v-card';
+    const colsHtml = d.cols.length ? `
+      <div class="v-cols">
+        <div class="v-cols-label">🔗 کالوکیشن‌ها:</div>
+        ${d.cols.map(c=>`<span style="display:inline-block;background:var(--col-pale);color:var(--col);font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:6px;margin:2px;">${c}</span>`).join('')}
+      </div>` : '';
+    card.innerHTML = `
+      <div class="v-head">
+        <div><div class="v-word">${d.w}</div><div class="v-fa">${d.fa}</div></div>
+        <span class="v-type">${d.t}</span>
+      </div>
+      ${d.note?`<div class="v-note">💡 ${d.note}</div>`:''}
+      ${colsHtml}
+      <div class="v-examples">
+        <div class="v-ex">
+          <div class="v-ex-fr">${d.exfr}</div>
+          <div class="v-ex-fa">${d.exfa}</div>
+        </div>
+      </div>`;
+    wrap.appendChild(card);
+  });
+})();
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
