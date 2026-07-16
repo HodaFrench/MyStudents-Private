@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Saveurs de Corse — Lisandra Santoni · مهرآفرین</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#c2185b;--pink-pale:#fce4ec;--pink-deep:#880e4f;
+  --paper:#fdf5f8;--ink:#2c3e50;--gray:#64748b;--line:#f0d9e5;
+  --col:#00695c;--col-pale:#e0f2f1;
+  --food:#e65100;--food-pale:#fff3e0;
+  --nature:#2e7d32;--nature-pale:#e8f5e9;
+  --emotion:#6a1b9a;--emotion-pale:#f3e5f5;
+  --navy:#0d1b2a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--paper);color:var(--ink);padding-bottom:80px;}
+
+.topbar{background:var(--pink-deep);padding:12px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
+.t-title{font-size:15px;font-weight:700;color:white;}
+.t-sub{font-size:10px;color:rgba(255,255,255,.6);}
+.back{margin-right:auto;color:rgba(255,255,255,.8);text-decoration:none;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:5px;}
+
+.hero{background:linear-gradient(135deg,var(--pink-deep),#ad1457);color:white;padding:40px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:10px;}
+.hero h1{font-family:'Roboto',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:6px;}
+.hero-sub{font-size:13px;opacity:.85;margin-bottom:14px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hpill{background:rgba(255,255,255,.18);font-size:11px;padding:4px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.3);}
+
+.tabs{display:flex;overflow-x:auto;border-bottom:3px solid var(--line);background:white;padding:0 16px;position:sticky;top:62px;z-index:99;}
+.tab{padding:11px 15px;cursor:pointer;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.2s;}
+.tab:hover{color:var(--pink);}.tab.active{color:var(--pink);border-bottom-color:var(--pink);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 20px;}
+.panel{display:none;}.panel.active{display:block;}
+
+.context-box{background:var(--emotion-pale);border:1.5px solid rgba(106,27,154,.25);border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.9;direction:rtl;text-align:right;margin-bottom:20px;}
+.context-box strong{color:var(--emotion);}
+.context-title{font-weight:700;color:var(--emotion);margin-bottom:6px;font-size:14px;}
+
+/* TEXT */
+.text-line{background:white;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.tl-fr{padding:13px 16px;font-family:'Roboto',sans-serif;font-size:14.5px;line-height:1.8;direction:ltr;text-align:left;color:var(--ink);border-right:4px solid var(--pink);}
+.tl-fa{padding:12px 16px;font-size:13px;direction:rtl;text-align:right;line-height:1.9;color:var(--gray);background:var(--paper);border-top:1px dashed var(--line);}
+
+/* VOCAB */
+.v-card{background:white;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px;}
+.v-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.v-word{font-family:'Roboto',sans-serif;font-size:16px;font-weight:700;direction:ltr;color:var(--col);}
+.v-type{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 9px;border-radius:8px;margin-right:auto;background:var(--col-pale);color:var(--col);}
+.v-fa{font-size:12px;color:var(--gray);direction:rtl;margin-top:2px;}
+.v-note{background:var(--food-pale);border-bottom:1px solid var(--line);padding:8px 16px;font-size:11.5px;color:var(--food);direction:rtl;text-align:right;line-height:1.7;}
+.v-examples{padding:6px 0;}
+.v-ex{padding:9px 16px;border-bottom:1px dashed var(--line);}
+.v-ex:last-child{border:none;}
+.v-ex-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray);direction:rtl;text-align:right;margin-bottom:3px;}
+.v-ex-fr{font-family:'Roboto',sans-serif;font-size:13.5px;line-height:1.7;direction:ltr;color:var(--ink);margin-bottom:3px;}
+.v-ex-fr strong{color:var(--pink-deep);}
+.v-ex-fa{font-size:11.5px;color:var(--gray);direction:rtl;text-align:right;line-height:1.6;}
+
+#scrollBtn{display:none;position:fixed;bottom:20px;right:20px;background:var(--pink);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:18px;}
+#scrollBtn.show{display:block;}
+.footer{text-align:center;padding:22px;color:var(--gray);font-size:11px;border-top:1px solid var(--line);margin-top:10px;}
+.footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="font-size:20px;">🌰</div>
+  <div><div class="t-title">Saveurs de Corse</div><div class="t-sub">مهرآفرین · Vocabulaire · Édito B1 U2</div></div>
+  <a class="back" href="index.html">← واژگان مهم</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">ÉDITO B1 · UNITÉ 2 · JE ME SOUVIENS · PARTIE A</div>
+    <h1>🌰 Saveurs de Corse</h1>
+    <div class="hero-sub">خاطرات Lisandra Santoni از کورس — متن، ترجمه و واژگان</div>
+    <div class="hero-pills">
+      <span class="hpill">📖 متن + ترجمه</span>
+      <span class="hpill">🔤 ۲۰ واژه و عبارت</span>
+      <span class="hpill">💭 توصیف خاطرات</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('texte',this)">📖 متن و ترجمه</div>
+  <div class="tab" onclick="showTab('vocab',this)">🔤 واژگان و عبارات</div>
+  <div class="tab" onclick="showTab('golden',this)">⭐ عبارت طلایی</div>
+</div>
+
+<div class="wrap">
+
+<!-- TEXTE -->
+<div class="panel active" id="panel-texte">
+  <div class="context-box">
+    <div class="context-title">🎧 Contexte — زمینه</div>
+    <strong>Lisandra Santoni</strong> از خاطرات کودکی‌اش در جزیره‌ی <strong>کورس (Corse)</strong> می‌گوید — خانه‌ی خانوادگی، مرباهای مادربزرگ، آتش پدربزرگ و ستاره‌های شب. متنی سرشار از <strong>توصیف حواس</strong> (بو، طعم، صدا) و احساس. این درس از واحد ۲ Édito B1 با موضوع «Je me souviens» (به یاد می‌آورم) است.
+  </div>
+
+  <div class="text-line">
+    <div class="tl-fr">Lisandra Santoni se souvient…</div>
+    <div class="tl-fa">لیساندرا سانتونی به یاد می‌آورد…</div>
+  </div>
+  <div class="text-line">
+    <div class="tl-fr">« Aujourd'hui j'ai envie de replonger dans mon enfance et de vous raconter mes souvenirs… Alors je vais vous parler de ma maison familiale, en Corse. Je suis très attachée à cet endroit.</div>
+    <div class="tl-fa">«امروز دلم می‌خواهد به کودکی‌ام برگردم و خاطراتم را برایتان تعریف کنم… پس می‌خواهم درباره‌ی خانه‌ی خانوادگی‌ام، در کورس، برایتان بگویم. خیلی به این مکان دلبسته‌ام.</div>
+  </div>
+  <div class="text-line">
+    <div class="tl-fr">La Corse, c'est d'abord des souvenirs culinaires… Je me souviens des confitures que faisait ma grand-mère. Ça sentait bon ! Et quelles saveurs ! Mes préférées : figues, abricots et clémentines, sans hésiter. Le matin, je mangeais mes tartines et je lui tenais la main.</div>
+    <div class="tl-fa">کورس، قبل از هر چیز، خاطرات آشپزی است… مرباهایی را که مادربزرگم درست می‌کرد به یاد می‌آورم. چه بوی خوبی می‌داد! و چه طعم‌هایی! موردعلاقه‌هایم: انجیر، زردآلو و نارنگی، بدون تردید. صبح‌ها، نان‌هایم را می‌خوردم و دستش را می‌گرفتم.</div>
+  </div>
+  <div class="text-line">
+    <div class="tl-fr">Parfois, je lui demandais de tremper mon pain dans son café. Elle me répondait : « Bon… d'accord, mais juste pour goûter ! ». Je me rappelle aussi les bugnes qu'elle nous préparait. On appelle ça des « frappes » en Corse. Avec mon frère, on adorait les manger assis devant la cheminée.</div>
+    <div class="tl-fa">گاهی از او می‌خواستم نانم را در قهوه‌اش فرو کنم. جوابم را می‌داد: «باشه… قبول، اما فقط برای چشیدن!». بونی‌هایی را هم که برایمان درست می‌کرد به یاد می‌آورم. در کورس به آن‌ها «frappes» می‌گویند. با برادرم، عاشق این بودیم که آن‌ها را نشسته جلوی شومینه بخوریم.</div>
+  </div>
+  <div class="text-line">
+    <div class="tl-fr">La Corse c'est aussi pour moi le parfum des fleurs au printemps, le chant des oiseaux dans le jardin et le feu qu'y faisait mon grand-père. Encore aujourd'hui, presque 25 ans plus tard, l'odeur, le bruit, la vue du feu me rappellent ces moments avec mon grand-père.</div>
+    <div class="tl-fa">کورس برای من عطر گل‌ها در بهار هم هست، آواز پرندگان در باغ، و آتشی که پدربزرگم روشن می‌کرد. هنوز هم امروز، تقریباً ۲۵ سال بعد، بو، صدا، و منظره‌ی آتش این لحظات با پدربزرگم را به یادم می‌آورند.</div>
+  </div>
+  <div class="text-line">
+    <div class="tl-fr">Et quand je regarde le ciel, la nuit, j'ai toujours une pensée pour lui : le soir, allongés dans l'herbe parfois humide, on regardait les étoiles. « Tu vois, là, c'est la grande ourse ! Oh ! Une étoile filante ! Fais un vœu ! ». Ses mots sont gravés dans ma mémoire, impossible de les oublier.</div>
+    <div class="tl-fa">و وقتی شب به آسمان نگاه می‌کنم، همیشه به یاد او هستم: عصرها، دراز کشیده روی چمنِ گاهی نمناک، به ستاره‌ها نگاه می‌کردیم. «می‌بینی، آنجا، دبّ اکبر است! اوه! یک ستاره‌ی دنباله‌دار! آرزو کن!». حرف‌هایش در حافظه‌ام حک شده‌اند، غیرممکن است فراموششان کنم.</div>
+  </div>
+  <div class="text-line">
+    <div class="tl-fr">Oui, la Corse et cette maison en particulier, c'est ma madeleine de Proust ! »</div>
+    <div class="tl-fa">بله، کورس و به‌خصوص این خانه، مادلن پروستِ من هستند!»</div>
+  </div>
+  <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--gray);font-family:'JetBrains Mono',monospace;">— Saveurs de Corse · Lisandra Santoni —</div>
+</div>
+
+<!-- VOCAB -->
+<div class="panel" id="panel-vocab">
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--col);">
+    🔤 <strong>۲۰ واژه و عبارت</strong> از متن، هر کدام با نوع، معنی و ۳ مثال مرکب با ترجمه. تمرکز روی عبارات احساسی و توصیف حواس — مهم برای توصیف خاطرات در سطح B1.
+  </div>
+  <div id="vocab-wrap"></div>
+</div>
+
+<!-- GOLDEN -->
+<div class="panel" id="panel-golden">
+  <div style="background:var(--col-pale);border:1px solid rgba(0,105,92,.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;direction:rtl;text-align:right;line-height:1.85;color:var(--col);">
+    ⭐ این عبارات به زبان‌آموز کمک می‌کنند <strong>خاطرات و احساسات</strong> را طبیعی بیان کند — دقیقاً همان چیزی که در توصیف خاطرات و امتحان‌های B1 امتیاز می‌گیرد.
+  </div>
+  <div style="background:var(--navy);border-radius:14px;padding:22px;">
+    <div style="font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;color:#fcd34d;margin-bottom:16px;">⭐ ۱۰ عبارت طلایی این متن</div>
+    <div style="display:grid;grid-template-columns:1fr;gap:2px;">
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">se souvenir de</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">به یاد آوردن</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">avoir envie de</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">دلش خواستن</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">replonger dans son enfance</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">به کودکی برگشتن</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">être attaché à</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">دلبسته بودن به</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">Ça sentait bon !</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">چه بوی خوبی می‌داد!</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">Quelles saveurs !</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">چه طعم‌هایی!</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">ça me rappelle...</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">مرا به یاد ... می‌اندازد</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">être gravé dans la mémoire</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">در حافظه حک شدن</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">sans hésiter</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">بدون تردید</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0;"><span style="color:#86efac;font-family:'Roboto',sans-serif;font-size:13px;">ma madeleine de Proust</span><span style="color:rgba(255,255,255,.7);font-size:12px;direction:rtl;">زنده‌کننده‌ی خاطرات</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer"><a href="index.html">← واژگان مهم</a> · Saveurs de Corse · Français avec Hoda © 2025</div>
+<button id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const VOCAB_DATA = [
+{w:'se souvenir de',t:'VERBE PRONOMINAL',fa:'به یاد آوردن · خاطره داشتن از',note:'کالوکیشن: se souvenir de son enfance / d\'un moment',ex:[{fr:'Je <strong>me souviens des</strong> confitures que faisait ma grand-mère quand j\'étais petite.',fa:'مرباهایی را که مادربزرگم درست می‌کرد به یاد می‌آورم، وقتی کوچک بودم.'},{fr:'Elle <strong>se souvient de</strong> son premier voyage comme si c\'était hier.',fa:'او اولین سفرش را به یاد می‌آورد، انگار همین دیروز بود.'},{fr:'Nous <strong>nous souvenons de</strong> cette maison où nous passions nos étés.',fa:'آن خانه‌ای را که تابستان‌هایمان را در آن می‌گذراندیم به یاد می‌آوریم.'}]},
+{w:'avoir envie de',t:'EXPRESSION',fa:'دلش خواستن · هوس کردن',note:'کالوکیشن: avoir envie de + مصدر / + اسم',ex:[{fr:'Aujourd\'hui, j\'<strong>ai envie de</strong> replonger dans mon enfance et de raconter mes souvenirs.',fa:'امروز، دلم می‌خواهد به کودکی‌ام برگردم و خاطراتم را تعریف کنم.'},{fr:'Après cette longue journée, elle <strong>a envie de</strong> se reposer un peu.',fa:'بعد از این روز طولانی، دلش می‌خواهد کمی استراحت کند.'},{fr:'Quand il fait chaud, on <strong>a envie de</strong> boire quelque chose de frais.',fa:'وقتی هوا گرم است، آدم هوس می‌کند چیز خنکی بنوشد.'}]},
+{w:'replonger dans son enfance',t:'EXPRESSION',fa:'به کودکی برگشتن · دوباره غرق کودکی شدن',note:'عبارت زیبا و ادبی. plonger = شیرجه زدن / غرق شدن',ex:[{fr:'Ces photos me font <strong>replonger dans mon enfance</strong> avec beaucoup d\'émotion.',fa:'این عکس‌ها مرا با احساسات زیادی به کودکی‌ام برمی‌گردانند.'},{fr:'En écoutant cette chanson, je <strong>replonge dans mon enfance</strong>.',fa:'با گوش دادن به این آهنگ، به کودکی‌ام برمی‌گردم.'},{fr:'Retourner dans ce village, c\'est <strong>replonger dans mes plus beaux souvenirs</strong>.',fa:'برگشتن به این روستا یعنی دوباره غرق زیباترین خاطراتم شدن.'}]},
+{w:'être attaché(e) à',t:'EXPRESSION',fa:'دلبسته بودن به · وابسته بودن به',note:'کالوکیشن: être attaché à un lieu / à une personne / à une tradition',ex:[{fr:'Je <strong>suis très attachée à</strong> cet endroit parce que j\'y ai passé toute mon enfance.',fa:'خیلی به این مکان دلبسته‌ام، چون تمام کودکی‌ام را آنجا گذراندم.'},{fr:'Il <strong>est très attaché à</strong> sa famille, alors il leur rend visite chaque semaine.',fa:'او خیلی به خانواده‌اش وابسته است، برای همین هر هفته به آن‌ها سر می‌زند.'},{fr:'Nous <strong>sommes attachés à</strong> nos traditions, même loin de notre pays.',fa:'ما به سنت‌هایمان دلبسته‌ایم، حتی دور از کشورمان.'}]},
+{w:'raconter ses souvenirs',t:'VERBE+NOM',fa:'خاطرات را تعریف کردن',note:'کالوکیشن: raconter une histoire / un souvenir / sa vie',ex:[{fr:'J\'aime <strong>raconter mes souvenirs</strong> d\'enfance à mes petits-enfants.',fa:'دوست دارم خاطرات کودکی‌ام را برای نوه‌هایم تعریف کنم.'},{fr:'Le soir, ma grand-mère nous <strong>racontait des souvenirs</strong> de sa jeunesse.',fa:'شب‌ها، مادربزرگم خاطرات جوانی‌اش را برایمان تعریف می‌کرد.'},{fr:'Il a passé la soirée à <strong>raconter ses souvenirs</strong> de voyage.',fa:'او تمام عصر را به تعریف خاطرات سفرش گذراند.'}]},
+{w:'une saveur',t:'NOM',fa:'طعم · مزه',note:'مرتبط: savoureux (خوش‌طعم) · avoir de la saveur',ex:[{fr:'Ces confitures ont des <strong>saveurs</strong> incroyables : figues, abricots et clémentines.',fa:'این مرباها طعم‌های باورنکردنی دارند: انجیر، زردآلو و نارنگی.'},{fr:'Chaque région a ses <strong>saveurs</strong> particulières qu\'on ne trouve nulle part ailleurs.',fa:'هر منطقه طعم‌های خاص خودش را دارد که جای دیگری پیدا نمی‌شوند.'},{fr:'La cuisine de ma mère a une <strong>saveur</strong> unique qui me rappelle mon enfance.',fa:'آشپزی مادرم طعمی یگانه دارد که کودکی‌ام را به یادم می‌آورد.'}]},
+{w:'une confiture',t:'NOM',fa:'مربا',note:'کالوکیشن: faire de la confiture · confiture de fraises',ex:[{fr:'Ma grand-mère faisait de la <strong>confiture</strong> avec les fruits de son jardin.',fa:'مادربزرگم با میوه‌های باغش مربا درست می‌کرد.'},{fr:'J\'adore la <strong>confiture</strong> d\'abricots sur une tartine le matin.',fa:'عاشق مربای زردآلو روی نان تست صبح هستم.'},{fr:'Cette <strong>confiture</strong> maison est bien meilleure que celle du supermarché.',fa:'این مربای خانگی خیلی بهتر از مربای فروشگاه است.'}]},
+{w:'une tartine',t:'NOM',fa:'نان (کره/مربا زده) · لقمه نان',note:'کالوکیشن: manger une tartine · une tartine de confiture',ex:[{fr:'Le matin, je mangeais mes <strong>tartines</strong> et je tenais la main de mon grand-père.',fa:'صبح‌ها، نان‌هایم را می‌خوردم و دست پدربزرگم را می‌گرفتم.'},{fr:'Elle prépare une <strong>tartine</strong> de beurre pour son petit-déjeuner.',fa:'او یک نان کره‌ای برای صبحانه‌اش آماده می‌کند.'},{fr:'Les enfants adorent les <strong>tartines</strong> de chocolat après l\'école.',fa:'بچه‌ها نان شکلاتی بعد از مدرسه را خیلی دوست دارند.'}]},
+{w:'tremper',t:'VERBE',fa:'فرو کردن · خیس کردن (نان در قهوه)',note:'کالوکیشن: tremper dans / tremper le pain',ex:[{fr:'Parfois, je <strong>trempais</strong> mon pain dans le café de mon grand-père.',fa:'گاهی نانم را در قهوه‌ی پدربزرگم فرو می‌کردم.'},{fr:'Il aime <strong>tremper</strong> un biscuit dans son thé le soir.',fa:'او دوست دارد شب‌ها یک بیسکویت در چایش فرو کند.'},{fr:'Ne <strong>trempe</strong> pas trop longtemps le gâteau, sinon il va se casser.',fa:'کیک را خیلی طولانی خیس نکن، وگرنه می‌شکند.'}]},
+{w:'goûter',t:'VERBE / NOM',fa:'چشیدن · مزه کردن',note:'⚠️ همچنین اسم: le goûter (میان‌وعده بعدازظهر)',ex:[{fr:'« D\'accord, mais juste pour <strong>goûter</strong> ! » me répondait ma grand-mère.',fa:'«باشه، اما فقط برای چشیدن!» مادربزرگم به من جواب می‌داد.'},{fr:'Avant d\'acheter, je veux <strong>goûter</strong> ce fromage local.',fa:'قبل از خریدن، می‌خواهم این پنیر محلی را بچشم.'},{fr:'Les enfants prennent leur <strong>goûter</strong> à quatre heures de l\'après-midi.',fa:'بچه‌ها میان‌وعده‌شان را ساعت چهار بعدازظهر می‌خورند.'}]},
+{w:'préparer',t:'VERBE',fa:'آماده کردن · درست کردن (غذا)',note:'کالوکیشن: préparer un repas / un gâteau / un plat',ex:[{fr:'Je me rappelle les bugnes qu\'elle nous <strong>préparait</strong> devant la cheminée.',fa:'بونی‌هایی را که برایمان جلوی شومینه درست می‌کرد به یاد می‌آورم.'},{fr:'Ma mère <strong>prépare</strong> toujours un bon repas pour les fêtes.',fa:'مادرم همیشه برای جشن‌ها یک غذای خوب درست می‌کند.'},{fr:'Nous <strong>préparons</strong> le dîner ensemble tous les dimanches soir.',fa:'ما هر یکشنبه شب با هم شام درست می‌کنیم.'}]},
+{w:'le parfum',t:'NOM',fa:'عطر · رایحه',note:'مرتبط: parfumé (معطر) · sentir bon',ex:[{fr:'La Corse, c\'est pour moi le <strong>parfum</strong> des fleurs au printemps.',fa:'کورس برای من عطر گل‌ها در بهار است.'},{fr:'Le <strong>parfum</strong> du café frais le matin me réveille tout de suite.',fa:'عطر قهوه‌ی تازه صبح فوراً بیدارم می‌کند.'},{fr:'En entrant dans le jardin, on sent le <strong>parfum</strong> délicat des roses.',fa:'با ورود به باغ، عطر لطیف رزها را حس می‌کنی.'}]},
+{w:'le chant des oiseaux',t:'NOM',fa:'آواز پرندگان',note:'مرتبط: chanter · un chant',ex:[{fr:'J\'aime le <strong>chant des oiseaux</strong> dans le jardin tôt le matin.',fa:'آواز پرندگان در باغ صبح زود را دوست دارم.'},{fr:'Le <strong>chant des oiseaux</strong> m\'accompagne pendant ma promenade quotidienne.',fa:'آواز پرندگان در پیاده‌روی روزانه‌ام همراهم است.'},{fr:'Rien n\'est plus apaisant que le <strong>chant des oiseaux</strong> au lever du soleil.',fa:'هیچ چیز آرامش‌بخش‌تر از آواز پرندگان هنگام طلوع خورشید نیست.'}]},
+{w:'rappeler qqch à qqn',t:'VERBE',fa:'یادآوری کردن · به یاد آوردن',note:'⚠️ ساختار مهم: ça me rappelle... (این مرا به یاد ... می‌اندازد)',ex:[{fr:'L\'odeur, le bruit, la vue du feu me <strong>rappellent</strong> ces moments avec mon grand-père.',fa:'بو، صدا، و منظره‌ی آتش این لحظات با پدربزرگم را به یادم می‌آورند.'},{fr:'Cette chanson me <strong>rappelle</strong> mon voyage en Italie.',fa:'این آهنگ سفرم به ایتالیا را به یادم می‌آورد.'},{fr:'Ton sourire me <strong>rappelle</strong> celui de ta mère.',fa:'لبخندت لبخند مادرت را به یادم می‌آورد.'}]},
+{w:'être gravé dans la mémoire',t:'EXPRESSION',fa:'در حافظه حک شدن · فراموش‌نشدنی بودن',note:'عبارت زیبا و ادبی. graver = حک کردن',ex:[{fr:'Ses mots sont <strong>gravés dans ma mémoire</strong>, impossible de les oublier.',fa:'حرف‌هایش در حافظه‌ام حک شده‌اند، غیرممکن است فراموششان کنم.'},{fr:'Ce jour restera <strong>gravé dans ma mémoire</strong> pour toujours.',fa:'آن روز برای همیشه در حافظه‌ام حک خواهد ماند.'},{fr:'Les moments heureux de l\'enfance sont <strong>gravés dans notre mémoire</strong>.',fa:'لحظات شاد کودکی در حافظه‌ی ما حک شده‌اند.'}]},
+{w:'sans hésiter',t:'EXPRESSION',fa:'بدون تردید · بی‌درنگ',note:'مرتبط: hésiter (تردید کردن) · une hésitation',ex:[{fr:'Mes saveurs préférées : figues, abricots et clémentines, <strong>sans hésiter</strong>.',fa:'طعم‌های موردعلاقه‌ام: انجیر، زردآلو و نارنگی، بدون تردید.'},{fr:'Si on me proposait ce travail, j\'accepterais <strong>sans hésiter</strong>.',fa:'اگر این کار را به من پیشنهاد می‌دادند، بدون تردید قبول می‌کردم.'},{fr:'Elle a répondu <strong>sans hésiter</strong>, car elle connaissait bien le sujet.',fa:'او بدون تردید جواب داد، چون موضوع را خوب می‌دانست.'}]},
+{w:'faire un vœu',t:'EXPRESSION',fa:'آرزو کردن',note:'کالوکیشن: faire un vœu · un vœu se réalise',ex:[{fr:'« Une étoile filante ! <strong>Fais un vœu</strong> ! » disait mon grand-père.',fa:'«یک ستاره‌ی دنباله‌دار! آرزو کن!» پدربزرگم می‌گفت.'},{fr:'Quand je vois une étoile filante, je <strong>fais</strong> toujours <strong>un vœu</strong>.',fa:'وقتی یک ستاره‌ی دنباله‌دار می‌بینم، همیشه آرزو می‌کنم.'},{fr:'Avant de souffler les bougies, elle a <strong>fait un vœu</strong>.',fa:'قبل از فوت کردن شمع‌ها، او یک آرزو کرد.'}]},
+{w:'une étoile filante',t:'NOM',fa:'ستاره‌ی دنباله‌دار · شهاب',note:'مرتبط: une étoile (ستاره) · le ciel (آسمان)',ex:[{fr:'On regardait les étoiles et soudain, une <strong>étoile filante</strong> est passée.',fa:'به ستاره‌ها نگاه می‌کردیم و ناگهان، یک ستاره‌ی دنباله‌دار رد شد.'},{fr:'Il est rare de voir une <strong>étoile filante</strong> en ville à cause des lumières.',fa:'به‌ندرت می‌توان شهاب را در شهر دید، به‌خاطر نورها.'},{fr:'Chaque été, on peut observer des <strong>étoiles filantes</strong> dans le ciel.',fa:'هر تابستان، می‌توان ستاره‌های دنباله‌دار را در آسمان مشاهده کرد.'}]},
+{w:'la grande ourse',t:'NOM',fa:'دبّ اکبر (صورت فلکی)',note:'مرتبط: les étoiles · une constellation',ex:[{fr:'« Tu vois, là, c\'est la <strong>grande ourse</strong> ! » m\'expliquait mon grand-père.',fa:'«می‌بینی، آنجا، دبّ اکبر است!» پدربزرگم برایم توضیح می‌داد.'},{fr:'La <strong>grande ourse</strong> est facile à reconnaître dans le ciel nocturne.',fa:'دبّ اکبر در آسمان شب به‌راحتی قابل تشخیص است.'},{fr:'Il m\'a appris à trouver la <strong>grande ourse</strong> parmi les étoiles.',fa:'او به من یاد داد که دبّ اکبر را میان ستاره‌ها پیدا کنم.'}]},
+{w:'ma madeleine de Proust',t:'EXPRESSION CULTURELLE',fa:'چیزی که خاطرات کودکی را زنده می‌کند',note:'💡 اشاره به رمان مارسل پروست — شیرینی‌ای که با چشیدنش سیلی از خاطرات برمی‌گردد',ex:[{fr:'La Corse et cette maison, c\'est <strong>ma madeleine de Proust</strong>.',fa:'کورس و این خانه، مادلن پروستِ من هستند (خاطرات کودکی‌ام را زنده می‌کنند).'},{fr:'L\'odeur du pain chaud, c\'est <strong>ma madeleine de Proust</strong> : je revois toute mon enfance.',fa:'بوی نان گرم، مادلن پروستِ من است: تمام کودکی‌ام را دوباره می‌بینم.'},{fr:'Pour beaucoup, une chanson peut devenir une véritable <strong>madeleine de Proust</strong>.',fa:'برای خیلی‌ها، یک آهنگ می‌تواند به یک مادلن پروستِ واقعی تبدیل شود.'}]}
+];
+(function(){
+  const wrap = document.getElementById('vocab-wrap');
+  VOCAB_DATA.forEach(d=>{
+    const card = document.createElement('div');
+    card.className = 'v-card';
+    const exHtml = d.ex.map((e,i)=>`
+      <div class="v-ex">
+        <div class="v-ex-n">مثال ${i+1}</div>
+        <div class="v-ex-fr">${e.fr}</div>
+        <div class="v-ex-fa">${e.fa}</div>
+      </div>`).join('');
+    card.innerHTML = `
+      <div class="v-head">
+        <div><div class="v-word">${d.w}</div><div class="v-fa">${d.fa}</div></div>
+        <span class="v-type">${d.t}</span>
+      </div>
+      ${d.note?`<div class="v-note">💡 ${d.note}</div>`:''}
+      <div class="v-examples">${exHtml}</div>`;
+    wrap.appendChild(card);
+  });
+})();
+window.addEventListener('scroll',()=>document.getElementById('scrollBtn').classList.toggle('show',scrollY>300));
+</script>
+</body>
+</html>
